@@ -1,0 +1,4707 @@
+---
+layout: default
+title: TechnicalReference_Asr_ComM
+nav_order: 12
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR Communication Manager </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p> </p>
+<p>Version 3.14 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Thomas Petrus </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>2 / 65</p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Thomas Petrus </p>
+<p>2008-02-01 </p>
+<p>3.0 </p>
+<p>Complete rework and </p>
+<p>adaptation to new template </p>
+<p>Thomas Petrus </p>
+<p>2008-02-20 </p>
+<p>3.1 </p>
+<p></p>
+<p> </p>
+<p>correct </p>
+<p>ComM_MainFunction() </p>
+<p>description </p>
+<p></p>
+<p> </p>
+<p>correct and advance ComM </p>
+<p>service port description </p>
+<p></p>
+<p> </p>
+<p>advance configuration setting </p>
+<p>description </p>
+<p>Thomas Petrus </p>
+<p>2008-03-20 </p>
+<p>3.2 </p>
+<p></p>
+<p> </p>
+<p>Update Compiler Abstraction </p>
+<p>and Memory Mapping </p>
+<p>Thomas Petrus </p>
+<p>2008-03-30 </p>
+<p>3.3 </p>
+<p></p>
+<p> </p>
+<p>add description for DEM </p>
+<p>support </p>
+<p></p>
+<p> </p>
+<p>update file structure </p>
+<p></p>
+<p> </p>
+<p>remove callback decriptions </p>
+<p>for </p>
+<p>ComM_LinSm_ModeIndicatio</p>
+<p>n, </p>
+<p>ComM_CanSm_ModeIndicati</p>
+<p>on and </p>
+<p>ComM_FrSm_ModeIndicatio</p>
+<p>n </p>
+<p></p>
+<p> </p>
+<p>add callback description for </p>
+<p>ComM_BusSM_ModeIndicati</p>
+<p>on </p>
+<p></p>
+<p> </p>
+<p>update configuration chapter </p>
+<p>Thomas Petrus </p>
+<p>2008-05-08 </p>
+<p>3.4 </p>
+<p></p>
+<p> </p>
+<p>update include structure </p>
+<p></p>
+<p> </p>
+<p>update chapter 5.1.2 </p>
+<p>Dynamic Files </p>
+<p></p>
+<p> </p>
+<p>Add chapter 4.4.2, 4.4.3, 5.4 </p>
+<p>and 5.5 </p>
+<p></p>
+<p> </p>
+<p>update configuration </p>
+<p>description </p>
+<p>Thomas Kuhl </p>
+<p>2008-08-22 </p>
+<p>3.5 </p>
+<p></p>
+<p> </p>
+<p>Update function description of </p>
+<p>ComM_GetCurrentComMode </p>
+<p></p>
+<p> </p>
+<p>Update function description of </p>
+<p>ComM_BusSM_ModeInidicati</p>
+<p>on </p>
+<p></p>
+<p> </p>
+<p>Update Chapter 8.2. </p>
+<p>Limitations </p>
+<p></p>
+<p> </p>
+<p>Update Configuration chapter</p>
+<p></p>
+<p> </p>
+<p>Update ComM state diagram  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>3 / 65</p>
+<p>(ESCAN00029568) </p>
+<p>Thomas Kuhl </p>
+<p>2008-10-17 </p>
+<p>3.6 </p>
+<p></p>
+<p> </p>
+<p>Update configuration chapter </p>
+<p></p>
+<p> </p>
+<p>Add  API description for </p>
+<p>ComM_Dcm_SetPassiveMod</p>
+<p>e </p>
+<p>Thomas Kuhl </p>
+<p>2008-12-04 </p>
+<p>3.7 </p>
+<p></p>
+<p> </p>
+<p>Remove </p>
+<p>ComM_RTE_ComMModeIndi</p>
+<p>cation callback function </p>
+<p></p>
+<p> </p>
+<p>Update component history </p>
+<p></p>
+<p> </p>
+<p>Update configuration chapter </p>
+<p></p>
+<p> </p>
+<p>Update chapter 8 </p>
+<p></p>
+<p> </p>
+<p>Update chapter 4.1 </p>
+<p></p>
+<p> </p>
+<p>Add function description for </p>
+<p>mode indication (6.6.4, 6.6.5) </p>
+<p></p>
+<p> </p>
+<p>Add chapter 6.7.1.2 </p>
+<p>Thomas Kuhl </p>
+<p>2009-03-16 </p>
+<p>3.8 </p>
+<p></p>
+<p> </p>
+<p>Remove API </p>
+<p>ComM_Dcm_SetEcuPassive</p>
+<p>Mode </p>
+<p></p>
+<p> </p>
+<p>Add Nm Variant OSEK </p>
+<p>Thomas Kuhl </p>
+<p>2009-07-14 </p>
+<p>3.9 </p>
+<p></p>
+<p> </p>
+<p>Update chapter 5.4 Critical </p>
+<p>code sections </p>
+<p></p>
+<p> </p>
+<p>Update API descriptions </p>
+<p>inside chapter 6.3, especially  </p>
+<p>adaptio</p>
+<p>n of API return values </p>
+<p></p>
+<p> </p>
+<p>Add chapter 8.1.4 ComM </p>
+<p>Service API Return Value </p>
+<p>COMM_UNINIT </p>
+<p>Thomas Kuhl </p>
+<p>2009-11-19 </p>
+<p>3.10 </p>
+<p></p>
+<p> </p>
+<p>Update chapter 7.1.2 General </p>
+<p>Configuration </p>
+<p></p>
+<p> </p>
+<p>Update chapter 5.3 Compiler </p>
+<p>Abstraction and Memory </p>
+<p>Mapping </p>
+<p></p>
+<p> </p>
+<p>Update chapter 5.5 Handling </p>
+<p>of non-volatile data </p>
+<p></p>
+<p> </p>
+<p>Update chapter 6.2 Type </p>
+<p>Definitions </p>
+<p>Thomas Kuhl </p>
+<p>2010-02-15 </p>
+<p>3.11 </p>
+<p></p>
+<p> </p>
+<p>Add chapter 6.3.17 </p>
+<p>ComM_ConmmunicationCont</p>
+<p>rol </p>
+<p></p>
+<p> </p>
+<p>Add chapter 6.3.18 </p>
+<p>ComM_GetNumSendRcvApp</p>
+<p>l </p>
+<p></p>
+<p> </p>
+<p>Add chapter 6.3.19 </p>
+<p>ComM_GetOverallBusState </p>
+<p></p>
+<p> </p>
+<p>Advance chapter 6.7.1.1 </p>
+<p>Thomas Kuhl </p>
+<p>2010-04-28 </p>
+<p>3.12 </p>
+<p></p>
+<p> </p>
+<p>Remove chapter 6.3.17 – </p>
+<p>6.3.19 </p>
+<p></p>
+<p> </p>
+<p>Remove port description of </p>
+<p>ComM_GetNumSendRcvApp</p>
+<p>l </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>4 / 65</p>
+<p></p>
+<p> </p>
+<p>ESCAN00041031, </p>
+<p>ESCAN00040931 and </p>
+<p>ESCAN00039887 </p>
+<p>Thomas Kuhl </p>
+<p>2010-08-11 </p>
+<p>3.13 </p>
+<p></p>
+<p> </p>
+<p>ESCAN00043830 </p>
+<p></p>
+<p> </p>
+<p>Add description for Ethernet </p>
+<p>support </p>
+<p>Thomas Kuhl </p>
+<p>2011-02-10 </p>
+<p>3.14 </p>
+<p></p>
+<p> </p>
+<p>Extend description of </p>
+<p>ComM_Init and </p>
+<p>ComM_MainFunction  </p>
+<p></p>
+<p> </p>
+<p>Add description of </p>
+<p>BswM_ComM_CurrentMode </p>
+<p></p>
+<p> </p>
+<p>ESCAN00045289, </p>
+<p>ESCAN00046463 </p>
+<p>Table 1-1   History of the document </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_ComM.pdf </p>
+<p>V2.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DET.pdf </p>
+<p>V2.2.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DEM.pdf </p>
+<p>V2.2.0 </p>
+<p>[4] </p>
+<p> </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.2.0 </p>
+<p>[5] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DCM.pdf </p>
+<p>V3.0.0 </p>
+<p>[6] </p>
+<p> </p>
+<p>AUTOSAR_SWS_CAN_StateManager.pdf </p>
+<p>V1.0.0 </p>
+<p>[7] </p>
+<p> </p>
+<p>AUTOSAR_SWS_ECU_Statemanager.pdf </p>
+<p>V1.2.0 </p>
+<p>[8] </p>
+<p> </p>
+<p>AUTOSAR_SWS_FlexRay_StateManager.pdf </p>
+<p>V1.0.0 </p>
+<p>[9] </p>
+<p> </p>
+<p>AUTOSAR_SWS_LIN_StateManager.pdf </p>
+<p>V1.0.0 </p>
+<p>[10]  </p>
+<p>AUTOSAR_SWS_NMInterface.pdf </p>
+<p>V1.0.0 </p>
+<p>[11]  </p>
+<p>AUTOSAR_SWS_NVRAMManager.pdf </p>
+<p>V2.2.0 </p>
+<p>[12]  </p>
+<p>AN-ISC-8-1118 MICROSAR BSW Compatibility Check </p>
+<p>V1.0.0 </p>
+<p>Table 1-2   Reference documents </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>5 / 65</p>
+<p><b>1.1 </b></p>
+<p><b>Scope of the Document  </b></p>
+<p>This technical reference describes the general use of the Communication Manager basic </p>
+<p>software.  </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>6 / 65</p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information.................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 4</p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>Scope of the Document .................................................................................... 5</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Component History....................................................................................................... 11</b></p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Introduction ................................................................................................................... 12</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Architecture Overview..................................................................................... 13</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................. 14</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Features.......................................................................................................... 14</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Initialization ..................................................................................................... 14</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>States .............................................................................................................. 15</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>Main Functions ............................................................................................... 17</p>
+<p> </p>
+<p>4.4.1</p>
+<p> </p>
+<p>Communication Control Handling ................................................................... 17</p>
+<p> </p>
+<p>4.4.2</p>
+<p> </p>
+<p>Mode Limitation .............................................................................................. 20</p>
+<p> </p>
+<p>4.4.3</p>
+<p> </p>
+<p>Synchronous Wake Up ................................................................................... 22</p>
+<p> </p>
+<p>4.4.4</p>
+<p> </p>
+<p>Mode Indication .............................................................................................. 22</p>
+<p> </p>
+<p>4.5</p>
+<p> </p>
+<p>Error Handling................................................................................................. 23</p>
+<p> </p>
+<p>4.5.1</p>
+<p> </p>
+<p>Development Error Reporting ......................................................................... 23</p>
+<p> </p>
+<p>4.5.1.1</p>
+<p> </p>
+<p>Parameter Checking ....................................................................................... 25</p>
+<p> </p>
+<p>4.5.2</p>
+<p> </p>
+<p>Production Code Error Reporting ................................................................... 25</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>Integration ..................................................................................................................... 27</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Scope of Delivery............................................................................................ 27</p>
+<p> </p>
+<p>5.1.1</p>
+<p> </p>
+<p>Static Files ...................................................................................................... 27</p>
+<p> </p>
+<p>5.1.2</p>
+<p> </p>
+<p>Dynamic Files ................................................................................................. 27</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Include Structure............................................................................................. 28</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 28</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Critical code sections...................................................................................... 29</p>
+<p> </p>
+<p>5.5</p>
+<p> </p>
+<p>Handling of non-volatile data .......................................................................... 30</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>API Description ............................................................................................................. 31</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Interfaces Overview ........................................................................................ 31</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Type Definitions .............................................................................................. 32</p>
+<p> </p>
+<p>6.3</p>
+<p> </p>
+<p>Services provided by ComM........................................................................... 33</p>
+<p> </p>
+<p>6.3.1</p>
+<p> </p>
+<p>ComM_InitMemory ......................................................................................... 33</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>7 / 65</p>
+<p>6.3.2</p>
+<p> </p>
+<p>ComM_Init ...................................................................................................... 33</p>
+<p> </p>
+<p>6.3.3</p>
+<p> </p>
+<p>ComM_GetStatus ........................................................................................... 34</p>
+<p> </p>
+<p>6.3.4</p>
+<p> </p>
+<p>ComM_GetInhibitionStatus ............................................................................. 34</p>
+<p> </p>
+<p>6.3.5</p>
+<p> </p>
+<p>ComM_RequestComMode ............................................................................. 35</p>
+<p> </p>
+<p>6.3.6</p>
+<p> </p>
+<p>ComM_GetMaxComMode .............................................................................. 35</p>
+<p> </p>
+<p>6.3.7</p>
+<p> </p>
+<p>ComM_GetRequestedComMode ................................................................... 36</p>
+<p> </p>
+<p>6.3.8</p>
+<p> </p>
+<p>ComM_GetCurrentComMode ......................................................................... 37</p>
+<p> </p>
+<p>6.3.9</p>
+<p> </p>
+<p>ComM_PreventWakeUp ................................................................................. 37</p>
+<p> </p>
+<p>6.3.10</p>
+<p> </p>
+<p>ComM_LimitChannelToNoComMode ............................................................. 38</p>
+<p> </p>
+<p>6.3.11</p>
+<p> </p>
+<p>ComM_LimitECUToNoComMode ................................................................... 38</p>
+<p> </p>
+<p>6.3.12</p>
+<p> </p>
+<p>ComM_ReadInhibitCounter ............................................................................ 39</p>
+<p> </p>
+<p>6.3.13</p>
+<p> </p>
+<p>ComM_ResetInhibitCounter ........................................................................... 39</p>
+<p> </p>
+<p>6.3.14</p>
+<p> </p>
+<p>ComM_SetECUGroupClassification ............................................................... 40</p>
+<p> </p>
+<p>6.3.15</p>
+<p> </p>
+<p>ComM_GetVersionInfo ................................................................................... 40</p>
+<p> </p>
+<p>6.3.16</p>
+<p> </p>
+<p>ComM_MainFunction...................................................................................... 41</p>
+<p> </p>
+<p>6.4</p>
+<p> </p>
+<p>Services used by ComM................................................................................. 41</p>
+<p> </p>
+<p>6.5</p>
+<p> </p>
+<p>Callback Functions ......................................................................................... 43</p>
+<p> </p>
+<p>6.5.1</p>
+<p> </p>
+<p>ComM_EcuM_RunModeIndication ................................................................. 43</p>
+<p> </p>
+<p>6.5.2</p>
+<p> </p>
+<p>ComM_EcuM_WakeUpIndication ................................................................... 43</p>
+<p> </p>
+<p>6.5.3</p>
+<p> </p>
+<p>ComM_BusSM_ModeIndication ..................................................................... 44</p>
+<p> </p>
+<p>6.5.4</p>
+<p> </p>
+<p>ComM_DCM_ActiveDiagnostic ...................................................................... 44</p>
+<p> </p>
+<p>6.5.5</p>
+<p> </p>
+<p>ComM_DCM_InactiveDiagnostic .................................................................... 45</p>
+<p> </p>
+<p>6.5.6</p>
+<p> </p>
+<p>ComM_Nm_NetworkStartIndication................................................................ 45</p>
+<p> </p>
+<p>6.5.7</p>
+<p> </p>
+<p>ComM_Nm_NetworkMode ............................................................................. 46</p>
+<p> </p>
+<p>6.5.8</p>
+<p> </p>
+<p>ComM_Nm_PrepareBusSleep........................................................................ 46</p>
+<p> </p>
+<p>6.5.9</p>
+<p> </p>
+<p>ComM_Nm_BusSleepMode ........................................................................... 47</p>
+<p> </p>
+<p>6.5.10</p>
+<p> </p>
+<p>ComM_Nm_RestartIndication......................................................................... 47</p>
+<p> </p>
+<p>6.6</p>
+<p> </p>
+<p>Configurable Interfaces................................................................................... 47</p>
+<p> </p>
+<p>6.6.1</p>
+<p> </p>
+<p>Dcm_ComM_FullComModeEntered ............................................................... 48</p>
+<p> </p>
+<p>6.6.2</p>
+<p> </p>
+<p>Dcm_ComM_SilentComModeEntered............................................................ 48</p>
+<p> </p>
+<p>6.6.3</p>
+<p> </p>
+<p>Dcm_ComM_NoComModeEntered ................................................................ 49</p>
+<p> </p>
+<p>6.6.4</p>
+<p> </p>
+<p>Appl_ComM_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode.............. 49</p>
+<p> </p>
+<p>6.6.5</p>
+<p> </p>
+<p>Rte_Switch_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode ............... 50</p>
+<p> </p>
+<p>6.6.6</p>
+<p> </p>
+<p>BswM_ComM_CurrentMode .......................................................................... 51</p>
+<p> </p>
+<p>6.7</p>
+<p> </p>
+<p>Service Ports .................................................................................................. 51</p>
+<p> </p>
+<p>6.7.1</p>
+<p> </p>
+<p>Client Server Interface .................................................................................... 51</p>
+<p> </p>
+<p>6.7.1.1</p>
+<p> </p>
+<p>Provide Ports .................................................................................................. 51</p>
+<p> </p>
+<p>6.7.1.2</p>
+<p> </p>
+<p>Require Ports.................................................................................................. 52</p>
+<p> </p>
+<p>6.7.1.2.1</p>
+<p> </p>
+<p>Current Mode.................................................................................................. 52</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>Configuration ................................................................................................................ 53</b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>8 / 65</p>
+<p>7.1</p>
+<p> </p>
+<p>Configuration with GENy ................................................................................ 53</p>
+<p> </p>
+<p>7.1.1</p>
+<p> </p>
+<p>Activation of the ComM in GENy .................................................................... 53</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>General Configuration..................................................................................... 54</p>
+<p> </p>
+<p>7.1.3</p>
+<p> </p>
+<p>Channel Configuration .................................................................................... 57</p>
+<p> </p>
+<p>7.1.4</p>
+<p> </p>
+<p>User Configuration.......................................................................................... 60</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance................................................................................. 63</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Additions/Extensions ...................................................................................... 63</p>
+<p> </p>
+<p>8.1.1</p>
+<p> </p>
+<p>ComM_InitMemory ......................................................................................... 63</p>
+<p> </p>
+<p>8.1.2</p>
+<p> </p>
+<p>DET Error Reporting ....................................................................................... 63</p>
+<p> </p>
+<p>8.1.3</p>
+<p> </p>
+<p>Nm Variant OSEK ........................................................................................... 63</p>
+<p> </p>
+<p>8.1.4</p>
+<p> </p>
+<p>ComM Service API Return Value COMM_UNINIT.......................................... 63</p>
+<p> </p>
+<p>8.1.5</p>
+<p> </p>
+<p>ComM Bus Type ............................................................................................. 63</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Limitation ........................................................................................................ 63</p>
+<p> </p>
+<p>8.2.1</p>
+<p> </p>
+<p>Non-volatile data handling .............................................................................. 63</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ........................................................................................ 64</b></p>
+<p> </p>
+<p>9.1</p>
+<p> </p>
+<p>Glossary.......................................................................................................... 64</p>
+<p> </p>
+<p>9.2</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 64</p>
+<p> </p>
+<p><b>10</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................... 65</b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>9 / 65</p>
+<p><b>Illustrations </b></p>
+<p>Figure 3-1</p>
+<p> </p>
+<p>AUTOSAR architecture................................................................................... 13</p>
+<p> </p>
+<p>Figure 3-2</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the ComM ................................................. 13</p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>state machine of the ComM............................................................................ 15</p>
+<p> </p>
+<p>Figure 4-2</p>
+<p> </p>
+<p>Bus wake up with Nm Variant FULL ............................................................... 18</p>
+<p> </p>
+<p>Figure 4-3</p>
+<p> </p>
+<p>Network Shutdown for Nm variant Full ........................................................... 19</p>
+<p> </p>
+<p>Figure 4-4</p>
+<p> </p>
+<p>Bus Wake Up and shutdown for Nm variant LIGHT/NONE ............................ 20</p>
+<p> </p>
+<p>Figure 4-5</p>
+<p> </p>
+<p>No Communication mode limitation ................................................................ 21</p>
+<p> </p>
+<p>Figure 5-1</p>
+<p> </p>
+<p>Include structure ............................................................................................. 28</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>ComM interactions with other BSW ................................................................ 31</p>
+<p> </p>
+<p>Figure 7-1</p>
+<p> </p>
+<p>GENy Component Selection Dialog................................................................ 53</p>
+<p> </p>
+<p>Figure 7-2</p>
+<p> </p>
+<p>General Configuration Settings in GENy ........................................................ 54</p>
+<p> </p>
+<p>Figure 7-3</p>
+<p> </p>
+<p>Channel Configuration in GENy...................................................................... 58</p>
+<p> </p>
+<p>Figure 7-4</p>
+<p> </p>
+<p>ComM User configurations inside the general ComM configuration view....... 61</p>
+<p> </p>
+<p>Figure 7-5</p>
+<p> </p>
+<p>ComM User Settings....................................................................................... 61</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the document.................................................................................... 4</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference documents....................................................................................... 4</p>
+<p> </p>
+<p>Table 2-1 </p>
+<p> </p>
+<p>Component history...........................................................................................11</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Supported SWS features ................................................................................ 14</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Not supported SWS features .......................................................................... 14</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Mapping of service IDs to services ................................................................. 24</p>
+<p> </p>
+<p>Table 4-4 </p>
+<p> </p>
+<p>Errors reported to DET ................................................................................... 24</p>
+<p> </p>
+<p>Table 4-5 </p>
+<p> </p>
+<p>Development Error Reporting: Assignment of checks to services .................. 25</p>
+<p> </p>
+<p>Table 4-6 </p>
+<p> </p>
+<p>Errors reported to DEM................................................................................... 26</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Static files........................................................................................................ 27</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>Generated files ............................................................................................... 27</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 29</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Type definitions............................................................................................... 32</p>
+<p> </p>
+<p>Table 6-2 </p>
+<p> </p>
+<p>ComM_InitMemory ......................................................................................... 33</p>
+<p> </p>
+<p>Table 6-3 </p>
+<p> </p>
+<p>ComM_Init ...................................................................................................... 34</p>
+<p> </p>
+<p>Table 6-4 </p>
+<p> </p>
+<p>ComM_GetStatus ........................................................................................... 34</p>
+<p> </p>
+<p>Table 6-5 </p>
+<p> </p>
+<p>ComM_GetInhibitionStatus ............................................................................. 34</p>
+<p> </p>
+<p>Table 6-6 </p>
+<p> </p>
+<p>ComM_RequestComMode ............................................................................. 35</p>
+<p> </p>
+<p>Table 6-7 </p>
+<p> </p>
+<p>ComM_GetMaxComMode .............................................................................. 36</p>
+<p> </p>
+<p>Table 6-8 </p>
+<p> </p>
+<p>ComM_GetRequestedComMode ................................................................... 36</p>
+<p> </p>
+<p>Table 6-9 </p>
+<p> </p>
+<p>ComM_GetCurrentComMode ......................................................................... 37</p>
+<p> </p>
+<p>Table 6-10 </p>
+<p> </p>
+<p>ComM_PreventWakeUp ................................................................................. 37</p>
+<p> </p>
+<p>Table 6-11 </p>
+<p> </p>
+<p>ComM_LimitChannelToNoComMode ............................................................. 38</p>
+<p> </p>
+<p>Table 6-12 </p>
+<p> </p>
+<p>ComM_LimitECUToNoComMode ................................................................... 38</p>
+<p> </p>
+<p>Table 6-13 </p>
+<p> </p>
+<p>ComM_ReadInhibitCounter ............................................................................ 39</p>
+<p> </p>
+<p>Table 6-14 </p>
+<p> </p>
+<p>ComM_ResetInhibitCounter ........................................................................... 39</p>
+<p> </p>
+<p>Table 6-15 </p>
+<p> </p>
+<p>ComM_SetECUGroupClassification ............................................................... 40</p>
+<p> </p>
+<p>Table 6-16 </p>
+<p> </p>
+<p>ComM_GetVersionInfo ................................................................................... 40</p>
+<p> </p>
+<p>Table 6-17 </p>
+<p> </p>
+<p>ComM_MainFunction...................................................................................... 41</p>
+<p> </p>
+<p>Table 6-18 </p>
+<p> </p>
+<p>Services used by the ComM........................................................................... 42</p>
+<p> </p>
+<p>Table 6-19 </p>
+<p> </p>
+<p>ComM_EcuM_RunModeIndication ................................................................. 43</p>
+<p> </p>
+<p>Table 6-20 </p>
+<p> </p>
+<p>ComM_EcuM_WakeUpIndication ................................................................... 43</p>
+<p> </p>
+<p>Table 6-21 </p>
+<p> </p>
+<p>ComM_BusSM_ModeIndication ..................................................................... 44</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>10 / 65</p>
+<p>Table 6-22 </p>
+<p> </p>
+<p>ComM_DCM_ActiveDiagnostic ...................................................................... 44</p>
+<p> </p>
+<p>Table 6-23 </p>
+<p> </p>
+<p>ComM_DCM_IncactiveDiagnostic .................................................................. 45</p>
+<p> </p>
+<p>Table 6-24 </p>
+<p> </p>
+<p>ComM_Nm_NetworkStartIndication................................................................ 45</p>
+<p> </p>
+<p>Table 6-25 </p>
+<p> </p>
+<p>ComM_Nm_NetworkMode ............................................................................. 46</p>
+<p> </p>
+<p>Table 6-26 </p>
+<p> </p>
+<p>ComM_Nm_PrepareBusSleep ....................................................................... 46</p>
+<p> </p>
+<p>Table 6-27 </p>
+<p> </p>
+<p>ComM_Nm_BusSleepMode ........................................................................... 47</p>
+<p> </p>
+<p>Table 6-28 </p>
+<p> </p>
+<p>ComM_Nm_RestartIndication......................................................................... 47</p>
+<p> </p>
+<p>Table 6-29 </p>
+<p> </p>
+<p>Dcm_ComM_FullComModeEntered ............................................................... 48</p>
+<p> </p>
+<p>Table 6-30 </p>
+<p> </p>
+<p>Dcm_ComM_SilentComModeEntered............................................................ 48</p>
+<p> </p>
+<p>Table 6-31 </p>
+<p> </p>
+<p>Dcm_ComM_NoComModeEntered ................................................................ 49</p>
+<p> </p>
+<p>Table 6-32 </p>
+<p> </p>
+<p>Appl_ComM_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode.............. 50</p>
+<p> </p>
+<p>Table 6-33 </p>
+<p> </p>
+<p>Rte_Switch_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode ............... 50</p>
+<p> </p>
+<p>Table 6-34 </p>
+<p> </p>
+<p>BswM_ComM_CurrentMode .......................................................................... 51</p>
+<p> </p>
+<p>Table 6-35 </p>
+<p> </p>
+<p>Provide Ports on BSW module side................................................................ 52</p>
+<p> </p>
+<p>Table 6-36 </p>
+<p> </p>
+<p>Current Mode.................................................................................................. 52</p>
+<p> </p>
+<p>Table 7-1 </p>
+<p> </p>
+<p>General configuration Settings in GENy ......................................................... 57</p>
+<p> </p>
+<p>Table 7-2 </p>
+<p> </p>
+<p>Channel Configuration in GENy...................................................................... 60</p>
+<p> </p>
+<p>Table 7-3 </p>
+<p> </p>
+<p>ComM User Settings....................................................................................... 62</p>
+<p> </p>
+<p>Table 9-1 </p>
+<p> </p>
+<p>Glossary.......................................................................................................... 64</p>
+<p> </p>
+<p>Table 9-2 </p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 64</p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>11 / 65</p>
+<p><b>2 </b></p>
+<p><b>Component History </b></p>
+<p><b>Component </b></p>
+<p><b>Version </b></p>
+<p><b>New Features </b></p>
+<p>4.00.00 </p>
+<p>Rework for AUTOSAR Release 3 </p>
+<p>4.10.00 </p>
+<p>ComM_RTE_ComMModeIndication function replaced by ComM user mode </p>
+<p>indication functions </p>
+<p>Table 2-1   Component history </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>12 / 65</p>
+<p><b>3 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module ComM as specified in [1].  </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release*: </b></p>
+<p>3 </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile, link-time </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p>COMM_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>COMM_MODULE_ID   </p>
+<p>12 decimal </p>
+<p>(according to ref. [4]) </p>
+<p>* For the precise AUTOSAR Release 3.x please see the release specific documentation. </p>
+<p> </p>
+<p>The Communication Manager is a resource manager and encapsulates the control of the </p>
+<p>underlying communication services. He is responsible to: </p>
+<p></p>
+<p> </p>
+<p>coordinate different wake up events independent of the used bus system (e.g. CAN or </p>
+<p>LIN) </p>
+<p></p>
+<p> </p>
+<p>simplify the resource management by allocating all resources which are necessary  to </p>
+<p>start/stop communication </p>
+<p></p>
+<p> </p>
+<p>simplify the handling of the underlying communication stack (e.g. network management </p>
+<p>handling)  </p>
+<p></p>
+<p> </p>
+<p>provision of a common behavior and handling of the underlying communication stack.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>13 / 65</p>
+<p><b>3.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the ComM is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 3-1 AUTOSAR architecture </p>
+<p> </p>
+<p>The next figure shows the interfaces to adjacent modules of the ComM. These interfaces </p>
+<p>are described in chapter 6.  </p>
+<p>FR </p>
+<p>CAN IF</p>
+<p>FR IF</p>
+<p>LIN IF</p>
+<p>LI TP</p>
+<p>COM</p>
+<p>DCM</p>
+<p>IPDU</p>
+<p>Can SM</p>
+<p>ComM</p>
+<p>Fr SM</p>
+<p>Lin SM</p>
+<p>EcuM</p>
+<p>DCM</p>
+<p>CAN IF</p>
+<p>FR IF</p>
+<p>LIN IF</p>
+<p>DET</p>
+<p>NM</p>
+<p>Eth SM</p>
+<p>Eth IF</p>
+<p> </p>
+<p>Figure 3-2 Interfaces to adjacent modules of the ComM </p>
+<p>Applications do not access the services of the BSW modules directly. They use the service </p>
+<p>ports provided by the BSW modules via the RTE. The service ports provided by the ComM </p>
+<p>are listed in chapter 6.7 and are defined in [1]. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>14 / 65</p>
+<p><b>4 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>4.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The  &quot;supported&quot;  and  &quot;not  supported&quot;  features  are  presented  in  the  following  two  tables. </p>
+<p>For further information of not supported features also see chapter 8. </p>
+<p> </p>
+<p>The following features described in [1] are supported: </p>
+<p><b>Feature </b></p>
+<p>Communication Control Handling  </p>
+<p>Service Port: ComM_RequestMode </p>
+<p>NM Variant Handling: FULL </p>
+<p>NM Variant Handling: LIGHT </p>
+<p>NM Variant Handling: NONE </p>
+<p>NM Variant Handling: PASSIVE </p>
+<p>Communication Inhibition </p>
+<p>Bus Wake Up Inhibition </p>
+<p>Service Port: ComM_ChannelWakeUp </p>
+<p>Service Port: ComM_ChannelLimitation </p>
+<p>Service Port: ComM_ECUModeLimitation </p>
+<p>Service Port: ComM_CurrentMode </p>
+<p>DEM error reporting </p>
+<p>Synchronous wake up of channels </p>
+<p>Storage of non-volatile values </p>
+<p>Table 4-1   Supported SWS features </p>
+<p>The following features described in [1] are not supported: </p>
+<p><b>Feature </b></p>
+<p>ComM bus type: INTERNAL </p>
+<p>Table 4-2   Not supported SWS features </p>
+<p><b>4.2 </b></p>
+<p><b>Initialization </b></p>
+<p>For </p>
+<p>a </p>
+<p>correct </p>
+<p>use </p>
+<p>the </p>
+<p>Communication </p>
+<p>Manager </p>
+<p>must </p>
+<p>be </p>
+<p>initialized. </p>
+<p>At </p>
+<p>first </p>
+<p>the </p>
+<p>ComM_InitMemory() must be called which sets the global state to uninitialized. Afterwards </p>
+<p>the API function ComM_Init must be called which initializes the Communication Manager. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>15 / 65</p>
+<p><b>4.3 </b></p>
+<p><b>States </b></p>
+<p><b>stm ComM Main States</b></p>
+<p>Power Off</p>
+<p><b>FULL Communication</b></p>
+<p><b>Silent Communication</b></p>
+<p><b>No Commuication</b></p>
+<p><b>Network Requested</b></p>
+<p><b>Ready Sleep</b></p>
+<p><b>UNI NI T</b></p>
+<p>ComM_Init() / initialize ComM</p>
+<p>ComM_InitMemory() /set</p>
+<p>state to uninit</p>
+<p>No Communication Request</p>
+<p>ComM_Light Timeout expired</p>
+<p>prepare bus sleep indication</p>
+<p>network mode inidcation/</p>
+<p>Full Commuciation request</p>
+<p>No Commuication request</p>
+<p>Bus Sleep indication</p>
+<p>No Communication requested</p>
+<p>Full Communication requested</p>
+<p>No Communication requested/</p>
+<p>ComM timeout expired</p>
+<p>Full Communication</p>
+<p>requested/Active diagnostic</p>
+<p>session</p>
+<p>Wake Up inidcation/ Full</p>
+<p>Commuication mode</p>
+<p>request ed</p>
+<p> </p>
+<p>Figure 4-1 state machine of the ComM </p>
+<p>Like shown in Figure 4-1 the ComM has a state machine with three global states and the </p>
+<p>state  machine  exists  per  network.  The  states  are  representing  the  abstract  status  of </p>
+<p>communication per network. </p>
+<p><b>UNINIT: </b></p>
+<p>Before  the  ComM  is  initialized  it  stays  in  this  state. The  ComM  functionality  can  not  be </p>
+<p>used. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>16 / 65</p>
+<p><b>No Communication: </b></p>
+<p>This  state  is  the  default  state  after  the  initialization  of  the  ComM.  The  capability  of </p>
+<p>communication is off. </p>
+<p>The ComM resides in this state until a user requests the state Full Communication or the </p>
+<p>EcuM informs the ComM about an external wake up event. </p>
+<p> </p>
+<p><b>Silent Communication: </b></p>
+<p>The ComM uses this state to support the sleep process of the network management. The </p>
+<p>state represents the prepare bus sleep phase of the network. The ComM changes into this </p>
+<p>state if the network management starts the sleep process and changes into the prepare </p>
+<p>bus sleep mode.  </p>
+<p>It is not possible to request this state directly via a user. </p>
+<p>The ComM resides in this state until: </p>
+<p></p>
+<p> </p>
+<p>the network management signalizes a restart via receiving a NM message </p>
+<p></p>
+<p> </p>
+<p>or a user requests Full Communication again. </p>
+<p>Inside this state it is only possible to receive messages. The transmit capability is switched </p>
+<p>off via the responsible bus state manager. </p>
+<p><b>Full Communication: </b></p>
+<p>The state Full Communication represents the highest state of the ComM. Inside this state </p>
+<p>the full communication capability is available. The state consists of two sub-states: </p>
+<p><b>Network Requested: </b></p>
+<p>The activity inside this state depends on the configured ComM NM Variant: </p>
+<p></p>
+<p> </p>
+<p>NM Variant “FULL”: </p>
+<p></p>
+<p> </p>
+<p>The network management is set into the “Normal Operation” state. </p>
+<p></p>
+<p> </p>
+<p>The ComM resides in this state until all user request No Communication. </p>
+<p></p>
+<p> </p>
+<p> NM Variant “OSEK”: </p>
+<p></p>
+<p> </p>
+<p>The network management is set into the “Normal” state. </p>
+<p></p>
+<p> </p>
+<p>The ComM starts the “Minimum Full Communication Mode Time” to ensure a </p>
+<p>minimum active time of the network </p>
+<p></p>
+<p> </p>
+<p>The ComM resides in this state until all user request No communication and the </p>
+<p>“Minimum Full Communication Mode Time” is expired. </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>NM Variant “Light” and “NONE”: </p>
+<p></p>
+<p> </p>
+<p>The ComM starts the “Minimum Full Communication Mode Time”. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>17 / 65</p>
+<p></p>
+<p> </p>
+<p>the ComM resides in this state until all user request No Communication and the </p>
+<p>“Minimum Full Communication Mode Time” is expired. </p>
+<p><b>Ready Sleep: </b></p>
+<p>The activity inside this state depends on the configured ComM NM Variant: </p>
+<p></p>
+<p> </p>
+<p>NM Variant “FULL” and “OSEK”: </p>
+<p></p>
+<p> </p>
+<p>The network management is set into the “Ready Sleep” state. </p>
+<p></p>
+<p> </p>
+<p>The ComM resides in this state until the NM cancels the sleep process or a user </p>
+<p>requests Full Communication again. </p>
+<p></p>
+<p> </p>
+<p>NM Variant “LIGHT” </p>
+<p></p>
+<p> </p>
+<p>The ComM starts the “Ready Sleep” timer. </p>
+<p></p>
+<p> </p>
+<p>He resides in this state until the “Ready Sleep” timer expires or a user requests again </p>
+<p>Full Communication. </p>
+<p></p>
+<p> </p>
+<p>NM Variant “NONE” </p>
+<p></p>
+<p> </p>
+<p>This state is not available for this NM variant. </p>
+<p><b>4.4 </b></p>
+<p><b>Main Functions </b></p>
+<p>This chapter describes how the communication manager features are to be used by upper </p>
+<p>software layers or application software and shows the interaction with other modules. </p>
+<p><b>4.4.1 </b></p>
+<p><b>Communication Control Handling </b></p>
+<p>The </p>
+<p>communication </p>
+<p>control </p>
+<p>handling </p>
+<p>is </p>
+<p>the </p>
+<p>main </p>
+<p>functionality </p>
+<p>of </p>
+<p>the </p>
+<p>communication </p>
+<p>manager. This functionality contains the following parts: </p>
+<p></p>
+<p> </p>
+<p>Collection of the network wake up events, means bus wake up and user communication </p>
+<p>requests </p>
+<p></p>
+<p> </p>
+<p>verification of the network wake up events and start of the corresponding network with </p>
+<p>regarding of the used NM variant. </p>
+<p>The ComM supports the following Nm variants: </p>
+<p></p>
+<p> </p>
+<p>FULL, AUTOSAR Nm is used </p>
+<p></p>
+<p> </p>
+<p>PASSIVE,  AUTOSAR  Nm  is  used  but  the  ECU  is  not  allowed  to  keep  the  network </p>
+<p>awake </p>
+<p></p>
+<p> </p>
+<p>OSEK, NmOsek(direct) is used </p>
+<p></p>
+<p> </p>
+<p>LIGHT, no AUTOSAR Nm is used but the shutdown is synchronized via timeouts </p>
+<p></p>
+<p> </p>
+<p>and NONE, no AUTOSAR Nm is used and no shutdown synchronization are available. </p>
+<p> </p>
+<p>The </p>
+<p>following </p>
+<p>sequence </p>
+<p>diagrams </p>
+<p>show </p>
+<p>startup </p>
+<p>and </p>
+<p>shutdown </p>
+<p>of </p>
+<p>the </p>
+<p>networks </p>
+<p>in </p>
+<p>dependency of the wake up event and the configured Nm variant. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>18 / 65</p>
+<p><b>sd Bus wake Up for Nm v ariant FULL</b></p>
+<p>EcuM</p>
+<p>ComM</p>
+<p>NM</p>
+<p>BusSM</p>
+<p>user</p>
+<p>ComM is in state </p>
+<p>COMM_NO_COMMUNICATION</p>
+<p>ComM is now in Full </p>
+<p>Communication, sub </p>
+<p>state Network </p>
+<p>Requested</p>
+<p>ComM stets the Nm </p>
+<p>into &quot;Normal </p>
+<p>Operation&quot; and </p>
+<p>performs a state </p>
+<p>transition into the sub </p>
+<p>state network requested</p>
+<p>ComM stays now in this</p>
+<p>state until the User </p>
+<p>requests the state No </p>
+<p>Commuication</p>
+<p><b>opt User request Full Communciation mode after bus wake up</b></p>
+<p>EcuM_WakeupIndication(channel)</p>
+<p>validate EcuM wake up event()</p>
+<p>EcuM_ComM_RequestRUN()</p>
+<p>EcuM_GetState()</p>
+<p>EcuM is in Mode RUN()</p>
+<p>BusSM_RequestComMode(channel, COMM_FULL_COMMUNICATION)</p>
+<p>start corresponding BusIF,</p>
+<p>start the Com()</p>
+<p>ComM_BusSM_ModeIndication(channel, COMM_FULL_COMMUNICATION)</p>
+<p>Nm_PassiveStartUp(channel)</p>
+<p>set ComM state  to COMM_FULL_COMMUNICATION()</p>
+<p>ComM_RequestComMode(UR000, COMM_FULL_COMMUNICATION)</p>
+<p>Nm_NetworkRequest(channel)</p>
+<p> </p>
+<p>Figure 4-2 Bus wake up with Nm Variant FULL </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>19 / 65</p>
+<p><b>sd Network Shutdown for Nm v ariant FULL</b></p>
+<p>EcuM</p>
+<p>ComM</p>
+<p>NM</p>
+<p>BusSM</p>
+<p>user</p>
+<p>ComM is in state </p>
+<p>COMM_FULL_COMMUNICATION, </p>
+<p>sub state Network Requested</p>
+<p>ComM is now in Full </p>
+<p>Communication, sub </p>
+<p>state Ready Sleep</p>
+<p>all network nodes of </p>
+<p>the channal are read to</p>
+<p>sleep</p>
+<p>ComM is now in Silent </p>
+<p>Communication</p>
+<p>ComM is now in No </p>
+<p>Communication</p>
+<p>ComM_RequestComMode(UR000, COMM_NO_CUMMUNICATION)</p>
+<p>Nm_NetworkRelease(channel)</p>
+<p>ComM_Nm_PrepareBusSleepMode(Channel, )</p>
+<p>BusSM_RequestComMode(channel, COMM_SILENT_COMMUNICATION)</p>
+<p>stop Tx communication()</p>
+<p>ComM_BusSM_ModeIndication(channel, COMM_SILENT_COMMUNICATION)</p>
+<p>ComM_Nm_BusSleepMode(channel)</p>
+<p>BusSM_RequestComMode(Channel, COMM_NO_COMMUNICATION)</p>
+<p>stop Rx communciation, set the BusIF</p>
+<p>into SLEEP and handles the</p>
+<p>transceiver()</p>
+<p>ComM_BusSM_ModeIndication(channel, COMM_NO_COMMUNICATION)</p>
+<p>EcuM_ComM_ReleaseRUN(Channel)</p>
+<p> </p>
+<p>Figure 4-3 Network Shutdown for Nm variant Full </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>20 / 65</p>
+<p><b>sd Bus Wake Up and shutdown for Nm v ariant LIGHT/NONE</b></p>
+<p>EcuM</p>
+<p>ComM</p>
+<p>NM</p>
+<p>BusSM</p>
+<p>Upper Layer</p>
+<p>(RTE/Application)</p>
+<p>ComM is in state </p>
+<p>COMM_FULL_COMMUNICATION, </p>
+<p>sub state Network Requested</p>
+<p>ComM is now in Full </p>
+<p>Communication, sub </p>
+<p>state Network </p>
+<p>Requested</p>
+<p>ComM is now in Full </p>
+<p>Communication, sub </p>
+<p>state Ready Sleep</p>
+<p>ComM is now in </p>
+<p>NoCommunication</p>
+<p>EcuM_WakeUpIndication(channel)</p>
+<p>validate wake up event()</p>
+<p>EcuM_ComM_RequestRUN()</p>
+<p>EcuM_GetState()</p>
+<p>EcuM is in mode RUN()</p>
+<p>BusSM_RequestComMode(channel, COMM_FULL_COMMUNICATION)</p>
+<p>start corresponding BusIF,</p>
+<p>start Com()</p>
+<p>ComM_BusSM_ModeIndication(channel, COMM_FULL_COMMUNICATION)</p>
+<p>start &quot;Minimum Full Communication Mode&quot; Timer()</p>
+<p>ComM_RTE_ComMModeIndication(channel, COMM_FULL_COMMUNICATION)</p>
+<p>&quot;Minimum Full</p>
+<p>Communication</p>
+<p>Mode&quot; Timer</p>
+<p>expires()</p>
+<p>set the ComM into</p>
+<p>the sub state Ready</p>
+<p>Sleep()</p>
+<p>start the Ready</p>
+<p>Sleep Timer()</p>
+<p>Ready Sleep Timer expires()</p>
+<p>BusSM_RequestComMode(channel, COMM_NO_COMMUNICATION)</p>
+<p>stop Com and the</p>
+<p>corresponding</p>
+<p>BusIF()</p>
+<p>ComM_BusSM_ModeIndication(channel, COMM_NO_COMMUNICATION)</p>
+<p>set the ComM state COMM_NO_COMMUNICATION()</p>
+<p>ComM_RTE_ComMModeIndication(channel, COMM_NO_COMMUNICATION)</p>
+<p>EcuM_ComM_ReleaseRUN(Channel)</p>
+<p> </p>
+<p>Figure 4-4 Bus Wake Up and shutdown for Nm variant LIGHT/NONE </p>
+<p><b>4.4.2 </b></p>
+<p><b>Mode Limitation </b></p>
+<p>Mode  limitation  is  a  mechanism  to  restrict  the  actions  of  the  ComM  user,  specially  the </p>
+<p>requesting  of  communication  modes.  The  ComM  supports  2  different  mode  limitation </p>
+<p>mechanisms: </p>
+<p></p>
+<p> </p>
+<p>‘No Communication’ mode limitation and </p>
+<p></p>
+<p> </p>
+<p>Prevent Wake Up. </p>
+<p>The  mode  limitation  mechanism  can  be  used  to  restrict  the  communication  requests  of </p>
+<p>ECU’s which are wrongly keeps awake the busses. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>21 / 65</p>
+<p><b>‘No Communication’ mode limitation </b></p>
+<p>This mechanism can be used to force ComM channel(s) into the sleep mode although one </p>
+<p>or more ComM user requests FULL communication. </p>
+<p>The limitation can be activated/deactivated via ComM_LimitChannelToNoComMode() , for </p>
+<p>a specific network, or via ComM_LimitECUToNoComMode() for the whole ECU. </p>
+<p>If the limitation is active than the ComM ignores all new communication mode requests for </p>
+<p>FULL communication, triggers the shutdown of the communication channels, and clear all </p>
+<p>FULL  communication  user  requests  if  the  ComM  enters  the  state  NO  communication. </p>
+<p>Additionally it is configurable that the ComM triggers an ECU reset if the limitation is active </p>
+<p>and the ComM reaches the state NO communication. </p>
+<p><b>sd Interactions</b></p>
+<p>user</p>
+<p>BusSM</p>
+<p>NM</p>
+<p>EcuM</p>
+<p>ComM</p>
+<p>ComM is FULL </p>
+<p>communication and </p>
+<p>minimum 1 User </p>
+<p>requests Full </p>
+<p>Communication</p>
+<p>up to now all new </p>
+<p>FULL communication </p>
+<p>requests are stored but </p>
+<p>not executed</p>
+<p><b>alt ECU Reset</b></p>
+<p>[Yes]</p>
+<p>ComM_LimitChannelToNoComMode(True)</p>
+<p>Nm_NetworkRelease()</p>
+<p>ComM_Nm_PrepareBusSleepMode()</p>
+<p>BusSM_RequestComMode(SILENT_COMMUNICATION)</p>
+<p>BusSM_ModeIndication(SILENT_COMMUNICATION)</p>
+<p>ComM_Nm_BusSleepMode()</p>
+<p>BusSM_RequestComMode(NO_COMMUNICATION)</p>
+<p>BusSM_ModeIndication(NO_COMMUNCIATION)</p>
+<p>Clear ComM User requests of the affected channel()</p>
+<p>EcuM_SelectShutdownTarget(ECUM_STATE_RESET)</p>
+<p>EcuM_KillAllRUNRequests()</p>
+<p> </p>
+<p>Figure 4-5 No Communication mode limitation </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>22 / 65</p>
+<p><b>Prevent Wake UP </b></p>
+<p>Prevent Wake Up is the second mode limitation mechanism; it avoids that ComM channels </p>
+<p>can be woken up via a FULL communication request via a ComM user. Prevent wake up </p>
+<p>can </p>
+<p>be </p>
+<p>activated/deactivated </p>
+<p>via </p>
+<p>ComM_PreventWakeUp() </p>
+<p>but </p>
+<p>the </p>
+<p>activation </p>
+<p>is </p>
+<p>only </p>
+<p>performed </p>
+<p>if </p>
+<p>the </p>
+<p>ComM </p>
+<p>is </p>
+<p>in </p>
+<p>state </p>
+<p>NO </p>
+<p>communication, </p>
+<p>user </p>
+<p>requests </p>
+<p>for </p>
+<p>FULL </p>
+<p>communication will be stored but not performed. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>The prevent wake up state is stored non-volatile. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.4.3 </b></p>
+<p><b>Synchronous Wake Up </b></p>
+<p>Synchronous wake up means that the ComM triggers a wake up of all ComM busses if </p>
+<p>there notify an external wake up, e.g. via EcuM Wake up notification or via the notification </p>
+<p>of the configured NM. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p>Synchronous wake up does only trigger the wake up but is not responsible to keep </p>
+<p>awake all busses or responsible for a synchronous shutdown of these busses. </p>
+<p><b> </b></p>
+<p><b>4.4.4 </b></p>
+<p><b>Mode Indication </b></p>
+<p>The ComM informs via the specified mode indication API the higher layered SW-Cs about </p>
+<p>the  ComM  state  changes.  It  is  possible  to  use  the  mode  indication  via  the  Rte  mode </p>
+<p>management feature or without Rte via callback functions (refer to 6.6.4). </p>
+<p>The  mode  indications  are  assigned  and  notified  via  the  configured  ComM  user  (for </p>
+<p>configuration refers to 7.1.4).  </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p></p>
+<p> </p>
+<p>The ComM mode changes are informed always out of the ComM_MainFunction_x(). </p>
+<p></p>
+<p> </p>
+<p>The ComM does not queue the mode changes between the ComM mainfunctions, this </p>
+<p>means always the current mode is reported, if there is the last mode is different to the </p>
+<p>current mode. </p>
+<p></p>
+<p> </p>
+<p>If a ComM user assigned to more than one channel than the mode change notifies the </p>
+<p>lowest ComM state of all assigned channels. </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>23 / 65</p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example</b> </p>
+<p>ComM User: UR000, assigned to channel 0  </p>
+<p>ComM User: UR001, assigned to channel 0 and channel 1  </p>
+<p> </p>
+<p>Scenario 1: </p>
+<p>ComM changes his mode from NO to FULL communication on channel 0 </p>
+<p>Æ</p>
+<p> mode indication for user UR000 is called </p>
+<p>Æ</p>
+<p> mode indication for user UR001 is not called because the second channel is in </p>
+<p>mode NO communication </p>
+<p> </p>
+<p>Scenario 2:  </p>
+<p>ComM changes the mode for Channel 0 and channel 1 to FULL communication </p>
+<p>Æ</p>
+<p> mode indication for user UR000 and user UR0001 is called </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.5 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>4.5.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Development errors are reported to DET using the service Det_ReportError(), (specified in </p>
+<p>[2]), if the pre-compile parameter COMM_DEV_ERROR_DETECT == STD_ON. </p>
+<p>The reported ComM ID is 12 decimal. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>24 / 65</p>
+<p>The  reported  service  IDs  identify  the  services  which  are  described  in  6.3. The  following </p>
+<p>table presents the service IDs and the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>0x01 </p>
+<p>ComM_Init </p>
+<p>0x02 </p>
+<p>ComM_DeInit </p>
+<p>0x03 </p>
+<p>ComM_GetStatus </p>
+<p>0x04 </p>
+<p>ComM_GetInhibitionStatus </p>
+<p>0x05 </p>
+<p>ComM_RequestComMode </p>
+<p>0x06 </p>
+<p>ComM_GetMaxComMode </p>
+<p>0x07 </p>
+<p>ComM_GetRequestedComMode </p>
+<p>0x08 </p>
+<p>ComM_GetCurrentComMode </p>
+<p>0x09 </p>
+<p>ComM_PreventWakeUp </p>
+<p>0x0b </p>
+<p>ComM_LimitToNoComMode </p>
+<p>0x0c </p>
+<p>ComM_LimitECUToNoComMode </p>
+<p>0x0d </p>
+<p>ComM_ReadInhibitCounter </p>
+<p>0x0e </p>
+<p>ComM_ResetInhibitCounter </p>
+<p>0x0f </p>
+<p>ComM_SetECUGroupClassification </p>
+<p>0x10 </p>
+<p>ComM_GetVersionInfo </p>
+<p>0x60 </p>
+<p>ComM_MainFunction </p>
+<p>Table 4-3   Mapping of service IDs to services </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x01 </p>
+<p>COMM_E_NOT_INITED </p>
+<p>API service used without module initialization </p>
+<p>0x02 </p>
+<p>COMM_E_WRONG_PARAM</p>
+<p>ETERS </p>
+<p>API service used with wrong parameters </p>
+<p>0x03 </p>
+<p>COMM_E_ERROR_IN_PRO</p>
+<p>V_SERVICE </p>
+<p>Provided API service of other modules returned with an </p>
+<p>error </p>
+<p>0x04 </p>
+<p>COMM_E_NOSUPPORTED</p>
+<p>_MODECHANGE </p>
+<p>ComM try to perform a not allowed state change. </p>
+<p>Table 4-4   Errors reported to DET </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>25 / 65</p>
+<p><b>4.5.1.1 </b></p>
+<p><b>Parameter Checking  </b></p>
+<p>The following table shows which parameter checks are performed on which services: </p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>COMM_E_NOT_INITED </p>
+<p>COMM_E_WRONG_PARAMETERS </p>
+<p>COMM_E_ERROR_IN_PROVIDED_SERVICE </p>
+<p>COMM_E_NOTSUPPORTED_MODECHANGE </p>
+<p>ComM_Init </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_DeInit </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_GetStaus </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_GetInhibitionStatus </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_RequestComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_GetMaxComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_GetRequestedComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_GetCurrentComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_PreventWakeUp </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_LimitChannelToNoComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_LimitECUToNoComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_ReadInhibitCounter </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_ResetInhibitCounter </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_SetECUGroupClassification </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_GetVersionInfo </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComM_MainFunction </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-5   Development Error Reporting: Assignment of checks to services </p>
+<p>These checks are executed when COMM_DEV_ERROR_DETECT == STD_ON, which is </p>
+<p>enabled or disabled in the generation tool (refer to chapter 7.1.2). </p>
+<p><b>4.5.2 </b></p>
+<p><b>Production Code Error Reporting </b></p>
+<p>Production </p>
+<p>code </p>
+<p>related </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>DEM </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Dem_ReportErrorStatus() (specified in [3]). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>26 / 65</p>
+<p>The errors reported to DEM are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>COMM_E_NET_START_IND_CHANNEL_&lt;X&gt; </p>
+<p>X being number of the channel e.g. 0 </p>
+<p>Reception of a NM message in ComM state </p>
+<p>“No Communication” </p>
+<p>Table 4-6   Errors reported to DEM </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>27 / 65</p>
+<p><b>5 </b></p>
+<p><b>Integration </b></p>
+<p>This chapter gives necessary information for the integration of the MICROSAR ComM into </p>
+<p>an application environment of an ECU. </p>
+<p><b>5.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the ComM contains the files which are described in the chapters 5.1.1 and </p>
+<p>5.1.2: </p>
+<p><b>5.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>ComM.c </p>
+<p>This is the source file of the ComM. It contains the implementation of the main </p>
+<p>functionality</p>
+<p> </p>
+<p>ComM.h </p>
+<p>This is the header file of the ComM, which is the interface for upper layers to </p>
+<p>the services of the ComM. </p>
+<p>ComM_Types.h </p>
+<p>Header File which includes ComM specific data types. </p>
+<p>ComM_BusSM.h </p>
+<p>Header File which includes the external declarations of the Bus State </p>
+<p>Manager callback functions. </p>
+<p>ComM_EcuM.h </p>
+<p>Header File which includes the external declarations of the EcuM callback </p>
+<p>functions. </p>
+<p>ComM_Nm.h </p>
+<p>Header File which includes the external declarations of the Nm callback </p>
+<p>functions. </p>
+<p>ComM_Dcm.h </p>
+<p>Header File which includes the external declarations of the Dcm callback </p>
+<p>functions. </p>
+<p>ComM.lib </p>
+<p>This is the library file of the ComM. (optional)</p>
+<p> </p>
+<p>Table 5-1   Static files </p>
+<p> </p>
+<p><b>5.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool GENy. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>ComM_Lcfg.c </p>
+<p>This is the link time configuration source file. It contains all link time </p>
+<p>configuration settings. </p>
+<p>ComM_Lcfg.h </p>
+<p>This is the link time configuration header file. </p>
+<p>ComM_Cfg.h </p>
+<p>This is the ComM configuration header file. </p>
+<p>ComM_GenDataTypes.h This file contains the generated type definitions of the ComM. </p>
+<p>Table 5-2   Generated files </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>28 / 65</p>
+<p><b>5.2 </b></p>
+<p><b>Include Structure </b></p>
+<p><b>object Header File Structure</b></p>
+<p><b>ComM.c</b></p>
+<p><b>EcuM.h</b></p>
+<p><b>ComM_Nm.h</b></p>
+<p><b>ComM.h</b></p>
+<p><b>ComM_cfg.h</b></p>
+<p><b>SchM_ComM.h</b></p>
+<p><b>ComM_EcuM.h</b></p>
+<p><b>ComM_Dcm.h</b></p>
+<p><b>ComM_BusSM.h</b></p>
+<p><b>ComM_Lcfg.h</b></p>
+<p><b>ComM_Types.h</b></p>
+<p><b>ComM_Lcfg.c</b></p>
+<p><b>CanSM_ComM.h</b></p>
+<p><b>LinSm.h</b></p>
+<p><b>FrSm.h</b></p>
+<p><b>Nm.h</b></p>
+<p><b>Det.h</b></p>
+<p><b>Dcm.h</b></p>
+<p><b>ComM_GenTypes.h</b></p>
+<p><b>Rte_Type.h</b></p>
+<p>only included if &quot;Use </p>
+<p>Rte&quot; is enabled inside </p>
+<p>the ComM </p>
+<p>configuration</p>
+<p><b>EthSM.h</b></p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p> </p>
+<p>Figure 5-1 Include structure </p>
+<p><b>5.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions that are used by the ComM. It illustrates their assignment among each other. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>29 / 65</p>
+<p><b>Compiler Abstraction</b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>COMM_CONST </p>
+<p>COMM_VAR_ZERO_INIT </p>
+<p>COMM_CODE </p>
+<p>COMM_APPL_VAR </p>
+<p>COMM_VAR_NOINIT_8BIT </p>
+<p>COMM_VAR_NOINIT_16BIT </p>
+<p>COMM_VAR_NOINIT_UNSPECIFIED </p>
+<p>COMM_VAR_ZERO_INIT </p>
+<p>COMM_APPL_VAR_NVRAM </p>
+<p>COMM_START_SEC_CONST_8BIT </p>
+<p>COMM _STOP_SEC_CONST_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_CONST_UNSPECIFIED </p>
+<p>COMM_STOP_SEC_CONST_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_CODE </p>
+<p>COMM_STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_VAR_NOINIT_8BIT </p>
+<p>COMM_STOP_SEC_VAR_NOINIT_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_VAR_NOINIT_16BIT </p>
+<p>COMM_STOP_SEC_VAR_ NOINIT_16BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p>COMM_STOP_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_VAR_ ZERO_INIT_UNSPECIFIED </p>
+<p>COMM_STOP_SEC_VAR_ ZERO_INIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>COMM_START_SEC_VAR_SAVED_ZONE0_UNSPECIFIED</p>
+<p>COMM_STOP_SEC_VAR_SAVED_ZONE0_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 5-3   Compiler Abstraction and Memory Mapping </p>
+<p><b>5.4 </b></p>
+<p><b>Critical code sections </b></p>
+<p>The ComM has the following defined critical code sections:  </p>
+<p></p>
+<p> </p>
+<p>COMM_EXCLUSIVE_AREA_0: must lock task interrupts and interrupts sources </p>
+<p></p>
+<p> </p>
+<p>COMM_EXCLUSIVE_AREA_1: </p>
+<p>must </p>
+<p>lock </p>
+<p>task </p>
+<p>interrupts, </p>
+<p>so </p>
+<p>that </p>
+<p>the </p>
+<p>ComM_MainFunction can not be interrupted by the following BSW Module tasks: </p>
+<p>o</p>
+<p> </p>
+<p>Nm_MainFunction() </p>
+<p>o</p>
+<p> </p>
+<p>CanNm_MainFunction() </p>
+<p>o</p>
+<p> </p>
+<p>FrNm_MainFunction() </p>
+<p>o</p>
+<p> </p>
+<p>CanSM_MainFunction() </p>
+<p>o</p>
+<p> </p>
+<p>FrSM_MainFunction() </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>30 / 65</p>
+<p>o</p>
+<p> </p>
+<p>LinSM_MainFunction() </p>
+<p>It is recommended to use AUTOSAR OS ‘Resources’ for these exclusive areas to prevent </p>
+<p>priority inversions and dead-locks. </p>
+<p><b>5.5 </b></p>
+<p><b>Handling of non-volatile data </b></p>
+<p>The non-volatile data are handled via the AUTOSAR NvRAM Manager. The ComM uses </p>
+<p>the following NvRAM Manager API: </p>
+<p></p>
+<p> </p>
+<p>NvM_GetErrorStatus(..) </p>
+<p></p>
+<p> </p>
+<p>The non-volatile data must be loaded and stored in the below listed variable before </p>
+<p>the ComM is initialized via ComM_Init(). The ComM checks with the function </p>
+<p>NvM_GetErrorStatus(..) if the ComM data is loaded or not. If not then the ComM </p>
+<p>works with the configured values of the ECU Group Classification and prevent </p>
+<p>wake up state. Additionally the ComM resets the inhibition counter to 0. </p>
+<p></p>
+<p> </p>
+<p>NvM_SetRamBlockStatus(..) </p>
+<p></p>
+<p> </p>
+<p>This function is used to trigger the storage of the non-volatile data. </p>
+<p>The non-volatile data of the ComM are grouped inside the struct called </p>
+<p>ComM_Inhibition</p>
+<p>. </p>
+<p>The struct contains the following elements (order of elements equal to the struct element </p>
+<p>order): </p>
+<p></p>
+<p> </p>
+<p>ComM_ECUGroupClassification</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>size: 1 Byte </p>
+<p></p>
+<p> </p>
+<p>stores the ECU Group classification  </p>
+<p></p>
+<p> </p>
+<p>ComM_InhibitCnt</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>size: 2 Byte </p>
+<p></p>
+<p> </p>
+<p>stores the inhibition counter </p>
+<p></p>
+<p> </p>
+<p>ComM_InhibitionStatus[&lt;COMM_ACTIVE_CHANNEL&gt;]</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>size: 1 Byte per ComM channel </p>
+<p></p>
+<p> </p>
+<p>stores the prevent wake up state </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p>The ComM non-volatile data must be loaded and stored inside the above listed </p>
+<p>variables before the ComM is initialized via ComM_Init(). If not then the ComM works </p>
+<p>with the configured values. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>The non-volatile data handling is only necessary if the ComM configuration option </p>
+<p>‘Mode Limitation’ is enabled. </p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>31 / 65</p>
+<p><b>6 </b></p>
+<p><b>API Description </b></p>
+<p><b>6.1 </b></p>
+<p><b>Interfaces Overview </b></p>
+<p><b>class Interactions</b></p>
+<p><b>ComM</b></p>
+<p><b>CanSM</b></p>
+<p>«interface»</p>
+<p><b>CanSM</b></p>
+<p>+ </p>
+<p>CanSM_GetCurrentComMode() : void</p>
+<p>+ </p>
+<p>CanSM_RequestComMode() : void</p>
+<p>«interface»</p>
+<p><b>NM</b></p>
+<p>+ </p>
+<p>Nm_NetworkRelease() : void</p>
+<p>+ </p>
+<p>Nm_NetworkRequest() : void</p>
+<p>+ </p>
+<p>Nm_PassiveStartUp() : void</p>
+<p><b>LinSM</b></p>
+<p><b>DET</b></p>
+<p><b>DCM</b></p>
+<p>«interface»</p>
+<p><b>LinSM</b></p>
+<p>+ </p>
+<p>LinSM_GetCurrentComMode() : void</p>
+<p>+ </p>
+<p>LinSM_RequestComMode() : void</p>
+<p>«interface»</p>
+<p><b>ComM_BusSM</b></p>
+<p>+ </p>
+<p>ComM_BusSM_ModeIndication() : void</p>
+<p>«interface»</p>
+<p><b>DET</b></p>
+<p>+ </p>
+<p>Det_ReportError() : void</p>
+<p>«interface»</p>
+<p><b>DCM</b></p>
+<p>+ </p>
+<p>ComM_DCM_ActiveDiagnostic() : void</p>
+<p>+ </p>
+<p>ComM_DCM_InactiveDiagnostic() : void</p>
+<p>«interface»</p>
+<p><b>ComM_Nm</b></p>
+<p>+ </p>
+<p>ComM_Nm_BusSleepMode() : void</p>
+<p>+ </p>
+<p>ComM_Nm_NetworkMode() : void</p>
+<p>+ </p>
+<p>ComM_Nm_NetworkStartIndication () : void</p>
+<p>+ </p>
+<p>ComM_Nm_PrepareBusSleepMode() : void</p>
+<p>+ </p>
+<p>ComM_Nm_RestartIndication() : void</p>
+<p>«i nterface»</p>
+<p><b>EcuM</b></p>
+<p>+ </p>
+<p>EcuM_ComM_HasRequestedRUN() : void</p>
+<p>+ </p>
+<p>EcuM_ComM_ReleaseRUN() : void</p>
+<p>+ </p>
+<p>EcuM_ComM_RequestRUN() : void</p>
+<p>+ </p>
+<p>EcuM_GetState() : void</p>
+<p><b>EcuM</b></p>
+<p>«interface»</p>
+<p><b>EcuM</b></p>
+<p>+ </p>
+<p>ComM_EcuM_RunModeIndication() : void</p>
+<p>+ </p>
+<p>ComM_EcuM_WakeUpIndication() : void</p>
+<p><b>NM</b></p>
+<p>«interface»</p>
+<p><b>FrSM</b></p>
+<p>+ </p>
+<p>FrSm_GetCurrentComMode() : void</p>
+<p>+ </p>
+<p>FrSm_RequestComMode() : void</p>
+<p><b>FrSM</b></p>
+<p><b>EthSM</b></p>
+<p>«interface»</p>
+<p><b>EthSM</b></p>
+<p>+ </p>
+<p>EthSM_GetCurrentComMode() : void</p>
+<p>+ </p>
+<p>EthSM_RequestComMode() : void</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p> </p>
+<p>Figure 6-1 ComM interactions with other BSW </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>32 / 65</p>
+<p><b>6.2 </b></p>
+<p><b>Type Definitions </b></p>
+<p><b>Type Name </b></p>
+<p><b>C-</b></p>
+<p><b>Type </b></p>
+<p><b>Description </b></p>
+<p><b>Value Range </b></p>
+<p>ComM_UserHandleType uint8 </p>
+<p>Defines the </p>
+<p>type of the </p>
+<p>ComM </p>
+<p>communication </p>
+<p>user </p>
+<p>0..255 </p>
+<p> </p>
+<p>COMM_NO_COMMUNICATION  </p>
+<p>ComM is in the state No Communication </p>
+<p>COMM_SILENT_COMMUNICATION </p>
+<p>ComM is in state Silent Communication </p>
+<p>ComM_ModeType </p>
+<p>uint8 </p>
+<p>Defines the </p>
+<p>ComM main </p>
+<p>states </p>
+<p>COMM_FULL_COMMUNICATION </p>
+<p>ComM is in state Full Communication </p>
+<p>COMM_UNINIT </p>
+<p>ComM is not initialized </p>
+<p>ComM_InitStatusType </p>
+<p>enum </p>
+<p>The enum </p>
+<p>contains the </p>
+<p>information  </p>
+<p>COMM_INIT </p>
+<p>ComM is initialized </p>
+<p>ComM_InhibitionStatusType </p>
+<p>ComM_ECUGroupClassification </p>
+<p>ECU group classification </p>
+<p>uint16 ComM_InhibitCnt </p>
+<p>ComM Inhibition counter  </p>
+<p>ComM_InhibitionType </p>
+<p>struct </p>
+<p>contains the </p>
+<p>ComM non-</p>
+<p>volatile data </p>
+<p>elements </p>
+<p>ComM_InhibitionStatusType </p>
+<p>ComM_InhibitionStatus[&lt;COMM_ACTIVE_CHANNEL&gt;]</p>
+<p>ComM Inhibitions state per ComM channel </p>
+<p>Table 6-1   Type definitions </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>33 / 65</p>
+<p><b>6.3 </b></p>
+<p><b>Services provided by ComM </b></p>
+<p>The ComM API consists of services, which are realized by function calls. </p>
+<p><b>6.3.1 </b></p>
+<p><b>ComM_InitMemory </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_InitMemory </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>none </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>none </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function initializes the ComM memory and set the init state to COMM_UNINT. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is to be called only once during PowerOn. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-2   ComM_InitMemory </p>
+<p><b>6.3.2 </b></p>
+<p><b>ComM_Init </b></p>
+<p><b>Prototype </b></p>
+<p>Multiple identity configuration disabled: </p>
+<p>void <b>ComM_Init </b>( void ) </p>
+<p>Multiple identity configuration enabled: </p>
+<p>void <b>ComM_Init </b>( const ComM_ConfigSetType* ConfigPtr ) </p>
+<p><b>Parameter </b></p>
+<p>ConfigPtr </p>
+<p>Pointer to the ComM configuration. Is only used for multiple identity </p>
+<p>configurations, in this case ConfigPtr contains the information which identity is </p>
+<p>enabled. This information is provided by the generated file ComM_Lcfg.c via </p>
+<p>the variables of type ComM_ConfigSetType which have the name </p>
+<p>ComM_&lt;MultipleConfigurationContainerName&gt;. </p>
+<p><b>Return code </b></p>
+<p>none </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function initializes the ComM. All variables are set to default values. The ComM init state is set to </p>
+<p>COMM_INIT and the ComM main state is set to COMM_NO_COMMUNICATION.  </p>
+<p>For multiple identity configurations the ComM stores the current channel to identity mapping for further </p>
+<p>processing, means the ComM performs only actions for channels which are active in the current identity.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is to be called only once during PowerOn after ComM_InitMemory was called. </p>
+<p></p>
+<p> </p>
+<p>If ‘Mode Limitation’ is enabled than the non-volatile values must be loaded and stored before this </p>
+<p>function can be called (see 5.5). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>34 / 65</p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-3   ComM_Init </p>
+<p><b>6.3.3 </b></p>
+<p><b>ComM_GetStatus </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_GetStatus </b>( ComM_InitStatusType* Status ) </p>
+<p><b>Parameter </b></p>
+<p>Status </p>
+<p>Pointer where the ComM init status shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>ComM_GetStatus has performed </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p></p>
+<p> </p>
+<p>Status is a NULL pointer </p>
+<p><b>Functional Description </b></p>
+<p>This function gets the initialization status of the ComM. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-4   ComM_GetStatus </p>
+<p><b>6.3.4 </b></p>
+<p><b>ComM_GetInhibitionStatus </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_GetInhibitionStatus </b>( NetworkHandleType Channel, </p>
+<p>ComM_InihibitionStatusType* Status ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p>Status </p>
+<p>Pointer where the ComM inihibition status shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>ComM_GetInhibitionStatus has performed </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function gets the current inhibition status of the ComM. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-5   ComM_GetInhibitionStatus </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>35 / 65</p>
+<p><b>6.3.5 </b></p>
+<p><b>ComM_RequestComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_RequestComMode </b>( ComM_UserHandleType User, ComM_ModeType </p>
+<p>ComMode ) </p>
+<p><b>Parameter </b></p>
+<p>User </p>
+<p>Index of the User, the user handles are generated and can be found in the </p>
+<p>ComM_Lcfg.h file </p>
+<p>ComMode </p>
+<p>The requested communication mode: </p>
+<p></p>
+<p> </p>
+<p>COMM_FULL_COMMUNICATION </p>
+<p></p>
+<p> </p>
+<p>COMM_NO_COMMUNICATION </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p>COMM_E_MODE_LIMITA</p>
+<p>TION </p>
+<p></p>
+<p> </p>
+<p>Requested was successful but mode can not be granted because of mode </p>
+<p>inhibition </p>
+<p><b>Functional Description </b></p>
+<p>This function is used by upper layer modules or application to request the given communication mode. The </p>
+<p>communication mode request is stored and will be proceed in the ComM_MainFunction(). </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-6   ComM_RequestComMode </p>
+<p><b>6.3.6 </b></p>
+<p><b>ComM_GetMaxComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_GetMaxComMode </b>( ComM_UserHandleType User, ComM_ModeType* </p>
+<p>ComMode ) </p>
+<p><b>Parameter </b></p>
+<p>User </p>
+<p>Index of the User, the user handles are generated and can be found in the </p>
+<p>ComM_Lcfg.h file </p>
+<p>ComMode </p>
+<p>Pointer where the maximal communication mode of the given use shall be </p>
+<p>stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function queries the maximum allowed communication mode of the corresponding user. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>36 / 65</p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-7   ComM_GetMaxComMode </p>
+<p><b>6.3.7 </b></p>
+<p><b>ComM_GetRequestedComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_GetRequestedComMode </b>( ComM_UserHandleType User, </p>
+<p>ComM_ModeType* ComMode ) </p>
+<p><b>Parameter </b></p>
+<p>User </p>
+<p>Index of the User, the user handles are generated and can be found in the </p>
+<p>ComM_Lcfg.h file </p>
+<p>ComMode </p>
+<p>Pointer where the requested communication mode of the given use shall be </p>
+<p>stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function queries the requested communication mode of the corresponding user. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-8   ComM_GetRequestedComMode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>37 / 65</p>
+<p><b>6.3.8 </b></p>
+<p><b>ComM_GetCurrentComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_GetCurrentComMode </b>( ComM_UserHandleType User, </p>
+<p>ComM_ModeType* ComMode ) </p>
+<p><b>Parameter </b></p>
+<p>User </p>
+<p>Index of the User, the user handles are generated and can be found in the </p>
+<p>ComM_Lcfg.h file </p>
+<p>ComMode </p>
+<p>Pointer where the current communication mode of the given use shall be </p>
+<p>stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function queries the current communication mode of the corresponding user. If the user is assigned to </p>
+<p>more than one communication channel, then always the lowest communication mode is returned. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-9   ComM_GetCurrentComMode </p>
+<p><b>6.3.9 </b></p>
+<p><b>ComM_PreventWakeUp </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_PreventWakeUp </b>( NetworkHandleType Channel, boolean Status )</p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p>Status </p>
+<p></p>
+<p> </p>
+<p>TRUE: Wake Up Inhibition is switched on </p>
+<p></p>
+<p> </p>
+<p>FALSE: Wake Up Inhibition is switched off </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function changes the inhibition status ComMNoWakeUp of the ComM for the given channel. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-10 ComM_PreventWakeUp </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>38 / 65</p>
+<p><b>6.3.10 </b></p>
+<p><b>ComM_LimitChannelToNoComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_LimitChannelToNoComMode </b>( NetworkHandleType Channel, </p>
+<p>boolean Status ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p>Status </p>
+<p></p>
+<p> </p>
+<p>TRUE: limitation to COMM_NO_COMMUNCIATION is ON </p>
+<p></p>
+<p> </p>
+<p>FALSE: limitation to COMM_NO_COMMUNCIATION is OFF </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function set the maximal communication mode of the given channel to </p>
+<p>COMM_NO_COMMUNICATION. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-11  ComM_LimitChannelToNoComMode </p>
+<p><b>6.3.11 </b></p>
+<p><b>ComM_LimitECUToNoComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_LimitECUToNoComMode </b>( boolean Status ) </p>
+<p><b>Parameter </b></p>
+<p>Status </p>
+<p></p>
+<p> </p>
+<p>TRUE: limitation to COMM_NO_COMMUNCIATION is ON </p>
+<p></p>
+<p> </p>
+<p>FALSE: limitation to COMM_NO_COMMUNCIATION is OFF </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function set the maximal communication mode of all configured ComM channels of the ECU to </p>
+<p>COMM_NO_COMMUNICATION. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-12 ComM_LimitECUToNoComMode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>39 / 65</p>
+<p><b>6.3.12 </b></p>
+<p><b>ComM_ReadInhibitCounter </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_ReadInhibitCounter </b>( uint16* CounterValue ) </p>
+<p><b>Parameter </b></p>
+<p>CounterValue </p>
+<p>Pointer where the value of the ComM mode inhibition counter shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function returns the amount of rejected “Full Communciation” user requests. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-13 ComM_ReadInhibitCounter </p>
+<p><b>6.3.13 </b></p>
+<p><b>ComM_ResetInhibitCounter </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_ReadInhibitCounter </b>( void  ) </p>
+<p><b>Parameter </b></p>
+<p>none </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function reset the counter of rejected “Full Communciation” user requests. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-14 ComM_ResetInhibitCounter </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>40 / 65</p>
+<p><b>6.3.14 </b></p>
+<p><b>ComM_SetECUGroupClassification </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>ComM_SetECUGroupClassification </b>( ComM_InhibitionStatusType </p>
+<p>Status  ) </p>
+<p><b>Parameter </b></p>
+<p>Status </p>
+<p>Defines whether if the prevent wake up or the mode limitation to </p>
+<p>COMM_NO_COMMUNCIATION have effects for the ECU  </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>Request is accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>not valid parameter </p>
+<p>COMM_E_UNINIT </p>
+<p></p>
+<p> </p>
+<p>ComM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function changes the ECU group classification status during runtime. The ECU group classification </p>
+<p>defines if the ECU is affected by a bus wake up inhibition or by a ComM mode limitation to </p>
+<p>COMM_NO_COMMUNICATION. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-15 ComM_SetECUGroupClassification </p>
+<p><b>6.3.15 </b></p>
+<p><b>ComM_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_GetVersionInfo </b>( Std_versionInfoType* versioninfo ) </p>
+<p><b>Parameter </b></p>
+<p>versioninfo </p>
+<p>Pointer where the version information shall be stored. </p>
+<p><b>Return code </b></p>
+<p>none </p>
+<p> - </p>
+<p><b>Functional Description </b></p>
+<p>This function is called to get the version information of the ComM. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The Function is only available if it is enabled during pre-compile time (COMM_VERSION_INFO_API == </p>
+<p>STD_ON) </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context </p>
+<p>Table 6-16 ComM_GetVersionInfo </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>41 / 65</p>
+<p><b>6.3.16 </b></p>
+<p><b>ComM_MainFunction </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_MainFunction_&lt;Channel_ID</b></p>
+<p><b>&gt;</b></p>
+<p><b> </b>( void ) </p>
+<p>(Channel_ID 0..255) </p>
+<p><b>Parameter </b></p>
+<p>none </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>none </p>
+<p> - </p>
+<p><b>Functional Description </b></p>
+<p>This function must be called cyclically with the configured ComM cycle time (refer to chapter 7.1.2). The </p>
+<p>ComM performs inside this function the channel specific state transitions. </p>
+<p>For multiple identity configurations the ComM only executes channel specific main functions for channels </p>
+<p>which are active in the current identity. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function must be called in task and not in a reentrant way </p>
+<p>Table 6-17 ComM_MainFunction </p>
+<p><b>6.4 </b></p>
+<p><b>Services used by ComM </b></p>
+<p>In  the  following  table  services  provided  by  other  components,  which  are  used  by  the </p>
+<p>ComM are listed. For details about prototype and functionality refer to the documentation </p>
+<p>of the providing component. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>42 / 65</p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET </p>
+<p>Det_ReportError </p>
+<p>DEM </p>
+<p>Dem_SetEventStatus </p>
+<p>CanSM </p>
+<p>CanSM_RequestComMode </p>
+<p>CanSM </p>
+<p>CanSM_GetCurrentComMode </p>
+<p>LinSM </p>
+<p>LinSM_RequestComMode </p>
+<p>LinSM </p>
+<p>LinSM_GetCurrentComMode </p>
+<p>FrSM </p>
+<p>FrSm_RequestComMode </p>
+<p>FrSM </p>
+<p>FrSm_GetCurrentComMode </p>
+<p>EthSM </p>
+<p>EthSM_RequestComMode </p>
+<p>EthSM </p>
+<p>EthSM_GetCurrentComMode </p>
+<p>NmIf </p>
+<p>Nm_PassiveStartUp </p>
+<p>NmIf </p>
+<p>Nm_NetworkRequest </p>
+<p>NmIf </p>
+<p>Nm_NetworkRelease </p>
+<p>EcuM </p>
+<p>EcuM_ComM_RequestRUN </p>
+<p>EcuM </p>
+<p>EcuM_ComM_ReleaseRUN </p>
+<p>EcuM </p>
+<p>EcuM_ComM_HasRequestedRUN </p>
+<p>EcuM </p>
+<p>EcuM_GetState </p>
+<p>EcuM </p>
+<p>EcuM_SetSelectShutdownTarget </p>
+<p>EcuM </p>
+<p>EcuM_KillAllRUNRequests </p>
+<p>EcuM </p>
+<p>EcuM_GeneratorCompatibilityError  </p>
+<p>refer to [12]  </p>
+<p>Table 6-18 Services used by the ComM </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>43 / 65</p>
+<p><b>6.5 </b></p>
+<p><b>Callback Functions </b></p>
+<p>This chapter describes the callback functions that are implemented by the ComM and can </p>
+<p>be invoked by other modules. The prototypes of the callback functions are provided in the </p>
+<p>header  files  ComM_Nm.h,  ComM_BusSM.h,  ComM_Dcm.h  and  ComM_EcuM.h  by  the </p>
+<p>ComM. </p>
+<p><b>6.5.1 </b></p>
+<p><b> ComM_EcuM_RunModeIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_EcuM_RunModeIndication </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM that the EcuM has entered the RUN mode.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-19 ComM_EcuM_RunModeIndication </p>
+<p><b>6.5.2 </b></p>
+<p><b>ComM_EcuM_WakeUpIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_EcuM_WakeUpIndication </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM about a valid bus wake up event. The ComM stores this event and start up </p>
+<p>the corresponding channel.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-20 ComM_EcuM_WakeUpIndication </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>44 / 65</p>
+<p><b>6.5.3 </b></p>
+<p><b>ComM_BusSM_ModeIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_BusSM_ModeIndication </b>( const NetworkHandleType Channel, </p>
+<p>ComM_ModeType* ComM_Mode ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p>ComM_Mode </p>
+<p>Pointer to variable which contains the new BusSM communication mode </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM about a state change of the BusSM. The ComM performs corresponding </p>
+<p>actions dependent on the given ComM_Mode.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-21 ComM_BusSM_ModeIndication </p>
+<p><b>6.5.4 </b></p>
+<p><b>ComM_DCM_ActiveDiagnostic </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_DCM_ActiveDiagnostic </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM about an active diagnostic session. The ComM starts the communication at </p>
+<p>all channels as long as the DCM informs the ComM about the end of this session. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-22 ComM_DCM_ActiveDiagnostic </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>45 / 65</p>
+<p><b>6.5.5 </b></p>
+<p><b>ComM_DCM_InactiveDiagnostic </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_DCM_InactiveDiagnostic </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM about the end of the DCM diagnostic session. The ComM triggers the </p>
+<p>network shutdown of all channels, if all ComM user requests the ComM state No Communciation </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-23 ComM_DCM_IncactiveDiagnostic </p>
+<p><b>6.5.6 </b></p>
+<p><b>ComM_Nm_NetworkStartIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_Nm_NetworkStartIndication </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM about a restart of the network management. The restart was triggered by </p>
+<p>receiving an Nm message. The ComM stores the event and starts up the corresponding network. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the Production Error support is enabled in the ComM configuration then the ComM reports the error </p>
+<p>COMM_E_NET_START_IND_CHANNEL_x to the DEM.  (x being number of channel e.g. 0) </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-24 ComM_Nm_NetworkStartIndication </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>46 / 65</p>
+<p><b>6.5.7 </b></p>
+<p><b>ComM_Nm_NetworkMode </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_Nm_NetworkMode </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM that the NM entered the state called “Network Mode”. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-25 ComM_Nm_NetworkMode </p>
+<p><b>6.5.8 </b></p>
+<p><b>ComM_Nm_PrepareBusSleep </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_Nm_PrepareBusSleep </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM that the NM starts the prepare bus sleep phase. The ComM uses this </p>
+<p>function as synchronization for the network shutdown. Inside this function the ComM sets the </p>
+<p>corresponding Bus state Manager into the ComM mode silent communication and the ComM self changes </p>
+<p>into the mode Silent Communication. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-26 ComM_Nm_PrepareBusSleep </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>47 / 65</p>
+<p><b>6.5.9 </b></p>
+<p><b>ComM_Nm_BusSleepMode </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_Nm_BusSleep </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM that the NM ends the prepare bus sleep phase and changes his state into </p>
+<p>sleep. The ComM uses this function as synchronization for the network shutdown. Inside this function the </p>
+<p>ComM sets the corresponding Bus state Manager into the ComM mode no communication and the ComM </p>
+<p>self changes into the mode no Communication. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-27 ComM_Nm_BusSleepMode </p>
+<p><b>6.5.10 </b></p>
+<p><b>ComM_Nm_RestartIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>ComM_Nm_RestartIndication </b>( const NetworkHandleType Channel ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Index of the system channel </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the ComM that the NM has received a NM message. The Nm breaks the shutdown of </p>
+<p>the corresponding channel and restart the Nm. The ComM wakes up the network for the given channel. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-28 ComM_Nm_RestartIndication </p>
+<p><b>6.6 </b></p>
+<p><b>Configurable Interfaces </b></p>
+<p>At  its  configurable  interfaces  the  ComM  defines  notifications  that  can  be  mapped  to </p>
+<p>callback functions provided by other modules. The mapping is not statically defined by the </p>
+<p>BSW module but can be performed at configuration time. The function prototypes that can </p>
+<p>be used for the configuration have to match the appropriate function prototype signatures, </p>
+<p>which are described in the following tables.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>48 / 65</p>
+<p><b>6.6.1 </b></p>
+<p><b>Dcm_ComM_FullComModeEntered </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>Dcm_ComM_FullComModeEntered </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This callback function informs the DCM about the ComM state change into Full Communication.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This callback function is only available is the DCM is configured inside the system. </p>
+<p>Call Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-29 Dcm_ComM_FullComModeEntered </p>
+<p><b>6.6.2 </b></p>
+<p><b>Dcm_ComM_SilentComModeEntered </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>Dcm_ComM_SilentComModeEntered </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This callback function informs the DCM about the ComM state change into Silent Communication.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This callback function is only available is the DCM is configured inside the system. </p>
+<p>Call Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-30 Dcm_ComM_SilentComModeEntered </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>49 / 65</p>
+<p><b>6.6.3 </b></p>
+<p><b>Dcm_ComM_NoComModeEntered </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>Dcm_ComM_NoComModeEntered </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This callback function informs the DCM about the ComM state change into No Communication.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This callback function is only available is the DCM is configured inside the system. </p>
+<p>Call Context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 6-31 Dcm_ComM_NoComModeEntered </p>
+<p><b>6.6.4 </b></p>
+<p><b>Appl_ComM_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>Appl_ComM_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode </b></p>
+<p>(Rte_ModeType_ComMMode mode) </p>
+<p><b>Parameter </b></p>
+<p>mode </p>
+<p></p>
+<p> </p>
+<p>The parameter gets the new ComM mode: </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_NO_COMMUNICATION, no communication is </p>
+<p>entered </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_SILENT_COMMUNICATION, silent </p>
+<p>communication is entered </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_FULL_COMMUNICATION, full communication </p>
+<p>is entered  </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType </p>
+<p></p>
+<p> </p>
+<p>E_OK, the SW-C notified  </p>
+<p></p>
+<p> </p>
+<p>E_NOT_OK, the SW-C does not notified the mode and the ComM shall </p>
+<p>informed again </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p><b>The repeated mode indication is only called if the last </b></p>
+<p><b>mode is different to the current mode during the next call </b></p>
+<p><b>of the ComM_MainFunction_x(). </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This callback functions inform the SW-C about a ComM state change.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This callback function is only available if no Rte is used (configuration switch “Used Rte” == disabled). </p>
+<p></p>
+<p> </p>
+<p>Only callback functions available for the ComM user where the Mode Notification is enabled. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>50 / 65</p>
+<p>Call Context </p>
+<p></p>
+<p> </p>
+<p>Task </p>
+<p>Table 6-32 Appl_ComM_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode </p>
+<p><b>6.6.5 </b></p>
+<p><b>Rte_Switch_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>Rte_Switch_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode </b></p>
+<p>(Rte_ModeType_ComMMode mode) </p>
+<p><b>Parameter </b></p>
+<p>mode </p>
+<p></p>
+<p> </p>
+<p>The parameter gets the new ComM mode: </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_NO_COMMUNICATION, no communication is </p>
+<p>entered </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_SILENT_COMMUNICATION, silent </p>
+<p>communication is entered </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_FULL_COMMUNICATION, full communication </p>
+<p>is entered  </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType </p>
+<p></p>
+<p> </p>
+<p>RTE_E_OK, the SW-C notified  </p>
+<p></p>
+<p> </p>
+<p>RTE_E_LIMIT, the SW-C does not notified the mode and the ComM shall </p>
+<p>informed again </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p><b>The repeated mode indication is only called if the last </b></p>
+<p><b>mode is different to the current mode during the next call </b></p>
+<p><b>of the ComM_MainFunction_x(). </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This callback functions inform the SW-C about a ComM state change.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This callback function is only available if Rte is used (configuration switch “Used Rte” == enabled). </p>
+<p></p>
+<p> </p>
+<p>Only callback functions available for the ComM user where the Mode Notification is enabled. </p>
+<p>Call Context </p>
+<p></p>
+<p> </p>
+<p>Task </p>
+<p>Table 6-33 Rte_Switch_&lt;CurrentModePortPrefix&gt;&lt;UserName&gt;_currentMode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>51 / 65</p>
+<p><b>6.6.6 </b></p>
+<p><b>BswM_ComM_CurrentMode </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>BswM_ComM_CurrentMode </b>(NetworkHandleType Network, ComM_ModeType </p>
+<p>RequestedMode) </p>
+<p><b>Parameter </b></p>
+<p>Network </p>
+<p>Index of the system channel </p>
+<p>Requested Mode </p>
+<p>The current state where the ComM changed to. Refer to chapter 6.2 about of </p>
+<p>possible values. </p>
+<p><b>Return code </b></p>
+<p>None </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The ComM calls this function every time when the state changes.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This callback function is only available if the BswM is configured inside the system. </p>
+<p>Call Context </p>
+<p></p>
+<p> </p>
+<p>Is called in task context. </p>
+<p>Table 6-34 BswM_ComM_CurrentMode </p>
+<p> </p>
+<p><b>6.7 </b></p>
+<p><b>Service Ports  </b></p>
+<p><b>6.7.1 </b></p>
+<p><b>Client Server Interface </b></p>
+<p>A client server interface is related to a Provide Port at the server side and a Require Port </p>
+<p>at client side.  </p>
+<p><b>6.7.1.1 </b></p>
+<p><b>Provide Ports </b></p>
+<p>At  the  Provide  Ports  of  the  ComM  the API  functions  described  in  6.3  are  available  as </p>
+<p>Runable Entities. The Runable Entities are invoked via Operations. The mapping from a </p>
+<p>SWC client call to an operation is performed by the RTE. In this mapping the RTE adds </p>
+<p>port defined argument values to the client call of the SWC, if configured. </p>
+<p>The following table presents the Provide Ports defined for the ComM and the Operations </p>
+<p>defined  for  the  Provide  Ports,  the  API  functions  related  to  the  operations  and  the  port </p>
+<p>defined argument values to be added by the RTE: </p>
+<p> </p>
+<p><b>Provide Port </b></p>
+<p><b>Operation </b></p>
+<p><b>API Function </b></p>
+<p><b>Port Defined Argument Values </b></p>
+<p>RequestComMode </p>
+<p>ComM_RequestCom</p>
+<p>Mode </p>
+<p>ComM_UserHandleType UserHandle</p>
+<p>GetCurrentComMo</p>
+<p>de </p>
+<p>ComM_GetCurrentCo</p>
+<p>mMode </p>
+<p>ComM_UserHandleType UserHandle</p>
+<p>ComM_RequestMod</p>
+<p>e </p>
+<p>GetMaxComMode </p>
+<p>ComM_GetMaxComM</p>
+<p>ode </p>
+<p>ComM_UserHandleType UserHandle</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>52 / 65</p>
+<p><b>Provide Port </b></p>
+<p><b>Operation </b></p>
+<p><b>API Function </b></p>
+<p><b>Port Defined Argument Values </b></p>
+<p>GetRequestedCom</p>
+<p>Mode </p>
+<p>ComM_GetRequested</p>
+<p>ComMode </p>
+<p>ComM_UserHandleType UserHandle</p>
+<p>ComM_ChannelWak</p>
+<p>eUp </p>
+<p>PreventWakeUp </p>
+<p>ComM_PrevetWakeU</p>
+<p>p </p>
+<p>NetworkHandleType Channel </p>
+<p>ComM_ChannelLimit</p>
+<p>ation </p>
+<p>LimitChannelToNoC</p>
+<p>omMode </p>
+<p>ComM_LimitChannelT</p>
+<p>oNoComMode </p>
+<p>NetworkHandleType Channel </p>
+<p> </p>
+<p>GetInhibitionStatus </p>
+<p>ComM_GetInhibitionSt</p>
+<p>atus </p>
+<p>NetworkHandleType Channel </p>
+<p>ComM_ECUModeLi</p>
+<p>mitation </p>
+<p>LimitECUToNoCom</p>
+<p>Mode </p>
+<p>ComM_LimitECUToNo</p>
+<p>ComMode </p>
+<p>- </p>
+<p> </p>
+<p>ReadInhibitCounter </p>
+<p>ComM_ReadInhibitCo</p>
+<p>unter </p>
+<p>- </p>
+<p> </p>
+<p>ResetInhibitCounter</p>
+<p>ComM_ResetInhibtCo</p>
+<p>unter </p>
+<p>- </p>
+<p> </p>
+<p>SetECUGroupClass</p>
+<p>ification </p>
+<p>ComM_SetECUGroup</p>
+<p>Classification </p>
+<p>- </p>
+<p>Table 6-35 Provide Ports on BSW module side </p>
+<p><b>6.7.1.2 </b></p>
+<p><b>Require Ports </b></p>
+<p>At its Require Ports the ComM calls Operations. These Operations have to be provided by </p>
+<p>the  SWCs  by  means  of  Runnable  Entities.  These  Runnable  Entities  implement  the </p>
+<p>callback functions expected by the ComM. </p>
+<p>The </p>
+<p>following </p>
+<p>sub-chapters </p>
+<p>present </p>
+<p>the </p>
+<p>Require </p>
+<p>Ports </p>
+<p>defined </p>
+<p>for </p>
+<p>the </p>
+<p>ComM, </p>
+<p>the </p>
+<p>Operations  that  are  called  from  the  ComM  and  the  related  Notifications,  which  are </p>
+<p>described in chapter 6.6.5. </p>
+<p><b>6.7.1.2.1 </b></p>
+<p><b>Current Mode </b></p>
+<p><b>Operation </b></p>
+<p><b>Rte Interface </b></p>
+<p><b>Mode Declaration Group </b></p>
+<p>currentMode </p>
+<p>Rte_Switch_&lt;CurrentModePortPrefix&gt;</p>
+<p>&lt;UserName&gt;_currentMode </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_FULL_COMMUNI</p>
+<p>CATION </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_SILENT_COMMU</p>
+<p>NICATION </p>
+<p></p>
+<p> </p>
+<p>RTE_MODE_ComMMode_NO_COMMUNICA</p>
+<p>TION </p>
+<p>Table 6-36 Current Mode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>53 / 65</p>
+<p><b>7 </b></p>
+<p><b>Configuration </b></p>
+<p>In the ComM the attributes can be configured with the following methods: </p>
+<p></p>
+<p> </p>
+<p>Configuration in GENy for a detailed description see 7.1 </p>
+<p><b>7.1 </b></p>
+<p><b>Configuration with GENy  </b></p>
+<p>The ComM is configured with the help of the configuration tool GENy.  </p>
+<p><b>7.1.1 </b></p>
+<p><b>Activation of the ComM in GENy </b></p>
+<p>The component name of the Communication Manager in GENy is Ccl_AsrComM. In the </p>
+<p>Component Selection page the ComM can be enabled on all communication channels. </p>
+<p> </p>
+<p>Figure 7-1 GENy Component Selection Dialog </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>54 / 65</p>
+<p><b>7.1.2 </b></p>
+<p><b>General Configuration </b></p>
+<p>This chapter describes the general configuration of the ComM. </p>
+<p> </p>
+<p>Figure 7-2 General Configuration Settings in GENy </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Common </p>
+<p>Configuration Variant </p>
+<p>- </p>
+<p>- </p>
+<p>Pre-Compile </p>
+<p>Link-Time </p>
+<p>Post-build </p>
+<p>Specify the configuration variant </p>
+<p>Version Info Api </p>
+<p>pre-compile </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable/disable the function </p>
+<p>ComM_GetVersionInfo() to get the </p>
+<p>version information about the </p>
+<p>ComM. </p>
+<p>Dev Error Detect </p>
+<p>pre-compile </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>If 'Development Error Detection' is </p>
+<p>ON, development errors are </p>
+<p>reported to the Development Error </p>
+<p>Tracer (Det). </p>
+<p>Prod Error Detect </p>
+<p>pre-compile </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>If 'Production Error Detection' is </p>
+<p>enabled, production relevant </p>
+<p>errors are reported to the </p>
+<p>Diagnostics Event Manager </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>55 / 65</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>(DEM). </p>
+<p>Disable this option, if no DEM is </p>
+<p>present in your system. </p>
+<p>User Configuration </p>
+<p>File Path </p>
+<p>pre-compile </p>
+<p>String </p>
+<p><b> </b></p>
+<p>A ComM configuration file is </p>
+<p>generated by GENy </p>
+<p>(ComM_cfg.h). If you want to </p>
+<p>overwrite settings in the generated </p>
+<p>file, you can specify a path to a </p>
+<p>user defined configuration file. The </p>
+<p>user defined configuration file will </p>
+<p>be included at the end of the </p>
+<p>generated file. Therefore </p>
+<p>definitions in the user defined </p>
+<p>configuration file can overwrite </p>
+<p>definitions in the generated </p>
+<p>configuration file. </p>
+<p>Service Component Description </p>
+<p>Use Rte </p>
+<p>link-time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable this option if you use a Rte. </p>
+<p>If this option is enabled, a port </p>
+<p>interface description (Software </p>
+<p>Component Template) is </p>
+<p>generated which can be used for </p>
+<p>the Rte configuration.  </p>
+<p>Software Component </p>
+<p>Name </p>
+<p>pre-compile </p>
+<p>String </p>
+<p><b>ComM  </b></p>
+<p>or any ANSI-C </p>
+<p>string </p>
+<p>This name is used as component </p>
+<p>name (ShortName) in the </p>
+<p>generated software component </p>
+<p>template. Change this name if you </p>
+<p>try to import the ComM </p>
+<p>components of several ECUs and </p>
+<p>have problems with name clashes.</p>
+<p>Req Mode Port </p>
+<p>Prefix </p>
+<p>link-time </p>
+<p>String </p>
+<p><b>UR_ </b></p>
+<p>or any ANSI-C </p>
+<p>string </p>
+<p>Enter the prefix of the </p>
+<p>ComM_RequestMode service port. </p>
+<p>The prefix and the symbolic name </p>
+<p>of the ComM user build the name </p>
+<p>of the service port, e.g.  </p>
+<p>Prefix = UR_ </p>
+<p>User Handle Name = </p>
+<p>RunableUser_1 </p>
+<p> </p>
+<p>Service Port Name = </p>
+<p>UR_RunableUser_1 </p>
+<p>Current Mode Port </p>
+<p>Prefix </p>
+<p>Link-time </p>
+<p>String </p>
+<p><b>UM_ </b></p>
+<p>or any ANSI-</p>
+<p>C string </p>
+<p>Enter the prefix of the </p>
+<p>ComM_CurrentMode service port. </p>
+<p>The prefix and the symbolic name </p>
+<p>of the ComM user build the name </p>
+<p>of the service port, e.g.  </p>
+<p>Prefix = UM_ </p>
+<p>User Handle Name = </p>
+<p>RunableUser_1 </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>56 / 65</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Service Port Name = </p>
+<p>UM_RunableUser_1 </p>
+<p>Miscellaneous </p>
+<p>ComM Synchronous </p>
+<p>Wake Up  </p>
+<p>link-time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable the synchronous wake up </p>
+<p>of the ComM busses. </p>
+<p>T Min Full Com </p>
+<p>Mode Duration [s] </p>
+<p>link-time </p>
+<p>Float </p>
+<p>0.0010..65.00</p>
+<p>0 </p>
+<p>Minimum time duration in seconds, </p>
+<p>spent in full communication mode </p>
+<p>(only available for Nm variant </p>
+<p>LIGHT, NONE and  OSEK) </p>
+<p>Communication Manager User </p>
+<p>Add </p>
+<p>- </p>
+<p>- </p>
+<p>- </p>
+<p>With this button you could create a </p>
+<p>further empty communication </p>
+<p>manager user. Click on the user </p>
+<p>settings to see the result. </p>
+<p>Deletion of the Last </p>
+<p>- </p>
+<p>- </p>
+<p>- </p>
+<p>This button deletes the last </p>
+<p>communication manager user from </p>
+<p>the list. Currently it is only possible </p>
+<p>to delete the last user in the </p>
+<p>configuration view called 'User </p>
+<p>Settings'. </p>
+<p>Mode Limitation Settings </p>
+<p>Mode Limitation </p>
+<p>Enabled </p>
+<p>Link-time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable/Disable the ComM mode </p>
+<p>limitation functionality: </p>
+<p></p>
+<p> </p>
+<p>Bus Wake Up Inhibition </p>
+<p></p>
+<p> </p>
+<p>Mode limitation to </p>
+<p>COMM_NO_COMMUNICATIO</p>
+<p>N </p>
+<p>Ecu Group </p>
+<p>Classification </p>
+<p>Link-Time </p>
+<p>int </p>
+<p></p>
+<p> </p>
+<p>0 </p>
+<p></p>
+<p> </p>
+<p>1 </p>
+<p></p>
+<p> </p>
+<p>2 </p>
+<p></p>
+<p> </p>
+<p>3 </p>
+<p>Defines the initialization value if </p>
+<p>the ECU is affected by a bus wake </p>
+<p>up inhibition or by a mode </p>
+<p>limitation to </p>
+<p>COMM_NO_COMMUNICATION </p>
+<p></p>
+<p> </p>
+<p>0, not affected by any limitation </p>
+<p></p>
+<p> </p>
+<p>1, only affected by  bus wake </p>
+<p>up inhibition </p>
+<p></p>
+<p> </p>
+<p>2, only affected by mode </p>
+<p>limitation to </p>
+<p>COMM_NO_COMMUNICATIO</p>
+<p>N </p>
+<p></p>
+<p> </p>
+<p>3, is affected by both described </p>
+<p>limitations  </p>
+<p></p>
+<p> </p>
+<p>This value can be changed </p>
+<p>during runtime vie the API </p>
+<p>ComM_SetECUGroupClassific</p>
+<p>ation() </p>
+<p>No Com </p>
+<p>Link-Time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Defines the initialization value of </p>
+<p>the ECU mode limitation to </p>
+<p>COMM_NO_COMMUNICATION. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>57 / 65</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p> </p>
+<p>This value can be changed during </p>
+<p>runtime via the API </p>
+<p>ComM_LimitECUToNoComMode()</p>
+<p>.  </p>
+<p>Reset After Forcing </p>
+<p>No Comm </p>
+<p>Link-Time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Defines if the ComM shall trigger </p>
+<p>an ECU reset after entering the </p>
+<p>ComM mode </p>
+<p>COMM_NO_COMMUNICATION in </p>
+<p>case of a mode limitation. </p>
+<p>Wakeup Inhibition </p>
+<p>Enabled </p>
+<p>Link-Time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Defines the initialization value of </p>
+<p>the ECU bus wake up inhibition. </p>
+<p>NvRam Block IDs </p>
+<p>Manually Add an </p>
+<p>NvRam Block ID </p>
+<p>- </p>
+<p>- </p>
+<p>- </p>
+<p>This button adds a new Nvram </p>
+<p>Block ID that can then be selected </p>
+<p>for ComM. </p>
+<p> </p>
+<p>This option is to configure a </p>
+<p>*nonexisting* NvRam BlockID for </p>
+<p>use with the ComM. You will still </p>
+<p>need to configure that NvRam </p>
+<p>BlockID in the NvRam manager! </p>
+<p>Global Nvm Block </p>
+<p>Descriptor </p>
+<p>Link-Time </p>
+<p>String </p>
+<p>Selection Box </p>
+<p>which </p>
+<p>contains the </p>
+<p>NvM block </p>
+<p>description </p>
+<p>definitions </p>
+<p>Choose the block descriptor, which </p>
+<p>is used to handle the non-volatile </p>
+<p>data of the ComM. </p>
+<p>If the selection box is empty then </p>
+<p>the ComM has found no NvM </p>
+<p>block descriptor definitions inside </p>
+<p>the ECU configuration file. </p>
+<p>Please create a NvM Block </p>
+<p>description block for the ComM by </p>
+<p>using the button above. </p>
+<p>Table 7-1   General configuration Settings in GENy </p>
+<p> </p>
+<p><b>7.1.3 </b></p>
+<p><b>Channel Configuration </b></p>
+<p>This chapter describes the channel configuration of the ComM. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>58 / 65</p>
+<p> </p>
+<p>Figure 7-3 Channel Configuration in GENy </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>59 / 65</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Software Component Description </p>
+<p>Channel Wake Up </p>
+<p>Port Prefix </p>
+<p>Link-Time </p>
+<p>String </p>
+<p><b>CW_ </b></p>
+<p><b>or ANSI-C </b></p>
+<p><b>string</b></p>
+<p> </p>
+<p>Enter the prefix of the </p>
+<p>ComM_ChannelWakeUp service </p>
+<p>port. The prefix and the symbolic </p>
+<p>name of the ComM channel build </p>
+<p>the name of the service port, e.g.  </p>
+<p>Prefix = CW_ </p>
+<p>Channel Name = Channel0 </p>
+<p> </p>
+<p>Service Port Name =CW_Channel0 </p>
+<p>Channel Limit Port </p>
+<p>Prefix </p>
+<p>Link-Time </p>
+<p>String </p>
+<p><b>CL_ </b></p>
+<p><b>or ANSI-C </b></p>
+<p><b>string</b></p>
+<p> </p>
+<p>Enter the prefix of the </p>
+<p>ComM_ChannelLimitation service </p>
+<p>port. The prefix and the symbolic </p>
+<p>name of the ComM channel build </p>
+<p>the name of the service port, e.g.  </p>
+<p>Prefix = CL_ </p>
+<p>Channel Name = Channel0 </p>
+<p> </p>
+<p>Service Port Name =CL_Channel0 </p>
+<p>Miscellaneous </p>
+<p>Main Function Period </p>
+<p>[s] </p>
+<p>Link-time </p>
+<p>Float </p>
+<p>0.0040..0.100 </p>
+<p>Using this edit control, you are able </p>
+<p>to configure different cycle times of </p>
+<p>the Communication Manger main </p>
+<p>function ComM_MainFunction()in </p>
+<p>seconds. </p>
+<p>Bus Type </p>
+<p> </p>
+<p>- </p>
+<p></p>
+<p> </p>
+<p>CAN </p>
+<p></p>
+<p> </p>
+<p>LIN </p>
+<p></p>
+<p> </p>
+<p>FlexRay </p>
+<p></p>
+<p> </p>
+<p>ETH </p>
+<p>Defines the Bus type </p>
+<p>Network Management Configuration </p>
+<p>Nm Variant </p>
+<p>Link-time </p>
+<p>- </p>
+<p></p>
+<p> </p>
+<p>FULL </p>
+<p></p>
+<p> </p>
+<p>LIGHT </p>
+<p></p>
+<p> </p>
+<p>NONE </p>
+<p></p>
+<p> </p>
+<p>PASSIVE </p>
+<p></p>
+<p> </p>
+<p>OSEK </p>
+<p>Defines the Nm Variant </p>
+<p></p>
+<p> </p>
+<p>FULL: if using the AUTOSAR NM</p>
+<p></p>
+<p> </p>
+<p>LIGHT: if using no AUTOSAR NM </p>
+<p>but the sleep process shall be </p>
+<p>similar to the AUTOSAR NM </p>
+<p></p>
+<p> </p>
+<p>NONE: No shutdown </p>
+<p>synchronization is using </p>
+<p></p>
+<p> </p>
+<p>PASSIVE: if using the AUTOSAR </p>
+<p>NM in passive mode </p>
+<p></p>
+<p> </p>
+<p>OSEK: if using only the </p>
+<p>NmOsek(direct) at the ComM </p>
+<p>channel.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>If the AUTOSAR </p>
+<p>CanNm and </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>60 / 65</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>NmOsek(direct) is </p>
+<p>used at the same </p>
+<p>channel then Nm </p>
+<p>variant FULL shall </p>
+<p>be selected </p>
+<p>preferred.  </p>
+<p> </p>
+<p>Nm Light Timeout [s] </p>
+<p>Link-time </p>
+<p>Float </p>
+<p>1.0..255.0 </p>
+<p>Defines the Timeout after the Ready </p>
+<p>Sleep state of the ComM is left and </p>
+<p>the ComM starts the network </p>
+<p>shutdown. (Only available for the </p>
+<p>Nm variant NONE) </p>
+<p>Mode Limitation Settings </p>
+<p>No Full Com </p>
+<p>Link-time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Defines the initialization value of the </p>
+<p>channel mode limitation to </p>
+<p>COMM_NO_COMMUNICATION. </p>
+<p> </p>
+<p>This value can be changed during </p>
+<p>runtime via the API </p>
+<p>ComM_LimitChannelToNoComMode</p>
+<p>(). </p>
+<p>No Wakeup </p>
+<p>Link-Time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Defines the initialization value of the </p>
+<p>channel bus wake up inhibition. </p>
+<p>Table 7-2   Channel Configuration in GENy </p>
+<p><b>7.1.4 </b></p>
+<p><b>User Configuration </b></p>
+<p>This chapter describes the configuration of the ComM User. The user handles are used by </p>
+<p>upper </p>
+<p>layers </p>
+<p>to </p>
+<p>request </p>
+<p>ComM </p>
+<p>communication </p>
+<p>mode </p>
+<p>via </p>
+<p>the </p>
+<p>ComM </p>
+<p>service </p>
+<p>ComM_RequestComMode(). </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>1</b></p>
+<p><b>st</b></p>
+<p><b> Step</b> </p>
+<p>Add user into the configuration. This can be done inside the ComM general </p>
+<p>configuration view. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>61 / 65</p>
+<p><b> </b></p>
+<p> </p>
+<p>Figure 7-4 ComM User configurations inside the general ComM configuration view </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>2</b></p>
+<p><b>nd</b></p>
+<p><b> Step</b> </p>
+<p>Assign the communication channels to the created user. This settings performs the </p>
+<p>mapping between user handle </p>
+<p>ÅÆ</p>
+<p>corresponding communication channel(s). </p>
+<p><b> </b></p>
+<p> </p>
+<p>Figure 7-5 ComM User Settings </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>62 / 65</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>General Settings </p>
+<p>Communication </p>
+<p>Manager User </p>
+<p>Handle </p>
+<p>Link-time </p>
+<p>String </p>
+<p>ANSI-C string </p>
+<p>Name of the ComM User Handle </p>
+<p>ComM_RequestMod</p>
+<p>e Service Port Name </p>
+<p>- </p>
+<p>- </p>
+<p>- </p>
+<p>Shows the name of the </p>
+<p>ComM_RequestMode service port </p>
+<p>name for the configured user. </p>
+<p>Mode Notification </p>
+<p>Link-time </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable/Disable the mode </p>
+<p>notification for this user. </p>
+<p>Communication </p>
+<p>Channel </p>
+<p>Link-time </p>
+<p>boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>Assign the ComM user to the </p>
+<p>communication channel(s), which </p>
+<p>shall be handled via this user. </p>
+<p>Table 7-3   ComM User Settings </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>63 / 65</p>
+<p><b>8 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>8.1 </b></p>
+<p><b>Additions/Extensions </b></p>
+<p><b>8.1.1 </b></p>
+<p><b>ComM_InitMemory </b></p>
+<p>This </p>
+<p>function </p>
+<p>is </p>
+<p>added </p>
+<p>to </p>
+<p>the </p>
+<p>ComM </p>
+<p>to </p>
+<p>initialize </p>
+<p>the </p>
+<p>ComM </p>
+<p>variables </p>
+<p>and </p>
+<p>set </p>
+<p>the </p>
+<p>initialization state to un-init (refer to 6.3.1). </p>
+<p><b>8.1.2 </b></p>
+<p><b>DET Error Reporting </b></p>
+<p>The ComM has advanced the following ComM DET errors: </p>
+<p></p>
+<p> </p>
+<p>COMM_E_NOSUPPORTED_MODECHANGE </p>
+<p> </p>
+<p><b>8.1.3 </b></p>
+<p><b>Nm Variant OSEK </b></p>
+<p>The ComM supports additionally the Nm variant “OSEK”. This Nm variant shall be used if </p>
+<p>the ComM channel uses the NmOsek(direct) instead of the AUTOSAR CanNm. </p>
+<p>If this Nm variant is used then the ComM ensures a minimum Full communication mode </p>
+<p>time. The Full communication mode time can be configured with the configuration option “T </p>
+<p>Min Full Com Mode Duration” (7.1.2 General Configuration).  </p>
+<p> </p>
+<p><b>8.1.4 </b></p>
+<p><b>ComM Service API Return Value COMM_UNINIT </b></p>
+<p>The  specified  ComM  service API  return  is  renamed  to  COMM_E_UNINIT. This  must  be </p>
+<p>done to prevent name clashes with the specified ComM_InitStatusType. </p>
+<p> </p>
+<p><b>8.1.5 </b></p>
+<p><b>ComM Bus Type </b></p>
+<p>The ComM supports additionally the bus type ETH for Ethernet configurations. The ETH </p>
+<p>bus type supports only the ComM Nm Variant NONE. </p>
+<p><b>8.2 </b></p>
+<p><b>Limitation </b></p>
+<p><b>8.2.1 </b></p>
+<p><b>Non-volatile data handling </b></p>
+<p>The ComM uses only the NvM global block descriptor to handle the ComM non-volatile </p>
+<p>data. </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>64 / 65</p>
+<p><b>9 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>9.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>Table 9-1   Glossary </p>
+<p> </p>
+<p> </p>
+<p><b>9.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>DEM </p>
+<p>Diagnostic Event Manager </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>HIS </p>
+<p>Hersteller Initiative Software </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>PPort </p>
+<p>Provide Port </p>
+<p>RPort </p>
+<p>Require Port </p>
+<p>RTE </p>
+<p>Runtime Environment </p>
+<p>SRS </p>
+<p>Software Requirement Specification </p>
+<p>SWC </p>
+<p>Software Component </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>Nm </p>
+<p>Network Management </p>
+<p>EcuM </p>
+<p>ECU Manager </p>
+<p>ComM </p>
+<p>Communication Manager </p>
+<p>CanSM </p>
+<p>CAN State Manager </p>
+<p>LinSM </p>
+<p>LIN State Manager </p>
+<p>FrSM </p>
+<p>FlexRay State Manager </p>
+<p>BusSM </p>
+<p>Bus state manager (e.g. Lin, FlexRay and Can) </p>
+<p>Table 9-2   Abbreviations </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Communication Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 3.14 </p>
+<p>based on template version 3.1 </p>
+<p>65 / 65</p>
+<p><b>10 Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

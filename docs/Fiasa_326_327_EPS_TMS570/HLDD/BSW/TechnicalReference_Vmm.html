@@ -1,0 +1,1441 @@
+---
+layout: default
+title: TechnicalReference_Vmm
+nav_order: 32
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Vehicle Mode Management </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>VMM </p>
+<p>Version 1.06.00 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Thomas Kuhl, Markus Schwarz </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Thomas Petrus </p>
+<p>2008-06-02 </p>
+<p>1.0 </p>
+<p>Initial Version </p>
+<p>Thomas Kuhl </p>
+<p>2008-10-17 </p>
+<p>1.1 </p>
+<p>Update configuration chapter </p>
+<p>Thomas Kuhl </p>
+<p>2008-11-28 </p>
+<p>1.2 </p>
+<p>Update configuration chapter </p>
+<p>Updated Chapter 7.4 </p>
+<p>Add function description: </p>
+<p>Vmm_BusSm_EnableRecepti</p>
+<p>onDM </p>
+<p>Add function description: </p>
+<p>Vmm_BusSm_DisableRecept</p>
+<p>ionDM </p>
+<p>Thomas Kuhl </p>
+<p>2009-03-16 </p>
+<p>1.3 </p>
+<p>Add chapter 4.3 ECU Passive </p>
+<p>Handling </p>
+<p>Add API </p>
+<p>Vmm_Dcm_SetPassiveMode </p>
+<p>Update chapter “System </p>
+<p>configuration” </p>
+<p>Thomas Kuhl </p>
+<p>2009-08-10 </p>
+<p>1.4 </p>
+<p>add chapter 5.4 Critical code </p>
+<p>sections </p>
+<p>Thomas Kuhl </p>
+<p>2009-11-16 </p>
+<p>1.5 </p>
+<p>ESCAN00038948 </p>
+<p>Thomas Kuhl </p>
+<p>2010-04-29 </p>
+<p>1.05.01 </p>
+<p>ESCAN00040934 </p>
+<p>Thomas Kuhl </p>
+<p>2010-08-10 </p>
+<p>1.05.02 </p>
+<p>ESCAN00044654 </p>
+<p>Thomas Kuhl </p>
+<p>2011-02-10 </p>
+<p>1.06.00 </p>
+<p>Extend description of </p>
+<p>Vmm_Init </p>
+<p>Table 1-1   History of the Document </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DET.pdf </p>
+<p>V2.2.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AN-ISC-8-1118 MICROSAR BSW Compatibility Check </p>
+<p>V1.0.0 </p>
+<p>Table 1-2   Reference Documents </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>2 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector’s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>3 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information.................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 2</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Component History......................................................................................................... 6</b></p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Introduction ..................................................................................................................... 7</b></p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................... 8</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Handling of communication requests from BusSM........................................... 8</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Control of communication status by DCM......................................................... 8</p>
+<p> </p>
+<p>4.2.1</p>
+<p> </p>
+<p>Nm Handling ..................................................................................................... 8</p>
+<p> </p>
+<p>4.2.2</p>
+<p> </p>
+<p>Com Handling ................................................................................................... 8</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Control of ECU Passive Mode .......................................................................... 9</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>Error Handling................................................................................................... 9</p>
+<p> </p>
+<p>4.4.1</p>
+<p> </p>
+<p>Development Error Reporting ........................................................................... 9</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>Integration ..................................................................................................................... 11</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Scope of Delivery.............................................................................................11</p>
+<p> </p>
+<p>5.1.1</p>
+<p> </p>
+<p>Static Files .......................................................................................................11</p>
+<p> </p>
+<p>5.1.2</p>
+<p> </p>
+<p>Dynamic Files ..................................................................................................11</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Include Structure............................................................................................. 12</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 12</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Critical code sections...................................................................................... 13</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Configuration ................................................................................................................ 14</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Activation of the VMM..................................................................................... 14</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>System Configuration ..................................................................................... 14</p>
+<p> </p>
+<p>6.3</p>
+<p> </p>
+<p>Channel Configuration .................................................................................... 15</p>
+<p> </p>
+<p>6.4</p>
+<p> </p>
+<p>Nm Configuration............................................................................................ 16</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>API Description ............................................................................................................. 17</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Vmm_InitMemory............................................................................................ 17</p>
+<p> </p>
+<p>7.2</p>
+<p> </p>
+<p>Vmm_Init......................................................................................................... 18</p>
+<p> </p>
+<p>7.3</p>
+<p> </p>
+<p>Vmm_Dcm_CommunicationControl ............................................................... 19</p>
+<p> </p>
+<p>7.4</p>
+<p> </p>
+<p>Vmm_BusSm_IpduGroupStart ....................................................................... 20</p>
+<p> </p>
+<p>7.5</p>
+<p> </p>
+<p>Vmm_BusSm_IpduGroupStop........................................................................ 21</p>
+<p> </p>
+<p>7.6</p>
+<p> </p>
+<p>Vmm_BusSm_EnableReceptionDM ............................................................... 22</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>4 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p>7.7</p>
+<p> </p>
+<p>Vmm_BusSm_DisableReceptionDM .............................................................. 23</p>
+<p> </p>
+<p>7.8</p>
+<p> </p>
+<p>Vmm_Dcm_SetPassiveMode ......................................................................... 23</p>
+<p> </p>
+<p>7.9</p>
+<p> </p>
+<p>Callback Functions ......................................................................................... 24</p>
+<p> </p>
+<p>7.10</p>
+<p> </p>
+<p>Service Ports .................................................................................................. 24</p>
+<p> </p>
+<p>7.11</p>
+<p> </p>
+<p>Services used by Vmm ................................................................................... 24</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>Limitations ..................................................................................................................... 25</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Nm Passive mode support.............................................................................. 25</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Abbreviations ................................................................................................................ 26</b></p>
+<p> </p>
+<p>9.1</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 26</p>
+<p> </p>
+<p><b>10</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................... 27</b></p>
+<p> </p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure </p>
+<p> </p>
+<p>5-1</p>
+<p> </p>
+<p>Include structure ............................................................................................. 12</p>
+<p> </p>
+<p>Figure </p>
+<p> </p>
+<p>6-1</p>
+<p> </p>
+<p>VMM Activation ............................................................................................... 14</p>
+<p> </p>
+<p>Figure </p>
+<p> </p>
+<p>6-2</p>
+<p> </p>
+<p>System Configuration ..................................................................................... 14</p>
+<p> </p>
+<p>Figure </p>
+<p> </p>
+<p>6-3</p>
+<p> </p>
+<p>Channel Configuration .................................................................................... 15</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table </p>
+<p> </p>
+<p>1-1 </p>
+<p> </p>
+<p>History of the Document ................................................................................... 2</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>1-2 </p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 2</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>2-1 </p>
+<p> </p>
+<p>Component history............................................................................................ 6</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>4-1 </p>
+<p> </p>
+<p>Mapping of service IDs to services ................................................................... 9</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>4-2 </p>
+<p> </p>
+<p>Errors reported to DET ................................................................................... 10</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>5-1 </p>
+<p> </p>
+<p>Static files.........................................................................................................11</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>5-2 </p>
+<p> </p>
+<p>Generated files ................................................................................................11</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>5-3 </p>
+<p> </p>
+<p>Complier Abstraction and Memory Mapping................................................... 13</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>6-1 </p>
+<p> </p>
+<p>System Configuration ..................................................................................... 15</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>6-2 </p>
+<p> </p>
+<p>Channel Configuration .................................................................................... 16</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-1 </p>
+<p> </p>
+<p>Vmm_InitMemory............................................................................................ 17</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-2 </p>
+<p> </p>
+<p>Vmm_Init......................................................................................................... 18</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-3 </p>
+<p> </p>
+<p>Vmm_Dcm_CommunicationControl ............................................................... 19</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-4 </p>
+<p> </p>
+<p>ComM_BusSm_IpduGroupStart ..................................................................... 20</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-5 </p>
+<p> </p>
+<p>Vmm_BusSm_IpduGroupStop........................................................................ 21</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-6 </p>
+<p> </p>
+<p>Vmm_BusSm_EnableReceptionDM ............................................................... 22</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-7 </p>
+<p> </p>
+<p>Vmm_BusSm_DisableReceptionDM .............................................................. 23</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-8 </p>
+<p> </p>
+<p>Vmm_Dcm_SetPassiveMode ......................................................................... 23</p>
+<p> </p>
+<p>Table </p>
+<p> </p>
+<p>7-9 </p>
+<p> </p>
+<p>Services used by the Vmm ............................................................................. 24</p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>5 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Component History </b></p>
+<p>The </p>
+<p>component </p>
+<p>history </p>
+<p>gives </p>
+<p>an </p>
+<p>overview </p>
+<p>over </p>
+<p>the </p>
+<p>important </p>
+<p>milestones </p>
+<p>that </p>
+<p>are </p>
+<p>supported in the different versions of the component.  </p>
+<p><b>Component Version </b></p>
+<p><b>New Features </b></p>
+<p>1.00.00 </p>
+<p>Initial Version </p>
+<p>Table 2-1   Component history </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>6 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the Vehicle Mode Management (VMM) of the common software </p>
+<p>components. It describes the features, the API, integration hints and the configuration. </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile, link-time </p>
+<p><b>Vendor ID: </b></p>
+<p>VMM_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>VMM_MODULE_ID   </p>
+<p>226 decimal </p>
+<p>(according to ref[1]) </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>7 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Functional Description </b></p>
+<p>The VMM is responsible to  </p>
+<p></p>
+<p> </p>
+<p>allow/inhibit I-PDU start/stop requests from BusSM </p>
+<p></p>
+<p> </p>
+<p>start/stop its own I-PDU groups </p>
+<p>depending on the communication status that is set by the diagnostic component (DCM) via </p>
+<p>the diagnostic service called “communication control”. </p>
+<p>Additionally the Vmm is responsible to provide the ECU passive mode to the configured </p>
+<p>BusSM.  </p>
+<p> </p>
+<p><b>4.1 </b></p>
+<p><b>Handling of communication requests from BusSM </b></p>
+<p>The VMM handles the I-PDU start/stop requests from the BusSM: </p>
+<p></p>
+<p> </p>
+<p>If no VMM is used on a channel, each I-PDU start/stop request is directly forwarded to </p>
+<p>the Com. </p>
+<p></p>
+<p> </p>
+<p>If  a  VMM  is  used  and  Tx/Rx  is  not  inhibited  by  DCM  request,  the  I-PDU  start/stop </p>
+<p>request is directly forwarded to the Com.  </p>
+<p></p>
+<p> </p>
+<p>If a VMM is used and Tx/Rx is inhibited by DCM request, the I-PDU start/stop request is </p>
+<p>stored within the VMM. </p>
+<p><b>4.2 </b></p>
+<p><b>Control of communication status by DCM </b></p>
+<p>The DCM uses API Vmm_Dcm_CommunicationControl() to set the communication status </p>
+<p>for a given (or all) networks.  </p>
+<p>The communication status can be set for Nm- and/or Com-related messages.  </p>
+<p>The Tx and Rx behavior can be controlled separately. </p>
+<p><b>4.2.1 </b></p>
+<p><b>Nm Handling </b></p>
+<p>If </p>
+<p>Vmm_Dcm_CommunicationControl() </p>
+<p>addresses </p>
+<p>the </p>
+<p>Nm </p>
+<p>(by </p>
+<p>parameter </p>
+<p>VMM_MSG_TYPE_NM  or  VMM_MSG_TYPE_ALL),  the  Nm  for  the  given  channel  is </p>
+<p>enabled/disabled depending on the requested Tx state. </p>
+<p><b>4.2.2 </b></p>
+<p><b>Com Handling </b></p>
+<p>If </p>
+<p>Vmm_Dcm_CommunicationControl() </p>
+<p>addresses </p>
+<p>the </p>
+<p>Com </p>
+<p>(by </p>
+<p>parameter </p>
+<p>VMM_MSG_TYPE_COM </p>
+<p>or </p>
+<p>VMM_MSG_TYPE_ALL), </p>
+<p>the </p>
+<p>Tx/Rx </p>
+<p>I-PDUs </p>
+<p>are </p>
+<p>started/stopped. </p>
+<p> </p>
+<p><b>Handling of I-PDUs of VMM </b></p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>8 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p>These I-PDUs are used to enable necessary communication while normal communication </p>
+<p>itself is blocked by DCM request. The I-PDU groups can be configured for each channel of </p>
+<p>the VMM. </p>
+<p></p>
+<p> </p>
+<p>If Tx/Rx gets started by DCM, the configured Tx/Rx I-PDUs of VMM are stopped. </p>
+<p></p>
+<p> </p>
+<p>If Tx/Rx gets stopped by DCM, the configured Tx/Rx I-PDUs of VMM are started. </p>
+<p><b> </b></p>
+<p><b>Handling of I-PDUs of BusSM </b></p>
+<p></p>
+<p> </p>
+<p>If  Tx/Rx  gets  started  by  DCM,  the  Tx/Rx  I-PDUs  of  BusSM  are  started  if  they  are </p>
+<p>currently requested by the BusSM. </p>
+<p></p>
+<p> </p>
+<p>If  Tx/Rx  gets  stopped  by  DCM,  the  Tx/Rx  I-PDUs  of  BusSM  are  stopped  if  they  are </p>
+<p>currently not requested by the BusSM. </p>
+<p> </p>
+<p><b>4.3 </b></p>
+<p><b>Control of ECU Passive Mode  </b></p>
+<p>The Vmm is informed by the DCM about the ECU passive mode and the Vmm distributes </p>
+<p>this mode to the configured BusSM (FrSM and CanSM). </p>
+<p> </p>
+<p><b>4.4 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>4.4.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>By </p>
+<p>default, </p>
+<p>development </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>the </p>
+<p>DET </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Det_ReportError()</p>
+<p> as specified in [2], if development error reporting is enabled (i.e. </p>
+<p>pre-compile parameter VMM</p>
+<p>_DEV_ERROR_DETECT==STD_ON)</p>
+<p>. </p>
+<p>If  another  module  is  used  for  development  error  reporting,  the  function  prototype  for </p>
+<p>reporting the error can be configured by the integrator, but must have the same signature </p>
+<p>as the service </p>
+<p>Det_ReportError()</p>
+<p>. </p>
+<p>The reported VMM ID is 226. </p>
+<p>The reported service IDs identify the services which are described in 7. The following table </p>
+<p>presents the service IDs and the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>0x01 </p>
+<p>Vmm_Dcm_CommunicationControl </p>
+<p>0x02 </p>
+<p>Vmm_BusSmIpduGroupStart </p>
+<p>0x03 </p>
+<p>Vmm_BusSmIpduGroupStop </p>
+<p>Table 4-1   Mapping of service IDs to services </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>9 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x10 </p>
+<p>VMM_E_UNINIT </p>
+<p>There are VMM services used without initialization of </p>
+<p>the VMM via Vmm_Init() </p>
+<p>Table 4-2   Errors reported to DET </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>10 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>Integration </b></p>
+<p><b>5.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the VMM contains the files which are described in the chapters 5.1.1 and </p>
+<p>5.1.2: </p>
+<p><b>5.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>Vmm.c </p>
+<p>This is the source file of the VMM. It contains the implementation of the main </p>
+<p>functionality</p>
+<p> </p>
+<p>Vmm.h </p>
+<p>This is the header file of the VMM, which is the interface for upper layers to the </p>
+<p>services of the VMM. </p>
+<p>Vmm_Types.h </p>
+<p>Header File which includes VMM specific data types. </p>
+<p>Vmm_BusSM.h </p>
+<p>Header File for interface to BusSM. </p>
+<p>Vmm_Dcm.h </p>
+<p>Header File for interface to Dcm. </p>
+<p>Vmm.lib </p>
+<p>This is the library of the VMM. (optional)</p>
+<p> </p>
+<p>Table 5-1   Static files </p>
+<p> </p>
+<p><b>5.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool GENy. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>Vmm_Lcfg.c  This is the link time configuration source file. It contains all link time configuration </p>
+<p>settings. </p>
+<p>Vmm_cfg.h </p>
+<p>This is the VMM configuration header file. </p>
+<p>Table 5-2   Generated files </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>11 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>5.2 </b></p>
+<p><b>Include Structure </b></p>
+<p> </p>
+<p><b>object Header File Structure</b></p>
+<p><b>Vmm.c</b></p>
+<p><b>Vmm.h</b></p>
+<p><b>SchM_Vmm.h</b></p>
+<p><b>Com.h</b></p>
+<p><b>Vmm_Dcm.h</b></p>
+<p><b>Vmm_BusSM.h</b></p>
+<p><b>Vmm_cfg.h</b></p>
+<p><b>Vmm_Types.h</b></p>
+<p><b>ComM_Lcfg.c</b></p>
+<p><b>Nm.h</b></p>
+<p><b>Det.h</b></p>
+<p><b>Com.h</b></p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p> </p>
+<p>Figure 5-1 Include structure </p>
+<p> </p>
+<p> </p>
+<p><b>5.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions that are used by the VMM. It illustrates their assignment among each other. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>12 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>Compiler Abstraction</b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>VMM_CONST </p>
+<p>VMM_CODE </p>
+<p>VMM_VAR </p>
+<p>VMM_VAR_NOINIT </p>
+<p>VMM_VAR_ZERO_INIT </p>
+<p>VMM_START_SEC_CONST_8BIT </p>
+<p>VMM_STOP_SEC_CONST_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>VMM_START_SEC_CONST_32BIT </p>
+<p>VMM_STOP_SEC_CONST_32BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>VMM_START_SEC_CONST_UNSPECIFIED </p>
+<p>VMM_STOP_SEC_CONST_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>VMM_START_SEC_CODE </p>
+<p>VMM_STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>VMM_START_SEC_VAR_NOINIT_8BIT </p>
+<p>VMM_STOP_SEC_VAR_NOINIT_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>VMM_START_SEC_VAR_ ZERO_INIT_UNSPECIFIED </p>
+<p>VMM_STOP_SEC_VAR_ ZERO_INIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 5-3   Complier Abstraction and Memory Mapping </p>
+<p><b>5.4 </b></p>
+<p><b>Critical code sections </b></p>
+<p>The VMM has the following defined critical code section:  </p>
+<p></p>
+<p> </p>
+<p>VMM_EXCLUSIVE_AREA_0: must lock interrupts if VMM could be interrupted by any of </p>
+<p>the following task functions: </p>
+<p>o</p>
+<p> </p>
+<p>DCM_MainFunction() </p>
+<p>o</p>
+<p> </p>
+<p>CanSM_MainFunction() </p>
+<p>o</p>
+<p> </p>
+<p>FrSM_MainFunction() </p>
+<p> </p>
+<p>It  is  recommended  to  use  AUTOSAR  OS  ‘Resources’  for  these  exclusive  areas  to </p>
+<p> </p>
+<p>prevent priority inversions and dead-locks. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>13 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>6 </b></p>
+<p><b>Configuration </b></p>
+<p>The VMM component can be configured with the configuration tool GENy. </p>
+<p><b>6.1 </b></p>
+<p><b>Activation of the VMM </b></p>
+<p> </p>
+<p>Figure 6-1 VMM Activation </p>
+<p> </p>
+<p>The VMM must be activated in the system configuration view. </p>
+<p> </p>
+<p><b>6.2 </b></p>
+<p><b>System Configuration </b></p>
+<p> </p>
+<p>Figure 6-2 System Configuration </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>14 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p> </p>
+<p><b>Configuration attributes </b></p>
+<p><b>Value </b></p>
+<p><b>Short description </b></p>
+<p>General Settings </p>
+<p>Configuration Variant </p>
+<p></p>
+<p> </p>
+<p>Variant 1 (Pre-</p>
+<p>compile </p>
+<p>Configuration) </p>
+<p></p>
+<p> </p>
+<p>Variant 2 (Link-</p>
+<p>time Configuration) </p>
+<p>Specify the supported configuration variant. </p>
+<p>Dev Error Detect </p>
+<p></p>
+<p> </p>
+<p>On </p>
+<p></p>
+<p> </p>
+<p>Off </p>
+<p>If 'Development Error Detection' is enabled, all </p>
+<p>development errors are reported to the </p>
+<p>Development Error Tracer (DET).  </p>
+<p> </p>
+<p>Note: In general, the development error detection </p>
+<p>is recommended during pre-test phase. It is not </p>
+<p>recommended to enable the development error </p>
+<p>detection in production code due to increased </p>
+<p>runtime and ROM needs. </p>
+<p>ECU Passive Mode </p>
+<p></p>
+<p> </p>
+<p>On </p>
+<p></p>
+<p> </p>
+<p>Off </p>
+<p>Enable/Disable ECU Passive Mode Handling  </p>
+<p>Table 6-1   System Configuration </p>
+<p> </p>
+<p><b>6.3 </b></p>
+<p><b>Channel Configuration </b></p>
+<p> </p>
+<p>Figure 6-3 Channel Configuration </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>15 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>Configuration attributes </b></p>
+<p><b>Value </b></p>
+<p><b>Short description </b></p>
+<p>General Settings </p>
+<p>Tx Pdu Group </p>
+<p></p>
+<p> </p>
+<p>Value </p>
+<p>This value defines the Tx I-PDU group handle of </p>
+<p>Com signals which must be send during the </p>
+<p>communication control phase. </p>
+<p>Rx Pdu Group </p>
+<p></p>
+<p> </p>
+<p>Value </p>
+<p>This value defines the Rx I-PDU group handle of </p>
+<p>Com signals which must be received during the </p>
+<p>communication control phase. </p>
+<p>Table 6-2   Channel Configuration </p>
+<p> </p>
+<p><b>6.4 </b></p>
+<p><b>Nm Configuration </b></p>
+<p>For  usage  of  a  Nm  channel  the  following  features  has  be  enabled  inside  the  Nm </p>
+<p>configurations: </p>
+<p></p>
+<p> </p>
+<p>Nm ‘Com Control Enabled’ has to be enabled  </p>
+<p></p>
+<p> </p>
+<p>CanNm ‘Com Control Enabled’ has to be enabled. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>16 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>API Description </b></p>
+<p><b>7.1 </b></p>
+<p><b>Vmm_InitMemory </b></p>
+<p><b>Vmm_InitMemory</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>void <b>Vmm_InitMemory</b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p> </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Pre-Initialize the VMM. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Must be called before Vmm_Init() during the initialization phase. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 7-1   Vmm_InitMemory </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>17 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7.2 </b></p>
+<p><b>Vmm_Init </b></p>
+<p><b>Vmm_Init</b></p>
+<p><b>Prototype </b></p>
+<p><b>“Multiple Identity Configuration” disabled:</b></p>
+<p><b> </b></p>
+<p>void <b>Vmm_Init</b>( void ) </p>
+<p><b>“Multiple Identity Configuration” enabled: </b></p>
+<p>void <b>Vmm_Init</b>( const Vmm_ConfigSetType ConfigPtr )</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>ConfigPtr </p>
+<p>Pointer to the VMM configuration that shall be used. There is one </p>
+<p>configuration  for  each  identity.  The  configurations  are  stored  in </p>
+<p>Vmm_Lcfg.c (variables of type Vmm_ConfigSetType). </p>
+<p>Note:  The  pointer  is  only  used  for  use  case  “Multiple  Identity </p>
+<p>Configuration”. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Initialize the VMM. </p>
+<p>For “Multiple Identity Configurations”, the Vmm is initialized with a pointer to the configuration for the </p>
+<p>identity that shall be used.  </p>
+<p>Each identity configuration contains the channels that are active in this configuration. I.e the VMM performs </p>
+<p>only actions for channels which are configured for the active identity. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Must be called during the initialization phase. </p>
+<p></p>
+<p> </p>
+<p>Interrupts must be disabled during initialization. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 7-2   Vmm_Init </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>18 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7.3 </b></p>
+<p><b>Vmm_Dcm_CommunicationControl </b></p>
+<p><b>Vmm_Dcm_CommunicationControl</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>Std_ReturnType <b>Vmm_Dcm_CommunicationControl </b>( </p>
+<p>NetworkHandleType Channel, Vmm_MsgType msgType, boolean </p>
+<p>rxState, boolean txState ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>Network Handle </p>
+<p>Note: If channel is set to 0xFF, all channels are addressed. </p>
+<p>msgType </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>VMM_MSG_TYPE_NM, only NM is affected </p>
+<p></p>
+<p> </p>
+<p>VMM_MSG_TYPE_COM, only Com is affected </p>
+<p></p>
+<p> </p>
+<p>VMM_MSG_TYPE_ALL, Nm and Com are affected </p>
+<p>rxState </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>TRUE,  enable Rx path </p>
+<p></p>
+<p> </p>
+<p>FALSE, disable Rx path </p>
+<p>txState </p>
+<p></p>
+<p> </p>
+<p>TRUE,  enable Tx path </p>
+<p></p>
+<p> </p>
+<p>FALSE, disable Tx path </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>API accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>VMM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function is called from the DCM and is used to switch off/on the communication in conjunction to the </p>
+<p>given parameter. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Task and Interrupt context </p>
+<p>Table 7-3   Vmm_Dcm_CommunicationControl </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>19 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7.4 </b></p>
+<p><b>Vmm_BusSm_IpduGroupStart </b></p>
+<p><b>Vmm_BusSm_IpduGroupStart</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>void <b>Vmm_BusSm_IpduGroupStart </b>(NetworkHandleType Channel, </p>
+<p>Com_PduGroupIdType IpduGroupId, boolean Initialize) </p>
+<p><b>Parameter </b></p>
+<p>Channel  </p>
+<p>network handle </p>
+<p>IpduGroupId   </p>
+<p>BusSm I-PDU Group ID </p>
+<p>Initialize </p>
+<p></p>
+<p> </p>
+<p>TRUE,  start with Com default values </p>
+<p></p>
+<p> </p>
+<p>FALSE, start not with Com default values </p>
+<p><b>Return code </b></p>
+<p> </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This function is called from the bus station manager. It is used to start an I-PDU group. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Task and Interrupt context </p>
+<p>Table 7-4   ComM_BusSm_IpduGroupStart </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>20 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7.5 </b></p>
+<p><b>Vmm_BusSm_IpduGroupStop </b></p>
+<p><b>Vmm_BusSm_IpduGroupStop</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>void <b>Vmm_BusSm_IpduGroupStop </b>(NetworkHandleType Channel, </p>
+<p>Com_PduGroupIdType IpduGroupId ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>network handle </p>
+<p> </p>
+<p>IpduGroupId </p>
+<p>BusSM I-PDU Group ID </p>
+<p> </p>
+<p><b>Return code </b></p>
+<p> </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This function is called from the bus station manager. It is used to stop an I-PDU group. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Task and Interrupt context </p>
+<p>Table 7-5   Vmm_BusSm_IpduGroupStop </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>21 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7.6 </b></p>
+<p><b>Vmm_BusSm_EnableReceptionDM </b></p>
+<p><b>Vmm_BusSm_EnableReceptionDM</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>void <b>Vmm_BusSm_EnableReceptionDM </b>(NetworkHandleType </p>
+<p>Channel, Com_PduGroupIdType IpduGroupId ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>network handle </p>
+<p> </p>
+<p>IpduGroupId </p>
+<p>BusSM I-PDU Group ID </p>
+<p> </p>
+<p><b>Return code </b></p>
+<p> </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This function is called from the bus station manager. It is used to enable the deadline monitoring for the </p>
+<p>given I-PDU group. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Task and Interrupt context </p>
+<p>Table 7-6   Vmm_BusSm_EnableReceptionDM </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>22 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>7.7 </b></p>
+<p><b>Vmm_BusSm_DisableReceptionDM </b></p>
+<p><b>Vmm_BusSm_DisableReceptionDM</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>void <b>Vmm_BusSm_DisableReceptionDM </b>(NetworkHandleType </p>
+<p>Channel, Com_PduGroupIdType IpduGroupId ) </p>
+<p><b>Parameter </b></p>
+<p>Channel </p>
+<p>network handle </p>
+<p> </p>
+<p>IpduGroupId </p>
+<p>BusSM I-PDU Group ID </p>
+<p> </p>
+<p><b>Return code </b></p>
+<p> </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This function is called from the bus station manager. It is used to disable the deadline monitoring for the </p>
+<p>given I-PDU group. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Task and Interrupt context </p>
+<p>Table 7-7   Vmm_BusSm_DisableReceptionDM </p>
+<p><b>7.8 </b></p>
+<p><b>Vmm_Dcm_SetPassiveMode </b></p>
+<p><b>Vmm_Dcm_SetPassiveMode</b></p>
+<p><b>Prototype </b></p>
+<p> </p>
+<p>Std_ReturnType <b>Vmm_Dcm_PassiveMode</b>(boolean passiveState ) </p>
+<p><b>Parameter </b></p>
+<p>passiveState </p>
+<p></p>
+<p> </p>
+<p>TRUE,  enable the ECU passive mode </p>
+<p></p>
+<p> </p>
+<p>FALSE, disable the ECU passive mode </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p></p>
+<p> </p>
+<p>API accepted </p>
+<p>E_NOT_OK </p>
+<p></p>
+<p> </p>
+<p>VMM is not initialized </p>
+<p><b>Functional Description </b></p>
+<p>This function is called from the DCM and is used to enable/disable the ECU passive mode inside the </p>
+<p>BusSM. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Task and Interrupt context </p>
+<p>Table 7-8   Vmm_Dcm_SetPassiveMode </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>23 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p> </p>
+<p><b>7.9 </b></p>
+<p><b>Callback Functions </b></p>
+<p>The VMM does not have any callback functions. </p>
+<p><b>7.10  Service Ports  </b></p>
+<p>There are currently no service ports. </p>
+<p> </p>
+<p><b>7.11  Services used by Vmm </b></p>
+<p>In the following table services provided by other components, which are used by the Vmm </p>
+<p>are listed. For details about prototype and functionality refer to the documentation of the </p>
+<p>providing component. </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET </p>
+<p>Det_ReportError </p>
+<p>Com </p>
+<p>Com_IpduGroupStop </p>
+<p>Com </p>
+<p>Com_IpduGroupStart </p>
+<p>Com </p>
+<p>Com_EnableReceptionDM </p>
+<p>Com </p>
+<p>Com_DisableReceptionDM </p>
+<p>NmIf </p>
+<p>Nm_EnableCommunication </p>
+<p>NmIf </p>
+<p>Nm_DisableCommunication </p>
+<p>NmOsek </p>
+<p>TalkNM </p>
+<p>NmOsek </p>
+<p>SilentNM </p>
+<p>EcuM </p>
+<p>EcuM_GeneratorCompatibilityError  </p>
+<p>refer to [3] </p>
+<p>Table 7-9   Services used by the Vmm </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>24 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>Limitations </b></p>
+<p><b>8.1 </b></p>
+<p><b>Nm Passive mode support </b></p>
+<p>The Vmm does not support configurations with the enabled feature “Passive Mode” inside </p>
+<p>the AUTOSAR Nm. </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>25 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p><b>9 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>9.1 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>VMM </p>
+<p>Vehicle Mode Management </p>
+<p>Com </p>
+<p>BSW module in AUTOSAR providing signal based communication. </p>
+<p>ComM </p>
+<p>AUTOSAR Communication Manager </p>
+<p>EcuM </p>
+<p>AUTOSAR Ecu Manager </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>26 / 27</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Vehicle Mode Management  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 3.7 </p>
+<p>27 / 27</p>
+<p><b>10 Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

@@ -1,0 +1,1689 @@
+---
+layout: default
+title: TechnicalReference_DbcRules_Fiat_FAS
+nav_order: 28
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>DBC and LDF Configuration </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>for FGA </p>
+<p>Version 1.7.2 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Hannes Haas, Milena Shakir </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>2 / 28 </p>
+<p><b>Document Information </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Hannes Haas, Klaus Emmert </p>
+<p>2010-09-27 </p>
+<p>1.0.0 </p>
+<p>Created  </p>
+<p>Hannes Haas </p>
+<p>2010-09-28 </p>
+<p>1.0.1 </p>
+<p>Added update bit for signal groups </p>
+<p>Hannes Haas </p>
+<p>2010-10-13 </p>
+<p>1.0.2 </p>
+<p>GenMsgNrOfRepetition description </p>
+<p>changed </p>
+<p>Removed restrictions of Tx Mode </p>
+<p>combination </p>
+<p>Added description to message routing </p>
+<p>Hannes Haas </p>
+<p>2010-10-15 </p>
+<p>1.0.3 </p>
+<p>Changed spec. for GenSigTimeoutTime </p>
+<p>Hannes Haas </p>
+<p>2010-11-08 </p>
+<p>1.0.4 </p>
+<p>GenMsgCycleTimeFast for Tx modes </p>
+<p>with repetitions </p>
+<p>Hannes Haas </p>
+<p>2010-12-17 </p>
+<p>1.1.0 </p>
+<p>Added LDF 2.1 rules </p>
+<p>Renamed NmNodeType to </p>
+<p>NwmNodeType </p>
+<p>Hannes Haas </p>
+<p>2011-01-03 </p>
+<p>1.1.1. </p>
+<p>Improved Tx mode mappings by adding </p>
+<p>GenMsgCycleTimeFast to the examples </p>
+<p>Fixed issues in Send Type examples </p>
+<p>Hannes Haas </p>
+<p>2011-03-07 </p>
+<p>1.1.2 </p>
+<p>CONTROL Tx mode only supported for </p>
+<p>carry-back ECUs </p>
+<p>Hannes Haas </p>
+<p>2011-04-07 </p>
+<p>1.1.3 </p>
+<p>Release </p>
+<p>Hannes Haas </p>
+<p>2011-05-03 </p>
+<p>1.1.4 </p>
+<p>Changed definition of </p>
+<p>GenMsgNrOfRepetition to make it </p>
+<p>compliant with CANbedded </p>
+<p>Added TpOwnSystemEcuNumber for </p>
+<p>CANbedded projects </p>
+<p>Clarified handling of CONTROL signals </p>
+<p>Hannes Haas </p>
+<p>2011-07-27 </p>
+<p>1.2.0 </p>
+<p>Added Tx modes Dual Cycle with </p>
+<p>Trigger  </p>
+<p>Hannes Haas </p>
+<p>2012-02-10 </p>
+<p>1.3.0 </p>
+<p>Added additional CAN baud rate </p>
+<p>attributes </p>
+<p>Milena Shakir </p>
+<p>2012-11-14 </p>
+<p>1.4.0 </p>
+<p>Added attributes for Class C Network </p>
+<p>Management With Wakeup </p>
+<p>Milena Shakir </p>
+<p>2013-02-28 </p>
+<p>1.5.0 </p>
+<p>Updated description for NwmNodeType  </p>
+<p>and added chapter for diagnostic routing </p>
+<p>Milena Shakir </p>
+<p>2013-03-20 </p>
+<p>1.6.0 </p>
+<p>Updated chapter 3.2 regarding </p>
+<p>transmission mode control </p>
+<p>Milena Shakir </p>
+<p>2013-03-25 </p>
+<p>1.6.1 </p>
+<p>Minor adaptions after review </p>
+<p>(improvements) </p>
+<p>Hannes Haas </p>
+<p>2013-06-20 </p>
+<p>1.7.0 </p>
+<p>Clarified  ClassC Nm attribute usage for </p>
+<p>networks without wakeup </p>
+<p>Added rules for RoE diagnostics </p>
+<p>Hannes Haas </p>
+<p>2013-07-01 </p>
+<p>1.7.1 </p>
+<p>Minor clarifications and examples </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>3 / 28 </p>
+<p>Hannes Haas </p>
+<p>2013-09-11 </p>
+<p>1.7.2 </p>
+<p>Fixed RoE Example in chapter 3.7.1.1 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>4 / 28 </p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Source </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>Vector </p>
+<p>TechnicalReference_Asr_CanNm.pdf </p>
+<p> </p>
+<p>[2] </p>
+<p> </p>
+<p>Vector </p>
+<p>TechnicalReference_Asr_Com.pdf </p>
+<p> </p>
+<p>[3] </p>
+<p> </p>
+<p>Vector </p>
+<p>TechnicalReference_Asr_CanTp.pdf </p>
+<p> </p>
+<p>[4] </p>
+<p> </p>
+<p>Vector </p>
+<p>TechnicalReference_Asr_Dcm_Fiat.pdf </p>
+<p> </p>
+<p>[5] </p>
+<p> </p>
+<p>LIN </p>
+<p>LIN Standard </p>
+<p>2.1 </p>
+<p>[6] </p>
+<p> </p>
+<p>Vector </p>
+<p>Application </p>
+<p>Note </p>
+<p>AN-AND-1-106: </p>
+<p>Basic </p>
+<p>CAN </p>
+<p>Bit </p>
+<p>Timing </p>
+<p>Available from the vector.com download center </p>
+<p>2.0 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>5 / 28 </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Overview ......................................................................................................................... 7</b></p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction .................................................................................................................... 8</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Data Base Attributes........................................................................................ 8</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>DBC Attributes and Conventions ................................................................................ 10</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>General Attributes ......................................................................................... 10</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Attributes for COM Module ............................................................................ 11</p>
+<p> </p>
+<p>3.2.1</p>
+<p> </p>
+<p>Mapping of FGA Transmission Modes to DBC Attributes ............................... 12</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>Attributes for AUTOSAR Network Management ............................................ 16</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Attributes for FGA Class C Networks (Non-Gateway, Without Wakeup) ........ 17</p>
+<p> </p>
+<p>3.5</p>
+<p> </p>
+<p>Attributes for FGA Class C Network Management (with Wakeup) ................. 17</p>
+<p> </p>
+<p>3.6</p>
+<p> </p>
+<p>Attributes for FGA Class B Network Management (Slave) ............................. 18</p>
+<p> </p>
+<p>3.7</p>
+<p> </p>
+<p>Attributes for Diagnostic (DCM) ..................................................................... 19</p>
+<p> </p>
+<p>3.7.1</p>
+<p> </p>
+<p>Examples ...................................................................................................... 20</p>
+<p> </p>
+<p>3.7.1.1</p>
+<p> </p>
+<p>Enhanced UDS Communication ...................................................... 20</p>
+<p> </p>
+<p>3.7.1.2</p>
+<p> </p>
+<p>Legislative OBD Communication ..................................................... 22</p>
+<p> </p>
+<p>3.8</p>
+<p> </p>
+<p>Definition of XCP and application messages ................................................. 23</p>
+<p> </p>
+<p>3.9</p>
+<p> </p>
+<p>Definition of Update Bits ................................................................................ 23</p>
+<p> </p>
+<p>3.10</p>
+<p> </p>
+<p>Definition of Invalid Values ............................................................................ 23</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>LDF Rules and Conventions ........................................................................................ 24</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Definition of LIN Channel Name .................................................................... 24</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Definition of Update Bits ................................................................................ 24</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Definition of invalid values ............................................................................. 24</p>
+<p> </p>
+<p>4.3.1</p>
+<p> </p>
+<p>Example ........................................................................................................ 25</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>General Rules ............................................................................................................... 26</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Definition of AUTOSAR System Signals ........................................................ 26</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Definition of Routing Relations ...................................................................... 26</p>
+<p> </p>
+<p>5.2.1</p>
+<p> </p>
+<p>Signal Routing (by COM) .............................................................................. 26</p>
+<p> </p>
+<p>5.2.2</p>
+<p> </p>
+<p>Message Routing (IF Layer Routing by PDUR) ............................................. 26</p>
+<p> </p>
+<p>5.2.3</p>
+<p> </p>
+<p>Diagnostic Routing (TP Gateway Routing by PDUR) ..................................... 26</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Contact.......................................................................................................................... 28</b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>6 / 28 </p>
+<p><b>  </b></p>
+<p><b>Tables </b></p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>General Attributes ..................................................................................... 10</p>
+<p> </p>
+<p>Table 3-2 </p>
+<p> </p>
+<p>List of COM Data Base Attributes ............................................................. 12</p>
+<p> </p>
+<p>Table 3-3 </p>
+<p> </p>
+<p>List of NM Data Base Attributes ................................................................ 17</p>
+<p> </p>
+<p>Table 3-4 </p>
+<p> </p>
+<p>Class C Network Management ................................................................. 17</p>
+<p> </p>
+<p>Table 3-5 </p>
+<p> </p>
+<p>Class C Network Management ................................................................. 18</p>
+<p> </p>
+<p>Table 3-6 </p>
+<p> </p>
+<p>Class B Network Management ................................................................. 19</p>
+<p> </p>
+<p>Table 3-7 </p>
+<p> </p>
+<p>List of DCM Data Base Attributes .............................................................. 20</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>7 / 28 </p>
+<p><b>1 </b></p>
+<p><b>Overview </b></p>
+<p>This </p>
+<p>application </p>
+<p>note </p>
+<p>describes </p>
+<p>the </p>
+<p>CAN </p>
+<p>data </p>
+<p>base </p>
+<p>(DBC) </p>
+<p>attributes </p>
+<p>for </p>
+<p>the </p>
+<p>FGA </p>
+<p>AUTOSAR Stack. In the following chapter an introduction to the CAN data base and the </p>
+<p>CAN  data  base  attributes  is  provided.  In  a  further  chapter  the  relevant  CAN  data  base </p>
+<p>attributes for FGA are described in detail. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>8 / 28 </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>The CAN data base (DBC for short) describes the CAN communication between all ECUs </p>
+<p>in one network. For the description of multiple CAN networks in a vehicle a separate DBC </p>
+<p>file for each CAN network is necessary. </p>
+<p>Additionally the DBC format supports the possibility to describe any additional information </p>
+<p>via attributes, e.g. CAN baud rate. </p>
+<p>The  described  CAN  communication  and  the  attributes  within  a  DBC  file  are  used  to </p>
+<p>configure the embedded communication stack via the configuration tool GENy. GENy also </p>
+<p>generates the dynamic code part of this stack. Other Vector tools also use the DBC file as </p>
+<p>input format, e.g. the network simulation and analyzing tool CANoe. </p>
+<p>This </p>
+<p>document </p>
+<p>focuses </p>
+<p>on </p>
+<p>the </p>
+<p>necessary </p>
+<p>attributes </p>
+<p>and </p>
+<p>their </p>
+<p>values </p>
+<p>for </p>
+<p>correct </p>
+<p>configuration and code generation via GENy. </p>
+<p><b>2.1 </b></p>
+<p><b>Data Base Attributes </b></p>
+<p>Data  base  attributes  contain  additional  configuration-relevant  information,  e.g.  the  baud </p>
+<p>rate of a CAN network. As such information has always a specific context (e.g. baud rate is </p>
+<p>network specific) at creation time of an attribute the context (object type) has to be defined. </p>
+<p>The following list contains the relevant object types. </p>
+<p><b>&gt;  Network </b></p>
+<p>Attribute is network-specific and has to be configured only once in the DBC (as a DBC </p>
+<p>contains only a single network) </p>
+<p><b>&gt;  Node </b></p>
+<p>Attribute is node-specific and has to be set for each node in the network </p>
+<p><b>&gt;  Message </b></p>
+<p>Attribute is message-specific and has to be set for each message in the network </p>
+<p><b>&gt;  Signal </b></p>
+<p>Attribute is signal-specific and has to be set for each signal in the network </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The default value of a data base attribute is automatically set to all relevant objects at </p>
+<p>creation time of the attribute. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>There are four relevant different value types for data base attributes that are described in </p>
+<p>the following list: </p>
+<p><b>&gt;  Enumeration (Enum) </b></p>
+<p>Attribute can adopt a limited list of non-numeric values, e.g. No / Yes.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>9 / 28 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The names and the sorting order must be considered as defined in this document for </p>
+<p>each attribute (e.g. No = 0, Yes = 1). </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>&gt;  Hex </b></p>
+<p>Numeric attribute in a hexadecimal format </p>
+<p><b>&gt;  Integer </b></p>
+<p>Numeric attribute in an integer format </p>
+<p><b>&gt;  String </b></p>
+<p>Attribute can be any string </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>10 / 28 </p>
+<p><b>3 </b></p>
+<p><b>DBC Attributes and Conventions </b></p>
+<p>This  chapter  describes  the  definition  and  usage  of  the  attributes  used  for  the  FGA </p>
+<p>AUTOSAR  stack.  Please  also  refer  to  the  attribute  documentation  in  the  component-</p>
+<p>specific technical references. </p>
+<p>The  described  attribute  rules  are  backward  compatible  with  the  existing  CANbedded </p>
+<p>solution. </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>This document just gives an overview of attributes for a data base for FGA. For more </p>
+<p>detailed description on the attributes, please also refer to the attribute documentation in </p>
+<p>the component specific technical references. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>3.1 </b></p>
+<p><b>General Attributes </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Object Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>Baudrate </p>
+<p>Network </p>
+<p>Integer </p>
+<p>0..<b>500000</b>..1000000 </p>
+<p>CAN Baud rate of the network </p>
+<p>SamplePointMin </p>
+<p>Network </p>
+<p>Integer </p>
+<p>50..81..100 </p>
+<p>For details please refer to [6]: </p>
+<p>“Sample Point”. This </p>
+<p>parameter is optional. </p>
+<p>SamplePointMax </p>
+<p>Network </p>
+<p>Integer </p>
+<p>50..90..100 </p>
+<p>For details please refer to [6]: </p>
+<p>“Sample Point”. This </p>
+<p>parameter is optional. </p>
+<p>SyncJumpWidthMin </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..4 </p>
+<p>For details please refer to [6]: </p>
+<p>“Resynchronization Jump </p>
+<p>Width”. This parameter is </p>
+<p>optional. </p>
+<p>SyncJumpWidthMax </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..4 </p>
+<p>For details please refer to [6]: </p>
+<p>“Resynchronization Jump </p>
+<p>Width”. This parameter is </p>
+<p>optional. </p>
+<p>NBTMin </p>
+<p>Network </p>
+<p>Integer </p>
+<p>8..6..25 </p>
+<p>For details please refer to [6]: </p>
+<p>“Number of Time Quanta”. </p>
+<p>This parameter is optional. </p>
+<p>NBTMax </p>
+<p>Network </p>
+<p>Integer </p>
+<p>8..21..25 </p>
+<p>For details please refer to [6]: </p>
+<p>“Number of Time Quanta”. </p>
+<p>This parameter is optional. </p>
+<p>Manufacturer </p>
+<p>Network </p>
+<p>String </p>
+<p><b>Fiat </b></p>
+<p>Indicates OEM FGA. Value </p>
+<p>must be „Fiat“. </p>
+<p>DBName </p>
+<p>Network </p>
+<p>String </p>
+<p><b>CAN </b></p>
+<p>Specifies the name of the </p>
+<p>network.  </p>
+<p>Must be different for any CAN </p>
+<p>(and LIN) network within one </p>
+<p>ECU. </p>
+<p>Table 3-1  </p>
+<p>General Attributes </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>11 / 28 </p>
+<p><b>3.2 </b></p>
+<p><b>Attributes for COM Module </b></p>
+<p>The following table describes the relevant attributes for the FGA Autosar COM. </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and </b></p>
+<p><b>Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>GenMsgILSupport </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No </b>= 0 </p>
+<p>Yes = 1 </p>
+<p>Indicates that a message shall be </p>
+<p>handled by COM. If “Yes” is </p>
+<p>chosen the message will be </p>
+<p>handled by COM otherwise not. </p>
+<p> </p>
+<p>Please note for network </p>
+<p>management messages: </p>
+<p>For FGA Class C Nm messages </p>
+<p>(STATUS_C) this attribute shall be </p>
+<p>set to “Yes”. </p>
+<p>For FGA Class B NM or </p>
+<p>AUTOSAR NM messages that </p>
+<p>attribute shall be set to “No”. </p>
+<p>GenMsgSendType </p>
+<p>Message </p>
+<p>Enum </p>
+<p>Cyclic = 0, </p>
+<p>NotUsed,  </p>
+<p>NotUsed,  </p>
+<p>NotUsed,  </p>
+<p>NotUsed,  </p>
+<p>NotUsed,  </p>
+<p>NotUsed,  </p>
+<p>NotUsed,  </p>
+<p><b>NoMsgSendType = </b></p>
+<p><b>8 </b></p>
+<p>Specifies the Tx behavior if the I-</p>
+<p>PDU. Can be combined with any </p>
+<p>kind of GenSigSendType. </p>
+<p>GenSigSendType </p>
+<p>Signal </p>
+<p>Enum </p>
+<p>NotUsed,  </p>
+<p>OnWrite = 1, </p>
+<p>OnWriteWithRepetit</p>
+<p>ion = 2, </p>
+<p>OnChange = 3, </p>
+<p>OnChangeWithRep</p>
+<p>etition = 4, </p>
+<p>IfActive = 5, </p>
+<p>IfActiveWithRepeitio</p>
+<p>n = 6, </p>
+<p><b>NoSigSendType = </b></p>
+<p><b>7 </b></p>
+<p>Specified the Tx behavior if a </p>
+<p>Signal. OnChange and IfActive are </p>
+<p>only supported for signals &lt;= 4 </p>
+<p>Byte. </p>
+<p>Please note: The combination of </p>
+<p>transmission types with repetition </p>
+<p>and without repetition will result in </p>
+<p>the message being transmitted </p>
+<p>with repetition at any time. </p>
+<p>GenMsgCycleTime </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0</b>.. 65535 </p>
+<p>Time in ms between each cyclic </p>
+<p>transmission of a message. </p>
+<p>GenMsgCycleTimeFast </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0</b>.. 65535 </p>
+<p>Relevant for DualCycle and BAF </p>
+<p>messages: Time in ms between </p>
+<p>each cyclic transmission of a </p>
+<p>message if at least one </p>
+<p>IfActiveSignal has a different value </p>
+<p>as its default value. </p>
+<p>Relevant for messages with </p>
+<p>repetitions (i.e. </p>
+<p>GenMsgNrOfRepetition &gt; 0): Time </p>
+<p>between each repetition. </p>
+<p>GenSigStartValue </p>
+<p>Signal </p>
+<p>Integer </p>
+<p>Hex </p>
+<p><b>0x00</b>.. 0x7FFFFFFF </p>
+<p>This Value is the default value for </p>
+<p>the signal. </p>
+<p>The string value type can </p>
+<p>represent hexadecimal and integer </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>12 / 28 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and </b></p>
+<p><b>Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>values. </p>
+<p>GenSigInactiveValue </p>
+<p>Signal </p>
+<p>Integer </p>
+<p>Hex </p>
+<p><b>0x00</b>.. 0x7FFFFFFF </p>
+<p>Indicates the inactive value of a </p>
+<p>signal.  </p>
+<p>IfActive and IfActiveWithRepetition </p>
+<p>only supported for signals &lt;= 4 </p>
+<p>Byte. </p>
+<p>GenMsgDelayTime </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0</b>.. 65535 </p>
+<p>This is the minimum time in ms </p>
+<p>between the transmissions of </p>
+<p>different messages with the same </p>
+<p>identifier. </p>
+<p>GenMsgStartDelayTime </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0</b>.. 65535 </p>
+<p>This defines the time in ms </p>
+<p>between Com_IpduGroupStart </p>
+<p>and the first </p>
+<p>transmission of the cyclic part of </p>
+<p>this I-PDU. </p>
+<p>GenMsgNrOfRepetition </p>
+<p>Message </p>
+<p>Integer </p>
+<p>Hex </p>
+<p><b>0x00</b>.. 0xFF </p>
+<p>Number of confirmed transmit </p>
+<p>requests upon a triggering event. </p>
+<p>If the value is 0 or 1 the PDU will </p>
+<p>be transmitted once. </p>
+<p>The time between the repetitions </p>
+<p>has to be defined using the dbc </p>
+<p>attribute GenMsgCycleTimeFast. </p>
+<p>GenSigTimeoutTime_&lt;Ecu</p>
+<p>&gt; </p>
+<p>Signal </p>
+<p>Integer </p>
+<p><b>0</b>.. 65535 </p>
+<p>Timeout time in ms used for this </p>
+<p>signal received by a specific node. </p>
+<p>If different GenSigTimeoutTime </p>
+<p>values are configured for a </p>
+<p>message and update bits are not </p>
+<p>used, the lowest timeout time </p>
+<p>(strongest definition) is used for </p>
+<p>timeout monitoring. </p>
+<p>A dedicated attribute definition </p>
+<p>(GenSigTimeoutTime_&lt;Ecu&gt;) has </p>
+<p>to be provided for every ECU </p>
+<p>receiving this signal. </p>
+<p>Table 3-2  </p>
+<p>List of COM Data Base Attributes </p>
+<p> </p>
+<p><b>3.2.1 </b></p>
+<p><b>Mapping of FGA Transmission Modes to DBC Attributes </b></p>
+<p>For all transmission modes the attribute </p>
+<p><b>&gt; </b> GenMsgILSupport = Yes </p>
+<p>shall be set. </p>
+<p><b>Periodic </b></p>
+<p><b>&gt; </b> GenMsgSendType = Cyclic </p>
+<p><b>&gt; </b> GenMsgCycleTime = Cycle time </p>
+<p><b>&gt; </b> GenMsgStartDelayTime = Optional </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>13 / 28 </p>
+<p><b>&gt; </b> GenMsgDelayTime = Optional </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigSendType = All signals have to be set to NoSigSendType </p>
+<p><b>Periodic/Event CONTROL and Event CONTROL </b></p>
+<p>These transmission modes are supported by carry-back ECUs only. These rules must be </p>
+<p>applied as soon as soon a message includes at least one CONTROL signal. </p>
+<p><b>&gt; </b> NmType = Fiat_Class_C or FIAT </p>
+<p><b>&gt; </b> GenMsgSendType = NoMsgSendType </p>
+<p><b>&gt; </b> GenSigSendType = All signals have to be set to NoSigSendType including signals that </p>
+<p>are actually STATUS signals. </p>
+<p><b>Application Task: </b>The transmission has to be triggered by the application manually. For </p>
+<p>this purpose the application has to use the API Com_TriggerIPDUSend. </p>
+<p><b>Periodic/Event STATUS and Cyclic on Change </b></p>
+<p><b>&gt; </b> GenMsgSendType = Cyclic </p>
+<p><b>&gt; </b> GenMsgCycleTime = Cycle time </p>
+<p><b>&gt; </b> GenMsgStartDelayTime = Optional </p>
+<p><b>&gt; </b> GenMsgDelayTime = Optional </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigSendType = NoSigSendType for signals that cannot trigger the transmission. </p>
+<p>Signals that can trigger the message transmission shall be set to OnChange or </p>
+<p>OnChangeWithRepetition. Within one message OnChange and </p>
+<p>OnChangeWithRepetition must not be combined.  </p>
+<p><b>&gt; </b> GenMsgNrOfRepetition = If signal sent type is OnChangeWithRepetition only. </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Time between each repetition. Only required if sent type is </p>
+<p>OnChangeWithRepetition. </p>
+<p>Event STATUS and On Change </p>
+<p><b>&gt; </b> GenMsgSendType = NoMsgSendType </p>
+<p><b>&gt; </b> GenMsgDelayTime = Optional </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigSendType = NoSigSendType for signals that cannot trigger the transmission. </p>
+<p>Signals that can trigger the message transmission shall be set to OnChange or </p>
+<p>OnChangeWithRepetition. Within one message OnChange and </p>
+<p>OnChangeWithRepetition must not be combined. </p>
+<p><b>&gt; </b> GenMsgNrOfRepetition = Required if signal sent type is OnChangeWithRepetition. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>14 / 28 </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Time between each repetition. Only required if sent type is </p>
+<p>OnChangeWithRepetition.</p>
+<p> </p>
+<p><b>Spontaneous </b></p>
+<p><b>&gt; </b> GenMsgSendType = NoMsgSendType </p>
+<p><b>&gt; </b> GenMsgDelayTime = Optional  </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigSendType = NoSigSendType for signals that cannot trigger the transmission. </p>
+<p>Signals that can trigger the message transmission shall be set to OnWrite or </p>
+<p>OnWriteWithRepetition. Within one message OnWrite and OnWriteWithRepetition must </p>
+<p>not be combined. </p>
+<p><b>&gt; </b> GenMsgNrOfRepetition = Required if signal sent type is OnWriteWithRepetition. </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Time between each repetition. Only required if sent type is </p>
+<p>OnChangeWithRepetition. </p>
+<p><b>Event on message reception </b></p>
+<p><b>&gt; </b> GenMsgSendType = NoMsgSendType </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigSendType = One signal shall be OnWrite which is used to trigger the message </p>
+<p>transmission. All other signals shall be set to NoSigSendType. </p>
+<p><b>&gt; </b> GenMsgNrOfRepetition = If signal sent type is OnChangeWithRepetition only </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Time between each repetition. Only required if send type is </p>
+<p>OnChangeWithRepetition. </p>
+<p><b>Application Task: </b>The Rx Confirmation of the request message has to be used to trigger </p>
+<p>the  transmission  of  the  EM  message.  By  writing  to  the  signal  with Tx  type  OnWrite  the </p>
+<p>transmission is triggered. </p>
+<p><b>Multi Message </b></p>
+<p><b>&gt; </b> GenMsgSendType = NoMsgSendType </p>
+<p><b>&gt; </b> GenSigSendType = One signal shall be OnWrite which is used to trigger the message </p>
+<p>transmission. All other signals shall be set to NoSigSendType </p>
+<p><b>Application Task: </b>Application has to trigger the next segment within the TxConfirmation of </p>
+<p>a signal within this message. The message segmentation has to be implemented by the </p>
+<p>application. A Signal Group may be used in order to indicate that the signals have to be </p>
+<p>kept consistently. </p>
+<p><b>By Active Function (BAF) </b></p>
+<p><b>&gt; </b> GenMsgSendType = NoMsgSendType </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Cycle time if at least one signal with GenSidSendType </p>
+<p>IfActive has a value different to GenSigInactiveValue. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>15 / 28 </p>
+<p><b>&gt; </b> GenMsgStartDelayTime = Optional </p>
+<p><b>&gt; </b> GenMsgNrOfRepetition = Number of transmissions </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigInactiveValue = Default value of the signal </p>
+<p><b>&gt; </b> GenSigSendType = IfActiveWithRepetition </p>
+<p><b>Dual Cycle </b></p>
+<p><b>&gt; </b> GenMsgSendType = Cyclic </p>
+<p><b>&gt; </b> GenMsgCycleTime = Cycle time that is used if all signal with GenSidSendType IfActive </p>
+<p>have a value equal to GenSigInactiveValue. </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Cycle time if at least one signal with GenSidSendType </p>
+<p>IfActive has a value different to GenSigInactiveValue. </p>
+<p><b>&gt; </b> GenMsgStartDelayTime = Optional </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigInactiveValue = Default value of the signal </p>
+<p><b>&gt; </b> GenSigSendType = IfActive </p>
+<p>Dual Cycle plus On Change (DCOC) </p>
+<p><b>&gt; </b> GenMsgSendType = Cyclic </p>
+<p><b>&gt; </b> GenMsgCycleTime = Cycle time that is used if all signal with GenSidSendType IfActive </p>
+<p>have a value equal to GenSigInactiveValue. </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Cycle time if at least one signal with GenSidSendType </p>
+<p>IfActive has a value different to GenSigInactiveValue. </p>
+<p><b>&gt; </b> GenMsgStartDelayTime = Optional </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigInactiveValue = Default value of the signal </p>
+<p><b>&gt; </b> GenSigSendType = Signals switching the cycle shall be set to IfActive. Signals that </p>
+<p>shall trigger the transmission shall be set to OnChange.   </p>
+<p>Dual Cycle plus On Change With Repetitions (DCOCrep) </p>
+<p><b>&gt; </b> GenMsgSendType = Cyclic </p>
+<p><b>&gt; </b> GenMsgCycleTime = Cycle time that is used if all signal with GenSidSendType IfActive </p>
+<p>have a value equal to GenSigInactiveValue. </p>
+<p><b>&gt; </b> GenMsgCycleTimeFast = Cycle time if at least one signal with GenSidSendType </p>
+<p>IfActive has a value different to GenSigInactiveValue. Time between each repetition. </p>
+<p><b>&gt; </b> GenMsgStartDelayTime = Optional </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>16 / 28 </p>
+<p><b>&gt; </b> GenMsgNrOfRepetition = Number of transmissions </p>
+<p><b>&gt; </b> GenSigTimeoutTime = Optional </p>
+<p><b>&gt; </b> GenSigInactiveValue = Default value of the signal </p>
+<p><b>&gt; </b> GenSigSendType = Signals switching the cycle shall be set to IfActive. Signals that </p>
+<p>shall trigger the transmission shall be set to OnChangeWithRepetitions. </p>
+<p><b>3.3 </b></p>
+<p><b>Attributes for AUTOSAR Network Management </b></p>
+<p>The following table provides a list of data base attributes that shall be used if the CANNM </p>
+<p>is used on a network. </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and </b></p>
+<p><b>Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>NmType </p>
+<p>Network </p>
+<p>String </p>
+<p>NmAsr </p>
+<p>This attribute defines the type of </p>
+<p>the NM. Must be set to “<b>NmAsr</b>” </p>
+<p>for AUTOSAR NM networks. </p>
+<p>NmAsrNode </p>
+<p>Node </p>
+<p>Enum </p>
+<p>No = 0, </p>
+<p><b>Yes </b>= 1 </p>
+<p>This attribute defines if the </p>
+<p>corresponding node uses the </p>
+<p>AUTOSAR NM (“<b>Yes</b>”) on this </p>
+<p>channel or not (“<b>No</b>”). </p>
+<p>NmAsrTimeoutTime </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..<b>1000</b>.. 65535 </p>
+<p>This attribute defines the NM </p>
+<p>Network Timeout Time </p>
+<p>NmAsrWaitBusSleepTime </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..<b>750</b>.. 65535 </p>
+<p>This attribute defines the Wait Bus </p>
+<p>Sleep Time </p>
+<p>NmAsrRepeatMessageTime </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..<b>800</b>.. 65535 </p>
+<p>This attribute defines the Repeat </p>
+<p>MessageTime </p>
+<p>NmAsrMessage </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No = 0, </b></p>
+<p>Yes = 1 </p>
+<p>This attribute identifies a message </p>
+<p>as AUTOSAR NM message </p>
+<p>(“<b>yes</b>”). </p>
+<p>NmAsrMessageCount </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..<b>64</b>..256 </p>
+<p>This attribute defines the </p>
+<p>maximum number of AUTOSAR </p>
+<p>NM messages received by the NM </p>
+<p>(message range) </p>
+<p>Value must be 2 to the power of n </p>
+<p>and n has to be natural number </p>
+<p>NmAsrBaseAddress </p>
+<p>Network </p>
+<p>Hex </p>
+<p><b>0xE094000</b>.. </p>
+<p>0x7FFFFFFF </p>
+<p>Base address of the NM </p>
+<p>messages; Identifies together with </p>
+<p>NmAsrMessageCount the NM </p>
+<p>message range: </p>
+<p>&lt;NmAsrBaseAddress&gt;.. </p>
+<p>&lt;NmAsrBaseAddress + </p>
+<p>NmAsrMessageCount - 1&gt; </p>
+<p>Value must be an integer multiple </p>
+<p>of NmAsrMessageCount </p>
+<p>NmAsrCanMsgCycleTime </p>
+<p>Network </p>
+<p>Integer </p>
+<p>1..<b>200</b>.. 65535 </p>
+<p>NM message cycle time </p>
+<p>NmAsrCanMsgReducedTime </p>
+<p>Node </p>
+<p>Integer </p>
+<p>1..<b>100</b>.. 65535 </p>
+<p>Message time for Bus Load </p>
+<p>Reduction. This attribute is node </p>
+<p>specific and has to be greater or </p>
+<p>equal to ½ * </p>
+<p>NmAsrCanMsgCycleTime </p>
+<p>but less than </p>
+<p>NmAsrCanMsgCycleTime </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>17 / 28 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and </b></p>
+<p><b>Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>NmAsrCanMsgCycleOffset </p>
+<p>Node </p>
+<p>Integer </p>
+<p><b>0</b>.. 65535 </p>
+<p>NM message transmission offset. </p>
+<p>Has to be set less than </p>
+<p>NmAsrCanMsgCycleTime. </p>
+<p>NmAsrNodeIdentifier </p>
+<p>Node </p>
+<p>Hex </p>
+<p><b>0x00</b>..0xFF </p>
+<p>Default address of Arbitrary </p>
+<p>Address Capable nodes. </p>
+<p>Node ID as used in the NID of the </p>
+<p>NM message (if used) </p>
+<p>Table 3-3  </p>
+<p>List of NM Data Base Attributes </p>
+<p><b>3.4 </b></p>
+<p><b>Attributes for FGA Class C Networks (Non-Gateway, Without Wakeup) </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>NmType </p>
+<p>Network </p>
+<p>String </p>
+<p>Fiat_Class_C </p>
+<p>This attribute defines the type </p>
+<p>of the NM. </p>
+<p>Must be set to “<b>Fiat_Class_C</b>” </p>
+<p>for ClassC networks. </p>
+<p> </p>
+<p>No further NM attributes are </p>
+<p>required. The STATUS_C </p>
+<p>message shall be assigned to </p>
+<p>COM (GenMsgILSupport = </p>
+<p>Yes). </p>
+<p>NmNode </p>
+<p>Node </p>
+<p>Enum </p>
+<p>No = 0, </p>
+<p><b>Yes = 1 </b></p>
+<p>Attribute must always be set to </p>
+<p>“<b>No</b>” for nodes without wakeup </p>
+<p>capability. </p>
+<p>NwmNodeType </p>
+<p>Node </p>
+<p>Enum </p>
+<p>kMaster = 0,  </p>
+<p>kSlave15 = 1,  </p>
+<p>kSlave30 = 2,  </p>
+<p><b>none = 3 </b></p>
+<p> </p>
+<p>Attribute must always be set to </p>
+<p>“<b>none</b>”. </p>
+<p>Table 3-4  </p>
+<p>Class C Network Management </p>
+<p>Additionally  a  cyclic  STATUS_C  message  may  be  transmitted  as  application  message </p>
+<p>(chapter 3.2): </p>
+<p><b>&gt; </b> GenMsgILSupport == Yes </p>
+<p><b>&gt; </b> NmMessage == No (or undefined)  </p>
+<p><b>&gt; </b> NmAsrMessage == No (or undefined) </p>
+<p> </p>
+<p><b>3.5 </b></p>
+<p><b>Attributes for FGA Class C Network Management (with wakeup) </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>NmType </p>
+<p>Network </p>
+<p>String </p>
+<p>Fiat_Class_C </p>
+<p>This attribute defines the type </p>
+<p>of the NM. </p>
+<p>Must be set to “<b>Fiat_Class_C</b>” </p>
+<p>for ClassC networks. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>18 / 28 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>NmNode </p>
+<p>Node </p>
+<p>Enum </p>
+<p>No = 0, </p>
+<p><b>Yes = 1 </b></p>
+<p>This attribute defines if the </p>
+<p>corresponding node uses the </p>
+<p>FGA ClassC Network </p>
+<p>Management (with wakeup) or </p>
+<p>not </p>
+<p>NwmNodeType </p>
+<p>Node </p>
+<p>Enum </p>
+<p>kMaster = 0,  </p>
+<p>kSlave15 = 1,  </p>
+<p>kSlave30 = 2,  </p>
+<p><b>none = 3 </b></p>
+<p> </p>
+<p>If the node is a ClassC   </p>
+<p>Wakeup Master node the </p>
+<p>attribute must be set to </p>
+<p>“<b>kMaster</b>”. If the node is a </p>
+<p>Wakeup Slave Node the </p>
+<p>attribute shall be set </p>
+<p>“<b>kSlave30</b>”. </p>
+<p>Nodes without wakeup </p>
+<p>capability shall be defined </p>
+<p>according to chapter 3.4. </p>
+<p>NmMessage </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No = 0, </b></p>
+<p>Yes = 1 </p>
+<p>This attribute defines that a </p>
+<p>message is a FGA Class C </p>
+<p>Network Management </p>
+<p>message. The ClassC NM </p>
+<p>Wakeup message must be set </p>
+<p>to “<b>Yes</b>” </p>
+<p>Table 3-5  </p>
+<p>Class C Network Management </p>
+<p>The WAKE_C NM message shall be defined as follows: </p>
+<p><b>&gt; </b> NmMessage == Yes </p>
+<p><b>&gt; </b> NmAsrMessage == No (or undefined) </p>
+<p><b>&gt; </b> GenMsgILSupport == No </p>
+<p><b>&gt; </b> Slave Nodes only: The message shall contain a signal named “WakeUpNodeAddress”. </p>
+<p>The initial value (GenSigStartValue) defines the nodes wakeup address. Master nodes </p>
+<p>do not require this signal. </p>
+<p> </p>
+<p>Additionally  a  cyclic  STATUS_C  message  may  be  transmitted  as  application  message </p>
+<p>(chapter 3.2): </p>
+<p><b>&gt; </b> GenMsgILSupport == Yes </p>
+<p><b>&gt; </b> NmMessage == No (or undefined)  </p>
+<p><b>&gt; </b> NmAsrMessage == No (or undefined) </p>
+<p> </p>
+<p><b>3.6 </b></p>
+<p><b>Attributes for FGA Class B Network Management (Slave) </b></p>
+<p>The following rules are applicable for Clamp15 and Clamp30 ECUs as long as not stated </p>
+<p>otherwise. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>19 / 28 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>NmType </p>
+<p>Network </p>
+<p>String </p>
+<p>FIAT </p>
+<p>This attribute defines the type </p>
+<p>of the NM. </p>
+<p>Must be set to “<b>FIAT</b>” for </p>
+<p>ClassB networks. </p>
+<p>NmNode </p>
+<p>Node </p>
+<p>Enum </p>
+<p>No = 0, </p>
+<p><b>Yes </b>= 1 </p>
+<p>Defines that the related node </p>
+<p>makes use of the NM module </p>
+<p>(“<b>Yes</b>”) or not (“<b>No</b>”). </p>
+<p>NwmNodeType </p>
+<p>Node </p>
+<p>Enum </p>
+<p>kMaster = 0, </p>
+<p>kSlave15 = 1, </p>
+<p>kSlave30 = 2, </p>
+<p><b>none </b>= 3 </p>
+<p>Specifies the ClassB NM </p>
+<p>mode use on this channel (i.e. </p>
+<p>Slave Clamp 30 or Slave </p>
+<p>Clamp 15).  </p>
+<p>NmStationAddress </p>
+<p>Node </p>
+<p>Hex </p>
+<p>0x00..0xFF </p>
+<p>Station address of the NM </p>
+<p>node. Only relevant for Master </p>
+<p>nodes. </p>
+<p>NmMessage </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No = 0, </b></p>
+<p>Yes = 1 </p>
+<p>Defines that the related </p>
+<p>message is a NM message </p>
+<p>(“<b>Yes</b>”). </p>
+<p>Table 3-6  </p>
+<p>Class B Network Management </p>
+<p>The  user-data  contained  in  the  NM  message  will  be  written  to  the  message  by  the  NM </p>
+<p>module. </p>
+<p> </p>
+<p><b>3.7 </b></p>
+<p><b>Attributes for Diagnostic (DCM) </b></p>
+<p>The following data base attributes are utilized to configure the DCM and CANTP modules. </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>DiagState </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No </b>= 0, </p>
+<p>Yes = 1 </p>
+<p>Set to &quot;<b>yes</b>&quot; for: </p>
+<p>- Enhanced UDS Functional </p>
+<p>request </p>
+<p>- OBD request </p>
+<p>DiagRequest </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No </b>= 0, </p>
+<p>Yes = 1 </p>
+<p>Set to &quot;<b>yes</b>&quot; for: </p>
+<p>- Enhanced UDS Physical </p>
+<p>Request </p>
+<p>- Flow Control PDU used for </p>
+<p>OBD Responses </p>
+<p>DiagResponse </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No </b>= 0, </p>
+<p>Yes = 1 </p>
+<p>Set to &quot;<b>yes</b>&quot; for: </p>
+<p>- Enhanced UDS Response </p>
+<p>- OBD Responses </p>
+<p>DiagRoeResponse </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No </b>= 0, </p>
+<p>Yes = 1 </p>
+<p>Optional attribute required for </p>
+<p>networks with RoE service. </p>
+<p>Set to &quot;<b>yes</b>&quot; for: </p>
+<p>- RoE Response (transmitted </p>
+<p>by ECUs supporting RoE) </p>
+<p>DiagRoeFlowControl </p>
+<p>Message </p>
+<p>Enum </p>
+<p><b>No </b>= 0, </p>
+<p>Yes = 1 </p>
+<p>Optional attribute required for </p>
+<p>networks with RoE service. </p>
+<p>Set to “<b>yes</b>” for: </p>
+<p>- RoE Flow Control </p>
+<p>(transmitted by Tester) </p>
+<p>DiagConnection </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0x00</b>..0xFFFF </p>
+<p>Groups DiagRequest and </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>20 / 28 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Type </b></p>
+<p><b>Values and Ranges </b></p>
+<p>(<b>Bold = </b>default) </p>
+<p><b>Description </b></p>
+<p>Hex </p>
+<p>DiagResponse and RoE </p>
+<p>messages to a connection. </p>
+<p>RoE Response and RoE Flow </p>
+<p>Control message shall have </p>
+<p>the same DiagConnection </p>
+<p>value as the related enhanced </p>
+<p>UDS Request and Response. </p>
+<p>The value shall be derived as </p>
+<p>follows: </p>
+<p>&lt;TesterAddress&gt;&lt;ServerAddr</p>
+<p>ess&gt;. </p>
+<p>IsOBDrelevant </p>
+<p>Node </p>
+<p>Enum </p>
+<p><b>No = 0, </b></p>
+<p>Yes = 1 </p>
+<p>Specifies if an ECU is OBD-</p>
+<p>relevant (“<b>Yes</b>”) or not (“<b>No</b>”). </p>
+<p>If set, the Source Address F1 </p>
+<p>will be interpreted as OBD </p>
+<p>Request. Otherwise Request, </p>
+<p>Response and Functional </p>
+<p>Request will be handled as </p>
+<p>enhanced UDS. </p>
+<p>TpOwnSystemEcuNumber </p>
+<p>Node </p>
+<p>Integer </p>
+<p>Hex </p>
+<p> </p>
+<p><b>0x00</b>..0xFF </p>
+<p>Optional Attribute. Used by the </p>
+<p>CANbedded (non AUTOSAR) </p>
+<p>tool chain only. Will be ignored </p>
+<p>by AUTOSAR tools. </p>
+<p>This value provides the ECU </p>
+<p>Number, necessary for setting </p>
+<p>up the Tx CAN ID using </p>
+<p>Normal Fixed TP addressing. </p>
+<p>Table 3-7  </p>
+<p>List of DCM Data Base Attributes</p>
+<p> </p>
+<p><b>3.7.1 </b></p>
+<p><b>Examples </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>These examples assume that the enhanced UDS tester ID is 0xF4 as defined by FGA </p>
+<p>for AUTOSAR projects. Carry back projects use the tester ID 0xF1. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>3.7.1.1 </b></p>
+<p><b>Enhanced UDS Communication </b></p>
+<p>Example of DBC attributes for a communication between the Tester tool (0xF4) and one </p>
+<p>Node (0x12): </p>
+<p><b>Enhanced UDS Request (also used as Flow Control for Response): </b></p>
+<p><b>&gt; </b> DiagState = No </p>
+<p><b>&gt; </b> DiagRequest = Yes </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p><b>&gt; </b> DiagRoeResponse = No </p>
+<p><b>&gt; </b> DiagRoeFlowControl = No </p>
+<p><b>&gt; </b> DiagConnection = F412 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>21 / 28 </p>
+<p>Note: CANID is 0x18DA12F4 </p>
+<p> </p>
+<p><b>Enhanced UDS Response (also used as Flow Control for Request): </b></p>
+<p><b>&gt; </b> DiagState = No </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<p><b>&gt; </b> DiagResponse = Yes </p>
+<p><b>&gt; </b> DiagRoeResponse = No </p>
+<p><b>&gt; </b> DiagRoeFlowControl = No </p>
+<p><b>&gt; </b> DiagConnection = F412 </p>
+<p>Note: CANID is 0x18DAF412 </p>
+<p> </p>
+<p><b>Functional Request </b></p>
+<p><b>&gt; </b> DiagState = Yes </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p><b>&gt; </b> DiagRoeResponse = No </p>
+<p><b>&gt; </b> DiagRoeFlowControl = No </p>
+<p><b>&gt; </b> DiagConnection = F4FE </p>
+<p>Note: CANID is 0x18DBFEF4 </p>
+<p><b> </b></p>
+<p><b>RoE Response (Optional): </b></p>
+<p><b>&gt; </b> DiagState = No </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p><b>&gt; </b> DiagRoeResponse = Yes </p>
+<p><b>&gt; </b> DiagRoeFlowControl = Now </p>
+<p><b>&gt; </b> DiagConnection = F412 </p>
+<p>Note: CANID is different to the enhanced UDS Response: 0x18DAF412 </p>
+<p> </p>
+<p><b>RoE Flow Control (Optional): </b></p>
+<p><b>&gt; </b> DiagState = No </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>22 / 28 </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p><b>&gt; </b> DiagRoeResponse = No </p>
+<p><b>&gt; </b> DiagRoeFlowControl = Yes </p>
+<p><b>&gt; </b> DiagConnection = F412 </p>
+<p><b>&gt; </b> Note: CANID is different to the enhanced UDS Request: 0x18DA12F4 </p>
+<p> </p>
+<p><b>3.7.1.2 </b></p>
+<p><b>Legislative OBD Communication </b></p>
+<p>Example  of  DBC  attributes  for  a  communication  between  the  OBD  tool  (0xF1)  and  one </p>
+<p>Node (0x12): </p>
+<p><b>OBD Request (Functional): </b></p>
+<p><b>&gt; </b> DiagState = Yes </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p><b>&gt; </b> DiagConnection = F133 </p>
+<p>Note: CANID is 0x18DB33F1 </p>
+<p> </p>
+<p><b>OBD Response: </b></p>
+<p><b>&gt; </b> DiagState = No </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<p><b>&gt; </b> DiagResponse = Yes </p>
+<p><b>&gt; </b> DiagConnection = F112 </p>
+<p>Note: CANID is 0x18DAF112 </p>
+<p> </p>
+<p><b>Flow Control Frame for OBD Response </b></p>
+<p><b>&gt; </b> DiagState = No </p>
+<p><b>&gt; </b> DiagRequest = Yes </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p><b>&gt; </b> DiagConnection = F112 </p>
+<p>Note: CANID is 0x18DA12F1 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>23 / 28 </p>
+<p><b>3.8 </b></p>
+<p><b>Definition of XCP and application messages </b></p>
+<p>If a message shall be handled by a non AUTOSAR module – such as XCP or another CDD </p>
+<p>– the message shall not be assigned to any of the layers such as COM, DCM or network </p>
+<p>management. </p>
+<p>The following attributes must be set as defined: </p>
+<p><b>&gt; </b> GenMsgILSupport = No </p>
+<p><b>&gt; </b> NmMessage = No (or attribute not available) </p>
+<p><b>&gt; </b> NmAsrMessage = No (or attribute not available) </p>
+<p><b>&gt; </b> DiagState = No (or not available) </p>
+<p><b>&gt; </b> DiagRequest = No </p>
+<p><b>&gt; </b> DiagResponse = No </p>
+<p>Furthermore  one  signal  shall  be  defined  in  the  message  that  spans  over  the  complete </p>
+<p>message. The signal has to be used for the Rx mapping of the message in the DBC file. </p>
+<p><b>3.9 </b></p>
+<p><b>Definition of Update Bits </b></p>
+<p>In order to use update bits in the  DBC file a naming convention has been defined. The </p>
+<p>update bit is therefore defined as an independent signal with some specific characteristics. </p>
+<p>Update bits can be used for signals and signal groups.  </p>
+<p><b>&gt; </b> GenMsgILSupport = Yes </p>
+<p><b>&gt; </b> The update bit of the signal (or signal group) with the name &lt;X&gt; is configured as a </p>
+<p>further signal with the name &lt;X&gt;_UB </p>
+<p><b>&gt; </b> The update bit &lt;X&gt;_UB signal must be in the same message as the signal (or signal </p>
+<p>group) &lt;X&gt; </p>
+<p><b>&gt; </b> The update bit “signal” shall have a bit size of 1bit. </p>
+<p><b>&gt; </b> GenSigSendType shall be NoSigSendType for the update bit. </p>
+<p>In the system description this update bit signal will be modelled as an AUTOSAR update </p>
+<p>bit (i.e. the signal definition will be removed and an update bit will be added). </p>
+<p><b>3.10 </b></p>
+<p><b>Definition of Invalid Values </b></p>
+<p>If the AUTOSAR mechanism of an invalid value shall be used for a signal, the DBC value </p>
+<p>table has to be extended by a value description called “SNA”. The value defined for this </p>
+<p>description will be used as invalid value by all ECUs sending or receiving this signal. </p>
+<p>If a signal has no SNA description in the value table, the invalid value feature will not be </p>
+<p>used for this signal. </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>24 / 28 </p>
+<p><b>4 </b></p>
+<p><b>LDF Rules and Conventions </b></p>
+<p>The FGA AUTOSAR Stack shall use an LDF file according to LIN 2.1.  In the LDF file, the </p>
+<p>following elements have to be set as follows (see [5]): </p>
+<p>LIN_protocol_version = &quot;2.1&quot;; </p>
+<p>LIN_language_version = &quot;2.1&quot;; </p>
+<p>This  chapter  defines  additional  requirements  to  this  standard  in  order  to  be  able  to </p>
+<p>configure some AUTOSAR related features that are not available in the LDF. </p>
+<p><b>4.1 </b></p>
+<p><b>Definition of LIN Channel Name </b></p>
+<p>The  LIN  Channel  Name  shall  be  defined  in  all  LDF  files  by  using  the  LDF  description </p>
+<p>element  ‘Channel_name’  (see  [5]).  The  channel  name  must  be  unique  over  all  CAN </p>
+<p>(DBName attribute) and LIN channels. </p>
+<p><b>4.2 </b></p>
+<p><b>Definition of Update Bits </b></p>
+<p>The LIN Master Node (AUTOSAR ECU) shall be able to support update bits (e.g. for CAN </p>
+<p>to LIN signal routing). In order to use update bits in the LDF file a naming convention has </p>
+<p>been  defined.  The  update  bit  is  defined  as  an  independent  signal  with  some  specific </p>
+<p>characteristics.  </p>
+<p><b>&gt; </b> The update bit of the signal with the name &lt;X&gt; is configured as a further signal with the </p>
+<p>name &lt;X&gt;_UB </p>
+<p><b>&gt; </b> The update bit &lt;X&gt;_UB signal must be in the same message as the signal &lt;X&gt; </p>
+<p><b>&gt; </b> The update bit “signal” shall have a bit size of 1bit. </p>
+<p><b>&gt; </b> The default value shall be 0 (required for the LIN Slaves that handle update bits as </p>
+<p>ordinary signals) </p>
+<p>In the system description, this update bit signal will be modelled as an AUTOSAR update </p>
+<p>bit (i.e. the signal definition will be removed and an update bit will be added). </p>
+<p>LIN Slaves will read the LDF directly and will handle the Update Bits as an ordinary signal </p>
+<p>which has to be evaluated manually before reading the actual signal. </p>
+<p><b>4.3 </b></p>
+<p><b>Definition of invalid values </b></p>
+<p>In order to allow the invalidation of LIN Signals by the LIN Master node the LDF element </p>
+<p>‘Signal_encoding_types’  (see  [5])  shall  be used. The  value that  shall  be  used as  invalid </p>
+<p>value shall have the name ‘SNA’. This is similar to the solution on CAN where value tables </p>
+<p>are used. </p>
+<p>The  LIN  slaves  will  handle  this  “SNA”  value  as  a  normal  signal  value  that  must  be </p>
+<p>considered as invalid. This will be handled by the LIN Slave application manually. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>25 / 28 </p>
+<p><b>4.3.1 </b></p>
+<p><b>Example </b></p>
+<p>Signal_encoding_types { </p>
+<p>    FrontLeftSwitchStatus_Sig_Type { </p>
+<p>        physical_value, 0, 2, 1, 0; </p>
+<p>        logical_value, 2, &quot;down&quot;; </p>
+<p>        <b>logical_value, 3, &quot;SNA&quot;;</b></p>
+<p> </p>
+<p>}</p>
+<p> </p>
+<p>} </p>
+<p> </p>
+<p>Signal_representation { </p>
+<p>    FrontLeftSwitchStatus_Sig_Type : FrontLeftSwitchStatus; </p>
+<p>}</p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>26 / 28 </p>
+<p><b>5 </b></p>
+<p><b>General Rules </b></p>
+<p>These rules apply for LDF and DBC files in the same way. </p>
+<p><b>5.1 </b></p>
+<p><b>Definition of AUTOSAR System Signals </b></p>
+<p>AUTOSAR specifies a so called “Signal Fan-out” which is implemented by the RTE.  </p>
+<p>Using this mechanism allows the application to write to a single SWC data element which </p>
+<p>is then transmitted using several COM Signals. I.e. the signal is transmitted on e.g. within </p>
+<p>several messages on several networks. </p>
+<p>In  order  to  configure  this  mechanism  using  DBC  and  LDF  files  a  naming  convention  is </p>
+<p>used: </p>
+<p>If a node transmits several signals (n) with the same signal name, the same signal size </p>
+<p>and (if available) the same value table, n COM signals will be created but only a single </p>
+<p>system  signal.  If  the  RTE  accesses  the  system  signal  a  fan-out  resp.  fan-in  will  be </p>
+<p>generated that writes the signal value to all n COM signals. </p>
+<p>The mechanism is supported for LDF and DBC (GenMsgILSupport = Yes) signals. </p>
+<p><b>5.2 </b></p>
+<p><b>Definition of Routing Relations </b></p>
+<p>Routing relations between messages and signals of DBC and LDF files are to be defined </p>
+<p>as follows. </p>
+<p><b>5.2.1 </b></p>
+<p><b>Signal Routing (by COM) </b></p>
+<p>Signal routing relations between two signals (in different messages) is defined by an equal </p>
+<p>signal name in the DBC or LDF fie.  </p>
+<p>When  routing  signal  groups,  a  routing  relation  between  any  GroupSignal  has  to  be </p>
+<p>established.  The  tooling  will  automatically  detect  a  routing  between  the  SignalGroup  if </p>
+<p>applicable. </p>
+<p><b>5.2.2 </b></p>
+<p><b>Message Routing (IF Layer Routing by PDUR) </b></p>
+<p>Routing relations between two messages (on different networks) are defined by an equal </p>
+<p>message name in the DBC or LDF file. Please note that the database design must ensure </p>
+<p>that the two messages are similar with respect to the signal layout. </p>
+<p>If a message routing has been detected that links two messages that contain signals with </p>
+<p>the same names, only a message routing between these two messages will be created. </p>
+<p>No signal routing will be created as this would be redundant. </p>
+<p>Please note that message routing forwards received PDUs without changes to the payload </p>
+<p>to the destination network. There is no transmission mode conversion possible  – i.e. the </p>
+<p>reception always triggers the transmission of the PDU on the destination. </p>
+<p><b>5.2.3 </b></p>
+<p><b>Diagnostic Routing (TP Gateway Routing by PDUR) </b></p>
+<p>Routing relations between two diagnostic messages (on different networks) are defined by </p>
+<p>an equal message name in the DBC. Please note that the database design must ensure </p>
+<p>that the two messages are similar with respect to the signal layout. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>27 / 28 </p>
+<p><b>&gt; </b> Additionally, <b>Physical diagnostic requests </b>or <b>responses </b>will be identified by the </p>
+<p>attributes DiagRequest = Yes /  DiagResponse = No or DiagRequest = No /  </p>
+<p>DiagResponse = Yes. DiagState is set to No.  </p>
+<p><b>Diagnostic message type </b></p>
+<p><b>Attributes </b></p>
+<p>Physical diagnostic requests </p>
+<p>DiagRequest = Yes </p>
+<p>DiagResponse = No </p>
+<p>DiagState = No </p>
+<p> </p>
+<p>Physical diagnostic responses </p>
+<p>DiagRequest = No </p>
+<p>DiagResponse = Yes </p>
+<p>DiagState = No </p>
+<p><b> </b></p>
+<p> </p>
+<p>In case of two diagnostic messages with an equal message name a routing relation is </p>
+<p>created. </p>
+<p><b>&gt; </b> Additionally, <b>Functional diagnostic requests </b>will be identified by the attribute </p>
+<p>DiagState = Yes.  </p>
+<p><b>Diagnostic message type </b></p>
+<p><b>Attributes </b></p>
+<p>Functional diagnostic requests </p>
+<p>DiagRequest = No </p>
+<p>DiagResponse = No </p>
+<p>DiagState = Yes </p>
+<p> </p>
+<p> </p>
+<p>In case of two diagnostic messages with an equal message name a routing relation is </p>
+<p>created. </p>
+<p><b>&gt; </b> Please note, that, in case a functional diagnostic request shall not be routed from one </p>
+<p>bus to the other bus, the message should not have the same name, so that no routing </p>
+<p>relation is created. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference DBC and LDF Configuration </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.7.2 </p>
+<p>based on template version 4.7.2 </p>
+<p>28 / 28 </p>
+<p><b>6 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p><b>&gt; </b> News </p>
+<p><b>&gt; </b> Products </p>
+<p><b>&gt; </b> Demo software </p>
+<p><b>&gt; </b> Support </p>
+<p><b>&gt; </b> Training data </p>
+<p><b>&gt; </b> Addresses </p>
+<p> </p>
+<p><b>www.vector.com </b></p>
+</body>
+</html>
+{% endraw %}

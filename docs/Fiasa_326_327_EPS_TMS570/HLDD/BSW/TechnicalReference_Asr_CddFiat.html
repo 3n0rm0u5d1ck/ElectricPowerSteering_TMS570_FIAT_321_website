@@ -1,0 +1,2385 @@
+---
+layout: default
+title: TechnicalReference_Asr_CddFiat
+nav_order: 10
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>CddFiat </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>Complex Device Driver </p>
+<p>Version 1.06.00  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Jochen Vorreiter </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>2 / 38 </p>
+<p><b>Document Information </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>virlg </p>
+<p>2010-10-06 </p>
+<p>1.00.00 </p>
+<p>First Version </p>
+<p>virlg </p>
+<p>2010-12-23 </p>
+<p>1.01.00 </p>
+<p>Adding content for Class B ECU features </p>
+<p>virlg  </p>
+<p>2011-03-07 </p>
+<p>1.02.00 </p>
+<p>Changing the interface for the used IPDU </p>
+<p>callouts </p>
+<p>virlg </p>
+<p>2011-05-18 </p>
+<p>1.02.01 </p>
+<p>Chapter 6.3 added to describe additional </p>
+<p>unhandled signals </p>
+<p>virlg </p>
+<p>2011-08-30 </p>
+<p>1.03.00 </p>
+<p>Class C supports EOL. Integration chapter </p>
+<p>updated </p>
+<p>visvjn </p>
+<p>2012-11-15 </p>
+<p>1.04.00 </p>
+<p>Adding APIs for support of Class C with </p>
+<p>Wakeup </p>
+<p>visvjn </p>
+<p>2013-03-12 </p>
+<p>1.05.00 </p>
+<p>Adding support for Multichannel ECUs </p>
+<p>visvjn </p>
+<p>2013-10-15 </p>
+<p>1.06.00 </p>
+<p>ESCAN00070746: Adding API </p>
+<p>CddFiat_StatusC_MessageIndication </p>
+<p>ESCAN00069050: Adding support for </p>
+<p>OSEK_NM </p>
+<p>ESCAN00069060: Adding description </p>
+<p>about configuration of Multiple Ecu </p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Source </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> AUTOSAR </p>
+<p>AUTOSAR_SWS_DET.pdf </p>
+<p>V2.2.1 </p>
+<p>[2] </p>
+<p> AUTOSAR </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.3.0 </p>
+<p>[3] </p>
+<p> Vector </p>
+<p>AN-ISC-8-1124 FGA Class C Nm in MICROSAR </p>
+<p>V1.2 </p>
+<p>[4] </p>
+<p> Fiat </p>
+<p>07320: Network Operational Specifications for the Class B  </p>
+<p>Network </p>
+<p>Rev. 5 </p>
+<p>[5] </p>
+<p> Fiat </p>
+<p>07321: Network Operational Specifications for the Class C  </p>
+<p>Network </p>
+<p>Rev. 4 </p>
+<p>[6] </p>
+<p> Vector </p>
+<p>Technical Reference Fiat Class B Network Management </p>
+<p>1.02.00 </p>
+<p>[7] </p>
+<p> Vector </p>
+<p>Technical Reference Fiat Class C Network Management </p>
+<p>1.02.00 </p>
+<p>Scope of the Document  </p>
+<p>This technical reference describes the usage of the CddFiat component. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>3 / 38 </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Component History ...................................................................................................... 6</b></p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction................................................................................................................... 7</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Architecture Overview ........................................................................................ 7</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................. 9</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Features ............................................................................................................ 9</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>System Status Indication .................................................................................... 9</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>Error Handling .................................................................................................. 10</p>
+<p> </p>
+<p>3.3.1</p>
+<p> </p>
+<p>Development Error Reporting ........................................................... 10</p>
+<p> </p>
+<p>3.3.1.1</p>
+<p> </p>
+<p>Parameter Checking ...................................................... 11</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration ................................................................................................................... 13</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Scope of Delivery ............................................................................................. 13</p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>Static Files ....................................................................................... 13</p>
+<p> </p>
+<p>4.1.2</p>
+<p> </p>
+<p>Dynamic Files .................................................................................. 13</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Include Structure .............................................................................................. 14</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping ..................................................... 14</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>Critical Sections ............................................................................................... 15</p>
+<p> </p>
+<p>4.5</p>
+<p> </p>
+<p>Initialization ...................................................................................................... 15</p>
+<p> </p>
+<p>4.6</p>
+<p> </p>
+<p>Dependencies on SW modules ........................................................................ 16</p>
+<p> </p>
+<p>4.6.1</p>
+<p> </p>
+<p>Det ................................................................................................... 16</p>
+<p> </p>
+<p>4.6.2</p>
+<p> </p>
+<p>Dem ................................................................................................. 16</p>
+<p> </p>
+<p>4.6.3</p>
+<p> </p>
+<p>CanSM ............................................................................................. 16</p>
+<p> </p>
+<p>4.6.4</p>
+<p> </p>
+<p>Com ................................................................................................. 16</p>
+<p> </p>
+<p>4.6.5</p>
+<p> </p>
+<p>SchM ............................................................................................... 16</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>API Description ........................................................................................................... 17</b></p>
+<p> </p>
+<p>5.1 Services provided by CddFiat ................................................................................. 17</p>
+<p> </p>
+<p>5.1.1</p>
+<p> </p>
+<p>CddFiat_Init ..................................................................................... 17</p>
+<p> </p>
+<p>5.1.2</p>
+<p> </p>
+<p>CddFiat_InitMemory ......................................................................... 18</p>
+<p> </p>
+<p>5.1.3</p>
+<p> </p>
+<p>CddFiat_GetBusOffStatus ................................................................ 18</p>
+<p> </p>
+<p>5.1.4</p>
+<p> </p>
+<p>CddFiat_GetEOLStatus ................................................................... 19</p>
+<p> </p>
+<p>5.1.5</p>
+<p> </p>
+<p>CddFiat_GetFailStatus ..................................................................... 20</p>
+<p> </p>
+<p>5.1.6</p>
+<p> </p>
+<p>CddFiat_SetWakeReason ................................................................ 21</p>
+<p> </p>
+<p>5.1.7</p>
+<p> </p>
+<p>CddFiat_SetIgnitionStatus................................................................ 22</p>
+<p> </p>
+<p>5.1.8</p>
+<p> </p>
+<p>CddFiat_SetClassCSysConfig ......................................................... 23</p>
+<p> </p>
+<p>5.1.9</p>
+<p> </p>
+<p>CddFiat_StatusC_MessageIndication .............................................. 24</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Callback Functions ........................................................................................... 25</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>4 / 38 </p>
+<p>5.2.1</p>
+<p> </p>
+<p>Appl_CanSM_BusOffBegin .............................................................. 25</p>
+<p> </p>
+<p>5.2.2</p>
+<p> </p>
+<p>Appl_CanSM_BusOffEnd ................................................................. 25</p>
+<p> </p>
+<p>5.2.3</p>
+<p> </p>
+<p>Appl_Dem_GenericFailStateChangeNotification .............................. 26</p>
+<p> </p>
+<p>5.2.4</p>
+<p> </p>
+<p>Appl_Dem_CurrentFailStateChangeNotification ............................... 26</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Callout Functions ............................................................................................. 26</p>
+<p> </p>
+<p>5.3.1</p>
+<p> </p>
+<p>Appl_CddFiat_GetEOLStatus .......................................................... 27</p>
+<p> </p>
+<p>5.3.2</p>
+<p> </p>
+<p>Appl_CddFiat_SystemStatusIndication ............................................ 27</p>
+<p> </p>
+<p>5.3.3</p>
+<p> </p>
+<p>Appl_CddFiat_GetTrcvErrorPin ........................................................ 28</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Services used by CddFiat ................................................................................ 28</p>
+<p> </p>
+<p>5.5</p>
+<p> </p>
+<p>Configurable Interfaces .................................................................................... 29</p>
+<p> </p>
+<p>5.5.1</p>
+<p> </p>
+<p>Callback Functions ........................................................................... 29</p>
+<p> </p>
+<p>5.5.1.1</p>
+<p> </p>
+<p>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt; .............. 29</p>
+<p> </p>
+<p>5.5.2</p>
+<p> </p>
+<p>Callout Functions ............................................................................. 30</p>
+<p> </p>
+<p>5.5.2.1</p>
+<p> </p>
+<p>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt;.................. 30</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Signal Description ...................................................................................................... 31</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Signal Description AUTOSAR ECU .................................................................. 31</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Signal Description Class C ECU ...................................................................... 31</p>
+<p> </p>
+<p>6.3</p>
+<p> </p>
+<p>Signal Description Class B ECU ...................................................................... 32</p>
+<p> </p>
+<p>6.4</p>
+<p> </p>
+<p>Signals not handled by the CddFiat component ............................................... 32</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>Configuration .............................................................................................................. 33</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Configuration with GENy .................................................................................. 33</p>
+<p> </p>
+<p>7.1.1</p>
+<p> </p>
+<p>Activation of the module CddFiat in GENy ....................................... 33</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>General Configuration ...................................................................... 33</p>
+<p> </p>
+<p>7.1.3</p>
+<p> </p>
+<p>Channel Configuration ..................................................................... 34</p>
+<p> </p>
+<p>7.1.3.1</p>
+<p> </p>
+<p>Configuration of the IPdu Callout ................................... 35</p>
+<p> </p>
+<p>7.1.3.2</p>
+<p> </p>
+<p>Configuration of the Tx Transmit Callback ...................... 36</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>Abbreviations .............................................................................................................. 37</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Abbreviations ................................................................................................... 37</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................ 38</b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>5 / 38 </p>
+<p><b>Illustrations </b></p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>AUTOSAR architecture ............................................................................... 7</p>
+<p> </p>
+<p>Figure 2-2</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the CddFiat ............................................ 8</p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>Include structure ....................................................................................... 14</p>
+<p> </p>
+<p>Figure 7-1</p>
+<p> </p>
+<p> Activation of the module CddFiat ............................................................. 33</p>
+<p> </p>
+<p>Figure 7-2</p>
+<p> </p>
+<p> Configuration of the IPdu Callout ............................................................. 35</p>
+<p> </p>
+<p>Figure 7-3</p>
+<p> </p>
+<p> Configuration of the Tx Confirmation........................................................ 36</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>Component history...................................................................................... 6</p>
+<p> </p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>Supported features ..................................................................................... 9</p>
+<p> </p>
+<p>Table 3-2 </p>
+<p> </p>
+<p>Not supported features ............................................................................... 9</p>
+<p> </p>
+<p>Table 3-3 </p>
+<p> </p>
+<p>NmFiatB_SystemConfigType .................................................................... 10</p>
+<p> </p>
+<p>Table 3-4 </p>
+<p> </p>
+<p>Mapping of service IDs to services ........................................................... 11</p>
+<p> </p>
+<p>Table 3-5 </p>
+<p> </p>
+<p>Errors reported to Det ............................................................................... 11</p>
+<p> </p>
+<p>Table 3-6 </p>
+<p> </p>
+<p>Development Error Reporting: Assignment of checks to services ............. 12</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Static files ................................................................................................. 13</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping .............................................. 15</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Used functions for critical section handling ............................................... 15</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>CddFiat_Init .............................................................................................. 17</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>CddFiat_InitMemory ................................................................................. 18</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>CddFiat_GetBusOffStatus ........................................................................ 19</p>
+<p> </p>
+<p>Table 5-4 </p>
+<p> </p>
+<p>CddFiat_GetEOLStatus ............................................................................ 19</p>
+<p> </p>
+<p>Table 5-5 </p>
+<p> </p>
+<p>CddFiat_GetFailStatus ............................................................................. 20</p>
+<p> </p>
+<p>Table 5-6 </p>
+<p> </p>
+<p>CddFiat_SetWakeupReason..................................................................... 21</p>
+<p> </p>
+<p>Table 5-7 </p>
+<p> </p>
+<p>CddFiat_SetIgnitionStatus ........................................................................ 22</p>
+<p> </p>
+<p>Table 5-8 </p>
+<p> </p>
+<p>CddFiat_SetClassCSysConfig .................................................................. 23</p>
+<p> </p>
+<p>Table 5-9 </p>
+<p> </p>
+<p>CddFiat_StatusC_MessageIndication ....................................................... 24</p>
+<p> </p>
+<p>Table 5-10 </p>
+<p> </p>
+<p>Appl_CanSM_BusOffBegin ....................................................................... 25</p>
+<p> </p>
+<p>Table 5-11 </p>
+<p> </p>
+<p>Appl_CanSM_BusOffEnd ......................................................................... 25</p>
+<p> </p>
+<p>Table 5-12 </p>
+<p> </p>
+<p>Appl_Dem_GenericFailStateChangeNotification ....................................... 26</p>
+<p> </p>
+<p>Table 5-13 </p>
+<p> </p>
+<p>Appl_Dem_CurrentFailStateChangeNotification ....................................... 26</p>
+<p> </p>
+<p>Table 5-14 </p>
+<p> </p>
+<p>Appl_CddFiat_GetEOLStatus ................................................................... 27</p>
+<p> </p>
+<p>Table 5-15 </p>
+<p> </p>
+<p>Appl_CddFiat_SystemStatusIndication ..................................................... 27</p>
+<p> </p>
+<p>Table 5-16 </p>
+<p> </p>
+<p>Appl_CddFiat_GetTrcvErrorPin ................................................................ 28</p>
+<p> </p>
+<p>Table 5-17 </p>
+<p> </p>
+<p>Services used by CddFiat ......................................................................... 28</p>
+<p> </p>
+<p>Table 5-18 </p>
+<p> </p>
+<p>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt; ......................................... 29</p>
+<p> </p>
+<p>Table 5-19 </p>
+<p> </p>
+<p>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt; ............................................ 30</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Node status message signal description for AUTOSAR ECUs .................. 31</p>
+<p> </p>
+<p>Table 6-2 </p>
+<p> </p>
+<p>Node status message signal description for Carry-Back Class C ECUs .... 31</p>
+<p> </p>
+<p>Table 7-1 </p>
+<p> </p>
+<p>General Configuration ............................................................................... 34</p>
+<p> </p>
+<p>Table 8-1 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................ 37</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>6 / 38 </p>
+<p><b>1 </b></p>
+<p><b>Component History </b></p>
+<p>The </p>
+<p>component </p>
+<p>history </p>
+<p>gives </p>
+<p>an </p>
+<p>overview </p>
+<p>over </p>
+<p>the </p>
+<p>important </p>
+<p>milestones </p>
+<p>that </p>
+<p>are </p>
+<p>supported in the different versions of the component.  </p>
+<p><b>Component Version </b></p>
+<p><b>New Features </b></p>
+<p>1.00.00 </p>
+<p>Initial Version of the component  </p>
+<p>1.01.00 </p>
+<p>The component now support Fiat Class B ECU  </p>
+<p>1.04.00 </p>
+<p>The component now support Class C wakeup handling </p>
+<p>1.05.00 </p>
+<p>The component now support Multichannel ECUs </p>
+<p>1.06.00 </p>
+<p>The component now support OSEK_NM, Multiple Configuration and </p>
+<p>Multiple ECU </p>
+<p>Table 1-1  </p>
+<p>Component history </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>7 / 38 </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module CddFiat. </p>
+<p>This module has to be integrated for all FGA AUTOSAR Stack projects including Carry-</p>
+<p>Back ECUs.  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release: </b></p>
+<p>3.2 </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile </p>
+<p><b>Vendor ID: </b></p>
+<p>CDDFIAT_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= </p>
+<p>Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>CDDFIAT_MODULE_ID   </p>
+<p>255 decimal </p>
+<p>(according to ref. [2]) </p>
+<p> </p>
+<p>The purpose of this component is to provide a common interface for (Fiat specific) Network </p>
+<p>Management modules to application software. Furthermore it updates data of Nm related </p>
+<p>signals of status messages. </p>
+<p><b>2.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The CddFiat is a complex driver implementing FGA specific requirements for the handling </p>
+<p>of the node status messages. </p>
+<p> </p>
+<p>Figure 2-1 </p>
+<p>AUTOSAR architecture </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>8 / 38 </p>
+<p>The next figure shows the interfaces to adjacent modules of the CddFiat. These interfaces </p>
+<p>are described in chapter 5.  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Figure 2-2 </p>
+<p>Interfaces to adjacent modules of the CddFiat </p>
+<p><b> cmp CddFiat_Interface_Structure</b></p>
+<p>Appl_CddFiat_GetEOLStatus</p>
+<p>Appl_CddFiat_GetTrcvErrorPin</p>
+<p>Appl_CddFiat_SystemStatusIndication</p>
+<p><b>CddFiat</b></p>
+<p>Appl_CanSM_BusOFFBeginn</p>
+<p>Appl_CanSM_BusOFFEnd</p>
+<p>Appl_CddFiat_GetEOLStatus</p>
+<p>Appl_Dem_CurrentFailStateChangeNotification</p>
+<p>Appl_Dem_GenericFailStateChangeNotification</p>
+<p>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt;</p>
+<p>CddFiat_Init</p>
+<p>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt;</p>
+<p>CddFiat_GetEOLStatus</p>
+<p>CddFiat_GetFailStatus</p>
+<p>CddFiat_GetBusOffStatus</p>
+<p>CddFiat_SetIgnitionStatus</p>
+<p>CddFiat_SetWakeReason</p>
+<p>CddFiat_SetClassCSysConfig</p>
+<p>Appl_CddFiat_GetTrcvErrorPin</p>
+<p>Appl_CddFiat_SystemStatusIndication</p>
+<p>CddFiat_NmFiatB_SystemStatusIndication</p>
+<p>CddFiat_NmFiatB_GetTrcvErrorPin</p>
+<p><b>User Application</b></p>
+<p><b>COM</b></p>
+<p><b>ECUM</b></p>
+<p><b>DEM</b></p>
+<p><b>CANSM</b></p>
+<p><b>NM</b></p>
+<p>NmFiatC_SetWakeReason</p>
+<p>NmFiatC_SetIgnitionStatus</p>
+<p>NmFiatB_SetClassCSysConfig</p>
+<p>optional</p>
+<p>CddFiat_StatusC_MessageIndication</p>
+<p>NmFiatC_StatusC_MessageIndication</p>
+<p>NmCanSmBusOffBegin</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>9 / 38 </p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality. </p>
+<p>The “supported” and “not supported” features are presented in the following two tables.  </p>
+<p> </p>
+<p>The following features described are supported: </p>
+<p><b>Supported Feature </b></p>
+<p>Support channels with the NM types Class C non Gateway (with and without wakeup handling), </p>
+<p>Class B NM, AUTOSAR NM and Osek NM. </p>
+<p>Update Generic and Current Dem fail state signal in status message. </p>
+<p>Update BusOff state signal in status message. </p>
+<p>Update EOL signal in status message. </p>
+<p>Support Multiple Configuration and Multiple Ecu. </p>
+<p>Table 3-1  </p>
+<p>Supported features </p>
+<p>The following features are not supported: </p>
+<p><b>Not Supported Feature </b></p>
+<p>Class C Gateway Monitoring Functions </p>
+<p>Table 3-2  </p>
+<p>Not supported features </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>Gateway Monitoring Functions has to be implemented by application as described in </p>
+<p>[3]. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>3.2 </b></p>
+<p><b>System Status Indication </b></p>
+<p>The  following  callback  is  called  by  CddFiat  for  Class  B  Master  channels  to  indicate  the </p>
+<p>current monitored system configuration to application software: </p>
+<p> </p>
+<p>void</p>
+<p> </p>
+<p><b>Appl_CddFiat_SystemStatusIndication</b>() </p>
+<p>(see 5.3.2)</p>
+<p> </p>
+<p>The </p>
+<p>passed </p>
+<p>parameter </p>
+<p>points </p>
+<p>to </p>
+<p>a </p>
+<p>structure </p>
+<p>of </p>
+<p>NmFiatB_SystemConfigType </p>
+<p>which </p>
+<p>contains the following fields: </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>10 / 38 </p>
+<p><b>Struct Element Name </b></p>
+<p><b>C-Type </b></p>
+<p><b>Description </b></p>
+<p>SystemConfig </p>
+<p>uint8* </p>
+<p>Pointer to an uint8 array of size </p>
+<p>arraySize</p>
+<p> that contains the </p>
+<p>current System Configuration. </p>
+<p>SystemEolConfig </p>
+<p>uint8* </p>
+<p>Pointer to an uint8 array of size </p>
+<p>arraySize</p>
+<p> that contains the </p>
+<p>current System End Of Line status. </p>
+<p>SystemFailConfig </p>
+<p>uint8* </p>
+<p>Pointer to an uint8 array of size </p>
+<p>arraySize</p>
+<p> that contains the </p>
+<p>current System Fail status. </p>
+<p>SystemCurFailConfig </p>
+<p>uint8* </p>
+<p>Pointer to an uint8 array of size </p>
+<p>arraySize</p>
+<p> that contains the </p>
+<p>current System Current Fail status. </p>
+<p>SystemPhysStatus </p>
+<p>uint8* </p>
+<p>Pointer to an uint8 array of size </p>
+<p>arraySize</p>
+<p> that contains the </p>
+<p>current CAN Bus Wire Failure status. </p>
+<p>SystemActiveLoads </p>
+<p>boolean* </p>
+<p>Pointer to a boolean variable which indicates the current </p>
+<p>System Active Loads status: </p>
+<p></p>
+<p> </p>
+<p>TRUE: At least one Slave node has sent its Nm message with </p>
+<p>AL=1 </p>
+<p></p>
+<p> </p>
+<p>FALSE: No Slave node has sent its Nm message with AL=1 </p>
+<p>Table 3-3  </p>
+<p>NmFiatB_SystemConfigType </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Note that the data of the system configurations is only valid within the call context of </p>
+<p>Appl_CddFiat_SystemStatusIndication. If the data is needed for later access, it has to </p>
+<p>be copied to own data structures within the callback function. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Additional information can also be found in technical reference of NmFiatB [6]. </p>
+<p> </p>
+<p><b>3.3 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>3.3.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Development </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>Det </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Det_ReportError() </p>
+<p>(specified  in  [1]),  if  development  error  reporting  is  enabled  (i.e.  pre-compile  parameter </p>
+<p>CDDFIAT_DEV_ERROR_DETECT == STD_ON</p>
+<p>). </p>
+<p>If  another  module  is  used  for  development  error  reporting,  the  function  prototype  for </p>
+<p>reporting the error can be configured by the integrator, but must have the same signature </p>
+<p>as the service </p>
+<p>Det_ReportError()</p>
+<p>. </p>
+<p>The reported CddFiat module Id is 255 with the Instance Id 0. </p>
+<p> </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>CDDFIAT_SID_INIT = 0x01 </p>
+<p>CddFiat_Init </p>
+<p>CDDFIAT_SID_BUSOFF_CBK_T_ACK = 0x02 </p>
+<p>CddFiat_BusOffCbkTAck </p>
+<p>CDDFIAT_SID_IPDU_CALLOUT = 0x03 </p>
+<p>CddFiat_IPDU_Callout </p>
+<p>CDDFIAT_SID_BUSOFF_BEGINN = 0x04  </p>
+<p>Appl_CanSM_BusOffBegin </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>11 / 38 </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>CDDFIAT_SID_BUSOFF_END = 0x05 </p>
+<p>Appl_CanSM_BusOffEnd </p>
+<p>CDDFIAT_SID_GENERIC_DEM_FAIL_STATE_NOTIF</p>
+<p>ICATION = 0x06 </p>
+<p>Appl_Dem_GenericFailStateChang</p>
+<p>eNotification </p>
+<p>CDDFIAT_SID_CURRENT_DEM_FAIL_STATE_NOTIF</p>
+<p>ICATION = 0x07  </p>
+<p>Appl_Dem_CurrentFailStateChang</p>
+<p>eNotification </p>
+<p>CDDFIAT_SID_GET_BUS_OFF_STATUS = 0x08 </p>
+<p>CddFiat_GetBusOffStatus </p>
+<p>CDDFIAT_SID_GET_EOL_STATUS = 0x09 </p>
+<p>CddFiat_GetEOLStatus </p>
+<p>CDDFIAT_SID_GET_FAIL_STATUS = 0x0A </p>
+<p>CddFiat_GetFailStatus </p>
+<p>Table 3-4  </p>
+<p>Mapping of service IDs to services </p>
+<p>The errors reported to Det are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>[0x01] </p>
+<p>CDDFIAT_E_UNINIT </p>
+<p>Component is not initialized </p>
+<p>[0x02] </p>
+<p>CDDFIAT_E_PARAM </p>
+<p>Parameter out of range. </p>
+<p>[0x03] </p>
+<p>CDDFIAT_E_INVALID_CHANNEL </p>
+<p>Invalid channel parameter </p>
+<p>Table 3-5  </p>
+<p>Errors reported to Det </p>
+<p><b>3.3.1.1 </b></p>
+<p><b>Parameter Checking </b></p>
+<p>The following table shows which parameter checks are performed on which services: </p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>CDDFIAT_E_PARAM</p>
+<p> </p>
+<p>CDDFIAT_E_UNINIT </p>
+<p>CDDFIAT_E_INVALID_CHANNEL </p>
+<p>CddFiat_Init </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CddFiat_BusOffCbkTAck </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>CddFiat_IPDU_Callout </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>Appl_CanSM_BusOffBegin </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>Appl_CanSM_BusOffEnd </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>Appl_Dem_GenericFailStat</p>
+<p>eChangeNotification </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>12 / 38 </p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>CDDFIAT_E_PARAM</p>
+<p> </p>
+<p>CDDFIAT_E_UNINIT </p>
+<p>CDDFIAT_E_INVALID_CHANNEL </p>
+<p>Appl_Dem_CurrentFailSt</p>
+<p>ateChangeNotification </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>CddFiat_GetBusOffStatu</p>
+<p>s </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>CddFiat_GetEOLStatus </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>CddFiat_GetFailStatus </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>Table 3-6  </p>
+<p>Development Error Reporting: Assignment of checks to services </p>
+<p>AUTOSAR requires that API functions check the validity of their parameters. The checks in </p>
+<p>Table 3-6 are internal parameter checks of the API functions. These checks are for </p>
+<p>development error reporting and can be en-/disabled separately. En-/disabling of all </p>
+<p>checks are an addition to the AUTOSAR standard which requires to en-/disable the </p>
+<p>complete parameter checking via the parameter </p>
+<p>CDDFIAT_DEV_ERROR_DETECT</p>
+<p>. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>13 / 38 </p>
+<p><b>4 </b></p>
+<p><b>Integration </b></p>
+<p>This chapter gives necessary information for the integration of the CddFiat component into </p>
+<p>an application environment of an ECU. </p>
+<p><b>4.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>CddFiat Configuration File delivered as a template. </p>
+<p><b>4.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Source </b></p>
+<p><b>Code </b></p>
+<p><b>Delivery </b></p>
+<p><b>Object </b></p>
+<p><b>Code </b></p>
+<p><b>Delivery </b></p>
+<p><b>Description </b></p>
+<p>CddFiat.c </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>This file implements the CddFiat functionality</p>
+<p> </p>
+<p>CddFiat.h </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>This is the header file of the component  </p>
+<p>Table 4-1  </p>
+<p>Static files </p>
+<p><b>4.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Source </b></p>
+<p><b>Code </b></p>
+<p><b>Delivery </b></p>
+<p><b>Object </b></p>
+<p><b>Code </b></p>
+<p><b>Delivery </b></p>
+<p><b>Description </b></p>
+<p>CddFiat_Cfg.c </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>This file implements the generated callout for IPDU </p>
+<p>transmission and the transmit callback after </p>
+<p>successful transmission of a configured signal. </p>
+<p>CddFiat_Cfg.h </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>This file contains the configuration part of this </p>
+<p>module.  </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>14 / 38 </p>
+<p><b>4.2 </b></p>
+<p><b>Include Structure </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 4-1 </p>
+<p>Include structure </p>
+<p> </p>
+<p><b>4.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions of the CddFiat and illustrates their assignment among each other. </p>
+<p><b> </b></p>
+<p><b>deployment File Structure</b></p>
+<p>CddFiat.c</p>
+<p>CddFiat.h</p>
+<p>CddFiat_Cfg.h</p>
+<p>ComStack_Types.h</p>
+<p>CanSm.h</p>
+<p>Dem.h</p>
+<p>Det.h</p>
+<p>SchM_CddFiat.h</p>
+<p>Com_Cbk.h</p>
+<p>ComM_Lcfg.h</p>
+<p>NmFiatC.h</p>
+<p>CddFiat_Cfg.c</p>
+<p>NmFiatB.h</p>
+<p>Appl_Cbk.h</p>
+<p>NmOsek.h</p>
+<p>«optional»</p>
+<p>«optional»</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>15 / 38 </p>
+<p><b>Compiler Abstraction </b></p>
+<p><b>Definitions </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>CDDFIAT_CODE </p>
+<p>CDDFIAT_APPL_CODE  </p>
+<p> </p>
+<p>CDDFIAT_VAR </p>
+<p> </p>
+<p>CDDFIAT_VAR_NOINIT </p>
+<p> </p>
+<p>CDDFIAT_CONST </p>
+<p> </p>
+<p>CDDFIAT_START_SEC_VAR_NOINIT_8BIT </p>
+<p>CDDFIAT_STOP_SEC_VAR_NOINT_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>CDDFIAT_START_SEC_VAR_INIT_UNSPECIFIED </p>
+<p>CDDFIAT_STOP_SEC_VAR_INIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CDDFIAT_START_SEC_CODE </p>
+<p>CDDFIAT_START_SEC_CODE </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CDDFIAT_START_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p>CDDFIAT_STOP_SEC_VAR_NOINIT_UNSPECIFIED</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CDDFIAT_START_SEC_CONST_8BIT </p>
+<p>CDDFIAT_STOP_SEC_CONST_8BIT</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>Table 4-2  </p>
+<p>Compiler abstraction and memory mapping </p>
+<p><b>4.4 </b></p>
+<p><b>Critical Sections </b></p>
+<p><b> </b></p>
+<p>The CddFiat implements one critical section. It is used to protect all relevant read / modify / </p>
+<p>write accesses to internal variables. Within this critical section, interrupts have to be </p>
+<p>suspended. </p>
+<p> </p>
+<p><b>Global Interrupt </b></p>
+<p><b>Operation </b></p>
+<p><b>Function </b></p>
+<p>Global Suspend Function </p>
+<p>SchM_Enter_CddFiat(CDDFIAT_EXCLUSIVE_AREA_0 ) </p>
+<p>Global Resume Function </p>
+<p>SchM_Exit_CddFiat(CDDFIAT_EXCLUSIVE_AREA_0 ) </p>
+<p>Table 4-3  </p>
+<p>Used functions for critical section handling </p>
+<p><b>4.5 </b></p>
+<p><b>Initialization </b></p>
+<p>The  CddFiat has to be  initialized  by  calling  the API </p>
+<p>void CddFiat_Init(void).</p>
+<p>The </p>
+<p>CddFiat component should be initialized before any involved component use any CddFiat </p>
+<p>API (see Chapter 4.6). </p>
+<p> </p>
+<p> </p>
+<p><b>Caution</b></p>
+<p> </p>
+<p>Initialize the CddFiat module before Dem, CanSM, Nm, NmFiatB, NmFiatC and Com </p>
+<p>were initialized. Otherwise the CddFiat may not be able to setup the content of the </p>
+<p>node status message correctly. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>16 / 38 </p>
+<p><b>4.6 </b></p>
+<p><b>Dependencies on SW modules </b></p>
+<p><b>4.6.1 </b></p>
+<p><b>Det </b></p>
+<p>The Det component is used to report error during the development phase. This feature and </p>
+<p>therefore this dependency can be disabled via the component configuration. </p>
+<p><b>4.6.2 </b></p>
+<p><b>Dem </b></p>
+<p>The Dem is not used for reporting production errors as recommend within AUTOSAR </p>
+<p>components. Dem has to report node events to the CddFiat. Therefore the CddFiat </p>
+<p>implements the APIs </p>
+<p>Appl_Dem_GenericFailStateChangeNotification </p>
+<p>and </p>
+<p>Appl_Dem_CurrentFailStateChangeNotification</p>
+<p> as callout functions. </p>
+<p><b>4.6.3 </b></p>
+<p><b>CanSM </b></p>
+<p>The </p>
+<p>CanSM </p>
+<p>reports </p>
+<p>a </p>
+<p>bus </p>
+<p>off </p>
+<p>event </p>
+<p>to </p>
+<p>the </p>
+<p>CddFiat </p>
+<p>by </p>
+<p>using </p>
+<p>the </p>
+<p>API’s </p>
+<p>Appl_CanSM_BusOffBegin</p>
+<p> and </p>
+<p>Appl_CanSM_BusOffEnd</p>
+<p>.</p>
+<p> </p>
+<p><b>4.6.4 </b></p>
+<p><b>Com </b></p>
+<p>For  Class  C  and  AUTOSAR  Nm  ECU’s,  the  CddFiat  implements  the  callout  function </p>
+<p>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt; </p>
+<p>for </p>
+<p>each </p>
+<p>channel. </p>
+<p>The </p>
+<p>function </p>
+<p>will </p>
+<p>be </p>
+<p>called by Com before the PDU with the status message is sent. Within this function the </p>
+<p>CddFiat updates the corresponding status signals.  </p>
+<p>The API </p>
+<p>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt; </p>
+<p>is used to indicate the successful </p>
+<p>transmission of the BusOff signal. </p>
+<p><b>4.6.5 </b></p>
+<p><b>SchM  </b></p>
+<p>Beside  OSEK/AUTOSAR  OS,  the  Basic  Software  Scheduler  provides  functions  that  the </p>
+<p>CddFiat calls at begin and end of critical sections. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>17 / 38 </p>
+<p><b>5 </b></p>
+<p><b>API Description </b></p>
+<p>For an interfaces overview please see Figure 2-2. </p>
+<p><b>5.1 Services provided by CddFiat </b></p>
+<p><b>5.1.1 </b></p>
+<p><b>CddFiat_Init </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>CddFiat_Init</b></p>
+<p> </p>
+<p>( void )</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function initializes the internal data structure. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>ECUM During Startup </p>
+<p>Table 5-1  </p>
+<p>CddFiat_Init </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>18 / 38 </p>
+<p><b>5.1.2 </b></p>
+<p><b>CddFiat_InitMemory </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>CddFiat_InitMemory </b>(void)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Memory-Initialization of CddFiat.  </p>
+<p>If RAM is not automatically initialized at start-up, this function must be called from start-up code and before </p>
+<p>CddFiat_Init is called to ensure that variables are initialized with a certain value if needed (e.g. initialization </p>
+<p>status with UNINIT value). </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function should be called during startup </p>
+<p>Table 5-2  </p>
+<p>CddFiat_InitMemory </p>
+<p><b>5.1.3 </b></p>
+<p><b>CddFiat_GetBusOffStatus </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType</p>
+<p> </p>
+<p><b>CddFiat_GetBusOffStatus </b>(</p>
+<p>NetworkHandleType nmChannelHandle, boolean </p>
+<p>*statePtr</p>
+<p>)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle</p>
+<p> </p>
+<p>Specifies the Com channels of which the bus off status should be gained </p>
+<p>statePtr </p>
+<p>Pointer to a boolean variable where the bus off status should be saved to. </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>No error has occurred. </p>
+<p>E_NOT_OK </p>
+<p>The bus off status could not be provided. </p>
+<p><b>Functional Description </b></p>
+<p>The function provides the bus off status of a Com channel which is handled by the CddFiat. In case of an </p>
+<p>error the bus off status of the referenced variable will not be modified </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is available for Class B ECU configuration </p>
+<p></p>
+<p> </p>
+<p>The API is available for Class C ECU configuration with wake-up algorithm enabled </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function can be called in task and interrupt context </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>19 / 38 </p>
+<p>Table 5-3  </p>
+<p>CddFiat_GetBusOffStatus </p>
+<p><b>5.1.4 </b></p>
+<p><b>CddFiat_GetEOLStatus </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType</p>
+<p> </p>
+<p><b>CddFiat_GetEOLStatus </b>(</p>
+<p>boolean *statePtr</p>
+<p>)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>statePtr </p>
+<p>Pointer to a boolean variable where the end of line status should be saved to. </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p><b> </b></p>
+<p>No error has occurred. </p>
+<p>E_NOT_OK </p>
+<p>The end of line status could not be provided. </p>
+<p><b>Functional Description </b></p>
+<p>The function provides the EOL status of the ECU. In case of an error the EOL status of the referenced </p>
+<p>variable will not be modified </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is only available for Class B ECU configuration </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function can be called in task and interrupt context </p>
+<p>Table 5-4  </p>
+<p>CddFiat_GetEOLStatus </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>20 / 38 </p>
+<p><b>5.1.5 </b></p>
+<p><b>CddFiat_GetFailStatus </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType</p>
+<p> </p>
+<p><b>CddFiat_GetFailStatus </b>(</p>
+<p>boolean *genericFailStatePtr, boolean </p>
+<p>*currentFailStatePtr</p>
+<p>)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>genericFailStatePtr </p>
+<p>Pointer to a boolean variable where the generic Dem fail status should be </p>
+<p>saved to. </p>
+<p>currentFailStatePtr </p>
+<p>Pointer to a boolean variable where the current Dem fail status should be </p>
+<p>saved to. </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p><b> </b></p>
+<p>No error has occurred. </p>
+<p>E_NOT_OK </p>
+<p>The Dem statuses could not be provided. </p>
+<p><b>Functional Description </b></p>
+<p>The function provides the current and generic Dem fail status. In case of an error those statuses of the </p>
+<p>referenced variable will not be modified </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is only available for Class B ECU configuration </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function can be called in task and interrupt context </p>
+<p>Table 5-5  </p>
+<p>CddFiat_GetFailStatus </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>21 / 38 </p>
+<p><b>5.1.6 </b></p>
+<p><b>CddFiat_SetWakeReason </b></p>
+<p><b>Prototype </b></p>
+<p>Nm_ReturnType</p>
+<p> </p>
+<p><b>CddFiat_SetWakeReason </b>(</p>
+<p>NetworkHandleType nmChannelHandle, uint8 </p>
+<p>WakeReason</p>
+<p>)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle </p>
+<p>Identification of the Nm-channel </p>
+<p>WakeReason </p>
+<p>Stores the current wake reason </p>
+<p><b>Return code </b></p>
+<p>NM_E_OK </p>
+<p>No error has occurred. </p>
+<p>NM_E_NOT_OK </p>
+<p>Setting the Wake Reason was not successful. </p>
+<p><b>Functional Description </b></p>
+<p>This function can be called by the application to notify the current Wake Reason. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is only available for Class C ECU configuration with wake-up algorithm enabled </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function can be called in task and interrupt context </p>
+<p>Table 5-6  </p>
+<p>CddFiat_SetWakeupReason </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>22 / 38 </p>
+<p><b>5.1.7 </b></p>
+<p><b>CddFiat_SetIgnitionStatus </b></p>
+<p><b>Prototype </b></p>
+<p>Nm_ReturnType</p>
+<p> </p>
+<p><b>CddFiat_SetIgnitionStatus </b>(</p>
+<p>NetworkHandleType nmChannelHandle, uint8 </p>
+<p>IgnitionStatus</p>
+<p>)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle </p>
+<p>Identification of the Nm-channel </p>
+<p>WakeReason </p>
+<p>Stores the current Ignition Status </p>
+<p><b>Return code </b></p>
+<p>NM_E_OK </p>
+<p>No error has occurred. </p>
+<p>NM_E_NOT_OK </p>
+<p>Setting the Ignition Status was not successful. </p>
+<p><b>Functional Description </b></p>
+<p>This function can be called by the application to set the current Ignition Status. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is only available for Class C ECU configuration with wake-up algorithm enabled </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function can be called in task and interrupt context </p>
+<p>Table 5-7  </p>
+<p>CddFiat_SetIgnitionStatus </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>23 / 38 </p>
+<p><b>5.1.8 </b></p>
+<p><b>CddFiat_SetClassCSysConfig </b></p>
+<p><b>Prototype </b></p>
+<p>Nm_ReturnType CddFiat_SetClassCSysConfig( NetworkHandleType nmChannelHandle, </p>
+<p>const uint8* const nmCSysConfPtr, </p>
+<p>const uint8 nmArraySize ) </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle </p>
+<p>nmCSysConfPtr</p>
+<p><b> </b></p>
+<p>nmArraySize </p>
+<p>Channel ID of the physical channel </p>
+<p>Pointer to the Class C System Configuration Bit-Field </p>
+<p>Size of the given array </p>
+<p><b>Return code </b></p>
+<p>NM_E_OK </p>
+<p>NM_E_NOK</p>
+<p><b> </b></p>
+<p>No Error </p>
+<p>Failure due to an invalid parameter or component is not initialized. </p>
+<p><b>Functional Description </b></p>
+<p>This function should be called by application to set the current Class C System Configuration. The </p>
+<p>parameter nmCSysConfPtr should point to an array of size </p>
+<p>nmArraySize</p>
+<p>. The values are copied to an </p>
+<p>internal array. The least significant bit in byte 0 corresponds to the node with address 0. The most </p>
+<p>significant bit in byte (</p>
+<p>nmArraySize</p>
+<p> - 1) corresponds to the highest possible node address. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>This function is only available if Class B Master is active on at least one channel. </p>
+<p>Application must call this function on the Class B Master channels only. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Function must be called from Task Level only. </p>
+<p>Table 5-8  </p>
+<p>CddFiat_SetClassCSysConfig </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>24 / 38 </p>
+<p><b>5.1.9 </b></p>
+<p><b>CddFiat_StatusC_MessageIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void CddFiat_StatusC_MessageIndication(NetworkHandleType nmChannelHandle) </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle </p>
+<p>Channel ID of the physical channel </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function should be called by application to indicate a reception of a STATUC_C_&lt;ECU&gt; message of a </p>
+<p>non-wakeable slave. For configuration details please refer to Technical Reference of NmFiatC [7]. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>This function is only available if Class C Master is active on at least one channel. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>This function must not be called on reception of a STATUS_C_&lt;ECU&gt; message from a </p>
+<p>wakeable Slave. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is reentrant </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>Function can be called from Task or Interrupt context </p>
+<p>Table 5-9  </p>
+<p>CddFiat_StatusC_MessageIndication </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>25 / 38 </p>
+<p><b>5.2 </b></p>
+<p><b>Callback Functions </b></p>
+<p><b>5.2.1 </b></p>
+<p><b>Appl_CanSM_BusOffBegin </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>Appl_CanSM_BusOffBegin</b></p>
+<p> </p>
+<p>(NetworkHandleType CanSM_NetworkHandle, </p>
+<p>CanSM_BorCounterType CanSM_BusOffNotificationCounter)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>CanSM_NetworkHandle</p>
+<p><b> </b></p>
+<p>Handle of the Network which reports the event </p>
+<p>CanSM_BusOffNotificationCounter </p>
+<p>Count of the occurred bus off events </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function notifies the occurrence of a bus off event on a given channel. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function should be called as a callback, for a occurred bus off event, by the CanSM </p>
+<p>component </p>
+<p>Table 5-10  </p>
+<p>Appl_CanSM_BusOffBegin </p>
+<p><b>5.2.2 </b></p>
+<p><b>Appl_CanSM_BusOffEnd </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>Appl_CanSM_BusOffEnd</b></p>
+<p> </p>
+<p>(NetworkHandleType CanSM_NetworkHandle)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>CanSM_NetworkHandle </p>
+<p>Handle of the Network which reports the event </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function notifies the end of a bus off event. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function should be called as a callback, at the end of a bus off event, by the CanSM </p>
+<p>component </p>
+<p>Table 5-11  </p>
+<p>Appl_CanSM_BusOffEnd </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>26 / 38 </p>
+<p><b>5.2.3 </b></p>
+<p><b>Appl_Dem_GenericFailStateChangeNotification </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>Appl_Dem_GenericFailStateChangeNotification </b>(boolean failState)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>failState</p>
+<p><b> </b></p>
+<p>Provides the information whether the Dem fail state is set or </p>
+<p>not </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function reports the actual generic Dem fail state. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function should be called as a callback by the Dem component </p>
+<p>Table 5-12  </p>
+<p>Appl_Dem_GenericFailStateChangeNotification </p>
+<p><b>5.2.4 </b></p>
+<p><b>Appl_Dem_CurrentFailStateChangeNotification </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>Appl_Dem_CurrentFailStateChangeNotification </b>(boolean failState)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>failState</p>
+<p><b> </b></p>
+<p>Provides the information whether the Dem fail state is set or </p>
+<p>not </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p><b> </b></p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function reports the actual current Dem fail state. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function should be called as a callback by the Dem component </p>
+<p>Table 5-13  </p>
+<p>Appl_Dem_CurrentFailStateChangeNotification </p>
+<p><b>5.3 </b></p>
+<p><b>Callout Functions  </b></p>
+<p>The  declarations  of  the  callout  functions  are  provided  by </p>
+<p>CddFiat  module.  It  is  the </p>
+<p>integrator's  task  to  provide  the  corresponding  function  definitions.  The  definitions  of  the </p>
+<p>callouts can be adjusted to the system's needs. The CddFiat callout function declarations </p>
+<p>are described in the following tables: </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>27 / 38 </p>
+<p><b>5.3.1 </b></p>
+<p><b>Appl_CddFiat_GetEOLStatus </b></p>
+<p><b>Prototype </b></p>
+<p>boolean</p>
+<p> </p>
+<p><b>Appl_CddFiat_GetEOLStatus</b>( void )</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>boolean </p>
+<p>The return values provide the EOL value of the ECU. </p>
+<p><b>Functional Description </b></p>
+<p>The function provides the EOL status of the ECU. This API will only be called in case an AUTOSAR NM </p>
+<p>ECU is selected as used ECU variant. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This feature is only available for AUTOSAR Nm and Class B ECU’s. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>The component will call the API during initialization. </p>
+<p>Table 5-14  </p>
+<p>Appl_CddFiat_GetEOLStatus </p>
+<p><b>5.3.2 </b></p>
+<p><b>Appl_CddFiat_SystemStatusIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>Appl_CddFiat_SystemStatusIndication </b>(NetworkHandleType nmChannelHandle, </p>
+<p>NmFiatB_SystemConfigType currentSysConfig, uint8 arraySize)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle </p>
+<p>Identification of the Nm-channel </p>
+<p>currentSysConfig </p>
+<p>Pointer to the current System Configuration </p>
+<p>arraySize </p>
+<p>Size of the given array </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This callback is called on Class B Master channels only. It indicates the current monitored system </p>
+<p>configuration to application. See 3.2 System Status Indication. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function is called on task level only. </p>
+<p>Table 5-15  </p>
+<p>Appl_CddFiat_SystemStatusIndication </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>28 / 38 </p>
+<p><b>5.3.3 </b></p>
+<p><b>Appl_CddFiat_GetTrcvErrorPin </b></p>
+<p><b>Prototype </b></p>
+<p>boolean</p>
+<p> </p>
+<p><b>Appl_CddFiat_GetTrcvErrorPin </b>(NetworkHandleType nmChannelHandle)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>nmChannelHandle </p>
+<p>Identification of the Nm-channel </p>
+<p><b>Return code </b></p>
+<p>boolean </p>
+<p>TRUE if the transceiver indicated an error during message reception. </p>
+<p>FALSE if there was no error during message reception. </p>
+<p><b>Functional Description </b></p>
+<p>The function is used for “CAN bus wire failure detection” as described in [4]. It shall return TRUE if the </p>
+<p>transceiver indicated an error during message reception. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function is only available for Class B Master. </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>This function is called within NmFiatB_RxIndication (Interrupt context) </p>
+<p>Table 5-16  </p>
+<p>Appl_CddFiat_GetTrcvErrorPin </p>
+<p><b>5.4 </b></p>
+<p><b>Services used by CddFiat </b></p>
+<p>The  CddFiat  uses  the  following  components’  services.  For  details  about  prototype  and </p>
+<p>functionality, refer to the documentation of the providing component. </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>Det </p>
+<p>Det_ReportError</p>
+<p> (optionally) </p>
+<p>Table 5-17  </p>
+<p>Services used by CddFiat </p>
+<p> </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>29 / 38 </p>
+<p><b>5.5 </b></p>
+<p><b>Configurable Interfaces </b></p>
+<p><b>5.5.1 </b></p>
+<p><b>Callback Functions </b></p>
+<p>The  following  callbacks  are  generated  by  the  module  CddFiat.  For  each  configured </p>
+<p>channel which needs this callback, an own function will be generated with the name of the </p>
+<p>channel as postfix. </p>
+<p><b>5.5.1.1 </b></p>
+<p><b>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt;</b></p>
+<p> </p>
+<p>( void )</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function notifies the correct transmission of the bus off signal for the configured communication </p>
+<p>channel. This function is generated by GENy and needs to be configured as described in 7.1.3.2. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is only available for Class C and AUTOSAR Nm ECU’s </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>This function should be set up as signal transmission confirmation callback within the Com </p>
+<p>module for the referenced bus off signal </p>
+<p>Table 5-18  </p>
+<p>CddFiat_BusOffCbkTAck_&lt;CHANNELNAME&gt; </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>30 / 38 </p>
+<p><b>5.5.2 </b></p>
+<p><b>Callout Functions </b></p>
+<p>The following callouts are generated by the module CddFiat. For each configured channel </p>
+<p>which needs this callout, an own function will be generated with the name of the channel </p>
+<p>as postfix. </p>
+<p><b>5.5.2.1 </b></p>
+<p><b>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>void</p>
+<p> </p>
+<p><b>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt;</b></p>
+<p>  </p>
+<p>( PduIdType ID, const PduInfoType * </p>
+<p>PduInfoPtr)</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>ID </p>
+<p>Id of the IPDU message to be transmitted </p>
+<p>PduInfoPtr </p>
+<p>Pointer to the IPDU information structure owning the message buffer </p>
+<p>reference </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function notifies the transmission of the signals which will be updated by the CddFiat for this </p>
+<p>communication channel. This function is generated by GENy and needs to be configured as described in </p>
+<p>7.1.3.1. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The API is only available for Class C and AUTOSAR Nm ECU’s </p>
+<p></p>
+<p> </p>
+<p>This function is synchronous </p>
+<p></p>
+<p> </p>
+<p>This function is non-reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function should be called as IPDU call back by the Com for the referenced IPDU message </p>
+<p>Table 5-19  </p>
+<p>CddFiat_IPDU_Callout_&lt;CHANNELNAME&gt; </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>31 / 38 </p>
+<p><b>6 </b></p>
+<p><b>Signal Description </b></p>
+<p>This  chapter  describes  the  signals  which  will  be  updated  by  CddFiat.  The  signals  are </p>
+<p>provided by the FGA message map. Please note: the name of the message and signals </p>
+<p>may vary depending on the FGA dbc file. </p>
+<p><b>6.1 </b></p>
+<p><b>Signal Description AUTOSAR ECU </b></p>
+<p><b>Signal Name </b></p>
+<p><b>Signal Location  </b></p>
+<p><b>Description </b></p>
+<p>D_ES </p>
+<p>PSC_INFO_&lt;ECU&gt;, </p>
+<p>Bit position 60 </p>
+<p>Signal provides the information if </p>
+<p>a bus off has occurred </p>
+<p>CurrentFailSts </p>
+<p>PSC_INFO_&lt;ECU&gt;, </p>
+<p>Bit position 62 </p>
+<p>Signal provides the current fail </p>
+<p>state information of the </p>
+<p>component Dem </p>
+<p>GenericFailSts </p>
+<p>PSC_INFO_&lt;ECU&gt;, </p>
+<p>Bit position 61 </p>
+<p>Signal provides the generic fail </p>
+<p>state information of the </p>
+<p>component Dem </p>
+<p>EOL </p>
+<p>PSC_INFO_&lt;ECU&gt;, </p>
+<p>Bit position 63 </p>
+<p>Provides the information if a EOL </p>
+<p>programming was done by Fiat </p>
+<p>or not </p>
+<p>Table 6-1  </p>
+<p>Node status message signal description for AUTOSAR ECUs </p>
+<p><b>6.2 </b></p>
+<p><b>Signal Description Class C ECU </b></p>
+<p>The signal positions of the node status message are in line with FGA norm TFO07321. </p>
+<p><b>Signal Name </b></p>
+<p><b>Signal Location  </b></p>
+<p><b>Description </b></p>
+<p>D_ES </p>
+<p>STATUS_C_xxx  message, </p>
+<p>Bit position 60-59 </p>
+<p>Signal provides the information if </p>
+<p>a bus off has occurred </p>
+<p>EOL </p>
+<p>STATUS_C_xxx  message, </p>
+<p>Bit position 58 </p>
+<p>Provides the information if a EOL </p>
+<p>programming was done by Fiat </p>
+<p>or not </p>
+<p>CurrentFailSts </p>
+<p>STATUS_C_xxx  message, </p>
+<p>Bit position 57 </p>
+<p>Signal provides the current fail </p>
+<p>state information of the </p>
+<p>component Dem </p>
+<p>GenericFailSts </p>
+<p>STATUS_C_xxx  message, </p>
+<p>Bit position 56 </p>
+<p>Signal provides the generic fail </p>
+<p>state information of the </p>
+<p>component Dem </p>
+<p>Table 6-2  </p>
+<p>Node status message signal description for Carry-Back Class C ECUs </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>32 / 38 </p>
+<p><b>6.3 </b></p>
+<p><b>Signal Description Class B ECU </b></p>
+<p>The  Nm  message  of  Class  B  Nm  ECUs  is  composed  by  the  MICROSAR  Class  B  Nm </p>
+<p>module </p>
+<p>provided </p>
+<p>by </p>
+<p>Vector </p>
+<p>Informatik. </p>
+<p>The </p>
+<p>CddFiat </p>
+<p>module </p>
+<p>provides </p>
+<p>the </p>
+<p>relevant </p>
+<p>information to the Class B Nm module. </p>
+<p><b>6.4 </b></p>
+<p><b>Signals not handled by the CddFiat component </b></p>
+<p>The CddFiat only handles signals defined in the section above. All remaining signals of the </p>
+<p>node  status  message  (such  as  the  StayActiveSource  signal)  must  be  handled  by  the </p>
+<p>application by using standard signal access mechanisms of Com or RTE. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>33 / 38 </p>
+<p><b>7 </b></p>
+<p><b>Configuration </b></p>
+<p><b>7.1 </b></p>
+<p><b>Configuration with GENy </b></p>
+<p>The CddFiat module is configured with the help of the configuration tool GENy. </p>
+<p> </p>
+<p><b>7.1.1 </b></p>
+<p><b>Activation of the module CddFiat in GENy </b></p>
+<p>To activate the module CddFiat at least one communication channel must be selected on </p>
+<p>the Component Selection page as shown in Figure 7-1. </p>
+<p> </p>
+<p> </p>
+<p>Figure 7-1   Activation of the module CddFiat </p>
+<p> </p>
+<p><b>7.1.2 </b></p>
+<p><b>General Configuration </b></p>
+<p><b>This chapter </b></p>
+<p><b>describes the </b></p>
+<p><b>general </b></p>
+<p><b>configuration for </b></p>
+<p><b>the module </b></p>
+<p><b>CddFiat. Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Common </p>
+<p>Configuration Variant </p>
+<p>- </p>
+<p>- </p>
+<p><b>Pre-Compile </b></p>
+<p>Specify the configuration variant </p>
+<p>Dev Error Detect </p>
+<p>pre-compile </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>If 'Development Error Detection' is </p>
+<p>ON, development errors are </p>
+<p>reported to the Development Error </p>
+<p>Tracer (Det). </p>
+<p>User Configuration </p>
+<p>pre-compile </p>
+<p>String </p>
+<p> </p>
+<p>A CddFiat configuration file is </p>
+<p>generated by GENy </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>34 / 38 </p>
+<p><b>This chapter </b></p>
+<p><b>describes the </b></p>
+<p><b>general </b></p>
+<p><b>configuration for </b></p>
+<p><b>the module </b></p>
+<p><b>CddFiat. Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>File Path </p>
+<p>(CddFiat_cfg.h). If you want to </p>
+<p>overwrite settings in the generated </p>
+<p>file, you can specify a path to a </p>
+<p>user defined configuration file. The </p>
+<p>user defined configuration file will </p>
+<p>be included at the end of the </p>
+<p>generated file. Therefore </p>
+<p>definitions in the user defined </p>
+<p>configuration file can overwrite </p>
+<p>definitions in the generated </p>
+<p>configuration file. </p>
+<p>Table 7-1  </p>
+<p>General Configuration </p>
+<p> </p>
+<p><b>7.1.3 </b></p>
+<p><b>Channel Configuration </b></p>
+<p>This chapter describes the channel configuration of the CddFiat. For Class B Nm channels </p>
+<p>this fields can be left empty because this is not necessary for Class B. </p>
+<p>For  each  CAN  communication  channel  that  requires  FGA  node  status  information  (e.g. </p>
+<p>EOL  Flag)  to  be  transmitted  some  configurations  have  to  be  made  to  allow  CddFiat  to </p>
+<p>work. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>35 / 38 </p>
+<p><b>7.1.3.1 </b></p>
+<p><b>Configuration of the IPdu Callout </b></p>
+<p>For each configured Class C or Autosar Nm channel an IPdu Callout must be configured.  </p>
+<p>In a drop-down list Tx IPdus are listed which are configured for the selected channel. You </p>
+<p>have to choose the IPdu which transmits the EOL, current generic fail states and BusOff </p>
+<p>status  signals.  Please  refer  to  the  FGA  message  map  to  locate  this  message  for  your </p>
+<p>ECU. </p>
+<p>In Multiple Ecu configurations the IPdu has to be chosen for each identity. </p>
+<p> </p>
+<p>Figure 7-2 shows a screenshot were the relevant set up was done. </p>
+<p> </p>
+<p>Figure 7-2   Configuration of the IPdu Callout </p>
+<p> </p>
+<p>The  function  will  be  generated  to  the  file  CddFiat_Cfg.c </p>
+<p>and  the  prototype  will  be </p>
+<p>generated to Com_Cbk.h. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>36 / 38 </p>
+<p><b>7.1.3.2 </b></p>
+<p><b>Configuration of the Tx Transmit Callback </b></p>
+<p>The CddFiat requires a Tx confirmation function which indicates successful transmission of </p>
+<p>the  node  status  message.  In AUTOSAR  the Tx  confirmation  needs  to  be  configured  on </p>
+<p>signal level.  </p>
+<p>Choose one single signal out of the configured IPdu. After successful transmission of the </p>
+<p>node status message the Com calls a Tx confirmation function which is generated by the </p>
+<p>module CddFiat to reset the BusOff information after it was send one time.  </p>
+<p>In Multiple Ecu configurations the Tx signal has to be chosen for each identity. </p>
+<p> </p>
+<p>Figure 7-3 shows a screenshot were the relevant set up was done. </p>
+<p> </p>
+<p> </p>
+<p>Figure 7-3   Configuration of the Tx Confirmation </p>
+<p>The  function  will  be  generated  to  the  file  CddFiat_Cfg.c </p>
+<p>and  the  prototype  will  be </p>
+<p>generated to Rte_Cbk.h or Appl_Cbk.h. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>37 / 38 </p>
+<p><b>8 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>8.1 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>CanSM </p>
+<p>CAN State Manager </p>
+<p>CDD </p>
+<p>Complex Device Driver </p>
+<p>Dem </p>
+<p>Diagnostic Event Manager </p>
+<p>Det </p>
+<p>Development Error Tracer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>EOL </p>
+<p>End Of Line </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>Table 8-1  </p>
+<p>Abbreviations </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference CddFiat </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 4.6 </p>
+<p>38 / 38 </p>
+<p><b>9 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p>www.vector.com </p>
+<p> </p>
+<p> </p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

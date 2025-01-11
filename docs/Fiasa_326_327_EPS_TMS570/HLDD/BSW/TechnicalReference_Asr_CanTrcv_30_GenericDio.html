@@ -1,0 +1,3190 @@
+---
+layout: default
+title: TechnicalReference_Asr_CanTrcv_30_GenericDio
+nav_order: 8
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR CAN Transceiver Driver </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>Generic </p>
+<p>Version 3.02.00 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Matthias  Fleischmann,  Senol  Cendere,  Mihai  Olariu, </p>
+<p>Timo Vanoni </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>2 / 51 </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Matthias Fleischmann </p>
+<p>2008-04-21 </p>
+<p>1.00 </p>
+<p>Creation </p>
+<p>Senol Cendere </p>
+<p>2008-06-10 </p>
+<p>1.01 </p>
+<p>Rework file names </p>
+<p>Rework tool description </p>
+<p>Mihai Olariu </p>
+<p>2008-07-10 </p>
+<p>1.02 </p>
+<p>Rename the placeholders </p>
+<p>Mihai Olariu </p>
+<p>2008-10-13 </p>
+<p>1.03 </p>
+<p>Minor changes in the GENy </p>
+<p>GUI </p>
+<p>Mihai Olariu </p>
+<p>2008-12-15 </p>
+<p>1.04 </p>
+<p>Add support for the platforms </p>
+<p>which cannot wakeup by CAN </p>
+<p>bus activity </p>
+<p>Matthias Fleischmann </p>
+<p>2009-07-01 </p>
+<p>1.05 </p>
+<p>Updated description for ICU </p>
+<p>notification function and </p>
+<p>GENy configuration. </p>
+<p>Added description for </p>
+<p>BSWMD file configuration. </p>
+<p>Timo Vanoni </p>
+<p>2009-11-12 </p>
+<p>1.06 </p>
+<p>Added API </p>
+<p>CanTrcv_30_&lt;Your_Trcv&gt;_W</p>
+<p>ait() </p>
+<p>Filenames were renamed to </p>
+<p>match BSW00347. </p>
+<p>Change of initialization flow. </p>
+<p>Timo Vanoni </p>
+<p>2010-05-06 </p>
+<p>1.06.1 </p>
+<p>Fixed example in chapter 4.5 </p>
+<p>Timo Vanoni </p>
+<p>2011-01-26 </p>
+<p>1.07.00 </p>
+<p>Added support for Identity </p>
+<p>Manager Configurations </p>
+<p>Timo Vanoni </p>
+<p>2011-07-19 </p>
+<p>2.00.00 </p>
+<p>Implementation according </p>
+<p>ASR3.2.1 </p>
+<p>Timo Vanoni </p>
+<p>2011-12-06 </p>
+<p>2.01.00 </p>
+<p>Add support for selective </p>
+<p>wakeup (partial networking) </p>
+<p>Add support for SPI Interface </p>
+<p>Timo Vanoni </p>
+<p>2012-08-22 </p>
+<p>3.00.00 </p>
+<p>Add support for </p>
+<p>SetPNActivationState API (ch. </p>
+<p>6.1.16) </p>
+<p>Change wakeup detection of </p>
+<p>CB_WakeupByBus to </p>
+<p>conform to ASR3.2.2 </p>
+<p>(ch.6.1.8) </p>
+<p>Timo Vanoni </p>
+<p>2012-09-28 </p>
+<p>3.01.00 </p>
+<p>Add support for ASR4.0.3 </p>
+<p>Timo Vanoni </p>
+<p>2013-04-12 </p>
+<p>3.02.00 </p>
+<p>Small reworks, add note in </p>
+<p>chapter 4.4  </p>
+<p>Table 1-1  </p>
+<p>History of the document </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>3 / 51 </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_SWS_CAN_TransceiverDriver.pdf </p>
+<p>2.0.0</p>
+<p>1</p>
+<p>, 3.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DET.pdf </p>
+<p>2.2.1 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DEM.pdf </p>
+<p>2.2.0 </p>
+<p>[4] </p>
+<p> </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.0.0 </p>
+<p>Table 1-2  </p>
+<p>Reference documents </p>
+<p> </p>
+<p><b>1.3 </b></p>
+<p><b>Scope of the Document  </b></p>
+<p>This technical reference describes the specific use of the Generic CAN transceiver driver. </p>
+<p>Note that the  substrings “__Your_Trcv__” and “__YOUR_TRCV__” are just placeholders </p>
+<p>for the real name of the CAN transceiver (e.g. Tja1041 and TJA1041). </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector’s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p> </p>
+<p>                                            </p>
+<p>1</p>
+<p> From R3.2 Rev 2 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>4 / 51 </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information ................................................................................................. 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History ............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ....................................................................................... 3</p>
+<p> </p>
+<p>1.3</p>
+<p> </p>
+<p>Scope of the Document...................................................................................... 3</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction................................................................................................................... 8</b></p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................. 9</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Features ............................................................................................................ 9</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Initialization ........................................................................................................ 9</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>Set operation mode .......................................................................................... 10</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Get operation mode ......................................................................................... 10</p>
+<p> </p>
+<p>3.5</p>
+<p> </p>
+<p>Get version info ................................................................................................ 10</p>
+<p> </p>
+<p>3.6</p>
+<p> </p>
+<p>Wakeup by bus event detection ....................................................................... 10</p>
+<p> </p>
+<p>3.6.1</p>
+<p> </p>
+<p>Get bus wakeup reason ................................................................... 11</p>
+<p> </p>
+<p>3.6.2</p>
+<p> </p>
+<p>Set wakeup mode ............................................................................ 11</p>
+<p> </p>
+<p>3.6.3</p>
+<p> </p>
+<p>Development Error Reporting ........................................................... 11</p>
+<p> </p>
+<p>3.6.4</p>
+<p> </p>
+<p>Production Code Error Reporting ..................................................... 12</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration ................................................................................................................... 13</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Scope of Delivery ............................................................................................. 13</p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>Static Files ....................................................................................... 13</p>
+<p> </p>
+<p>4.1.2</p>
+<p> </p>
+<p>Dynamic Files .................................................................................. 13</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping ..................................................... 14</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Data consistency.............................................................................................. 15</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>Integration ........................................................................................................ 15</p>
+<p> </p>
+<p>4.5</p>
+<p> </p>
+<p>Timers .............................................................................................................. 15</p>
+<p> </p>
+<p>4.6</p>
+<p> </p>
+<p>Generated Data ............................................................................................... 17</p>
+<p> </p>
+<p>4.6.1</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___Channel ............................................. 17</p>
+<p> </p>
+<p>4.6.2</p>
+<p> </p>
+<p>Partial networking data ..................................................................... 18</p>
+<p> </p>
+<p>4.6.2.1</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___PnData ............................ 18</p>
+<p> </p>
+<p>4.6.2.2</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___PnActivationState ............ 18</p>
+<p> </p>
+<p>4.7</p>
+<p> </p>
+<p>Handling of asynchronous APIs ....................................................................... 19</p>
+<p> </p>
+<p>4.7.1</p>
+<p> </p>
+<p>Request handling ............................................................................. 20</p>
+<p> </p>
+<p>4.7.1.1</p>
+<p> </p>
+<p>Concurrent operation modes .......................................... 20</p>
+<p> </p>
+<p>4.7.1.2</p>
+<p> </p>
+<p>Request to CheckWakeFlag / ClearTrcvWufFlag / </p>
+<p>CB_WakeupByBus ........................................................ 22</p>
+<p> </p>
+<p>4.7.1.3</p>
+<p> </p>
+<p>Status Flag handling ...................................................... 22</p>
+<p> </p>
+<p>4.7.1.4</p>
+<p> </p>
+<p>Indication handling ......................................................... 23</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>5 / 51 </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>Dependencies to other components ......................................................................... 24</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Dio driver ......................................................................................................... 24</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>SPI driver ......................................................................................................... 24</p>
+<p> </p>
+<p>5.2.1</p>
+<p> </p>
+<p>SPI Configuration ............................................................................. 24</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Icu driver .......................................................................................................... 25</p>
+<p> </p>
+<p>5.3.1</p>
+<p> </p>
+<p>ICU configuration ............................................................................. 25</p>
+<p> </p>
+<p>5.3.2</p>
+<p> </p>
+<p>Implementation of the signal notification function ............................. 27</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>API Description ........................................................................................................... 28</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Services provided by CANTRCV ...................................................................... 28</p>
+<p> </p>
+<p>6.1.1</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory ........................................ 28</p>
+<p> </p>
+<p>6.1.2</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___Init ..................................................... 29</p>
+<p> </p>
+<p>6.1.3</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode ....................................... 30</p>
+<p> </p>
+<p>6.1.4</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetOpMode ....................................... 31</p>
+<p> </p>
+<p>6.1.5</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetBusWuReason ............................. 32</p>
+<p> </p>
+<p>6.1.6</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___SetWakeupMode ............................... 33</p>
+<p> </p>
+<p>6.1.7</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetVersionInfo................................... 34</p>
+<p> </p>
+<p>6.1.8</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___CB_WakeupByBus ............................ 35</p>
+<p> </p>
+<p>6.1.9</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetTrcvSystemData .......................... 36</p>
+<p> </p>
+<p>6.1.10</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvWufFlag .............................. 37</p>
+<p> </p>
+<p>6.1.11</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvTimeoutFlag ....................... 38</p>
+<p> </p>
+<p>6.1.12</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvTimeoutFlag ....................... 38</p>
+<p> </p>
+<p>6.1.13</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvSilenceFlag ........................ 39</p>
+<p> </p>
+<p>6.1.14</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___CheckWakeFlag ................................ 40</p>
+<p> </p>
+<p>6.1.15</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___MainFunction ..................................... 41</p>
+<p> </p>
+<p>6.1.16</p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___SetPNActivationState ........................ 42</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Services used by CANTRCV ........................................................................... 43</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>Configuration .............................................................................................................. 44</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Configuration with GENy .................................................................................. 44</p>
+<p> </p>
+<p>7.1.1</p>
+<p> </p>
+<p>Component Selection ....................................................................... 44</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>General settings ............................................................................... 44</p>
+<p> </p>
+<p>7.1.3</p>
+<p> </p>
+<p>Channel Specific Configuration Options ........................................... 46</p>
+<p> </p>
+<p>7.2</p>
+<p> </p>
+<p>Configuration with DaVinci Configurator 5 ........................................................ 47</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance............................................................................... 48</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Additions/ Extensions ....................................................................................... 48</p>
+<p> </p>
+<p>8.1.1</p>
+<p> </p>
+<p>Memory initialization ......................................................................... 48</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Deviations ........................................................................................................ 48</p>
+<p> </p>
+<p>8.2.1</p>
+<p> </p>
+<p>Notification functions ........................................................................ 48</p>
+<p> </p>
+<p>8.2.2</p>
+<p> </p>
+<p>CanIf_CheckTrcvWakeFlagIndication is always called ..................... 48</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>6 / 51 </p>
+<p>8.2.3</p>
+<p> </p>
+<p>No re-initialization will occur if POR is set in CanTrcv_SetOpMode .. 48</p>
+<p> </p>
+<p>8.2.4</p>
+<p> </p>
+<p>Const removed from API CanTrcv_GetTrcvSystemData .................. 49</p>
+<p> </p>
+<p>8.2.5</p>
+<p> </p>
+<p>Unused BSWMD parameters ........................................................... 49</p>
+<p> </p>
+<p>8.2.6</p>
+<p> </p>
+<p>Modified return value of CanTrcv_CB_WakeupByBus ...................... 49</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ...................................................................................... 50</b></p>
+<p> </p>
+<p>9.1</p>
+<p> </p>
+<p>Glossary .......................................................................................................... 50</p>
+<p> </p>
+<p>9.2</p>
+<p> </p>
+<p>Abbreviations ................................................................................................... 50</p>
+<p> </p>
+<p><b>10</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................ 51</b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Illustrations </b></p>
+<p>Figure 5-1</p>
+<p> </p>
+<p>Add an ICU channel .................................................................................. 25</p>
+<p> </p>
+<p>Figure 5-2</p>
+<p> </p>
+<p>ICU channel configuration for wakeup via transceiver ............................... 26</p>
+<p> </p>
+<p>Figure 5-3</p>
+<p> </p>
+<p>ICU wakeup capability .............................................................................. 26</p>
+<p> </p>
+<p>Figure 7-1</p>
+<p> </p>
+<p>CANTRCV component selection ............................................................... 44</p>
+<p> </p>
+<p>Figure 7-2</p>
+<p> </p>
+<p>CANTRCV general configuration .............................................................. 44</p>
+<p> </p>
+<p>Figure 7-3</p>
+<p> </p>
+<p>CANTRCV channel dependent configuration ............................................ 46</p>
+<p> </p>
+<p> </p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the document .............................................................................. 2</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference documents ................................................................................. 3</p>
+<p> </p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>Supported SWS features ............................................................................ 9</p>
+<p> </p>
+<p>Table 3-2 </p>
+<p> </p>
+<p>Not supported SWS features ...................................................................... 9</p>
+<p> </p>
+<p>Table 3-3 </p>
+<p> </p>
+<p>Mapping of service IDs to services ........................................................... 11</p>
+<p> </p>
+<p>Table 3-4 </p>
+<p> </p>
+<p>Errors reported to DET ............................................................................. 12</p>
+<p> </p>
+<p>Table 3-5 </p>
+<p> </p>
+<p>Errors reported to DEM ............................................................................. 12</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Static files ................................................................................................. 13</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Generated files ......................................................................................... 13</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping .............................................. 14</p>
+<p> </p>
+<p>Table 4-4 </p>
+<p> </p>
+<p>Timer indexes and their wait times ............................................................ 16</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory ................................................. 28</p>
+<p> </p>
+<p>Table 6-2 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___Init .............................................................. 29</p>
+<p> </p>
+<p>Table 6-3 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode ................................................ 30</p>
+<p> </p>
+<p>Table 6-4 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetOpMode ............................................... 31</p>
+<p> </p>
+<p>Table 6-5 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetBusWuReason ..................................... 32</p>
+<p> </p>
+<p>Table 6-6 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___SetWakeupMode........................................ 33</p>
+<p> </p>
+<p>Table 6-7 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetVersionInfo ........................................... 34</p>
+<p> </p>
+<p>Table 6-8 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___CB_WakeupByBus ..................................... 35</p>
+<p> </p>
+<p>Table 6-9 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___GetTrcvSystemData ................................... 36</p>
+<p> </p>
+<p>Table 6-10 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvWufFlag ...................................... 37</p>
+<p> </p>
+<p>Table 6-11 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvTimeoutFlag ................................ 38</p>
+<p> </p>
+<p>Table 6-12 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvTimeoutFlag ................................ 38</p>
+<p> </p>
+<p>Table 6-13 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvSilenceFlag ................................. 39</p>
+<p> </p>
+<p>Table 6-14 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___CheckWakeFlag ......................................... 40</p>
+<p> </p>
+<p>Table 6-15 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___MainFunction ............................................. 41</p>
+<p> </p>
+<p>Table 6-16 </p>
+<p> </p>
+<p>CanTrcv_30___Your_Trcv___SetPNActivationState ................................. 42</p>
+<p> </p>
+<p>Table 6-17 </p>
+<p> </p>
+<p>Services used by the CANTRCV .............................................................. 43</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>7 / 51 </p>
+<p>Table 8-1</p>
+<p> </p>
+<p>Deviation of APIs used by CanTrcv ........................................................... 48</p>
+<p> </p>
+<p>Table 9-1 </p>
+<p> </p>
+<p>Glossary ................................................................................................... 50</p>
+<p> </p>
+<p>Table 9-2 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................ 50</p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>8 / 51 </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module CANTRCV as specified in [1]. The CAN transceiver driver provides an abstraction </p>
+<p>layer for the used CAN transceiver hardware. It offers a hardware independent interface to </p>
+<p>the upper layer components. </p>
+<p> </p>
+<p><b>Supported </b></p>
+<p><b>AUTOSAR Release*: </b></p>
+<p>3* and 4.0.3 </p>
+<p><b>Supported </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variants: </b></p>
+<p>Pre-compile </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p>CANTRCV_30___YOUR_TRCV___VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= </p>
+<p>Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>CANTRCV_30___YOUR_TRCV___MODULE_ID </p>
+<p>[ModuleID] </p>
+<p>(according to ref. <b>[4]</b>) </p>
+<p><b>Instance ID: </b></p>
+<p>CANTRCV_30___YOUR_TRCV___INSTANCE_ID </p>
+<p>Specified </p>
+<p>as </p>
+<p>pre- </p>
+<p>compile </p>
+<p>parameter </p>
+<p>in </p>
+<p>the </p>
+<p>Generation </p>
+<p>Tool. </p>
+<p>* For the precise AUTOSAR Release 3.x please see the release specific documentation.  </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>Replace the placeholders __Your_Trcv__ and __YOUR_TRCV__ with the </p>
+<p>according name of the used transceiver. This must be done in the source code </p>
+<p>and the BSWMD files. </p>
+<p> </p>
+<p>__YOUR_TRCV__ is used for definitions in upper case (e.g. TJA1041). </p>
+<p> </p>
+<p>__Your_Trcv__ is used for variables in camel case (e.g. Tja1041). </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>9 / 51 </p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The supported and not supported features are presented in the following two tables.  </p>
+<p> </p>
+<p><b>Supported features </b></p>
+<p>CAN Transceiver initialization. </p>
+<p>CAN Transceiver control via DIO. </p>
+<p>Detection of wakeup (optional: incl. partial networking) </p>
+<p>Getting and setting operation mode of CAN transceiver. </p>
+<p>CAN Transceiver control via SPI. (optional) </p>
+<p>CAN Transceiver self-diagnostics. (optional) </p>
+<p>Table 3-1  </p>
+<p>Supported SWS features </p>
+<p><b>Not supported features </b></p>
+<p>- </p>
+<p>Table 3-2  </p>
+<p>Not supported SWS features </p>
+<p>The CAN transceiver driver provides service functions for initialization, operation mode </p>
+<p>change and operation mode detection of the used CAN transceiver hardware. Optional </p>
+<p>service functions and callback functions are provided to detect wakeup by bus events and </p>
+<p>report them to the upper layer components. </p>
+<p> </p>
+<p><b>3.2 </b></p>
+<p><b>Initialization </b></p>
+<p>After power on the CAN transceiver hardware has to be initialized. Therefore the CAN </p>
+<p>transceiver driver provides two service functions. </p>
+<p>The function </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory</p>
+<p> initializes all necessary </p>
+<p>values for the transceiver driver. This function has to be called first after power on or reset. </p>
+<p>The function </p>
+<p>CanTrcv_30___Your_Trcv___Init</p>
+<p> initializes all CAN transceiver </p>
+<p>channels which are selected by the generation tool. Each CAN transceiver is switched into </p>
+<p>the configured channel specific init mode. Operation mode after power on or reset can be </p>
+<p>normal, standby or sleep. </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory</p>
+<p> has to be called </p>
+<p>before this function is called. </p>
+<p>If a wakeup event was pending before the initialization the CAN transceiver driver stores </p>
+<p>this event and notifies it with the </p>
+<p>CanTrcv_30___Your_Trcv___CB_WakeupByBus</p>
+<p> </p>
+<p>function. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>10 / 51 </p>
+<p><b>3.3 </b></p>
+<p><b>Set operation mode </b></p>
+<p>The operation mode of the CAN transceiver hardware is changed by service function </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode</p>
+<p>. It can be switched from normal into </p>
+<p>standby mode, from standby into sleep mode and from standby or sleep mode into normal </p>
+<p>mode. Mode change from normal into sleep mode or from sleep into standby mode is not </p>
+<p>supported by this function corresponding to the specification. </p>
+<p> </p>
+<p><b>3.4 </b></p>
+<p><b>Get operation mode </b></p>
+<p>To retrieve the current operation mode of a specified CAN transceiver hardware, the </p>
+<p>service function </p>
+<p>CanTrcv_30___Your_Trcv___GetOpMode</p>
+<p> has to be called.  </p>
+<p> </p>
+<p><b>3.5 </b></p>
+<p><b>Get version info </b></p>
+<p>The service function </p>
+<p>CanTrcv_30___Your_Trcv___GetVersionInfo</p>
+<p> can be called to </p>
+<p>get the version info of the software module. This function must be enabled in the </p>
+<p>configuration tool by setting the checkbox <b>Version Info Api</b>. </p>
+<p>The version of the CAN transceiver driver module can be acquired in two different ways. </p>
+<p>Calling  the  function </p>
+<p>CanTrcv_30___Your_Trcv___GetVersionInfo</p>
+<p>  will  return  the </p>
+<p>version of the module in the structure Std_VersionInfoType which additionally includes the </p>
+<p>VendorID  and  the  ModuleID.  Accessing  the  version  defines  which  are  specified  in  the </p>
+<p>header file </p>
+<p>CanTrcv_30___Your_Trcv__.h</p>
+<p>: </p>
+<p> </p>
+<p>AUTOSAR Revision: </p>
+<p>CANTRCV_30___YOUR_TRCV___AR_MAJOR_VERSION </p>
+<p>CANTRCV_30___YOUR_TRCV___AR_MINOR_VERSION </p>
+<p>CANTRCV_30___YOUR_TRCV___AR_PATCH_VERSION </p>
+<p> </p>
+<p>Module Version: </p>
+<p>CANTRCV_30___YOUR_TRCV___SW_MAJOR_VERSION </p>
+<p>CANTRCV_30___YOUR_TRCV___SW_MINOR_VERSION </p>
+<p>CANTRCV_30___YOUR_TRCV___SW_PATCH_VERSION </p>
+<p> </p>
+<p><b>3.6 </b></p>
+<p><b>Wakeup by bus event detection </b></p>
+<p> </p>
+<p>If wakeup by bus detection is enabled in the configuration tool the callback function </p>
+<p>CanTrcv_30___Your_Trcv___CB_WakeupByBus</p>
+<p> has to be called by the lower layer in </p>
+<p>case of a wakeup. This function checks the specified CAN transceiver channel. If the </p>
+<p>transceiver hardware is in sleep mode and a wakeup by bus event is detected then the </p>
+<p>function returns </p>
+<p>E_OK</p>
+<p>, otherwise </p>
+<p>E_NOT_OK</p>
+<p>. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>11 / 51 </p>
+<p><b>3.6.1 </b></p>
+<p><b>Get bus wakeup reason </b></p>
+<p>The service function </p>
+<p>CanTrcv_30___Your_Trcv___GetBusWakeupReason</p>
+<p> returns the </p>
+<p>reason which caused the wakeup. </p>
+<p> </p>
+<p><b>3.6.2 </b></p>
+<p><b>Set wakeup mode </b></p>
+<p>The service function </p>
+<p>CanTrcv_30___Your_Trcv___SetWakeupMode</p>
+<p> sets the wakeup </p>
+<p>mode which is required by the CAN interface. </p>
+<p> </p>
+<p><b>3.6.3 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Development errors are reported to DET using the service </p>
+<p>Det_ReportError</p>
+<p>, if the pre-</p>
+<p>compile parameter </p>
+<p>CANTRCV_30___YOUR_TRCV___DEV_ERROR_DETECT == STD_ON</p>
+<p>. </p>
+<p>The reported CANTRCV instance ID must be specified in GENy. For details please refer to </p>
+<p>Configuration with GENy. </p>
+<p>The  reported  service  IDs  identify  the  services  which  are  described  in  6.1. The following </p>
+<p>table presents the service IDs and the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>0x00 </p>
+<p>CanTrcv_30___Your_Trcv___Init </p>
+<p>0x01 </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode </p>
+<p>0x02 </p>
+<p>CanTrcv_30___Your_Trcv___GetOpMode </p>
+<p>0x03 </p>
+<p>CanTrcv_30___Your_Trcv___GetBusWuReason </p>
+<p>0x05 </p>
+<p>CanTrcv_30___Your_Trcv___SetWakeupMode </p>
+<p>0x07 </p>
+<p>AUTOSAR3: CanTrcv_30___Your_Trcv___CB_WakeupByBus </p>
+<p>AUTOSAR4: CanTrcv_30___Your_Trcv___CheckWakeup  </p>
+<p>0x04 </p>
+<p>CanTrcv_30___Your_Trcv___GetVersionInfo </p>
+<p>0x06 </p>
+<p>CanTrcv_30___Your_Trcv___MainFunction </p>
+<p>0x08 </p>
+<p>CanTrcv_30___Your_Trcv___MainFunctionDiagnosti </p>
+<p>0x09 </p>
+<p>CanTrcv_30___Your_Trcv___GetTrcvSystemData </p>
+<p>0x0A </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvWufFlag </p>
+<p>0x0B </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvTimeoutFlag </p>
+<p>0x0C </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvTimeoutFlag </p>
+<p>0x0D </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvSilenceFlag </p>
+<p>0x0E </p>
+<p>CanTrcv_30___Your_Trcv___CheckWakeFlag </p>
+<p>0x0F </p>
+<p>CanTrcv_30___Your_Trcv___SetPNActivationState </p>
+<p>Table 3-3  </p>
+<p>Mapping of service IDs to services </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>12 / 51 </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x01 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_INVALI</p>
+<p>D_CAN_NETWORK </p>
+<p>CANTRCV_30___YOUR_TRCV___E_INVALI</p>
+<p>D_TRANSCEIVER </p>
+<p>Invalid channel index is used in </p>
+<p>function argument list. </p>
+<p>0x02 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_PARAM</p>
+<p>_POINTER </p>
+<p>Invalid pointer NULL_PTR is used in </p>
+<p>function argument list. </p>
+<p>0x11 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_UNINIT </p>
+<p>CAN transceiver hardware is not </p>
+<p>initialized. </p>
+<p>0x21 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_TRCV_</p>
+<p>NOT_STANDBY </p>
+<p>CAN transceiver hardware is not in </p>
+<p>standby mode. </p>
+<p>0x22 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_TRCV_</p>
+<p>NOT_NORMAL </p>
+<p>CAN transceiver hardware is not in </p>
+<p>normal operation mode. </p>
+<p>0x23 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_PARAM</p>
+<p>_TRCV_WAKEUP_MODE </p>
+<p>The requested wakeup mode is not </p>
+<p>valid. </p>
+<p>0x24 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_PARAM</p>
+<p>_TRCV_OPMODE </p>
+<p>The requested operation mode is not </p>
+<p>supported by the underlying </p>
+<p>transceiver hardware. </p>
+<p>0x25 </p>
+<p>CANTRCV_30___YOUR_TRCV___E_BAUDR</p>
+<p>ATE_NOT_SUPPORTED </p>
+<p>The selected baudrate is not </p>
+<p>supported by the underlying </p>
+<p>transceiver hardware. </p>
+<p>0x40 </p>
+<p>AUTOSAR4 only:  </p>
+<p>CANTRCV_30___YOUR_TRCV___E_NO_TR</p>
+<p>CV_CONTROL </p>
+<p>If the CAN transceiver is not under </p>
+<p>control, which means that the </p>
+<p>transceiver does remains in an invalid </p>
+<p>state, this production error is raised. </p>
+<p>Table 3-4  </p>
+<p>Errors reported to DET </p>
+<p> </p>
+<p><b>3.6.4 </b></p>
+<p><b>Production Code Error Reporting </b></p>
+<p>Production </p>
+<p>code </p>
+<p>related </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>DEM </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Dem_ReportErrorStatus</p>
+<p> </p>
+<p>(specified </p>
+<p>in </p>
+<p>[3]), </p>
+<p>if </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>parameter </p>
+<p>CANTRCV_30___YOUR_TRCV___PROD_ERROR_DETECT == STD_ON</p>
+<p>. </p>
+<p>The errors reported to DEM are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>AUTOSAR3 only: </p>
+<p>CANTRCV_30___YOUR_TRCV___E_NO_TRC</p>
+<p>V_CONTROL </p>
+<p>If the CAN transceiver is not under control, </p>
+<p>which means that the transceiver remains in </p>
+<p>an invalid state, this production error is raised. </p>
+<p>CANTRCV_30___YOUR_TRCV___E_BUS_ER</p>
+<p>ROR </p>
+<p>A physical BUS error occurred. </p>
+<p>Table 3-5  </p>
+<p>Errors reported to DEM </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>13 / 51 </p>
+<p><b>4 </b></p>
+<p><b>Integration </b></p>
+<p>This chapter gives necessary information for the integration of the MICROSAR CANTRCV </p>
+<p>into an application environment of an ECU. </p>
+<p><b>4.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the CANTRCV contains the files which are described in the chapters 4.1.1 </p>
+<p>and 4.1.2:  </p>
+<p><b>4.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>CanTrcv_30___Your_Trcv__.h </p>
+<p>Header file which has to be included by higher layers. </p>
+<p>CanTrcv_30___Your_Trcv__.c </p>
+<p>Implementation </p>
+<p>AUTOSAR3 only: </p>
+<p>CanTrcv_30___Your_Trcv___Cbk.h </p>
+<p>Header file which has to be included by lower layers to </p>
+<p>access the supported callback functions. </p>
+<p>Table 4-1  </p>
+<p>Static files </p>
+<p> </p>
+<p><b>4.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool GENy (see 7.1.27.1.1). </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>CanTrcv_30___Your_Trcv___Cfg.h </p>
+<p>Header file contains type definitions and external data </p>
+<p>declarations. It is included by </p>
+<p>CanTrcv_30___Your_Trcv__.h. </p>
+<p>CanTrcv_30___Your_Trcv___Cfg.c </p>
+<p>Contains the configuration data. </p>
+<p>AUTOSAR4 only: </p>
+<p>CanTrcv_GeneralTypes.h </p>
+<p>Header file that contains all CanTrcv types specified by </p>
+<p>SWS. This file can be included by </p>
+<p>Can_GeneralTypes.h. </p>
+<p>Table 4-2  </p>
+<p>Generated files </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>14 / 51 </p>
+<p><b>4.2 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions that are defined for the CANTRCV and illustrates their assignment among each </p>
+<p>other. </p>
+<p><b>Compiler Abstraction </b></p>
+<p><b>Definitions </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>CANTRCV_30___YOUR_TRCV___VAR </p>
+<p>CANTRCV_30___YOUR_TRCV___APPL_VAR </p>
+<p>CANTRCV_30___YOUR_TRCV___CONST </p>
+<p>CANTRCV_30___YOUR_TRCV___CODE </p>
+<p>CANTRCV_30___YOUR_TRCV___APPL_CODE </p>
+<p>CANTRCV_30___YOUR_TRCV___START_SEC_CODE </p>
+<p>CANTRCV_30___YOUR_TRCV___STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>CANTRCV_30___YOUR_TRCV___START_SEC_CONST_UNSPECIFI</p>
+<p>ED </p>
+<p>CANTRCV_30___YOUR_TRCV___STOP_SEC_CONST_UNSPECIFI</p>
+<p>ED </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTRCV_30___YOUR_TRCV___START_SEC_VAR_NOINIT_UNSP</p>
+<p>ECIFIED </p>
+<p>CANTRCV_30___YOUR_TRCV___STOP_SEC_VAR_NOINIT_ </p>
+<p>UNSPECIFIED </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-3  </p>
+<p>Compiler abstraction and memory mapping </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>15 / 51 </p>
+<p><b>4.3 </b></p>
+<p><b>Data consistency </b></p>
+<p>The  CAN  transceiver  driver  calls  service  functions  of  upper  layers  in  order  to  prevent </p>
+<p>interruption when accessing the CAN transceiver pins.  </p>
+<p>These  service  functions  have  to  be  provided  by  the  components  VStdLib,  Schedule </p>
+<p>Manager  or  OSEK  OS  depending  on  which  of  these  components  is  used  for  interrupt </p>
+<p>disable/restore handling. The component for interrupt control handling has to be selected </p>
+<p>in the configuration tool. </p>
+<p><b>4.4 </b></p>
+<p><b>Integration </b></p>
+<p>The </p>
+<p>driver </p>
+<p>has </p>
+<p>to </p>
+<p>be </p>
+<p>extended </p>
+<p>by </p>
+<p>hardware </p>
+<p>specific </p>
+<p>functionality. </p>
+<p>Within </p>
+<p>CanTrcv_30___Your_Trcv__.c  and  CanTrcv_30___Your_Trcv__.h,  the  parts  that  have  to </p>
+<p>be implemented are marked with the following token: </p>
+<p>&lt;Your_Trcv_Code&gt;  </p>
+<p>Please refer to the comments at the dedicated code part for integration tips. Also refer to </p>
+<p>the following chapters for details. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>Replace the placeholders __Your_Trcv__ and __YOUR_TRCV__ with the </p>
+<p>according name of the used transceiver. This procedure has to be done in both, </p>
+<p>the source code and the BSWMD files. </p>
+<p> </p>
+<p>__YOUR_TRCV__ is used for definitions in upper case (e.g. TJA1041). </p>
+<p> </p>
+<p>__Your_Trcv__ is used for variables in camel case (e.g. Tja1041). </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.5 </b></p>
+<p><b>Timers </b></p>
+<p>As the underlying transceiver hardware may have some time constraints that must be met, </p>
+<p>the  transceiver  driver  sometimes  needs  to  wait  some  time  until  the  next  request  to  the </p>
+<p>hardware can be made.  </p>
+<p>An </p>
+<p>application </p>
+<p>function </p>
+<p>which </p>
+<p>handles </p>
+<p>this </p>
+<p>wait </p>
+<p>states </p>
+<p>is </p>
+<p>declared </p>
+<p>in </p>
+<p>CanTrcv_30___Your_Trcv___Cbk.h and has to be implemented by the user. To enable or </p>
+<p>disable this callback function and all predefined timers, you have to specify the following </p>
+<p>constant in the CanTrcv_30___Your_Trcv__.h: </p>
+<p> </p>
+<p># define CANTRCV_30___YOUR_TRCV___USE_TIMERS                    STD_ON </p>
+<p>Declaration: </p>
+<p>FUNC(void, CANTRCV_30___YOUR_TRCV___CODE) Appl_CanTrcv_30___Your_Trcv___Wait(uint8 </p>
+<p>TimerIndex); </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>16 / 51 </p>
+<p>The parameter </p>
+<p>TimerIndex </p>
+<p>is used to distinguish between the timers needed by the </p>
+<p>transceiver driver. </p>
+<p>TimerIndex</p>
+<p> is represented by a symbolic constant that is defined in </p>
+<p>the CanTrcv_30___Your_Trcv__.h. The following table lists all available timer indexes: </p>
+<p> </p>
+<p><b>Timer Index (symbolic constant) </b></p>
+<p><b>Wait Time </b></p>
+<p><b>Description </b></p>
+<p>kCanTrcv_30___Your_Trcv___Loo</p>
+<p>pInit</p>
+<p> </p>
+<p>&gt; 50µs </p>
+<p>This timer is called by the transceiver driver in </p>
+<p>function </p>
+<p>Init()</p>
+<p>after the transition to normal </p>
+<p>mode was made and before switching to the </p>
+<p>mode, specified in the configuration tool. </p>
+<p>Table 4-4  </p>
+<p>Timer indexes and their wait times </p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example of the implementation </b></p>
+<p> </p>
+<p>FUNC(void, CANTRCV_30___YOUR_TRCV___CODE)  </p>
+<p>Appl_CanTrcv_30___Your_Trcv___Wait(uint8 TimerIndex) </p>
+<p>{ </p>
+<p>    uint32 timer; </p>
+<p> </p>
+<p>    switch (TimerIndex) </p>
+<p>    { </p>
+<p>      case kCanTrcv_30___Your_Trcv___LoopInit: </p>
+<p>        timer = 100; </p>
+<p>        break; </p>
+<p> </p>
+<p>      default: </p>
+<p>        timer = 0; </p>
+<p>        break; </p>
+<p>    } </p>
+<p> </p>
+<p>    for (timer; timer != 0; --timer) </p>
+<p>       /* nothing to do */; </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>17 / 51 </p>
+<p><b>4.6 </b></p>
+<p><b>Generated Data </b></p>
+<p>The </p>
+<p>configuration </p>
+<p>tool </p>
+<p>generates </p>
+<p>various </p>
+<p>tables </p>
+<p>that </p>
+<p>can </p>
+<p>be </p>
+<p>used </p>
+<p>within </p>
+<p>the </p>
+<p>implementation. Also refer to the following files: </p>
+<p>CanTrcv_30___Your_Trcv___Cfg.h (Type definitions, declarations) </p>
+<p>CanTrcv_30___Your_Trcv___Cfg.c  (Initializers, definitions) </p>
+<p> </p>
+<p><b>4.6.1 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___Channel </b></p>
+<p>This array contains generic data for each channel. It has the following elements. </p>
+<p>CanIf_TransceiverModeType </p>
+<p>CanTrcvInitState </p>
+<p>State that shall be reached after CanTrcv_Init() has finished. </p>
+<p>boolean </p>
+<p>CanTrcvWakeupByBusUsed </p>
+<p>TRUE  if  Wakeup  By  Bus  over  CanTrcv  is  activated  for  the </p>
+<p>given channel, FALSE otherwise.</p>
+<p> </p>
+<p>boolean </p>
+<p>CanTrcvChannelUsed </p>
+<p>TRUE if the channel has to be used, FALSE otherwise.</p>
+<p> </p>
+<p>EcuM_WakeupSourceType </p>
+<p>WakeupSource </p>
+<p>Wakeup  Source  of the given  channel that  will  be  reported  to </p>
+<p>EcuM after a wakeup was detected.</p>
+<p> </p>
+<p><b>Only if </b></p>
+<p><b>CANTRCV_30___YOUR_TRCV___USE_ICU == TRUE</b></p>
+<p><b>: </b></p>
+<p>boolean IcuChannelSet </p>
+<p>TRUE  if  an  ICU  channel  has  been  configured  for  the  given </p>
+<p>channel, FALSE otherwise. </p>
+<p>Icu_ChannelType </p>
+<p>IcuChannel </p>
+<p>Configured ICU channel for the given CanTrcv channel. Only </p>
+<p>valid if IcuChannelSet == TRUE. </p>
+<p><b>Only for DIO Interface: </b></p>
+<p>Dio_ChannelType &lt;Pin&gt; </p>
+<p>(E.g. DIO_PIN_TRCV_RX) </p>
+<p>For each configured DIO pin, one member is generated. The </p>
+<p>value  of  this  Member  is  &lt;Pin&gt;_&lt;Channel  Index&gt;  in  upper </p>
+<p>case. (E.g. DIO_PIN_TRCV_RX_0). </p>
+<p> </p>
+<p>The  unmodified  template  driver  uses  all  members  with  exception  of  “Dio_ChannelType </p>
+<p>&lt;Pin&gt;”. Except for the DIO Pins, no code has to be implemented. </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>When using SPI interface all sequences / channels for a given channel must be </p>
+<p>generated “by hand” e.g. by using a static table within the driver code. There is no tool </p>
+<p>support to configure any reference to a SPI sequence / channel / job. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>18 / 51 </p>
+<p><b>4.6.2 </b></p>
+<p><b>Partial networking data </b></p>
+<p>If </p>
+<p>the </p>
+<p>underlying </p>
+<p>CanTrcv </p>
+<p>supports </p>
+<p>selective </p>
+<p>wakeup </p>
+<p>the </p>
+<p>following </p>
+<p>tables </p>
+<p>can </p>
+<p>be </p>
+<p>generated. </p>
+<p><b>4.6.2.1 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___PnData </b></p>
+<p>This  array  contains  the  configured  partial  networking  data  for  each  channel.  It  has  the </p>
+<p>following elements: </p>
+<p> </p>
+<p>uint32 ID </p>
+<p>Contains the ID as entered in the corresponding field in the generation </p>
+<p>tool. </p>
+<p>uint32 MASK </p>
+<p>Contains </p>
+<p>the </p>
+<p>MASK </p>
+<p>as </p>
+<p>entered </p>
+<p>in </p>
+<p>the </p>
+<p>corresponding </p>
+<p>field </p>
+<p>in </p>
+<p>the </p>
+<p>generation tool.</p>
+<p> </p>
+<p>uint8 DATA[8] </p>
+<p>Contains the DATA bytes. The index is the same as of the corresponding </p>
+<p>field in the generation tool</p>
+<p> </p>
+<p>uint8 DLC </p>
+<p>Contains the configured DLC.</p>
+<p> </p>
+<p>uint8 MATCH_EXT </p>
+<p>Has value “1” if the ID/MASK shall be interpreted as extended ID.</p>
+<p> </p>
+<p>uint8 BAUDRATE </p>
+<p>Configurator 5 only: Baudrate (e.g. 125, 250, 500, …) </p>
+<p> </p>
+<p>None of these values are used in the unmodified template driver.  It is up to the user to </p>
+<p>implement the code necessary to download the data to the underlying CanTrcv hardware.  </p>
+<p>The data must be written at </p>
+<p>Init_Channel_PnData </p>
+<p>in CanTrcv_30___Your_Trcv__.c. </p>
+<p> </p>
+<p><b>4.6.2.2 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___PnActivationState </b></p>
+<p>This array indicates per channel whether selective wakeup is enabled or not. It contains a </p>
+<p>“1” if selective wakeup is activated </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>19 / 51 </p>
+<p><b>4.7 </b></p>
+<p><b>Handling of asynchronous APIs </b></p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>This chapter only affects CanTrcv hardware that uses an asynchronous SPI Interface. </p>
+<p>Transceivers with DIO interface are always synchronous and thus do not need any </p>
+<p>special behavior. </p>
+<p> </p>
+<p>Due to the complexity of the implementation it is NOT RECOMMENDED to use </p>
+<p>asynchronous SPI access. </p>
+<p> </p>
+<p>Throughout  this  chapter,  CanTrcv_*  instead  of  CanTrcv_30___Your_Trcv__*  is  used  in </p>
+<p>order to improve readability. </p>
+<p> </p>
+<p>When  using  asynchronous  SPI  access,  all  APIs  except </p>
+<p>CanTrcv_Init</p>
+<p>  shall  behave </p>
+<p>asynchronously.  This  usually  means  that  a  call  to  an  API  only <i> requests </i> the  dedicated </p>
+<p>action but does not actually <i>perform </i>it. Instead the request shall be held pending until the </p>
+<p>requested action is either completely performed or another concurrent action is requested.  </p>
+<p> </p>
+<p>As there are no restrictions basically each request can be interrupted by another request. </p>
+<p>The  driver  must  thus  handle  concurrent  and  interrupted  requests  in  order  to  guarantee </p>
+<p>proper functionality.  </p>
+<p> </p>
+<p>It is also required by the driver to inform upper layers about finished or cancelled requests </p>
+<p>according to the SWS. </p>
+<p> </p>
+<p>The template driver contains a few mechanisms to help the user to implement a correct </p>
+<p>driver. </p>
+<p>Depending </p>
+<p>on </p>
+<p>the </p>
+<p>underlying </p>
+<p>CanTrcv </p>
+<p>hardware </p>
+<p>the </p>
+<p>actual </p>
+<p>requirements </p>
+<p>for </p>
+<p>implementation varies. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>20 / 51 </p>
+<p><b>4.7.1 </b></p>
+<p><b>Request handling </b></p>
+<p> </p>
+<p>The template driver already implements a mechanism to handle requests in a correct way. </p>
+<p>If asynchronous SPI access is used, the template driver uses </p>
+<p>CanTrcv_Set*Req</p>
+<p> to store </p>
+<p>requests. These requests can be queried with  the </p>
+<p>CanTrcv_Get*Req</p>
+<p> macros. Refer to </p>
+<p>CanTrcv_30___Your_Trcv__.c for details. </p>
+<p> </p>
+<p>Example: </p>
+<p>If </p>
+<p>CanTrcv_SetOpMode </p>
+<p>is </p>
+<p>called, </p>
+<p>the </p>
+<p>template </p>
+<p>driver </p>
+<p>stores </p>
+<p>the </p>
+<p>request </p>
+<p>with </p>
+<p>CanTrcv_SetOpModeReq</p>
+<p>. </p>
+<p>In </p>
+<p>context </p>
+<p>of </p>
+<p>CanTrcv_MainFunction</p>
+<p> </p>
+<p>the </p>
+<p>user </p>
+<p>implementation has to check the pending request with </p>
+<p>CanTrcv_GetOpModeReq</p>
+<p> and has </p>
+<p>to perform all necessary tasks to complete it. </p>
+<p> </p>
+<p><b>4.7.1.1 </b></p>
+<p><b>Concurrent operation modes </b></p>
+<p>It is required that always the last pending operation mode request is completed. If another </p>
+<p>operation mode request is currently pending the driver has to safely cancel this old request </p>
+<p>before completing the new request. </p>
+<p>Higher  layer  has  to  be  informed  only  for  the  last  operation  mode  request.  Thus  the </p>
+<p>implementation has to take care that no invalid indication is called. </p>
+<p> </p>
+<p>The template driver takes care about this in a limited manner. To query a new request the </p>
+<p>user has to implement </p>
+<p>SetOpModeNormal</p>
+<p>, </p>
+<p>SetOpModeStandby</p>
+<p> and </p>
+<p>SetOpModeSleep</p>
+<p> </p>
+<p>in CanTrcv_30___Your_Trcv__.c.  </p>
+<p> </p>
+<p>Within </p>
+<p>CanTrcv_SetOpMode</p>
+<p> it is NOT ALLOWED to perform any SPI request. Instead all </p>
+<p>hardware access must be done in context of </p>
+<p>CanTrcv_MainFunction</p>
+<p>.  </p>
+<p> </p>
+<p>As soon as the request is finished the internal callback </p>
+<p>CanTrcv_TrcvModeIndication</p>
+<p> </p>
+<p>MUST be called by the user implementation. </p>
+<p> </p>
+<p>The following table illustrates the necessary steps to change an operation mode. </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>21 / 51 </p>
+<p><b>Requested Mode </b></p>
+<p><b>Actions </b></p>
+<p>NORMAL </p>
+<p>Call </p>
+<p>CanTrcv_SetConfirmPnAvaibilityRequest</p>
+<p> </p>
+<p>Read the status flags (via GetStatusFlags) </p>
+<p>Call </p>
+<p>CanTrcv_GetStatusFlagsIndication</p>
+<p> as soon as the </p>
+<p>status flags are read. </p>
+<p>Perform the actual mode change </p>
+<p>Call </p>
+<p>CanTrcv_TrcvModeIndication </p>
+<p>as  soon  as  the  mode </p>
+<p>change is complete </p>
+<p>STANDBY </p>
+<p>Perform the actual mode change </p>
+<p>Call </p>
+<p>CanTrcv_TrcvModeIndication </p>
+<p>as </p>
+<p>soon </p>
+<p>as </p>
+<p>the </p>
+<p>mode change is complete </p>
+<p>SLEEP </p>
+<p>Perform the actual mode change </p>
+<p>Call </p>
+<p>CanTrcv_TrcvModeIndication</p>
+<p> </p>
+<p>as </p>
+<p>soon </p>
+<p>as </p>
+<p>the </p>
+<p>mode change is complete </p>
+<p> </p>
+<p>If a mode change request is not yet completed when another new mode is requested the </p>
+<p>template driver executes the code located at </p>
+<p>CancelOpModeReq</p>
+<p>. Here, the user has to </p>
+<p>implement  a  function  to  safely  cancel  the  old  request.  If  it  is  necessary  to  wait  for  any </p>
+<p>event (e.g. SPI Indication) </p>
+<p>CanTrcv_MainFunction</p>
+<p> must handle the cancel request. </p>
+<p> </p>
+<p>While a request is marked as “to be cancelled” the user implementation has to take care </p>
+<p>that the internal callback </p>
+<p>CanTrcv_TrcvModeIndication</p>
+<p> is NOT being called. </p>
+<p> </p>
+<p>As  soon as  the  old  request  is cancelled,  the  user implementation  MUST  call  the macro </p>
+<p>CanTrcv_ProcessNextRequest</p>
+<p>. And check if a new request is pending. </p>
+<p> </p>
+<p>If an action other than mode change is requested the user implementation must handle the </p>
+<p>other request AFTER the mode change request has completed. </p>
+<p> </p>
+<p>If  another  action  is  currently  performed  while  a  mode  change  is  requested  the  user </p>
+<p>implementation  must  handle  the  operation  mode  change AFTER  the  other  request  has </p>
+<p>completed. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>22 / 51 </p>
+<p><b>4.7.1.2 </b></p>
+<p><b>Request to CheckWakeFlag / ClearTrcvWufFlag / CB_WakeupByBus </b></p>
+<p>If  a  request  to </p>
+<p>CheckWakeFlag</p>
+<p>  or </p>
+<p>ClearTrcvWufFlag</p>
+<p>  is  pending,  the  corresponding </p>
+<p>code in CanTrcv_30__Your_Trcv__.c is executed.  </p>
+<p>The user implementation MUST NOT ignore any of these requests. If there is more than </p>
+<p>one request of the same type pending, the confirmation must be done only once. </p>
+<p>Within the APIs it is not allowed to use SPI access. Instead the handling must be done in </p>
+<p>context of </p>
+<p>CanTrcv_Mainfunction</p>
+<p>. </p>
+<p>As </p>
+<p>soon </p>
+<p>as </p>
+<p>a </p>
+<p>request </p>
+<p>has </p>
+<p>completed </p>
+<p>the </p>
+<p>user </p>
+<p>implementation </p>
+<p>MUST </p>
+<p>call </p>
+<p>the </p>
+<p>corresponding </p>
+<p>internal </p>
+<p>callback </p>
+<p>(</p>
+<p>CanTrcv_CheckWakeFlagIndication </p>
+<p>/ </p>
+<p>CanTrcv_ClearTrcvWufFlagIndication </p>
+<p>/ </p>
+<p>CanTrcv_CbWakeupByBusIndication</p>
+<p>). </p>
+<p> </p>
+<p>If  the  hardware  implementation  allows  handling  multiple  requests  with  the  same  SPI </p>
+<p>communication, it is allowed to call multiple internal callbacks at the same time. </p>
+<p> </p>
+<p><b>4.7.1.3 </b></p>
+<p><b>Status Flag handling </b></p>
+<p>When status flags are queried (at GetStatusFlags in CanTrcv__30___Your_Trcv__.c), the </p>
+<p>driver  has  to  read  out  all  status  flags  of  the  underlying  CanTrcv  hardware  as  soon  as </p>
+<p>possible.  </p>
+<p>Upon </p>
+<p>request, </p>
+<p>the </p>
+<p>current </p>
+<p>status </p>
+<p>flags </p>
+<p>have </p>
+<p>to </p>
+<p>be </p>
+<p>marked </p>
+<p>as </p>
+<p>invalid </p>
+<p>by </p>
+<p>setting </p>
+<p>CanTrcv_30___Your_Trcv___Prob[index].statusFlagsRdy = FALSE. </p>
+<p>If the SPI is currently blocked by another request, the request to read the status flags shall </p>
+<p>be held pending. </p>
+<p>As soon as the status flags are completely read, the user implementation has to call the </p>
+<p>internal callback </p>
+<p>CanTrcv_GetStatusFlagsIndication</p>
+<p>. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>23 / 51 </p>
+<p><b>4.7.1.4 </b></p>
+<p><b>Indication handling </b></p>
+<p>Most internal callbacks can be executed directly from a SPI callback. Depending on the </p>
+<p>last </p>
+<p>executed </p>
+<p>SPI </p>
+<p>command, </p>
+<p>the  pending </p>
+<p>request </p>
+<p>and </p>
+<p>the </p>
+<p>state  of </p>
+<p>the  driver, </p>
+<p>the </p>
+<p>corresponding callback should be called.  </p>
+<p>Below is an example of the Elmos E520.13 implementation: </p>
+<p>FUNC(void, CANTRCV_30_E52013_CODE) CanTrcv_30_E52013_SpiIndication(uint8 CanTrcvIndex) </p>
+<p>{ </p>
+<p>  uint8 event = CANTRCV_30_E52013_WORKER_EV_NONE; </p>
+<p>  switch(CanTrcv_30_E52013SpiCmdBuffer[CanTrcvIndex]) </p>
+<p>  { </p>
+<p>  case CANTRCV_30_E52013_RD_SYS_DIAG: </p>
+<p>    event = CANTRCV_30_E52013_WORKER_EV_RD_SYS_DIAG; </p>
+<p>    break; </p>
+<p> </p>
+<p>  case CANTRCV_30_E52013_RD_SYS_SET: </p>
+<p>    event = CANTRCV_30_E52013_WORKER_EV_RD_SYS_SET; </p>
+<p>    break; </p>
+<p> </p>
+<p>  case CANTRCV_30_E52013_WR_SYS_SET: </p>
+<p>    event = CANTRCV_30_E52013_WORKER_EV_WR_SYS_SET; </p>
+<p>    break; </p>
+<p> </p>
+<p>  default: </p>
+<p>    break; </p>
+<p>  } </p>
+<p> </p>
+<p>  if (event != CANTRCV_30_E52013_WORKER_EV_NONE) </p>
+<p>  { </p>
+<p>    if (event == CANTRCV_30_E52013_WORKER_EV_RD_SYS_DIAG) </p>
+<p>    { </p>
+<p>      /* New status flags received... */ </p>
+<p>      CanTrcv_30_E52013_GetStatusFlagsIndication(CanTrcvIndex); </p>
+<p>    }    </p>
+<p>    /* ModeWorker */ </p>
+<p>    if (   (CanTrcv_30_E52013_Prob[CanTrcvIndex].WorkerState != CANTRCV_30_E52013_WORKER_STOPPED) </p>
+<p>        &amp;&amp; (CanTrcv_30_E52013_Prob[CanTrcvIndex].isInit == CANTRCV_30_E52013_IS_INIT) </p>
+<p>        ) </p>
+<p>    { </p>
+<p>      /* Inform worker about this event */ </p>
+<p>      (void)CanTrcv_30_E52013_ModeWorker(CanTrcvIndex, event); </p>
+<p>    } </p>
+<p>     </p>
+<p>    /* -- Indications */ </p>
+<p>    if (event == CANTRCV_30_E52013_WORKER_EV_RD_SYS_DIAG) </p>
+<p>    { </p>
+<p>      if (CanTrcv_30_E52013_GetClrWufFlagReq(CanTrcvIndex) != 0x0u) </p>
+<p>      { </p>
+<p>        CanTrcv_30_E52013_ClearTrcvWufFlagIndication(CanTrcvIndex); </p>
+<p>      } </p>
+<p> </p>
+<p>      if (CanTrcv_30_E52013_IsReqFlagPnd(CanTrcvIndex)) </p>
+<p>      { </p>
+<p>        if (CanTrcv_30_E52013_GetChkWakFlagReq(CanTrcvIndex) != 0x0u) </p>
+<p>        { </p>
+<p>          CanTrcv_30_E52013_CheckWakeFlagIndication(CanTrcvIndex); </p>
+<p>        } </p>
+<p>        if (CanTrcv_30_E52013_GetCbByBusFlagReq(CanTrcvIndex) != 0x0u) </p>
+<p>        { </p>
+<p>          CanTrcv_30_E52013_CbWakeupByBusIndication(CanTrcvIndex); </p>
+<p>        } </p>
+<p>        /* Release RdDiag request here as new requests to read DIAG should be queried */ </p>
+<p>        CanTrcv_30_E52013_Prob[CanTrcvIndex].ReadDiagRequestState = </p>
+<p>CANTRCV_30_E52013_RD_DIAG_STATE_IDLE; </p>
+<p>      } </p>
+<p>    } </p>
+<p>  } </p>
+<p>  /* Free SPI */ </p>
+<p>  CanTrcv_30_E52013SpiCmdBuffer[CanTrcvIndex] = CANTRCV_30_E52013_NO_REQ;   </p>
+<p>} </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>24 / 51 </p>
+<p><b>5 </b></p>
+<p><b>Dependencies to other components </b></p>
+<p><b>5.1 </b></p>
+<p><b>Dio driver </b></p>
+<p>Depending on the configuration, the CanTrcv driver performs hardware access by calling </p>
+<p>service functions of the lower layer component Dio driver: </p>
+<p><b>&gt; </b></p>
+<p>Function Dio_WriteChannel() is used to set the logical level of the channel pins to </p>
+<p>which the CAN transceiver hardware is connected. </p>
+<p><b>&gt; </b></p>
+<p>Function Dio_ReadChannel() is used to get the logical level of the channel pins to </p>
+<p>which the CAN transceiver hardware is connected. </p>
+<p><b>&gt; </b></p>
+<p>The Dio driver has to provide the channel dependent assignment for the CAN </p>
+<p>transceiver hardware pins which are specified in the tool. These pins are referred by </p>
+<p>the CAN transceiver driver by using the symbolic names specified in the tool. </p>
+<p> </p>
+<p><b>5.2 </b></p>
+<p><b>SPI driver </b></p>
+<p>Depending on the configuration, the CanTrcv driver performs hardware access by calling </p>
+<p>service functions of the lower layer component SPI driver: </p>
+<p></p>
+<p> </p>
+<p>Function  Spi_SyncTransmit()  /  Spi_AsyncTransmit()  is  used  to  issue  a  sequence  in </p>
+<p>order to read from or write to the transceiver hardware.  </p>
+<p></p>
+<p> </p>
+<p>The SPI driver must be configured to allow access to the transceiver. This means that </p>
+<p>sequences, jobs and channels must be defined prior using the transceiver driver. </p>
+<p> </p>
+<p><b>5.2.1 </b></p>
+<p><b>SPI Configuration </b></p>
+<p>The configuration of the SPI driver strongly depends on the underlying CanTrcv hardware. </p>
+<p>There is no tool support for specifying which sequences / channels / jobs are used by the </p>
+<p>CanTrcv driver. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>25 / 51 </p>
+<p><b>5.3 </b></p>
+<p><b>Icu driver </b></p>
+<p>The CAN transceiver driver performs hardware access by calling service functions of the </p>
+<p>lower layer component Icu driver: </p>
+<p><b>&gt; </b></p>
+<p>Function </p>
+<p>Icu_DisableNotification</p>
+<p> is used by the transceiver driver to disable </p>
+<p>the ICU notification after wakeup event notification. </p>
+<p><b>&gt; </b></p>
+<p>Function </p>
+<p>Icu_EnableNotification</p>
+<p> is used by the transceiver driver to enable the </p>
+<p>ICU notification during the transition into the STANDBY mode. </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>The following chapter applies only to this use case: </p>
+<p>- the used CAN controller does not support the feature &quot;wakeup by CAN bus&quot;, i.e. the </p>
+<p>CAN controller cannot detect incoming CAN messages and generate a so-called </p>
+<p>wakeup-interrupt </p>
+<p>- the ECU shall wake up and start its own communication due to detected </p>
+<p>communication on the CAN bus </p>
+<p> </p>
+<p>The proposal described in this chapter enables the user to support the use-case by using </p>
+<p>an additional µC I/O port to generate the wakeup information via the ICU driver. This I/ O </p>
+<p>port  is  connected  either  parallel  to  the  CAN  Rx  port  or  is  directly  attached  to  the  CAN </p>
+<p>transceivers ERR port (depending on the used CAN transceiver). The following steps have </p>
+<p>to be done for every CAN channel that shall be able to wake up via the CAN bus: </p>
+<p> </p>
+<p><b>5.3.1 </b></p>
+<p><b>ICU configuration </b></p>
+<p>Add an ICU channel </p>
+<p><b>&gt; </b></p>
+<p> </p>
+<p>Figure 5-1 </p>
+<p>Add an ICU channel </p>
+<p>The user has to configure the ICU channel and to add a signal notification function. </p>
+<p>Additionally the wakeup source for the CAN channel which shall be handled via this ICU </p>
+<p>channel have to be chosen. </p>
+<p>In  dependency  of  the  provided  ICU  configuration  options  it  is  possible  to  configure  the </p>
+<p>“IcuDefaultStartEdge”. This option should be configured to ICU_FALLING_EDGE, because </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>26 / 51 </p>
+<p>the wakeup event is provided by the Rx pin and/ or the ERR pin via a level change from </p>
+<p>recessive to dominant. </p>
+<p><b>&gt; </b></p>
+<p> </p>
+<p>Figure 5-2 </p>
+<p>ICU channel configuration for wakeup via transceiver </p>
+<p> </p>
+<p>If  the  transceiver  shall  also  wake  up  the  ECU  and  not  only  the  CAN  channel  then  it  is </p>
+<p>necessary to activate the “Wakeup Capability” for this ICU channel. </p>
+<p><b>&gt; </b></p>
+<p> </p>
+<p>Figure 5-3 </p>
+<p>ICU wakeup capability </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>27 / 51 </p>
+<p><b>5.3.2 </b></p>
+<p><b>Implementation of the signal notification function </b></p>
+<p>The  user  has  to  implement  the  signal  notification  function  as  shown  in  the  following </p>
+<p>example: </p>
+<p><b>Example</b> </p>
+<p> </p>
+<p>void Icu_TrcvWakeUpNotification_0(void) </p>
+<p>{ </p>
+<p>  /* inform the EcuM about the wakeup event, the parameter  </p>
+<p>     is the configured transceiver wakeup source */ </p>
+<p>  EcuM_CheckWakeUp(ECUM_WKSOURCE_CAN0); </p>
+<p>}</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>If no wakeup validation is used for the configured wakeup source, then it is possible to </p>
+<p>call EcuM_SetWakeUpEvent() instead of EcuM_CheckWakeUp(). </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>28 / 51 </p>
+<p><b>6 </b></p>
+<p><b>API Description </b></p>
+<p><b>6.1 </b></p>
+<p><b>Services provided by CANTRCV </b></p>
+<p>The CANTRCV API consists of services, which are realized by function calls. </p>
+<p><b>6.1.1 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___InitMemory  </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTrcv_30___Your_Trcv___InitMemory </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function initializes the memory and needed values of the CAN transceiver driver. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This function must be called before any other functionality of the CAN transceiver driver. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function must be called from task level and is not reentrant. </p>
+<p>Table 6-1  </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>29 / 51 </p>
+<p><b>6.1.2 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___Init  </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTrcv_30___Your_Trcv___Init </b>( </p>
+<p>CanTrcv_30___Your_Trcv___ConfigType* ConfigPtr ) </p>
+<p><b>Parameter </b></p>
+<p>ConfigPtr</p>
+<p> </p>
+<p>Pointer to the </p>
+<p>CanTrcv_30___Your_Trcv___Config</p>
+<p> struct. If multiple </p>
+<p>configurations are available, the active configuration can be selected by using </p>
+<p>the related </p>
+<p>CanTrcv_30___Your_Trcv___Config_&lt;IdentityName&gt; </p>
+<p>struct </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p><b>&gt; </b></p>
+<p>This function initializes all channels of the CAN Transceiver driver which are configured in the </p>
+<p>configuration tool. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The function </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory</p>
+<p> must be called before the </p>
+<p>function </p>
+<p>CanTrcv_30___Your_Trcv___Init</p>
+<p> can be called. </p>
+<p><b>&gt; </b></p>
+<p>This function must be called before any other service functionality of the Transceiver driver. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function must be called from task level and is not reentrant. </p>
+<p>Table 6-2  </p>
+<p>CanTrcv_30___Your_Trcv___Init </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>30 / 51 </p>
+<p><b>6.1.3 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___SetOpMode </b></p>
+<p><b>Prototype </b></p>
+<p>AUTOSAR3: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_SetOpMode </b>( </p>
+<p>CanIf_TransceiverModeType OpMode, uint8 CanTrcvIndex ) </p>
+<p>AUTOSAR4: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_SetOpMode </b>(uint8 CanTrcvIndex, </p>
+<p>CanTrcv_TrcvModeType OpMode ) </p>
+<p><b>Parameter </b></p>
+<p>OpMode </p>
+<p>Pointer which contains the desired operation mode. </p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver. </p>
+<p><b>Return code </b></p>
+<p>E_OK / E_NOT_OK </p>
+<p>E_OK: is returned if the transceiver state has been changed to the requested </p>
+<p>mode. </p>
+<p>E_NOT_OK: is returned if the transceiver state change has failed or the </p>
+<p>parameter is out of the allowed range. The previous state has not been </p>
+<p>changed. </p>
+<p><b>Functional Description </b></p>
+<p>Sets the CAN transceiver to the requested operation mode. These operation modes are: </p>
+<p> </p>
+<p>AUTOSAR3: </p>
+<p>CANIF_TRCV_MODE_…</p>
+<p> </p>
+<p>AUTOSAR4: </p>
+<p>CANTRCV_TRCVMODE_…</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>…NORMAL </p>
+<p></p>
+<p> </p>
+<p>…STANDBY </p>
+<p></p>
+<p> </p>
+<p>…SLEEP </p>
+<p> </p>
+<p>If the transceiver is requested to change into NORMAL mode and selective wakeup is enabled on channel </p>
+<p>CanTrcvIndex</p>
+<p> the hardware is queried for error flags. If no error was detected the driver calls the </p>
+<p>notification function </p>
+<p>CanIf_30___Your_Trcv___ConfirmPnAvailability </p>
+<p>in order to confirm that </p>
+<p>selective wakeup feature is available</p>
+<p>.</p>
+<p> </p>
+<p> </p>
+<p>If return code is E_OK the notification function </p>
+<p>CanIf_30___Your_Trcv___TrcvModIndication</p>
+<p> will </p>
+<p>be called if mode change is completed. Note that the notification may occur in interrupt context, in task </p>
+<p>context or in context of </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode</p>
+<p>. Also, it is not ensured that the mode </p>
+<p>notified to </p>
+<p>CanIf_30___Your_Trcv___TrcvModeIndication</p>
+<p> matches the requested mode. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p><b>&gt; </b></p>
+<p>Not each transition from one mode to any other is allowed. For these limitations please refer to chapter </p>
+<p>Set operation mode.</p>
+<p> </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-3  </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>31 / 51 </p>
+<p><b>6.1.4 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___GetOpMode </b></p>
+<p><b>Prototype </b></p>
+<p>AUTOSAR3: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_GetOpMode </b></p>
+<p>(CanIf_TransceiverModeType *OpMode, uint8 CanTrcvIndex ) </p>
+<p>AUTOSAR4: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_GetOpMode </b>(uint8 CanTrcvIndex, </p>
+<p>CanTrcv_TrcvModeType *OpMode ) </p>
+<p><b>Parameter </b></p>
+<p>OpMode </p>
+<p>Pointer to operation mode of the bus the API is applied to. </p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver. </p>
+<p><b>Return code </b></p>
+<p>E_OK / E_NOT_OK </p>
+<p>E_OK: is returned if the operation mode was detected. </p>
+<p>E_NOT_OK: is returned if the operation mode was not detected. </p>
+<p><b>Functional Description </b></p>
+<p>Stores the current operation mode of the selected CAN transceiver to </p>
+<p>OpMode</p>
+<p>. These operation modes </p>
+<p>are: </p>
+<p>AUTOSAR3: </p>
+<p>CANIF_TRCV_MODE_…</p>
+<p> </p>
+<p>AUTOSAR4: </p>
+<p>CANTRCV_TRCVMODE_…</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>…NORMAL </p>
+<p><b>&gt; </b></p>
+<p>…STANDBY </p>
+<p><b>&gt; </b></p>
+<p>…SLEEP</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p><b>&gt; </b></p>
+<p>If a mode change was requested before, the reported operation mode may not be valid until </p>
+<p>the mode change is completed and </p>
+<p>CanIf_30___Your_Trcv___TrcvModIndication </p>
+<p>was called. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-4  </p>
+<p>CanTrcv_30___Your_Trcv___GetOpMode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>32 / 51 </p>
+<p><b>6.1.5 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___GetBusWuReason </b></p>
+<p><b>Prototype </b></p>
+<p>AUTOSAR3: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_GetBusWuReason </b>(uint8 </p>
+<p>CanTrcvIndex, CanIf_TrcvWakeupReasonType *Reason ) </p>
+<p>AUTOSAR4: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_GetBusWuReason </b>(uint8 </p>
+<p>CanTrcvIndex, CanTrcv_TrcvWakeupReasonType *Reason ) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver. </p>
+<p>Reason </p>
+<p>Pointer to wake up reason of the bus the API is applied to. </p>
+<p><b>Return code </b></p>
+<p>E_OK / E_NOT_OK </p>
+<p>E_OK: is returned if the wake up reason was detected. </p>
+<p>E_NOT_OK: is returned if the wake up reason was not detected. </p>
+<p><b>Functional Description </b></p>
+<p>Stores the last the wakeup reason for the channel </p>
+<p>CanTrcvIndex </p>
+<p>to </p>
+<p>Reason</p>
+<p>. These wakeup reasons </p>
+<p>are: </p>
+<p>AUTOSAR3: </p>
+<p>CANIF_TRCV_… </p>
+<p>AUTOSAR4: </p>
+<p>CANTRCV_…</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>…WU_INTERNALLY</p>
+<p>: The wakeup was caused by setting the CAN transceiver to normal </p>
+<p>operation mode via </p>
+<p>CanTrcv_30___Your_Trcv___SetOpMode</p>
+<p>. </p>
+<p><b>&gt; </b></p>
+<p>…WU_ERROR</p>
+<p>: No wakeup was detected by the transceiver and no reason is stored. The </p>
+<p>function returns </p>
+<p>E_NOT_OK</p>
+<p>. </p>
+<p><b>&gt; </b></p>
+<p>…WU_NOT_SUPPORTED</p>
+<p>: No wakeup detection supported by this CAN transceiver. The function </p>
+<p>returns </p>
+<p>E_NOT_OK</p>
+<p>. </p>
+<p><b>&gt; </b></p>
+<p>…WU_BY_BUS</p>
+<p>: The wakeup was caused by an external bus wakeup. </p>
+<p><b>&gt; </b></p>
+<p>…WU_RESET</p>
+<p>: The wakeup was detected after a reset. </p>
+<p><b>&gt; </b></p>
+<p>…WU_POWER_ON</p>
+<p>: The transceiver detected a power-on wakeup </p>
+<p><b>&gt; </b></p>
+<p>…WU_BY_SYSERR</p>
+<p>: An internal hardware error occurred that caused the transceiver to wake up. </p>
+<p><b>&gt; </b></p>
+<p>…WU_BY_PIN</p>
+<p>: The wakeup was caused by applying an edge to the WAKE pin. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p><b>&gt; </b></p>
+<p>The wakeup reason represents always the last detected wakeup reason. If there was more </p>
+<p>than one wakeup detected only the last one will be reported. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-5  </p>
+<p>CanTrcv_30___Your_Trcv___GetBusWuReason </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>33 / 51 </p>
+<p><b>6.1.6 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___SetWakeupMode </b></p>
+<p><b>Prototype </b></p>
+<p>AUTOSAR3: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_SetWakeupMode </b></p>
+<p>(CanIf_TrcvWakeupModeType TrcvWakeupMode, uint8 CanTrcvIndex ) </p>
+<p>AUTOSAR4: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_SetWakeupMode </b>(uint8 CanTrcvIndex</p>
+<p> </p>
+<p>, CanTrcv_TrcvWakeupModeType TrcvWakeupMode ) </p>
+<p><b>Parameter </b></p>
+<p>TrcvWakeupMode </p>
+<p>Requested transceiver wakeup reason. </p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver. </p>
+<p><b>Return code </b></p>
+<p>E_OK / E_NOT_OK </p>
+<p>E_OK: is returned, if the wakeup state has been changed to the requested </p>
+<p>mode. </p>
+<p>E_NOT_OK: is returned, if the wakeup state change has failed or the </p>
+<p>parameter is out of the allowed range. The previous state has not been </p>
+<p>changed. </p>
+<p><b>Functional Description </b></p>
+<p>Enables, disables or clears reporting of wakeup events on channel </p>
+<p>CanTrcvIndex</p>
+<p>.  </p>
+<p>AUTOSAR3: </p>
+<p>CANIF_TRCV_WU_…</p>
+<p> </p>
+<p>AUTOSAR4: </p>
+<p>CANTRCV_WUMODE_…</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>…ENABLE</p>
+<p>: Report wakeup events to upper layer. </p>
+<p><b>&gt; </b></p>
+<p>…DISABLE</p>
+<p>: Do not report wakeup events to upper layer. </p>
+<p><b>&gt; </b></p>
+<p>…CLEAR</p>
+<p>: Clear a pending wakeup event. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p><b>&gt; </b></p>
+<p>If the wakeup handling is not enabled in GENy the function always return E_NOT_OK. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function is called from task or interrupt level and not reentrant. </p>
+<p>Table 6-6  </p>
+<p>CanTrcv_30___Your_Trcv___SetWakeupMode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>34 / 51 </p>
+<p><b>6.1.7 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTrcv_30___Your_Trcv___GetVersionInfo </b>(Std_VersionInfoType </p>
+<p>VersionInfo) </p>
+<p><b>Parameter </b></p>
+<p>VersionInfo </p>
+<p>Pointer to version information of this module. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Gets the version of the module and returns it in VersionInfo. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-7  </p>
+<p>CanTrcv_30___Your_Trcv___GetVersionInfo </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>35 / 51 </p>
+<p><b>6.1.8 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___CB_WakeupByBus </b></p>
+<p><b>Prototype </b></p>
+<p>AUTOSAR3: </p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_CB_WakeupByBus </b>(uint8 </p>
+<p>CanTrcvIndex) </p>
+<p>AUTOSAR4: </p>
+<p>Std_ReturnType: <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_CheckWakeup </b>(uint8 CanTrcvIndex) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver. </p>
+<p><b>Return code </b></p>
+<p>E_OK / E_NOT_OK </p>
+<p>In synchronous mode:</p>
+<p> </p>
+<p>E_OK </p>
+<p>a wakeup-by-bus event was detected</p>
+<p> </p>
+<p>E_NOT_OK </p>
+<p>no wakeup was detected or an error occurred</p>
+<p> </p>
+<p> </p>
+<p>In asynchronous mode:</p>
+<p> </p>
+<p>E_OK</p>
+<p>: the request to check for wakeup was acknowledged. </p>
+<p>E_NOT_OK</p>
+<p>: an error occurred. </p>
+<p><b>Functional Description </b></p>
+<p>This function requests the CanTrcv driver to check for wakeups and report them. If a wakeup was detected, </p>
+<p>the CanTrcv reports it by calling of </p>
+<p>EcuM_SetWakeupEvent</p>
+<p>. </p>
+<p>In asynchronous mode, if no wakeup was detected </p>
+<p>EcuM_EndCheckWakeup</p>
+<p> is called.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p><b>&gt; </b></p>
+<p>Do not use return value </p>
+<p>E_OK</p>
+<p> for wakeup detection. A wakeup can be considered as valid only </p>
+<p>if </p>
+<p>EcuM_SetWakeupEvent</p>
+<p> was called for the corresponding wakeup source. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-8  </p>
+<p>CanTrcv_30___Your_Trcv___CB_WakeupByBus </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>36 / 51 </p>
+<p><b>6.1.9 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___GetTrcvSystemData </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_GetTrcvSystemData </b>(uint8 </p>
+<p>CanTrcvIndex, uint32* TrcvSysData) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver </p>
+<p>TrcvSysData </p>
+<p>Pointer to the diagnosis data buffer to store the information in. </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p> / </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> if the diagnosis register was successfully read, </p>
+<p>E_NOT_OK</p>
+<p> otherwise.  </p>
+<p><b>Functional Description </b></p>
+<p>Reads the diagnosis registers of the underlying transceiver hardware and stores them in </p>
+<p>TrcvSysData</p>
+<p>.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p></p>
+<p> </p>
+<p>The underlying transceiver hardware must support Selective Wakeup / Partial Networking </p>
+<p></p>
+<p> </p>
+<p>SysDiagData</p>
+<p> contains only valid information if </p>
+<p>E_OK</p>
+<p> was returned. </p>
+<p></p>
+<p> </p>
+<p>The function will not accept any requests if there are still SPI requests pending. In this case </p>
+<p>E_NOT_OK</p>
+<p> is returned. </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-9  </p>
+<p>CanTrcv_30___Your_Trcv___GetTrcvSystemData </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>37 / 51 </p>
+<p><b>6.1.10 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___ClearTrcvWufFlag </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_ClearTrcvWufFlag </b>(uint8 </p>
+<p>CanTrcvIndex) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p> / </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> if the WUF flag has been cleared, </p>
+<p>E_NOT_OK</p>
+<p> otherwise.  </p>
+<p><b>Functional Description </b></p>
+<p>This service requests the transceiver driver to clear all wakeup flags from the underlying transceiver </p>
+<p>hardware.  </p>
+<p>If E_OK is returned, the driver will call the notification function </p>
+<p>CanIf_30___Your_Trcv___ClearTrcvWufFlagIndication </p>
+<p>as soon as the request has been </p>
+<p>completed. Note that the notification may occur in interrupt context, in task context or in context of</p>
+<p><b> </b></p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvWufFlag</p>
+<p>.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p></p>
+<p> </p>
+<p>The underlying transceiver hardware must support Selective Wakeup / Partial Networking </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-10  </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvWufFlag </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>38 / 51 </p>
+<p><b>6.1.11 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___ReadTrcvTimeoutFlag </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_ReadTrcvTimeoutFlag </b>(uint8 </p>
+<p>CanTrcvIndex, CanTrcv_30_</p>
+<p>__Your_Trcv___FlagStateType* FlagState</p>
+<p>) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver </p>
+<p>FlagState </p>
+<p>State of the timeout flag. </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p> / </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> if status of the timeout flag is successfully read. </p>
+<p>E_NOT_OK</p>
+<p> otherwise. </p>
+<p><b>Functional Description </b></p>
+<p>Reads the status of the timeout flag from the underlying transceiver hardware and stores it to </p>
+<p>FlagState</p>
+<p>. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-11  </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvTimeoutFlag </p>
+<p><b>6.1.12 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___ClearTrcvTimeoutFlag </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_ClearTrcvTimeoutFlag </b>(uint8 </p>
+<p>CanTrcvIndex) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex</p>
+<p> </p>
+<p>Index of the selected transceiver </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p> / </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> if the timeout flag has been cleared, </p>
+<p>E_NOT_OK</p>
+<p> otherwise.  </p>
+<p><b>Functional Description </b></p>
+<p>Clears the timeout flag from the underlying transceiver hardware. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-12  </p>
+<p>CanTrcv_30___Your_Trcv___ClearTrcvTimeoutFlag </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>39 / 51 </p>
+<p><b>6.1.13 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___ReadTrcvSilenceFlag </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_ReadTrcvSilenceFlag </b>(uint8 </p>
+<p>CanTrcvIndex, CanTrcv_30_</p>
+<p>__Your_Trcv___FlagStateType* FlagState</p>
+<p>) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex </p>
+<p>Index of the selected transceiver </p>
+<p>FlagState </p>
+<p>State of the silence flag. </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p> / </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> if status of the silence flag is successfully read. </p>
+<p>E_NOT_OK</p>
+<p> otherwise. </p>
+<p><b>Functional Description </b></p>
+<p>Reads the status of the silence flag from the underlying transceiver hardware and stores it to </p>
+<p>FlagState</p>
+<p>. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-13  </p>
+<p>CanTrcv_30___Your_Trcv___ReadTrcvSilenceFlag </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>40 / 51 </p>
+<p><b>6.1.14 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___CheckWakeFlag </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_CheckWakeFlag </b>(uint8 </p>
+<p>CanTrcvIndex) </p>
+<p><b>Parameter </b></p>
+<p>CanTrcvIndex</p>
+<p> </p>
+<p>Index of the selected transceiver </p>
+<p><b>Return code </b></p>
+<p>E_OK</p>
+<p> / </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> if request for checking wakeup flag has been accepted, </p>
+<p>E_NOT_OK</p>
+<p> </p>
+<p>otherwise.  </p>
+<p><b>Functional Description </b></p>
+<p>Requests the driver to check the status of the wake flag of the underlying transceiver hardware. Any </p>
+<p>detected wakeup will be reported through service EcuM_SetWakeupEvent. The correct wakeup reason can </p>
+<p>be determined by using </p>
+<p>CanTrcv_30___Your_Trcv___GetBusWuReason.</p>
+<p> </p>
+<p> </p>
+<p>If E_OK is returned, the driver will call the notification function </p>
+<p>CanIf_30___Your_Trcv___CheckTrcvWakeFlagIndication </p>
+<p>as soon as the request has been </p>
+<p>completed. Note that the notification may occur in interrupt context, in task context or in context of</p>
+<p><b> </b></p>
+<p>CanTrcv_30___Your_Trcv___CheckWakeFlag</p>
+<p>. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task or interrupt level and is not reentrant. </p>
+<p>Table 6-14  </p>
+<p>CanTrcv_30___Your_Trcv___CheckWakeFlag </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>41 / 51 </p>
+<p><b>6.1.15 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___MainFunction </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_MainFunction </b>(void) </p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This service can be called from task level and periodically checks if a wakeup was detected by the </p>
+<p>underlying transceiver hardware.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p>Expected Caller Context </p>
+<p>This function can be called from task context and is not reentrant. </p>
+<p>Table 6-15  </p>
+<p>CanTrcv_30___Your_Trcv___MainFunction </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>42 / 51 </p>
+<p><b>6.1.16 </b></p>
+<p><b>CanTrcv_30___Your_Trcv___SetPNActivationState </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTrcv_30_</b></p>
+<p><b>__Your_Trcv__</b></p>
+<p><b>_SetPNActivationState </b></p>
+<p>(CanTrcv_30_</p>
+<p>__Your_Trcv___</p>
+<p>PNActivationType ActivationState) </p>
+<p><b>Parameter </b></p>
+<p>ActivationState</p>
+<p> </p>
+<p>Specifies whether to enable or disable selective wakeup. </p>
+<p><b>Return code </b></p>
+<p>E_OK / E_NOT_OK</p>
+<p> </p>
+<p>E_OK</p>
+<p> is returned if PN activation state was successfully changed. </p>
+<p>E_NOT_OK</p>
+<p> is returned if PN activation state could not be changed or an error </p>
+<p>occurred. </p>
+<p><b>Functional Description </b></p>
+<p>This service changes the state of the selective wakeup feature. If called with </p>
+<p>PN_ENABLED</p>
+<p> CanTrcv </p>
+<p>hardware will be configured to wake up on configured frames only (WUF). </p>
+<p>If called with </p>
+<p>PN_DISABLED</p>
+<p> CanTrcv hardware will be configured to wake up on any bus activity (WUP). </p>
+<p>In order to enable selective wakeup it must be also configured as enabled in generation tool.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The CAN transceiver driver must be initialized. </p>
+<p></p>
+<p> </p>
+<p>State change to </p>
+<p>PN_DISABLED</p>
+<p> will be effective after next mode change. </p>
+<p></p>
+<p> </p>
+<p>Selective wakeup can be enabled only for channels that have PN activated in generation tool. </p>
+<p></p>
+<p> </p>
+<p>It is strongly recommended to use this API only directly after </p>
+<p>CanTrcv_30___Your_Trcv___Init()</p>
+<p>. </p>
+<p>Expected Caller Context </p>
+<p>This function must be called from task and is not reentrant. The API must not be interrupted by </p>
+<p>any other CanTrcv API. </p>
+<p>Table 6-16  </p>
+<p>CanTrcv_30___Your_Trcv___SetPNActivationState </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>43 / 51 </p>
+<p><b>6.2 </b></p>
+<p><b>Services used by CANTRCV </b></p>
+<p>In  the  following  table  services  provided  by  other  components,  which  are  used  by  the </p>
+<p>CANTRCV </p>
+<p>are </p>
+<p>listed. </p>
+<p>For </p>
+<p>details </p>
+<p>about </p>
+<p>prototype </p>
+<p>and </p>
+<p>functionality </p>
+<p>refer </p>
+<p>to </p>
+<p>the </p>
+<p>documentation of the providing component. </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET </p>
+<p>Det_ReportError </p>
+<p>DEM </p>
+<p>Dem_SetEventStatus </p>
+<p>SPI </p>
+<p>Spi_SetupEB </p>
+<p>SPI </p>
+<p>Spi_SyncTransmit </p>
+<p>SPI </p>
+<p>Spi_AsyncTransmit </p>
+<p>DIO </p>
+<p>Dio_WriteChannel </p>
+<p>DIO </p>
+<p>Dio_ReadChannel </p>
+<p>CANIF </p>
+<p>CanIf_TrcvModeIndication </p>
+<p>CANIF </p>
+<p>CanIf_ConfirmPnAvailability </p>
+<p>CANIF </p>
+<p>CanIf_ClearTrcvWufFlagIndication </p>
+<p>CANIF </p>
+<p>CanIf_CheckTrcvWakeFlagIndication </p>
+<p>CANIF </p>
+<p>CanIf_TrcvModeIndication </p>
+<p>ICU </p>
+<p>Icu_EnableNotification </p>
+<p>ICU </p>
+<p>Icu_DisableNotification </p>
+<p>ECUM </p>
+<p>EcuM_SetWakeupEvent </p>
+<p>ECUM </p>
+<p>EcuM_CheckWakeup </p>
+<p>ECUM </p>
+<p>EcuM_EndCheckWakeup </p>
+<p>Table 6-17  </p>
+<p>Services used by the CANTRCV </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>44 / 51 </p>
+<p><b>7 </b></p>
+<p><b>Configuration </b></p>
+<p><b>7.1 </b></p>
+<p><b>Configuration with GENy </b></p>
+<p>The CANTRCV is configured with the help of the configuration tool GENy. </p>
+<p><b>7.1.1 </b></p>
+<p><b>Component Selection </b></p>
+<p> </p>
+<p>Figure 7-1 </p>
+<p>CANTRCV component selection </p>
+<p>The  component  CAN  transceiver  generic  driver  can  be  added  to  the  system  channel </p>
+<p>configuration  by  enabling  the  checkbox  CanTrcv_Generic&lt;x&gt;  (x  =  1..3)  in  the  software </p>
+<p>component selection. Note that up to 3 generic transceivers can be used in the system, </p>
+<p>but it is not mandatory to use all of them. </p>
+<p> </p>
+<p><b>7.1.2 </b></p>
+<p><b>General settings </b></p>
+<p>The general settings affect all enabled CAN transceiver channels. </p>
+<p> </p>
+<p>Figure 7-2 </p>
+<p>CANTRCV general configuration </p>
+<p><b>&gt; </b></p>
+<p><b>Version Info Api: </b>Enable this checkbox if service function </p>
+<p>CanTrcv___Your_Trcv___GetVersionInfo() is used. </p>
+<p><b>&gt; </b></p>
+<p><b>Dev Error Detection: </b>Enable/ disable the development error notification to DET. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>45 / 51 </p>
+<p><b>&gt; </b></p>
+<p><b>Prod Error Detection: </b>Enable/ disable the product error notification to DEM. </p>
+<p><b>&gt; </b></p>
+<p><b>User Config File: </b>The content of this specified user file is added to the file </p>
+<p>CanTrcv_30___Your_Trcv__dio_Cfg.h. </p>
+<p><b>&gt; </b></p>
+<p><b>Component specific Name: </b>Insert user specific name of the transceiver component. </p>
+<p>Names of files CanTrcv_30___Your_Trcv__.c, CanTrcv_30___Your_Trcv__..h and </p>
+<p>CanTrcv_30_Xdio_Cbk.h c have to be adapted. Replace &quot;X&quot; by the component </p>
+<p>specific name in camel case. In each generic transceiver driver file (static or </p>
+<p>generated) replace every &quot;__YOUR_TRCV__&quot; by the component specific name in </p>
+<p>upper case and replace every &quot;__Your_Trcv__&quot; by the component specific name in </p>
+<p>camel case. </p>
+<p><b>&gt; </b></p>
+<p><b>Use SPI: </b>Enable if the underlying CanTrcv hardware is controlled via SPI </p>
+<p><b>&gt; </b></p>
+<p><b>Use synchronous SPI: </b>Specifies whether accesses over SPI should be done </p>
+<p>asynchronously or not. If disabled it is required that the SPI driver is configured as </p>
+<p>level 1 or level 2 driver. Additionally it is required that the function </p>
+<p>CanTrcv_Mainfunction</p>
+<p> is called periodically. </p>
+<p><b>&gt; </b></p>
+<p><b>Supports Partial Networking: </b>Enable if the underlying CanTrcv hardware supports </p>
+<p>selective wakeup. </p>
+<p><b>&gt; </b></p>
+<p><b>Index: </b>Specify the instance id which is used for DET error reporting for this module. A </p>
+<p>default of 0 is set. </p>
+<p><b>&gt; </b></p>
+<p><b>Wake Up Support: </b>Select the type of wakeup event detection, &quot;ISR&quot; or &quot;Polling&quot;. </p>
+<p>Select &quot;None&quot; if wakeup event detection is not used. </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>In order to enable the extension regarding support for the CAN controllers which do not </p>
+<p>support the wakeup by bus (see 5.3), a user config file has to be created. The user will </p>
+<p>contain the following definition:  </p>
+<p>#define CANTRCV_30___YOUR_TRCV___USE_ICU STD_ON </p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p><b>DIO Pin: </b>Press button &quot;Add&quot; to get as many pins as required. Insert a unique pin </p>
+<p>name into each field. The CAN transceiver driver refers the DIO pin channel </p>
+<p>assignment by using these pin names. The component DIO has to provide these pins </p>
+<p>assignment with channel postfix, e.g. PIN_STB_0 is used for transceiver channel 0 </p>
+<p>and PIN_STB_1 is used for transceiver channel 1. </p>
+<p><b>&gt; </b></p>
+<p><b>DEM Event: </b>Press button “Add” to add a custom DEM Event for this transceiver driver </p>
+<p>instance. The DEM event will also be allocated at DEM module </p>
+<p> </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>46 / 51 </p>
+<p><b>7.1.3 </b></p>
+<p><b>Channel Specific Configuration Options </b></p>
+<p>Select the transceiver channel view to set the channel specific configuration options. </p>
+<p> </p>
+<p>Figure 7-3 </p>
+<p>CANTRCV channel dependent configuration </p>
+<p><b>&gt; </b></p>
+<p><b>Wakeup By Bus Used: </b>Enable this checkbox if wakeup by bus is used on the </p>
+<p>selected channel. </p>
+<p><b>&gt; </b></p>
+<p><b>Channel Used: </b>Enable this checkbox if the selected channel has to be handled by the </p>
+<p>CAN transceiver driver. </p>
+<p><b>&gt; </b></p>
+<p><b>Init State: </b>Select the operation mode which has to be set when the CAN transceiver is </p>
+<p>first time initialized after power on or reset. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>It is not recommended to select any other Init State than Normal if the attached CAN </p>
+<p>Controller is unable to initialize with a permanent dominant Rx pin.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>&gt; </b></p>
+<p><b>Icu Handling: </b>If enabled, the transceiver will enable or disable the selected Icu </p>
+<p>channel on certain mode changes. See chapter 5.3 for details. </p>
+<p><b>&gt; </b></p>
+<p><b>Icu Channel Ref: </b>Select the Icu channel for this transceiver. The value can only be </p>
+<p>specified if Icu handling is enabled. See chapter 5.3 for details. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>47 / 51 </p>
+<p><b>&gt; </b></p>
+<p><b>Use Partial Networking</b>: Enables or disables the partial networking feature which </p>
+<p>allows the transceiver to be woken up only by a specific wakeup frame specified by </p>
+<p>Identifier, Mask, DLC and Data Bye 0-7. </p>
+<p><b>&gt; </b></p>
+<p><b>Detect bus errors</b>: Enables for handling of BUSERR flag. When activated on at least </p>
+<p>one channel, the API </p>
+<p>CanTrcv_30___Your_Trcv___MainFunctionDiagnostics</p>
+<p> </p>
+<p>can be used to poll the state of the BUSERR flag for all channels where this attribute is </p>
+<p>set to TRUE. </p>
+<p><b>&gt; </b></p>
+<p><b>Match Extended IDs</b>: Enables support for extended IDs. If activated, the configured </p>
+<p>Identifier and Mask is considered to be 29 instead of 11bit. </p>
+<p><b>&gt; </b></p>
+<p><b>Identifier</b>: Specifies the ID of the wakeup frame used for selective wakeup. If &quot;Match </p>
+<p>Extended IDs” is set to false, the ID has to be entered as 11bit ID (0x0 - 0x7ff). </p>
+<p>Otherwise, you have to enter a 29 bit ID (0x0 - 0x1fffffff). </p>
+<p><b>&gt; </b></p>
+<p><b>Mask</b>: You may set a mask to specify an ID range used for selective wakeup. If &quot;Match </p>
+<p>Extended IDs&quot; is set to false, the Mask has to be entered as 11bit Mask (0x0 - 0x7ff). </p>
+<p>Otherwise, you have to enter a 29bit Mask (0x0 - 0x1fffffff). If a bit is set to 0, the </p>
+<p>corresponding bit of the received frame must match to the corresponding bit value </p>
+<p>specified in ID. If a bit is set to 1, the bit of the received frame is ignored and </p>
+<p>considered as always correct. </p>
+<p><b>&gt; </b></p>
+<p><b>Data length code (DLC)</b>: Specified the length of the wakeup frame used for selective </p>
+<p>wake up the transceiver. </p>
+<p><b>&gt; </b></p>
+<p><b>Data Byte [0-7]</b>: Defines the n-th byte (Byte0 = LSB) of the data payload mask to be </p>
+<p>used on the received payload in order to determine if the Transceiver must be woken </p>
+<p>up by the received Remote Wakeup Frame. The payload matches if the first bit with </p>
+<p>value one of the received frame matches the first bit with value one of the configured </p>
+<p>payload. </p>
+<p><b>&gt; </b></p>
+<p><b>Wakeup Source: </b>Select the wakeup source for the according CAN transceiver </p>
+<p>channel. </p>
+<p> </p>
+<p><b>7.2 </b></p>
+<p><b>Configuration with DaVinci Configurator 5 </b></p>
+<p>Refer to the integrated online help and parameter descriptions of Configurator 5. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>48 / 51 </p>
+<p><b>8 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>8.1 </b></p>
+<p><b>Additions/ Extensions </b></p>
+<p><b>8.1.1 </b></p>
+<p><b>Memory initialization </b></p>
+<p>To have an independent memory initialization for this BSW module the additional function  </p>
+<p>CanTrcv_30___Your_Trcv___InitMemory</p>
+<p> was added. </p>
+<p><b>8.2 </b></p>
+<p><b>Deviations </b></p>
+<p>While the driver is implemented according [1], some requirements could not be fulfilled in </p>
+<p>order to ensure proper functionality. The following chapter lists these deviations. </p>
+<p><b>8.2.1 </b></p>
+<p><b>Notification functions </b></p>
+<p>According to SWS [1] the transceiver shall call notification functions in CanIf. As the given </p>
+<p>CanTrcvChannelId is valid only for one transceiver driver instance, it was decided to call </p>
+<p>the following notification functions instead: </p>
+<p><b>SWS API </b></p>
+<p><b>Used API </b></p>
+<p>CanIf_TrcvModeIndication </p>
+<p>CanIf_30___Your_Trcv___TrcvModeIndication </p>
+<p>CanIf_ConfirmPnAvailability </p>
+<p>CanIf_30___Your_Trcv___ConfirmPnAvailability </p>
+<p>CanIf_ClearTrcvWufFlagIndication </p>
+<p>CanIf_30___Your_Trcv___ClearTrcvWufFlagIndication </p>
+<p>CanIf_CheckTrcvWakeFlagIndication </p>
+<p>CanIf_30___Your_Trcv___CheckTrcvWakeFlagIndication </p>
+<p>Table 8-1 </p>
+<p>Deviation of APIs used by CanTrcv </p>
+<p>Within these functions recalculation of the given CanTrcvIndex has to be performed so that </p>
+<p>the local index of the driver matches the global index of the CanIf. </p>
+<p>Affected requirements: CanTrcv086, CanTrcv222, CanTrcv239, CanTrcv238 </p>
+<p><b>8.2.2 </b></p>
+<p><b>CanIf_CheckTrcvWakeFlagIndication is always called </b></p>
+<p>According to SWS [1], </p>
+<p>CanIf_CheckTrcvWakeFlagIndication</p>
+<p> shall be called only if </p>
+<p>a wakeup was detected. As this would lock CanSm, it was decided to call this notification </p>
+<p>function  in  every  case,  even  if  no  wakeup  was  detected.  If  a  wakeup  was  detected, </p>
+<p>EcuM_SetWakeupEvent</p>
+<p> is called by the transceiver driver. </p>
+<p>Affected requirements: CanTrcv238 </p>
+<p> </p>
+<p><b>8.2.3 </b></p>
+<p><b>No re-initialization will occur if POR is set in CanTrcv_SetOpMode </b></p>
+<p>According to SWS [1], the transceiver driver shall perform a re-initialization if POR is set </p>
+<p>when entering normal mode. This situation can only happen if V</p>
+<p>s </p>
+<p>and V</p>
+<p>cc</p>
+<p> drops</p>
+<p> </p>
+<p>below the </p>
+<p>lower  boundary  and  recovers  again  while  MCU  is  still  active.  In  this  case,  it  is  always </p>
+<p>required to perform a complete re-initialization of the whole MCU as correct functionality </p>
+<p>cannot be ensured anymore. During this re-initialization, </p>
+<p>CanTrcv_Init</p>
+<p> has to be called </p>
+<p>that reinitializes the underlying transceiver hardware. </p>
+<p>Affected requirements: CanTrcv221 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>49 / 51 </p>
+<p><b>8.2.4 </b></p>
+<p><b>Const removed from API CanTrcv_GetTrcvSystemData </b></p>
+<p>According to SWS [1], the API </p>
+<p>CanTrcv_GetTrcvSystemData</p>
+<p> shall have a parameter </p>
+<p>TrcvSysData</p>
+<p>  of  type </p>
+<p>const uint32*</p>
+<p>.    As  this  parameter  has  to  be  filled  by  the </p>
+<p>transceiver driver it was decided to remove this </p>
+<p>const</p>
+<p> qualifier. </p>
+<p>Affected requirements: CanTrcv152 </p>
+<p><b>8.2.5 </b></p>
+<p><b>Unused BSWMD parameters </b></p>
+<p>According </p>
+<p>to </p>
+<p>SWS </p>
+<p>[1], </p>
+<p>the </p>
+<p>parameters </p>
+<p>CanTrcvSPICommRetries</p>
+<p> </p>
+<p>and </p>
+<p>CanTrcvSPICommTimeout</p>
+<p> shall have the multiplicity 1. As the SWS does not describe </p>
+<p>where to use these values, it was decided to set multiplicity to 0..1 so they do not have to </p>
+<p>be used. </p>
+<p>Affected requirements: CanTrcv172, CanTrcv171 </p>
+<p><b>8.2.6 </b></p>
+<p><b>Modified return value of CanTrcv_CB_WakeupByBus </b></p>
+<p>According to SWS [1] the API CanTrcv_CB_WakeupByBus shall return E_OK if a wakeup </p>
+<p>was detected. As SPI can be asynchronous the return value was modified so that E_OK </p>
+<p>means  that  the  request  to  check  for  Wakeups  has  been  acknowledged.  The  actual </p>
+<p>completion of this request may be done in MainFunction. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>50 / 51 </p>
+<p><b>9 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>9.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>Table 9-1  </p>
+<p>Glossary </p>
+<p> </p>
+<p> </p>
+<p><b>9.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>DEM </p>
+<p>Diagnostic Event Manager </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>SRS </p>
+<p>Software Requirement Specification </p>
+<p>SWC </p>
+<p>Software Component </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>WUP </p>
+<p>Wakeup Pattern </p>
+<p>WUF </p>
+<p>Wakeup Frame </p>
+<p>AUTOSAR3 </p>
+<p>AUTOSAR R3.2 Rev1 + Rev2 </p>
+<p>AUTOSAR4 </p>
+<p>AUTOSAR R4.0 Rev3 </p>
+<p>POR </p>
+<p>Power-on reset </p>
+<p>MCU </p>
+<p>Microcontroller Unit </p>
+<p>SPI </p>
+<p>Serial Peripheral Interface </p>
+<p>Table 9-2  </p>
+<p>Abbreviations </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transceiver Driver </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 3.02.00 </p>
+<p>based on template version 3.1 </p>
+<p>51 / 51 </p>
+<p><b>10  Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

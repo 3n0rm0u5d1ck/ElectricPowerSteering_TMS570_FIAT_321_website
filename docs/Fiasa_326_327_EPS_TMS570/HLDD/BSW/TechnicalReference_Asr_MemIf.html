@@ -1,0 +1,1857 @@
+---
+layout: default
+title: TechnicalReference_Asr_MemIf
+nav_order: 23
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR MemIf </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p> </p>
+<p>Version 1.0 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Tobias Schmid </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Tobias Schmid </p>
+<p>2008-04-14 </p>
+<p>1.0 </p>
+<p>Creation of document </p>
+<p>Table 1-1   History of the document </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_SWS_Mem_AbstractionInterface.pdf </p>
+<p>V1.2.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DET.pdf </p>
+<p>V2.2.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.0.0 </p>
+<p>[4] </p>
+<p> </p>
+<p>AUTOSAR_SWS_EEPROM_Abstraction.pdf </p>
+<p>V1.2.0 </p>
+<p>[5] </p>
+<p> </p>
+<p>AUTOSAR_SWS_Flash_EEPROM_Emulation.pdf </p>
+<p>V1.2.0 </p>
+<p>Table 1-2   Reference documents </p>
+<p> </p>
+<p><b>1.1 </b></p>
+<p><b>Scope of the Document </b></p>
+<p>This technical reference describes the general use of module MemIf (AUTOSAR Memory </p>
+<p>Abstraction Interface). </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>2 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information.................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 2</p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>Scope of the Document .................................................................................... 2</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction ..................................................................................................................... 6</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Architecture Overview....................................................................................... 7</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................... 8</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Features............................................................................................................ 8</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Initialization ....................................................................................................... 8</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>Main Functions ................................................................................................. 8</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Error Handling................................................................................................... 8</p>
+<p> </p>
+<p>3.4.1</p>
+<p> </p>
+<p>Development Error Reporting ........................................................................... 8</p>
+<p> </p>
+<p>3.4.1.1</p>
+<p> </p>
+<p>Parameter Checking ....................................................................................... 10</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration ..................................................................................................................... 11</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Scope of Delivery.............................................................................................11</p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>Static Files .......................................................................................................11</p>
+<p> </p>
+<p>4.1.2</p>
+<p> </p>
+<p>Dynamic Files ..................................................................................................11</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Include Structure............................................................................................. 12</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 12</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>API Description ............................................................................................................. 14</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Interfaces Overview ........................................................................................ 14</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Type Definitions .............................................................................................. 14</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Services provided by MemIf ........................................................................... 15</p>
+<p> </p>
+<p>5.3.1</p>
+<p> </p>
+<p>MemIf_GetVersionInfo .................................................................................... 16</p>
+<p> </p>
+<p>5.3.2</p>
+<p> </p>
+<p>MemIf_SetMode ............................................................................................. 16</p>
+<p> </p>
+<p>5.3.3</p>
+<p> </p>
+<p>MemIf_Read ................................................................................................... 17</p>
+<p> </p>
+<p>5.3.4</p>
+<p> </p>
+<p>MemIf_Write.................................................................................................... 18</p>
+<p> </p>
+<p>5.3.5</p>
+<p> </p>
+<p>MemIf_Cancel................................................................................................. 19</p>
+<p> </p>
+<p>5.3.6</p>
+<p> </p>
+<p>MemIf_GetStatus ............................................................................................ 20</p>
+<p> </p>
+<p>5.3.7</p>
+<p> </p>
+<p>MemIf_GetJobResult ...................................................................................... 21</p>
+<p> </p>
+<p>5.3.8</p>
+<p> </p>
+<p>MemIf_EraseImmediateBlock ......................................................................... 22</p>
+<p> </p>
+<p>5.3.9</p>
+<p> </p>
+<p>MemIf_InvalidateBlock.................................................................................... 23</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Services used by MemIf ................................................................................. 23</p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>3 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Configuration ................................................................................................................ 25</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Configuration with EAD................................................................................... 25</p>
+<p> </p>
+<p>6.1.1</p>
+<p> </p>
+<p>Architecture View............................................................................................ 25</p>
+<p> </p>
+<p>6.1.2</p>
+<p> </p>
+<p>Memory Interface Settings.............................................................................. 26</p>
+<p> </p>
+<p>6.1.3</p>
+<p> </p>
+<p>Module API ..................................................................................................... 27</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance................................................................................. 30</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Deviations ....................................................................................................... 30</p>
+<p> </p>
+<p>7.1.1</p>
+<p> </p>
+<p>Extension of Error Codes................................................................................ 30</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>Mapping 1 Device only ................................................................................... 30</p>
+<p> </p>
+<p>7.2</p>
+<p> </p>
+<p>Additions/ Extensions ..................................................................................... 30</p>
+<p> </p>
+<p>7.2.1</p>
+<p> </p>
+<p>Additional Error Codes.................................................................................... 30</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ........................................................................................ 31</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Glossary.......................................................................................................... 31</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 31</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................... 32</b></p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>4 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>AUTOSAR architecture..................................................................................... 7</p>
+<p> </p>
+<p>Figure 2-2</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the MemIf.................................................... 7</p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>Include structure ............................................................................................. 12</p>
+<p> </p>
+<p>Figure 5-1</p>
+<p> </p>
+<p>MemIf interactions with other BSW................................................................. 14</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>EAD Architecture View.................................................................................... 25</p>
+<p> </p>
+<p>Figure 6-2</p>
+<p> </p>
+<p>Memory Interface Settings Configuration ....................................................... 26</p>
+<p> </p>
+<p>Figure 6-3</p>
+<p> </p>
+<p>Module API ..................................................................................................... 28</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the document.................................................................................... 2</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference documents....................................................................................... 2</p>
+<p> </p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>Supported SWS features .................................................................................. 8</p>
+<p> </p>
+<p>Table 3-2 </p>
+<p> </p>
+<p>Mapping of service IDs to services ................................................................... 9</p>
+<p> </p>
+<p>Table 3-3 </p>
+<p> </p>
+<p>Errors reported to DET ..................................................................................... 9</p>
+<p> </p>
+<p>Table 3-4 </p>
+<p> </p>
+<p>Development Error Reporting: Assignment of checks to services .................. 10</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Static files.........................................................................................................11</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Generated files ................................................................................................11</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping ................................................... 13</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Type definitions............................................................................................... 15</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>MemIf_GetVersionInfo .................................................................................... 16</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>MemIf_SetMode ............................................................................................. 16</p>
+<p> </p>
+<p>Table 5-4 </p>
+<p> </p>
+<p>MemIf_Read ................................................................................................... 17</p>
+<p> </p>
+<p>Table 5-5 </p>
+<p> </p>
+<p>MemIf_Write ................................................................................................... 18</p>
+<p> </p>
+<p>Table 5-6 </p>
+<p> </p>
+<p>MemIf_Cancel................................................................................................. 19</p>
+<p> </p>
+<p>Table 5-7 </p>
+<p> </p>
+<p>MemIf_GetStatus ............................................................................................ 20</p>
+<p> </p>
+<p>Table 5-8 </p>
+<p> </p>
+<p>MemIf_GetJobResult ...................................................................................... 21</p>
+<p> </p>
+<p>Table 5-9 </p>
+<p> </p>
+<p>MemIf_EraseImmediateBlock ......................................................................... 22</p>
+<p> </p>
+<p>Table 5-10 </p>
+<p> </p>
+<p>MemIf_InvalidateBlock.................................................................................... 23</p>
+<p> </p>
+<p>Table 5-11 </p>
+<p> </p>
+<p>Services used by the MemIf ........................................................................... 24</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Memory Interface Settings.............................................................................. 27</p>
+<p> </p>
+<p>Table 8-1 </p>
+<p> </p>
+<p>Glossary.......................................................................................................... 31</p>
+<p> </p>
+<p>Table 8-2 </p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 31</p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>5 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module MemIf as specified in [1].  </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release: </b></p>
+<p>3.0 </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>MemIf supports a combination of pre-compile and link </p>
+<p>time configurable configuration parameters. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p>MEMIF_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>MEMIF_MODULE_ID   </p>
+<p>22 decimal </p>
+<p>(according to ref. [3]) </p>
+<p> </p>
+<p>MemIf (Memory Abstraction Interface) provides the interface  that is used by the NvM to </p>
+<p>access NV memory devices. Two different types of NV memory are intended for use: Flash </p>
+<p>memory and EEPROM. To abstract the hardware dependencies of the memory devices, </p>
+<p>low level drivers with a commonly defined API are used: Fls and Eep (internal or external). </p>
+<p>These modules are abstracted by the modules Fee (Flash EEPROM Emulation) and Ea </p>
+<p>(EEPROM Abstraction). Multiple instances of these modules may exist. </p>
+<p>MemIf offers a common interface for accessing Fee or Ea instances. In order to distinguish </p>
+<p>those different instances MemIf provides a set of device handles, which may be used for </p>
+<p>configuration of NvM. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>6 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>2.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the MemIf is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 2-1 AUTOSAR architecture </p>
+<p> </p>
+<p>The next figure shows the interfaces to adjacent modules of the MemIf. These interfaces </p>
+<p>are described in chapter 5.  </p>
+<p>FR </p>
+<p>CAN IF</p>
+<p>FR IF</p>
+<p>COM</p>
+<p>DCM</p>
+<p>IPDU</p>
+<p>Fee</p>
+<p>MemIf</p>
+<p>Ea</p>
+<p>Det</p>
+<p>NvM</p>
+<p>Fls</p>
+<p>Eep</p>
+<p> </p>
+<p>Figure 2-2 Interfaces to adjacent modules of the MemIf</p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>7 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The  &quot;supported&quot;  and  &quot;not  supported&quot;  features  are  presented  in  the  following  two  tables. </p>
+<p>For further information of not supported features also see chapter 7. </p>
+<p>The following features described in [1] are supported: </p>
+<p><b>Feature </b></p>
+<p>MemIf </p>
+<p>allows the NVRAM manager to access multiple instances of memory hardware </p>
+<p>abstraction modules (Fee or Ea), regardless of different APIs and implementations.</p>
+<p> </p>
+<p>Table 3-1   Supported SWS features </p>
+<p><b>3.2 </b></p>
+<p><b>Initialization </b></p>
+<p>MemIf does not need any initialization. Nevertheless it is necessary to initialize all memory </p>
+<p>hardware abstraction module instances that are interfaced by MemIf. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p>MemIf does <b>not </b>provide any services for initialization of underlying memory hardware </p>
+<p>abstraction modules. Initialization of these modules is not done by MemIf! </p>
+<p><b> </b></p>
+<p><b>3.3 </b></p>
+<p><b>Main Functions </b></p>
+<p>MemIf  does  not  implement  main-functions  that  would  need  recurring  execution.  Job </p>
+<p>requests are mapped to the appropriate underlying memory hardware abstraction module, </p>
+<p>which implements the main-function for processing the job. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p>MemIf is <b>not </b>responsible for calling main-functions of the underlying hardware </p>
+<p>abstraction modules. Calling main-functions cyclically has to be implemented in the </p>
+<p>BSW Scheduler (or something similar). </p>
+<p><b> </b></p>
+<p><b>3.4 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>3.4.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Development errors are reported by default to DET using the service Det_ReportError(), </p>
+<p>(specified in [2]), if the pre-compile configuration parameter for “Development Mode” and </p>
+<p>“Debug Reporting” are enabled (see chapter 6.1.2). </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>8 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p>The  reported  service  IDs  identify  the  services  which  are  described  in  5.3. The  following </p>
+<p>table presents the service IDs and the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>1 </p>
+<p>MemIf_SetMode </p>
+<p>2 </p>
+<p>MemIf_Read </p>
+<p>3 </p>
+<p>MemIf_Write </p>
+<p>4 </p>
+<p>MemIf_Cancel </p>
+<p>5 </p>
+<p>MemIf_GetStatus </p>
+<p>6 </p>
+<p>MemIf_GetJobResult </p>
+<p>7 </p>
+<p>MemIf_InvalidateBlock </p>
+<p>8 </p>
+<p>MemIf_GetVersionInfo </p>
+<p>9 </p>
+<p>MemIf_EraseImmediateBlock </p>
+<p>Table 3-2   Mapping of service IDs to services </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x01 </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p>The parameter denoting the device index passed to the </p>
+<p>API service is out of range.  </p>
+<p>0x02 </p>
+<p>MEMIF_E_PARAM_VINFO </p>
+<p>The parameter passed to MemIf_GetVersionInfo </p>
+<p>references no valid address (NULL-Pointer). </p>
+<p>This error code is an extension to the error codes </p>
+<p>defined in [1]. </p>
+<p>Table 3-3   Errors reported to DET </p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>9 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>3.4.1.1 </b></p>
+<p><b>Parameter Checking </b></p>
+<p>The following table shows which parameter checks are performed on which services: </p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>Check device </p>
+<p>index passed to </p>
+<p>API services </p>
+<p>Check parameter </p>
+<p>for  referencing a </p>
+<p>valid address </p>
+<p>MemIf_GetVersionInfo </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_SetMode </p>
+<p> </p>
+<p> </p>
+<p>MemIf_Read </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_Write </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_Cancel </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_GetStatus </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_GetJobResult </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_InvalidateBlock </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MemIf_EraseImmediateBlock </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 3-4   Development Error Reporting: Assignment of checks to services </p>
+<p>AUTOSAR requires that API functions check the validity of their parameters. The checks in </p>
+<p>Table  3-4  are  internal  parameter  checks  of  the  API  functions.  These  checks  are  for </p>
+<p>development  error  reporting  and  can  be  en-/disabled  separately  (see  chapter  3.4.1  for </p>
+<p>configuration  of  these  paraneters).  En-/disabling  of  single  checks  is  an  addition  to  the </p>
+<p>AUTOSAR </p>
+<p>standard </p>
+<p>which </p>
+<p>is </p>
+<p>only </p>
+<p>available </p>
+<p>if </p>
+<p>the </p>
+<p>global </p>
+<p>error </p>
+<p>detection </p>
+<p>switch </p>
+<p>“Development Mode” is configured to enabled. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>10 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Integration </b></p>
+<p>This chapter gives necessary information for the integration of the MICROSAR MemIf into </p>
+<p>an application environment of an ECU. </p>
+<p><b>4.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the MemIf contains the files which are described in the chapters 4.1.1 and </p>
+<p>4.1.2: </p>
+<p><b>4.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>MemIf.h </p>
+<p>API of module MemIf, only this file needs to be included by upper layer </p>
+<p>software (typically NvM)</p>
+<p> </p>
+<p>MemIf_Types.h </p>
+<p>Defines all standard types, needed by upper layer modules as well as the </p>
+<p>modules Fee and Ea. </p>
+<p>This file needs to be included by all memory hardware abstraction </p>
+<p>modules according to AUTOSAR. </p>
+<p>MemIf.c/.o </p>
+<p>Implementation of the functionalities of the module MemIf </p>
+<p>T_MemIf_Cfg.h </p>
+<p>Template from which the configuration header file is generated from </p>
+<p>T_MemIf_Cfg.c </p>
+<p>Template from which the configuration source file is generated from </p>
+<p>MemIf_bswmd.arxml </p>
+<p>AUTOSAR Release 3.0 BSW Module Description </p>
+<p>MemIf.xml </p>
+<p>Generation.xml </p>
+<p>Validation.xml </p>
+<p>Identifier.xml </p>
+<p>Necessary files for MICROSAR EAD support </p>
+<p>Table 4-1   Static files </p>
+<p> </p>
+<p><b>4.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool MICROSAR EAD. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>MemIf_Cfg.h </p>
+<p>Configuration header file (generated from T_MemIf_Cfg.h) </p>
+<p>MemIf_Cfg.c </p>
+<p>Configuration source file (generated from T_MemIf_Cfg.c) </p>
+<p>Table 4-2   Generated files </p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>11 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>4.2 </b></p>
+<p><b>Include Structure </b></p>
+<p><b>deployment File Structure</b></p>
+<p>MemIf.c</p>
+<p>MemIf.h</p>
+<p>MemIf_Types.h</p>
+<p>Std_Types.h</p>
+<p>MemIf_Cfg.h</p>
+<p>Det.h</p>
+<p>Fee.h</p>
+<p>Ea.h</p>
+<p>MemIf_Cfg.c</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«configurable</p>
+<p>include»</p>
+<p>0..*</p>
+<p>«configurable</p>
+<p>include»</p>
+<p>0..*</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p> </p>
+<p>Figure 4-1 Include structure </p>
+<p><b>4.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions defined for the MemIf and illustrates their assignment among each other. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>12 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>Compiler Abstraction</b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>MEMIF_CONST </p>
+<p>MEMIF_CODE </p>
+<p>MEMIF_APPL_DATA </p>
+<p>MEMIF_START_SEC_CONST_8BIT </p>
+<p>MEMIF_STOP_SEC_CONST_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MEMIF_START_SEC_CONST_32BIT </p>
+<p>MEMIF_STOP_SEC_CONST_32BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MEMIF_START_SEC_CODE </p>
+<p>MEMIF_STOP _SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Memory sections in which underlying memory </p>
+<p>hardware abstraction modules’ code resides </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Memory sections of data buffers, which are passed </p>
+<p>to the API services for read or write jobs </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Memory sections of buffers passed to </p>
+<p>MemIf_GetVersionInfo </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-3   Compiler abstraction and memory mapping </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>13 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>API Description </b></p>
+<p><b>5.1 </b></p>
+<p><b>Interfaces Overview </b></p>
+<p><b>class Logical View</b></p>
+<p><b>MemIf</b></p>
+<p>+ </p>
+<p>MemIf_Cancel(uint8) : void</p>
+<p>+ </p>
+<p>MemIf_EraseImmediateBlock(uint8, uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>MemIf_GetJobResult(uint8) : MemIf_JobResultType</p>
+<p>+ </p>
+<p>MemIf_GetStatus(uint8) : MemIf_StatusType</p>
+<p>+ </p>
+<p>MemIf_GetVersionInfo(Std_VersionInfoType*) : void</p>
+<p>+ </p>
+<p>MemIf_InvalidateBlock(uint8, uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>MemIf_Read(uint8, uint16, uint16, MemIf_DataPtr_pu8*, uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>MemIf_SetMode(MemIf_ModeType) : void</p>
+<p>+ </p>
+<p>MemIf_Write(uint8, uint16, MemIf_DataPtr_pu8) : Std_ReturnType</p>
+<p><b>Nv M</b></p>
+<p><b>Fee</b></p>
+<p>+ </p>
+<p>Fee_Cancel() : void</p>
+<p>+ </p>
+<p>Fee_EraseImmediateBlock(uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>Fee_GetJobResult() : MemIf_JobResultType</p>
+<p>+ </p>
+<p>Fee_GetStatus() : MemIf_StatusType</p>
+<p>+ </p>
+<p>Fee_GetVersionInfo(Std_VersionInfoType*) : void</p>
+<p>+ </p>
+<p>Fee_Init() : void</p>
+<p>+ </p>
+<p>Fee_InvalidateBlock(uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>Fee_Read(uint16, uint16, uint8*, uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>Fee_SetMode(MemIf_ModeType) : void</p>
+<p>+ </p>
+<p>Fee_Write(uint16, uint8*) : Std_ReturnType</p>
+<p><b>Ea</b></p>
+<p>+ </p>
+<p>Ea_Cancel() : void</p>
+<p>+ </p>
+<p>Ea_EraseImmediateBlock(uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>Ea_GetJobResult() : MemIf_JobResultType</p>
+<p>+ </p>
+<p>Ea_GetStatus() : MemIf_StatusType</p>
+<p>+ </p>
+<p>Ea_GetVersionInfo(Std_VersionInfoType) : void</p>
+<p>+ </p>
+<p>Ea_Init() : void</p>
+<p>+ </p>
+<p>Ea_InvalidateBlock(uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>Ea_Read(uint16, uint16, uint8*, uint16) : Std_ReturnType</p>
+<p>+ </p>
+<p>Ea_SetMode(MemIf_ModeType) : void</p>
+<p>+ </p>
+<p>Ea_Write(uint16, uint8*) : Std_ReturnType</p>
+<p><b>Det</b></p>
+<p>+ </p>
+<p>Det_ReportError(uint16, uint8, uint8, uint8) : void</p>
+<p>0..*</p>
+<p>0..*</p>
+<p> </p>
+<p>Figure 5-1 MemIf interactions with other BSW </p>
+<p><b>5.2 </b></p>
+<p><b>Type Definitions </b></p>
+<p><b>Type Name </b></p>
+<p><b>C-Type </b></p>
+<p><b>Description </b></p>
+<p><b>Value Range </b></p>
+<p>MEMIF_UNINIT </p>
+<p>Module is not initialized </p>
+<p>MemIf_StatusType </p>
+<p>enum </p>
+<p>Denotes the states of </p>
+<p>BSW modules in the </p>
+<p>memory stack </p>
+<p>MEMIF_IDLE </p>
+<p>There are no pending jobs that </p>
+<p>need processing</p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>14 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>Type Name </b></p>
+<p><b>C-Type </b></p>
+<p><b>Description </b></p>
+<p><b>Value Range </b></p>
+<p>MEMIF_BUSY </p>
+<p>Module is processing jobs, no </p>
+<p>further job requests are accepted </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>MEMIF_BUSY_INTERNAL </p>
+<p>No job requests are being </p>
+<p>processed, but the module is busy </p>
+<p>executing internal operations </p>
+<p>MEMIF_JOB_OK </p>
+<p>Job processing finished </p>
+<p>successfully </p>
+<p>MEMIF_JOB_FAILED </p>
+<p>Job processing finished with an </p>
+<p>error</p>
+<p> </p>
+<p>MEMIF_JOB_PENDING </p>
+<p>Job is currently being processed </p>
+<p>MEMIF_JOB_CANCELLED </p>
+<p>Job has been cancelled by the </p>
+<p>user</p>
+<p> </p>
+<p>MEMIF_BLOCK_INCONSISTENT </p>
+<p>Job finished successfully, but data </p>
+<p>is inconsistent</p>
+<p> </p>
+<p>MemIf_JobResultType </p>
+<p>enum </p>
+<p>Denotes the result of a </p>
+<p>job request after </p>
+<p>processing of this job </p>
+<p>MEMIF_BLOCK_INVALID </p>
+<p>Job finished successfully but data </p>
+<p>has been invalidated</p>
+<p> </p>
+<p>MEMIF_MODE_SLOW </p>
+<p>Jobs are processed with the </p>
+<p>configured properties for slow </p>
+<p>mode </p>
+<p>MemIf_ModeType </p>
+<p>enum </p>
+<p>Denotes the processing </p>
+<p>mode for a module in the </p>
+<p>memory stack </p>
+<p>MEMIF_MODE_FAST </p>
+<p>Jobs are processed with the </p>
+<p>configured properties for fast mode</p>
+<p>Table 5-1   Type definitions </p>
+<p><b>5.3 </b></p>
+<p><b>Services provided by MemIf </b></p>
+<p>The MemIf API consists of services, which are realized by function calls. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>15 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.1 </b></p>
+<p><b>MemIf_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>MemIf_GetVersionInfo </b>( Std_VersionInfoType *</p>
+<p> </p>
+<p>VersionInfoPtr )</p>
+<p><b>Parameter </b></p>
+<p>VersionInfoPtr </p>
+<p>Reference to a version information structure in RAM </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This service writes the version information of MemIf to the referenced structure.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>In case the passed parameter references an invalid address (NULL-pointer) the error </p>
+<p>MEMIF_E_PARAM_VINFO</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p></p>
+<p> </p>
+<p>This service is only available if </p>
+<p>MEMIF_VERSION_INFO_API</p>
+<p> is configured to </p>
+<p>STD_ON</p>
+<p> </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>This service has no restriction to the allowed or expected caller context. </p>
+<p>Table 5-2   MemIf_GetVersionInfo </p>
+<p><b>5.3.2 </b></p>
+<p><b>MemIf_SetMode </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>MemIf_SetMode</b>(MemIf_ModeType Mode )</p>
+<p><b>Parameter </b></p>
+<p>Mode </p>
+<p>Mode to switch modules into </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This service switches all underlying memory hardware abstraction modules to the requested mode of </p>
+<p>operation, by calling [Ea|Fee]_SetMode (See description of respective module’s function). </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>All memory abstraction modules have to be in state </p>
+<p>MEMIF_IDLE</p>
+<p> when this service is executed. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>This service has no restriction to the allowed or expected caller context. </p>
+<p>Table 5-3   MemIf_SetMode </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>16 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.3 </b></p>
+<p><b>MemIf_Read </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>MemIf_Read </b></p>
+<p>( </p>
+<p> </p>
+<p>uint8 </p>
+<p>DeviceIndex, </p>
+<p> </p>
+<p>uint16   BlockNumber, </p>
+<p> </p>
+<p>uint16   BlockOffset, </p>
+<p> </p>
+<p>uint8*   DataBufferPtr, </p>
+<p> </p>
+<p>uint16   Length </p>
+<p>)</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module to which the read operation </p>
+<p>shall be delegated. </p>
+<p>BlockNumber </p>
+<p>Identifies the block to read in non-volatile memory. </p>
+<p>BlockOffset </p>
+<p>Offset in the block identified by BlockNumber from which on reading is </p>
+<p>performed </p>
+<p>DataBufferPtr </p>
+<p>Reference to the data buffer to which the data in non-volatile memory is read </p>
+<p>to. </p>
+<p>Length </p>
+<p>Number of bytes to read </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Read job request is accepted by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p>E_NOT_OK </p>
+<p>Read job request is rejected by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the job request to the appropriate memory hardware abstraction module by calling the service </p>
+<p>[Ea|Fee]_Read of the addressed module instance (See description of respective module’s function) </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices), the </p>
+<p>error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-4   MemIf_Read </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>17 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.4 </b></p>
+<p><b>MemIf_Write </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>MemIf_Write  </b></p>
+<p>( </p>
+<p> </p>
+<p>uint8 </p>
+<p>DeviceIndex, </p>
+<p> </p>
+<p>uint16   BlockNumber, </p>
+<p> </p>
+<p>uint8*   DataBufferPtr </p>
+<p>)</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module to which the write </p>
+<p>operation shall be delegated. </p>
+<p>BlockNumber </p>
+<p>Identifies the block to write to non-volatile memory. </p>
+<p>DataBufferPtr </p>
+<p>Reference to the data buffer whose content is written to non-volatile memory </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Write job request is accepted by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p>E_NOT_OK </p>
+<p>Write job request is rejected by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the job request to the appropriate memory hardware abstraction module by calling the service </p>
+<p>[Ea|Fee]_Write of the addressed module instance (See description of respective module’s function) </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices), the </p>
+<p>error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-5   MemIf_Write </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>18 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.5 </b></p>
+<p><b>MemIf_Cancel </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>MemIf_Cancel </b>( uint8 DeviceIndex )</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module whose job processing shall </p>
+<p>be cancelled. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the cancel request to the appropriate memory hardware abstraction module by calling the </p>
+<p>service [Ea|Fee]_Cancel of the addressed module instance (See description of respective module’s </p>
+<p>function) </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices), the </p>
+<p>error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-6   MemIf_Cancel </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>19 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.6 </b></p>
+<p><b>MemIf_GetStatus </b></p>
+<p><b>Prototype </b></p>
+<p>MemIf_StatusType <b>MemIf_GetStatus </b>( uint8 DeviceIndex )</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module whose job processing shall </p>
+<p>be cancelled. </p>
+<p><b>Return code </b></p>
+<p>MEMIF_IDLE </p>
+<p>Addressed module is ready to accept job requests </p>
+<p>MEMIF_UNINIT </p>
+<p>Addressed module is not initialized </p>
+<p>MEMIF_BUSY </p>
+<p>Addressed module is processing a job and is not able to accept new job </p>
+<p>requests </p>
+<p>MEMIF_BUSY_INTERNAL</p>
+<p>Addressed module is not processing any job requests, but the module is busy </p>
+<p>executing internal operations </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the call to this service to the appropriate memory hardware abstraction module by calling the </p>
+<p>service [Ea|Fee]_GetStatus (See description of respective module’s function).  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices and </p>
+<p>unequal to </p>
+<p>MEMIF_BROADCAST_ID</p>
+<p>), the error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and </p>
+<p>execution of the service is aborted. </p>
+<p></p>
+<p> </p>
+<p>In case the </p>
+<p>MEMIF_BROADCAST_ID</p>
+<p> is used as device index parameter, the overall status of all </p>
+<p>underlying memory abstraction modules is returned. This overall status is computed as follows: </p>
+<p></p>
+<p> </p>
+<p>MEMIF_IDLE</p>
+<p> – all underlying devices are in this state </p>
+<p></p>
+<p> </p>
+<p>MEMIF_UNINIT</p>
+<p> – at least one device returned this state </p>
+<p></p>
+<p> </p>
+<p>MEMIF_BUSY</p>
+<p> – at least one device returned this state and no other returned </p>
+<p>MEMIF_UNINIT</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>MEMIF_BUSY_INTERNAL</p>
+<p> – at least one device returned this state and no other returned </p>
+<p>MEMIF_BUSY</p>
+<p> or </p>
+<p>MEMIF_UNINIT</p>
+<p> </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-7   MemIf_GetStatus </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>20 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.7 </b></p>
+<p><b>MemIf_GetJobResult </b></p>
+<p><b>Prototype </b></p>
+<p>MemIf_JobResultType <b>MemIf_GetJobResult </b>( uint8 DeviceIndex )</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module whose job </p>
+<p>processing shall be cancelled. </p>
+<p><b>Return code </b></p>
+<p>MEMIF_JOB_OK </p>
+<p>Job processing finished successfully </p>
+<p>MEMIF_JOB_FAILED </p>
+<p>Job processing finished with an error </p>
+<p>MEMIF_JOB_PENDING </p>
+<p>Job is currently being processed </p>
+<p>MEMIF_JOB_CANCELLED </p>
+<p>Job has been cancelled by the user </p>
+<p>MEMIF_BLOCK_INCONSISTENT </p>
+<p>Job finished successfully, but data is inconsistent </p>
+<p>MEMIF_BLOCK_INVALID </p>
+<p>Job finished successfully but data has been invalidated </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the call to this service to the appropriate memory hardware abstraction module by calling the </p>
+<p>service [Ea|Fee]_GetJobResult (See description of respective module’s function).  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices), the </p>
+<p>error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-8   MemIf_GetJobResult </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>21 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.8 </b></p>
+<p><b>MemIf_EraseImmediateBlock </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>MemIf_EraseImmediateBlock  </b></p>
+<p>( </p>
+<p> </p>
+<p>uint8 </p>
+<p>DeviceIndex, </p>
+<p> </p>
+<p>uint16   BlockNumber </p>
+<p>)</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module to which the operation shall </p>
+<p>be delegated. </p>
+<p>BlockNumber </p>
+<p>Identifies the block to erase in non-volatile memory. </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Erase job request is accepted by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p>E_NOT_OK </p>
+<p>Erase job request is rejected by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the job request to the appropriate memory hardware abstraction module by calling the service </p>
+<p>[Ea|Fee]_EraseImmediateBlock of the addressed module instance (See description of respective module’s </p>
+<p>function) </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices), the </p>
+<p>error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-9   MemIf_EraseImmediateBlock </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>22 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>5.3.9 </b></p>
+<p><b>MemIf_InvalidateBlock </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>MemIf_InvalidateBlock  </b></p>
+<p>( </p>
+<p> </p>
+<p>uint8 </p>
+<p>DeviceIndex, </p>
+<p> </p>
+<p>uint16   BlockNumber </p>
+<p>)</p>
+<p><b>Parameter </b></p>
+<p>DeviceIndex </p>
+<p>Index of the memory hardware abstraction module to which the operation shall </p>
+<p>be delegated. </p>
+<p>BlockNumber </p>
+<p>Identifies the block to invalidate in non-volatile memory. </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Erase job request is accepted by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p>E_NOT_OK </p>
+<p>Erase job request is rejected by the addressed memory hardware abstraction </p>
+<p>module. </p>
+<p><b>Functional Description </b></p>
+<p>Delegates the job request to the appropriate memory hardware abstraction module by calling the service </p>
+<p>[Ea|Fee]_InvalidateBlock of the addressed module instance (See description of respective module’s </p>
+<p>function) </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>If the parameter </p>
+<p>DeviceIndex </p>
+<p>is out of range (greater than the number of configured devices), the </p>
+<p>error code </p>
+<p>MEMIF_E_PARAM_DEVICE</p>
+<p> is reported to Det and execution of the service is aborted. </p>
+<p>Call context </p>
+<p></p>
+<p> </p>
+<p>NvM / Application </p>
+<p>Table 5-10 MemIf_InvalidateBlock </p>
+<p><b>5.4 </b></p>
+<p><b>Services used by MemIf </b></p>
+<p>In the following table services provided by other components, which are used by the MemIf </p>
+<p>are listed. For details about prototype and functionality refer to the documentation of the </p>
+<p>providing component. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>23 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET (see [2]) </p>
+<p>Det_ReportError </p>
+<p>Ea_SetMode </p>
+<p>EA (see [4]) </p>
+<p>Ea_Read </p>
+<p>Ea_Write </p>
+<p>Ea_Cancel </p>
+<p>Ea_GetStatus </p>
+<p>Ea_GetJobResult </p>
+<p>Ea_InvalidateBlock </p>
+<p>Ea_GetVersionInfo </p>
+<p>Ea_EraseImmediateBlock </p>
+<p>Fee_SetMode </p>
+<p>FEE (see [5]) </p>
+<p>Fee_Read </p>
+<p>Fee_Write </p>
+<p>Fee_Cancel </p>
+<p>Fee_GetStatus </p>
+<p>Fee_GetJobResult </p>
+<p>Fee_InvalidateBlock </p>
+<p>Fee_GetVersionInfo </p>
+<p>Fee_EraseImmediateBlock </p>
+<p>Table 5-11  Services used by the MemIf </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>24 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>6 </b></p>
+<p><b>Configuration </b></p>
+<p>In the MemIf the attributes can be configured with the following methods: </p>
+<p></p>
+<p> </p>
+<p>Configuration in EAD for a detailed description see 6.1  </p>
+<p><b>6.1 </b></p>
+<p><b>Configuration with EAD </b></p>
+<p><b>6.1.1 </b></p>
+<p><b>Architecture View </b></p>
+<p>After EAD has been started, create a new project (or open an existing). The architecture </p>
+<p>view will then be the first screen that appears: </p>
+<p> </p>
+<p>Figure 6-1 EAD Architecture View </p>
+<p><b> </b></p>
+<p><b>Enable MemIf</b> </p>
+<p>Select MemIf in the “Memory HW Abstraction”-group and activate it (context menu </p>
+<p>Æ</p>
+<p> </p>
+<p>Activate) </p>
+<p> </p>
+<p><b>Enable appropriate memory hardware abstraction modules</b> </p>
+<p>Select the appropriate memory hardware abstraction modules that shall be used in the </p>
+<p>system for non volatile memory access and activate them. The active modules are </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>25 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p>automatically registered to MemIf. </p>
+<p><b>Accept architecture configuration</b> </p>
+<p>To commit the changes to the architecture, press button “Accept” </p>
+<p><b> </b></p>
+<p><b>6.1.2 </b></p>
+<p><b>Memory Interface Settings </b></p>
+<p><b> </b></p>
+<p><b>Navigate to MemIf’s configuration view</b> </p>
+<p>Select MemIf in the Architecture View and select “Properties” from the context menu. </p>
+<p>Another way to navigate to the configuration view is to select Memory </p>
+<p>Æ</p>
+<p> MemIf in the </p>
+<p>Technical Fellow (located on the left side of the main screen). </p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p>Figure 6-2 Memory Interface Settings Configuration </p>
+<p>EAD now presents the configuration view of module MemIf. On the first tab of the register </p>
+<p>“Memory  Interface  Settings”  the  standard  configuration  parameters  of  the  module  are </p>
+<p>displayed. The left side of this page lists the active memory hardware abstraction modules </p>
+<p>and  the  related  device  index.  This  table  can  not  be  edited  in  this  view,  but  only  by </p>
+<p>activating or deactivating modules in EAD’s Architecture View: </p>
+<p>The right side of this page displays the configuration parameters for detecting development </p>
+<p>errors. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>26 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p>The following table provides information about the different configuration parameters: </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Value </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p><b>Variant </b></p>
+<p><b>Type </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p>Eeprom Abstraction/Flash EEPROM Emulation </p>
+<p>The list of </p>
+<p>devices is link </p>
+<p>time configurable </p>
+<p>The list only shows information on </p>
+<p>which memory hardware </p>
+<p>abstraction modules are active. </p>
+<p>(De-)activating has to be done in </p>
+<p>the Architecture View </p>
+<p>- </p>
+<p>- </p>
+<p>- </p>
+<p>Error Detection </p>
+<p>Enables or disables all checks in </p>
+<p>the module generally. </p>
+<p>ON/<b>OFF </b></p>
+<p>Development Mode </p>
+<p>Pre-Compile </p>
+<p>boolean </p>
+<p>Check Device Index </p>
+<p>Parameter </p>
+<p>Enables or disables checking of </p>
+<p>the device index parameter in API </p>
+<p>services separately (if </p>
+<p>Development Mode is enabled) </p>
+<p>Pre-Compile </p>
+<p>boolean </p>
+<p><b>ON</b>/OFF </p>
+<p>Check if </p>
+<p>VersionInfoPtr is </p>
+<p>NULL_PTR </p>
+<p>Pre-Compile </p>
+<p>boolean </p>
+<p><b>ON</b>/OFF </p>
+<p>Enables or disables checking of </p>
+<p>the parameter </p>
+<p> in </p>
+<p>VersionInfoPtr</p>
+<p>MemIf_GetVersionInfo</p>
+<p> (if </p>
+<p>Development Mode is enabled)</p>
+<p>Enables or disables reporting of </p>
+<p>development errors to Det (if </p>
+<p>Development Mode is enabled) </p>
+<p><b>ON</b>/OFF </p>
+<p>Debug Reporting </p>
+<p>Pre-Compile </p>
+<p>boolean </p>
+<p>Function </p>
+<p>Name </p>
+<p>e.g. </p>
+<p><b>Det_ReportEr</b></p>
+<p><b>ror </b></p>
+<p>Configure a function name that is </p>
+<p>used for reporting development </p>
+<p>errors. The function must have the </p>
+<p>same prototype as </p>
+<p>Errorhook Function </p>
+<p>Pre-Compile </p>
+<p>Det_ReportError</p>
+<p>: </p>
+<p> </p>
+<p>void <b>Det_ReportError </b></p>
+<p> </p>
+<p>( </p>
+<p> </p>
+<p> </p>
+<p>uint16 ModuleId, </p>
+<p> </p>
+<p> </p>
+<p>uint8 InstanceId, </p>
+<p> </p>
+<p> </p>
+<p>uint8 ApiId, </p>
+<p> </p>
+<p> </p>
+<p>uint8 ErrorId </p>
+<p> </p>
+<p>)</p>
+<p>C Header </p>
+<p>File Name</p>
+<p>Configure the header file in which </p>
+<p>the prototype for the error </p>
+<p>reporting service from the </p>
+<p>configuration parameter </p>
+<p>“Errorhook Function” is located. </p>
+<p>e.g. <b>Det.h </b></p>
+<p>Include File </p>
+<p>Pre-Compile </p>
+<p>Table 6-1   Memory Interface Settings </p>
+<p><b>6.1.3 </b></p>
+<p><b>Module API </b></p>
+<p><b> </b></p>
+<p><b>Navigate to the register’s tab “Module API”</b> </p>
+<p>Simply click on the register tab “Module API” </p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>27 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p>Figure 6-3 Module API </p>
+<p>The following table provides information about the different configuration parameters: </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Value </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p><b>Variant </b></p>
+<p><b>Type </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p>API Switches </p>
+<p>Provide Version Info </p>
+<p>Function </p>
+<p>Enables or disables the API </p>
+<p>service </p>
+<p>Pre-Compile </p>
+<p>boolean </p>
+<p>ON/<b>OFF </b></p>
+<p>MemIf_GetVersionInfo</p>
+<p>. </p>
+<p>This can be used to reduce code </p>
+<p>size of the module, in case this </p>
+<p>service is not in use. </p>
+<p>Use Function API </p>
+<p>instead of macros </p>
+<p>Decides whether MemIf’s API is </p>
+<p>realized as macros or as real </p>
+<p>functions. </p>
+<p>Pre-Compile </p>
+<p>boolean </p>
+<p><b>ON</b>/OFF </p>
+<p>If “Development Mode” is enabled, </p>
+<p>this switch has no effect. It is not </p>
+<p>possible to use the macro API in </p>
+<p>this case. </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>28 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Value </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p><b>Variant </b></p>
+<p><b>Type </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p>Provided API </p>
+<p>Displays the available API in </p>
+<p>module MemIf. If parts of the API </p>
+<p>are disabled by configuration, </p>
+<p>those parts will be displayed in </p>
+<p>grey. </p>
+<p>- </p>
+<p>- </p>
+<p>- </p>
+<p><b>- </b></p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>29 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>7.1 </b></p>
+<p><b>Deviations </b></p>
+<p><b>7.1.1 </b></p>
+<p><b>Extension of Error Codes </b></p>
+<p>In  contradiction  to  AUTOSAR  standard  MemIf008,  an  additional  error  code  has  been </p>
+<p>defined: MEMIF_E_PARAM_VINFO (see chapter 3.4.1 for details on this error code). </p>
+<p><b>7.1.2 </b></p>
+<p><b>Mapping 1 Device only </b></p>
+<p>In  contradiction  to  AUTOSAR  standard  MemIf019,  in  case  there  is  only  one  memory </p>
+<p>hardware abstraction module, its API is not mapped by simple macros. In order to provide </p>
+<p>link time configuration capability, mapping of the APIs is always realized by function pointer </p>
+<p>tables.</p>
+<p> </p>
+<p><b>7.2 </b></p>
+<p><b>Additions/ Extensions </b></p>
+<p><b>7.2.1 </b></p>
+<p><b>Additional Error Codes </b></p>
+<p>The following error codes are reported additionally to the errors defined in [1] (see chapter </p>
+<p>3.4.1 for details): </p>
+<p></p>
+<p> </p>
+<p>MEMIF_E_PARAM_VINFO</p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>30 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>8.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>EAD </p>
+<p>Embedded Architecture Designer; generation tool for MICROSAR </p>
+<p>components </p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>Table 8-1   Glossary </p>
+<p><b>8.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>EAD </p>
+<p>Embedded Architecture Designer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>SRS </p>
+<p>Software Requirement Specification </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>NVRAM </p>
+<p>Non volatile memory </p>
+<p>NvM </p>
+<p>NVRAM Manager </p>
+<p>Fee </p>
+<p>Flash EEPROM Emulation </p>
+<p>Ea </p>
+<p>EEPROM Abstraction </p>
+<p>Fls </p>
+<p>Flash Driver </p>
+<p>Eep </p>
+<p>EEPROM Driver </p>
+<p>Table 8-2   Abbreviations </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>31 / 32</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR MemIf  </p>
+<p> </p>
+<p><b>9 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com</b></p>
+<p> </p>
+<p>©</p>
+<p>2008, Vector Informatik GmbH </p>
+<p>Version: 1.0 </p>
+<p>based on template version 3.1 </p>
+<p>32 / 32</p>
+</body>
+</html>
+{% endraw %}

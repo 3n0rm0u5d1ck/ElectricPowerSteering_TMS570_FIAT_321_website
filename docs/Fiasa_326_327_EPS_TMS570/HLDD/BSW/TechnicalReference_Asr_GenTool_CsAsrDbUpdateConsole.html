@@ -1,0 +1,1077 @@
+---
+layout: default
+title: TechnicalReference_Asr_GenTool_CsAsrDbUpdateConsole
+nav_order: 19
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR DB Update </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>Description </p>
+<p>Version 1.9 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Benjamin Gottschalk, Mario Kunz, Matthias Bannholzer </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>2 / 22</p>
+<p> </p>
+<p><b>Document Information </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Benjamin Gottschalk </p>
+<p>2009-12-10 </p>
+<p>1.0 </p>
+<p>Creation </p>
+<p>Benjamin Gottschalk </p>
+<p>2009-12-17 </p>
+<p>1.1 </p>
+<p>Adapted Reference </p>
+<p>Documents </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-01-13 </p>
+<p>1.2 </p>
+<p>Added examples for </p>
+<p>validation and fix mode </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-03-31 </p>
+<p>1.3 </p>
+<p>Added chapter “Basic </p>
+<p>Concepts” </p>
+<p>Manuela Scheufele </p>
+<p>2010-06-24 </p>
+<p>1.4 </p>
+<p>Add Appendix Supported Use </p>
+<p>Cases </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-09-27 </p>
+<p>1.5 </p>
+<p>ESCAN00045603 </p>
+<p>Benjamin Gottschalk </p>
+<p>2011-01-14 </p>
+<p>1.6 </p>
+<p>Added chapter 5 </p>
+<p>Mario Kunz </p>
+<p>2011-10-31 </p>
+<p>1.7 </p>
+<p>ESCAN00054591, </p>
+<p>ESCAN00054592 </p>
+<p>Matthias Banholzer </p>
+<p>2012-09-14 </p>
+<p>1.8 </p>
+<p>ESCAN00050371 </p>
+<p>Mario Kunz </p>
+<p>2013-03-27 </p>
+<p>1.9 </p>
+<p>ESCAN00065153 </p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Source </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>VECTOR </p>
+<p>TechnicalReference_Asr_GenTool_CsAsrInitialEcuC.pdf </p>
+<p>1.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>VECTOR </p>
+<p>DbUpdateConsoleApplication.exe.config </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>3 / 22</p>
+<p> </p>
+<p><b>Contents </b></p>
+<p><b>1 </b></p>
+<p><b>Introduction................................................................................................................... 5 </b></p>
+<p><b>2 </b></p>
+<p><b>Basic concepts ............................................................................................................. 7 </b></p>
+<p><b>3 </b></p>
+<p><b>Usage............................................................................................................................. 8 </b></p>
+<p>3.1 </p>
+<p>Use Cases ......................................................................................................... 8 </p>
+<p>3.2 </p>
+<p>Arguments ......................................................................................................... 9 </p>
+<p>3.2.1 </p>
+<p>Application Configuration File ........................................................... 11 </p>
+<p>3.2.2 </p>
+<p>Standard Use Case .......................................................................... 11 </p>
+<p>3.2.3 </p>
+<p>Updating project based on two ECUC projects ................................. 13 </p>
+<p><b>4 </b></p>
+<p><b>Consistency of an existing ECUC project ................................................................. 14 </b></p>
+<p>4.1 </p>
+<p>Validation mode ............................................................................................... 14 </p>
+<p>4.2 </p>
+<p>Fix mode .......................................................................................................... 14 </p>
+<p><b>5 </b></p>
+<p><b>What to do after an update ......................................................................................... 15 </b></p>
+<p>5.1 </p>
+<p>Dcm ................................................................................................................. 15 </p>
+<p><b>6 </b></p>
+<p><b>Appendix ..................................................................................................................... 16 </b></p>
+<p>6.1 </p>
+<p>supported Use Cases ...................................................................................... 16 </p>
+<p><b>7 </b></p>
+<p><b>Glossary and Abbreviations ...................................................................................... 21 </b></p>
+<p>7.1 </p>
+<p>Glossary .......................................................................................................... 21 </p>
+<p>7.2 </p>
+<p>Abbreviations ................................................................................................... 21 </p>
+<p><b>8 </b></p>
+<p><b>Contact ........................................................................................................................ 22 </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>4 / 22</p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure 1-1 </p>
+<p>Workflow for updating an ECUC project ...................................................... 5 </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 3-1  </p>
+<p>Command line arguments ........................................................................... 9 </p>
+<p>Table 3-2  </p>
+<p>Command line arguments for calling the MICROSAR Initial ECUC </p>
+<p>Generator ................................................................................................. 10 </p>
+<p>Table 3-3  </p>
+<p>Arguments standard use case .................................................................. 12 </p>
+<p>Table 3-4  </p>
+<p>Arguments updating project based on two ECUC projects ........................ 13 </p>
+<p>Table 4-1  </p>
+<p>Arguments validating project ..................................................................... 14 </p>
+<p>Table 4-2  </p>
+<p>Arguments fixing project ........................................................................... 14 </p>
+<p>Table 5-1  </p>
+<p>Supported Use Cases ............................................................................... 20 </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>5 / 22</p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Introduction </b></p>
+<p>The MICROSAR DB Update is the Vector solution for performing updates based on an existing </p>
+<p>ECU Configuration Description. An example workflow is shown below in Figure 1-1. </p>
+<p> </p>
+<p> </p>
+<p>Figure 1-1 </p>
+<p>Workflow for updating an ECUC project </p>
+<p>The  ECUC  project  is  generated  by  the  MICROSAR  Initial  ECUC  Generator.  This  project  is </p>
+<p>modified by working.  </p>
+<p>If a new ECU Extract of System Configuration Description is released by the OEM this changes </p>
+<p>must find their way into the ECUC file you are currently working with. So an update of the existing </p>
+<p>(already partly or fully configured) ECUC project is necessary.  </p>
+<p>The MICROSAR DB Update needs to know the BSWMD files for matching vendor specific module </p>
+<p>configurations  (with  a  DEFINITION-REF  of  e.g.  “/MICROSAR/EcuM”)  with  standard  AUTOSAR </p>
+<p>module configuration (with a DEFINITION-REF of e.g. “/AUTOSAR/EcuM”).  </p>
+<p>The MICROSAR DB Update needs all definitions of the module configurations containing in the </p>
+<p>existing </p>
+<p>ECUC </p>
+<p>project; </p>
+<p>otherwise </p>
+<p>the </p>
+<p>update </p>
+<p>cannot </p>
+<p>be </p>
+<p>performed </p>
+<p>for </p>
+<p>theses </p>
+<p>module </p>
+<p>configurations / containers / parameters or references.  </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>6 / 22</p>
+<p> </p>
+<p>For this reason, the component directory (where the BSWMD files are stored) has to be specified </p>
+<p>for performing a complete update. Alternatively, the path to the components-directory may get read </p>
+<p>out of the *.vdsxml-file automatically by this tool, if that path really exists physically on the actual </p>
+<p>PC. This path will be written by GENy when saving the configuration the first time. However, if the </p>
+<p>configuration  has  been  configured  on  one  PC  but  will  be  updated  on  another,  the  path  to  the </p>
+<p>correct components-directory may have changed and must be specified explicitely. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>7 / 22</p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Basic concepts </b></p>
+<p>The updater has to deal with a quadruplet of ECUC files: </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Existing Active ECUC File </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Existing Initial ECUC File </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>New Active ECUC File </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>New Initial ECUC File </p>
+<p> </p>
+<p>The  updater  is  implemented  in  a  generic  way  and  doesn’t  have  any  knowledge  about  module-</p>
+<p>details at all. The tool is operating on fundamental ECUC objects, like Containers, Parameters and </p>
+<p>References, not on semantically objects like Channels or Identities. So, during update, decisions </p>
+<p>are based on a strict algorithm which evaluates the ECUC objects in the four mentioned ECUC </p>
+<p>files. </p>
+<p>When  starting  the  tool  in  the  recommended  use-case,  at  first  the  MICROSAR  Initial  ECUC </p>
+<p>Generator will be called, which creates a temporary new ECUC project out of the new ECU-Extract </p>
+<p>of  System  Configuration  Description  of  the  OEM.  This  project  will  be  deleted  at  the  end  of  the </p>
+<p>update-process, because it’s not needed anymore. </p>
+<p>The second step is the real update of the existing ECUC project. It’s realized through copying the </p>
+<p>newly created Initial ECUC File to the original working directory, so the existing Initial ECUC File </p>
+<p>isn’t </p>
+<p>relevant </p>
+<p>anymore. </p>
+<p>The </p>
+<p>new </p>
+<p>Initial </p>
+<p>ECUC </p>
+<p>File </p>
+<p>contains </p>
+<p>the </p>
+<p>new </p>
+<p>predetermined </p>
+<p>OEM </p>
+<p>restrictions. All ECUC objects which are located in the existing Active ECUC File will be adapted to </p>
+<p>their pendants in the new Initial ECUC File. All other ECUC objects in the existing Active ECUC </p>
+<p>File are user-configured and won’t be touched. The third category is build up through  all ECUC </p>
+<p>objects  which  only  exist  in  the  new  Active  ECUC  File.  These  objects  will  just  be  copied  to  the </p>
+<p>existing (updated) Active ECUC File. </p>
+<p>The matching of ECUC objects to each other in the different ECUC files can only be done through </p>
+<p>their definitions and – if they’re Identifiables – through their ShortName. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>8 / 22</p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Usage </b></p>
+<p>The default usage help on the command line appears by calling the executable without parameters </p>
+<p>or with parameter <b>-h</b>.  </p>
+<p>The MICROSAR DB Update calls the MICROSAR Initial ECUC Generator internally for generating </p>
+<p>a  temporary  ECUC  Configuration  based  on  the  new  ECU  Extract  of  System  Configuration </p>
+<p>Description. This temporary ECUC Configuration will be updated independent of the existing one. </p>
+<p><b>3.1 </b></p>
+<p><b>Use Cases </b></p>
+<p>This tool has been implemented for the purpose of updating existing ECUC projects based on a </p>
+<p>first version of an ECU Extract of System Configuration Description of an OEM to a second version </p>
+<p>(which includes just minor changes, like some new / removed messages or signals). </p>
+<p>This tool is <b>NOT </b>intended for the following use cases and does <b>NOT support </b>them: </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Complete change of the ECU Extract of System Configuration Description (complete change </p>
+<p>of communication matrix) </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Update of a standard use case project to a multiple ECU use case project </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Adding a new identity to an existing configuration </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Removing of identities in a multiple identity configuration project. </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Update of an existing ECUC project for ECU1 to a new ECU Extract of System Configuration </p>
+<p>Description of the OEM which is specified for another ECU2 </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Update from &quot;single node&quot; to a &quot;multiple node&quot;. To change the configuration during the </p>
+<p>development will not work. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>9 / 22</p>
+<p> </p>
+<p><b>3.2 </b></p>
+<p><b>Arguments </b></p>
+<p>The arguments of the MICROSAR DB Update are listed in the following table. </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>-c, --componentsDir=PATH </p>
+<p>Makes the following parameter PATH being interpreted as </p>
+<p>the component directory where important BSWMD files are </p>
+<p>stored. </p>
+<p>-f, --fix=FILE </p>
+<p>Makes the following parameter FILE being interpreted as </p>
+<p>an ECUC project, which will be validated and updated. </p>
+<p>-h, --help </p>
+<p>Display the help. </p>
+<p>-i, --initialEcuCGen=PATH </p>
+<p>Makes the following parameter PATH being interpreted as </p>
+<p>the directory, where the MICROSAR Initial ECUC </p>
+<p>Generator is stored. </p>
+<p>If this option is not specified, the MICROSAR DB Update </p>
+<p>assumes that the MICROSAR Initial ECUC Generator is </p>
+<p>placed in the same directory. </p>
+<p>-l, --logFile=FILE </p>
+<p>Makes the following parameter FILE being interpreted as a </p>
+<p>log file. </p>
+<p>If <b>-l </b>is not specified, a default log file will be generated. </p>
+<p>-n, --noBackup </p>
+<p>Creates no backup of the existing ECUC project. </p>
+<p>-u, --updateWithProject=FILE </p>
+<p>Makes the following parameter FILE being interpreted as </p>
+<p>VDSXML file of the new ECUC project. </p>
+<p>-v, --verbose </p>
+<p>Display additional descriptions and help. </p>
+<p>-V, --Validate=FILE </p>
+<p>Makes the following parameter FILE being interpreted as </p>
+<p>an ECUC project, which will be validated. </p>
+<p>-w, --workingProject=FILE </p>
+<p>Makes the following parameter FILE being interpreted as </p>
+<p>VDSXML file of the existing ECUC project. </p>
+<p>Table 3-1  </p>
+<p>Command line arguments </p>
+<p>The following arguments are possible for calling the MICROSAR Initial ECUC Generator. These </p>
+<p>parameters  will  only  be  forwarded  to  the generator  and  are  not  needed by  the  MICROSAR  DB </p>
+<p>Update itself. For detailed information about the MICROSAR Initial ECUC Generator see [1]. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>10 / 22</p>
+<p> </p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>-a, --asrVersion=VERSION </p>
+<p>Makes the following parameter VERSION being interpreted as the </p>
+<p>AsrVersion, the ECUC files should be generated in. </p>
+<p>The VERSION should be the XML namespace version of the </p>
+<p>AsrVersion and should be specified in the following manner: e.g. </p>
+<p>3.0.2. </p>
+<p>-b, --bswmd=FILE</p>
+<p> </p>
+<p>Makes the following parameter FILE being interpreted as a </p>
+<p>BSWMD file. </p>
+<p>-m, --merge </p>
+<p>Performs a merge of all specified ECU Extract of System </p>
+<p>Configuration Description files to one output ECUC project. </p>
+<p>For this option, you have to specify at least two valid ECU Extract of </p>
+<p>System Configuration Description files. </p>
+<p>This parameter should be only used, when using the Identity </p>
+<p>Manager feature. Merging of ECU Extract of System Configuration </p>
+<p>Description files is just supported in this context. </p>
+<p>-o, --overlayConfig=FILE </p>
+<p>Makes the following parameter FILE being interpreted as the XML </p>
+<p>configuration file for buffer overlay in Multiple ECU use case. </p>
+<p>This parameter should be only used, when using the Identity </p>
+<p>Manager feature. </p>
+<p>-p, --projectName=NAME </p>
+<p>Makes the following parameter NAME being interpreted as project </p>
+<p>name. </p>
+<p>Table 3-2  </p>
+<p>Command line arguments for calling the MICROSAR Initial ECUC Generator </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>All arguments which describe a file or a path can be specified relatively or absolutely. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>If you do not use parameter <b>-n</b>, the MICROSAR DB Update creates a backup of the existing ECUC </p>
+<p>project in a new generated directory. (Directory of the existing VDSXML file). The backup folder </p>
+<p>has the following naming convention: </p>
+<p>backup_&lt;hh&gt;-&lt;mm&gt;-&lt;ss&gt;_&lt;YYYY&gt;-&lt;MM&gt;-&lt;DD&gt;, e.g.: backup_13-22-35_2009-12-07 </p>
+<p>After the backup has been performed successfully the existing ECUC project will be overwritten </p>
+<p>with the updated ECUC project. This is due to the fact that many tools may refer to exactly this </p>
+<p>VDSXML file at this location. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>11 / 22</p>
+<p> </p>
+<p><b>3.2.1 </b></p>
+<p><b>Application Configuration File </b></p>
+<p>The </p>
+<p>MICROSAR </p>
+<p>DB </p>
+<p>Update </p>
+<p>is </p>
+<p>supplied </p>
+<p>with </p>
+<p>an </p>
+<p>application </p>
+<p>configuration </p>
+<p>file </p>
+<p>called </p>
+<p><b>DbUpdateConsoleApplication.exe.config </b>(see [2]). This file is written as XML file and stored in </p>
+<p>the same directory as the executable. </p>
+<p>The file contains a configuration section for specifying the relative path to the directory, where the </p>
+<p>MICROSAR Initial ECUC Generator is located. After the installation of your delivery package this </p>
+<p>path is already set correctly. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Edit </b></p>
+<p>If the directory structure changed, this file has to be edit for adapting the path to the </p>
+<p>MICROSAR Initial ECUC Generator. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>If command line parameter <b>-i </b>is defined, the path is taken from this parameter and not from the </p>
+<p>configuration file. </p>
+<p> </p>
+<p><b>3.2.2 </b></p>
+<p><b>Standard Use Case </b></p>
+<p>This is the default use case for updating an existing ECUC project based on a new ECU Extract of </p>
+<p>System Configuration Description. </p>
+<p>In that case the MICROSAR Initial ECUC Generator is called automatically by the MICROSAR DB </p>
+<p>Update, to generate a new ECUC Project based on the new ECU Extract of System Configuration </p>
+<p>Description. </p>
+<p><b>Command line: </b></p>
+<p>DbUpdateConsoleApplication.exe –w &lt;vdsxml-file of the working EcuC project&gt; -c &lt;components-directory&gt; </p>
+<p>&lt;NewEcuExtractOfSystemConfigurationDescription&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>DbUpdateConsoleApplication.exe –w D:\test\workingProject.ecuc.vdsxml  –c </p>
+<p>D:\test\components D:\test\myNewSystemExtract.arxml</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–w D:\test\workingProject.ecuc.vdsxml</p>
+<p> </p>
+<p>This is the current ECUC project. </p>
+<p>-c D:\test\components </p>
+<p>Specifies the component directory (including </p>
+<p>the BSWMD files, which are important for </p>
+<p>updating the current ECUC project). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>12 / 22</p>
+<p> </p>
+<p>D:\test\myNewSystemExtract.arxml </p>
+<p>This is the new ECU Extract of System </p>
+<p>Configuration Description. This file is taken as </p>
+<p>input for updating the current ECUC project. </p>
+<p>Table 3-3  </p>
+<p>Arguments standard use case </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>13 / 22</p>
+<p> </p>
+<p><b>3.2.3 </b></p>
+<p><b>Updating project based on two ECUC projects </b></p>
+<p>This use case makes an updated ECUC project based on an existing ECUC project and a new </p>
+<p>ECUC project possible. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>This use case is NOT recommended. In most cases, the new ECU Extract of System </p>
+<p>Configuration Description is available, so the standard use case is given (see chapter </p>
+<p>2.1.2 for details).  </p>
+<p>In some cases, the new ECU Extract of System Configuration Description may not be </p>
+<p>available, but you may have a new ECUC project. For these cases, you should use this </p>
+<p>use case. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Command line: </b></p>
+<p>DbUpdateConsoleApplication.exe –w &lt;vdsxml-file of the working EcuC project&gt; -c &lt;components-directory&gt; -</p>
+<p>u &lt;new EcuC project&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>DbUpdateConsoleApplication.exe –w D:\test\workingProject.ecuc.vdsxml  –c </p>
+<p>D:\test\components –u D:\test\newProject.ecuc.vdsxml</p>
+<p> </p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–w D:\test\workingProject.ecuc.vdsxml</p>
+<p> </p>
+<p>This is the current ECUC project. </p>
+<p>-c D:\test\components </p>
+<p>Specifies the component directory (including </p>
+<p>the BSWMD files, which are important for </p>
+<p>updating the current ECUC project). </p>
+<p>–u D:\test\newProject.ecuc.vdsxml </p>
+<p>This is the new ECU project (the output of the </p>
+<p>MICROSAR Initial ECUC Generator). </p>
+<p>Table 3-4  </p>
+<p>Arguments updating project based on two ECUC projects </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>14 / 22</p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Consistency of an existing ECUC project </b></p>
+<p><b>4.1 </b></p>
+<p><b>Validation mode </b></p>
+<p>When calling the MICROSAR DB Update with parameter <b>-V</b>, the ECUC project will be validated in </p>
+<p>the  following  way.  All  containers  /  parameters  /  references  of  the  current  ECUC  file  will  be </p>
+<p>compared to their corresponding partners in the existing initial ECUC file. If the values are NOT </p>
+<p>equal, an error is reported. </p>
+<p><b>Command line: </b></p>
+<p>DbUpdateConsoleApplication.exe –V &lt;vdsxml-file of the EcuC project to validate&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>DbUpdateConsoleApplication.exe –V D:\test\workingProject.ecuc.vdsxml </p>
+<p> </p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–V D:\test\workingProject.ecuc.vdsxml</p>
+<p> </p>
+<p>This is the ECUC project to be validated. </p>
+<p>Table 4-1  </p>
+<p>Arguments validating project </p>
+<p><b>4.2 </b></p>
+<p><b>Fix mode </b></p>
+<p>The fix mode operates on the same check as the validation mode. The difference is that errors will </p>
+<p>not be reported, but immediately fixed. </p>
+<p>The  result  is  a  consistent  ECUC  project,  where  all  containers  /  parameters  /  references  of  the </p>
+<p>current active ECUC file will have exactly the same values as the initial ECUC file. </p>
+<p><b>Command line: </b></p>
+<p>DbUpdateConsoleApplication.exe –f &lt;vdsxml-file of the EcuC project to fix&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>DbUpdateConsoleApplication.exe –f D:\test\workingProject.ecuc.vdsxml </p>
+<p> </p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–f D:\test\workingProject.ecuc.vdsxml</p>
+<p> </p>
+<p>This is the ECUC project to be fixed. </p>
+<p>Table 4-2  </p>
+<p>Arguments fixing project </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>15 / 22</p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>What to do after an update </b></p>
+<p>There  are  some  steps  after  an  update,  which  has  to  be  checked  (and  perhaps  configured) </p>
+<p>manually. </p>
+<p><b>5.1 </b></p>
+<p><b>Dcm </b></p>
+<p>A  DcmConnection  refers  to  GlobalPdus.  These  GlobalPdus  are  derived  from  the  corresponding </p>
+<p>DcmIPdus in SystemExtract.  </p>
+<p>If there was a configured DcmConnection in the ecuc-project before update AND the ShortName of </p>
+<p>a  DcmIPdu  has  changed  in  the  new  SystemExtract,  the  DcmConnection  is  not  fully  described </p>
+<p>anymore after update (due to lack of the GlobalPdus, which have changed, too) and will be deleted </p>
+<p>during first load of the updatet ecu configuration in GENy. These DcmConnections must be added </p>
+<p>manually again after update in GENy. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>16 / 22</p>
+<p> </p>
+<p><b>6 </b></p>
+<p><b>Appendix </b></p>
+<p><b>6.1 </b></p>
+<p><b>supported Use Cases </b></p>
+<p><b>Use Cases </b></p>
+<p>Signal groups – CAN </p>
+<p><b>&gt; </b></p>
+<p>Add signal to signal group </p>
+<p><b>&gt; </b></p>
+<p>Remove signal from signal group </p>
+<p><b>&gt; </b></p>
+<p>Move signals between signal groups </p>
+<p><b>&gt; </b></p>
+<p>Change init values of signals within signal groups </p>
+<p><b>&gt; </b></p>
+<p>Change position of signal within signal groups </p>
+<p><b>&gt; </b></p>
+<p>Remove signal group </p>
+<p><b>&gt; </b></p>
+<p>Change signal group direction from RX to TX </p>
+<p><b>&gt; </b></p>
+<p>Change signal group direction from TX to RX </p>
+<p><b>&gt; </b></p>
+<p>Move signal group between PDUs </p>
+<p><b>&gt; </b></p>
+<p>Move signal group between channels </p>
+<p><b>&gt; </b></p>
+<p>Move signal group between channels </p>
+<p><b>&gt; </b></p>
+<p>Add signal group </p>
+<p>PDUs – CAN </p>
+<p><b>&gt; </b></p>
+<p>Delete PDU </p>
+<p><b>&gt; </b></p>
+<p>Change direction of PDU from RX to TX </p>
+<p><b>&gt; </b></p>
+<p>Change direction of PDU from TX to RX </p>
+<p><b>&gt; </b></p>
+<p>Move PDU between channels </p>
+<p><b>&gt; </b></p>
+<p>Change PDU timing from cyclic to direct </p>
+<p><b>&gt; </b></p>
+<p>Change PDU timing from direct to cyclic </p>
+<p><b>&gt; </b></p>
+<p>Change PDU timing from Mixed (direct, cyclic) to direct </p>
+<p><b>&gt; </b></p>
+<p>Add PDU </p>
+<p>PDUs – LIN </p>
+<p><b>&gt; </b></p>
+<p>Change direction of PDU from Rx to Tx </p>
+<p><b>&gt; </b></p>
+<p>Change direction of PDU from Tx to Rx </p>
+<p><b>&gt; </b></p>
+<p>Move PDU between channels (Chan1 to Chan2) </p>
+<p><b>&gt; </b></p>
+<p>Add sporadic PDU </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>17 / 22</p>
+<p> </p>
+<p><b>Use Cases </b></p>
+<p><b>&gt; </b></p>
+<p>Add event-triggered PDU </p>
+<p><b>&gt; </b></p>
+<p>Add unconditional PDU </p>
+<p><b>&gt; </b></p>
+<p>Delete sporadic PDU </p>
+<p><b>&gt; </b></p>
+<p>Delete event-triggered PDU </p>
+<p><b>&gt; </b></p>
+<p>Delete unconditional PDU </p>
+<p><b>&gt; </b></p>
+<p>Change order index of associated frames in a sporadic frame </p>
+<p>PDUs – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Delete PDU </p>
+<p><b>&gt; </b></p>
+<p>Change direction of PDU from RX to TX </p>
+<p><b>&gt; </b></p>
+<p>Change direction of PDU from TX to RX </p>
+<p><b>&gt; </b></p>
+<p>Move PDU between channel A and B </p>
+<p><b>&gt; </b></p>
+<p>Move PDU between channel B and A </p>
+<p><b>&gt; </b></p>
+<p>Add PDU </p>
+<p><b>&gt; </b></p>
+<p>Move PDU between frames </p>
+<p>Signals – CAN </p>
+<p><b>&gt; </b></p>
+<p>Add signal </p>
+<p><b>&gt; </b></p>
+<p>Remove signal </p>
+<p><b>&gt; </b></p>
+<p>Change init value of signal </p>
+<p><b>&gt; </b></p>
+<p>Change bit position of signal </p>
+<p><b>&gt; </b></p>
+<p>Move signals between PDUs </p>
+<p><b>&gt; </b></p>
+<p>Move signals between PDUs and channels </p>
+<p>Signals – LIN </p>
+<p><b>&gt; </b></p>
+<p>Add signal </p>
+<p><b>&gt; </b></p>
+<p>Remove signal </p>
+<p><b>&gt; </b></p>
+<p>Change init value of signal </p>
+<p><b>&gt; </b></p>
+<p>Change bit position of signal </p>
+<p><b>&gt; </b></p>
+<p>Move signals between PDUs </p>
+<p><b>&gt; </b></p>
+<p>Move signals between PDUs and channels </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>18 / 22</p>
+<p> </p>
+<p><b>Use Cases </b></p>
+<p>Signals – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Add signal </p>
+<p><b>&gt; </b></p>
+<p>Remove signal </p>
+<p><b>&gt; </b></p>
+<p>Change init value of signal </p>
+<p><b>&gt; </b></p>
+<p>Change bit position of signal </p>
+<p><b>&gt; </b></p>
+<p>Move signals between PDUs within different frames </p>
+<p><b>&gt; </b></p>
+<p>Move signals between PDUs and channels (A/B) </p>
+<p>Frames – CAN </p>
+<p><b>&gt; </b></p>
+<p>Change ID </p>
+<p>Frames – LIN </p>
+<p><b>&gt; </b></p>
+<p>Change ID of Unconditional Frame </p>
+<p>Frames – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Change Slot ID of dynamic frame </p>
+<p><b>&gt; </b></p>
+<p>Change Slot ID of static frame </p>
+<p><b>&gt; </b></p>
+<p>Add dynamic frame </p>
+<p><b>&gt; </b></p>
+<p>Add static frame </p>
+<p><b>&gt; </b></p>
+<p>Delete dynamic frame </p>
+<p><b>&gt; </b></p>
+<p>Delete static frame </p>
+<p><b>&gt; </b></p>
+<p>Change payload of frame </p>
+<p>Gateway Signal Mapping – CAN </p>
+<p><b>&gt; </b></p>
+<p>Add new signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Remove signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Change signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Signal move between I-Pdus </p>
+<p>Gateway Signal Mapping – LIN </p>
+<p><b>&gt; </b></p>
+<p>Add new signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Remove signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Change signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Signal move between I-Pdus </p>
+<p>Gateway Signal Mapping – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Add new signal mapping </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>19 / 22</p>
+<p> </p>
+<p><b>Use Cases </b></p>
+<p><b>&gt; </b></p>
+<p>Remove signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Change signal mapping </p>
+<p><b>&gt; </b></p>
+<p>Signal move between I-Pdus </p>
+<p>Gateway I-Pdu Mapping – CAN </p>
+<p><b>&gt; </b></p>
+<p>Add new I-Pdu Mapping </p>
+<p><b>&gt; </b></p>
+<p>Remove I-Pdu Mapping </p>
+<p><b>&gt; </b></p>
+<p>Change I-Pdu Mapping </p>
+<p>Gateway I-Pdu Mapping – LIN </p>
+<p><b>&gt; </b></p>
+<p>Add new I-Pdu Mapping </p>
+<p><b>&gt; </b></p>
+<p>Remove I-Pdu Mapping </p>
+<p><b>&gt; </b></p>
+<p>Change I-Pdu Mapping </p>
+<p>Gateway I-Pdu Mapping – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Add new I-Pdu Mapping </p>
+<p><b>&gt; </b></p>
+<p>Remove I-Pdu Mapping </p>
+<p><b>&gt; </b></p>
+<p>Change I-Pdu Mapping </p>
+<p>Network parameters – LIN </p>
+<p><b>&gt; </b></p>
+<p>Change Baud Rate for LINNetwork1 </p>
+<p><b>&gt; </b></p>
+<p>Change Baud Rate for LINNetwork2 </p>
+<p>Network parameters – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Change Baud Rate for FRNetwork1 </p>
+<p><b>&gt; </b></p>
+<p>Increase number of static slots by changing cycle length and/or macrotick duration (high level </p>
+<p>parameters) </p>
+<p>Channels – CAN </p>
+<p><b>&gt; </b></p>
+<p>Change channel name CANNetwork0 </p>
+<p><b>&gt; </b></p>
+<p>Change channel name CANNetwork1 </p>
+<p><b>&gt; </b></p>
+<p>Add channel CANNetwork3 </p>
+<p><b>&gt; </b></p>
+<p>Delete channel CANNetwork4 </p>
+<p>Channels – LIN </p>
+<p><b>&gt; </b></p>
+<p>Change channel name LINNetwork0 </p>
+<p><b>&gt; </b></p>
+<p>Change channel name LINNetwork1 </p>
+<p><b>&gt; </b></p>
+<p>Add channel LINNetwork3 </p>
+<p><b>&gt; </b></p>
+<p>Delete channel LINNetwork4 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>20 / 22</p>
+<p> </p>
+<p><b>Use Cases </b></p>
+<p>Cluster – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Change cluster name FRNetwork0 </p>
+<p>I-PDU-Groups – CAN </p>
+<p><b>&gt; </b></p>
+<p>Add I-PDU-Group for Node ECUUpdateTest </p>
+<p><b>&gt; </b></p>
+<p>Delete I-PDU-Group for Node ECUUpdateTest </p>
+<p><b>&gt; </b></p>
+<p>Add hierarchical I-PDU-Group </p>
+<p><b>&gt; </b></p>
+<p>Delete hierarchical I-PDU-Group </p>
+<p><b>&gt; </b></p>
+<p>Move IPDUs between I-PDU-Groups </p>
+<p>I-PDU-Groups – LIN </p>
+<p><b>&gt; </b></p>
+<p>Add I-PDU-Group for Node ECUUpdateTest </p>
+<p><b>&gt; </b></p>
+<p>Delete I-PDU-Group for Node ECUUpdateTest </p>
+<p><b>&gt; </b></p>
+<p>Add hierarchical I-PDU-Group </p>
+<p><b>&gt; </b></p>
+<p>Delete hierarchical I-PDU-Group </p>
+<p><b>&gt; </b></p>
+<p>Move IPDUs between I-PDU-Groups </p>
+<p>I-PDU-Groups – FlexRay </p>
+<p><b>&gt; </b></p>
+<p>Add hierarchical I-PDU-Group </p>
+<p><b>&gt; </b></p>
+<p>Delete hierarchical I-PDU-Group </p>
+<p>LIN Schedule tables </p>
+<p><b>&gt; </b></p>
+<p>Add Schedule Table </p>
+<p><b>&gt; </b></p>
+<p>Delete Schedule Table </p>
+<p><b>&gt; </b></p>
+<p>Change slot position of frames within schedule table </p>
+<p><b>&gt; </b></p>
+<p>Move frames between schedule tables </p>
+<p><b>&gt; </b></p>
+<p>Change schedule table name </p>
+<p><b>&gt; </b></p>
+<p>Change table id (priority) of schedule table </p>
+<p><b>&gt; </b></p>
+<p>Change delay of frames within schedule table </p>
+<p><b>&gt; </b></p>
+<p>Change Run Mode of schedule table </p>
+<p>Table 5-1  </p>
+<p>Supported Use Cases </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>21 / 22</p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>7.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>ECU Extract of </p>
+<p>System Configuration </p>
+<p>Description </p>
+<p>The ECU Extract of System Configuration Description is a subset of the </p>
+<p>System Configuration Description. It only contains information relevant for </p>
+<p>one specific ECU. </p>
+<p> </p>
+<p> </p>
+<p><b>7.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>ECUC </p>
+<p>ECU Configuration </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR DB Update  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>22 / 22</p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>News </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Products </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Demo software </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Support </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Training data </p>
+<p><b></b></p>
+<p><b> </b></p>
+<p>Addresses </p>
+<p> </p>
+<p><b>www.vector.com </b></p>
+</body>
+</html>
+{% endraw %}

@@ -1,0 +1,3684 @@
+---
+layout: default
+title: TechnicalReference_Asr_CanSM
+nav_order: 6
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR CAN State Manager </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p> </p>
+<p>Version 1.16 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Mark A. Fingerle </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Mark A. Fingerle </p>
+<p>2008-02-04 </p>
+<p>1.0 </p>
+<p>ASR 3.0 beta release </p>
+<p>Mark A. Fingerle </p>
+<p>2008-02-27 </p>
+<p>1.1 </p>
+<p>Switch to new template </p>
+<p>Mark A. Fingerle </p>
+<p>2008-03-31 </p>
+<p>1.2 </p>
+<p>ESCAN00025504 Rename Technical Reference to </p>
+<p>MSR Short Name </p>
+<p>ESCAN00025710 Adapt initialization. </p>
+<p>ESCAN00025711 Adapt Chapter Configuration </p>
+<p>GENy to ASR names </p>
+<p>Mark A. Fingerle </p>
+<p>2008-05-06 </p>
+<p>1.3 </p>
+<p>ESCAN00025892 Simplify the set controller mode </p>
+<p>algorithm of the CanSM </p>
+<p>ESCAN00026001 Extend error handling to the case </p>
+<p>a transition fails and the mode request changes </p>
+<p>before recovering of the transition. </p>
+<p>Mark A. Fingerle </p>
+<p>2008-07-18 </p>
+<p>1.4 </p>
+<p>Allowed timer values </p>
+<p>IPDU via drop down list </p>
+<p>critical section kinds </p>
+<p>Mark A. Fingerle </p>
+<p>2008-10-08 </p>
+<p>1.5 </p>
+<p>New feature/API ECU passive mode </p>
+<p>CAN bus specific bus-off configuration parameter </p>
+<p>Mark A. Fingerle </p>
+<p>2008-10-28 </p>
+<p>1.6 </p>
+<p>State machine start/entry point </p>
+<p>Additional explanation of passive mode </p>
+<p>Additional explanation of error counter </p>
+<p>Figure 4-1 updated </p>
+<p>GENy screen shots updated </p>
+<p>Mark A. Fingerle </p>
+<p>2009-02-18 </p>
+<p>1.7 </p>
+<p>add API CanSM_PreventBusSleepAtStartUp </p>
+<p>advance chapter 4.2 Initialization </p>
+<p>Mark A. Fingerle </p>
+<p>2009-03-23 </p>
+<p>1.8 </p>
+<p>Adapt configuration of the transceiver handling </p>
+<p>Mark A. Fingerle </p>
+<p>2009-05-13 </p>
+<p>1.9 </p>
+<p>Correct Figure 6-1 </p>
+<p>CanSM interactions with other </p>
+<p>BSW </p>
+<p>4.3.1 “Transition Check” in case set transceiver </p>
+<p>mode fail </p>
+<p>Add Error code </p>
+<p>CANSM_E_SETTRANSCEIVERMODE </p>
+<p>in </p>
+<p>Table 4-6 </p>
+<p>Add application bus-off notification functions 4.3.2, </p>
+<p>6.5.2, 6.5.2 </p>
+<p>Mark A. Fingerle </p>
+<p>2009-10-13 </p>
+<p>1.10 </p>
+<p>ESCAN00037731 Ambiguous description of critical </p>
+<p>sections in chapter 5.5 </p>
+<p>GENy feature </p>
+<p><b>Disable Pdu Group</b></p>
+<p> and </p>
+<p><b>BusOff Notification</b></p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>2 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>7.1.5 </p>
+<p>Mark A. Fingerle </p>
+<p>2010-01-13 </p>
+<p>1.10.01 </p>
+<p>Correct chapter 7.1.3, EcuM </p>
+<p>Î</p>
+<p> SchM </p>
+<p>Mark A. Fingerle </p>
+<p>2010-03-03 </p>
+<p>1.11 </p>
+<p>Update 5.5 critical sections </p>
+<p>Mark A. Fingerle </p>
+<p>2010-04-23 </p>
+<p>1.12 </p>
+<p>ESCAN00040930 Add API </p>
+<p>EcuM_GeneratorCompatibilityError Table 6-11, </p>
+<p>Figure 6-1 </p>
+<p>ESCAN00037126 Better the Onscreen Help of the  </p>
+<p>&quot;Bor Counter L2 Err Ch&quot; Table 7-4 </p>
+<p>ESCAN00041444 re-initialization of signals when </p>
+<p>switching from NO to FULL communication in </p>
+<p>chapter 7.1.5 </p>
+<p>Mark A. Fingerle </p>
+<p>2010-08-13 </p>
+<p>1.13 </p>
+<p>ESCAN00043552 Add support for XCP shutdown </p>
+<p>chapter 4.4 </p>
+<p>Mark A. Fingerle </p>
+<p>2010-10-03 </p>
+<p>1.14 </p>
+<p>ESCAN00045704 Disable DeadlineMonitoring in </p>
+<p>state CANSM_SILENT_COMMUNICATION. Add </p>
+<p>DM description to the states in chapter 4.3.1. </p>
+<p>ESCAN00045482 Wrong configuration class for </p>
+<p>AUTOSAR parameter: CanSM Post Build Config </p>
+<p>Start Address Table 7-1 </p>
+<p>Mark A. Fingerle </p>
+<p>2011-01-23 </p>
+<p>1.15 </p>
+<p>R11: During the BusOff recovery the Nm may </p>
+<p>trigger the shutdown NmTimeOut 4.3.2 </p>
+<p>BusOffEnd missing if NoCom is triggered 4.3.2 </p>
+<p>Partial Networks 8.1.10 </p>
+<p>BswM ComMode Indication 8.1.11 </p>
+<p>Multiple identity 8.1.12 </p>
+<p>Usage </p>
+<p>CANSM_EXCLUSIVE_AREA_4</p>
+<p> </p>
+<p>Mark A. Fingerle </p>
+<p>2011-04-23 </p>
+<p>1.16 </p>
+<p>R12: ESCAN00049972 Add MSR Dem errors to </p>
+<p>deviation chapter 8.1.13 </p>
+<p>ESCAN00047985 No CAN communication </p>
+<p>possible, caused by bus-off in SILENT </p>
+<p>communication 8.1.14 </p>
+<p>ESCAN00050250 Extend Bus Off recovery </p>
+<p>handling, additional ModeIndications during BusOff </p>
+<p>recovery 4.3.2 </p>
+<p>Table 1-1  </p>
+<p>History of the document </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR Specification of CAN State Manager </p>
+<p>1.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR Specification of Development Error Tracer </p>
+<p>2.2.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR Specification of Diagnostics Event Manager </p>
+<p>2.2.1 </p>
+<p>[4] </p>
+<p> </p>
+<p>AUTOSAR List of Basic Software Modules </p>
+<p>1.2.0 </p>
+<p>[5] </p>
+<p> </p>
+<p>AUTOSAR Specification of CAN Interface </p>
+<p>2.1.0 </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>3 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>[6] </p>
+<p> </p>
+<p>AUTOSAR Specification of Communication Manager </p>
+<p>2.0.0 </p>
+<p>[7] </p>
+<p> </p>
+<p>AN-ISC-8-1093 </p>
+<p>1.0.0 </p>
+<p>[8] </p>
+<p> </p>
+<p>AN-ISC-8-1118 MICROSAR BSW Compatibility Check </p>
+<p>1.0.0 </p>
+<p>Table 1-2  </p>
+<p>Reference documents </p>
+<p><b>1.3 </b></p>
+<p><b>Scope of the Document </b></p>
+<p>This  technical  reference  describes  the  general  use  of  the  CAN  State  Manager  basis </p>
+<p>software.  All  aspects  which  are  CAN  controller  specific  are  described  in  a  separate </p>
+<p>document [5], which is also part of the delivery. </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>4 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information.................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 3</p>
+<p> </p>
+<p>1.3</p>
+<p> </p>
+<p>Scope of the Document .................................................................................... 4</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Component History....................................................................................................... 11</b></p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Introduction ................................................................................................................... 12</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Architecture Overview..................................................................................... 12</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................. 14</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Features.......................................................................................................... 14</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Initialization ..................................................................................................... 14</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>State Machines ............................................................................................... 15</p>
+<p> </p>
+<p>4.3.1</p>
+<p> </p>
+<p>Network Mode State Machine......................................................................... 15</p>
+<p> </p>
+<p>4.3.2</p>
+<p> </p>
+<p>Bus-off Recovery State Machine..................................................................... 18</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>XCP notification function................................................................................. 20</p>
+<p> </p>
+<p>4.5</p>
+<p> </p>
+<p>ECU passive mode ......................................................................................... 21</p>
+<p> </p>
+<p>4.6</p>
+<p> </p>
+<p>Main Function ................................................................................................. 21</p>
+<p> </p>
+<p>4.7</p>
+<p> </p>
+<p>Communication Modes ................................................................................... 21</p>
+<p> </p>
+<p>4.8</p>
+<p> </p>
+<p>Communication Mode Polling ......................................................................... 21</p>
+<p> </p>
+<p>4.9</p>
+<p> </p>
+<p>Error Handling................................................................................................. 21</p>
+<p> </p>
+<p>4.9.1</p>
+<p> </p>
+<p>Development Error Reporting ......................................................................... 21</p>
+<p> </p>
+<p>4.9.1.1</p>
+<p> </p>
+<p>Parameter Checking ....................................................................................... 22</p>
+<p> </p>
+<p>4.9.2</p>
+<p> </p>
+<p>Production Code Error Reporting ................................................................... 23</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>Integration ..................................................................................................................... 24</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Brief Instruction............................................................................................... 24</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Scope of Delivery............................................................................................ 24</p>
+<p> </p>
+<p>5.2.1</p>
+<p> </p>
+<p>Static Files ...................................................................................................... 24</p>
+<p> </p>
+<p>5.2.2</p>
+<p> </p>
+<p>Dynamic Files ................................................................................................. 25</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Include Structure............................................................................................. 25</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 26</p>
+<p> </p>
+<p>5.5</p>
+<p> </p>
+<p>Critical Areas................................................................................................... 26</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>API Description ............................................................................................................. 28</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Interfaces Overview ........................................................................................ 28</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Type Definitions .............................................................................................. 28</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>5 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>6.3</p>
+<p> </p>
+<p>Services Provided by CanSM ......................................................................... 29</p>
+<p> </p>
+<p>6.3.1</p>
+<p> </p>
+<p>CanSM_InitMemory ........................................................................................ 30</p>
+<p> </p>
+<p>6.3.2</p>
+<p> </p>
+<p>CanSM_Init ..................................................................................................... 30</p>
+<p> </p>
+<p>6.3.3</p>
+<p> </p>
+<p>CanSM_MainFunction .................................................................................... 31</p>
+<p> </p>
+<p>6.3.4</p>
+<p> </p>
+<p>CanSM_RequestComMode ............................................................................ 31</p>
+<p> </p>
+<p>6.3.5</p>
+<p> </p>
+<p>CanSM_SetEcuPassive.................................................................................. 32</p>
+<p> </p>
+<p>6.3.6</p>
+<p> </p>
+<p>CanSM_GetCurrentComMode ....................................................................... 32</p>
+<p> </p>
+<p>6.3.7</p>
+<p> </p>
+<p>CanSM_GetVersionInfo .................................................................................. 32</p>
+<p> </p>
+<p>6.3.8</p>
+<p> </p>
+<p>CanSM_PreventBusSleepAtStartUp............................................................... 33</p>
+<p> </p>
+<p>6.4</p>
+<p> </p>
+<p>Services used by CanSM ............................................................................... 33</p>
+<p> </p>
+<p>6.5</p>
+<p> </p>
+<p>Callback Functions ......................................................................................... 34</p>
+<p> </p>
+<p>6.5.1</p>
+<p> </p>
+<p>CanSM_ControllerBusOff ............................................................................... 34</p>
+<p> </p>
+<p>6.5.2</p>
+<p> </p>
+<p>Appl_CanSM_BusOffBegin............................................................................. 34</p>
+<p> </p>
+<p>6.5.3</p>
+<p> </p>
+<p>Appl_CanSM_BusOffEnd ............................................................................... 35</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>Configuration ................................................................................................................ 36</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Configuration with GENy ................................................................................ 36</p>
+<p> </p>
+<p>7.1.1.1</p>
+<p> </p>
+<p>Basic ............................................................................................................... 36</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>Activation of the CAN State Manager ............................................................. 37</p>
+<p> </p>
+<p>7.1.3</p>
+<p> </p>
+<p>General Settings ............................................................................................. 38</p>
+<p> </p>
+<p>7.1.4</p>
+<p> </p>
+<p>Network Settings............................................................................................. 41</p>
+<p> </p>
+<p>7.1.5</p>
+<p> </p>
+<p>General CAN Channel Specific Settings......................................................... 41</p>
+<p> </p>
+<p>7.1.6</p>
+<p> </p>
+<p>Bus-off Recovery State Machine Configuration .............................................. 43</p>
+<p> </p>
+<p>7.1.7</p>
+<p> </p>
+<p>Values from other BSW Modules.................................................................... 45</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance................................................................................. 47</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Additions / Extensions .................................................................................... 47</p>
+<p> </p>
+<p>8.1.1</p>
+<p> </p>
+<p>Additional Error Handling in the Network Mode State Machine ...................... 47</p>
+<p> </p>
+<p>8.1.2</p>
+<p> </p>
+<p>API CanSM_InitMemory()............................................................................... 47</p>
+<p> </p>
+<p>8.1.3</p>
+<p> </p>
+<p>Error Code ...................................................................................................... 47</p>
+<p> </p>
+<p>8.1.4</p>
+<p> </p>
+<p>Configuration Options ..................................................................................... 47</p>
+<p> </p>
+<p>8.1.5</p>
+<p> </p>
+<p>API CanSM_PreventBusSleepAtStartUp()...................................................... 47</p>
+<p> </p>
+<p>8.1.6</p>
+<p> </p>
+<p>ECU passive mode ......................................................................................... 47</p>
+<p> </p>
+<p>8.1.7</p>
+<p> </p>
+<p>Bus-off notification .......................................................................................... 47</p>
+<p> </p>
+<p>8.1.8</p>
+<p> </p>
+<p>Support for XCP shutdown ............................................................................. 47</p>
+<p> </p>
+<p>8.1.9</p>
+<p> </p>
+<p>No mode notification during CanSM_Init ........................................................ 48</p>
+<p> </p>
+<p>8.1.10</p>
+<p> </p>
+<p>Partial Networks.............................................................................................. 48</p>
+<p> </p>
+<p>8.1.11</p>
+<p> </p>
+<p>BswM ComMode Indication ............................................................................ 48</p>
+<p> </p>
+<p>8.1.12</p>
+<p> </p>
+<p>Multiple Identity............................................................................................... 48</p>
+<p> </p>
+<p>8.1.13</p>
+<p> </p>
+<p>Additional bus-off recovery in state silent ....................................................... 48</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Limitations....................................................................................................... 48</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>6 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>8.2.1</p>
+<p> </p>
+<p>Controllers ...................................................................................................... 48</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ........................................................................................ 49</b></p>
+<p> </p>
+<p>9.1</p>
+<p> </p>
+<p>Glossary.......................................................................................................... 49</p>
+<p> </p>
+<p>9.2</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 49</p>
+<p> </p>
+<p><b>10</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................... 51</b></p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>7 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure 3-1</p>
+<p> </p>
+<p>AUTOSAR architecture .............................................................................. 12</p>
+<p> </p>
+<p>Figure 3-2</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the CanSM ........................................... 13</p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>Network mode state machine..................................................................... 16</p>
+<p> </p>
+<p>Figure 4-2</p>
+<p> </p>
+<p>Bus-off recovery state machine.................................................................. 18</p>
+<p> </p>
+<p>Figure 5-1</p>
+<p> </p>
+<p>Include structure......................................................................................... 26</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>CanSM interactions with other BSW .......................................................... 28</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>8 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Figure 7-1</p>
+<p>.............................................................................</p>
+<p>GENy global view </p>
+<p>37</p>
+<p> </p>
+<p>Figure 7-2</p>
+<p> </p>
+<p>GENy channel selection............................................................................. 38</p>
+<p> </p>
+<p>Figure 7-3</p>
+<p> </p>
+<p>GENy setup switches................................................................................. 39</p>
+<p> </p>
+<p>Figure 7-4</p>
+<p> </p>
+<p>GENy CAN channel specific configuration................................................. 41</p>
+<p> </p>
+<p>Figure 7-5</p>
+<p> </p>
+<p>GENy CAN channel specific PDU group configuration .............................. 42</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>9 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Figure 7-6</p>
+<p> </p>
+<p>GENy setup PDU groups ........................................................................... 43</p>
+<p> </p>
+<p>Figure 7-7</p>
+<p> </p>
+<p>GENy CAN channel bus-off configuration.................................................. 44</p>
+<p> </p>
+<p> </p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the document ............................................................................... 3</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference documents .................................................................................. 4</p>
+<p> </p>
+<p>Table 2-1 </p>
+<p> </p>
+<p>Component history......................................................................................11</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Supported SWS features ........................................................................... 14</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Not supported SWS features ..................................................................... 14</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Mapping of service IDs to services ............................................................ 22</p>
+<p> </p>
+<p>Table 4-4 </p>
+<p> </p>
+<p>Errors reported to DET............................................................................... 22</p>
+<p> </p>
+<p>Table 4-5 </p>
+<p> </p>
+<p>Development Error Reporting: Assignment of checks to services ............. 23</p>
+<p> </p>
+<p>Table 4-6 </p>
+<p> </p>
+<p>Errors reported to DEM .............................................................................. 23</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Static files................................................................................................... 24</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>Generated files........................................................................................... 25</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping .............................................. 26</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Type definitions .......................................................................................... 29</p>
+<p> </p>
+<p>Table 6-2 </p>
+<p> </p>
+<p>API Overview ............................................................................................. 30</p>
+<p> </p>
+<p>Table 6-3 </p>
+<p> </p>
+<p>CanSM_InitMemory ................................................................................... 30</p>
+<p> </p>
+<p>Table 6-4</p>
+<p> </p>
+<p>CanSM_Init ................................................................................................ 31</p>
+<p> </p>
+<p>Table 6-5</p>
+<p> </p>
+<p>CanSM_MainFunction................................................................................ 31</p>
+<p> </p>
+<p>Table 6-6</p>
+<p> </p>
+<p>CanSM_RequestComMode ....................................................................... 31</p>
+<p> </p>
+<p>Table 6-7</p>
+<p> </p>
+<p>CanSM_SetEcuPassive ............................................................................. 32</p>
+<p> </p>
+<p>Table 6-8</p>
+<p> </p>
+<p>CanSM_GetCurrentComMode ................................................................... 32</p>
+<p> </p>
+<p>Table 6-9</p>
+<p> </p>
+<p>CanSM_GetVersionInfo ............................................................................. 33</p>
+<p> </p>
+<p>Table 6-10</p>
+<p> </p>
+<p>CanSM_PreventBusSleepAtStartUp .......................................................... 33</p>
+<p> </p>
+<p>Table 6-11 </p>
+<p> </p>
+<p>Services used by the CanSM..................................................................... 34</p>
+<p> </p>
+<p>Table 6-12</p>
+<p> </p>
+<p>CanSM_ControllerBusOff........................................................................... 34</p>
+<p> </p>
+<p>Table 6-13</p>
+<p> </p>
+<p>Appl_CanSM_BusOffBegin ........................................................................ 35</p>
+<p> </p>
+<p>Table 6-14</p>
+<p> </p>
+<p>Appl_CanSM_BusOffEnd........................................................................... 35</p>
+<p> </p>
+<p>Table 7-1 </p>
+<p> </p>
+<p>General configuration Settings in GENy .................................................... 40</p>
+<p> </p>
+<p>Table 7-2 </p>
+<p> </p>
+<p>Partial Network........................................................................................... 42</p>
+<p> </p>
+<p>Table 7-3 </p>
+<p> </p>
+<p>Channel configuration ................................................................................ 43</p>
+<p> </p>
+<p>Table 7-4 </p>
+<p> </p>
+<p>Bus-off recovery state machine parameter ................................................ 45</p>
+<p> </p>
+<p>Table 9-1 </p>
+<p> </p>
+<p>Glossary ..................................................................................................... 49</p>
+<p> </p>
+<p>Table 9-2 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................. 50</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>10 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Component History </b></p>
+<p><b>New Features </b></p>
+<p>ASR 3 release of the CAN State Manager implementation </p>
+<p>API ECU passive mode </p>
+<p>Prevent bus sleep at startup </p>
+<p>Application bus-off notification </p>
+<p>Table 2-1  </p>
+<p>Component history </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>11 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module CanSM as specified in [1]. </p>
+<p><b>Supported AUTOSAR Release*: </b></p>
+<p>3 </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile, link-time, post-build </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p>CANSM_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= </p>
+<p>Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>CANSM_MODULE_ID   </p>
+<p>0x8C </p>
+<p>(according to ref. [4]) </p>
+<p>* For the precise AUTOSAR Release 3.x please see the release specific documentation. </p>
+<p> </p>
+<p>The CAN State Manager (CanSM) realizes a software layer between the Communication </p>
+<p>Manager  (ComM)  and  the  CAN  Interface  (CanIf).  The  CanSM  handles  the  startup  and </p>
+<p>shutdown  of  the  communication  of  a  CAN  network.  The  CAN  State  Manager  maps  the </p>
+<p>CAN State Manager states to the states of the ComM and causes the necessary actions to </p>
+<p>change the CAN State Manager state to those requested by the ComM. The main function </p>
+<p>of the CAN State Manager is called cyclically by the Schedule Manager (SchM). </p>
+<p><b>3.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the CanSM is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 3-1 </p>
+<p>AUTOSAR architecture </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>12 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>The next figure shows the interfaces to adjacent modules of the CanSM. These interfaces </p>
+<p>are described in chapter 6. </p>
+<p>CAN SM</p>
+<p>Com</p>
+<p>Det</p>
+<p>ComM</p>
+<p>Dem</p>
+<p>EcuM</p>
+<p>CAN IF</p>
+<p>SchM</p>
+<p> </p>
+<p>Figure 3-2 </p>
+<p>Interfaces to adjacent modules of the CanSM </p>
+<p>SWC do not access the services of the BSW modules directly. They use the service ports </p>
+<p>provided  by  the  BSW  modules  via  the  RTE.  The  services  provided  by  the  CanSM  are </p>
+<p>listed in chapter 6.3 and are defined in [1]. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>13 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>4.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The  &quot;supported&quot;  and  &quot;not  supported&quot;  features  are  presented  in  the  following  two  tables. </p>
+<p>For further information of not supported features also see chapter 8.2. </p>
+<p>The following features described in [1] are supported: </p>
+<p><b>Feature </b></p>
+<p>Translation of network communication mode requests </p>
+<p>Output of current network communication modes (Polling and Callback) </p>
+<p>Control of peripherals (CAN Transceivers, CAN Controllers) </p>
+<p>Control of PDU mode </p>
+<p>Control of PDU groups </p>
+<p>Handle the network mode via a separate state machine per network </p>
+<p>Bus error management: Bus-off recovery via a separate state machine per network </p>
+<p>Error classification detection notification </p>
+<p>Enable and disable development and production error detection </p>
+<p>Handle several CAN networks </p>
+<p>Table 4-1  </p>
+<p>Supported SWS features </p>
+<p>The following features described in [1] are not supported: </p>
+<p><b>Feature </b></p>
+<p>The CanSM networks and CanSM controllers are not changeable via Post-build configuration. </p>
+<p>The CanSM supports several controllers per network. </p>
+<p>The CanSM supports Post-build process with set of multiple parameters </p>
+<p>Table 4-2  </p>
+<p>Not supported SWS features </p>
+<p><b>4.2 </b></p>
+<p><b>Initialization </b></p>
+<p>Some  embedded  targets  don’t  (re)initialize  variables  correctly. Therefore  some  variables </p>
+<p>have to be initialized explicitly if they need a specific value before the initialization function </p>
+<p>CanSM_Init </p>
+<p>is  called. This  is  done  by  the  function </p>
+<p>CanSM_InitMemory(void)</p>
+<p>. The </p>
+<p>function initializes the CanSM variables and sets the state to un-init. The function has to be </p>
+<p>called before the initialization function. </p>
+<p>After that the initialization </p>
+<p>CanSM_Init</p>
+<p> has to be triggered and the CAN State Manager </p>
+<p>will set the internal used variables to their start values to ensure a deterministic behavior of </p>
+<p>the  state  machines.  The  state  machines  become  initialized,  too.  If  selectable  post  build </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>14 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>configuration is active a valid configuration has to be passed. In other cases the function </p>
+<p>has to be called without a parameter and the init function will map the configuration data to </p>
+<p>a pointer. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>The CanSM initializes the CAN channel into the state NO COMMUNICATION. This </p>
+<p>means, the CAN modules (CanIf, CanDrv and CanTrcv) are set into the corresponding </p>
+<p>state for NO COMMUNCIATION (bus sleep). During this transition, detected wake up </p>
+<p>reasons, inside the CAN modules, are cleared. </p>
+<p>This leads to the behavior that wake up events, which are triggered by the CAN bus, </p>
+<p>can not be detected and/or validated during the initialization phase. </p>
+<p>If the detection/validation of the wake up information is necessary for the ECU then the </p>
+<p>CanSM API CanSM_PreventBusSleepAtStartUp() can be used to prevent the bus </p>
+<p>sleep mode at start up for the above listed CAN modules. </p>
+<p>For further information, refer to [7]. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.3 </b></p>
+<p><b>State Machines </b></p>
+<p>The CanSM contains two different state machines per network. Each CAN network gets its </p>
+<p>own network mode state machine and its own bus-off state machine. </p>
+<p><b>4.3.1 </b></p>
+<p><b>Network Mode State Machine </b></p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>15 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>stm CanSM</b></p>
+<p><b>CANSM_FULL_COMMUNICATION</b></p>
+<p><b>CANSM_NO_COMMUNICATION</b></p>
+<p><b>CANSM_SILENT_COMMUNICATION</b></p>
+<p><b>Transition Check</b></p>
+<p>Ini ti al</p>
+<p>[ReqNotFullCom]</p>
+<p>/T05</p>
+<p>[T01_OK]</p>
+<p>[Ini t]</p>
+<p>/T01</p>
+<p>[ReqNoCom]</p>
+<p>/T03</p>
+<p>[ReqFullCom]</p>
+<p>/T04</p>
+<p>[ReqNotFullCom]</p>
+<p>[ReqSilentCom]</p>
+<p>[T xFailed,</p>
+<p>ReqNotFullCom]</p>
+<p>/T01</p>
+<p>[T02_OK]</p>
+<p>[ReqFullCom]</p>
+<p>/T02</p>
+<p>[T xFailed,</p>
+<p>ReqFullCom]</p>
+<p>/T02</p>
+<p>[T03_OK]</p>
+<p>Figure 4-1 </p>
+<p>Network mode state machine </p>
+<p>The network mode state machine handles the activation and the deactivation of the CAN </p>
+<p>communication. </p>
+<p><b>Initial </b></p>
+<p>The </p>
+<p>CAN </p>
+<p>state </p>
+<p>manager </p>
+<p>functionality </p>
+<p>can </p>
+<p>not </p>
+<p>be </p>
+<p>used </p>
+<p>before </p>
+<p>the </p>
+<p>API </p>
+<p>function </p>
+<p>CanSM_Init</p>
+<p>  has  been  called.  If  the  CanSM_Init  function  is  executed  successfully  the </p>
+<p>CanSM performs the transition T01 and sets the state to </p>
+<p>CANSM_NO_COMMUNNICATION</p>
+<p>. </p>
+<p><b>Transition Check </b></p>
+<p>If the transition T01, T02 or T03 succeeds the state “Transition Check” is skipped and the </p>
+<p>CanSM switches to the following state, in the same cycle. </p>
+<p>The CanSM evaluates if the desired controller mode is reached in T01, T02 and T03 and if </p>
+<p>the desired transceiver mode is reached in T02 only. If the CAN state manager detects a </p>
+<p>failure the CanSM enters the virtual state “Transition Check”, increases the error counter </p>
+<p>Hw Repetition</p>
+<p>  (see  Table  7-1)  and  the  further  actions  of  the  transition  are  skipped. </p>
+<p>Afterwards the CanSM cyclically tries to reach the desired state until the transition passes. </p>
+<p>Therefore the CanSM triggers the transition T01 or T02 (see Figure 4-1), depending on the </p>
+<p>requested  communication  mode.  Each  sequently  failed  transition  is  counted  and  if  the </p>
+<p>specified </p>
+<p>number </p>
+<p>exceeds </p>
+<p>the </p>
+<p>CanSM </p>
+<p>triggers </p>
+<p>the </p>
+<p>DEM </p>
+<p>failed </p>
+<p>message </p>
+<p>CANSM_E_MODE_CHANGE_NETWORK_x</p>
+<p>. The counter is reset if a transition succeeds. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>16 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>If </p>
+<p>the </p>
+<p>function </p>
+<p>CanSM_GetCurrentComMode </p>
+<p>is </p>
+<p>called </p>
+<p>and </p>
+<p>the </p>
+<p>CanSM </p>
+<p>is </p>
+<p>in </p>
+<p>state </p>
+<p>“Transition Check” the prior state is returned as the current communication mode, because </p>
+<p>the state Transition Check” is unknown by the other modules. </p>
+<p><b>CANSM_NO_COMMUNICATION </b></p>
+<p>In this state there is no communication on the CAN channel. When full communication is </p>
+<p>requested the CAN state manager starts the transceiver and PDU groups. Additionally the </p>
+<p>BOR SM switches to the Meta state “Recovery enabled” (see 4.3.2). When the wake up </p>
+<p>process is not finished successfully (e.g. a used BSW function reports an error) the CAN </p>
+<p>state manager stays in the state and retries the transition next cycle if full communication </p>
+<p>is  still  requested.  In  case  of  a  successful  transition  the  CAN  state  manager  notifies  the </p>
+<p>communication  manager  about  the  new  communication  state  and  enables  the  deadline </p>
+<p>monitoring, if the feature is activated in the module Com. </p>
+<p><b>CANSM_FULL_COMMUNICATION </b></p>
+<p>The CanSM stays in this state as long as full communication is requested. Otherwise the </p>
+<p>CanSM  switches  to  silent  mode  and  stops  the  PDU  groups.  In  case  of  a  successful </p>
+<p>transition  the  CAN  state  manager  notifies  the  communication  manager  about  the  new </p>
+<p>communication  state.  The  BOR  switches  to  the  Meta  state  “Recovery  disabled”  and </p>
+<p>switches the deadline monitoring, if the feature is activated in the module Com. By default </p>
+<p>the  deadline  monitoring  is  activated.  Via  a  configuration  switch  the  CanSM  can  also  be </p>
+<p>disposed  to  deactivate  the  monitoring  in  state  CANSM_SILENT_COMMUNICATION  to </p>
+<p>avoid Rx timeouts. </p>
+<p><b>CANSM_SILENT_COMMUNICATION </b></p>
+<p>The state represents the prepare bus sleep phase of the network. The node is still able to </p>
+<p>receive </p>
+<p>CAN </p>
+<p>messages </p>
+<p>but </p>
+<p>doesn’t </p>
+<p>transmit </p>
+<p>them. </p>
+<p>According </p>
+<p>to </p>
+<p>the </p>
+<p>requested </p>
+<p>communication  mode  the  CanSM  switches  to </p>
+<p>CANSM_NO_COMMUNNICATION</p>
+<p>,  back  to </p>
+<p>CANSM_FULL_COMMUNICATION</p>
+<p> </p>
+<p>or </p>
+<p>stays </p>
+<p>in </p>
+<p>the </p>
+<p>state. </p>
+<p>If </p>
+<p>the </p>
+<p>deadline </p>
+<p>monitoring </p>
+<p>is </p>
+<p>activated in the module Com, the CanSM ensures that the deadline monitoring of the Com </p>
+<p>is </p>
+<p>activated </p>
+<p>if </p>
+<p>CANSM_FULL_COMMUNICATION</p>
+<p> </p>
+<p>reached </p>
+<p>and </p>
+<p>deactivated </p>
+<p>if </p>
+<p>CANSM_NO_COMMUNICATION</p>
+<p> if reached. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>17 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>4.3.2 </b></p>
+<p><b>Bus-off Recovery State Machine </b></p>
+<p>Figure 4-2 </p>
+<p>Bus-off recovery state machine </p>
+<p>The  BOR  handles  the  restart  of  the  CAN  communication  after  a  bus-off.  The  BOR  SM </p>
+<p>becomes activated, meta state “Recovery enabled”, if the network state machine reaches </p>
+<p>full communication and the BOR SM is deactivated if the full communication state is left, </p>
+<p>state </p>
+<p>CANSM_BOR_IDLE</p>
+<p>. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>18 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Transition to Meta state “Recovery disabled” see state CANSM_FULL_COMMUNICATION </p>
+<p>in chapter 4.3.1. </p>
+<p><b>CANSM_BOR_IDLE </b></p>
+<p>The  Network  Mode  State  Machine  is  not  in </p>
+<p>CANSM_FULL_COMMUNICATION</p>
+<p>.  BOR  timer </p>
+<p>and counter are deactivated. </p>
+<p><b>CANSM_BOR_CHECK_INIT </b></p>
+<p>The CanSM waits for a bus-off until timer </p>
+<p>TxEnsured </p>
+<p>exceeds. If during this period no </p>
+<p>bus-off  is  reported,  the  BOR  SM  switches  to </p>
+<p>CANSM_BOR_NO_BUS_OFF</p>
+<p>.  Otherwise  the </p>
+<p>controller  is  restarted,  the  deadline  monitoring  becomes  deactivated  and  the  CanSM </p>
+<p>switches to </p>
+<p>CANSM_BOR_TXOFF_L1</p>
+<p>. </p>
+<p><b>CANSM_BOR_NO_BUS_OFF </b></p>
+<p>The  Network  Mode  State  Machine  is  in </p>
+<p>CANSM_FULL_COMMUNICATION</p>
+<p>  and  no  error  is </p>
+<p>detected. The CAN bus has the full functionality, is able to receive and send messages. </p>
+<p>Each time the state is entered a DEM </p>
+<p>DEM_EVENT_STATUS_PASSED</p>
+<p> is send. </p>
+<p>If a bus-off is reported the controller becomes restarted, the deadline monitoring becomes </p>
+<p>deactivated and the CanSM switches to </p>
+<p>CANSM_BOR_TXOFF_L1</p>
+<p>. </p>
+<p><b>CANSM_BOR_TXOFF_L1, CANSM_BOR_TXOFF_L2 </b></p>
+<p>In these states the node transmits no messages on the bus. </p>
+<p>If </p>
+<p>the </p>
+<p>Level  2  recovery  time </p>
+<p>has </p>
+<p>expired </p>
+<p>the </p>
+<p>Can </p>
+<p>SM </p>
+<p>switches </p>
+<p>to </p>
+<p>CANSM_BOR_CHECK_Lx</p>
+<p> and activates the transmission of messages again. </p>
+<p>On </p>
+<p>entering </p>
+<p>one </p>
+<p>of </p>
+<p>these </p>
+<p>states </p>
+<p>the </p>
+<p>CanSM </p>
+<p>will </p>
+<p>call </p>
+<p>the </p>
+<p>function </p>
+<p>ComM_</p>
+<p>BusSM</p>
+<p>_ModeIndication</p>
+<p>, </p>
+<p>report </p>
+<p>SILENT_COMMUNICATION </p>
+<p>mode </p>
+<p>to </p>
+<p>the </p>
+<p>ComM </p>
+<p>module and FULL_COMMUNICATION mode again on exit. During the CanSM is in state </p>
+<p>TXOFF_L1 </p>
+<p>(or </p>
+<p>TXOFF_L2) </p>
+<p>the </p>
+<p>function </p>
+<p>CanSM_GetCurrentComMode</p>
+<p> </p>
+<p>reports </p>
+<p>SILENT_COMMUNICATION mode. </p>
+<p><b>CANSM_BOR_CHECK_L1, CANSM_BOR_CHECK_L2   </b></p>
+<p>The CanSM waits for a bus-off until timer </p>
+<p>TxEnsured </p>
+<p>exceeds. If no bus-off is reported </p>
+<p>during  this  period  the  BOR  SM  switches  to </p>
+<p>CANSM_BOR_NO_BUS_OFF</p>
+<p>.  Otherwise  the </p>
+<p>controller becomes restarted, the transmission of messages is deactivated and the error </p>
+<p>counter is increased. </p>
+<p>The following state depends on the error counter. If the value of the error counter is lower </p>
+<p>than the threshold </p>
+<p>Counter L1 to L2</p>
+<p> </p>
+<p>the CanSM switches to </p>
+<p>CANSM_BOR_TXOFF_L1</p>
+<p>. </p>
+<p>Otherwise the next state is </p>
+<p>CANSM_BOR_TXOFF_L2.</p>
+<p> </p>
+<p>If the value of the error counter reaches the threshold </p>
+<p>L2 error counter</p>
+<p> the CanSM </p>
+<p>additionally triggers DEM </p>
+<p>DEM_EVENT_STATUS_FAILED</p>
+<p>. CanSM still continues with the </p>
+<p>BOR mechanism and each bus-off causes a DEM failed until the BOR is successful or the </p>
+<p>SWC reacts and sets the CAN to no communication or silent communication. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>19 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>Bus-off notification functions Appl_CanSM_BusOffBegin and </b></p>
+<p><b>Appl_CanSM_BusOffEnd </b></p>
+<p>The feature gives the application the possibility to react on an active bus-off. If the feature </p>
+<p>is activated the CanSM triggers the </p>
+<p>Appl_CanSM_BusOffBegin</p>
+<p> immediately and each </p>
+<p>time </p>
+<p>the </p>
+<p>CanSM </p>
+<p>is </p>
+<p>informed </p>
+<p>about </p>
+<p>a </p>
+<p>bus-off. </p>
+<p>When </p>
+<p>the </p>
+<p>CanSM </p>
+<p>enters </p>
+<p>the </p>
+<p>state </p>
+<p>CANSM_BOR_CHECK_L1</p>
+<p> </p>
+<p>or </p>
+<p>CANSM_BOR_CHECK_L2</p>
+<p> </p>
+<p>the </p>
+<p>Tx </p>
+<p>path </p>
+<p>is </p>
+<p>restarted </p>
+<p>so </p>
+<p>the </p>
+<p>communication should work again and the CanSM informs the application via the function </p>
+<p>Appl_CanSM_BusOffEnd</p>
+<p>.  The  according  channel  can  be  identified  via  the  network </p>
+<p>handle, which is a parameter of both functions. The </p>
+<p>BusOffBegin </p>
+<p>function delivers also </p>
+<p>the number of bus-offs in a sequence. A sequence starts after the first bus-off occurred </p>
+<p>and </p>
+<p>ends </p>
+<p>when </p>
+<p>the </p>
+<p>bus-off </p>
+<p>sequence </p>
+<p>of </p>
+<p>the </p>
+<p>CAN </p>
+<p>channel </p>
+<p>had </p>
+<p>been </p>
+<p>recovered </p>
+<p>successfully. That means the CanSM enters the state </p>
+<p>_BOR_NO_BUS_OFF</p>
+<p> after the time </p>
+<p>TxEnsured</p>
+<p> exceeded. </p>
+<p>A  bus-off  recovery  introduced  by  the  function </p>
+<p>Appl_CanSM_BusOffBegin</p>
+<p>  is  always </p>
+<p>“closed”  by </p>
+<p>Appl_CanSM_BusOffEnd</p>
+<p>  even  if  the  CanSM  receives  a  shutdown  request </p>
+<p>and the bus-off recovery is interrupted. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>During the bus-off recovery the Nm may trigger the shutdown. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The function </p>
+<p>Appl_CanSM_BusOffBegin</p>
+<p> is called in interrupt context so pay </p>
+<p>attention to a SHORT runtime. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The function </p>
+<p>Appl_CanSM_BusOffEnd</p>
+<p> is with blocked CAN interrupts </p>
+<p>(</p>
+<p>CANSM_EXCLUSIVE_AREA_4</p>
+<p>) so pay attention to a SHORT runtime. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.4 </b></p>
+<p><b>XCP notification function </b></p>
+<p>The  XCP  gets  the  information  if  messages  can  be  transmitted  or  not.  I.e.  the  CanSM </p>
+<p>reports </p>
+<p>CANXCP_SET_ONLINE </p>
+<p>to </p>
+<p>the </p>
+<p>XCP </p>
+<p>if </p>
+<p>the </p>
+<p>state </p>
+<p>CanSM </p>
+<p>enters </p>
+<p>the </p>
+<p>state </p>
+<p>CANSM_FULL_COMMUNICATION  and  the  passive  mode  is  NOT  activated.  If  CanSM </p>
+<p>leaves </p>
+<p>the </p>
+<p>state </p>
+<p>CANSM_FULL_COMMUNICATION </p>
+<p>and </p>
+<p>the </p>
+<p>passive </p>
+<p>mode </p>
+<p>is </p>
+<p>NOT </p>
+<p>activated  the  CanSM  reports  CANXCP_SET_OFFLINE  to  the  XCP.  If  the  CanSM  is  in </p>
+<p>state CANSM_FULL_COMMUNICATION and the ECU mode changes to passive CanSM </p>
+<p>reports  CANXCP_SET_OFFLINE  to  the  XCP  and  CANXCP_SET_ONLINE  if  the  ECU </p>
+<p>mode switches back to active. If the CanSM is in state CANSM_FULL_COMMUNICATION </p>
+<p>and </p>
+<p>the </p>
+<p>Tx </p>
+<p>channel </p>
+<p>is </p>
+<p>deactivated </p>
+<p>caused </p>
+<p>by </p>
+<p>a </p>
+<p>bus </p>
+<p>off </p>
+<p>then </p>
+<p>the </p>
+<p>CanSM </p>
+<p>reports </p>
+<p>CANXCP_SET_OFFLINE when the CanSM enters the state CANSM_BOR_TXOFF_L1 or </p>
+<p>L2 and CANXCP_SET_ONLINE again if the state is left. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>20 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>If  the  CanSM  and  the  CanXCP  is  active  at  the  same  channel  the  configuration  tool </p>
+<p>activates  the  feature  by  writing  the  XCP  API  function  in  the  CanSM_Lcfg.c  file.  The </p>
+<p>channel assignment can be changed during link time configuration. </p>
+<p><b>4.5 </b></p>
+<p><b>ECU passive mode </b></p>
+<p>After  the  initialization  of  the  CanSM  the  ECU  mode  is  set  to  default  value  ECU  active </p>
+<p>mode. The  mode  is  the  same  for  each  CAN  channel. The  CanSM  can  be  instructed  to </p>
+<p>handle  the  passive  or  the  active  mode  via  the  API  CanSM_SetEcuPassive.  The  ECU </p>
+<p>mode  stays  until  new  request  or  a  (re)initialization  of  the  CanSM.  In  passive  mode  the </p>
+<p>CanSM sets the Tx PDU mode to OFFLINE_ACTIVE instead to ONLINE (T02). If the ECU </p>
+<p>mode  switches  form  passive  to  active  the  CanSM  switches  the  Tx  PDUs  which  are  in </p>
+<p>OFFLINE_ACTIVE to ONLINE.  </p>
+<p>During a bus-off recovery phase the modification of the Tx PDU mode is postponed until </p>
+<p>the bus-off recovery phase has been finished (T08, T015) </p>
+<p><b>4.6 </b></p>
+<p><b>Main Function </b></p>
+<p>The  CanSM  has  one  main  function  which  has  to  be  called  cyclically  by  the  SchM. The </p>
+<p>main function of the CanSM executes the bus-off recovery state machines (including timer </p>
+<p>and  counters)  of  each  network  handle,  which  is  configured  for  the  CanSM.  In  some </p>
+<p>conditions the main function executes the network state machines too. The main function </p>
+<p>handles the Network Mode State Machine and the BOR SM for each CAN network once </p>
+<p>per cycle. </p>
+<p><b>4.7 </b></p>
+<p><b>Communication Modes </b></p>
+<p>The  ComM  collects  the  communication  requests  from  the  SW-C  and  from  the  network. </p>
+<p>Accordingly the ComM calculates the needed communication mode and requests this from </p>
+<p>the CAN State Manager via the function </p>
+<p>CanSM_RequestComMode.</p>
+<p> </p>
+<p><b>4.8 </b></p>
+<p><b>Communication Mode Polling </b></p>
+<p>The ComM is informed about every mode change by the CAN State Manager via the call </p>
+<p>back function </p>
+<p>ComM_</p>
+<p>BusSM</p>
+<p>_ModeIndication.</p>
+<p> </p>
+<p>Additional the ComM may request the communication mode which is currently active by </p>
+<p>calling  the  API  function </p>
+<p>CanSM_GetCurrentComMode</p>
+<p>.  The  CAN  State  Manager  will </p>
+<p>deliver the communication mode to the pointer passed as a function parameter. </p>
+<p><b>4.9 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>4.9.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Development </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>DET </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Det_ReportError()</p>
+<p>, </p>
+<p>(specified  in  [2]),  if  the  pre-compile  parameter </p>
+<p>CANSM_DEV_ERROR_DETECT</p>
+<p>  is  equal  to </p>
+<p>STD_ON</p>
+<p>. </p>
+<p>The reported CanSM ID is </p>
+<p>0x8C</p>
+<p>. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>21 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>The  reported  service  IDs  identify  the  services  which  are  described  in  6.3. The  following </p>
+<p>table maps the service IDs to the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>0x00 </p>
+<p>CANSM_INIT_SERVICE_ID </p>
+<p>0x01 </p>
+<p>CANSM_GETVERSIONINFO_SERVICE_ID </p>
+<p>0x02 </p>
+<p>CANSM_REQUESTCOMMODE_SERVICE_ID </p>
+<p>0x03 </p>
+<p>CANSM_GETCURRENTCOMMODE_SERVICE_ID </p>
+<p>0x04 </p>
+<p>CANSM_CONTROLLERBUSOFF_SERVICE_ID </p>
+<p>0x05 </p>
+<p>CANSM_MAINFUNCTION_SERVICE_ID </p>
+<p>0x06 </p>
+<p>CANSM_PREVENTBUSSLEEPATSTARTUP_SERVICE_ID </p>
+<p>Table 4-3  </p>
+<p>Mapping of service IDs to services </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x01 </p>
+<p>CANSM_E_UNINIT </p>
+<p>API service used without having called the initialization </p>
+<p>function. </p>
+<p>0x02 </p>
+<p>CANSM_E_PARAM_POINT</p>
+<p>ER </p>
+<p>API service called with invalid pointer in parameter list </p>
+<p>0x03 </p>
+<p>CANSM_E_INVALID_NET</p>
+<p>WORK_HANDLE </p>
+<p>API </p>
+<p>service </p>
+<p>called </p>
+<p>with </p>
+<p>wrong </p>
+<p>network </p>
+<p>handle </p>
+<p>parameter, </p>
+<p>which </p>
+<p>is </p>
+<p>not </p>
+<p>configured </p>
+<p>in </p>
+<p>the </p>
+<p>CanSM </p>
+<p>configuration. </p>
+<p>0x04 </p>
+<p>CANSM_E_INVALID_NET</p>
+<p>WORK_MODE </p>
+<p>API service called with wrong network mode parameter </p>
+<p>0x05 </p>
+<p>CANSM_E_PARAM_CONTR</p>
+<p>OLLER </p>
+<p>The function CanSM_ControllerBusOff is called </p>
+<p>with a wrong controller index. </p>
+<p>0x06 </p>
+<p>CANSM_E_INITLIZED </p>
+<p>API service used after the initialization function</p>
+<p> </p>
+<p>Table 4-4  </p>
+<p>Errors reported to DET </p>
+<p><b>4.9.1.1 </b></p>
+<p><b>Parameter Checking </b></p>
+<p>The following table shows which parameter checks are performed on which services: </p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>API called with </p>
+<p>NULL pointer </p>
+<p>invalid pointer </p>
+<p>Network handle </p>
+<p>not exist </p>
+<p>CanSM_Init has </p>
+<p>not been called </p>
+<p>Requested </p>
+<p>network mode not </p>
+<p>possible </p>
+<p>Controller Id  not </p>
+<p>exist </p>
+<p>CanSM_Init has </p>
+<p>been called </p>
+<p>CanSM_Init </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_GetVersionInfo </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_InitMemory </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_RequestComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_SetEcuPassive </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_GetCurrentComMode </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>22 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>23 / 51</p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>API called with </p>
+<p>NULL pointer </p>
+<p>invalid pointer </p>
+<p>Network handle </p>
+<p>not exist </p>
+<p>CanSM_Init has </p>
+<p>not been called </p>
+<p>Requested </p>
+<p>network mode not </p>
+<p>possible </p>
+<p>Controller Id  not </p>
+<p>exist </p>
+<p>CanSM_Init has </p>
+<p>been called </p>
+<p>CanSM_ControllerBusOff </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_MainFunction </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CanSM_PreventBusSleepAtSt</p>
+<p>artUp </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-5  </p>
+<p>Development Error Reporting: Assignment of checks to services </p>
+<p>AUTOSAR requires that API functions check the validity of their parameters. The checks in </p>
+<p>Table  4-5  are  internal  parameter  checks  of  the  API  functions.  These  checks  are  for </p>
+<p>development </p>
+<p>error </p>
+<p>reporting </p>
+<p>and </p>
+<p>can </p>
+<p>be </p>
+<p>en-/disabled </p>
+<p>via </p>
+<p>the </p>
+<p>parameter </p>
+<p>CANSM_DEV_ERROR_DETECT</p>
+<p>. </p>
+<p><b>4.9.2 </b></p>
+<p><b>Production Code Error Reporting </b></p>
+<p>Production </p>
+<p>code </p>
+<p>related </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>DEM </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Dem_ReportErrorStatus()</p>
+<p> </p>
+<p>(specified </p>
+<p>in </p>
+<p>[3]), </p>
+<p>if </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>parameter </p>
+<p>CANSM_PROD_ERROR_DETECT == STD_ON</p>
+<p>. En-/disabling is an addition to the AUTOSAR </p>
+<p>standard. </p>
+<p>The errors reported to DEM are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>CANSM_E_BUSOFF_NETWORK_&lt;</p>
+<p>X&gt;</p>
+<p> </p>
+<p>The CAN State Manager reports to the DEM a network </p>
+<p>specific bus-off event each time the bus-off could be </p>
+<p>recovered or the bus-off could not be recovered within the </p>
+<p>specified tries. </p>
+<p>CANSM_E_MODE_CHANGE_NETW</p>
+<p>ORK_&lt;X&gt; </p>
+<p>As described in 4.3.1 the CanSM repeats a transition if an </p>
+<p>error occurred. If the repetitions sequence exceed the </p>
+<p>specified </p>
+<p>Hw Repetition</p>
+<p> (see Table 7-1) the CanSM </p>
+<p>reports this error to the DEM. </p>
+<p>CANSM_E_SETTRANSCEIVERMODE_</p>
+<p>NETWORK_</p>
+<p>&lt;X&gt; </p>
+<p>If the setting of the transceiver mode was not successful the </p>
+<p>CanSM reports this error to the DEM. </p>
+<p>Table 4-6  </p>
+<p>Errors reported to DEM </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>Integration </b></p>
+<p>This  chapter  gives  necessary  information  for  the  integration  of  the  MICROSAR  CanSM </p>
+<p>into an application environment of an ECU. </p>
+<p><b>5.1 </b></p>
+<p><b>Brief Instruction </b></p>
+<p><b>&gt; </b></p>
+<p>Check if mandatory modules are available, see chapter 6.4. </p>
+<p><b>&gt; </b></p>
+<p>Adapt the default configuration settings of the CanSM in the configuration tool (GENy), </p>
+<p>see chapter 7.1. </p>
+<p><b>&gt; </b></p>
+<p>Check if the EcuM reinitializes the variables by calling </p>
+<p>CanSM_InitMemory</p>
+<p> before the </p>
+<p>initialization of the CanSM. </p>
+<p><b>&gt; </b></p>
+<p>Call </p>
+<p>CanSM_PreventBusSleepAtStartUp</p>
+<p> if needed (once for each network handle). </p>
+<p><b>&gt; </b></p>
+<p>Check if the EcuM initializes the CanSM by calling </p>
+<p>CanSM_Init</p>
+<p> and delivers a </p>
+<p>reference to the cluster configuration data as a function parameter. </p>
+<p><b>&gt; </b></p>
+<p>Check if ComM requests the desired communication mode by calling the function </p>
+<p>CanSM_RequestComMode</p>
+<p>. The ComM has to deliver the communication mode and the </p>
+<p>according network handle as parameters. </p>
+<p><b>&gt; </b></p>
+<p>Check if the SchM calls the </p>
+<p>CanSM_MainFunction</p>
+<p> cyclically. </p>
+<p><b>5.2 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the CanSM contains the files which are described in the chapters 5.2.1 and </p>
+<p>5.2.2. </p>
+<p><b>5.2.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>CanSM.c </p>
+<p>This is the source file of the CanSM. It contains the implementation of the </p>
+<p>main functionality (not available if libraries are delivered). </p>
+<p>CanSM.h </p>
+<p>This is the main header file of the CAN state manager which is the “defines” </p>
+<p>and types of the CAN state manager. </p>
+<p>CanSM_Cbk.h </p>
+<p>This is the callback header file of the CAN state manager which is the specific </p>
+<p>interface of the bus-off function. </p>
+<p>CanSM_EcuM.h </p>
+<p>This is a header file of the CAN state manager which is the specific interface </p>
+<p>for the EcuM to the services of the CAN state manager. </p>
+<p>CanSM_SchM.h </p>
+<p>This is a header file of the CAN state manager which is the specific interface </p>
+<p>for the SchM to the services of the CAN state manager. </p>
+<p>CanSM_ComM.h </p>
+<p>This is a header file of the CAN state manager which is the specific interface </p>
+<p>for the ComM to the services of the CAN state manager. </p>
+<p>Table 5-1  </p>
+<p>Static files </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>24 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>25 / 51</p>
+<p> </p>
+<p><b>5.2.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool GENy. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>CanSM_Cfg.h </p>
+<p>Configuration header file which is generated. It contains pre-compile switches, </p>
+<p>which enable/disable features, type definitions and constant values. </p>
+<p>CanSM_Lcfg.c </p>
+<p>Configuration source file. It contains configuration parameter which may be </p>
+<p>changed at link time. </p>
+<p>CanSM_PBcfg.c </p>
+<p>Configuration source file. It contains for example timer variable values or </p>
+<p>channel configuration parameter. It contains configuration parameter which </p>
+<p>may be changed after link time. </p>
+<p>Table 5-2  </p>
+<p>Generated files </p>
+<p><b>5.3 </b></p>
+<p><b>Include Structure </b></p>
+<p><b>object Header File Structure</b></p>
+<p><b>CanSM.c</b></p>
+<p><b>CanSM_ComM.h</b></p>
+<p><b>Det.h</b></p>
+<p><b>CanSM.h</b></p>
+<p><b>CanSM_Cfg.h</b></p>
+<p><b>EcuM_Cbk.h</b></p>
+<p><b>ComM.h</b></p>
+<p><b>SchM_CanSM.h</b></p>
+<p><b>CanSM_Cbk.h</b></p>
+<p><b>ComStack_Types.h</b></p>
+<p><b>CanIf.h</b></p>
+<p><b>SchM_CanSM.h</b></p>
+<p><b>CanSM_EcuM.h</b></p>
+<p><b>ComM_BusSM.h</b></p>
+<p><b>Com.h</b></p>
+<p><b>Dem.h</b></p>
+<p><b>CanSM_Lcfg.c</b></p>
+<p><b>CanSM_PBcfg.c</b></p>
+<p><b>CanXcp.h</b></p>
+<p><b>Std_Types.h</b></p>
+<p><b>ComM_Types.h</b></p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p>«include»</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Figure 5-1 </p>
+<p>Include structure </p>
+<p><b>5.4 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The </p>
+<p>following </p>
+<p>table </p>
+<p>contains </p>
+<p>the </p>
+<p>names </p>
+<p>of </p>
+<p>the </p>
+<p>memory </p>
+<p>section </p>
+<p>and </p>
+<p>the </p>
+<p>compiler </p>
+<p>abstraction definitions defined for the CanSM and illustrate their mapping. </p>
+<p><b>Compiler Abstraction</b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>CANSM_VAR_NOINIT</p>
+<p> </p>
+<p>CANSM_VAR_ZERO_INIT</p>
+<p> </p>
+<p>CANSM_CONST</p>
+<p> </p>
+<p>CANSM_PBCFG </p>
+<p>CANSM_CODE</p>
+<p> </p>
+<p>CANSM_START_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p>CANSM_STOP_SEC_VAR_NOINIT_UNSPECIFIED</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_VAR_ZERO_INIT_8BIT </p>
+<p>CANSM_STOP_SEC_VAR_ZERO_INIT_8BIT</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_VAR_NOINIT_8BIT </p>
+<p>CANSM_STOP_SEC_VAR_NOINIT_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_CONST_8BIT </p>
+<p>CANSM_STOP_SEC_CONST_8BIT</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_CONST_32BIT </p>
+<p>CANSM_STOP_SEC_CONST_32BIT</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_CONST_UNSPECIFIED </p>
+<p>CANSM_STOP_SEC_CONST_UNSPECIFIED</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_PBCFG </p>
+<p>CANSM_STOP_SEC_PBCFG </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANSM_START_SEC_CODE </p>
+<p>CANSM_STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 5-3  </p>
+<p>Compiler abstraction and memory mapping </p>
+<p><b>5.5 </b></p>
+<p><b>Critical Areas </b></p>
+<p>The AUTOSAR standard provides with the BSW Scheduler a BSW module, which handles </p>
+<p>entering  and  leaving  critical  sections. The  Vector AUTOSAR  CanSM  supports  additional </p>
+<p>solutions to handle these sections. </p>
+<p>Critical sections are supported by the following three alternatives: </p>
+<p><b>&gt; </b> the BSW Scheduler </p>
+<p><b>&gt; </b> the Vector Standard Library (VStdLib) </p>
+<p><b>&gt; </b> the proprietary CAN interrupts locking functions </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>26 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>The VStdLib offers the possibility of mapping the interrupt handling to OS services, or to </p>
+<p>user defined functions. In the first case interrupt handling is done by the OS, in the second </p>
+<p>case the user has to take care by providing corresponding functions. </p>
+<p>The intention of the following critical sections is to block the interrupt of CanSM functions </p>
+<p>(with a higher priority). </p>
+<p><b>&gt; </b> The </p>
+<p>CANSM_EXCLUSIVE_AREA_1</p>
+<p> has to be used if it’s possible that the function </p>
+<p>CanSM_MainFunction() </p>
+<p>may be interrupted by any of the functions </p>
+<p>CanSM_RequestComMode()</p>
+<p> or </p>
+<p>CanSM_SetEcuPassive()</p>
+<p>. </p>
+<p><b>&gt; </b> The </p>
+<p>CANSM_EXCLUSIVE_AREA_2</p>
+<p> has to be used if it’s possible that the function </p>
+<p>CanSM_RequestComMode() </p>
+<p>may be interrupted by any of the functions </p>
+<p>CanSM_MainFunction()</p>
+<p> or </p>
+<p>CanSM_SetEcuPassive()</p>
+<p>. </p>
+<p><b>&gt; </b> The </p>
+<p>CANSM_EXCLUSIVE_AREA_3</p>
+<p> has to be used if it’s possible that the function </p>
+<p>CanSM_SetEcuPassive() </p>
+<p>may be interrupted by any of the functions </p>
+<p>CanSM_RequestComMode()</p>
+<p> or </p>
+<p>CanSM_MainFunction ()</p>
+<p>. </p>
+<p>The intention of the following critical sections is to avoid a change of the CAN controller or </p>
+<p>transceiver mode during shutdown of the CAN communication when the CanSM performs </p>
+<p>the transition to from SilentCommunication to NoCommunication. </p>
+<p><b>&gt; </b> The </p>
+<p>CANSM_EXCLUSIVE_AREA_4</p>
+<p> has to be used if it’s possible that one of functions </p>
+<p>CanSM_MainFunction()</p>
+<p> or </p>
+<p>CanSM_RequestComMode()</p>
+<p> may be interrupted by a CAN event. </p>
+<p><b>1. </b></p>
+<p>By Can Wake Up Interrupt </p>
+<p><b>2. </b></p>
+<p>By Can Wake Up Polling </p>
+<p><b>3. </b></p>
+<p>By Can bus-off (Can error) </p>
+<p><b>&gt; </b> The </p>
+<p>CANSM_EXCLUSIVE_AREA_5</p>
+<p> has to be used if it’s possible that one of functions </p>
+<p>CanSM_MainFunction()</p>
+<p> or </p>
+<p>CanSM_RequestComMode()</p>
+<p> may be interrupted by a CAN </p>
+<p>wakeup: </p>
+<p><b>1. </b></p>
+<p>By Can Wake Up Interrupt </p>
+<p><b>2. </b></p>
+<p>By Can Wake Up Polling </p>
+<p><b>3. </b></p>
+<p>By Wakeup by transceiver </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>27 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>28 / 51</p>
+<p><b>6 </b></p>
+<p><b>API Description </b></p>
+<p><b>6.1 </b></p>
+<p><b>Interfaces Overview </b></p>
+<p><b>class Interactions</b></p>
+<p><b>CanSM</b></p>
+<p><b>ComM</b></p>
+<p>«interface»</p>
+<p><b>CanSM_ComM</b></p>
+<p>+ </p>
+<p>CanSM_RequestComMode() : Std_ReturnType</p>
+<p>+ </p>
+<p>CanSM_GetCurrentComMode() : Std_ReturnType</p>
+<p>+ </p>
+<p>CanSM_GetVersionInfo() : void</p>
+<p>«interface»</p>
+<p><b>ComM_BusSM</b></p>
+<p>+ </p>
+<p>ComM_BusSM_ModeIndication() : void</p>
+<p>«interface»</p>
+<p><b>COM</b></p>
+<p>+ </p>
+<p>Com_IpduGroupStart() : void</p>
+<p>+ </p>
+<p>Com_IpduGroupStop() : void</p>
+<p>+ </p>
+<p>Com_DisableReceptionDM() : void</p>
+<p>+ </p>
+<p>Com_EnableReceptionDM() : void</p>
+<p><b>CanIf</b></p>
+<p><b>DET</b></p>
+<p><b>DEM</b></p>
+<p>«interface»</p>
+<p><b>CanIf</b></p>
+<p>+ </p>
+<p>CanIf_SetControllerMode() : Std_ReturnType</p>
+<p>+ </p>
+<p>CanIf_SetTransceiverMode() : Std_ReturnType</p>
+<p>+ </p>
+<p>CanIf_SetPduMode() : Std_ReturnType</p>
+<p>«interface»</p>
+<p><b>CanSM_Cbk</b></p>
+<p>+ </p>
+<p>CanSM_ControllerBusOff() : void</p>
+<p>«interface»</p>
+<p><b>DET</b></p>
+<p>+ </p>
+<p>Det_ReportError() : void</p>
+<p>«interface»</p>
+<p><b>DEM</b></p>
+<p>+ </p>
+<p>Dem_ReportErrorStatus() : void</p>
+<p><b>EcuM</b></p>
+<p>«interface»</p>
+<p><b>CanSM_EcuM</b></p>
+<p>+ </p>
+<p>CanSM_Init() : void</p>
+<p>+ </p>
+<p>CanSM_InitMemory() : void</p>
+<p><b>COM</b></p>
+<p>«interface»</p>
+<p><b>CanSM_SchM</b></p>
+<p>+ </p>
+<p>CanSM_MainFunction() : void</p>
+<p><b>SchM</b></p>
+<p>«interface»</p>
+<p><b>EcuM</b></p>
+<p>+ </p>
+<p>EcuM_GeneratorCompatibilityError() : void</p>
+<p>«interface»</p>
+<p><b>CanXcp</b></p>
+<p>+ </p>
+<p>CanXcp_SetPduMode() : void</p>
+<p><b>XCP</b></p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p>«implement»</p>
+<p>«use»</p>
+<p> </p>
+<p>Figure 6-1 </p>
+<p>CanSM interactions with other BSW </p>
+<p><b>6.2 </b></p>
+<p><b>Type Definitions </b></p>
+<p><b>Type Name </b></p>
+<p><b>C-Type </b></p>
+<p><b>Description </b></p>
+<p><b>Value Range </b></p>
+<p>CANSM_UNINITED </p>
+<p>CanSM is not initialized in this state</p>
+<p>CanSM_NetworkMode</p>
+<p>StateType </p>
+<p>uint8</p>
+<p> </p>
+<p>This type defines the </p>
+<p>states of the network </p>
+<p>mode state machine. </p>
+<p>CANSM_NO_COMMUNICATION </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>29 / 51</p>
+<p><b>Type Name </b></p>
+<p><b>C-Type </b></p>
+<p><b>Description </b></p>
+<p><b>Value Range </b></p>
+<p>ComM requests </p>
+<p>COMM_NO_COMMUNICATION</p>
+<p> in this </p>
+<p>state </p>
+<p>CANSM_SILENT_COMMUNICATION</p>
+<p>ComM requests </p>
+<p>COMM_SILENT_COMMUNICATION</p>
+<p> </p>
+<p>in this state </p>
+<p>CANSM_FULL_COMMUNICATION </p>
+<p>ComM requests </p>
+<p>COMM_FULL_COMMUNICATION</p>
+<p> in </p>
+<p>this state </p>
+<p>CANSM_BOR_IDLE </p>
+<p>Idle state </p>
+<p>CANSM_BOR_CHECK </p>
+<p>Initial bus-off check at beginning of </p>
+<p>full-communication </p>
+<p>CANSM_BOR_NO_BUS_OFF</p>
+<p> </p>
+<p>Regular state during full-</p>
+<p>communication without detected </p>
+<p>bus-off events </p>
+<p>CANSM_BOR_TXOFF_L1 </p>
+<p>Bus-off recovery level 1 state, TX </p>
+<p>disabled </p>
+<p>CANSM_BOR_CHECK_L1 </p>
+<p>Bus-off recovery level 1 state, TX </p>
+<p>enabled again </p>
+<p>CANSM_BOR_TXOFF_L2 </p>
+<p>Bus-off recovery level 2 state, TX </p>
+<p>disabled </p>
+<p>CanSM_BusOffRecov</p>
+<p>eryStateType </p>
+<p>uint8</p>
+<p> </p>
+<p>This type defines the </p>
+<p>states of the bus-off </p>
+<p>recovery state machine. </p>
+<p>CANSM_BOR_CHECK_L2 </p>
+<p>Bus-off recovery level 2 state, </p>
+<p>TX enabled again </p>
+<p>Table 6-1  </p>
+<p>Type definitions </p>
+<p><b>6.3 </b></p>
+<p><b>Services Provided by CanSM </b></p>
+<p>The CanSM API consists of services, which are realized by function calls. </p>
+<p><b>Return value </b></p>
+<p><b>Function name </b></p>
+<p><b>Function parameter </b></p>
+<p>void </p>
+<p>CanSM_Init </p>
+<p>CanSM_ConfigType * ConfigPtr XOR void </p>
+<p>void </p>
+<p>CanSM_GetVersionInfo </p>
+<p>Std_VersionInfoType VersionInfo </p>
+<p>Std_ReturnTy</p>
+<p>pe </p>
+<p>CanSM_RequestComMode </p>
+<p>NetworkHandleType NetworkHandle, </p>
+<p>ComM_ModeType ComM_Mode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Void </p>
+<p>CanSM_SetEcuPassive </p>
+<p>Boolean CanSM_EcuPassiveMode </p>
+<p>Std_ReturnTy</p>
+<p>pe </p>
+<p>CanSM_GetCurrentComMod</p>
+<p>e </p>
+<p>NetworkHandleType NetworkHandle,  </p>
+<p>ComM_ModeType* ComM_ModePtr </p>
+<p>void </p>
+<p>CanSM_ControllerBusOff </p>
+<p>uint8 Controller </p>
+<p>void </p>
+<p>CanSM_MainFunction </p>
+<p>void </p>
+<p>Std_ReturnTy</p>
+<p>pe </p>
+<p>CanSM_PreventBusSleepA</p>
+<p>tStartUp </p>
+<p>NetworkHandleType NetworkHandle </p>
+<p>Table 6-2  </p>
+<p>API Overview </p>
+<p><b>6.3.1 </b></p>
+<p><b>CanSM_InitMemory </b></p>
+<p><b>Prototype </b></p>
+<p>void CanSM_InitMemory( void ) </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function initializes the CanSM memory and sets the variable </p>
+<p>CanSm_IsInitialized</p>
+<p> to </p>
+<p>FALSE</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Called once at start-up before the initialization function. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function is called once before CanSM_Init </p>
+<p> Table 6-3  </p>
+<p>CanSM_InitMemory </p>
+<p><b>6.3.2 </b></p>
+<p><b>CanSM_Init </b></p>
+<p><b>Prototype </b></p>
+<p>VARIANT-PRE-COMPILE, </p>
+<p>VARIANT-LINK-TIME </p>
+<p>void CanSM_Init( void ) </p>
+<p>VARIANT-POST-BUILD </p>
+<p>void CanSM_Init( const CanSM_ConfigType* ConfigPtr ) </p>
+<p><b>Parameter </b></p>
+<p>ConfigPtr</p>
+<p> </p>
+<p>Pointer to the configuration structure that shall be used for the post-build </p>
+<p>parameters. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Service for CAN station manager initialization. </p>
+<p>If the feature “Multiple Identity” is activated the function requires the configuration pointer independent of </p>
+<p>the chosen configuration variant. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Called once at start-up by ECU state manager after the memory initialization function.  </p>
+<p></p>
+<p> </p>
+<p>Non Reentrant </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>30 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Called once after startup </p>
+<p>Table 6-4 </p>
+<p>CanSM_Init </p>
+<p><b>6.3.3 </b></p>
+<p><b>CanSM_MainFunction </b></p>
+<p><b>Prototype </b></p>
+<p>void CanSM_MainFunction( void ); </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The main function of the CanSM executes the bus-off recovery state machines (including timer and </p>
+<p>counters) of each network handle, which is configured for the CanSM. The main function executes the </p>
+<p>network state machine too. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>CanSM has to be initialized. Function has to be called cyclic. The cycle time is set in the configuration </p>
+<p>tool.  </p>
+<p></p>
+<p> </p>
+<p>Non Reentrant </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Cyclic on task level </p>
+<p>Table 6-5 </p>
+<p>CanSM_MainFunction </p>
+<p><b>6.3.4 </b></p>
+<p><b>CanSM_RequestComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType CanSM_RequestComMode( NetworkHandleType NetworkHandle, </p>
+<p>ComM_ModeType ComM_Mode ) </p>
+<p><b>Parameter </b></p>
+<p>NetworkHandle</p>
+<p> </p>
+<p>The communication network number belonging to the request. </p>
+<p>ComM_Mode</p>
+<p> </p>
+<p>New desired value of the communication mode. </p>
+<p><b>Return code </b></p>
+<p>ReturnType</p>
+<p> </p>
+<p>Returns whether function parameter are valid or not. </p>
+<p><b>Functional Description </b></p>
+<p>The function stores the requested communication mode for the network handle and executes the </p>
+<p>corresponding network mode state machine. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>CanSM has to be initialized. </p>
+<p></p>
+<p> </p>
+<p>Reentrant for different CAN networks, not reentrant for the same CAN network </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context. </p>
+<p>Table 6-6 </p>
+<p>CanSM_RequestComMode </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>31 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>6.3.5 </b></p>
+<p><b>CanSM_SetEcuPassive </b></p>
+<p><b>Prototype </b></p>
+<p>void CanSM_SetEcuPassive( boolean CanSM_EcuPassiveMode ) </p>
+<p><b>Parameter </b></p>
+<p>CanSM_EcuPassiveMode</p>
+<p>Boolean parameter which switches the ECU mode between active and </p>
+<p>passive mode </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function stores the requested ECU mode until it’s modified by the next call of this function. In passive </p>
+<p>mode the CanSM sets the Tx PDU mode to OFFLINE_ACTIVE instead to ONLINE. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>CanSM has to be initialized. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context. </p>
+<p>Table 6-7 </p>
+<p>CanSM_SetEcuPassive </p>
+<p><b>6.3.6 </b></p>
+<p><b>CanSM_GetCurrentComMode </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType CanSM_GetCurrentComMode( NetworkHandleType </p>
+<p>NetworkHandle, ComM_ModeType* ComM_ModePtr ) </p>
+<p><b>Parameter </b></p>
+<p>NetworkHandle</p>
+<p> </p>
+<p>Index of the network channel. </p>
+<p>ComM_ModePtr</p>
+<p> </p>
+<p>Pointer where the communication mode information is copied to. </p>
+<p><b>Return code </b></p>
+<p>ReturnType</p>
+<p> </p>
+<p>Returns whether function parameter are valid or not. </p>
+<p><b>Functional Description </b></p>
+<p>This service delivers the current communication mode of a CAN network. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>CanSM has to be initialized. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context. </p>
+<p>Table 6-8 </p>
+<p>CanSM_GetCurrentComMode </p>
+<p><b>6.3.7 </b></p>
+<p><b>CanSM_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void CanSM_GetVersionInfo( Std_VersionInfoType * VersionInfo ) </p>
+<p><b>Parameter </b></p>
+<p>VersionInfo</p>
+<p> </p>
+<p>Pointer, where to store the version data of the CanSM. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>32 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This service returns the version information of this module. The version information includes: </p>
+<p> - Module Id </p>
+<p> - Vendor Id </p>
+<p> - Vendor specific version numbers.  </p>
+<p>This function shall be pre compile time configurable On/Off by the configuration parameter: </p>
+<p>CANSM_VERSION_INFO_API </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is only available if enabled at compile time (CANSM_VERSION_INFO_API = STD_ON) </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context. </p>
+<p>Table 6-9 </p>
+<p>CanSM_GetVersionInfo </p>
+<p><b>6.3.8 </b></p>
+<p><b>CanSM_PreventBusSleepAtStartUp </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType CanSM_PreventBusSleepAtStartUp( NetworkHandleType </p>
+<p>CanSM_NetworkHandle ) </p>
+<p><b>Parameter </b></p>
+<p>NetworkHandleType</p>
+<p> </p>
+<p>communication network handle </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType</p>
+<p> </p>
+<p>Returns whether the network handle is valid and if the function has been </p>
+<p>called before or after the initialization. </p>
+<p><b>Functional Description </b></p>
+<p>The function can be used to prevent the bus sleep state of the CanIf, CanDrv and CanTrcv at start up for </p>
+<p>the given CAN network handle. </p>
+<p>The CanIf, CanDrv and CanTrcv leaves in the corresponding module initialization state. </p>
+<p>For further information refer to [7]. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Called at start-up before the CanSM initialization function </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function has to be called before CanSM_Init </p>
+<p>Table 6-10 </p>
+<p>CanSM_PreventBusSleepAtStartUp </p>
+<p><b>6.4 </b></p>
+<p><b>Services used by CanSM </b></p>
+<p>The following services are provided by other components. The services are used by the </p>
+<p>CanSM.  For  details  about  prototype  and  functionality  refer  to  the  documentation  of  the </p>
+<p>providing component. </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>CanIf </p>
+<p>CanIf_SetControllerMode </p>
+<p>CanIf </p>
+<p>CanIf_GetControllerMode </p>
+<p>CanIf </p>
+<p>CanIf_SetTransceiverMode </p>
+<p>CanIf </p>
+<p>CanIf_GetTransceiverMode </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>33 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>34 / 51</p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>CanIf </p>
+<p>CanIf_SetPduMode </p>
+<p>DEM </p>
+<p>Dem_ReportErrorStatus </p>
+<p>DET </p>
+<p>Det_ReportError </p>
+<p>EcuM </p>
+<p>EcuM_GeneratorCompatibilityError (see [8]) </p>
+<p>ComM </p>
+<p>ComM_BusSM_ModeIndication </p>
+<p>Com </p>
+<p>Com_IpduGroupStart </p>
+<p>Com </p>
+<p>Com_IpduGroupStop </p>
+<p>Com </p>
+<p>Com_DisableReceptionDM </p>
+<p>Com </p>
+<p>Com_EnableReceptionDM </p>
+<p>SchM </p>
+<p>SchM_Enter_CanSM(ExclusiveArea) </p>
+<p>SchM </p>
+<p>SchM_Exit_CanSM(ExclusiveArea) </p>
+<p>XCP </p>
+<p>CanXcp_SetPduMode </p>
+<p>Table 6-11  </p>
+<p>Services used by the CanSM </p>
+<p><b>6.5 </b></p>
+<p><b>Callback Functions </b></p>
+<p>This chapter describes the callback functions that are implemented by the CanSM and can </p>
+<p>be invoked by other modules. The prototypes of the callback functions are provided in the </p>
+<p>header file CanSM_Cbk.h by the CanSM. </p>
+<p><b>6.5.1 </b></p>
+<p><b>CanSM_ControllerBusOff </b></p>
+<p><b>Prototype </b></p>
+<p>void CanSM_ControllerBusOff( uint8 Controller ) </p>
+<p><b>Parameter </b></p>
+<p>Controller</p>
+<p> </p>
+<p>Index of the CAN controller, which detected a bus-off event </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The CanSM is notified about a bus-off event on a certain CAN controller with this callback function. The </p>
+<p>CanSM uses this information to execute the bus-off recovery for the corresponding controller. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>CanSM has to be initialized. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context. </p>
+<p>Table 6-12 </p>
+<p>CanSM_ControllerBusOff </p>
+<p><b>6.5.2 </b></p>
+<p><b>Appl_CanSM_BusOffBegin </b></p>
+<p><b>Prototype </b></p>
+<p>void Appl_CanSM_BusOffBegin( NetworkHandleType CanSm_NetworkHandle, </p>
+<p>CanSM_BorCounterType CanSM_BusOffNotificationCounter ) </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>NetworkHandleType</p>
+<p> </p>
+<p>communication network handle </p>
+<p>CanSM_BusOffNotifica</p>
+<p>tionCounter </p>
+<p>Number of bus-offs in a sequence </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function informs the application about a occurred bus-off </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function can be called in task and interrupt context. </p>
+<p>Table 6-13 </p>
+<p>Appl_CanSM_BusOffBegin </p>
+<p><b>6.5.3 </b></p>
+<p><b>Appl_CanSM_BusOffEnd </b></p>
+<p><b>Prototype </b></p>
+<p>void Appl_CanSM_BusOffEnd ( NetworkHandleType CanSm_NetworkHandle ) </p>
+<p><b>Parameter </b></p>
+<p>NetworkHandleType</p>
+<p> </p>
+<p>communication network handle </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function informs the application if the Tx communication is restarted after a bus-off event. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p> </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Function is called in CanSM task context. </p>
+<p>Table 6-14 </p>
+<p>Appl_CanSM_BusOffEnd </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>35 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>Configuration </b></p>
+<p>The attributes of the CanSM can be configured with the following methods: </p>
+<p><b>&gt; </b> Configuration in GENy for a detailed description see 7.1 </p>
+<p><b>7.1 </b></p>
+<p><b>Configuration with GENy </b></p>
+<p><b>7.1.1.1 </b></p>
+<p><b>Basic </b></p>
+<p>The  CanSM  is  configured  with  the  help  of  the  configuration  tool  GENy.  Settings  for  the </p>
+<p>CanSM can be selected in the GUI, if you choose </p>
+<p>Components, CanSM</p>
+<p> in the tree at the </p>
+<p>left.  These  settings  are  used  to  generate  the  configuration  header  which  is  needed  to </p>
+<p>compile the component and the code files which may be linked to the object code. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>36 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Figure 7-1 </p>
+<p>GENy global view </p>
+<p><b>7.1.2 </b></p>
+<p><b>Activation of the CAN State Manager </b></p>
+<p>If the CanSM isn’t available in the navigation tree you have to assign the desired channels </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>37 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>to the </p>
+<p>CanSM</p>
+<p> by checking the corresponding box in the tab </p>
+<p>Component Selection </p>
+<p>of </p>
+<p>the </p>
+<p>System Configuration</p>
+<p>, see Figure 7-2. If no CAN channel is available add one via </p>
+<p>“</p>
+<p>Configuration</p>
+<p>”, “</p>
+<p>Add</p>
+<p> </p>
+<p>Channel</p>
+<p>”. </p>
+<p>Figure 7-2 </p>
+<p>GENy channel selection </p>
+<p>Pay also attention that the </p>
+<p>Com</p>
+<p> and the</p>
+<p> ComM</p>
+<p> are activated in each channel which has an </p>
+<p>active </p>
+<p>CanSM</p>
+<p>. The </p>
+<p>Com</p>
+<p> may only selectable if the channel has an activated driver. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>The detailed information for all checkboxes and settings is given in the so-called </p>
+<p>OnScreen Help view of GENy just by clicking the checkbox or the name of the switch. </p>
+<p>This is activated via <b>View | OnScreen Help</b>. </p>
+<p>Information about how to work with GENy can be found in the “Online Help” of GENy </p>
+<p>opened via <b>Help | Help topics</b>. </p>
+<p><b> </b></p>
+<p><b>7.1.3 </b></p>
+<p><b>General Settings </b></p>
+<p>The main function of the CanSM is called once each cycle time by the SchM. The cycle </p>
+<p>time is defined at configuration time and shall not be changed during runtime because this </p>
+<p>functionality requires a fixed timing. If you choose a lower cycle time the performance of </p>
+<p>the CanSM state machines will increase a little and the chosen thresholds of the timers will </p>
+<p>have  a  smaller  deviation.  On  the  other  hand  more  calls  of  the  main  function  will  be </p>
+<p>wasteful, if the CanSM has executed all jobs and the performance of the overall system </p>
+<p>may be reduced. Enter the desired time in the line </p>
+<p>Main Fct Cycle Time</p>
+<p>, see Figure </p>
+<p>7-3. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Caution </b></p>
+<p>The resolution of the timer is limited by the cycle time. Therefore is the duration of the </p>
+<p>timers a multiple of the cycle time. Nevertheless the desired time can be entered direct </p>
+<p>in seconds and the tool will convert it in the fitting numbers of cycle times. Due to this </p>
+<p>conversion you may have a deviation of a cycle time. </p>
+<p><b> </b></p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>38 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>With </p>
+<p>the </p>
+<p>“switches” </p>
+<p>of </p>
+<p>the </p>
+<p>CanSM </p>
+<p>configuration </p>
+<p>you </p>
+<p>can </p>
+<p>activate </p>
+<p>or </p>
+<p>deactivate </p>
+<p>functionalities to adapt the CanSM to your needs. </p>
+<p> </p>
+<p>Figure 7-3 </p>
+<p>GENy setup switches </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Common </p>
+<p>Configuration </p>
+<p>Variant </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p><b>1</b>, 2, 3 </p>
+<p>The CAN State Manager supports </p>
+<p>pre-compile (1), link time (2) and post </p>
+<p>build (3) configuration. The generation </p>
+<p>tool provides the possibility to choose </p>
+<p>the kind of configuration. </p>
+<p>Version Info </p>
+<p>Api </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>The CAN State Manager allows to </p>
+<p>enabling and disabling the version </p>
+<p>info API function. </p>
+<p>Dev Error </p>
+<p>Detect</p>
+<p> </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>The CAN State Manager allows </p>
+<p>enabling and disabling the </p>
+<p>development error notification </p>
+<p>mechanism. If the checkbox isn’t </p>
+<p>selected the CanSM will remove the </p>
+<p>function calls and the header includes </p>
+<p>of the DET. </p>
+<p>Prod Error </p>
+<p>Detect</p>
+<p> </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>The CanSM allows activating and </p>
+<p>deactivating the production error </p>
+<p>messages to the DEM. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>39 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>40 / 51</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>User </p>
+<p>Configuration </p>
+<p>File </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p><b>- </b></p>
+<p>If a file path will be specified, the file </p>
+<p>is read and its contents are put at the </p>
+<p>end of the CanSM configuration file. </p>
+<p>Miscellaneous </p>
+<p>Main Fct Cycle </p>
+<p>Time [s] </p>
+<p>PRE-COMPILE </p>
+<p>- </p>
+<p><b>0.0100 </b></p>
+<p>Specifies the time base of the </p>
+<p>CanSM. The main function of the </p>
+<p>CanSM is called once each cycle time </p>
+<p>by the Schedule Manager. </p>
+<p>Hw Repetition </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>uint8 </p>
+<p><b>5 </b></p>
+<p>The value specifies how often the </p>
+<p>CanSM tries to recover a failed </p>
+<p>transition. If the number is exceeded </p>
+<p>the CanSM triggers a DEM failed </p>
+<p>message (see 4.3.1). </p>
+<p>Partial </p>
+<p>Networks </p>
+<p>PRE-COMPILE </p>
+<p>define</p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF</b></p>
+<p> </p>
+<p>If enabled the CanSM changes the </p>
+<p>ASR shutdown sequence according </p>
+<p>to the needs of  Partial Network </p>
+<p>Transceivers </p>
+<p>BswM ComMode </p>
+<p>Indication </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p>STD_ON </p>
+<p><b>STD_OFF</b></p>
+<p> </p>
+<p>If enabled the CanSM inform the </p>
+<p>BswM about the communication </p>
+<p>mode via </p>
+<p>BswM_CanSM_CurrentState() </p>
+<p>Ecu Passive </p>
+<p>Mode </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>En-/ disable the ECU Passive Mode </p>
+<p>handling. (De)Activate the feature if it </p>
+<p>is (de)activated in the ComM too. In </p>
+<p>passive mode the CanSM sets the Tx </p>
+<p>PDU mode to OFFLINE_ACTIVE </p>
+<p>instead to ONLINE. </p>
+<p>BusOff </p>
+<p>Notification </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>En-/ disable the bus-off notification </p>
+<p>functions </p>
+<p>Appl_CanSM_BusOffBegin</p>
+<p> and </p>
+<p>Appl_CanSM_BusOffEnd</p>
+<p>. The </p>
+<p>application is informed about each </p>
+<p>bus-off (Begin) and if the CAN </p>
+<p>channel is restarted (End). </p>
+<p>Disable DM </p>
+<p>during </p>
+<p>SilentCom </p>
+<p>PRE-COMPILE </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>If enabled the CanSM disables the </p>
+<p>deadline monitoring of the RX PDU </p>
+<p>groups in transition to </p>
+<p>CANSM_SILENT_COMMUNICATION</p>
+<p>. </p>
+<p>Postbuild Configuration </p>
+<p>Post Build Config </p>
+<p>Start Address </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>address </p>
+<p>0x0 </p>
+<p>Set the Start Address of the module’s </p>
+<p>post-build configuration. The Modul </p>
+<p>Start Address must specify the start </p>
+<p>address of the memory area, where </p>
+<p>the generated hex-file will be mapped </p>
+<p>to. The attribute is only evaluated and </p>
+<p>visible if the configuration variant is </p>
+<p>set to Variant 3 (Post-build </p>
+<p>configuration). </p>
+<p>Table 7-1  </p>
+<p>General configuration Settings in GENy </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>The transceiver handling will be activated automatic if a transceiver is activated in the </p>
+<p>Component Selection</p>
+<p>. In Figure 7-2 the transceiver handling is activated at the first </p>
+<p>and the last channel. </p>
+<p>The CanSM checks if the CanIf_SetTransceiverMode was successful. If the CAN </p>
+<p>network doesn’t start check which transceiver mode is returned by the function </p>
+<p>CanIf_GetTransceiverMode. The returned transceiver mode has to be equal to the </p>
+<p>mode which was requested by the CanSM before. </p>
+<p><b> </b></p>
+<p><b>7.1.4 </b></p>
+<p><b>Network Settings </b></p>
+<p>The number of networks may be changed at link time. The user doesn’t need to enter the </p>
+<p>number of networks manually. The configuration tool calculates this value automatically. </p>
+<p><b>7.1.5 </b></p>
+<p><b>General CAN Channel Specific Settings </b></p>
+<p>The parameter described in this chapter can be set individual for each CAN channel. </p>
+<p> </p>
+<p>Figure 7-4 </p>
+<p>GENy CAN channel specific configuration </p>
+<p>Each CAN network needs the variable names of the PDU groups. Select the desired PDU </p>
+<p>group name in the dropdown menu of the CAN channel, see Figure 7-5. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>41 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Miscellaneous </p>
+<p>Partial Network </p>
+<p>Ch </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME, </p>
+<p>POST-BUILD </p>
+<p>boolean </p>
+<p><b>false </b></p>
+<p>If Enabled then the CanSM changes the </p>
+<p>shutdown sequence to the needs of the partial </p>
+<p>network feature. The global switch has to be </p>
+<p>enabled, too.</p>
+<p> </p>
+<p>Table 7-2  </p>
+<p>Partial Network </p>
+<p>Figure 7-5 </p>
+<p>GENy CAN channel specific PDU group configuration </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>IPDU groups </p>
+<p>Disable Tx Pdu </p>
+<p>Group </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>boolean </p>
+<p><b>false </b></p>
+<p>If Enabled then the CanSM disables </p>
+<p>the TX PDU groups handling for this </p>
+<p>channel. Activate the option if the </p>
+<p>channel has no IPDU group. </p>
+<p>Tx PDU Group Id  PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>Name </p>
+<p><b>- </b></p>
+<p>Identifier to connect variable used by </p>
+<p>CanSM to the desired PDU group of </p>
+<p>the Com. </p>
+<p>Initialize Tx </p>
+<p>Pdu Data </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>boolean </p>
+<p><b>false </b></p>
+<p>If Enabled then the CanSM requests </p>
+<p>the initialization of the data in the I-</p>
+<p>PDUs of this I-PDU group (see </p>
+<p>second parameter of the function </p>
+<p>Com_IpduGroupStart</p>
+<p>). </p>
+<p>Disable Rx Pdu </p>
+<p>Group </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>boolean </p>
+<p><b>false </b></p>
+<p>If Enabled then the CanSM disables </p>
+<p>the TX PDU groups handling for this </p>
+<p>channel. Activate the option if the </p>
+<p>channel has no IPDU group. </p>
+<p>Rx PDU Group Id  PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>name </p>
+<p><b>- </b></p>
+<p>Identifier to connect variable used by </p>
+<p>CanSM to the desired PDU group of </p>
+<p>the Com. </p>
+<p>Initialize Rx </p>
+<p>PRE-COMPILE, </p>
+<p>boolean </p>
+<p><b>false </b></p>
+<p>If Enabled then the CanSM requests </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>42 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>43 / 51</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Pdu Data </p>
+<p>LINK-TIME </p>
+<p>the initialization of the data in the I-</p>
+<p>PDUs of this I-PDU group (see </p>
+<p>second parameter of the function </p>
+<p>Com_IpduGroupStart</p>
+<p>). </p>
+<p>Table 7-3  </p>
+<p>Channel configuration </p>
+<p>If the list is empty check if the Com module is activated in the component selection, see </p>
+<p>Figure 7-2. If the Com is available and the list is still empty it’s also possible that the PDU </p>
+<p>list in the Com is empty. Add new PDUs by a click with the right mouse button on the </p>
+<p>IPdu </p>
+<p>Groups</p>
+<p>, see Figure 7-6. </p>
+<p>Figure 7-6 </p>
+<p>GENy setup PDU groups </p>
+<p>If another variable name for the PDU group is needed adapt the name in the </p>
+<p>Com</p>
+<p> like in </p>
+<p>Figure 7-6. Pay attention to that the adapted name is the correct one. The new name is </p>
+<p>automatically updated in the CanSM see Figure 7-5. </p>
+<p><b>7.1.6 </b></p>
+<p><b>Bus-off Recovery State Machine Configuration </b></p>
+<p>Each bus-off recovery state machine has a bus-off-timer, which is compared with the three </p>
+<p>time parameters. These parameters are the same for each network handle, independent </p>
+<p>from the timer of the network handle. Each bus-off recovery state machine has a bus-off </p>
+<p>counter, which is compared with the two counter thresholds. These parameters don’t </p>
+<p>depend on the network handle they are same for each counter. All “</p>
+<p>Bus Off Settings</p>
+<p>” </p>
+<p>parameters can be modified for each CAN channel separate. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Figure 7-7 </p>
+<p>GENy CAN channel bus-off configuration </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Bus-off recovery state machine </p>
+<p>Bor Time Tx </p>
+<p>Ensured Ch [s] </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME, </p>
+<p>POST-BUILD </p>
+<p>uint16 </p>
+<p><b>5.000 </b></p>
+<p>Defines the duration of the bus-off </p>
+<p>event check. If a new bus-off occurs </p>
+<p>during this time period, the CAN State </p>
+<p>Manager evaluates this bus-off as </p>
+<p>sequential bus-off without successful </p>
+<p>recovery. The configured time must </p>
+<p>be large enough to ensure that new </p>
+<p>PDUs are transmitted. </p>
+<p><b>The entered value is multiplied by </b></p>
+<p><b>the Cycle Time. The result has to </b></p>
+<p><b>be covered by the 16 bit integer </b></p>
+<p><b>range are allowed. E.g. if the Cycle </b></p>
+<p><b>Time is set 0.010 only values </b></p>
+<p><b>between 0.0 and 655.3500 are </b></p>
+<p><b>allowed. </b></p>
+<p>Bor Counter L1 </p>
+<p>To L2 Ch </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME, </p>
+<p>POST-BUILD </p>
+<p>uint16 </p>
+<p><b>5 </b></p>
+<p>Defines at which bus-off-counter </p>
+<p>value the bus-off recovery state </p>
+<p>machine switches from level 1 to level </p>
+<p>2. </p>
+<p>Bor Time L1 Ch  </p>
+<p>[s] </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME, </p>
+<p>POST-BUILD </p>
+<p>uint16 </p>
+<p><b>1.000 </b></p>
+<p>Defines the duration of the bus-off </p>
+<p>recovery time in level 1 (usually short </p>
+<p>recovery time), which is given to </p>
+<p>restart the CAN network. </p>
+<p><b>The entered value is multiplied by </b></p>
+<p><b>the Cycle Time. The result has to </b></p>
+<p><b>be covered by the 16 bit integer </b></p>
+<p><b>range are allowed. E.g. if the Cycle </b></p>
+<p><b>Time is set 0.010 only values </b></p>
+<p><b>between 0.0 and 655.3500 are </b></p>
+<p><b>allowed. </b></p>
+<p>Bor Time L2 Ch   PRE-COMPILE, </p>
+<p>uint16 </p>
+<p><b>3.000 </b></p>
+<p>Defines the duration of the bus-off </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>44 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>45 / 51</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>[s] </p>
+<p>LINK-TIME, </p>
+<p>POST-BUILD </p>
+<p>recovery time in level 2 (usually long </p>
+<p>recovery time), which is given to </p>
+<p>restart the CAN network. </p>
+<p><b>The entered value is multiplied by </b></p>
+<p><b>the Cycle Time. The result have to </b></p>
+<p><b>be covered by the 16 bit integer </b></p>
+<p><b>range are allowed. E.g. if the Cycle </b></p>
+<p><b>Time is set 0.010 only values </b></p>
+<p><b>between 0.0 and 655.3500 are </b></p>
+<p><b>allowed. </b></p>
+<p>Bor Counter L2 </p>
+<p>Err Ch </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME, </p>
+<p>POST-BUILD </p>
+<p>Uint16 </p>
+<p><b>8 </b></p>
+<p>Defines at which bus-off-counter </p>
+<p>value the bus-off recovery state </p>
+<p>machine shall report a failed </p>
+<p>production error state to the DEM. </p>
+<p>Caused by the bus-off state machine </p>
+<p>(see Figure 4-2) a counter value </p>
+<p>greater than the &quot;CounterL1 to L2&quot; </p>
+<p>should be chosen. The all recovery </p>
+<p>retries of level one and level two has </p>
+<p>to be performed unsuccessful before </p>
+<p>the DEM is triggered. </p>
+<p>Bor Disable Rx </p>
+<p>Dl Monitoring </p>
+<p>Ch </p>
+<p>PRE-COMPILE, </p>
+<p>LINK-TIME </p>
+<p>define </p>
+<p> </p>
+<p>STD_ON </p>
+<p><b>STD_OFF </b></p>
+<p>The CAN State Manager allows </p>
+<p>enabling and disabling the deadline </p>
+<p>monitoring. The RX PDU group </p>
+<p>deadline monitoring may be </p>
+<p>deactivated to avoid timeouts during </p>
+<p>bus-off recovery process. If the </p>
+<p>checkbox is selected on the CanSM </p>
+<p>will enable the monitoring of the Rx </p>
+<p>PDU groups if the full communication </p>
+<p>mode is active without a bus-off. </p>
+<p>Table 7-4  </p>
+<p>Bus-off recovery state machine parameter </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>A value equal to zero for the “</p>
+<p>Bor Counter L1 To L2 Ch</p>
+<p>” is senseless because </p>
+<p>the counter is at least incremented one time see bus-off state machine in [1] </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>A value equal or lower than “</p>
+<p>Bor Counter L1 To L2 Ch</p>
+<p>” for the “</p>
+<p>Bor Counter </p>
+<p>L2 Err Ch</p>
+<p>” is senseless because the counter is at least incremented one time after </p>
+<p>the counter reaches the threshold “</p>
+<p>Bor Counter L1 To L2 Ch</p>
+<p>” see bus-off state </p>
+<p>machine in [1] </p>
+<p><b> </b></p>
+<p><b>7.1.7 </b></p>
+<p><b>Values from other BSW Modules </b></p>
+<p>To  configure  the  CanSM  some  settings  in  other  BSW  modules  have  to  be  done.  The </p>
+<p>necessary configuration options in dependency to the BSW module are listed hereafter. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>The DEM has to deliver for each configured CAN network one specific bus-off error event </p>
+<p>code. Values for production code event IDs are assigned externally by the configuration of </p>
+<p>the DEM. The error event codes are published in a DEM header file. The declaration and </p>
+<p>variable names, which have to follow the naming convention of the SWS [1], are generated </p>
+<p>by the configuration tool as soon as the network handles are available. </p>
+<p>CANSM_E_BUSOFF_NETWORK_&lt;X&gt; </p>
+<p> </p>
+<p> </p>
+<p><b>Example</b> </p>
+<p>The assigned bus-off error for the network handle 5 is </p>
+<p>CANSM_E_BUSOFF_NETWORK_5.The IDs of the error codes are assigned by the </p>
+<p>DEM at configuration time. </p>
+<p> </p>
+<p>The Com defines the symbolic handles of the IPDU Groups in the configuration header of </p>
+<p>the Com. The configuration tool of the CAN State Manager maps the names of the Com to </p>
+<p>the fields of the arrays. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>46 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>8.1 </b></p>
+<p><b>Additions / Extensions  </b></p>
+<p><b>8.1.1 </b></p>
+<p><b>Additional Error Handling in the Network Mode State Machine </b></p>
+<p>The  NW  SM  checks  if  the  setting  of  the  controller  or  transceiver  fails.  In  this  case  the </p>
+<p>CanSM tries to recover the failure in the next cycle. </p>
+<p><b>8.1.2 </b></p>
+<p><b>API CanSM_InitMemory() </b></p>
+<p>This service function was added to be called at Power On or after reset to set the global </p>
+<p>CanSM state, afterwards the CanSM can be initialized correctly. </p>
+<p><b>8.1.3 </b></p>
+<p><b>Error Code </b></p>
+<p>The following error codes are reported additionally to the errors defined in [1]: </p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>CANSM_E_PARAM_CONTROLLER</p>
+<p> the name is mentioned in the SWS but got no value. </p>
+<p><b>&gt; </b></p>
+<p>CANSM_E_MODE_CHANGE</p>
+<p> addition to ASR in case if transition fails several times in </p>
+<p>sequence. </p>
+<p><b>&gt; </b></p>
+<p>CANSM_E_SETTRANSCEIVERMODE</p>
+<p> addition to ASR in case if set transceiver mode fails. </p>
+<p><b>8.1.4 </b></p>
+<p><b>Configuration Options </b></p>
+<p><b>&gt; </b> It’s possible to deactivate the DEM at pre-compile time, like DET. </p>
+<p><b>&gt; </b> It’s possible to change the option </p>
+<p>Rx deadline monitoring</p>
+<p> at link time too. </p>
+<p><b>&gt; </b> It’s possible to enable a feature which deactivates the </p>
+<p>Rx deadline monitoring</p>
+<p> in </p>
+<p>the state CANSM_SILENT_COMMUNICATION too. </p>
+<p><b>8.1.5 </b></p>
+<p><b>API CanSM_PreventBusSleepAtStartUp() </b></p>
+<p>This service function was added to prevent the overwriting of the wakeup reason. </p>
+<p><b>8.1.6 </b></p>
+<p><b>ECU passive mode </b></p>
+<p>The passive mode deactivates the Tx part during full communication. The ECU listened </p>
+<p>“passive” on the CAN bus. </p>
+<p><b>8.1.7 </b></p>
+<p><b>Bus-off notification </b></p>
+<p>The CanSM informs the application about a bus-off. </p>
+<p><b>8.1.8 </b></p>
+<p><b>Support for XCP shutdown </b></p>
+<p>If XCP and CanSM is activates at the same system channel the XCP gets informed if the </p>
+<p>Tx Channel switches to Online or back again. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>47 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>48 / 51</p>
+<p><b>8.1.9 </b></p>
+<p><b>No mode notification during CanSM_Init </b></p>
+<p>The ComM_BusSM_ModeIndication is not called during the transition from </p>
+<p>CANSM_INIT</p>
+<p> </p>
+<p>to </p>
+<p>CANSM_NO_COMMUNNICATION</p>
+<p> because the ComM becomes initialized after the </p>
+<p>CanSM. </p>
+<p><b>8.1.10 </b></p>
+<p><b>Partial Networks </b></p>
+<p>If Partial Network for a CAN channel is activated the CAN transceiver can only be woken </p>
+<p>up by a specified CAN Message. Also the network management will ignore Nm messages </p>
+<p>which  don’t  belong  to  the  Partial  Network.  If  the  feature  is  enabled  (see  Table  7-1  and </p>
+<p>Table 7-2) the CanSM adapts the shutdown sequence. </p>
+<p><b>8.1.11 </b></p>
+<p><b>BswM ComMode Indication </b></p>
+<p>If the feature is enabled (see Table 7-1) the CanSM informs the BswM about state </p>
+<p>changes via the function BswM_CanSM_CurrentState. </p>
+<p>The transmitted states are: </p>
+<p></p>
+<p> </p>
+<p>CANSM_BSWM_NO_COMMUNICATION </p>
+<p></p>
+<p> </p>
+<p>CANSM_BSWM_SILENT_COMMUNICATION </p>
+<p></p>
+<p> </p>
+<p>CANSM_BSWM_FULL_COMMUNICATION </p>
+<p></p>
+<p> </p>
+<p>CANSM_BSWM_BUS_OFF</p>
+<p> </p>
+<p><b>8.1.12 </b></p>
+<p><b>Multiple Identity </b></p>
+<p>If the feature is activated the CanSM generates several configuration structures which are </p>
+<p>declared in the configuration header CanSM_Cfg.h. According to the identity the EcuM has </p>
+<p>to calls the CanSM_Init function with the according configuration. </p>
+<p><b>8.1.13 </b></p>
+<p><b>Additional Dem error </b></p>
+<p>The CanSM reports two additional errors to the Dem module.  </p>
+<p><b>&gt; </b> CANSM_E_MODE_CHANGE_NETWORK_&lt;X&gt; if the transition tries exceeds the </p>
+<p>configured number of “</p>
+<p>Hw Repetition</p>
+<p>“. </p>
+<p><b>&gt; </b> CANSM_E_SETTRANSCEIVERMODE_NETWORK_&lt;X&gt; if the change of the </p>
+<p>transceiver mode fails. </p>
+<p><b>8.1.14 </b></p>
+<p><b>Additional bus-off recovery in state silent </b></p>
+<p>If  a  bus-off  occurs  outside  the  state  FULL_COMMUNICATION,  the  CanSM  handles  the </p>
+<p>bus-off and sets the CAN controller mode back to STARTED. </p>
+<p><b>8.2 </b></p>
+<p><b>Limitations </b></p>
+<p><b>8.2.1 </b></p>
+<p><b>Controllers </b></p>
+<p>The CanSM supports only one controller per channel. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p><b>9 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>9.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>Bus communication </p>
+<p>messages  </p>
+<p>Bus communication messages are all messages sent on the </p>
+<p>communication bus. This </p>
+<p>Bus sleep  </p>
+<p>No activity required on communication bus (e.g. CAN bus sleep). </p>
+<p>CAN communication </p>
+<p>matrix </p>
+<p>Describes the complete CAN network: Participating nodes Definition of all </p>
+<p>CAN PDUs (identifier, DLC) Source and Sinks for PDUs </p>
+<p>CAN controller </p>
+<p>A CAN controller is a CPU on-chip or external standalone hardware </p>
+<p>device. One CAN controller is connected to one physical channel. </p>
+<p>CAN device driver </p>
+<p>Generic term of CAN Driver and CAN Transceiver Driver. </p>
+<p>CAN L-PDU </p>
+<p>CAN Protocol Data Unit. Consists of an identifier, DLC and data (SDU). </p>
+<p>CAN L-SDU </p>
+<p>CAN Service Data Unit. Data that are transported inside the CAN L-PDU. </p>
+<p>Diagnostic PDU </p>
+<p>scheduling  </p>
+<p>Sending of diagnostic PDUs. Scheduling of CAN diagnostic PDUs is </p>
+<p>performed by the diagnostic module, scheduling of LIN diagnostic PDUs </p>
+<p>is performed by the diagnostic module and the LIN interface and </p>
+<p>scheduling of FlexRay diagnostic PDUs is performed </p>
+<p>L-PDU channel group </p>
+<p>Group of CAN L-PDUs, which belong to just one underlying network. </p>
+<p>Usually they are handled by one upper layer module. </p>
+<p>L-PDU handle </p>
+<p>The L-PDU handle is defined as integer type and placed inside the CAN </p>
+<p>Interface layer. Typically each handle represents an L-PDU, which is a </p>
+<p>constant structure with information for Tx/Rx processing. </p>
+<p>Passive wake-up  </p>
+<p>Wakeup by another ECU and propagated (e.g. by bus or wakeup-line) to </p>
+<p>the ECU currently in focus.  </p>
+<p>Table 9-1  </p>
+<p>Glossary </p>
+<p><b>9.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface  </p>
+<p>ASR </p>
+<p>AUTOSAR </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BOR SM </p>
+<p>Bus Of Recovery State Machine </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>CAN </p>
+<p>Controller Area Network </p>
+<p>CanIf </p>
+<p>CAN Interface </p>
+<p>CanSM </p>
+<p>CAN State Manager </p>
+<p>Cbk </p>
+<p>call-back / call-out notification (functions) </p>
+<p>Cfg </p>
+<p>Configuration </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>49 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>Com </p>
+<p>Communication (means the ASR module) </p>
+<p>ComM </p>
+<p>Communication Manager </p>
+<p>DEM </p>
+<p>Diagnostic Event Manager </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>DTC </p>
+<p>Diagnostic Trouble Code </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>EcuM </p>
+<p>ECU State Manager </p>
+<p>EMI </p>
+<p>electromagnetic interference </p>
+<p>GUI </p>
+<p>Graphical User Interface </p>
+<p>HIS </p>
+<p>Hersteller Initiative Software </p>
+<p>ISR </p>
+<p>Interrupt Service Routine </p>
+<p>MemMap </p>
+<p>Memory Mapping </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>NW SM </p>
+<p>NetWork State Machine </p>
+<p>PB </p>
+<p>Post Build </p>
+<p>PC </p>
+<p>Personal Computer </p>
+<p>PDU </p>
+<p>Protocol Data Unit </p>
+<p>RTE </p>
+<p>Runtime Environment </p>
+<p>SchM </p>
+<p>BSW Scheduler </p>
+<p>SRS </p>
+<p>Software Requirement Specification </p>
+<p>SWC </p>
+<p>Software Component </p>
+<p>SWS </p>
+<p>Soft Ware Specification (here it usually means the </p>
+<p>SWS_CAN_StateManager) </p>
+<p>XCP </p>
+<p>X Calibration Protocol (X means able to handle several bus </p>
+<p>systems CAN, FlexRay) </p>
+<p>Table 9-2  </p>
+<p>Abbreviations </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>50 / 51</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN State Manager  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.16 </p>
+<p>based on template version 3.1 </p>
+<p>51 / 51</p>
+<p><b>10 Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

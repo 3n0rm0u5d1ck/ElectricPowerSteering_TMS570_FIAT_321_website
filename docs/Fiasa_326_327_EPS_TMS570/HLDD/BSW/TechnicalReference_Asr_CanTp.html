@@ -1,0 +1,4672 @@
+---
+layout: default
+title: TechnicalReference_Asr_CanTp
+nav_order: 7
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR CAN Transport Layer </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Version 1.18.01 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Peter Herrmann </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>2 / 73</p>
+<p><b>Document Information </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Peter Herrmann </p>
+<p>2006-12-07 </p>
+<p>1.0 </p>
+<p>Initial version </p>
+<p>Peter Herrmann </p>
+<p>2007-06-19 </p>
+<p>1.3 </p>
+<p>Update to AUTOSAR Release 2.1.0 </p>
+<p>Peter Herrmann </p>
+<p>2008-01-18 </p>
+<p>1.4 </p>
+<p>Added database  attributes </p>
+<p>Peter Herrmann </p>
+<p>2008-01-22 </p>
+<p>1.5 </p>
+<p>Added pre-compile macros for Tx </p>
+<p>Confirmation and Rx Indication callbacks </p>
+<p>Peter Herrmann </p>
+<p>2008-04-07 </p>
+<p>1.6 </p>
+<p>Adaptation to MICROSAR document </p>
+<p>template. </p>
+<p>Peter Herrmann </p>
+<p>2008-07-31 </p>
+<p>1.7 </p>
+<p>Added description for optimizations: </p>
+<p>- dynamic channel assignment </p>
+<p>(DYN_CHANNEL_ASSIGNMENT), </p>
+<p>- single connection </p>
+<p>(SINGLE_CONN_OPTIMIZED) </p>
+<p>- single connection pre-compile </p>
+<p>(SINGLE_CONN_NOPB_OPTIMIZED) </p>
+<p>- addressing types </p>
+<p>(STANDARD_ADDRESSING,  </p>
+<p>EXTENDED_ADDRESSING) </p>
+<p>- partial buffer provision </p>
+<p>(RX/TX_FULL_BUFFER_PROVISION)</p>
+<p> </p>
+<p>Peter Herrmann </p>
+<p>2008-09-16 </p>
+<p>1.8 </p>
+<p>Burst transmission </p>
+<p>Peter Herrmann </p>
+<p>2008-10-30 </p>
+<p>1.9 </p>
+<p>Version number updated </p>
+<p>Peter Herrmann </p>
+<p>2008-11-26 </p>
+<p>1.10 </p>
+<p>Single connection optimization </p>
+<p>Peter Herrmann </p>
+<p>2009-02-20 </p>
+<p>1.11 </p>
+<p>MainFunction Rx/Tx split. Additional user </p>
+<p>NSDU-ID (remapping). Additional </p>
+<p>SetSTmin, SetBS API. </p>
+<p>Peter Herrmann </p>
+<p>2009-06-10 </p>
+<p>1.11.82 </p>
+<p>Conversion to MICROSAR Technical </p>
+<p>Reference. </p>
+<p>Added Multiple Configuration, Cancel </p>
+<p>Transmit Request. </p>
+<p>Peter Herrmann </p>
+<p>2009-07-01 </p>
+<p>1.12.00 </p>
+<p>Mixed-11 addressing added. </p>
+<p>AUTOSAR Release 4 PduR API callout </p>
+<p>functions added. </p>
+<p>Peter Herrmann </p>
+<p>2009-29-09 </p>
+<p>1.13.00 </p>
+<p>Corrected chapter 7.2.4 (Timing limitations </p>
+<p>for N_Br, N_Cs). </p>
+<p>Peter Herrmann </p>
+<p>2009-11-04 </p>
+<p>1.14.00 </p>
+<p>Added non AUTOSAR Spec. conform </p>
+<p>special feature to avoid all Pre-Pass </p>
+<p>indications to the DEM (see 7.1.9). </p>
+<p>Added special feature to </p>
+<p>accelerate the FF </p>
+<p>routing (see 7.1.10). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>3 / 73</p>
+<p>Peter Herrmann </p>
+<p>2010-02-18 </p>
+<p>1.15.00 </p>
+<p>Additional AUTOSAR 4.x API:  </p>
+<p>“CanTp_ChangeParameterRequest” and </p>
+<p>belonging callout function </p>
+<p>“PduR_CanTpChangeParameterConfirmati</p>
+<p>on”. </p>
+<p>Additional Vector specified API  </p>
+<p>“CanTp_ReadParameterRequest”. </p>
+<p>Added Callout description for </p>
+<p>“EcuM_GeneratorCompatibilityError”. </p>
+<p>Added description for the mapping of </p>
+<p>critical sections. </p>
+<p>Deleted obsolete </p>
+<p>CanTp_DlcErrorNotification callout function </p>
+<p>from CanIf </p>
+<p>Peter Herrmann </p>
+<p>2010-08-13 </p>
+<p>1.16.00 </p>
+<p>Additional AUTOSAR 4.x API:  </p>
+<p>“CanTp_CancelTransmitRequest” and  </p>
+<p>“CanTp_CancelReceiveRequest”. </p>
+<p>Added description of postbuild parameters </p>
+<p>CanTpMaxNum(Rx/Tx)Sdus, </p>
+<p>CanTpMaxNum(Rx/Tx)Channels_PbLimit. </p>
+<p>Peter Herrmann </p>
+<p>2010-11-03 </p>
+<p>1.17.00 </p>
+<p>Additional description for callout functions </p>
+<p>with possibly disabled interrupts. </p>
+<p>Deleted API function </p>
+<p>PduR_CanTpGetAvailableTxBuffer which </p>
+<p>is obsolete with AR 4.0 </p>
+<p>Peter Herrmann </p>
+<p>2011-02-25 </p>
+<p>1.18.00 </p>
+<p>Added further (AR4 and customer specific)  </p>
+<p>extensions </p>
+<p>Peter Herrmann </p>
+<p>2011-03-30 </p>
+<p>1.18.01 </p>
+<p>After logging and rework </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>4 / 73</p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_SWS_CANTransportLayer.pdf </p>
+<p>3.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_SWS_CANInterface.pdf </p>
+<p>4.0.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR_SWS_PDURouter.pdf </p>
+<p>3.0.0 </p>
+<p>[4] </p>
+<p> </p>
+<p>/ISO/TF2/:  ISO FDIS 15765-2; Road vehicles — Diagnostics on CAN — </p>
+<p>Part 2: Network layer services  </p>
+<p>2009-09-06 </p>
+<p>[5] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DiagnosticEventManager.pdf </p>
+<p>4.0.0 </p>
+<p>[6] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DevelopmentErrorTracer.pdf </p>
+<p>3.0.0 </p>
+<p>[7] </p>
+<p> </p>
+<p>AUTOSAR_SRS_BSWGeneral.pdf </p>
+<p>3.0.0 </p>
+<p>[8] </p>
+<p> </p>
+<p>AUTOSAR_TR_BSWModuleList.pdf </p>
+<p>1.4.0 </p>
+<p>[9] </p>
+<p> </p>
+<p>Application </p>
+<p>Note </p>
+<p>AN-ISC-8-1118 </p>
+<p>– </p>
+<p>MICROSAR </p>
+<p>BSW </p>
+<p>Compatibility </p>
+<p>Check </p>
+<p> </p>
+<p>[10]  </p>
+<p>AUTOSAR_SWS_CAN_TP.pdf </p>
+<p>2.3.0 </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>5 / 73</p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Component History.......................................................................................................... 9</b></p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction ...................................................................................................................... 9</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Architecture Overview..................................................................................... 10</p>
+<p> </p>
+<p>2.2</p>
+<p> </p>
+<p>CAN Transport Layer interactions....................................................................11</p>
+<p> </p>
+<p>2.2.1</p>
+<p> </p>
+<p>Changes between AUTOSAR 3.x and AUTOSAR 4....................................... 12</p>
+<p> </p>
+<p>2.2.1.1</p>
+<p> </p>
+<p>PduR API changes.......................................................................................... 12</p>
+<p> </p>
+<p>2.2.1.2</p>
+<p> </p>
+<p>CanIf API changes .......................................................................................... 13</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description .................................................................................................. 14</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Features.......................................................................................................... 14</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Initialization ..................................................................................................... 14</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>States .............................................................................................................. 15</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Main Functions ............................................................................................... 16</p>
+<p> </p>
+<p>3.4.1</p>
+<p> </p>
+<p>The CanTp_MainFunction .............................................................................. 16</p>
+<p> </p>
+<p>3.4.2</p>
+<p> </p>
+<p>Buffer handling and data consistency............................................................. 16</p>
+<p> </p>
+<p>3.4.2.1</p>
+<p> </p>
+<p>Critical sections............................................................................................... 17</p>
+<p> </p>
+<p>3.5</p>
+<p> </p>
+<p>Error Handling................................................................................................. 18</p>
+<p> </p>
+<p>3.5.1</p>
+<p> </p>
+<p>Development Error Reporting ......................................................................... 18</p>
+<p> </p>
+<p>3.5.2</p>
+<p> </p>
+<p>Production Code Error Reporting ................................................................... 19</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration....................................................................................................................... 20</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Scope of Delivery............................................................................................ 20</p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>Static Files ...................................................................................................... 20</p>
+<p> </p>
+<p>4.1.1.1</p>
+<p> </p>
+<p>Hook functions ................................................................................................ 20</p>
+<p> </p>
+<p>4.1.2 </p>
+<p>21</p>
+<p> </p>
+<p>4.1.3</p>
+<p> </p>
+<p>Dynamic Files ................................................................................................. 21</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Include Structure............................................................................................. 21</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 22</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>API Description .............................................................................................................. 23</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Services provided by CANTP ......................................................................... 23</p>
+<p> </p>
+<p>5.1.1</p>
+<p> </p>
+<p>CanTp_Init:  (until AR 3) ................................................................................. 23</p>
+<p> </p>
+<p>5.1.2</p>
+<p> </p>
+<p>CanTp_Init: with ConfigPointer  (Vector extension to AR 3) ........................... 24</p>
+<p> </p>
+<p>5.1.3</p>
+<p> </p>
+<p>CanTp_Init:  (since AR 4)................................................................................ 25</p>
+<p> </p>
+<p>5.1.4</p>
+<p> </p>
+<p>CanTp_GetVersionInfo ................................................................................... 26</p>
+<p> </p>
+<p>5.1.5</p>
+<p> </p>
+<p>CanTp_Shutdown ........................................................................................... 27</p>
+<p> </p>
+<p>5.1.6</p>
+<p> </p>
+<p>CanTp_Transmit ............................................................................................. 28</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>6 / 73</p>
+<p>5.1.7</p>
+<p> </p>
+<p>CanTp_CancelTransmitRequest..................................................................... 30</p>
+<p> </p>
+<p>5.1.8</p>
+<p> </p>
+<p>CanTp_CancelReceiveRequest ..................................................................... 31</p>
+<p> </p>
+<p>5.1.9</p>
+<p> </p>
+<p>CanTp_MainFunction ..................................................................................... 32</p>
+<p> </p>
+<p>5.1.10</p>
+<p> </p>
+<p>CanTp_MainFunctionRx ................................................................................. 33</p>
+<p> </p>
+<p>5.1.11</p>
+<p> </p>
+<p>CanTp_MainFunctionTx ................................................................................. 33</p>
+<p> </p>
+<p>5.1.12</p>
+<p> </p>
+<p>CanTp_SetSTmin ........................................................................................... 34</p>
+<p> </p>
+<p>5.1.13</p>
+<p> </p>
+<p>CanTp_SetBS ................................................................................................. 35</p>
+<p> </p>
+<p>5.1.14</p>
+<p> </p>
+<p>CanTp_ChangeParameterRequest ................................................................ 36</p>
+<p> </p>
+<p>5.1.15</p>
+<p> </p>
+<p>CanTp_ReadParameterRequest .................................................................... 37</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Services used by CANTP ............................................................................... 38</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Callback Functions ......................................................................................... 39</p>
+<p> </p>
+<p>5.3.1</p>
+<p> </p>
+<p>CanTp_RxIndication ....................................................................................... 39</p>
+<p> </p>
+<p>5.3.2</p>
+<p> </p>
+<p>CanTp_TxConfirmation................................................................................... 40</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Configurable Interfaces................................................................................... 41</p>
+<p> </p>
+<p>5.4.1</p>
+<p> </p>
+<p>Notifications .................................................................................................... 41</p>
+<p> </p>
+<p>5.4.2</p>
+<p> </p>
+<p>Callout Functions ............................................................................................ 42</p>
+<p> </p>
+<p>5.4.2.1</p>
+<p> </p>
+<p>PduR_CanTpRxIndication .............................................................................. 42</p>
+<p> </p>
+<p>5.4.2.2</p>
+<p> </p>
+<p>PduR_CanTpTxConfirmation.......................................................................... 43</p>
+<p> </p>
+<p>5.4.3</p>
+<p> </p>
+<p>Callout Functions (until AUTOSAR Release 3)............................................... 45</p>
+<p> </p>
+<p>5.4.3.1</p>
+<p> </p>
+<p>PduR_CanTpProvideRxBuffer       (until AUTOSAR Release 3)..................... 45</p>
+<p> </p>
+<p>5.4.3.2</p>
+<p> </p>
+<p>PduR_CanTpProvideTxBuffer       (until AUTOSAR Release 3) ..................... 46</p>
+<p> </p>
+<p>5.4.4</p>
+<p> </p>
+<p>Callout Functions (since AUTOSAR Release 4)............................................. 48</p>
+<p> </p>
+<p>5.4.4.1</p>
+<p> </p>
+<p>PduR_CanTpStartOfReception (since AUTOSAR Release 4)........................ 48</p>
+<p> </p>
+<p>5.4.4.2</p>
+<p> </p>
+<p>PduR_CanTpCopyRxData (since AUTOSAR Release 4)............................... 49</p>
+<p> </p>
+<p>5.4.4.3</p>
+<p> </p>
+<p>PduR_CanTpCopyTxData (since AUTOSAR Release 4) ............................... 50</p>
+<p> </p>
+<p>5.4.4.4</p>
+<p> </p>
+<p>PduR_CanTpChangeParameterConfirmation ................................................ 51</p>
+<p> </p>
+<p>5.4.4.5</p>
+<p> </p>
+<p>EcuM_GeneratorCompatibilityError ................................................................ 52</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Configuration.................................................................................................................. 53</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Configuration in Data Base............................................................................. 53</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Configuration with GENy ................................................................................ 54</p>
+<p> </p>
+<p>6.2.1</p>
+<p> </p>
+<p>Component Configuration............................................................................... 55</p>
+<p> </p>
+<p>6.2.1.1</p>
+<p> </p>
+<p>General Parameters ....................................................................................... 55</p>
+<p> </p>
+<p>6.2.2</p>
+<p> </p>
+<p>Channel Configuration .................................................................................... 59</p>
+<p> </p>
+<p>6.2.2.1</p>
+<p> </p>
+<p>Rx Parameters................................................................................................ 59</p>
+<p> </p>
+<p>6.2.2.2</p>
+<p> </p>
+<p>Tx Parameters ................................................................................................ 60</p>
+<p> </p>
+<p>6.2.3</p>
+<p> </p>
+<p>Multiple Configuration ..................................................................................... 61</p>
+<p> </p>
+<p>6.2.4</p>
+<p> </p>
+<p>Timing Constraints .......................................................................................... 62</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance.................................................................................. 63</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Extensions ...................................................................................................... 63</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>7 / 73</p>
+<p>7.1.1</p>
+<p> </p>
+<p>Dynamically supported connection channels.................................................. 63</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>AR4 Buffer handling........................................................................................ 63</p>
+<p> </p>
+<p>7.1.3</p>
+<p> </p>
+<p>Burst transmission .......................................................................................... 63</p>
+<p> </p>
+<p>7.1.4</p>
+<p> </p>
+<p>Full Duplex...................................................................................................... 63</p>
+<p> </p>
+<p>7.1.5</p>
+<p> </p>
+<p>CANTP initialization ........................................................................................ 63</p>
+<p> </p>
+<p>7.1.5.1</p>
+<p> </p>
+<p>CANTP initialization since AUTOSAR 4.......................................................... 64</p>
+<p> </p>
+<p>7.1.6</p>
+<p> </p>
+<p>Padding pattern .............................................................................................. 64</p>
+<p> </p>
+<p>7.1.7</p>
+<p> </p>
+<p>Splitted CanTp_MainFunction......................................................................... 64</p>
+<p> </p>
+<p>7.1.8</p>
+<p> </p>
+<p>Dynamic Flow Control content........................................................................ 64</p>
+<p> </p>
+<p>7.1.9</p>
+<p> </p>
+<p>Suppress PRE_PASSED DEM events ........................................................... 64</p>
+<p> </p>
+<p>7.1.10</p>
+<p> </p>
+<p>Accelerate the routing of multi frames ............................................................ 65</p>
+<p> </p>
+<p>7.1.11</p>
+<p> </p>
+<p>Optimized ROM resource consumption.......................................................... 65</p>
+<p> </p>
+<p>7.1.12</p>
+<p> </p>
+<p>Detection of competing diagnostic tester access............................................ 65</p>
+<p> </p>
+<p>7.1.13</p>
+<p> </p>
+<p>Asynchronous transmit ................................................................................... 65</p>
+<p> </p>
+<p>7.1.14</p>
+<p> </p>
+<p>Reception of Flow Control and Consecutive frames....................................... 66</p>
+<p> </p>
+<p>7.1.14.1</p>
+<p> </p>
+<p>Ignore FC frames with a reserved STmin content .......................................... 66</p>
+<p> </p>
+<p>7.1.14.2</p>
+<p> </p>
+<p>Ignore FC frames with a Flow Status not equal to FC.CTS or FC.WAIT ........ 66</p>
+<p> </p>
+<p>7.1.14.3</p>
+<p> </p>
+<p>Ignore Consecutive Frames (CF) with a wrong sequence Number (SN)........ 66</p>
+<p> </p>
+<p>7.1.15</p>
+<p> </p>
+<p>DEM to DET reporting is configurable ............................................................ 67</p>
+<p> </p>
+<p>7.1.15.1</p>
+<p> </p>
+<p>DEM event CANTP_E_(RX_/TX_)COM(M).................................................... 67</p>
+<p> </p>
+<p>7.1.15.2</p>
+<p> </p>
+<p>DEM event CANTP_E_OPER_NOT_SUPPORTED ...................................... 67</p>
+<p> </p>
+<p>7.2</p>
+<p> </p>
+<p>Limitations....................................................................................................... 67</p>
+<p> </p>
+<p>7.2.1</p>
+<p> </p>
+<p>Memory optimization....................................................................................... 67</p>
+<p> </p>
+<p>7.2.2</p>
+<p> </p>
+<p>Variable Block Sizes ....................................................................................... 67</p>
+<p> </p>
+<p>7.2.3</p>
+<p> </p>
+<p>Usage of mixed Addressing ............................................................................ 67</p>
+<p> </p>
+<p>7.2.4</p>
+<p> </p>
+<p>Runtime optimization for Timing Calculation................................................... 67</p>
+<p> </p>
+<p>7.2.5</p>
+<p> </p>
+<p>Support parallel connections........................................................................... 68</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations.......................................................................................... 69</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Glossary.......................................................................................................... 69</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 71</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Contact ............................................................................................................................ 73</b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>8 / 73</p>
+<p><b>Illustrations </b></p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>AUTOSAR architecture .............................................................................. 10</p>
+<p> </p>
+<p>Figure 2-2</p>
+<p> </p>
+<p>CAN Transport Layer interactions ...............................................................11</p>
+<p> </p>
+<p>Figure 2-3</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the CANTP ........................................... 12</p>
+<p> </p>
+<p>Figure 3-1</p>
+<p> </p>
+<p>CANTP internal states................................................................................ 15</p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>Include structure......................................................................................... 21</p>
+<p> </p>
+<p><b>Tables </b></p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>Supported additional features .................................................................... 14</p>
+<p> </p>
+<p>Table 3-2 </p>
+<p> </p>
+<p>Not supported SWS features ..................................................................... 14</p>
+<p> </p>
+<p>Table 3-3 </p>
+<p> </p>
+<p>Mapping of service IDs to services ............................................................ 18</p>
+<p> </p>
+<p>Table 3-4 </p>
+<p> </p>
+<p>Errors reported to DET............................................................................... 18</p>
+<p> </p>
+<p>Table 3-5 </p>
+<p> </p>
+<p>Errors reported to DEM .............................................................................. 19</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Static files................................................................................................... 20</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Generated files........................................................................................... 21</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping .............................................. 22</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>CanTp_Init: until AR 3 (without ConfigPointer)........................................... 23</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>CanTp_Init: with ConfigPointer (Vector extension to AR 3)........................ 24</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>CanTp_Init: with ConfigPointer .................................................................. 25</p>
+<p> </p>
+<p>Table 5-4 </p>
+<p> </p>
+<p>CanTp_GetVersionInfo............................................................................... 26</p>
+<p> </p>
+<p>Table 5-5 </p>
+<p> </p>
+<p>CanTp_Shutdown ...................................................................................... 27</p>
+<p> </p>
+<p>Table 5-6 </p>
+<p> </p>
+<p>CanTp_Transmit......................................................................................... 29</p>
+<p> </p>
+<p>Table 5-7 </p>
+<p> </p>
+<p>CanTp_CancelTransmitRequest ................................................................ 30</p>
+<p> </p>
+<p>Table 5-8 </p>
+<p> </p>
+<p>CanTp_CancelReceiveRequest ................................................................. 31</p>
+<p> </p>
+<p>Table 5-9 </p>
+<p> </p>
+<p>CanTp_MainFunction ................................................................................. 32</p>
+<p> </p>
+<p>Table 5-10 </p>
+<p> </p>
+<p>CanTp_MainFunctionRx ............................................................................ 33</p>
+<p> </p>
+<p>Table 5-11 </p>
+<p> </p>
+<p>CanTp_MainFunctionTx ............................................................................. 33</p>
+<p> </p>
+<p>Table 5-12 </p>
+<p> </p>
+<p>CanTp_SetSTmin....................................................................................... 34</p>
+<p> </p>
+<p>Table 5-13 </p>
+<p> </p>
+<p>CanTp_SetBS ............................................................................................ 35</p>
+<p> </p>
+<p>Table 5-14 </p>
+<p> </p>
+<p>CanTp_ChangeParamRequest .................................................................. 36</p>
+<p> </p>
+<p>Table 5-15 </p>
+<p> </p>
+<p>CanTp_ReadParamRequest ...................................................................... 37</p>
+<p> </p>
+<p>Table 5-16 </p>
+<p> </p>
+<p>Services used by the CANTP..................................................................... 38</p>
+<p> </p>
+<p>Table 5-17 </p>
+<p> </p>
+<p>CanTp_RxIndication................................................................................... 39</p>
+<p> </p>
+<p>Table 5-18 </p>
+<p> </p>
+<p>CanTp_TxConfirmation .............................................................................. 40</p>
+<p> </p>
+<p>Table 5-19 </p>
+<p> </p>
+<p>PduR_CanTpRxIndication.......................................................................... 43</p>
+<p> </p>
+<p>Table 5-20 </p>
+<p> </p>
+<p>PduR_CanTpTxConfirmation ..................................................................... 44</p>
+<p> </p>
+<p>Table 5-21 </p>
+<p> </p>
+<p>PduR_CanTpProvideRxBuffer ................................................................... 45</p>
+<p> </p>
+<p>Table 5-22 </p>
+<p> </p>
+<p>PduR_CanTpProvideTxBuffer.................................................................... 47</p>
+<p> </p>
+<p>Table 5-23 </p>
+<p> </p>
+<p>PduR_CanTpStartOfReception .................................................................. 48</p>
+<p> </p>
+<p>Table 5-24 </p>
+<p> </p>
+<p>PduR_CanTpCopyRxData ......................................................................... 49</p>
+<p> </p>
+<p>Table 5-25 </p>
+<p> </p>
+<p>PduR_CanTpCopyTxData ......................................................................... 50</p>
+<p> </p>
+<p>Table 5-26 </p>
+<p> </p>
+<p>PduR_CanTpChangeParameterConfirmation............................................ 51</p>
+<p> </p>
+<p>Table 5-27 </p>
+<p> </p>
+<p>EcuM_GeneratorCompatibilityError ........................................................... 52</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Data base attributes ................................................................................... 53</p>
+<p> </p>
+<p>Table 6-2 </p>
+<p> </p>
+<p>General parameters ................................................................................... 59</p>
+<p> </p>
+<p>Table 6-3 </p>
+<p> </p>
+<p>Rx parameters............................................................................................ 60</p>
+<p> </p>
+<p>Table 6-4 </p>
+<p> </p>
+<p>Tx parameters ............................................................................................ 61</p>
+<p> </p>
+<p>Table 8-1 </p>
+<p> </p>
+<p>Glossary ..................................................................................................... 71</p>
+<p> </p>
+<p>Table 8-2 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................. 72</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>9 / 73</p>
+<p><b>1 </b></p>
+<p><b>Component History </b></p>
+<p>The </p>
+<p>component </p>
+<p>history </p>
+<p>gives </p>
+<p>an </p>
+<p>overview </p>
+<p>over </p>
+<p>the </p>
+<p>important </p>
+<p>milestones </p>
+<p>that </p>
+<p>are </p>
+<p>supported in the different versions of the component.  </p>
+<p>For details please see “Document Change History” within [1] and [10]. </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module CANTP as specified in [1] and [10].  </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release: </b></p>
+<p>3 and 4 (configurable) </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile, post-build </p>
+<p><b>Vendor ID: </b></p>
+<p>CANTP_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= </p>
+<p>Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>CANTP_MODULE_ID   </p>
+<p>35 decimal </p>
+<p>(according to ref. [8]) </p>
+<p>.  </p>
+<p> </p>
+<p>According to AUTOSAR basic software architecture, CANTP provides services for </p>
+<p><b>&gt; </b> Segmentation of data in transmit direction </p>
+<p><b>&gt; </b> Reassembly of data in receive direction </p>
+<p><b>&gt; </b> Control of data flow </p>
+<p><b>&gt; </b> Detection of errors in segmentation sessions </p>
+<p> </p>
+<p>AUTOSAR  module  specifications  are  based  on  existing  standards. Thus  this AUTOSAR </p>
+<p>CAN Transport Layer specification is based on the international standard ISO 15765 which </p>
+<p>is the most widespread standard in the automotive domain. </p>
+<p>ISO  15765  contains  four  sections  and  describes  two  applicable  CAN  Transport  Layer </p>
+<p>specifications: ISO 15765-2 for OEM enhanced diagnostics (see [4]) and ISO 15765-4 for </p>
+<p>OBD diagnostics. Concerning the transport layer, ISO 15765-4 (the section of ISO 15765 </p>
+<p>which  also  covers  the  data  link  layer  and  the  physical  layer)  is  in  accordance  with  ISO </p>
+<p>15765-2 with some restrictions/additions. In order that there is no incompatibility problem </p>
+<p>between ISO 15765-2 and ISO 15765-4, differences will be solved by the CAN Transport </p>
+<p>Layer configuration. </p>
+<p>Although  the  CAN  transport  protocol  is  mainly  used  for  vehicle  diagnostic  systems,  its </p>
+<p>design </p>
+<p>also </p>
+<p>incorporates </p>
+<p>requirements </p>
+<p>from </p>
+<p>other </p>
+<p>CAN </p>
+<p>based </p>
+<p>systems </p>
+<p>employing </p>
+<p>transport-layer protocols. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>10 / 73</p>
+<p> </p>
+<p><b>2.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the CANTP is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 2-1 </p>
+<p>AUTOSAR architecture </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>11 / 73</p>
+<p><b>2.2 </b></p>
+<p><b>CAN Transport Layer interactions </b></p>
+<p>The  upper  interface  of  CANTP  provides  a  PDUR  module  global  access  for  transmitting </p>
+<p>and receiving data.  </p>
+<p>This access is realized via a CAN N-SDU identifier (CAN NSduId). The CAN NSduId refers </p>
+<p>to  a  constant  data  structure  which  consists  of  attributes  describing  CAN  N-SDU.  Each </p>
+<p>CAN N-SDU specific data structure may contain attributes such as: type of N-SDU (Tx or </p>
+<p>Rx),  its  addressing  format,  L-SDU  identifier  of  this  message  or  other  attributes  that  are </p>
+<p>useful for the implementation. </p>
+<p> </p>
+<p> </p>
+<p>Figure 2-2 </p>
+<p>CAN Transport Layer interactions </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>12 / 73</p>
+<p>The next figure shows the interfaces to adjacent modules of the CANTP. These interfaces </p>
+<p>are described in chapter 5.  </p>
+<p><b>id Architecture overview</b></p>
+<p><b>Det</b></p>
+<p><b>CanTp</b></p>
+<p><b>SchM</b></p>
+<p><b>PduR</b></p>
+<p><b>CanIf</b></p>
+<p><b>Dem</b></p>
+<p><b>EcuM</b></p>
+<p>Interrupt- and critical section handling</p>
+<p>Det_ReportError</p>
+<p>«optional»</p>
+<p>CanIf_Transmit</p>
+<p>CanTp_RxIndication</p>
+<p>CanTp_Transmit</p>
+<p>Dem_ReportErrorStatus</p>
+<p>«optional»</p>
+<p>PduR_CanTpRxIndication</p>
+<p>PduR_CanTpTxConfirmation</p>
+<p>PduR_CanTpProvideRxBuffer</p>
+<p>PduR_CanTpProvideTxBuffer</p>
+<p>CanTp_TxConfirmation</p>
+<p>CanTp_Init</p>
+<p>(CanTp_Shutdown)</p>
+<p>CanTp_</p>
+<p>MainFunction</p>
+<p>CanTp_</p>
+<p>GetVersionInfo</p>
+<p> </p>
+<p>Figure 2-3 </p>
+<p>Interfaces to adjacent modules of the CANTP </p>
+<p><b>2.2.1 </b></p>
+<p><b>Changes between AUTOSAR 3.x and AUTOSAR 4 </b></p>
+<p><b>2.2.1.1 </b></p>
+<p><b>PduR API changes </b></p>
+<p>The buffer provision calls from AR3 </p>
+<p>PduR_CanTpProvideRxBuffer and </p>
+<p>PduR_CanTpProvideTxBuffer </p>
+<p>have been changed by AUTOSAR to  </p>
+<p>PduR_CanTpStartOfReception, PduR_CanTpCopyRxData and </p>
+<p>PduR_CanTpCopyTxData </p>
+<p>within AR4. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>13 / 73</p>
+<p><b>2.2.1.2 </b></p>
+<p><b>CanIf API changes </b></p>
+<p>In  addition  to  the  existing  CanIf_Transmit  API  a  cancellation  API  function  is  supported </p>
+<p>since AR4. The  CanIf_CancelTransmit  shall  allow  to  cancel  transmit  requests  which  are </p>
+<p>not already handed physically to the CAN bus. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>14 / 73</p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Features </b></p>
+<p>The implemented features cover the complete functionality specified in [1] and [2] except </p>
+<p>the entries in “Table 3-2  </p>
+<p>Not supported SWS features” below. </p>
+<p>Extensions and limitations concerning the AUTOSAR features are presented in chapter 7 </p>
+<p>in more detail. </p>
+<p> </p>
+<p>The following additional features are supported: </p>
+<p><b>Supported Additional Feature </b></p>
+<p>Burst transmission </p>
+<p>Full Duplex (in addition to [10]) </p>
+<p>CANTP initialization (in addition to [10]) </p>
+<p>Padding pattern </p>
+<p>Splitted CanTp_MainFunction </p>
+<p>Dynamic Flow Control content (in addition to [10]) </p>
+<p>Table 3-1  </p>
+<p>Supported additional features </p>
+<p>The following features described in [1] are not supported: </p>
+<p><b>Not Supported Feature </b></p>
+<p>Half Duplex </p>
+<p>Shared channels </p>
+<p>Table 3-2  </p>
+<p>Not supported SWS features </p>
+<p><b>3.2 </b></p>
+<p><b>Initialization </b></p>
+<p>After power up, CANTP is in a state called CANTP_OFF. In this state, the CANTP is not </p>
+<p>yet initialized and therefore may not perform any communication task. </p>
+<p>This service uses the given configuration set to initialize all global variables of the CAN </p>
+<p>Transport </p>
+<p>Layer </p>
+<p>and </p>
+<p>brings </p>
+<p>it </p>
+<p>to </p>
+<p>the </p>
+<p>idle </p>
+<p>state </p>
+<p>(state </p>
+<p>= </p>
+<p>CANTP_ON, </p>
+<p>but </p>
+<p>neither </p>
+<p>transmission nor reception are possible yet). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>15 / 73</p>
+<p><b>3.3 </b></p>
+<p><b>States </b></p>
+<p>The CANTP module has two internal states, </p>
+<p>CANTP_OFF </p>
+<p>and </p>
+<p>CANTP_ON</p>
+<p>. After power up  </p>
+<p>the CANTP is in the </p>
+<p>CANTP_OFF </p>
+<p>state. </p>
+<p>The  CANTP  changes  to  the  internal  state </p>
+<p>CANTP_ON </p>
+<p>when  it  has  been  successfully  </p>
+<p>nitialized with </p>
+<p>CanTp_Init()</p>
+<p>. </p>
+<p>The </p>
+<p>CANTP </p>
+<p>performs </p>
+<p>segmentation </p>
+<p>and </p>
+<p>reassembly </p>
+<p>tasks </p>
+<p>only </p>
+<p>when </p>
+<p>it </p>
+<p>is </p>
+<p>in </p>
+<p>the </p>
+<p>C</p>
+<p>ANTP_ON </p>
+<p>state. The function </p>
+<p>CanTp_Init </p>
+<p>initializes all global variables of the module </p>
+<p>and sets all transport protocol connections in a sub-state of </p>
+<p>CANTP_ON</p>
+<p>, in which neither </p>
+<p>segmented  transmission  nor  segmented  reception  are  in  progress  (Rx  thread  in  state </p>
+<p>CANTP_RX_WAIT </p>
+<p>and Tx thread in state </p>
+<p>CANTP_TX_WAIT</p>
+<p>). </p>
+<p>If  called  when  the  CANTP  module  is  in  the  global  state </p>
+<p>CANTP_ON, </p>
+<p>the  function </p>
+<p>CanTp_Init </p>
+<p>returns </p>
+<p>the </p>
+<p>module </p>
+<p>to </p>
+<p>state </p>
+<p>Idle </p>
+<p>(state </p>
+<p>= </p>
+<p>CANTP_ON, </p>
+<p>but </p>
+<p>neither </p>
+<p>transmission </p>
+<p>nor </p>
+<p>reception </p>
+<p>are </p>
+<p>in </p>
+<p>progress) </p>
+<p>and </p>
+<p>the </p>
+<p>module </p>
+<p>looses </p>
+<p>all </p>
+<p>current </p>
+<p>connections</p>
+<p>. </p>
+<p>The function </p>
+<p>CanTp_Shutdown </p>
+<p>stops the CANTP module properly. </p>
+<p> </p>
+<p> </p>
+<p>Figure 3-1 </p>
+<p>CANTP internal states </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>16 / 73</p>
+<p> </p>
+<p><b>3.4 </b></p>
+<p><b>Main Functions </b></p>
+<p><b>&gt; </b></p>
+<p><b>CanTp_Init</b>() </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Overall module initialization prior to any usage. </p>
+<p><b>&gt; </b></p>
+<p><b>CanTp_GetVersionInfo </b></p>
+<p>Obtains the version information of the CANTP module. </p>
+<p><b>&gt; </b></p>
+<p><b>CanTp_Shutdown  </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Closes all connections and sets the CANTP module into CANTP_OFF state.  </p>
+<p><b>&gt; </b></p>
+<p><b>CanTp_Transmit </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Request the transfer of segmented data. </p>
+<p><b>&gt; </b></p>
+<p><b>CanTp_MainFunction  </b></p>
+<p>Entry point for scheduling the CANTP module. </p>
+<p> </p>
+<p><b>3.4.1 </b></p>
+<p><b>The CanTp_MainFunction </b></p>
+<p>This is the main function serving as time-basis for scheduling the CANTP (entry-point for </p>
+<p>scheduling).  </p>
+<p>Please note, that the configured task cycle is used to calculate any kind of timing behavior </p>
+<p>(e.g. </p>
+<p>timeouts </p>
+<p>or </p>
+<p>delays.). </p>
+<p>So </p>
+<p>this </p>
+<p>function </p>
+<p>must </p>
+<p>be </p>
+<p>called </p>
+<p>periodically </p>
+<p>with </p>
+<p>the </p>
+<p>‘CanTpMainFunctionPeriod’ which is actually configured in the generation tool. </p>
+<p><b>3.4.2 </b></p>
+<p><b>Buffer handling and data consistency </b></p>
+<p>To  optimize  the  communication  stack,  AUTOSAR  limits  the  CANTP  buffering  capacity. </p>
+<p>Therefore, the CANTP copies N-SDU payload directly from an upper layer (e.g. DCM or </p>
+<p>PDU Router) to the CAN driver and vice-versa.  </p>
+<p>Thus, in order to guarantee data consistency, the upper layer <b>must </b>assure the following </p>
+<p>rules (see [1] 5.1.4): </p>
+<p><b>&gt; </b> At transmission time: the N-SDU data payload remains unchanged from the transmit </p>
+<p>request until the transmit confirmation has been received or the next buffer is requested </p>
+<p>from the CANTP. </p>
+<p><b>&gt; </b> At reception time: the N-SDU data access is locked from the buffer allocation request </p>
+<p>until the reception indication or the next buffer allocation request has been received. </p>
+<p>This  means  that  the  application  is  responsible  for  data  consistency  during  transmission </p>
+<p>and reception! </p>
+<p>For more information on these functions, refer to the PDU Router module specification [3]. </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>The buffer provision callback functions are called directly from the CANTP calling </p>
+<p>context. This can also be on interrupt level. So the callback functions must assure that </p>
+<p>their duration is strictly limited to avoid the loss of information due to a long interrupt </p>
+<p>disable period. </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>17 / 73</p>
+<p><b>3.4.2.1 </b></p>
+<p><b>Critical sections </b></p>
+<p>Different messages from different busses (this can be other CAN buses or, in the case of a </p>
+<p>gateway ECU, also other  buses like FlexRay, LIN etc.) have to be handled at the same </p>
+<p>time by the CANTP as well as transmission requests from the local ECU. This handling </p>
+<p>can be accomplished as well from interrupt as also from task level. Thus a synchronization </p>
+<p>mechanism is implemented to guarantee data consistency amongst all connections. </p>
+<p>The synchronization mechanism defined by AUTOSAR covers the entering and leaving of </p>
+<p>so called critical sections. Different critical sections can be handled by using different so </p>
+<p>called “Exclusive Areas”. </p>
+<p>CANTP </p>
+<p>uses </p>
+<p>the </p>
+<p>critical </p>
+<p>sections </p>
+<p>CANTP_EXCLUSIVE_AREA_0 </p>
+<p>and </p>
+<p>CANTP_EXCLUSIVE_AREA_1.  These  critical  sections  can  be  entered  from  task  and </p>
+<p>interrupt context depending on the configuration of the calling layer. </p>
+<p>The  implementation  of  the  critical  sections  must  avoid  that  multiple  relevant  tasks  or </p>
+<p>interrupt service routines can enter any of the critical sections at the same time, i.e. they </p>
+<p>may not interrupt each other. </p>
+<p>Relevant interrupts in the context of the CANTP are interrupts originated from physical bus </p>
+<p>events (CAN, LIN, FlexRay etc.). </p>
+<p>Relevant  tasks  in  the  CANTP  context  are  all  tasks  which  call  CANTP  API  functions. </p>
+<p>Usually  these  tasks  are  limited  to  tasks  on  which  other  BSW  modules  (DCM,  COM, </p>
+<p>ECUM) are mapped to. </p>
+<p> </p>
+<p>E.g.: For an implementation of the critical sections it could be sufficient to </p>
+<p><b>&gt; </b> Disable interrupt levels up to the highest bus interrupt level (interrupt controller with </p>
+<p>interrupt levels supposed) assuming that the task rescheduling is thereby inhibited too  </p>
+<p><b>&gt; </b> Disable all bus relevant interrupts if all modules calling CANTP API functions are </p>
+<p>mapped to one task (e.g. SchM task) or a non-preempitve OS is used </p>
+<p> </p>
+<p>The </p>
+<p>difference </p>
+<p>between </p>
+<p>CANTP_EXCLUSIVE_AREA_0 </p>
+<p>and </p>
+<p>CANTP_EXCLUSIVE_AREA_1 is the frequency of enter/leave calls.  </p>
+<p>CANTP_EXCLUSIVE_AREA_1 </p>
+<p>is </p>
+<p>used </p>
+<p>in </p>
+<p>CanTp_MainFunctionRx </p>
+<p>and </p>
+<p>CanTp_MainFunctionTx while iterating through all connections doing one enter/leave per </p>
+<p>iteration. </p>
+<p>It </p>
+<p>is </p>
+<p>possible </p>
+<p>to </p>
+<p>implement </p>
+<p>this </p>
+<p>critical </p>
+<p>section </p>
+<p>with </p>
+<p>higher </p>
+<p>performance </p>
+<p>mechanisms  (e.g.,  global  interrupt  lock)  if  necessary.  This  is  typically  used  in  gateway </p>
+<p>applications with configurations containing many connections on several physical busses. </p>
+<p>CANTP_EXCLUSIVE_AREA_0 </p>
+<p>and </p>
+<p>CANTP_EXCLUSIVE_AREA_1 </p>
+<p>are </p>
+<p>mutually </p>
+<p>exclusive. The implementation  must ensure that only one of the critical sections can be </p>
+<p>entered at the same time. </p>
+<p>Please note that these are only examples and that the actual implementation of the critical </p>
+<p>sections is highly dependent on the platform architecture and the system configuration. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>18 / 73</p>
+<p><b>3.5 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>3.5.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>By </p>
+<p>default, </p>
+<p>development </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>the </p>
+<p>DET </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Det_ReportError()</p>
+<p>as  specified  in  [6],  if  development  error  reporting  is  enabled  (i.e. </p>
+<p>pre-compile parameter </p>
+<p>CANTP_DEV_ERROR_DETECT==STD_ON)</p>
+<p>. </p>
+<p>If  another  module  is  used  for  development  error  reporting,  the  function  prototype  for </p>
+<p>reporting the error can be configured by the integrator, but must have the same signature </p>
+<p>as the service </p>
+<p>Det_ReportError()</p>
+<p>. </p>
+<p>The reported CANTP ID is 35. </p>
+<p>The  reported  service  IDs  identify  the  services  which  are  described  in  5.1. The  following </p>
+<p>table presents the service IDs and the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>0x01 </p>
+<p>CanTp_Init </p>
+<p>0x02 </p>
+<p>CanTp_Shutdown </p>
+<p>0x03 </p>
+<p>CanTp_Transmit </p>
+<p>0x04 </p>
+<p>CanTp_RxIndication </p>
+<p>0x05 </p>
+<p>CanTp_TxConfirmation </p>
+<p>0x06 </p>
+<p>CanTp_MainFunction </p>
+<p>0x07 </p>
+<p>CanTp_GetVersionInfo </p>
+<p>Table 3-3  </p>
+<p>Mapping of service IDs to services </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x01 </p>
+<p>CANTP_E_PARAM_CONFIG             </p>
+<p>API called with wrong parameters </p>
+<p>0x02 </p>
+<p>CANTP_E_PARAM_ID                 </p>
+<p>API called with wrong parameters </p>
+<p>0x04 </p>
+<p>CANTP_E_PARAM_ADDRESS            </p>
+<p>API called with wrong parameters </p>
+<p>0x20 </p>
+<p>CANTP_E_UNINIT </p>
+<p>API service used without module initialization </p>
+<p>0x30 </p>
+<p>CANTP_E_INVALID_TX_ID            </p>
+<p>Invalid Transmit PDU identifier </p>
+<p>0x40 </p>
+<p>CANTP_E_INVALID_RX_ID            </p>
+<p>Invalid Receive PDU identifier </p>
+<p>0x50 </p>
+<p>CANTP_E_INVALID_TX_BUFFER        </p>
+<p>Invalid Transmit buffer address </p>
+<p>0x60 </p>
+<p>CANTP_E_INVALID_RX_BUFFER        </p>
+<p>Invalid Receive buffer address </p>
+<p>0x70 </p>
+<p>CANTP_E_INVALID_TX_LENGTH        </p>
+<p>Invalid data length of the transmit PDU </p>
+<p>0x80 </p>
+<p>CANTP_E_INVALID_RX_LENGTH        </p>
+<p>Invalid data length of the receive PDU </p>
+<p>0x90 </p>
+<p>CANTP_E_INVALID_TA_TYPE </p>
+<p>Functional addressing Tx I-Pdu message does not </p>
+<p>fit into a SF </p>
+<p>0x5C </p>
+<p>NTFRSLT_E_CANTP_INVALID_STATE</p>
+<p>This error is used if the internal state machine of the </p>
+<p>CANTP shows an invalid status. </p>
+<p>Table 3-4  </p>
+<p>Errors reported to DET </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>19 / 73</p>
+<p><b>3.5.2 </b></p>
+<p><b>Production Code Error Reporting </b></p>
+<p>By  default,  production  code  related  errors  are  reported  to  the  DEM  using  the  service </p>
+<p>Dem_ReportErrorStatus()</p>
+<p> as specified in [5], if production error reporting is enabled </p>
+<p>(i.e. pre-compile parameter </p>
+<p>CANTP_PROD_ERROR_DETECT==STD_ON</p>
+<p>). </p>
+<p>If  another  module  is  used  for  production  code  error  reporting,  the  function  prototype  for </p>
+<p>reporting the error can be configured by the integrator, but must have the same signature </p>
+<p>as the service </p>
+<p>Dem_ReportErrorStatus()</p>
+<p>. </p>
+<p>The errors reported to DEM are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>CANTP_E_OPER_NOT_SUPPORTED </p>
+<p>Requested operation is not supported </p>
+<p>CANTP_E_RX_COM </p>
+<p>Event reported on completion of a reception </p>
+<p>operation (only AUTOSAR 4) </p>
+<p>CANTP_E_TX_COM </p>
+<p>Event reported on completion of a </p>
+<p>transmission operation (only AUTOSAR 4) </p>
+<p>CANTP_E_COM </p>
+<p>(named CANTP_E_COMM within AUTOSAR 3.1) </p>
+<p>Another error occurred during a reception or a </p>
+<p>transmission (AUTOSAR 3 and AUTOSAR4) </p>
+<p>Table 3-5  </p>
+<p>Errors reported to DEM </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>20 / 73</p>
+<p><b>4 </b></p>
+<p><b>Integration </b></p>
+<p>This  chapter  gives  necessary  information  for  the  integration  of  the  MICROSAR  CANTP </p>
+<p>into an application environment of an ECU. </p>
+<p><b>4.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the CANTP contains the files which are described in the chapters 4.1.1 and </p>
+<p>4.1.2: </p>
+<p><b>4.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>CanTp.c </p>
+<p>Source file of the CANTP. </p>
+<p>CanTp.h </p>
+<p>Header file of the CANTP. </p>
+<p>CanTp_Hooks.h </p>
+<p>Header  file of the monitoring hook function definitions (included from </p>
+<p>CanTp.c). </p>
+<p>CanTp_Cbk.h </p>
+<p>Header file of the CANTP callback functions. </p>
+<p>CanTp_Types.h </p>
+<p>Header file of the CANTP type definitions. </p>
+<p>CanTp_Priv.h </p>
+<p>Header file of the CANTP extended type definitions (Vector extensions to </p>
+<p>AUTOSAR). </p>
+<p>CanTp.lib </p>
+<p>Library of the CANTP </p>
+<p>Table 4-1  </p>
+<p>Static files </p>
+<p><b>4.1.1.1 </b></p>
+<p><b>Hook functions </b></p>
+<p>Additional hook functions can be provided by defining the function declarations supported  </p>
+<p>within the CanTp_Hooks.h header file. </p>
+<p>The CanTp callback functions  </p>
+<p><b>X</b></p>
+<p><b> </b></p>
+<p>CanTp_RxIndication, called at the reception of each CAN frame and  </p>
+<p><b>X</b></p>
+<p><b> </b></p>
+<p>CanTp_TxConfirmation, called at the transmit confirmation of each CAN frame</p>
+<p>  </p>
+<p>are supplied with the following tags at the beginning and the end of the function: </p>
+<p> </p>
+<p># define CanTpHook_OnBegin_CanTp_RxIndication() </p>
+<p> </p>
+<p># define CanTpHook_OnEnd_CanTp_RxIndication() </p>
+<p> </p>
+<p># define CanTpHook_OnBegin_CanTp_TxConfirmation() </p>
+<p> </p>
+<p># define CanTpHook_OnEnd_CanTp_TxConfirmation(). </p>
+<p> </p>
+<p>Please note that the provided hook functions are all of the type “void func(void)”. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>21 / 73</p>
+<p><b>4.1.2 </b></p>
+<p><b> </b></p>
+<p><b>4.1.3 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool [config tool]. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>CanTp_Cfg.h </p>
+<p>This is the generated header file of CANTP containing pre-compile switches </p>
+<p>and providing symbolic defines. </p>
+<p>CanTp_Cfg.c </p>
+<p>This is the generated source file of CANTP containing pre-compile-time </p>
+<p>configurable parameters </p>
+<p>CanTp_Lcfg.h </p>
+<p>This is the generated header file of CANTP containing link-time configurable </p>
+<p>symbols </p>
+<p>CanTp_Lcfg.c </p>
+<p>This is the generated source file of CANTP containing link-time configurable </p>
+<p>parameters </p>
+<p>CanTp_PBcfg.c </p>
+<p>This is the generated source file of CANTP containing post-build-time </p>
+<p>configurable parameters </p>
+<p>CanTp_PBcfg.c </p>
+<p>This is the generated source file of CANTP containing post-build-time </p>
+<p>configurable parameters </p>
+<p>Table 4-2  </p>
+<p>Generated files </p>
+<p> </p>
+<p><b>4.2 </b></p>
+<p><b>Include Structure </b></p>
+<p> </p>
+<p>Figure 4-1 </p>
+<p>Include structure </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>22 / 73</p>
+<p><b>4.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions defined for the CANTP and illustrates their assignment among each other. </p>
+<p><b>Compiler Abstraction </b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>CANTP_CONST </p>
+<p>CANTP_PBCFG </p>
+<p>CANTP_CODE </p>
+<p>CANTP_APPL_CODE </p>
+<p>CANTP_APPL_DATA </p>
+<p>CANTP_VAR_NOINIT </p>
+<p>CANTP_VAR </p>
+<p>CANTP_START_SEC_CODE </p>
+<p>CANTP_STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTP_START_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p>CANTP_START_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTP_START_SEC_CONST_16BIT </p>
+<p>CANTP_STOP_SEC_CONST_16BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTP_START_SEC_CONST_32BIT </p>
+<p>CANTP_STOP_SEC_CONST_32BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTP_START_SEC_CONST_PBCFG_ROOT </p>
+<p>CANTP_START_SEC_CONST_PBCFG_ROOT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTP_START_SEC_PBCFG_ROOT </p>
+<p>CANTP_START_SEC_PBCFG_ROOT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CANTP_START_SEC_VAR_NOINIT_8BIT </p>
+<p>CANTP_START_SEC_VAR_NOINIT_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-3  </p>
+<p>Compiler abstraction and memory mapping </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>23 / 73</p>
+<p><b>5 </b></p>
+<p><b>API Description </b></p>
+<p>For an interfaces overview please see Figure 2-3. </p>
+<p><b>5.1 </b></p>
+<p><b>Services provided by CANTP </b></p>
+<p>The CANTP API consists of services, which are realized by function calls. </p>
+<p><b>5.1.1 </b></p>
+<p><b>CanTp_Init:  (until AR 3) </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_Init </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This service uses the given configuration set to initialize all global variables of the CANTP and sets it in the </p>
+<p>idle state (state = CANTP_ON). No transmissions or receptions are currently pending.  </p>
+<p>The CANTP is not configured and must not perform any communication task unless this initialization </p>
+<p>function was called at least once. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Only available if enabled at compile time (</p>
+<p>CANTP_HAVE_INIT_CFG_PTR == STD_OFF</p>
+<p>) </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Called from the EcuManager during system startup. </p>
+<p>Table 5-1  </p>
+<p>CanTp_Init: until AR 3 (without ConfigPointer) </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>24 / 73</p>
+<p><b>5.1.2 </b></p>
+<p><b>CanTp_Init: with ConfigPointer  (Vector extension to AR 3) </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_Init </b>( const void* const pCfgPtr ) </p>
+<p><b>Parameter </b></p>
+<p>pCfgPtr </p>
+<p>Pointer to a given configuration set. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This service uses the configuration set addressed to by the pCfgPtr to initialize all global variables of the </p>
+<p>CANTP and sets it in the idle state (state = CANTP_ON). No transmissions or receptions are currently </p>
+<p>pending.  </p>
+<p>The CANTP is not configured and must not perform any communication task unless this initialization </p>
+<p>function was called at least once. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Only available if enabled at compile time (CANTP_HAVE_INIT_CFG_PTR == STD_ON) </p>
+<p><b>&gt; </b></p>
+<p>If multiple configurations are used then this pointer is used to identify the appropriate identity. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Called from the EcuManager during system startup. </p>
+<p>Table 5-2  </p>
+<p>CanTp_Init: with ConfigPointer (Vector extension to AR 3) </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>25 / 73</p>
+<p><b>5.1.3 </b></p>
+<p><b>CanTp_Init:  (since AR 4) </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_Init </b>( const </p>
+<p>CanTp_ConfigType</p>
+<p>* pCfgPtr ) </p>
+<p><b>Parameter </b></p>
+<p>pCfgPtr </p>
+<p>Pointer to a given configuration set. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This service uses the configuration set addressed to by the pCfgPtr to initialize all global variables of the </p>
+<p>CANTP and sets it in the idle state (state = CANTP_ON). No transmissions or receptions are currently </p>
+<p>pending.  </p>
+<p>The CANTP is not configured and must not perform any communication task unless this initialization </p>
+<p>function was called at least once. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>If multiple configurations are used then this pointer is used to identify the appropriate identity. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Called from the EcuManager during system startup. </p>
+<p>Table 5-3  </p>
+<p>CanTp_Init: with ConfigPointer </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>26 / 73</p>
+<p><b>5.1.4 </b></p>
+<p><b>CanTp_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_GetVersionInfo </b>( Std_VersionInfoType* const pVersionInfo ) </p>
+<p><b>Parameter </b></p>
+<p>pVersionInfo </p>
+<p>The version information of the CANTP module is stored in the structure </p>
+<p>referenced by this pointer. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This service returns the version information of this module.  </p>
+<p>The version information includes: Module Id, Vendor Id and Vendor specific version numbers. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Only available if enabled at compile time (CANTP_VERSION_INFO_API == STD_ON) </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Interrupt or task context </p>
+<p>Table 5-4  </p>
+<p>CanTp_GetVersionInfo </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>27 / 73</p>
+<p><b>5.1.5 </b></p>
+<p><b>CanTp_Shutdown </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_Shutdown </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This service closes all pending transport protocol connections, frees all resources and sets the </p>
+<p>corresponding CANTP module into the CANTP_OFF state.  </p>
+<p>No further communication is possible unless (re-)initialization via CanTp_Init(). </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>No notification about eventually pending frame transmissions or receptions will be raised. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Interrupt or task context </p>
+<p>Table 5-5  </p>
+<p>CanTp_Shutdown </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>28 / 73</p>
+<p><b>5.1.6 </b></p>
+<p><b>CanTp_Transmit </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTp_Transmit </b>(const PduIdType CanTpTxSduId,  </p>
+<p>                               const PduInfoType*, const CanTpTxInfoPtr </p>
+<p>) </p>
+<p><b>Parameter </b></p>
+<p>CanTpTxSduId </p>
+<p>Unique CANTP module identifier of the CAN N-SDU to be transmitted. </p>
+<p>Range: 0..(maximum number of  I-PDU IDs) –1 </p>
+<p>CanTpTxInfoPtr </p>
+<p>An indicator of a structure with CAN N-SDU related data: indicator of a CAN </p>
+<p>N-SDU buffer and the length of this buffer. </p>
+<p> </p>
+<p>Basic information about a PDU of any type: </p>
+<p>typedef struct                         </p>
+<p>{ </p>
+<p>  uint8                 *SduDataPtr; </p>
+<p>  PduLengthType SduLength; </p>
+<p>} PduInfoType; </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Request started successfully. </p>
+<p>E_NOT_OK </p>
+<p>The request cannot be started (e.g. a transmit request is in progress with the </p>
+<p>same N-SDU identifier). </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to request the transfer of segmented data. </p>
+<p>If data length is less than 7 or 6,  depending on the addressing format (normal, extended. mixed11), a SF </p>
+<p>N-PDU is sent. However, if data length is greater than 7 or 6, a multiple frame transmission session is </p>
+<p>initiated. </p>
+<p>When the transmit request has been completed, the CANTP notifies the upper layer by calling the </p>
+<p>PduR_CanTpTxConfirmation</p>
+<p> callback function.  </p>
+<p>Also, if an error occurred (overflow, timeout etc.), the transmit request is aborted and the </p>
+<p>PduR_CanTpTxConfirmation</p>
+<p> callback is called with the appropriate error result value. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Only the data length information of the structure indicated by CanTpTxInfoPtr has to be used. Its value </p>
+<p>indicates the payload length of the N-SDU to be transmitted. To access the Tx buffer, the CANTP calls </p>
+<p>the PduR_CanTpProvideTxBuffer service. </p>
+<p><b>&gt; </b></p>
+<p>If the CanTp_Transmit service is called for a N-SDU identifier which is being used in a currently running </p>
+<p>CanTp session, the CanTp rejects the request. </p>
+<p><b>&gt; </b></p>
+<p>To guarantee data consistency, the upper layer (e.g. DCM, PduRouter or AUTOSAR COM) must lock </p>
+<p>the transmit data area until the confirmation notification occurs.  </p>
+<p><b>&gt; </b></p>
+<p>In case of a functional connection and a data length that does not fit into one single frame, the transmit </p>
+<p>request is cancelled and an application notification (NTFRSLT_E_UNEXP_PDU) is issued. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>29 / 73</p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Either task context (e.g. if called from other BSW modules like DCM, COM etc.) or interrupt context (e.g. </p>
+<p>if called from the PduR in case of a gateway configuration)  </p>
+<p>Table 5-6  </p>
+<p>CanTp_Transmit </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>30 / 73</p>
+<p><b>5.1.7 </b></p>
+<p><b>CanTp_CancelTransmitRequest </b></p>
+<p><b>Prototype </b></p>
+<p><b> </b></p>
+<p>Std_ReturnType <b>CanTp_CancelTransmitRequest </b>(PduIdType CanTpTxSduId) </p>
+<p><b>Parameter </b></p>
+<p>CanTpTxSduId </p>
+<p>Unique  CANTP  module  identifier  of  the  CAN  N-SDU  to  be  cancelled  for </p>
+<p>transmission. </p>
+<p>Range: 0..(maximum number of  I-PDU IDs) –1 </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Cancellation request accepted, </p>
+<p>E_NOT_OK </p>
+<p>Cancellation request rejected.  </p>
+<p>The  reason  can  be  that  the  request  is  issued  for  an  N-SDU  that  is  not </p>
+<p>segmented or the request is issued after the last CF has been requested for </p>
+<p>transmission or a cancellation is not possible for the related N-SDU due to </p>
+<p>configuration. </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to cancel the transmission of an ongoing N-SDU. </p>
+<p>This is only performed for segmented data but not for Single Frames. </p>
+<p>When the cancel transmit request has been completed, the CANTP notifies the upper layer by calling the </p>
+<p>PduR_CanTpTxConfirmation  callback  function  with  the  ‘NTFRSLT_E_CANCELATION_OK‘  notification </p>
+<p>result and returns with E_OK.  </p>
+<p>If an error occurred, the cancel transmit request is aborted and E_NOT_OK is returned. </p>
+<p>If the parameter value is invalid, the development error CANTP_E_PARAM_ID is raised and E_NOT_OK </p>
+<p>returned. </p>
+<p>If the parameter value indicates a cancel transmission request for an N-SDU that is not on transmission </p>
+<p>process </p>
+<p>the </p>
+<p>DEM </p>
+<p>with </p>
+<p>EventId </p>
+<p>= </p>
+<p>CANTP_E_OPER_NOT_SUPPORTED </p>
+<p>and </p>
+<p>EventStatus </p>
+<p>= </p>
+<p>DEM_EVENT_STATUS_PREFAILED is called and E_NOT_OK is returned. </p>
+<p><b>Particularities and Limitations </b></p>
+<p>If the CanTp_CancelTransmitRequest service is called for a N-SDU identifier which is undefined then the </p>
+<p>CanTp rejects the request. </p>
+<p>It is not guaranteed that a frame just being transmitted can be stopped. </p>
+<p><b>Expected Caller Context </b></p>
+<p><b>&gt; </b></p>
+<p>Task context </p>
+<p>Table 5-7  </p>
+<p>CanTp_CancelTransmitRequest </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution</b> </p>
+<p>If the cancellation in hardware is not supported then the resulting confirmations, given </p>
+<p>to the CanTp unexpectedly (due to sent messages which were expected to be </p>
+<p>cancelled) can corrupt the proper CanTp handling for the concerning connection. This </p>
+<p>corruption could be avoided by delaying further transmit actions on the same </p>
+<p>connection after a cancellation until the appearance of unexpected confirmations can </p>
+<p>definitely be excluded.</p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>31 / 73</p>
+<p><b>5.1.8 </b></p>
+<p><b>CanTp_CancelReceiveRequest </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>CanTp_CancelReceiveRequest </b>(PduIdType CanTpRxSduId) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxSduId </p>
+<p>Unique CANTP module identifier of the CAN N-SDU to be received. </p>
+<p>Range: 0..(maximum number of  I-PDU IDs) –1 </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Cancellation request is accepted, </p>
+<p>E_NOT_OK </p>
+<p>Cancellation request is rejected.  </p>
+<p>The reason can be that the request is issued for an N-SDU that is not </p>
+<p>segmented or the request is issued for an N-SDU that is not in the process of </p>
+<p>reception. </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to cancel the reception of an ongoing N-SDU. </p>
+<p>If the CanTp_CancelReceiveRequest service has been successfully executed the CanTp calls the </p>
+<p>PduR_CanTpRxIndication with the notification result ‘NTFRSLT_E_CANCELATION_OK’.  </p>
+<p>If development error detection is enabled the function CanTp_CancelReceiveRequest checks the validity of </p>
+<p>CanTpRxSduId parameter. If the parameter value is invalid, the CanTp_CancelReceiveRequest function </p>
+<p>raises the development error CANTP_E_PARAM_ID and returns E_NOT_OK. </p>
+<p>If the parameter value indicates a cancel reception request for an N-SDU that it is not on reception process </p>
+<p>the DEM is called with EventId = CANTP_E_OPER_NOT_SUPPORTED and EventStatus = </p>
+<p>DEM_EVENT_STATUS_PREFAILED and E_NOT_OK is returned. </p>
+<p><b>Particularities and Limitations </b></p>
+<p>The CanTp rejects the request for receive cancellation in case of a Single Frame reception or if the CanTp </p>
+<p>is in the process of receiving the last Consecutive Frame of the N-SDU (i.e. the service is called after N_Cr </p>
+<p>timeout is started for the last Consecutive Frame). In this case the CanTp returns E_NOT_OK. </p>
+<p><b>Expected Caller Context </b></p>
+<p><b>&gt; </b></p>
+<p>Task context </p>
+<p>Table 5-8  </p>
+<p>CanTp_CancelReceiveRequest </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>32 / 73</p>
+<p><b>5.1.9 </b></p>
+<p><b>CanTp_MainFunction </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_MainFunction </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>Entry point for scheduling the CANTP module. This function must be called periodically with the </p>
+<p>CanTpMainFunctionPeriod</p>
+<p> configured in the generation tool. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>-- </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>task context </p>
+<p>Table 5-9  </p>
+<p>CanTp_MainFunction </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>33 / 73</p>
+<p><b>5.1.10 </b></p>
+<p><b>CanTp_MainFunctionRx </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_MainFunctionRx </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>Entry point for scheduling the CANTP module on the reception side. This function must be called </p>
+<p>periodically with the ‘CanTpMainFunctionPeriod’ configured in the generation tool. </p>
+<p>For an optimal calling sequence the CanTp_MainFunctionRx is typically called directly before the </p>
+<p>diagnostic application is called to provide the incoming request within the same task cycle. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The split of the CanTp_Mainfunction is optional and can be configured in the generation tool </p>
+<p>(CANTP_RXTX_MAINFUNCTION_API == STD_ON/STD_OFF). The default is STD_OFF. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>task context </p>
+<p>Table 5-10  </p>
+<p>CanTp_MainFunctionRx </p>
+<p><b>5.1.11 </b></p>
+<p><b>CanTp_MainFunctionTx </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_MainFunctionTx </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>Void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>Entry point for scheduling the CANTP module on the transmission side. This function must be called </p>
+<p>periodically with the ‘CanTpMainFunctionPeriod’ configured in the generation tool. </p>
+<p>For an optimal calling sequence the CanTp_MainFunctionTx is typically called after the application </p>
+<p>(typically the diagnostic module) has processed an incoming request. This sequence supports the </p>
+<p>transmission of the resulting response as fast as possible. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The split of the CanTp_Mainfunction is optional and can be configured in the generation tool </p>
+<p>(CANTP_RXTX_MAINFUNCTION_API == STD_ON/STD_OFF). The default is STD_OFF. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>task context </p>
+<p>Table 5-11  </p>
+<p>CanTp_MainFunctionTx </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>34 / 73</p>
+<p><b>5.1.12 </b></p>
+<p><b>CanTp_SetSTmin </b></p>
+<p><b>Prototype </b></p>
+<p>uint8 <b>CanTp_SetSTmin </b>( PduIdType CanTpRxSduId, uint8 CanTpSTmin ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxSduId </p>
+<p>ID of CAN N-SDU for which the new value shall be set </p>
+<p>CanTpSTmin </p>
+<p>new value for STmin </p>
+<p><b> Return code </b></p>
+<p>STmin </p>
+<p>Either the new (valid) value or, in case of an invalid new value the previously </p>
+<p>set value. </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to set a new value for STmin for the given NSdu-Id. The new value is used for the FCs </p>
+<p>to be transmitted for each newly started reception until ECU reset. After power on the statically configured </p>
+<p>default values are restored and used again until a new dynamic change appears. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The dynamic setting of the STmin time is optional and can be configured in the generation tool </p>
+<p>(CANTP_ENABLE_EXT_API_STMIN == STD_ON/STD_OFF). The default is STD_OFF. </p>
+<p><b>&gt; </b></p>
+<p>If the &quot;NSdu-Id Remapping&quot; - feature (see 6.2.1.1) is enabled then the 'Ca</p>
+<p>nTpRxSduId' parameter must </p>
+<p>contain the NSdu-Id remapped by the user. Otherwise the internally generated NSdu-Id number is used </p>
+<p>here (this internally generated NSdu-Id number is provided to the user as a pre-processor constant </p>
+<p>within the generated CanTp_Cfg.h file). </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Interrupt or task context </p>
+<p>Table 5-12  </p>
+<p>CanTp_SetSTmin </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>35 / 73</p>
+<p><b>5.1.13 </b></p>
+<p><b>CanTp_SetBS </b></p>
+<p><b>Prototype </b></p>
+<p>uint8 <b>CanTp_SetBS </b>( PduIdType CanTpRxSduId, uint8 CanTpBS ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxSduId </p>
+<p>ID of CAN N-SDU for which the new value shall be set </p>
+<p>CanTpBS </p>
+<p>new value for BS </p>
+<p><b> Return code </b></p>
+<p>BS </p>
+<p>Either the new (valid) value or, in case of an invalid new value the previously </p>
+<p>set value. </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to set a new value for BS for the given NSdu-Id. The new value is used for the FCs to </p>
+<p>be transmitted for each newly started reception until ECU reset. After power on the statically configured </p>
+<p>default values are restored and used again until a new dynamic change appears. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The dynamic setting of the blocksize is optional and can be configured in the generation tool </p>
+<p>(CANTP_ENABLE_EXT_API_BS == STD_ON/STD_OFF). The default is STD_OFF. </p>
+<p><b>&gt; </b></p>
+<p>If the “NSdu-Id Remapping” - feature (see 6.2.1.1) is enabled then the 'Ca</p>
+<p>nTpRxSduId' parameter must </p>
+<p>contain the NSdu-Id remapped by the user. Otherwise the internally generated NSdu-Id number is used </p>
+<p>here (this internally generated NSdu-Id number is provided to the user as a pre-processor  constant  </p>
+<p>within the generated CanTp_Cfg.h file). </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Interrupt or task context </p>
+<p>Table 5-13  </p>
+<p>CanTp_SetBS </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>36 / 73</p>
+<p><b>5.1.14 </b></p>
+<p><b>CanTp_ChangeParameterRequest </b></p>
+<p><b>Prototype </b></p>
+<p>uint8 <b>CanTp_ChangeParameterRequest </b>( PduIdType CanTpRxSduId,  </p>
+<p>                                     TPParameterType Parameter,  </p>
+<p>                                     </p>
+<p>uint16 Value ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxSduId </p>
+<p>ID of CAN N-SDU for which the new value shall be set </p>
+<p>Parameter </p>
+<p>The parameter (either STmin or BS) for which a new value shall be set </p>
+<p>Value </p>
+<p>The new value for the selected ‘Parameter’ </p>
+<p><b> Return code </b></p>
+<p>E_OK </p>
+<p>E_NOT_OK </p>
+<p>If the value could be changed. </p>
+<p>If the value could not be changed.  </p>
+<p>Possible errors are: Either the reception for this N-SDU is busy or one or more </p>
+<p>of the parameters are erroneous (wrong id, wrong type, wrong value). </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to set a new value for the given Parameter (STmin or BS) for the given NSdu-Id. The </p>
+<p>new value is used for the FCs to be transmitted for each newly started reception until ECU reset. After </p>
+<p>power on the statically configured default values are restored and used again until a new dynamic change </p>
+<p>appears. </p>
+<p>Note: For each call of this API a dedicated call of the “</p>
+<p>PduR_CanTpChangeParameterConfirmation” </p>
+<p>callout function is accomplished which delivers the belonging notification result for the requested </p>
+<p>parameter change (see 5.4.4.4). This confirmation callout function is called from task level during </p>
+<p>the next t</p>
+<p>ask cycle.</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The dynamic setting of the parameters is optional and can be configured in the generation tool </p>
+<p>(CANTP_ENABLE_CHANGE_PARAM == STD_ON/STD_OFF). The default is STD_OFF. </p>
+<p><b>&gt; </b></p>
+<p>It is not permitted to call this API function several  times consecutively before a belonging  </p>
+<p>“PduR_CanTpChangeParameterConfirmation” callout appeared. The result of the parameter change </p>
+<p>always has to be awaited in the confirmation function before another change request is performed. </p>
+<p><b>&gt; </b></p>
+<p>Do not call this API function within the “PduR_CanTpChangeParameterConfirmation” callout function. A </p>
+<p>deadlock situation can appear if the confirmation callout is not finished yet but the next parameter </p>
+<p>change is already requested. </p>
+<p><b>&gt; </b></p>
+<p>Available since version 1.15.00 </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Task context </p>
+<p>Table 5-14  </p>
+<p>CanTp_ChangeParamRequest </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>37 / 73</p>
+<p><b>5.1.15 </b></p>
+<p><b>CanTp_ReadParameterRequest </b></p>
+<p><b>Prototype </b></p>
+<p>uint8 <b>CanTp_ReadParameterRequest </b>( PduIdType CanTpRxSduId,  </p>
+<p>                                   TPParameterType Parameter,  </p>
+<p>                                   </p>
+<p>uint16* Value ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxSduId </p>
+<p>ID of CAN N-SDU for which the new value shall be set </p>
+<p>Parameter </p>
+<p>The parameter (either STmin or BS) which shall be read </p>
+<p>Value </p>
+<p>The value from the selected ‘Parameter’ </p>
+<p><b> Return code </b></p>
+<p>E_OK </p>
+<p>E_NOT_OK </p>
+<p>If the value could be read. </p>
+<p>If the value could not be read.  </p>
+<p><b>Functional Description </b></p>
+<p>This service is used to read the current Value for the given Parameter (STmin or BS) for the given NSdu-Id. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The reading of the parameters is optional and can be configured in the generation tool </p>
+<p>(CANTP_ENABLE_CHANGE_PARAM == STD_ON/STD_OFF). The default is STD_OFF. </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>Task context </p>
+<p>Table 5-15  </p>
+<p>CanTp_ReadParamRequest </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>38 / 73</p>
+<p><b>5.2 </b></p>
+<p><b>Services used by CANTP </b></p>
+<p>In  the  following  table  services  provided  by  other  components,  which  are  used  by  the </p>
+<p>CANTP are listed. For details about prototype and functionality refer to the documentation </p>
+<p>of the providing component. </p>
+<p> </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET </p>
+<p>Det_ReportError </p>
+<p>DEM </p>
+<p>Dem_SetEventStatus </p>
+<p>CANIF </p>
+<p>CanIf_Transmit, </p>
+<p>CanIf_CancelTransmit </p>
+<p>SCHM </p>
+<p>Tp_AsrTpCan_EnterCritical, </p>
+<p>Tp_AsrTpCan_LeaveCritical </p>
+<p>ECUM </p>
+<p>EcuM_GeneratorCompatibilityError (see [9]) </p>
+<p>Table 5-16  </p>
+<p>Services used by the CANTP </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>39 / 73</p>
+<p><b>5.3 </b></p>
+<p><b>Callback Functions </b></p>
+<p>This chapter describes the callback functions that are implemented by the CANTP and can </p>
+<p>be invoked by other modules. The prototypes of the callback functions are provided in the </p>
+<p>header file CanTp_Cbk.h by the CANTP. </p>
+<p> </p>
+<p><b>5.3.1 </b></p>
+<p><b>CanTp_RxIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_RxIndication </b>( PduIdType CanTpRxPduId, </p>
+<p>const PduInfoType* CanTpRxPduPtr ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxPduId </p>
+<p>ID of CAN N-PDU that has been received. Range: 0..(maximum number of  N-</p>
+<p>PDU IDs received )– 1. </p>
+<p> </p>
+<p>Basic information about a PDU of any type: </p>
+<p>typedef struct                         </p>
+<p>{ </p>
+<p>  uint8          *SduDataPtr; </p>
+<p>  PduLengthType  SduLength; </p>
+<p>} PduInfoType;</p>
+<p> </p>
+<p>CanTpRxPduPtr </p>
+<p> </p>
+<p>Indicator of structure with received N-SDU (payload) and data length. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This function is called by the CAN Interface after a successful reception of a Rx CAN N-PDU. </p>
+<p>This callback service is called by the Can Interface and is implemented by the CANTP. It will be called in </p>
+<p>case of a Rx indication of the CAN driver. The data will be copied by the CANTP via the PDU structure </p>
+<p>PduInfoType. In this case the N-PDU buffers are not global and are therefore distributed in the </p>
+<p>corresponding CAN Transport Layer. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>-- </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function may be called if an interrupt occurs (from the CAN receive interrupt). </p>
+<p>Table 5-17  </p>
+<p>CanTp_RxIndication </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>40 / 73</p>
+<p><b>5.3.2 </b></p>
+<p><b>CanTp_TxConfirmation </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanTp_TxConfirmation </b>( PduIdType CanTpTxPduId ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpTxPduId </p>
+<p>ID of CAN N-PDU that has been transmitted. </p>
+<p>Range: 0..(maximum number of  N-PDU IDs transmitted )– 1 </p>
+<p>CanTpRxPduPtr </p>
+<p> </p>
+<p>Indicator of structure with received N-SDU (payload) and data length. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This function is called by the CAN Interface after the TP related CAN Frame (SF, FF, CF, FC) has been </p>
+<p>transmitted through the CAN network. All transmitted CAN frames belonging to the CAN Transport Layer </p>
+<p>will be confirmed by this function. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>-- </p>
+<p>Expected Caller Context </p>
+<p><b>&gt; </b></p>
+<p>This function may be called if an interrupt occurs (from the CAN transmit interrupt). </p>
+<p>Table 5-18  </p>
+<p>CanTp_TxConfirmation </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>41 / 73</p>
+<p><b>5.4 </b></p>
+<p><b>Configurable Interfaces </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Please take care of the AUTOSAR Release Version. </p>
+<p>In Release 3 another set of PduR API Callout Functions is specified than in the </p>
+<p>Release 4 version.  </p>
+<p>Check for the availability by considering the version information in the function </p>
+<p>description below ! </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b>5.4.1 </b></p>
+<p><b>Notifications </b></p>
+<p>The CANTP does not define any notifications. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>42 / 73</p>
+<p><b>5.4.2 </b></p>
+<p><b>Callout Functions </b></p>
+<p>At its configurable interfaces the CANTP defines callout functions. The declarations of the </p>
+<p>callout  functions  are  provided  by  the  BSW  module,  i.e.  the  CANTP.  It  is  the  integrator's </p>
+<p>task to provide the corresponding function definitions. The definitions of the callouts can be </p>
+<p>adjusted to the system's needs. The CANTP callout function declarations are described in </p>
+<p>the following tables: </p>
+<p> </p>
+<p><b>5.4.2.1 </b></p>
+<p><b>PduR_CanTpRxIndication </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>PduR_CanTpRxIndication </b>( PduIdType CanTpRxPduId, </p>
+<p>NotifResultType Result ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxPduId </p>
+<p>ID of CAN N-PDU that has been received.  </p>
+<p>Range: 0..(maximum number of N-PDU IDs which may be received by CAN </p>
+<p>TP) - 1. </p>
+<p>Result </p>
+<p>Result of the TP reception: </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_OK </p>
+<p> </p>
+<p> in case TP reception completed successfully.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_NOT_OK</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_TIMEOUT_A </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_TIMEOUT_Cr </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_WRONG_SN </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_UNEXP_PDU </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_NO_BUFFER    </p>
+<p> in case TP reception did not complete successfully. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This function is called by the CAN TP. </p>
+<p><b>&gt; </b></p>
+<p>with Result = NTFRSLT_OK after all CAN TP data has successfully been received (i.e. at the very end </p>
+<p>of the segmented TP receive cycle or after reception of an unsegemented N-PDU).</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>with Result != NTFRSLT_OK if an error (e.g. timeout) occurred during the TP reception. This enables </p>
+<p>unlocking of the receive buffer. It is undefined which part of the buffer contains valid data in this case. </p>
+<p>Note: Since  AUTOSAR Release 3.0 (which corresponds to CANTP version 01.07.00) after a reception is </p>
+<p>completed successfully by calling PduR_CanTpRxIndication, the CANTP calls the DEM with EventId= </p>
+<p>CANTP_E_COM (see also 3.5.2), EventStatus=DEM_EVENT_STATUS_PRE</p>
+<p>PASSED. If the reception was </p>
+<p>aborted (e.g. timeout), the CANTP calls the DEM with EventId= CANTP_E_COM (see also 3.5.2), </p>
+<p>EventS</p>
+<p>tatus=DEM_EVENT_STATUS_PREFAILED. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Used to enable unlocking of the receive buffer. </p>
+<p>Call Context </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>43 / 73</p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Care must be taken not to use OS calls in this callout function because the callout function can </p>
+<p>be called within critical sections. If so, OS calls used in this context will usually lead to an OS </p>
+<p>error indication (e.g. the OS error hook function is called and the ECU is blocked until a </p>
+<p>watchdog reset).</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>Table 5-19  </p>
+<p>PduR_CanTpRxIndication </p>
+<p><b>5.4.2.2 </b></p>
+<p><b>PduR_CanTpTxConfirmation </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>PduR_CanTpTxConfirmation </b>( PduIdType CanTpTxPduId, </p>
+<p>NotifResultType Result ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpTxPduId </p>
+<p>ID of CAN N-PDU that has been transmitted. </p>
+<p>Range: 0..(maximum number of N-PDU IDs which may be transmitted by CAN </p>
+<p>TP) - 1. </p>
+<p>Result </p>
+<p>Result of the TP transmission: </p>
+<p><b>&gt; </b></p>
+<p>  NTFRSLT_OK  </p>
+<p> in case TP transmission completed successfully.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_NOT_OK,  </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_TIMEOUT_A, </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_TIMEOUT_Bs, </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_INVALID_FS, </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_WFT_OVRN,  </p>
+<p><b>&gt; </b></p>
+<p>NTFRSLT_E_NO_BUFFER  </p>
+<p><b>&gt; </b></p>
+<p> in case TP transmission did not complete successfully. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This function is called by the CAN Transport Protocol: </p>
+<p><b>&gt; </b></p>
+<p>with Result = NTFRSLT_OK after all CAN TP data has successfully been transmitted, i.e. at the very </p>
+<p>end of the segmented TP transmission cycle. This is normally done within the CAN Tx Confirmation </p>
+<p>interrupt. </p>
+<p><b>&gt; </b></p>
+<p>with Result != NTFRSLT_OK if an error (e.g. timeout) occurred during the TP transmission. This enables </p>
+<p>unlocking of the transmit buffer.</p>
+<p> </p>
+<p>Note: Since  AUTOSAR Release 3.0 (which corresponds to CantP version 01.07.00) after a transmit is </p>
+<p>completed successfully by calling PduR_CanTpTxConfirmation, the CANTP calls the DEM with EventId= </p>
+<p>CANTP_E_COM (see also 3.5.2), EventStatus=DEM_EVENT_STATUS_PREPASSED. If the transmit was </p>
+<p>aborted (e.g. timeout), the CANTP calls the DEM with EventId= CANTP_E_COM (see also 3.5.2), </p>
+<p>EventS</p>
+<p>tatus=DEM_EVENT_STATUS_PREFAILED. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>44 / 73</p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Used to enable unlocking of the transmit buffer. </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context (e.g. from CAN transmit interrupt). </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Care must be taken not to use OS calls in this callout function because the callout function can </p>
+<p>be called within critical sections. If so, OS calls used in this context will usually lead to an OS </p>
+<p>error indication (e.g. the OS error hook function is called and the ECU is blocked until a </p>
+<p>watchdog reset).</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>Table 5-20  </p>
+<p>PduR_CanTpTxConfirmation </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>45 / 73</p>
+<p><b>5.4.3 </b></p>
+<p><b>Callout Functions (until AUTOSAR Release 3) </b></p>
+<p>The following functions are provided for the PduR API defined until AUTOSAR Release 3. </p>
+<p>Please check chapter 5.4.4 for the Release 3 API. </p>
+<p><b>5.4.3.1 </b></p>
+<p><b>PduR_CanTpProvideRxBuffer </b></p>
+<p><b>      (until AUTOSAR Release 3) </b></p>
+<p><b>Prototype </b></p>
+<p>BufReq_ReturnType <b>PduR_CanTpProvideRxBuffer </b>( PduIdType CanTpRxPduId, </p>
+<p>PduLengthType TpSduLength, </p>
+<p>PduInfoType **PduInfoPtr ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxPduId </p>
+<p>ID of CAN N-PDU that shall be received. Range: 0..(maximum number of N-</p>
+<p>PDU IDs which may be received by CAN TP) - 1. </p>
+<p>TpSduLength </p>
+<p>This length identifies the overall number of bytes to be received. This </p>
+<p>parameter will not be changed on subsequent calls of this service requesting a </p>
+<p>new buffer for the same CanTpRxPduId. The length will be greater than zero.</p>
+<p> </p>
+<p>PduInfoPtr </p>
+<p>Pointer to pointer to PduInfoStructure containing SDU data pointer and SDU </p>
+<p>length of a receive buffer. If the return value is not equal to BUFREQ_OK, </p>
+<p>PduInfoPtr is undefined and shall not be used. </p>
+<p><b>Return code </b></p>
+<p>BufReq_ReturnType </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_OK Buffer request accomplished successfully</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_BUSY Currently no buffer available</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_OVFL Receiver is not able to receive number of </p>
+<p>TpSduLength</p>
+<p> bytes; no buffer provided.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_NOT_OK Buffer request not successful, no buffer provided. </p>
+<p><b>Functional Description </b></p>
+<p>This service is called by the CAN TP for requesting a new buffer (pointer to a PduInfoStructure containing a </p>
+<p>pointer to a SDU buffer and the buffer length) for the CAN TP to fill in the received data. </p>
+<p>The length of the buffer does not need to be in the length of the expected SDU. If the returned buffer length </p>
+<p>is smaller than the expected length, the receiver will be requested via a further call of this service to provide </p>
+<p>another buffer after the current buffer has been filled up with data. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>By this service the receiver (e.g. DCM) is also informed implicitly about a first frame reception or a single </p>
+<p>frame reception.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>After returning a valid buffer, the receiver must not access this buffer unless: </p>
+<p>- it has been requested to provide a new buffer for the same </p>
+<p>CanTpRxPduId</p>
+<p>, or </p>
+<p>- it has been notified (via </p>
+<p>PduR_CanTpRxIndication</p>
+<p>) about the successful reception (indication),  or </p>
+<p>- it has been notified (via </p>
+<p>PduR_CanTpRxIndication</p>
+<p>) that the reception was aborted (error </p>
+<p>indication).   </p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>When filling the provided buffer, the CAN TP will also set the length information contained in </p>
+<p>*PduInfoPtr</p>
+<p> to the number of bytes that are valid in this buffer. </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context. </p>
+<p>Table 5-21  </p>
+<p>PduR_CanTpProvideRxBuffer </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>46 / 73</p>
+<p><b>5.4.3.2 </b></p>
+<p><b>PduR_CanTpProvideTxBuffer </b></p>
+<p><b>      (until AUTOSAR Release 3) </b></p>
+<p><b>Prototype </b></p>
+<p>BufReq_ReturnType <b>PduR_CanTpProvideTxBuffer </b>( PduIdType   CanTpTxPduId, </p>
+<p>PduInfoType **PduInfoPtr, </p>
+<p>uint16      Length ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpTxPduId </p>
+<p>ID of CAN N-PDU to be transmitted </p>
+<p>Range: 0..(maximum number of N-PDU IDs which may be transmitted by CAN </p>
+<p>TP) – 1. </p>
+<p>PduInfoPtr </p>
+<p>Pointer to pointer to PduInfoStructure containing SDU data pointer and SDU </p>
+<p>length of a transmit buffer. This length must not be smaller than the length </p>
+<p>given by the ‘Length’ parameter. If the return value of this callback is not equal </p>
+<p>to BUFREQ_OK then the </p>
+<p>PduInfoPtr</p>
+<p> is undefined and will not be used by </p>
+<p>the CANTP. </p>
+<p> </p>
+<p>Basic information about a PDU of any type: </p>
+<p>typedef struct                         </p>
+<p>{ </p>
+<p>  uint8          *SduDataPtr; </p>
+<p>  PduLengthType  SduLength; </p>
+<p>} PduInfoType;</p>
+<p> </p>
+<p>Length </p>
+<p>Exact length of the requested transmit buffer, it shall not exceed the number of </p>
+<p>bytes still to be sent. Length may be zero, which indicates that the provided </p>
+<p>buffer can be of arbitrary size (larger than zero). </p>
+<p><b>Return code </b></p>
+<p>BufReq_ReturnType </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_OK Buffer request accomplished successfully,</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_BUSY Currently no buffer of the requested size is available,</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_NOT_OK Buffer request not successful, no buffer provided. </p>
+<p><b>Functional Description </b></p>
+<p>This function is called by the CAN TP for requesting a transmit buffer. The length of the buffer does not </p>
+<p>need to match the length of the complete N-SDU to be transmitted. It only needs to be as large as required </p>
+<p>by the caller of that service (</p>
+<p>Length</p>
+<p>). </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>In case this service returns BUFREQ_E_NOT_OK the related transmit request is cancelled and the </p>
+<p>CAN  TP module finishes the request by providing a final confirmation indicating an error.  </p>
+<p><b>&gt; </b></p>
+<p>In case this service returns BUFREQ_E_BUSY the related transmit request is delayed and the CAN  TP </p>
+<p>module retries the buffer request. </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function could be called if an interrupt occurs (from the CAN receive interrupt). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>47 / 73</p>
+<p>Table 5-22  </p>
+<p>PduR_CanTpProvideTxBuffer </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>48 / 73</p>
+<p><b>5.4.4 </b></p>
+<p><b>Callout Functions (since AUTOSAR Release 4) </b></p>
+<p>The following functions are provided for the PduR API defined until AUTOSAR Release 4. </p>
+<p>Please check chapter 5.4.3 for the Release 3 API. </p>
+<p> </p>
+<p> </p>
+<p><b>5.4.4.1 </b></p>
+<p><b>PduR_CanTpStartOfReception </b></p>
+<p><b>(since AUTOSAR Release 4) </b></p>
+<p><b>Prototype </b></p>
+<p>BufReq_ReturnType <b>PduR_CanTpStartOfReception </b>( PduIdType      </p>
+<p>CanTpRxPduId, </p>
+<p>PduLengthType  TpSduLength, </p>
+<p>PduLengthType* </p>
+<p>RxBufferSizePtr ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxPduId </p>
+<p>ID of CAN N-PDU that shall be received. </p>
+<p>Range: 0..(maximum number of N-PDU IDs which may be received by CAN </p>
+<p>TP) - 1. </p>
+<p>TpSduLength </p>
+<p>Complete length of the TP I-PDU to be received. </p>
+<p>RxBufferSizePtr </p>
+<p>Currently available receive buffer in the upper layer. The available receive </p>
+<p>buffer might be smaller than TpSduLength depending on the buffering </p>
+<p>strategy. </p>
+<p><b>Return code </b></p>
+<p>BufReq_ReturnType </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_OK:  The connection is accepted and the RxBufferSizePtr </p>
+<p>indicates the available receive buffer. </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_BUSY:  Currently no buffer of the requested size is available. </p>
+<p>The RxBufferSizePtr remains unchanged and the connection is rejected. </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_NOT_OK:  The connection is rejected and the </p>
+<p>RxBufferSizePtr remains unchanged. </p>
+<p><b>Functional Description </b></p>
+<p>Called once to initialize the reception of any TP N-PDU. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>By this service the receiver (e.g. DCM) is also informed implicitly about a first frame reception or a single </p>
+<p>frame reception.</p>
+<p> </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context. </p>
+<p>Table 5-23  </p>
+<p>PduR_CanTpStartOfReception </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>49 / 73</p>
+<p><b>5.4.4.2 </b></p>
+<p><b>PduR_CanTpCopyRxData </b></p>
+<p><b>(since AUTOSAR Release 4) </b></p>
+<p><b>Prototype </b></p>
+<p>BufReq_ReturnType <b>PduR_CanTpCopyRxData </b>( PduIdType      CanTpRxPduId, </p>
+<p>                                         PduInfoType*   PduInfoPtr, </p>
+<p>                                         PduLengthType* RxBufferSizePtr </p>
+<p>) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxPduId </p>
+<p>ID of CAN N-PDU that shall be received. </p>
+<p>Range: 0..(maximum number of N-PDU IDs which may be received by CAN </p>
+<p>TP) - 1. </p>
+<p>PduInfoPtr </p>
+<p>Pointer to a PduInfoType which indicates the number of bytes to be copied </p>
+<p>(SduLength) and the location of the source data (SduDataPtr). An SduLength </p>
+<p>of zero is possible in order to poll the available receive buffer size. In this case </p>
+<p>no data are to be copied and SduDataPtr might be invalid. </p>
+<p>RxBufferSizePtr </p>
+<p>Remaining receive buffer after completion of this call. </p>
+<p><b>Return code </b></p>
+<p>BufReq_ReturnType </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_OK:  Data has been copied to the receive buffer completely as </p>
+<p>requested. </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_NOT_OK:  Data has not been copied. Request failed. </p>
+<p><b>Functional Description </b></p>
+<p>Called once upon reception of each segment. Within this call the received data is copied to the receive  </p>
+<p>buffer. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The function must only be called if the connection has been accepted by an initial call to </p>
+<p>PduR_&lt;bus&gt;TpStartOfReception. </p>
+<p><b>&gt; </b></p>
+<p>The API may only be called with an SduLength greater zero if the RxBufferSizePtr returned by the </p>
+<p>previous API call indicates sufficient receive buffer (SduLength &lt;= RxBufferSizePtr). </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context. </p>
+<p>Table 5-24  </p>
+<p>PduR_CanTpCopyRxData </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>50 / 73</p>
+<p><b>5.4.4.3 </b></p>
+<p><b>PduR_CanTpCopyTxData </b></p>
+<p><b>(since AUTOSAR Release 4) </b></p>
+<p><b>Prototype </b></p>
+<p>BufReq_ReturnType <b>PduR_CanTpCopyTxData </b>( PduIdType      CanTpTxPduId, </p>
+<p>                                         PduInfoType*   PduInfoPtr, </p>
+<p>                                         RetryInfoType* RetryInfoPtr,</p>
+<p> </p>
+<p>                                         PduLengthType* TxDataCntPtr ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpTxPduId </p>
+<p>ID of CAN N-PDU that shall be transmitted. </p>
+<p>Range: 0 .. (maximum number of N-PDU IDs which may be transmitted by </p>
+<p>CAN TP) - 1. </p>
+<p>PduInfoPtr </p>
+<p>Pointer to a PduInfoType which indicates the number of bytes to be copied </p>
+<p>(SduLength) and the location where the data have to be copied to </p>
+<p>(SduDataPtr). </p>
+<p>An SduLength of zero is possible in order to poll the available transmit data </p>
+<p>count. In this case no data are to be copied and SduDataPtr might be invalid. </p>
+<p>RetryInfoPtr </p>
+<p>The CANTP does not support the retry feature. So, either a NULL_PTR can </p>
+<p>be provided or alternatively TpDataState can indicate TP_NORETRY.  </p>
+<p>Both methods indicate that the copied transmit data can be removed from the </p>
+<p>buffer after it has been copied. </p>
+<p>TxDataCntPtr </p>
+<p>Remaining Tx data after completion of this call. </p>
+<p><b>Return code </b></p>
+<p>BufReq_ReturnType </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_OK:  Data has been copied to the transmit buffer completely as </p>
+<p>requested. </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_BUSY: Request could not be fulfilled as the required amount </p>
+<p>of Tx data is not available. The CANTP might retry later on. No data has </p>
+<p>been copied. </p>
+<p><b>&gt; </b></p>
+<p>BUFREQ_E_NOT_OK:  Data has not been copied. Request failed. </p>
+<p><b>Functional Description </b></p>
+<p>Called by the TP layer to retrieve the payload of a Tx TP I-PDU segment. The data are copied within this </p>
+<p>call. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>The already available Tx data can be queried by calling PduR_CanTpCopyTxData with an SduLength of </p>
+<p>zero after the transmission request was received. </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function might be called in interrupt context. </p>
+<p>Table 5-25  </p>
+<p>PduR_CanTpCopyTxData </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>51 / 73</p>
+<p><b>5.4.4.4 </b></p>
+<p><b>PduR_CanTpChangeParameterConfirmation  </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>PduR_CanTpChangeParameterConfirmation</b>(PduIdType       </p>
+<p>CanTpRxSduId, </p>
+<p>                                           NotifResultType Result ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpRxSduId </p>
+<p>ID of CAN N-SDU that was requested to be changed. </p>
+<p>Range: 0 .. (maximum number of N-SDU IDs which may be received by CAN </p>
+<p>TP) - 1. </p>
+<p>Result </p>
+<p>Can be on of the following notifications: </p>
+<p>- NTFRSLT_PARAMETER_OK: The parameter change request has been </p>
+<p>successfully executed. </p>
+<p>- NTFRSLT_E_PARAMETER_NOT_OK: The request for the change of the </p>
+<p>parameter did not complete successfully. </p>
+<p>- NTFRSLT_E_RX_ON: The parameter change request not executed </p>
+<p>successfully due to an ongoing reception. </p>
+<p>- NTFRSLT_E_VALUE_NOT_OK: The parameter change request not </p>
+<p>executed successfully due to a wrong value.</p>
+<p> </p>
+<p><b>Return code </b></p>
+<p>none </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Called once by the CANTP to indicate the result of a CanTp_ChangeParameterRequest call. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Available since version 1.15.00 </p>
+<p><b>&gt; </b></p>
+<p>In case of multiple change parameter requests appearing without awaiting the confirmation callout </p>
+<p>function the confirmation callout function is called synchronously from within the </p>
+<p>CanTp_ChangeParameterRequest API function.  </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function is called from the CANTP main function in task context. </p>
+<p>Table 5-26  </p>
+<p>PduR_CanTpChangeParameterConfirmation </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>52 / 73</p>
+<p><b>5.4.4.5 </b></p>
+<p><b>EcuM_GeneratorCompatibilityError </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>EcuM_GeneratorCompatibilityError</b>(uint16  CanTpModuleId, </p>
+<p>                                      uint8   CanTpInstanceId ) </p>
+<p><b>Parameter </b></p>
+<p>CanTpModuleId </p>
+<p>Contains the CANTP_MODULE_ID (23 hex) as defined by AUTOSAR. </p>
+<p>CanTpInstanceId </p>
+<p>For the CanTp only one instance is available, so this value is always zero.</p>
+<p> </p>
+<p><b>Return code </b></p>
+<p>none </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Called once by the CANTP during the initialization phase to indicate one of the following possible errors: </p>
+<p>- </p>
+<p>Abort initialization as generator is not compatible, </p>
+<p>- </p>
+<p>Abort initialization as current configuration is not compatible with the pre-compile configuration </p>
+<p>- </p>
+<p>Abort initialization as current configuration is not compatible with the link-time configuration </p>
+<p><b>Particularities and Limitations </b></p>
+<p>None </p>
+<p>Call Context </p>
+<p><b>&gt; </b></p>
+<p>This function is called in the CanTp_Init function during power on. </p>
+<p>Table 5-27  </p>
+<p>EcuM_GeneratorCompatibilityError </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>53 / 73</p>
+<p><b>6 </b></p>
+<p><b>Configuration </b></p>
+<p>In the CANTP the attributes can be configured with the following methods: </p>
+<p><b>&gt; </b> Configuration in Database, for a detailed description see 6.1 </p>
+<p><b>&gt; </b> Configuration in GENy for a detailed description see 6.2 </p>
+<p><b>6.1 </b></p>
+<p><b>Configuration in Data Base </b></p>
+<p>The following database attributes are utilized by the generation tool for the CANTP: </p>
+<p><b>Attribute Name </b></p>
+<p><b>Object </b></p>
+<p><b>Type </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>the <b>default value </b>is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>CanTpFcFrameId </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0x FFFF FFFF </b></p>
+<p>0x 0000 0000 … </p>
+<p>0x1FFF FFFF </p>
+<p>Required from large COM PDUs only.  </p>
+<p>For all database messages with this </p>
+<p>attribute the generation tool automatically </p>
+<p>creates a Rx-Sdu (for Tx messages) or a </p>
+<p>Tx-Sdu (for Rx messages). The message </p>
+<p>Identifier itself is used within these SDUs as </p>
+<p>CANTP_TXFC_NPDU_ID or </p>
+<p>CANTP_RXFC_NPDU_ID  as </p>
+<p>corresponding Flow-Control message </p>
+<p>identifier. </p>
+<p>Only evaluated for messages with DLC &gt; 8. </p>
+<p>CanTpBs </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0x00  </b></p>
+<p>… 0xFF </p>
+<p>Required from large COM PDUs only.  </p>
+<p>Number of consecutive frames (blocksize) </p>
+<p>to be received without intermittent flow </p>
+<p>control frames.  </p>
+<p>Only evaluated for messages with DLC &gt; 8. </p>
+<p>CanTpSTmin </p>
+<p>Message </p>
+<p>Integer </p>
+<p><b>0x00 </b></p>
+<p> …0x7F </p>
+<p>0xF1 …0xF9 </p>
+<p>Required from large COM PDUs only.  </p>
+<p>Minimum time distance between two </p>
+<p>messages to be received by the CANTP. </p>
+<p>Only evaluated for messages with DLC &gt; 8. </p>
+<p>Table 6-1  </p>
+<p>Data base attributes </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>54 / 73</p>
+<p>Example for an Rx message: </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>6.2 </b></p>
+<p><b>Configuration with GENy </b></p>
+<p>This  section  describes  how  to  configure  CANTP  with  the  help  of  the  configuration  tool </p>
+<p>GENy. Some general configuration aspects like the configuration variant, DEM and or DET </p>
+<p>usage or customer specific optimization requirements are chosen in first step prior to the </p>
+<p>configuration of the attributes of each single Rx/Tx- NSdu.  </p>
+<p>To  use  the  CANTP  layer  the  component  must  be  enabled  in  the  component  selection </p>
+<p>dialog of the system configuration as shown in the following screenshot: </p>
+<p> </p>
+<p>Typically, beside the CAN Driver itself for a physical bus access, the CANTP is surrounded </p>
+<p>by the CanIf on the lower layer and the PduR on the upper layer side.  </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>55 / 73</p>
+<p><b>6.2.1 </b></p>
+<p><b>Component Configuration </b></p>
+<p><b>6.2.1.1 </b></p>
+<p><b>General Parameters </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Configuration Variant </p>
+<p>enumeration </p>
+<p>customer </p>
+<p>specific pre- </p>
+<p>configuration </p>
+<p>Enter the configuration method to be used - either </p>
+<p>precompile or postbuild. A link-time configuration </p>
+<p>variant is not specified for CANTP (see [1]). </p>
+<p>CanTp Main </p>
+<p>Function Period </p>
+<p>uint8 </p>
+<p><b>10  </b></p>
+<p>This Task Cycle determines the time period for the </p>
+<p>CanTp_MainFunction scheduling (as milliseconds).</p>
+<p>CheckCanTp </p>
+<p>VersionInfoApi </p>
+<p>boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>Enable the CanTp_GetVersionInfo() API function. </p>
+<p>CanTpDevError </p>
+<p>Detect </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable the detection and reporting of development </p>
+<p>errors via DET. (DET has to be available in the </p>
+<p>system). </p>
+<p>Production Error </p>
+<p>Detection </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable the detection and reporting of production </p>
+<p>errors via DEM. (DEM has to be available in the </p>
+<p>system). </p>
+<p>User Config File </p>
+<p> </p>
+<p>string </p>
+<p><b>NULL </b></p>
+<p>Use a user configuration file. The content of this </p>
+<p>file can be used to define specific precompile </p>
+<p>switches not available otherwise. </p>
+<p>Support frame </p>
+<p>padding </p>
+<p>boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>Enable padding activation. </p>
+<p>Support RxIndication </p>
+<p>boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>Support the function CanTp_RxIndication (using a </p>
+<p>pre-compile macro) </p>
+<p>Support </p>
+<p>TxConfirmation </p>
+<p>boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>Support the function CanTp_TxConfirmation (using </p>
+<p>a pre-compile macro). </p>
+<p>Support- </p>
+<p>StandardAddressing, </p>
+<p>ExtendedAddressing </p>
+<p>Mixed11Addressing </p>
+<p>Format </p>
+<p>boolean </p>
+<p><b>ON  </b></p>
+<p>OFF </p>
+<p>Either the usage of STANDARD and/or </p>
+<p>EXTENDED and/or MIXED-11 addressing can be </p>
+<p>configured. If only one addressing type is required </p>
+<p>for a project then resources can be saved by </p>
+<p>deselecting the other ones. </p>
+<p>Use InitCfg pointer </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable the CanTp_Init API function with </p>
+<p>configuration pointer parameter usage (see 7.1). </p>
+<p>This optio</p>
+<p>n is usually pre-configured. It is set to </p>
+<p>enable but invisible by default. </p>
+<p>Optionally (non AUTOSAR)  available feature for </p>
+<p>the parameterization of the CanTp_Init function </p>
+<p>call. This is only relevant for AUTOSAR 3. Since </p>
+<p>AUTOSAR 4 this is covered by AUTOSAR itself. </p>
+<p>Please note that the Multiple Configuration feature </p>
+<p>requires the usage of this configuration pointer. Via </p>
+<p>the configuration pointer the actual identity is, </p>
+<p>typically during power on, selected.  </p>
+<p>Module Start Address </p>
+<p>integer </p>
+<p><b>0 </b></p>
+<p>Enter the configuration structure start address. </p>
+<p>CanTpMaxNum </p>
+<p>RxSdus </p>
+<p>integer </p>
+<p>1 </p>
+<p>Defines the maximum number of different N-Sdu-</p>
+<p>Ids that can be received simultaneously via the </p>
+<p>CanTp by this ECU. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>56 / 73</p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>CanTpMaxNum </p>
+<p>TxSdus </p>
+<p>integer </p>
+<p>1 </p>
+<p>Defines the maximum number of different N-Sdu-</p>
+<p>Ids that can be transmitted  simultaneously via the </p>
+<p>CanTp by this ECU. </p>
+<p>CanTpMaxNum </p>
+<p>RxChannels_PbLimit</p>
+<p>' </p>
+<p> </p>
+<p>integer </p>
+<p>3 </p>
+<p>Defines the maximum for parameter </p>
+<p>'CanTpMaxNumRxChannels' that can be set </p>
+<p>during post build configuration. This setting only </p>
+<p>has an effect if </p>
+<p>&quot;CanTpDynamicChannelAssignment&quot; is enabled .  </p>
+<p>Please note that this value only serves as a </p>
+<p>reference value and cannot be modified. If the </p>
+<p>actual number of dynamic channels does not </p>
+<p>properly reflect the number of statically configured </p>
+<p>Sdus during a later postbuild phase then the user </p>
+<p>is warned against this conflict: “the  </p>
+<p>'CanTpMaxNumRxChannels' attribute is not post-</p>
+<p>build capable”. </p>
+<p>CanTpMaxNum </p>
+<p>TxChannels_PbLimit' </p>
+<p> </p>
+<p>integer </p>
+<p>3 </p>
+<p>Defines the maximum for parameter </p>
+<p>'CanTpMaxNumTxChannels' that can be set during </p>
+<p>post build configuration. This setting only has an </p>
+<p>effect if &quot;CanTpDynamicChannelAssignment&quot; is </p>
+<p>enabled. </p>
+<p>Please note that this value only serves as a </p>
+<p>reference value and cannot be modified. If the </p>
+<p>actual number of dynamic channels does not </p>
+<p>properly reflect the number of statically configured </p>
+<p>Sdus during a later postbuild phase then the user </p>
+<p>is warned against this conflict: “the  </p>
+<p>'CanTpMaxNumTxChannels' attribute is not post-</p>
+<p>build capable”. </p>
+<p>CanTpTc  </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Preprocessor switch for enabling a  Transmit </p>
+<p>Cancellation. By enabling this switch an ongoing </p>
+<p>transmission request can be aborted using the  </p>
+<p>CanTp_CancelTransmitRequest API. </p>
+<p>CanTpTc </p>
+<p>NotifyAlways </p>
+<p>booelean </p>
+<p>ON<b>, </b></p>
+<p><b>OFF </b></p>
+<p>Switches upper layer notification of transmit </p>
+<p>cancellation ON or OFF. </p>
+<p>This additional non AUTOSAR switch is  used for </p>
+<p>compatibility reasons. </p>
+<p>In case there are upper layer modules (e.g. DCM) </p>
+<p>which require a final indication or confirmation, this </p>
+<p>switch may be used to hand a final negative </p>
+<p>notification </p>
+<p>(NTFRSLT_E_CANCELATION_NOT_OK) to the </p>
+<p>upper layer which has requested the cancellation </p>
+<p>instead of just stopping  without further notification. </p>
+<p>CanTpRc  </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Preprocessor switch for enabling a Receive </p>
+<p>Cancellation. By enabling this switch an ongoing </p>
+<p>reception can be aborted using the  </p>
+<p>CanTp_CancelReceiveRequest API. </p>
+<p>CanTpRc </p>
+<p>booelean </p>
+<p>ON<b>, </b></p>
+<p>Switches upper layer notification of receive </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>57 / 73</p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>NotifyAlways </p>
+<p><b>OFF </b></p>
+<p>cancellation ON or OFF. </p>
+<p>This additional non AUTOSAR switch is used for </p>
+<p>compatibility reasons. </p>
+<p>In case there are upper layer modules (e.g. DCM) </p>
+<p>which require a final indication, this switch may be </p>
+<p>used to hand a final negative notification </p>
+<p>(NTFRSLT_E_CANCELATION_NOT_OK) to the </p>
+<p>upper layer which has requested the cancellation </p>
+<p>instead of just stopping  without further notification. </p>
+<p>Support Frame </p>
+<p>Padding pattern </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>Enable optional padding byte definition in case of </p>
+<p>padding is activated. </p>
+<p>Frame Padding </p>
+<p>pattern </p>
+<p>uint8 </p>
+<p>0xAA </p>
+<p>Define the padding pattern if “Support Frame </p>
+<p>Padding” is enabled. </p>
+<p>Enable Split </p>
+<p>MainFunction </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>When selecting this optional feature then the </p>
+<p>CanTp_MainFunction is split into two separate </p>
+<p>Functions for the Rx and the Tx path, </p>
+<p>CanTp_MainFunctionRx and </p>
+<p>CanTp_MainFunctionTx (see 5.1.10, 5.1.12). </p>
+<p>These se</p>
+<p>parate API functions are intended to be </p>
+<p>called instead of the CanTp_MainFunction to </p>
+<p>optimize the processing sequence of  incoming </p>
+<p>requests (e.g.: receive a diagnostic request, </p>
+<p>process the request, transmit the response). </p>
+<p>Enable Rx/Tx </p>
+<p>NSduId Remapping </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>When enabling this optional feature an additional </p>
+<p>entry for each Tx-NSdu is provided to the user </p>
+<p>wherein a user specific NSdu-Id can be entered. </p>
+<p>On the Rx side the NSdu-Ids are determined by </p>
+<p>the PDUR. </p>
+<p>If not selected then internally generated NSdu-Id </p>
+<p>number are used (and handed to the upper layers).</p>
+<p>Via preconfiguration files the optional and OEM </p>
+<p>specific Wrapper functions CanTpWrapperTransmit </p>
+<p>and CanTpWrapper_CancelTransmitRequest can </p>
+<p>be enabled. These wrapper functions are </p>
+<p>parameterized with the remapped N-SDU-Ids </p>
+<p>instead of the internally generated IDs. Apart from </p>
+<p>that the API of the wrapper functions is equivalent </p>
+<p>to the AUTOSAR CanTp_Transmit respectively  </p>
+<p>CanTp_CancelTransmitRequest API function (see </p>
+<p>5.1.6, 5.1.7). </p>
+<p>Enable Extended API </p>
+<p>BS/STmin </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>When enabling this optional feature then the Flow </p>
+<p>Control frame (FC)  content for blocksize (BS) and </p>
+<p>minimum separation time (STmin), which is </p>
+<p>responded to the sender upon reception of a First </p>
+<p>or Consecutive frame, can be modified during </p>
+<p>runtime. Therefore additional API functions are </p>
+<p>provided to set the FC content at any time of the </p>
+<p>execution. </p>
+<p>CanTpChange </p>
+<p>booelean </p>
+<p>ON<b>, </b></p>
+<p>When switched on, the functions </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>58 / 73</p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>ParameterReqApi </p>
+<p><b>OFF </b></p>
+<p>&quot;CanTp_ChangeParameterRequest&quot; and </p>
+<p>&quot;CanTp_ReadParameterRequest&quot; are provided </p>
+<p>which can be used to change and read the values </p>
+<p>of the reception parameters CanTpBs and </p>
+<p>CanTpSTmin. </p>
+<p>If switched on, the PduR module must provide the </p>
+<p>function </p>
+<p>&quot;PduR_CanTpChangeParameterConfirmation&quot;. </p>
+<p>Select the API </p>
+<p>towards the PduR to </p>
+<p>be used </p>
+<p>(CanTpAr40Complia</p>
+<p>ntPduRApi) </p>
+<p>boolean </p>
+<p>ON,  </p>
+<p><b>OFF </b></p>
+<p>If the Vector PduR is present then the PduR </p>
+<p>provided API is used. </p>
+<p>If no Vector PduR is present then this value must </p>
+<p>be preconfigured or enabled within CanTp. </p>
+<p>Note: This is only relevant for AUTOSAR 3. When </p>
+<p>using an AUTOSAR 4 environment then the PduR </p>
+<p>API is always AUTOSAR 4 compliant. </p>
+<p>Support Full Buffer </p>
+<p>handling (on Rx </p>
+<p>and/or Tx- side) </p>
+<p>boolean </p>
+<p><b>ON </b></p>
+<p>OFF</p>
+<p> </p>
+<p>When the full buffer handling is disabled then only </p>
+<p>the complete requested buffer size (no partial </p>
+<p>buffer handling) is accepted from the CANTP, </p>
+<p>otherwise the connection is terminated after the </p>
+<p>“Provide(Rx/Tx)Buffer” request. Within AUTOSAR </p>
+<p>the buffer provision is handled highly dynamical. </p>
+<p>Repeated buffer provision calls to the application </p>
+<p>offer the opportunity to the application to deliver </p>
+<p>different sizes of application buffers that are </p>
+<p>temporarily available. </p>
+<p>Single connection </p>
+<p>optimization </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF</b></p>
+<p><b> </b></p>
+<p>When selecting this optimization then only two Rx- </p>
+<p>and one Tx-NSdu  can be configured. The number </p>
+<p>of totally configurable connections is “1” since the </p>
+<p>second Rx-NSdu is only implemented as an </p>
+<p>additional so called “functional reception path” for </p>
+<p>diagnostic applications. Selecting this checkbox </p>
+<p>still keeps the relevant information applicable for </p>
+<p>postbuild processing in opposite to next topic </p>
+<p>“Single connection optimization precompile” (see </p>
+<p>below). </p>
+<p>Single connection </p>
+<p>optimization </p>
+<p>precompile </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF</b></p>
+<p><b> </b></p>
+<p>When selecting this optimization then only two Rx- </p>
+<p>and one Tx-NSdu  can be configured. The number </p>
+<p>of totally configurable connections is “1” since the </p>
+<p>second Rx-NSdu is only implemented as an </p>
+<p>additional so called “functional reception path” for </p>
+<p>diagnostic applications. In addition the connection </p>
+<p>attributes are generated as precompile defines. </p>
+<p>Please note that this causes the unavailability of </p>
+<p>post-build functionality. The NSdu-attributes are </p>
+<p>contained in the component code and can not be </p>
+<p>modified without a re-compilation. Please not in </p>
+<p>addition that this causes also that Multiple </p>
+<p>Configuration functionality (see 6.2.3) is absent. </p>
+<p>Support dynamic </p>
+<p>channel assignment </p>
+<p>boolean </p>
+<p>ON </p>
+<p><b>OFF</b></p>
+<p><b> </b></p>
+<p>For a given number of statically configured Rx/Tx-</p>
+<p>NSdus a maximum number of parallel available </p>
+<p>CANTP channel resources can be specified. This </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>59 / 73</p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>maximum number defines how many connections </p>
+<p>can be active simultaneously.  So the maximum </p>
+<p>number  of simultaneously active Rx and Tx </p>
+<p>channels will be restricted when this feature is </p>
+<p>active. When this feature is disabled, each Rx/Tx-</p>
+<p>NSdu can be active at the same time. </p>
+<p>CanTpMaxNum[Rx/T</p>
+<p>x]Channels </p>
+<p>uint16 </p>
+<p>1/1 </p>
+<p>This is the maximum number of simultaneously </p>
+<p>available channels. It’s only relevant if the </p>
+<p>“Dynamic Channel Assignment” optimization is </p>
+<p>selected. Please note that it is not allowed to </p>
+<p>specify a maximum channel number which is </p>
+<p>higher then the total number of available NSdus. </p>
+<p>Table 6-2  </p>
+<p>General parameters </p>
+<p><b>6.2.2 </b></p>
+<p><b>Channel Configuration </b></p>
+<p><b>6.2.2.1 </b></p>
+<p><b>Rx Parameters </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>CanTpRxNPdu </p>
+<p>PduIdType </p>
+<p>-- </p>
+<p>Select the CAN message to be used for this N-</p>
+<p>PDU reception. </p>
+<p>CanTpTxFCNPdu </p>
+<p>PduIdType </p>
+<p>-- </p>
+<p>Select the CAN message to be used in case of FC </p>
+<p>responses for this N-PDU. </p>
+<p>CanTpRxPadding </p>
+<p>Activation </p>
+<p>boolean </p>
+<p><b>ON  </b></p>
+<p>OFF </p>
+<p>Enable padding. If so, all PDUs must be of length </p>
+<p>8. </p>
+<p>CanTpRxTaType </p>
+<p>enumeration </p>
+<p><b>CANTP_PHY</b></p>
+<p><b>SICAL, </b></p>
+<p>CANTP_FUN</p>
+<p>CTIONAL  </p>
+<p>Select the communication type, either physical for </p>
+<p>1:1 connections or functional for 1:n connections. </p>
+<p>Addressing Format </p>
+<p>enumeration </p>
+<p><b>CANTP_STA</b></p>
+<p><b>NDARD, </b></p>
+<p>CANTP_EXT</p>
+<p>ENDED,  </p>
+<p>CANTP_MIX</p>
+<p>ED11 </p>
+<p>Select the addressing format.  </p>
+<p>If extended addressing is used, matching </p>
+<p>Target/Source Addresses (see below) must be </p>
+<p>defined too.  </p>
+<p>If Mixed-11 addressing is used, matching Address </p>
+<p>Extension information (see below) must be defined </p>
+<p>too. </p>
+<p>CanTpBs </p>
+<p>uint8 </p>
+<p><b>8 </b></p>
+<p>Enter the maximum Block size. Please note that </p>
+<p>this BS value can be adapted at runtime due to </p>
+<p>buffer availability. </p>
+<p>CanTpSTmin </p>
+<p>uint8 </p>
+<p><b>20 </b></p>
+<p>Enter the minimum time between two consecutive </p>
+<p>frames (milliseconds). </p>
+<p>CanTpRxWftMax </p>
+<p>uint16 </p>
+<p><b>15 </b></p>
+<p>Enter the maximum number of Wait Frames that </p>
+<p>are consecutively received before an error </p>
+<p>notification is raised and the communication is </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>60 / 73</p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>stopped for this N-SDU.   </p>
+<p>CanTpRxDl </p>
+<p>uint16 </p>
+<p><b>8 </b></p>
+<p>The minimum Data Length Code is determined </p>
+<p>automatically. If padding is active, this must be 8. If </p>
+<p>padding is not active, a minimum size of 1 is </p>
+<p>assumed. All messages with a length less than this </p>
+<p>Data Length Code are ignored. </p>
+<p>CanTpNar </p>
+<p>uint16 </p>
+<p><b>100 </b></p>
+<p>Enter the CAN confirmation timeout (milliseconds). </p>
+<p>CanTpNbr </p>
+<p>uint16 </p>
+<p><b>150 </b></p>
+<p>Enter the Flow Control timeout (milliseconds). </p>
+<p>CanTpNcr </p>
+<p>uint16 </p>
+<p><b>150 </b></p>
+<p>Enter the Consecutive Frame timeout </p>
+<p>(milliseconds). </p>
+<p>CanTpNTa / </p>
+<p>CanTpNAe </p>
+<p>uint8 </p>
+<p><b>0 </b></p>
+<p>Enter the Target Address in case of extended </p>
+<p>addressing format. </p>
+<p>Enter the Address Extension in case of mixed-11 </p>
+<p>addressing format. Please note that the parameter </p>
+<p>CanTpNAe does not exist in the BSWMD file, </p>
+<p>instead of  CanTpNTa is used to store the address </p>
+<p>extension. </p>
+<p>CanTpNSa </p>
+<p>uint8 </p>
+<p><b>0 </b></p>
+<p>Enter the Source Address to be used for FC-</p>
+<p>responses for this N-PDU if extended addressing is </p>
+<p>selected. </p>
+<p>Rx Upper Layer </p>
+<p>NSdu Id </p>
+<p>PduIdType </p>
+<p>-- </p>
+<p>This is the NSDU-ID which will be used for the </p>
+<p>upper layer communication in case of an  enabled </p>
+<p>Rx/Tx NSduId remapping. </p>
+<p>Table 6-3  </p>
+<p>Rx parameters </p>
+<p><b>6.2.2.2 </b></p>
+<p><b>Tx Parameters </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>CanTpTxNPdu </p>
+<p>PduIdType </p>
+<p>-- </p>
+<p>Select the CAN message to be used for this N-</p>
+<p>PDU transmission. </p>
+<p>CanTpRxFCNPdu </p>
+<p>PduIdType </p>
+<p>-- </p>
+<p>Select the CAN message to be used in case of FC </p>
+<p>receptions for this N-PDU. </p>
+<p>CanTpTxPadding </p>
+<p>Activation </p>
+<p>boolean </p>
+<p><b>ON  </b></p>
+<p>OFF </p>
+<p>Enable padding. If so, all PDUs must be of length 8 </p>
+<p>(see 7.1.8 Limitations). </p>
+<p>CanTpTxTaType </p>
+<p>enumeration </p>
+<p><b>CANTP_PHY</b></p>
+<p><b>SICAL, </b></p>
+<p>CANTP_FUN</p>
+<p>CTIONAL  </p>
+<p>Select the communication type, either physical for </p>
+<p>1:1 connections or functional for 1:n connections. </p>
+<p>Addressing Format </p>
+<p>enumeration </p>
+<p><b>CANTP_STA</b></p>
+<p><b>NDARD, </b></p>
+<p>CANTP_EXT</p>
+<p>ENDED,  </p>
+<p>Select the addressing format.  </p>
+<p>If extended addressing is used matching </p>
+<p>Target/Source Addresses (see below) must be </p>
+<p>defined too.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>61 / 73</p>
+<p><b>Attribute Name </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>CANTP_MIX</p>
+<p>ED11 </p>
+<p>If Mixed-11 addressing is used then the belonging  </p>
+<p>Address Extension information (see below) must </p>
+<p>be defined too. </p>
+<p>CanTpNas </p>
+<p>uint16 </p>
+<p><b>100 </b></p>
+<p>Enter the CAN confirmation timeout (milliseconds). </p>
+<p>CanTpNbs </p>
+<p>uint16 </p>
+<p><b>150 </b></p>
+<p>Enter the Flow Control timeout (milliseconds). </p>
+<p>CanTpNcs </p>
+<p>uint16 </p>
+<p><b>150 </b></p>
+<p>Enter the Consecutive Frame timeout </p>
+<p>(milliseconds). </p>
+<p>CanTpTxDl </p>
+<p>uint16 </p>
+<p><b>8 </b></p>
+<p>The minimum Data Length Code is determined </p>
+<p>automatically. When padding is active this must be </p>
+<p>8. When padding is not active, a minimum size of 1 </p>
+<p>is assumed. All messages with a length less than </p>
+<p>this Data Length Code are ignored. </p>
+<p>See also ‘7.1.8 Limitations’ ! </p>
+<p>CanTpTc </p>
+<p>uint8 </p>
+<p><b>-- </b></p>
+<p>Select the onnection specific transmit cancellation. </p>
+<p>CanTpNTa / </p>
+<p>CanTpNAe </p>
+<p>uint8 </p>
+<p><b>0 </b></p>
+<p>Enter the Target Address in case of extended </p>
+<p>addressing format. </p>
+<p>Enter the Address Extension in case of mixed-11 </p>
+<p>addressing format. Please note that the parameter </p>
+<p>CanTpNAe does not exist in the BSWMD file, </p>
+<p>instead of  CanTpNTa is used to store the address </p>
+<p>extension. </p>
+<p>CanTpNSa </p>
+<p>uint8 </p>
+<p><b>0 </b></p>
+<p>Enter the Source Address to be used for FC-</p>
+<p>receptions for this N-PDU if extended addressing </p>
+<p>format is selected. </p>
+<p>Tx Upper Layer </p>
+<p>NSdu Id </p>
+<p>PduIdType </p>
+<p>-- </p>
+<p>Enter the NSDU-ID which shall be used for the </p>
+<p>upper layer communication. </p>
+<p>Table 6-4  </p>
+<p>Tx parameters </p>
+<p> </p>
+<p> </p>
+<p><b>6.2.3 </b></p>
+<p><b>Multiple Configuration </b></p>
+<p>Multiple  ECUs  are  control  units  which  are  assembled  several  times  within  the  CAN </p>
+<p>network using the identical software (e.g.: front seat left and right hand side). In this case </p>
+<p>the application has to decide at run-time which ECU is actually installed and has to set-up </p>
+<p>the communication parameters dynamically. This is typically done during system startup in </p>
+<p>the CanTp_Init function.  </p>
+<p>The  CanTp_Init  is  called  for  this  purpose  with  an  identity  specific  configuration    pointer </p>
+<p>which selects the actual identity (see 5.1.2). </p>
+<p> </p>
+<p>Example for an ECU identity : </p>
+<p>Check the generated file CanTp_PBcfg.h for the belonging definitions:  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>62 / 73</p>
+<p>#define <b>CanTp_Config_Identity_0              </b>vCanTp_Cfg </p>
+<p>#define <b>CanTp_Config_Identity_1              </b>vCanTp_Cfg_1 </p>
+<p>   ... </p>
+<p>and then call the init function with the appropriate configuration pointer of the identity you   </p>
+<p>are looking for: </p>
+<p>CanTp_Init(&amp;CanTp_Config_Identity_X); </p>
+<p> </p>
+<p> </p>
+<p><b>6.2.4 </b></p>
+<p><b>Timing Constraints </b></p>
+<p>The CANTP needs all timings to be normalized on call cycles. Therefore all timings will be </p>
+<p>rounded up to the next integer multiple of call cycles. </p>
+<p>Since timers are set within interrupt context and decremented within task-context, some </p>
+<p>jitter may occur. However, this jitter does not exceed one call cycle. </p>
+<p>As for CANTP, the ‘Timings’ are generally calculated with a jitter plus one call cycle, this </p>
+<p>means  that  the  timing  value  is  the  first  possible  time  after  an  event  (e.g.  timeout)  can </p>
+<p>occur. </p>
+<p>CANTP uses the following algorithm for calculation: </p>
+<p><b>&gt; </b> timeValue =  (requestedValue + (CallCycle-1)) / CallCycle  + 1 </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>63 / 73</p>
+<p><b>7 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>7.1 </b></p>
+<p><b>Extensions </b></p>
+<p><b>7.1.1 </b></p>
+<p><b>Dynamically supported connection channels </b></p>
+<p>As </p>
+<p>opposed </p>
+<p>to </p>
+<p>CANTP289 </p>
+<p>“The </p>
+<p>number </p>
+<p>of </p>
+<p>connection </p>
+<p>channels </p>
+<p>is </p>
+<p>not </p>
+<p>directly </p>
+<p>configurable.  It  will  be  determined  by  the  configuration  tools  during  the  configuration </p>
+<p>process,  by  analyzing  the  N-SDU/Channel  routing  table.”  the  number  of  dynamically </p>
+<p>supported connection channels is configurable within the generation tool. </p>
+<p><b>7.1.2 </b></p>
+<p><b>AR4 Buffer handling </b></p>
+<p>As </p>
+<p>opposed </p>
+<p>to </p>
+<p>CANTP082: </p>
+<p>“If </p>
+<p>the </p>
+<p>function </p>
+<p>PduR_CanTpStartOfReception() </p>
+<p>returns </p>
+<p>BUFREQ_E_BUSY  to  the  CanTp  module,  the  CanTp  module  shall  suspend  the  N-SDU </p>
+<p>reception  by  sending  the  next  Flow  Control  N-PDU  with  status  WAIT  (i.e.  FC(WT))“  the </p>
+<p>Vector  CanTp  tries  further  buffer  requests  using  the  PduR_CopyRxData  API  before </p>
+<p>sending Flow Control frames with status “WAIT”. </p>
+<p>(see also the PduR Spec. for AR4 for the expected behaviour of CanTpStartOfReception() </p>
+<p>when  returning  BUFREQ_E_BUSY  (“BUFREQ_E_BUSY:    Currently    no    buffer    of    the  </p>
+<p>requested size   is   available. RxBufferSizePtr   remains   unchanged. Connection  has  </p>
+<p>been  rejected”) </p>
+<p><b>7.1.3 </b></p>
+<p><b>Burst transmission </b></p>
+<p>In extension to the CANTP SWS [1] the Vector CANTP supports a burst transmission. If </p>
+<p>the the STmin time is set equal to zero then all CFs are sent directly in the context of the </p>
+<p>confirmation function. </p>
+<p><b>7.1.4 </b></p>
+<p><b>Full Duplex </b></p>
+<p>In </p>
+<p>opposition </p>
+<p>to </p>
+<p>the </p>
+<p>CANTP </p>
+<p>SWS </p>
+<p>[1] </p>
+<p>the </p>
+<p>Vector </p>
+<p>CANTP </p>
+<p>supports </p>
+<p>only </p>
+<p>full </p>
+<p>duplex </p>
+<p>communication.</p>
+<p> </p>
+<p><b>7.1.5 </b></p>
+<p><b>CANTP initialization </b></p>
+<p>In extension to the CANTP SWS [1] the CanTp_Init() API is also available for the usage </p>
+<p>with </p>
+<p>several </p>
+<p>sets </p>
+<p> </p>
+<p>of </p>
+<p>configurations. </p>
+<p>It </p>
+<p>is </p>
+<p>configurable, </p>
+<p>via </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>switch </p>
+<p>CANTP_HAVE_INIT_CFG_PTR, to be called with a pointer to one specific configuration </p>
+<p>set. </p>
+<p> </p>
+<p>#if (CANTP_HAVE_INIT_CFG_PTR == STD_ON) </p>
+<p> the following API is used: </p>
+<p> </p>
+<p> </p>
+<p>void CanTp_Init(const void* const pCfgPtr) </p>
+<p> </p>
+<p>#endif </p>
+<p> </p>
+<p>#if (CANTP_HAVE_INIT_CFG_PTR == STD_OFF) </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>64 / 73</p>
+<p> the following API is used: </p>
+<p> </p>
+<p> </p>
+<p>void CanTp_Init(void) </p>
+<p> </p>
+<p>#endif </p>
+<p><b>7.1.5.1 </b></p>
+<p><b>CANTP initialization since AUTOSAR 4 </b></p>
+<p>Please note that since AUTOSAR4 the CanTp_Init API function is defined as follows: </p>
+<p>void CanTp_Init( const CanTp_ConfigType* CfgPtr ) </p>
+<p> </p>
+<p><b>7.1.6 </b></p>
+<p><b>Padding pattern </b></p>
+<p>In  extension  to  the  CANTP  SWS  [1]  the  Vector  CANTP  supports,  in  case  of  padding </p>
+<p>support  (CANTP_PADDING_ACTIVATION  =  STD_ON),  an  additional  padding  pattern </p>
+<p>(CANTP_PADDING_PATTERN) that may be used to fill up unused frame bytes. If unused, </p>
+<p>the frame is filled up with uninitialized data. </p>
+<p> </p>
+<p><b>7.1.7 </b></p>
+<p><b>Splitted CanTp_MainFunction </b></p>
+<p>In extension to the CANTP SWS [1] the Vector CANTP supports, in case of a splitted main </p>
+<p>function is configured (CANTP_RXTX_MAINFUNCTION_API = STD_ON), two additional  </p>
+<p>API </p>
+<p>functions </p>
+<p>CanTp_MainFunctionRx </p>
+<p>and </p>
+<p>CanTp_MainFunctionTx. </p>
+<p>These </p>
+<p>additional </p>
+<p>functions can be used instead of the original AUTOSAR CanTp_MainFunction API (which </p>
+<p>is </p>
+<p>still </p>
+<p>supported) </p>
+<p>to </p>
+<p>optimize </p>
+<p>the </p>
+<p>calling </p>
+<p>sequence </p>
+<p>of </p>
+<p>incoming </p>
+<p>requests </p>
+<p>and </p>
+<p>their </p>
+<p>responses. </p>
+<p><b>7.1.8 </b></p>
+<p><b>Dynamic Flow Control content </b></p>
+<p>In extension to the CANTP SWS [1] the Vector CANTP supports, in case of dynamic Flow </p>
+<p>Control </p>
+<p>content </p>
+<p>setting </p>
+<p>is </p>
+<p>configured </p>
+<p>(CANTP_ENABLE_EXT_API_BS/ </p>
+<p>CANTP_ENABLE_EXT_API_STMIN = STD_ON), two additional API functions which allow </p>
+<p>the  modification  of  the  blocksize  (BS)  as  well  as  the  minimum  separation  time  (STmin) </p>
+<p>byte contained in the FCs which are responded to a transmitter during runtime. </p>
+<p><b>7.1.9 </b></p>
+<p><b>Suppress PRE_PASSED DEM events </b></p>
+<p>In opposition to the CANTP SWS [1] the Vector CANTP supports the deactivation of DEM </p>
+<p>events </p>
+<p>which </p>
+<p>are </p>
+<p>handed </p>
+<p>to </p>
+<p>the </p>
+<p>DEM </p>
+<p>on </p>
+<p>each </p>
+<p>successful </p>
+<p>completed </p>
+<p>reception </p>
+<p>or </p>
+<p>transmission as described in CanTp228: </p>
+<p><b>“CanTp228: </b>After a task is completed successfully by calling PduR_TxConfirmation() </p>
+<p>or PduR_RxIndication(), the CanTp module shall call the DEM with EventId= </p>
+<p>CANTP_E_COM (see also 3.5.2) and  EventStatus = </p>
+<p>DEM_EVENT_STATUS_PREPASSED.” </p>
+<p>If the pre-configurable attribute  “AsrCanTp_SuppressPrePassIndication” is configured to </p>
+<p>be true, then the DEM notification is turned off for all PRE_PASSED events. The </p>
+<p>concerning preprocessor switch is named “CANTP_SUPPRESS_PREPASS_INDICATION </p>
+<p>= STD_ON/STD_OFF). This is done to reduce the DEM buffer resources. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>65 / 73</p>
+<p><b>7.1.10 </b></p>
+<p><b>Accelerate the routing of multi frames </b></p>
+<p>If the pre-configurable attribute  “AsrCanTp_FFProvide2RxBufferCalls” is configured to be </p>
+<p>true, then a special additional second First Frame buffer provision call is performed. This </p>
+<p>second  call  is  used  as  a  notification  to  the  PduR  so  the  First  Frame  of  a  multi  frame </p>
+<p>message can be routed immediately before any provided buffers are completely filled up. </p>
+<p>The </p>
+<p>concerning </p>
+<p>preprocessor </p>
+<p>switch </p>
+<p>is </p>
+<p>named </p>
+<p>“CANTP_FF_PROVIDE_2_RXBUFFER_CALLS  =  STD_ON/STD_OFF).  This  is  done  to </p>
+<p>speed up any multi frame receptions and is used typically in gateway applications. </p>
+<p> </p>
+<p><b>7.1.11 </b></p>
+<p><b>Optimized ROM resource consumption </b></p>
+<p>When using the pre-compile configuration variant then all Rx- and Tx- Sdu attributes are </p>
+<p>checked for analogousness. For each attribute (e.g. addressing mode, timeout value, …) </p>
+<p>being identical for all Sdus on the Rx- or the Tx- side one single preprocessor definition is </p>
+<p>generated  instead  of  several  ROM  table  entries  for  each  Sdu  separately.  So,  assuming </p>
+<p>many  attributes  have  the  same  values,  a  considerable  amount  of  ROM  space  can  be </p>
+<p>economized.  This  is  appropriate  especially  for  configurations  where  a  lot  of  Sdus  are </p>
+<p>available as in gateway applications. </p>
+<p> </p>
+<p><b>7.1.12 </b></p>
+<p><b>Detection of competing diagnostic tester access </b></p>
+<p>An  additional  -  non  AUTOSAR  –  callout  function  is  supported  to  give  the  DCM  the </p>
+<p>possibility  to  check  for  parallel  access  from  another  tester.  This  additional  callout  is  </p>
+<p>provided </p>
+<p>if </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>switch </p>
+<p> </p>
+<p>‘CANTP_DCM_REQUEST_DETECT’ </p>
+<p>is </p>
+<p>set </p>
+<p>to </p>
+<p>‘STD_ON’. </p>
+<p>This </p>
+<p>can </p>
+<p>be </p>
+<p>accomplished </p>
+<p>via </p>
+<p>a </p>
+<p>preconfiguration </p>
+<p>file </p>
+<p>entry </p>
+<p>for </p>
+<p>the </p>
+<p>‘AsrCanTp</p>
+<p>_</p>
+<p>EnableDcmRequestDetect’ generation tool attribute. </p>
+<p>If the callout function is enabled in this manner, then each Single Frame or First Frame </p>
+<p>indicated to the CanTp via the CanIf API function ‘CanTp_RxIndication’ is also indicated to </p>
+<p>the DCM if the addressing type is Mixed-11. </p>
+<p>The callout function prototype is defined as follows: </p>
+<p> </p>
+<p>void Dcm_OnRequestDetection(PduIdType CanTpRxPduId, uint8 N_AE); </p>
+<p> </p>
+<p><b>7.1.13 </b></p>
+<p><b>Asynchronous transmit  </b></p>
+<p>Due to performance reasons the CanTp_Transmit API calls synchronously the Tx buffer </p>
+<p>provision </p>
+<p>and, </p>
+<p>if </p>
+<p>successful, </p>
+<p>subsequently </p>
+<p>the </p>
+<p>CanIf_Transmit  API </p>
+<p>to </p>
+<p>accomplish </p>
+<p>a  </p>
+<p>transmission on the CAN bus without any delay. </p>
+<p>Some third party components do not handle this synchronous calling sequence, thus an </p>
+<p>asynchronous </p>
+<p>calling </p>
+<p>is </p>
+<p>supported </p>
+<p>too. </p>
+<p>By </p>
+<p>setting </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>switch </p>
+<p>‘CANTP_ASYNC_TRANSMIT’ </p>
+<p>(generation </p>
+<p>tool </p>
+<p>attribute </p>
+<p>‘AsrCanTp_EnableSynchronousTransmit’) to ‘STD_ON’ this behaviour can be enabled. If </p>
+<p>so, the CanTp_Transmit just takes the transmission request and then returns without any </p>
+<p>further processing. The Tx buffer provision and a subsequent call to the CanIf_Transmit </p>
+<p>API is accomplished from the CanTp task level during the next task cycle. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>66 / 73</p>
+<p> </p>
+<p><b>7.1.14 </b></p>
+<p><b>Reception of Flow Control and Consecutive frames </b></p>
+<p>The following special, non AUTOSAR compliant, handling is provided: </p>
+<p><b>7.1.14.1 </b></p>
+<p><b>Ignore FC frames with a reserved STmin content </b></p>
+<p>The CanTp will ignore each received FC frame if the STmin byte contains a reserved value </p>
+<p>(0x80 .. 0xF0, 0xFA .. 0xFF).  </p>
+<p>When  using  the  standard  implementation  compliant  to  ISO  157675-2,  then  the  CanTp </p>
+<p>replaces the reserved STmin value and runs the CanTp connection with the slowest value </p>
+<p>for the timing (STmin = 127msec).  </p>
+<p>When  using  the  non  compliant  implementation,  then  the  CanTp  ignores  each  FC  frame </p>
+<p>containing  a  reserved  STmin  value.    To  enable  this  behaviour  the  pre-compile  switch </p>
+<p>‘CANTP_IGNORE_FC_WITH_RES_STMIN’ </p>
+<p>(generation </p>
+<p>tool </p>
+<p>attribute </p>
+<p>‘AsrCanTp_IgnoreFcWithReservedStMin’)  must  be  set  to  ‘STD_ON’.  The  FC  is  skipped </p>
+<p>without any notification to the application. </p>
+<p> </p>
+<p><b>7.1.14.2 </b></p>
+<p><b>Ignore FC frames with a Flow Status not equal to FC.CTS or FC.WAIT </b></p>
+<p>The CanTp will ignore each received FC frame if  the Flow Status nibble contains either </p>
+<p>FC.OVFLW (0x02) or a reserved value (0x03 .. 0x0F).  </p>
+<p>When  using  the  standard  implementation  compliant  to  ISO  157675-2,  then  the  CanTp </p>
+<p>stops the transmission of a message when a FC.OVFLW (0x02) or an invalid Flow Status </p>
+<p>(0x03 .. 0x0F) is received with either the notification &quot;NTFRSLT_E_NO_BUFFER&quot; in case </p>
+<p>of  FS  =  0x02  (OVFLW)  or  the  notification  &quot;NTFRSLT_E_INVALID_FS&quot;    in  case  of  FS  = </p>
+<p>0x03 .. 0x0F. </p>
+<p>When  using  the  non  compliant  implementation,  then  the  CanTp  ignores  each  FC  frame </p>
+<p>containing  a  Flow  Status  greater  than  0x02.  To  enable  this  behaviour  the  pre-compile </p>
+<p>switch </p>
+<p>‘CANTP_IGNORE_FC_OVFL_INVALID_FS’ </p>
+<p>(generation </p>
+<p>tool </p>
+<p>attribute </p>
+<p>‘AsrCanTp_IgnoreFcOvflAndInvalidFS’)  must  be  set  to  ‘STD_ON’.  The  FC  is  skipped </p>
+<p>without any notification to the application. </p>
+<p> </p>
+<p><b>7.1.14.3 </b></p>
+<p><b>Ignore Consecutive Frames (CF) with a wrong sequence Number (SN) </b></p>
+<p>The CanTp will ignore each received CF if the SN is not equal to the expected one. </p>
+<p>The current implementation behaves compliant to ISO 157675-2 and thus stops a running </p>
+<p>connection with the notification &quot;NTFRSLT_E_WRONG_SN&quot;. </p>
+<p>When </p>
+<p>using </p>
+<p>the </p>
+<p>non </p>
+<p>compliant </p>
+<p>implementation, </p>
+<p>then </p>
+<p>the </p>
+<p>CanTp </p>
+<p>ignores </p>
+<p>each </p>
+<p>CF </p>
+<p>containing </p>
+<p>a </p>
+<p>wrong </p>
+<p>SN. </p>
+<p>To </p>
+<p>enable </p>
+<p>this </p>
+<p>behaviour </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>switch </p>
+<p>‘CANTP_IGNORE_CF_WITH_WRONG_SN’ </p>
+<p>(generation </p>
+<p>tool </p>
+<p>attribute </p>
+<p>‘AsrCanTp_IgnoreCfWithWrongSN’) must be set to ‘STD_ON’. The CF is skipped without </p>
+<p>any notification to the application. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>67 / 73</p>
+<p><b>7.1.15 </b></p>
+<p><b>DEM to DET reporting is configurable </b></p>
+<p><b>7.1.15.1 </b></p>
+<p><b>DEM event CANTP_E_(RX_/TX_)COM(M) </b></p>
+<p>The  reporting  of  the  production  error  CANTP_E_COM  (see  also  3.5.2)  to  the  DEM  is </p>
+<p>configurable in the way that the reporting can be switched to the DET. In this case the DET </p>
+<p>must be enabled or no reporting will be performed. </p>
+<p>If </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>switch </p>
+<p>‘CANTP_E_COMM_REPORT_DEM’ </p>
+<p>(AUTOSAR </p>
+<p>parameter  </p>
+<p>'CanTpECommReportDem')  is  set  to  ‘STD_ON’  then  the  normal  reporting  to  the  DEM </p>
+<p>takes place. </p>
+<p>If the pre-compile switch ‘CANTP_E_COMM_REPORT_DEM’ is set to ‘STD_OFF’ then the  </p>
+<p>reporting is switched to the DET (with the error code 0xB0). </p>
+<p> </p>
+<p><b>7.1.15.2 </b></p>
+<p><b>DEM event CANTP_E_OPER_NOT_SUPPORTED </b></p>
+<p>The reporting of the production error CANTP_E_OPER_NOT_SUPPORTED to the DEM is </p>
+<p>configurable in the way that the reporting can be switched to the DET. In this case the DET </p>
+<p>must be enabled or no reporting will be performed. </p>
+<p>If </p>
+<p>the </p>
+<p>pre-compile </p>
+<p>switch </p>
+<p>‘CANTP_OPER_NOT_SUPPORTED_REPORT_DEM’ </p>
+<p>(AUTOSAR parameter  ' CanTpOperNotSupportedReportDem ') is set to ‘STD_ON’ then </p>
+<p>the normal reporting to the DEM takes place. </p>
+<p>If  the  pre-compile  switch  ‘‘CANTP_OPER_NOT_SUPPORTED_REPORT_DEM’  is  set  to </p>
+<p>‘STD_OFF’ then the  reporting is switched to the DET (with the error code 0xA0). </p>
+<p> </p>
+<p><b>7.2 </b></p>
+<p><b>Limitations </b></p>
+<p><b>7.2.1 </b></p>
+<p><b>Memory optimization </b></p>
+<p>Memory optimization by the linker via data scattering: </p>
+<p>Some linkers allow filling the “holes” caused by padding with some “foreign” data. Since </p>
+<p>the  generation  tool  cannot  be  aware  of  “foreign”  data,  such  optimizations  must  be </p>
+<p>disabled. </p>
+<p><b>7.2.2 </b></p>
+<p><b>Variable Block Sizes </b></p>
+<p>The AUTOSAR feature of variable block sizes to be requested within Flow Control frames </p>
+<p>during a pending reception is not compatible with ISO 15765-2 [4]. </p>
+<p><b>7.2.3 </b></p>
+<p><b>Usage of mixed Addressing </b></p>
+<p>Usage of mixed addressing within the same connection is not allowed. </p>
+<p>The </p>
+<p>addressing </p>
+<p>format </p>
+<p>– </p>
+<p>either </p>
+<p>CANTP_STANDARD </p>
+<p>or </p>
+<p>CANTP_EXTENDED </p>
+<p>or </p>
+<p>CANTP_MIXED11  –  must  be  identical  for  each  pair  of  Rx/Tx  N-SDUs  assigned  to  the </p>
+<p>same connection </p>
+<p><b>7.2.4 </b></p>
+<p><b>Runtime optimization for Timing Calculation </b></p>
+<p>Timing calculation is runtime optimized </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>68 / 73</p>
+<p>Flow Control timeout on receive side: </p>
+<p>ISO 15765-2 specification defines the following performance requirement: (N_Br+N_Ar) &lt; </p>
+<p>0.9*N_Bs timeout. Here Vector uses 80% of N_Bs timeout instead of 90% due to </p>
+<p>performance reasons. </p>
+<p> </p>
+<p><b>7.2.5 </b></p>
+<p><b>Support parallel connections </b></p>
+<p><b>Explanation </b></p>
+<p>The CANTP is able to manage several connections simultaneously. </p>
+<p>Concurrent connections can be configured for the CANTP.   </p>
+<p>All connection-specific information (Channel number, Timing parameter, …) is configured </p>
+<p>inside the CANTP module.  </p>
+<p>A connection channel represents an internal path for transmission or reception of the N-</p>
+<p>SDU.  It  uses  its  own  resources  such  as  internal  buffer,  timer  or  state  machine.  The </p>
+<p>connection channels are only for CANTP internal use and not accessible externally.  </p>
+<p> </p>
+<p>Each N-SDU is (statically) linked to one connection channel.  </p>
+<p>Each connection channel is independent from the other connection channels.  </p>
+<p>The CANTP routes the N-SDU through the correctly configured connection channel. This </p>
+<p>mechanism  does  not  allow  to  receive  or  transmit  an  N-SDU  with  the  same  identifier  in </p>
+<p>parallel, because each N-SDU is linked to only one connection channel. </p>
+<p> </p>
+<p>The  compile-time  assignment  of  connection  channels  to  N-SDUs  can  not  be  altered  via </p>
+<p>post-build configuration. </p>
+<p> </p>
+<p><b>Limitation: </b></p>
+<p>The AUTOSAR requirement claiming that a connection channel may be attached to one or </p>
+<p>more  N-SDUs  is  considered  only  if  the  Dynamic  Channel  Assignment  optimization  is </p>
+<p>available (coming up with version 1.09.00) and configured to be active.  </p>
+<p>If so, the following points are considered:  </p>
+<p><b>&gt; </b> If a connection channel is assigned to multiple N-SDUs, resources are shared between </p>
+<p>different N-SDUs and the CANTP will only reject transmission or abort receiving as long </p>
+<p>as no free connection channels are available. </p>
+<p><b>&gt; </b> The number of connection channels is configurable.  </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>69 / 73</p>
+<p><b>8 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>8.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>Buffer </p>
+<p>A buffer in a memory area normally in the RAM. It is an area, that the </p>
+<p>application has reserved for data storage. </p>
+<p>Callback function </p>
+<p>This is a function provided by an application. E.g. the CAN Driver calls a </p>
+<p>callback function to allow the application to control some action, to make </p>
+<p>decisions at runtime and to influence the work of the driver. </p>
+<p>CAN Driver </p>
+<p>The CAN Driver encapsulates a specific CAN controller handling. It </p>
+<p>consists of algorithms for hardware initialization, CAN message </p>
+<p>transmission and reception. The application interface supports both event </p>
+<p>and polling notification and WR/RD access to the message buffers. </p>
+<p>CAN message </p>
+<p>Frame which is composed of the start-of-frame, arbitration, control, data , </p>
+<p>CRC, acknowledge and end-of-frame bit fields. </p>
+<p>CANbedded </p>
+<p>… is the trademark of the Vector communication stack. </p>
+<p>Channel </p>
+<p>A channel defines the assignment (1:1) between a physical </p>
+<p>communication interface and a physical layer on which different modules </p>
+<p>are connected to (either CAN or LIN). 1 channel consists of 1..X </p>
+<p>network(s). </p>
+<p>Communication stack </p>
+<p>The communication stack consists of the communication configuration </p>
+<p>and the communication kernel, a number of adaptive software </p>
+<p>components that cover the basic communication requirements in </p>
+<p>distributed automotive applications. </p>
+<p>Component </p>
+<p>CAN Driver, Network Management ... are software COMPONENTS in </p>
+<p>contrast to the expression module, which describes an ECU. </p>
+<p>Confirmation </p>
+<p>A service primitive defined in the ISO/OSI Reference Model (ISO 7498). </p>
+<p>With the service primitive 'confirmation' a service provider informs a </p>
+<p>service user about the result of a preceding service request of the service </p>
+<p>user. Notification by the CAN Driver on asynchronous successful </p>
+<p>transmission of a CAN message. </p>
+<p>Critical section </p>
+<p>A critical section is a sequence of instructions where mutual exclusion </p>
+<p>must be ensured. Such a section is called 'critical' because shared data is </p>
+<p>modified within it. </p>
+<p>Data consistency </p>
+<p>Data consistency means that the content of a given application message </p>
+<p>correlates unambiguously to the operation performed onto the message </p>
+<p>by the application. This means that no unforeseen sequence of </p>
+<p>operations may alter the content of a message hence rendering a </p>
+<p>message inconsistent with respect to its allowed and expected value. </p>
+<p>Data link layer </p>
+<p>The communication layer which provides services for the transfer of data </p>
+<p>link messages. The data link layer consists of the communication </p>
+<p>hardware and the communication driver software. </p>
+<p>Deadlock </p>
+<p>A state in which tasks block one another so that further processing of the </p>
+<p>tasks concerned is no longer possible. A deadlock between two tasks </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>70 / 73</p>
+<p>occurs, e.g. if both tasks wait for the reception of a message which is to </p>
+<p>be sent by the other task before sending its own message. </p>
+<p>Electronic Control </p>
+<p>Unit </p>
+<p>Also known as ECU. Small embedded computer system consisting of at </p>
+<p>least one CPU and corresponding periphery which is placed in one </p>
+<p>housing. </p>
+<p>Event </p>
+<p>An exclusive signal which is assigned to a certain extended task. An </p>
+<p>event can be used to send a binary information to an extended task. The </p>
+<p>meaning of events is defined by the application. Any task can set an </p>
+<p>event for an extended task. The event can only be cleared by the task </p>
+<p>which is assigned to the event. </p>
+<p>Gateway </p>
+<p>A gateway is designed to enable communication between different bus </p>
+<p>systems, e.g. from CAN to LIN. </p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>Indication </p>
+<p>A service primitive defined in the ISO/OSI Reference Model (ISO 7498). </p>
+<p>With the service primitive 'indication' a service provider informs a service </p>
+<p>user about the occurrence of either an internal event or a service request </p>
+<p>issued by another service user. Notification of application in case of </p>
+<p>events in the Vector software components, e.g. an asynchronous </p>
+<p>reception of a CAN message. </p>
+<p>Interrupt </p>
+<p>Processor-specific event which can interrupt the execution of a current </p>
+<p>program section. </p>
+<p>Interrupt level </p>
+<p>Processing level provided for time-critical activities. To keep the interrupt </p>
+<p>latency brief, only absolutely indispensable actions should be effected in </p>
+<p>the interrupt service routine, which ensures reception of the interrupt and </p>
+<p>trigger its (post) processing within a task. Other processing levels are: </p>
+<p>Operating system level and task level. </p>
+<p>Network </p>
+<p>A network defines the assignment (1:N) between a logical communication </p>
+<p>grouping and a physical layer on which different modules are connected </p>
+<p>to (either CAN or LIN). One network consists of one channel, Y networks </p>
+<p>consists of 1..Z channel(s). We say network if we talk about more than </p>
+<p>one bus. </p>
+<p>Physical layer </p>
+<p>An electrical circuit that connects an ECU to a communication media. </p>
+<p>Platform </p>
+<p>The sum of micro controller derivative, communication controller </p>
+<p>implementation and compiler is called platform. </p>
+<p>Post-build </p>
+<p>This type of configuration is possible after building the software module or </p>
+<p>the ECU software. The software may either receive parameters of its </p>
+<p>configuration during the download of the complete ECU software resulting </p>
+<p>from the linkage of the code, or it may receive its configuration file that </p>
+<p>can be downloaded to the ECU separately, avoiding a re-compilation and </p>
+<p>re-build of the ECU software modules. In order to make the post-build </p>
+<p>time re-configuration possible, the re-configurable parameters shall be </p>
+<p>stored at a known memory location of ECU storage area. </p>
+<p>Segmented data </p>
+<p>transfer </p>
+<p>See segmented communication </p>
+<p>Software architecture </p>
+<p>A software architecture is the structure or structures of a system, which </p>
+<p>comprises software components, the external visible properties of these </p>
+<p>components and the relationships among them. </p>
+<p>Transport Protocol </p>
+<p>Some information that must be transferred over the CAN/LIN bus does </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>71 / 73</p>
+<p>not fit into individual message frames because the data length exceeds </p>
+<p>the maximum of 8 bytes. In this case, the sender must divide up the data </p>
+<p>into a number of messages. Additional information is necessary for the </p>
+<p>receiver to put the data together again. </p>
+<p>Table 8-1  </p>
+<p>Glossary </p>
+<p> </p>
+<p> </p>
+<p><b>8.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BS </p>
+<p>Block Size </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>BSWMD </p>
+<p>Basic Software Module Description </p>
+<p>CAN </p>
+<p>Controller Area Network protocol originally defined for use as a </p>
+<p>communication network for control applications in vehicles. </p>
+<p>CANTP </p>
+<p>CAN Transport Layer </p>
+<p>CF </p>
+<p>Consecutive Frame </p>
+<p>COM </p>
+<p>Communication </p>
+<p>CTS </p>
+<p>Clear To Send </p>
+<p>DCM </p>
+<p>Diagnostic Communication Manager </p>
+<p>DEM </p>
+<p>Diagnostic Event Manager </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>DL </p>
+<p>Data Length </p>
+<p>DLC </p>
+<p>Data Length Code, Number of data bytes of a CAN message </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>EXTENDED </p>
+<p>Addressing type </p>
+<p>FC </p>
+<p>Flow Control </p>
+<p>FF </p>
+<p>First Frame </p>
+<p>FFFF </p>
+<p>undefined </p>
+<p>FS </p>
+<p>Flow Status Control </p>
+<p>HIS </p>
+<p>Hersteller Initiative Software </p>
+<p>ID </p>
+<p>Identifier </p>
+<p>ISO </p>
+<p>International Standardization Organization </p>
+<p>LIN </p>
+<p>Local Interconnect Network </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>OBD </p>
+<p>undefined </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>72 / 73</p>
+<p>OEM </p>
+<p>Original Equipment Manufacturer </p>
+<p>OS </p>
+<p>Operating System </p>
+<p>OVFLW </p>
+<p>Overflow </p>
+<p>PDU </p>
+<p>Protocol data unit </p>
+<p>PDUR </p>
+<p>PDU Router </p>
+<p>ROM </p>
+<p>Read-Only Memory </p>
+<p>RTE </p>
+<p>Runtime Environment </p>
+<p>SA </p>
+<p>Source Address </p>
+<p>SDU </p>
+<p>undefined </p>
+<p>SF </p>
+<p>Single Frame </p>
+<p>SN </p>
+<p>Sequence Number </p>
+<p>SRS </p>
+<p>Software Requirement Specification </p>
+<p>ST </p>
+<p>Separation Time </p>
+<p>STANDARD </p>
+<p>Addressing type </p>
+<p>SWC </p>
+<p>Software Component </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>TA </p>
+<p>Target Address </p>
+<p>TP </p>
+<p>Transport Protocol </p>
+<p>TPCI </p>
+<p>Transport Protocol Control Information </p>
+<p>USDT </p>
+<p>Unacknowledged Segmented Data Transfer </p>
+<p>UUDT </p>
+<p>Unacknowledged Unsegmented Data Transfer </p>
+<p>WT </p>
+<p>Wait </p>
+<p>Table 8-2  </p>
+<p>Abbreviations </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Transport Layer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.18.01 </p>
+<p>based on template version 3.9 </p>
+<p>73 / 73</p>
+<p><b>9 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

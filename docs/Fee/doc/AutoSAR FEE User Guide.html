@@ -1,0 +1,3601 @@
+---
+layout: default
+title: AutoSAR FEE User Guide
+nav_order: 2
+parent: Fee Driver
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p><i><b>AutoSAR FEE Driver</b></i></p>
+<p><i><b> </b></i></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Version 1.13 </p>
+<p> </p>
+<p>Mar15, 2016 </p>
+<p> </p>
+<p>Copyright </p>
+<p></p>
+<p> Texas Instruments Incorporated </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>User's Guide</p>
+<p>                User Manual </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Read This First </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p> </p>
+<p> </p>
+<p>2 </p>
+<p><b>IMPORTANT NOTICE </b></p>
+<p><b> </b></p>
+<p>Texas Instruments and its subsidiaries (TI) reserve the right to make changes to their products or to </p>
+<p>discontinue any product or service without notice, and advise customers to obtain the latest version of </p>
+<p>relevant  information  to  verify,  before  placing  orders,  that  information  being  relied  on  is  current  and </p>
+<p>complete. All products are sold subject to the terms and conditions of sale supplied at the time of order </p>
+<p>acknowledgment, including those pertaining to warranty, patent infringement, and limitation of liability. </p>
+<p>TI  warrants  performance  of  its  products  to  the  specifications  applicable  at  the  time  of  sale  in </p>
+<p>accordance with TI’s standard warranty. Testing and other quality control techniques are utilized to the </p>
+<p>extent TI deems necessary to support this warranty. Specific testing of all parameters of each device is </p>
+<p>not necessarily performed, except those mandated by government requirements. </p>
+<p>Customers are responsible for their applications using TI components. </p>
+<p>In order to minimize risks associated with the customer’s applications, adequate design and operating </p>
+<p>safeguards ought to be provided by the customer so as to minimize inherent or procedural hazards. </p>
+<p>TI assumes no liability for applications assistance or customer product design. TI does not warrant or </p>
+<p>represent that any license, either express or implied, is granted under any patent right, copyright, mask </p>
+<p>work right, or other intellectual property right of TI covering or relating to any combination, machine, or </p>
+<p>process  in  which  such  products  or  services  might  be  or  are  used.  TI’s  publication  of  information </p>
+<p>regarding any third party’s products or services does not constitute TI’s approval, license, warranty or </p>
+<p>endorsement thereof. </p>
+<p>Reproduction of information in TI data books or data sheets is permissible only if reproduction is without </p>
+<p>alteration </p>
+<p>and </p>
+<p>is </p>
+<p>accompanied </p>
+<p>by </p>
+<p>all </p>
+<p>associated </p>
+<p>warranties, </p>
+<p>conditions, </p>
+<p>limitations </p>
+<p>and </p>
+<p>notices.  </p>
+<p>Representation or reproduction of this information with alteration voids all warranties provided for an </p>
+<p>associated  TI  product  or  service  is  an  unfair  and  deceptive  business  practice,  and  TI  is  neither </p>
+<p>responsible nor liable for any such use. </p>
+<p>Resale of TI’s products or services with <i>statements different from or beyond the parameters </i>stated by </p>
+<p>TI for that product or service voids all express and any implied warranties for the associated TI product </p>
+<p>or service, is an unfair and deceptive business practice, and TI is not responsible nor liable for any such </p>
+<p>use. </p>
+<p>Also </p>
+<p>see: </p>
+<p>Standard </p>
+<p>Terms </p>
+<p>and </p>
+<p>Conditions </p>
+<p>of </p>
+<p>Sale </p>
+<p>for </p>
+<p>Semiconductor </p>
+<p>Products.  </p>
+<p>www.ti.com/sc/docs/stdterms.htm </p>
+<p>Mailing Address: </p>
+<p>Texas Instruments </p>
+<p>Post Office Box 655303 </p>
+<p>Dallas, Texas 75265 </p>
+<p> </p>
+<p>Copyright © 2012, Texas Instruments Incorporated </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>3 </p>
+<p><b>Preface </b></p>
+<p><b>Read This First </b></p>
+<p> </p>
+<p><i><b>About This Manual </b></i></p>
+<p>This  user  manual  serves  as  a  software  programmer’s  handbook  for  working  with  the </p>
+<p>AutoSAR FEE Driver<b>. </b>It provides necessary information regarding how to build and use AutoSAR </p>
+<p>FEE Driver in user systems and applications.  </p>
+<p>It also provides details regarding the AutoSAR FEE Driver functionality, the requirements it </p>
+<p>places  on  the  hardware  and  software  environment  where  it  can  be  deployed,  how  to  customize/ </p>
+<p>configure it etc. It also provides supplementary information regarding steps to be followed for proper </p>
+<p>installation/ un-installation of the AutoSAR FEE Driver.  </p>
+<p> </p>
+<p><i><b>Important Notes </b></i></p>
+<p>Customers have to include F021 API library  v2.01.01 or greater. </p>
+<p><i><b>Abbreviations </b></i></p>
+<p> </p>
+<p><b>1-1.  Table of Abbreviations </b></p>
+<p> </p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>AutoSAR FEE Driver</p>
+<p> </p>
+<p>This is TI coined name for the product. </p>
+<p>FEE </p>
+<p>Flash EEPROM Emulation </p>
+<p><i><b> </b></i></p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Read This First </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p> </p>
+<p> </p>
+<p>4 </p>
+<p><b>Document</b></p>
+<p><b> </b></p>
+<p><b>Revision History  </b></p>
+<p> </p>
+<p><b>Version </b></p>
+<p><b>Date </b></p>
+<p><b>Revision History </b></p>
+<p>1.0 </p>
+<p>09/25/2012 </p>
+<p>Initial version </p>
+<p>1.1 </p>
+<p>11/08/2012 </p>
+<p>Changes for EA2 </p>
+<p>1.2 </p>
+<p>11/21/2012 </p>
+<p>Additional changes for BETA </p>
+<p>1.3 </p>
+<p>12/12/2012 </p>
+<p>Add error recovery prototypes </p>
+<p>1.4 </p>
+<p>06/11/2013 </p>
+<p>Add software revision history. Added new </p>
+<p>configuration tags information. </p>
+<p>1.5 </p>
+<p>10/23/2013 </p>
+<p>Updated software revision history. </p>
+<p>1.6 </p>
+<p>01/03/2014 </p>
+<p>Add new configuration parameter for  </p>
+<p>address range check for Read/Write. </p>
+<p>Check for Multi bit error during Read. </p>
+<p>MISRA fixes. </p>
+<p>1.7 </p>
+<p>09/11/2014 </p>
+<p>Manual Suspend/Resume feature added. </p>
+<p>1.8 </p>
+<p>10/15/2014 </p>
+<p>RAM Optimization changes. </p>
+<p>1.9 </p>
+<p>10/31/2014 </p>
+<p>Support TMS570LS05xx, TMS570LS07xx, </p>
+<p>TMS570LS09xx. Range updated for </p>
+<p>FEE_VirtualSectorNumber, Virtual Sectors </p>
+<p>1.10 </p>
+<p>01/21/2015 </p>
+<p>Changes related to unification of Archer and </p>
+<p>Champion. </p>
+<p>1.11 </p>
+<p>10/14/2015 </p>
+<p>Bugfix for block lost issue. </p>
+<p>1.12 </p>
+<p>11/20/2015 </p>
+<p>Enhancement for “Do not change FEE state </p>
+<p>to IDLE after copying of the blocks is </p>
+<p>completed” </p>
+<p>1.13 </p>
+<p>03/15/2016 </p>
+<p>Bugfix for “Block offset address does not get </p>
+<p>updated correctly, if copy operation was </p>
+<p>interrupted.” Added section “Important Notes” </p>
+<p> </p>
+<p><b>Software</b></p>
+<p><b> </b></p>
+<p><b>Revision History  </b></p>
+<p> </p>
+<p><b>Version </b></p>
+<p><b>Date </b></p>
+<p><b>Revision History </b></p>
+<p>00.01.00 </p>
+<p>08/31/2012 </p>
+<p>Initial version </p>
+<p>00.01.01 </p>
+<p>10/29/2012 </p>
+<p>Changes for implementing Error Recovery </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>5 </p>
+<p>00.01.02 </p>
+<p>11/30/2012 </p>
+<p>Misra Fixes, Memory segmentation changes </p>
+<p>00.01.03 </p>
+<p>01/14/2013 </p>
+<p>Changes as requested by Vector. If there is an immediate </p>
+<p>erase/invalidate block  request before writing of a block ,  </p>
+<p>API should return the job status as JOB_OK. </p>
+<p>00.01.04 </p>
+<p>02/12/2013 </p>
+<p>Integration issues fix.  Fixed issues regarding integration of </p>
+<p>FEE with NvM. </p>
+<p>00.01.05 </p>
+<p>03/04/2013 </p>
+<p>Added Deleting a block feature </p>
+<p>00.01.06 </p>
+<p>03/11/2013 </p>
+<p>Added feature : copying of unconfigured blocks. </p>
+<p>00.01.07 </p>
+<p>03/15/2013 </p>
+<p>Added feature : Number of 8 bytes writes, fixed issue with </p>
+<p>copy blocks. </p>
+<p>00.01.08 </p>
+<p>04/05/2013 </p>
+<p>Added feature : CRC check for unconfigured  blocks, Main </p>
+<p>function modified to complete writes as fast as possible, </p>
+<p>Added Non polling mode support. </p>
+<p>00.01.09 </p>
+<p>04/19/2013 </p>
+<p>Warning removal, Added feature comparison of data </p>
+<p>during write. </p>
+<p>00.01.10 </p>
+<p>06/11/2013 </p>
+<p>Fixed issue with erase sector. Also fixed issue with 2 </p>
+<p>EEPROM’s where if one EEPROM is locked with error </p>
+<p>condition, other EEPROM will not get locked. </p>
+<p>01.10.00 </p>
+<p>10/23/2013 </p>
+<p>Updated software to support more than two VS. </p>
+<p>01.20.00 </p>
+<p>01/03/2014 </p>
+<p>Add new configuration parameter for address range check </p>
+<p>for Read/Write. </p>
+<p>Check for Multi bit error during Read. </p>
+<p>MISRA fixes. </p>
+<p>01.20.01 </p>
+<p>09/11/2014 </p>
+<p>Manual Suspend/Resume feature added. </p>
+<p>01.21.00 </p>
+<p>10/15/2014 </p>
+<p>RAM Optimization changes. New configuration parameter </p>
+<p>FEE_TOTAL_BLOCKS_DATASETS added. </p>
+<p>01.22.00 </p>
+<p>01/21/2015 </p>
+<p>Add new Configuration parameters. </p>
+<p>FEE_VIRTUALSECTOR_SIZE, </p>
+<p>FEE_PHYSICALSECTOR_SIZE,  </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC</p>
+<p> </p>
+<p> </p>
+<p>01.23.00 </p>
+<p>10/14/2015 </p>
+<p>Bugfix for block lost issue. </p>
+<p>01.23.01 </p>
+<p>11/20/2015 </p>
+<p>Enhancement for “Do not change FEE state to IDLE after </p>
+<p>copying of the blocks is completed” </p>
+<p>01.23.02 </p>
+<p>03/15/2016 </p>
+<p>Bugfix for “Block offset address does not get updated </p>
+<p>correctly, if copy operation was interrupted.” </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Contents </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p> </p>
+<p> </p>
+<p>6 </p>
+<p><b>Contents </b></p>
+<p> </p>
+<p><b>Read This First</b></p>
+<p><b> ................................................................................................................... 3</b></p>
+<p> </p>
+<p><b>Contents</b></p>
+<p><b> .............................................................................................................................. 6</b></p>
+<p> </p>
+<p><b>Table of tables</b></p>
+<p><b> .................................................................................................................... 8</b></p>
+<p> </p>
+<p><b>Table of figures</b></p>
+<p><b> .................................................................................................................. 9</b></p>
+<p> </p>
+<p><b>Chapter 1</b></p>
+<p><b> ........................................................................................................................... 10</b></p>
+<p> </p>
+<p><b>AutoSAR FEE Driver Introduction</b></p>
+<p><b> .............................................................................. 10</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>Overview ................................................................................................. 11</p>
+<p> </p>
+<p><i>1.1.1</i></p>
+<p> </p>
+<p><i>Functions supported in the AutoSAR FEE Driver ............................. 11</i></p>
+<p> </p>
+<p><i>1.1.2</i></p>
+<p> </p>
+<p><i>System Requirements ...................................................................... 12</i></p>
+<p> </p>
+<p><b>Chapter 2</b></p>
+<p><b> ........................................................................................................................... 13</b></p>
+<p> </p>
+<p><b>AutoSAR FEE Driver Design Overview</b></p>
+<p><b> ..................................................................... 13</b></p>
+<p> </p>
+<p>Overview ............................................................................................................ 13</p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Flash EEPROM Emulation Methodology ................................................. 14</p>
+<p> </p>
+<p><i>2.1.1</i></p>
+<p> </p>
+<p><i>Virtual Sector Organization .............................................................. 14</i></p>
+<p> </p>
+<p><i>2.1.2</i></p>
+<p> </p>
+<p><i>Data Block Organization .................................................................. 17</i></p>
+<p> </p>
+<p><i>2.1.3</i></p>
+<p> </p>
+<p><i>Available Commands ....................................................................... 19</i></p>
+<p> </p>
+<p><i>2.1.4</i></p>
+<p> </p>
+<p><i>Status Codes .................................................................................... 19</i></p>
+<p> </p>
+<p><i>2.1.5</i></p>
+<p> </p>
+<p><i>Job Result ........................................................................................ 19</i></p>
+<p> </p>
+<p><b>Chapter 3</b></p>
+<p><b> ........................................................................................................................... 20</b></p>
+<p> </p>
+<p><b>Integration Guide</b></p>
+<p><b> ............................................................................................................. 20</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Error Recovery Implementation ............................................................... 20</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Single and Double bit Error Corrections .................................................. 21</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>Memory Mapping ..................................................................................... 21</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Symbolic Constants and Enumerated Data types ................................... 22</p>
+<p> </p>
+<p>3.5</p>
+<p> </p>
+<p>Data Structures ....................................................................................... 25</p>
+<p> </p>
+<p>3.6</p>
+<p> </p>
+<p>AutoSAR FEE Driver Configuration Parameters ..................................... 26</p>
+<p> </p>
+<p><i>3.6.1</i></p>
+<p> </p>
+<p><i>Block Overhead ................................................................................ 26</i></p>
+<p> </p>
+<p><i>3.6.2</i></p>
+<p> </p>
+<p><i>Maximum Blocking Time .................................................................. 26</i></p>
+<p> </p>
+<p><i>3.6.3</i></p>
+<p> </p>
+<p><i>Page Overhead ................................................................................ 26</i></p>
+<p> </p>
+<p><i>3.6.4</i></p>
+<p> </p>
+<p><i>Sector  Overhead ............................................................................. 26</i></p>
+<p> </p>
+<p><i>3.6.5</i></p>
+<p> </p>
+<p><i>Virtual Page Size .............................................................................. 27</i></p>
+<p> </p>
+<p><i>3.6.6</i></p>
+<p> </p>
+<p><i>Driver Index ...................................................................................... 27</i></p>
+<p> </p>
+<p><i>3.6.7</i></p>
+<p> </p>
+<p><i>Job Error Notification ........................................................................ 27</i></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>7 </p>
+<p><i>3.6.8</i></p>
+<p> </p>
+<p><i>Job End  Notification ........................................................................ 27</i></p>
+<p> </p>
+<p><i>3.6.9</i></p>
+<p> </p>
+<p><i>FEE Operating Frequency ............................................................... 28</i></p>
+<p> </p>
+<p><i>3.6.10</i></p>
+<p> </p>
+<p><i>Polling Mode .................................................................................... 28</i></p>
+<p> </p>
+<p><i>3.6.11</i></p>
+<p> </p>
+<p><i>Enable Error Correction ................................................................... 28</i></p>
+<p> </p>
+<p><i>3.6.12</i></p>
+<p> </p>
+<p><i>Error Correction Handling ................................................................ 29</i></p>
+<p> </p>
+<p><i>3.6.13</i></p>
+<p> </p>
+<p><i>Block Write Counter Save ............................................................... 29</i></p>
+<p> </p>
+<p><i>3.6.14</i></p>
+<p> </p>
+<p><i>Enable CRC..................................................................................... 29</i></p>
+<p> </p>
+<p><i>3.6.15</i></p>
+<p> </p>
+<p><i>NumberOfEEPs ............................................................................... 29</i></p>
+<p> </p>
+<p><i>3.6.16</i></p>
+<p> </p>
+<p><i>Number of Blocks ............................................................................ 30</i></p>
+<p> </p>
+<p><i>3.6.17</i></p>
+<p> </p>
+<p><i>Number of Virtual Sectors ............................................................... 30</i></p>
+<p> </p>
+<p><i>3.6.18</i></p>
+<p> </p>
+<p><i>Number of Virtual Sectors on EEP1 ................................................ 30</i></p>
+<p> </p>
+<p><i>3.6.19</i></p>
+<p> </p>
+<p><i>Number of Eight Byte Writes ........................................................... 30</i></p>
+<p> </p>
+<p><i>3.6.20</i></p>
+<p> </p>
+<p><i>Maximum Number of non configured blocks to copy ....................... 31</i></p>
+<p> </p>
+<p><i>3.6.21</i></p>
+<p> </p>
+<p><i>Address Range check during Read/Write ........................................ 31</i></p>
+<p> </p>
+<p><i>3.6.22</i></p>
+<p> </p>
+<p><i>Number of blocks and Data Sets ..................................................... 31</i></p>
+<p> </p>
+<p><i>3.6.23</i></p>
+<p> </p>
+<p><i>Generate Device and Virtual Sector Structures ............................... 31</i></p>
+<p> </p>
+<p><i>3.6.24</i></p>
+<p> </p>
+<p><i>Required Virtual Sector Size ........................................................... 32</i></p>
+<p> </p>
+<p><i>3.6.25</i></p>
+<p> </p>
+<p><i>FEE bank Physical Sector Size ....................................................... 32</i></p>
+<p> </p>
+<p><i>3.6.26</i></p>
+<p> </p>
+<p><i>Virtual Sector Configuration ............................................................. 33</i></p>
+<p> </p>
+<p><i>3.6.27</i></p>
+<p> </p>
+<p><i>Block Configuration ......................................................................... 35</i></p>
+<p> </p>
+<p>3.7</p>
+<p> </p>
+<p>API Classification .................................................................................... 39</p>
+<p> </p>
+<p><i>3.7.1</i></p>
+<p> </p>
+<p><i>Initialization ...................................................................................... 39</i></p>
+<p> </p>
+<p><i>3.7.2</i></p>
+<p> </p>
+<p><i>Data Operations .............................................................................. 39</i></p>
+<p> </p>
+<p><i>3.7.3</i></p>
+<p> </p>
+<p><i>Information....................................................................................... 40</i></p>
+<p> </p>
+<p><i>3.7.4</i></p>
+<p> </p>
+<p><i>Internal Operations .......................................................................... 40</i></p>
+<p> </p>
+<p><i>3.7.5</i></p>
+<p> </p>
+<p><i>Cancel/ Terminate Operations ......................................................... 40</i></p>
+<p> </p>
+<p><i>3.7.6</i></p>
+<p> </p>
+<p><i>Error Information and Recovery Operations .................................... 40</i></p>
+<p> </p>
+<p><i>3.7.7</i></p>
+<p> </p>
+<p><i>Suspend/Resume Erase Sector ...................................................... 41</i></p>
+<p> </p>
+<p>3.8</p>
+<p> </p>
+<p>Integration Example ................................................................................ 42</p>
+<p> </p>
+<p>3.9</p>
+<p> </p>
+<p>API Specification..................................................................................... 43</p>
+<p> </p>
+<p><i>3.9.1</i></p>
+<p> </p>
+<p><i>AutoSAR FEE Driver Functions ....................................................... 43</i></p>
+<p> </p>
+<p>3.10</p>
+<p> </p>
+<p>Privilege Mode access ............................................................................ 52</p>
+<p> </p>
+<p>3.11</p>
+<p> </p>
+<p>Deviations from Autosar3.x requirements ............................................... 52</p>
+<p> </p>
+<p>3.12</p>
+<p> </p>
+<p>Important Notes ...................................................................................... 52</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Table of tables </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p> </p>
+<p> </p>
+<p>8 </p>
+<p><b>Table of tables </b></p>
+<p> </p>
+<p> </p>
+<p><b>1-1.  Table of Abbreviations</b></p>
+<p><b> ............................................................................................ 3</b></p>
+<p> </p>
+<p><b>Document Revision History</b></p>
+<p><b> ............................................................................................ 4</b></p>
+<p> </p>
+<p><b>Software Revision History</b></p>
+<p><b> .............................................................................................. 4</b></p>
+<p> </p>
+<p><b>2-1.  Virtual Sector Header States</b></p>
+<p><b> ............................................................................... 16</b></p>
+<p> </p>
+<p><b>2-2.  Virtual Sector Header backup States ....................................................................... 16</b></p>
+<p> </p>
+<p><b>4.  Data Block Header Field Definitions</b></p>
+<p><b> ..................................................................... 18</b></p>
+<p> </p>
+<p><b>2-2.  Data Block Header Field Definitions</b></p>
+<p><b> ................................................................. 18</b></p>
+<p> </p>
+<p><b>5.  Data Block States</b></p>
+<p><b> ...................................................................................................... 18</b></p>
+<p> </p>
+<p><b>4-1.  AutoSAR FEE Driver Symbolic Constants</b></p>
+<p><b> ...................................................... 24</b></p>
+<p> </p>
+<p><b>4-2.  AutoSAR FEE Driver Published Information Data Structure</b></p>
+<p><b> ...................... 25</b></p>
+<p> </p>
+<p><b>4-3.  AutoSAR FEE Driver General Configuration Data Structure</b></p>
+<p><b>...................... 25</b></p>
+<p> </p>
+<p><b>4-4.  AutoSAR FEE Driver Initialization APIs</b></p>
+<p><b> ........................................................... 39</b></p>
+<p> </p>
+<p><b>4-5.  AutoSAR FEE Driver Data Operation APIs</b></p>
+<p><b> ...................................................... 39</b></p>
+<p> </p>
+<p><b>4-6.  AutoSAR FEE Driver Information APIs</b></p>
+<p><b> ............................................................ 40</b></p>
+<p> </p>
+<p><b>4-7.  AutoSAR FEE Driver Internal Operation APIs</b></p>
+<p><b> ................................................ 40</b></p>
+<p> </p>
+<p><b>4-8.  AutoSAR FEE Driver Terminate/Cancel Operation APIs</b></p>
+<p><b> ............................. 40</b></p>
+<p> </p>
+<p><b>4-9.  AutoSAR FEE Driver </b></p>
+<p><b>Error Info and Recovery APIs ........................................ 40</b></p>
+<p> </p>
+<p><b>4-10.  TI FEE Driver Suspend/Resume Erase Sector</b></p>
+<p><b> APIs .................................... 41</b></p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>9 </p>
+<p><b>Table of figures </b></p>
+<p>  </p>
+<p>Figure 1 Virtual Sector Organization ..................................................................... 15</p>
+<p> </p>
+<p>Figure 2 Virtual Sector Header .............................................................................. 16</p>
+<p> </p>
+<p>Figure 3 Data Block Structure ............................................................................... 17</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>AutoSAR FEE Driver Introduction </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>10 </p>
+<p><b>Chapter 1 </b></p>
+<p><b>AutoSAR FEE Driver Introduction </b></p>
+<p> </p>
+<p>This chapter introduces the AutoSAR FEE Driver to the user by providing a brief overview of </p>
+<p>the purpose and construction of the AutoSAR FEE Driver along with hardware and software </p>
+<p>environment specifics in the context of AutoSAR FEE Driver deployment. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>11 </p>
+<p><b>1.1 </b></p>
+<p><b>Overview  </b></p>
+<p>This section describes the functional scope of the AutoSAR FEE Driver and its feature set. It </p>
+<p>introduces the AutoSAR FEE Driver to the user along with the functional decomposition and </p>
+<p>run-time specifics regarding deployment of AutoSAR FEE Driver in user’s application. </p>
+<p>Many  applications  require  storing  small  quantities  of  system  related  data  (e.g.,  calibration </p>
+<p>values,  device configuration) in  a non-volatile memory, so that  it can be  used,  modified or </p>
+<p>reused even after power cycling the system. EEPROMs are primarily used for this purpose. </p>
+<p>EEPROMs have the ability to <i>erase </i>and <i>write </i>individual bytes of memory many times over </p>
+<p>and the programmed locations retain the data over a long period even when the system is </p>
+<p>powered down.  </p>
+<p>The objective of AutoSAR FEE Driver is to provide a set of software functions intended to </p>
+<p>use a Sector of on-chip Flash memory as the emulated EEPROM. These software functions </p>
+<p>are transparently used by the application program for writing, reading and modifying the data. </p>
+<p>The </p>
+<p>AutoSAR </p>
+<p>FEE </p>
+<p>Driver </p>
+<p>contains </p>
+<p>AutoSAR </p>
+<p>interface </p>
+<p>functions </p>
+<p>and </p>
+<p>any </p>
+<p>additional </p>
+<p>management functions needed to operate properly.  </p>
+<p>A list of functions supported by the AutoSAR FEE Driver can be found in Section 1.1.1.  The </p>
+<p>primary  function  responsible  for  Fee  management  is  the  function  Fee_Manager.    This </p>
+<p>function </p>
+<p>shall </p>
+<p>operate </p>
+<p>asynchronously </p>
+<p>and </p>
+<p>with </p>
+<p>little </p>
+<p>or </p>
+<p>no </p>
+<p>user </p>
+<p>intervention </p>
+<p>after </p>
+<p>configuration,  maintaining  the  Fee  structures  in  Flash memory.   When  using  the  AutoSAR </p>
+<p>interface,  Fee_MainFunction  function  will  be  called  on  a  cyclic  basis  which  in  turn  calls </p>
+<p>Fee_Manager  when  no  other  pending  Fee  operations  are  pending.    When  not  using  the </p>
+<p>AutoSAR interface, the user shall be responsible for calling Fee_MainFunction function on a </p>
+<p>cyclic basis so that it can perform internal operations. </p>
+<p><i><b>1.1.1 </b></i></p>
+<p><i><b>Functions supported in the AutoSAR FEE Driver </b></i></p>
+<p>The Autosar FEE Driver provides the following functional services: </p>
+<p>Initialization: </p>
+<p>•</p>
+<p> </p>
+<p>Fee_Init  </p>
+<p>       </p>
+<p>Operations: </p>
+<p>•</p>
+<p> </p>
+<p>Fee_Write </p>
+<p>•</p>
+<p> </p>
+<p>Fee_Read </p>
+<p>•</p>
+<p> </p>
+<p>Fee_EraseImmediateBlock </p>
+<p>•</p>
+<p> </p>
+<p>Fee_InvalidateBlock </p>
+<p>•</p>
+<p> </p>
+<p>Fee_Cancel </p>
+<p>Information: </p>
+<p>•</p>
+<p> </p>
+<p>Fee_GetStatus  </p>
+<p>•</p>
+<p> </p>
+<p>Fee_GetJobResult </p>
+<p>•</p>
+<p> </p>
+<p>Fee_GetVersionInfo </p>
+<p>Internal Operations: </p>
+<p>•</p>
+<p> </p>
+<p>Fee_MainFunction </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>AutoSAR FEE Driver Introduction </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>12 </p>
+<p>Error Information and Recovery: </p>
+<p>•</p>
+<p> </p>
+<p>TI_FeeErrorCode </p>
+<p>•</p>
+<p> </p>
+<p>TI_Fee_ErrorRecovery </p>
+<p>Suspend/Resume Erase of Sector: </p>
+<p>•</p>
+<p> </p>
+<p>TI_Fee_SuspendResumeErase </p>
+<p><i><b>1.1.2 </b></i></p>
+<p><i><b>System Requirements </b></i></p>
+<p>The AutoSAR FEE Driver is supported on platforms characterized by the following Software </p>
+<p>and Hardware requirements. </p>
+<p><i><b>1.1.2.1 </b></i></p>
+<p><i><b>Software </b></i></p>
+<p>The  AutoSAR  FEE  Driver  was  developed  and  validated  on  a  system  with  the  following </p>
+<p>operating system and software installed </p>
+<p>•</p>
+<p> </p>
+<p>Operating System : Win7 </p>
+<p>•</p>
+<p> </p>
+<p>Codegeneration tools : TM570 Code Generation tools 4.9.5 </p>
+<p>•</p>
+<p> </p>
+<p>Fee Configuration Files : The user needs to generate two configuration files using  </p>
+<p>a  configuration  tool  to  successfully  deploy  and  use  AutoSAR  FEE  Driver.  These </p>
+<p>two  files  (Fee_Cfg.h  &amp;  Fee_Cfg.c)  define  which  Flash  sectors  to  be  used  for </p>
+<p>EEPROM </p>
+<p>emulation, </p>
+<p>define </p>
+<p>Data </p>
+<p>Blocks </p>
+<p>,Block </p>
+<p>Size </p>
+<p>and </p>
+<p>other </p>
+<p>configuration </p>
+<p>parameters.  </p>
+<p>•</p>
+<p> </p>
+<p>Flash  API  library  :  The  AutoSAR  FEE  Driver  uses  the  Flash  API  library  for </p>
+<p>performing  program/erase  operations.  Customers  have  to  use  F021  v2.01.01  or </p>
+<p>greater. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>13 </p>
+<p><b>Chapter 2 </b></p>
+<p><b>AutoSAR FEE Driver</b></p>
+<p><b> </b></p>
+<p><b>Design </b></p>
+<p><b>Overview </b></p>
+<p> </p>
+<p><b>Overview  </b></p>
+<p>The  Flash  EEPROM  Emulation  (Fee)  module  contains  AutoSAR  interface  functions  and </p>
+<p>additional </p>
+<p>management </p>
+<p>functions </p>
+<p>needed </p>
+<p>to </p>
+<p>operate </p>
+<p>it </p>
+<p>properly. </p>
+<p> </p>
+<p>A </p>
+<p>list </p>
+<p>of </p>
+<p>functions </p>
+<p>supported by the AutoSAR FEE Driver can be found in Section 1.1.1.   </p>
+<p>This chapter describes the implementation method followed for Flash EEPROM emulation </p>
+<p>in the AutoSAR FEE Driver. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>AutoSAR FEE Driver Design Overview </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>14 </p>
+<p><b>2.1 </b></p>
+<p><b>Flash EEPROM Emulation Methodology </b></p>
+<p>The EEPROM Emulation Flash bank is divided into two or more Virtual Sectors. Each Virtual </p>
+<p>Sector is further partitioned into several Data Blocks.  Data Blocks can be further partitioned </p>
+<p>into Datasets. A minimum of two Virtual Sectors are required for Flash EEPROM emulation.  </p>
+<p>The initialization routine (Fee_Init) identifies which Virtual Sector to be used and marks it as </p>
+<p>Active. The data is written to the first empty location in the Active Virtual Sector. If there is </p>
+<p>insufficient space in the current Virtual Sector to update the data, it switches over to the next </p>
+<p>Virtual Sector and copies all the valid data from the other Data Blocks in the current Virtual </p>
+<p>Sector to the new one. After copying all the valid data, the current Virtual Sector is erased </p>
+<p>and the new one is marked as Active Virtual Sector. Any new data is now written into the new </p>
+<p>Active Virtual Sector and the erased Virtual Sector is used again once this new Virtual Sector </p>
+<p>has insufficient space. </p>
+<p>Virtual </p>
+<p>Sectors </p>
+<p>and </p>
+<p>Data </p>
+<p>Blocks </p>
+<p>have </p>
+<p>certain </p>
+<p>space </p>
+<p>allocated </p>
+<p>to </p>
+<p>maintain </p>
+<p>the </p>
+<p>status </p>
+<p>information which is described in more detail in the following sections. </p>
+<p><i><b>2.1.1 </b></i></p>
+<p><i><b>Virtual Sector Organization </b></i></p>
+<p>The Virtual Sector Structure is the basic organizational unit used to partition the EEPROM </p>
+<p>Emulation Flash Bank.  This structure can contain one or more contiguous Flash Sectors </p>
+<p>contained within one Flash Bank.  A minimum of 2 Virtual Sectors are required to support </p>
+<p>the Flash EEPROM Emulation (FEE) Driver. </p>
+<p>The internal structure of the Virtual Sector contains a Virtual Sector Header, a static Data </p>
+<p>Structure and the remaining space is used for Data Blocks. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>15 </p>
+<p> </p>
+<p><b>Virtual Sector Organization </b></p>
+<p><b> </b></p>
+<p>Block 3</p>
+<p>Block 5 DS3</p>
+<p>Block 2</p>
+<p>Block X</p>
+<p>Block X</p>
+<p>Block n</p>
+<p>Block X</p>
+<p>Block X</p>
+<p>Block n</p>
+<p>Block X</p>
+<p>Block X</p>
+<p>Block 5 DS4</p>
+<p>Block X</p>
+<p>Block 2</p>
+<p>Block 3</p>
+<p>Block 3</p>
+<p>Block 5 DS3</p>
+<p>Block 0</p>
+<p>Block 1 DS2</p>
+<p>Block 3</p>
+<p>Block n</p>
+<p>Block 3</p>
+<p>Block 5 DS4</p>
+<p>… Block n</p>
+<p>Block X</p>
+<p>Block X</p>
+<p>Block X</p>
+<p>Block X</p>
+<p>Block n</p>
+<p>Block 5 DS4</p>
+<p>Block 5 DS3</p>
+<p>Block 2</p>
+<p>Block 1 DS2</p>
+<p>Block n</p>
+<p>Block5 DS3</p>
+<p>… Block 3</p>
+<p>Virtual Sector Header</p>
+<p>Virtual Sector Header</p>
+<p>Virtual</p>
+<p>Sector</p>
+<p>0</p>
+<p>Virtual</p>
+<p>Sector</p>
+<p>1</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Figure 1 Virtual Sector Organization </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>AutoSAR FEE Driver Design Overview </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>16 </p>
+<p><i><b>2.1.1.1 </b></i></p>
+<p><i><b>Virtual Sector Header </b></i></p>
+<p> </p>
+<p>The Virtual Sector Header consists of two 64bit words (16 bytes) that start at the first </p>
+<p>address  for  a  Virtual  Sector  Structure.    The  state  of  the  Virtual  Sector  Structure  is </p>
+<p>maintained in the Virtual Sector Header. </p>
+<p> </p>
+<p>The  Status Word  is  the  first  64  bit  word  of  the  Virtual  Sector  Header  and  is  used  to </p>
+<p>indicate the current state of the Virtual Sector. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Figure 2 Virtual Sector Header </b></p>
+<p> </p>
+<p> </p>
+<p>The following table indicates the various states a Virtual Sector can be in. </p>
+<p> </p>
+<p><b>State </b></p>
+<p><b>Value </b></p>
+<p>Invalid Virtual Sector </p>
+<p>0xFFFFFFFFFFFFFFFF </p>
+<p>Empty Virtual Sector </p>
+<p>0x0000FFFFFFFFFFFF </p>
+<p>Copy Virtual Sector </p>
+<p>0x00000000FFFFFFFF </p>
+<p>Active Virtual Sector </p>
+<p>0x000000000000FFFF </p>
+<p>Ready for Erase </p>
+<p>0x0000000000000000 </p>
+<p><b>2-1.  Virtual Sector Header States </b></p>
+<p> </p>
+<p><b>Invalid Virtual Sector:  </b>This Virtual Sector is either in process of being erased or has </p>
+<p>not yet been initialized. </p>
+<p> </p>
+<p><b>Empty  Virtual  Sector:   </b></p>
+<p>This  indicates  the  Virtual  Sector  has  been  erased  and </p>
+<p>initialized and can be used to store data. </p>
+<p> </p>
+<p><b>Copy  Virtual  Sector:     </b> This  indicates  that  the  Data  Block  Structure  is  being  moved </p>
+<p>from a full Virtual Sector to this one to allow for moving of the Active Virtual Sector. </p>
+<p> </p>
+<p><b>Active Virtual Sector:  </b>This Virtual Sector is the active one. </p>
+<p> </p>
+<p><b>Ready  for  Erase:     </b> This  Virtual  Sector’s  Data  Block  Structure  has  been  correctly </p>
+<p>replicated to a new Virtual Sector and is now ready to be erased and initialized for re-</p>
+<p>use.Virtual Sector Information  Record  is the second  64 bit  word in the Virtual  Sector </p>
+<p>header.  It  is  used  to  record  information  needed  by  the  Virtual  Sector  management </p>
+<p>algorithm.  Currently the first 4 bits are used to indicate the current version of the Virtual </p>
+<p>Sector and the next 20 bits are used to indicate the number of times the Virtual Sector </p>
+<p>has  been  erased.  The  erase  count  is  incremented  each  time  the  Virtual  Sector  is </p>
+<p>erased. The remaining bits are reserved for future use. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>State </b></p>
+<p><b>Value </b></p>
+<p>Copy Virtual Sector </p>
+<p>0xFFFFFFFF </p>
+<p>Active Virtual Sector </p>
+<p>0x00000000 </p>
+<p><b>2-2.  Virtual Sector Header backup States </b></p>
+<p><b>32 bit backup </b></p>
+<p><b>Status   </b></p>
+<p><b>          8 bits reserved </b></p>
+<p> </p>
+<p><b>Version Number          </b></p>
+<p><b>(4 Bits) </b></p>
+<p><b>Erase Count </b></p>
+<p><b>(20 bits) </b></p>
+<p><b>64 bit Status Word </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>17 </p>
+<p> </p>
+<p>If the normal Virtual sector header is corrupted, then the backup status will be used to </p>
+<p>know the VS state. </p>
+<p><b> </b></p>
+<p>After VS header, the next 8 bytes are used to know erase status of the VS. It says, if the </p>
+<p>erase was started/completed/ready for erase. Next 8 bytes are reserved. </p>
+<p>0x 0000FFFFFFFFFFFF – Erase of other VS started </p>
+<p>0x 00000000FFFFFFFF – Erase of other VS completed </p>
+<p>0x000000000000FFFF   – This VS is ready for Erase. </p>
+<p><i><b>2.1.2 </b></i></p>
+<p><i><b>Data Block Organization </b></i></p>
+<p> </p>
+<p>The  Data  Block  is  used  to  define  where  the  data  within  a  Virtual  Sector  is  mapped.  </p>
+<p>One or more variables can be within a Data Block based on the user definition.  The </p>
+<p>smallest amount of data that can be stored within the Data Block is 64 bits. The Data </p>
+<p>Block Structure is limited to the size of the Virtual Sector it resides in.  </p>
+<p><b>Note: The size of all the Data Blocks cannot exceed the Virtual Sector length. </b></p>
+<p> </p>
+<p>When a Data Packet write exceeds the available space of the current Virtual Sector, </p>
+<p>the Data Block structure is duplicated in the next Virtual Sector to be made active. </p>
+<p> </p>
+<p><b>Data Block Structure </b></p>
+<p> </p>
+<p>Block5 </p>
+<p>Header </p>
+<p>Dataset2 </p>
+<p>Block5 </p>
+<p>Header </p>
+<p>Dataset6 </p>
+<p>Block1 </p>
+<p>Header </p>
+<p>Dataset2 </p>
+<p>Block3 </p>
+<p>Header </p>
+<p>Dataset1 </p>
+<p>Block4 </p>
+<p>Header </p>
+<p>Dataset4 </p>
+<p>Block2 </p>
+<p>Header </p>
+<p>Dataset2 </p>
+<p>Block1 </p>
+<p>Header </p>
+<p>Dataset8 </p>
+<p>Block2 </p>
+<p>Header </p>
+<p>Dataset3 </p>
+<p> </p>
+<p><b>Figure 3 Data Block Structure </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>AutoSAR FEE Driver Design Overview </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>18 </p>
+<p><i><b>2.1.2.1 </b></i></p>
+<p><i><b>Data Block Header </b></i></p>
+<p> </p>
+<p>The  Data  Block  Header  is  24  bytes  in  length  and  is  used  to  indicate  the  location </p>
+<p>information (address) of valid data within a Virtual Sector.  </p>
+<p> </p>
+<p>A Standard Data Block Header has the following fields</p>
+<p> </p>
+<p><b>  </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.  Data Block Header Field Definitions </b></p>
+<p><b> </b></p>
+<p>A Standard Data Block Header has the following fields </p>
+<p><b>Bit(s) </b></p>
+<p><b>Field </b></p>
+<p><b>Description </b></p>
+<p>191-176 </p>
+<p>Block Number </p>
+<p>This is used to indicate the block number. </p>
+<p>175-160 </p>
+<p>Block size </p>
+<p>Indicates size of block </p>
+<p>159-128 </p>
+<p>W/E counter </p>
+<p>Indicates write/erase counter for a block </p>
+<p>127-96 </p>
+<p>CRC </p>
+<p>Indicates CRC of block </p>
+<p>95-64 </p>
+<p>Address </p>
+<p>Address of the previous valid block </p>
+<p>63-0 </p>
+<p> </p>
+<p>Status </p>
+<p>of </p>
+<p>the </p>
+<p>Block   </p>
+<p> </p>
+<p> </p>
+<p>These  64  bits  indicate  the  Status  of  the  Block.  The </p>
+<p>following Table lists all the possible combinations for the </p>
+<p>Block Status. </p>
+<p><b>2-2.  Data Block Header Field Definitions </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>State </b></p>
+<p><b>Value </b></p>
+<p>Empty Block  </p>
+<p>0xFFFFFFFFFFFFFFFF </p>
+<p>Start Program Block </p>
+<p>0xFFFFFFFFFFFF0000 </p>
+<p>Valid Block </p>
+<p>0xFFFFFFFF00000000 </p>
+<p>Invalid Block </p>
+<p>0xFFFF000000000000 </p>
+<p>Corrupt Block </p>
+<p>0x0000000000000000 </p>
+<p><b>5.  Data Block States </b></p>
+<p><b> </b></p>
+<p>Block Status is used to ensure that data integrity is maintained even if the Block (data) </p>
+<p>update process is interrupted by an uncontrolled event such as a power supply failure or </p>
+<p>reset. </p>
+<p> </p>
+<p><b>Empty Block:  </b>New Data can be written to this Block. </p>
+<p>Block Number (16 bits)   </p>
+<p> </p>
+<p>Block W/E Cycle count - optional (32 bits) / reserved if saving not enabled </p>
+<p>                Block size (16 bits) </p>
+<p> </p>
+<p> </p>
+<p>Block Status (64 bits) </p>
+<p>CRC - optional (32 bits) </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Address of previous Valid Block (32 bits) </p>
+<p> </p>
+<p> </p>
+<p>Block Status (64 bits) </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>19 </p>
+<p> </p>
+<p><b>Start Program Block:  </b>This indicates that the Data Block is in the progress of being </p>
+<p>programmed with data. </p>
+<p> </p>
+<p><b>Valid Block:  </b>This indicates that the Data Block is fully programmed and contains Valid </p>
+<p>Data. </p>
+<p> </p>
+<p><b>Invalid Block:  </b>This indicates that the Data Block contains invalid or old data. </p>
+<p> </p>
+<p><b>Corrupt Block:   </b>This indicates that the Data Block is corrupted and the Software should </p>
+<p>ignore this Block. </p>
+<p> </p>
+<p><i><b>2.1.3 </b></i></p>
+<p><i><b>Available Commands </b></i></p>
+<p> </p>
+<p>The following list describes the available commands.  </p>
+<p>1. </p>
+<p>Write: This command shall program a Flash memory block. </p>
+<p>2. </p>
+<p>Read: This command shall copy a continuous Flash memory block. </p>
+<p>3. </p>
+<p>Erase Immediate: This command shall change the status of the block to Invalid in </p>
+<p>the Data Block header to Erase it. </p>
+<p>4. </p>
+<p>Invalidate Block: This command shall change the status of the block to Invalid in </p>
+<p>the Data Block header to invalidate it. </p>
+<p> </p>
+<p><i><b>2.1.4 </b></i></p>
+<p><i><b>Status Codes </b></i></p>
+<p>This indicates the status of the Fee module. It can be in one of the following states </p>
+<p>1. MEMIF_UNINIT:  The Fee Module has not been initialized. </p>
+<p>2. MEMIF_IDLE: The Fee Module is currently idle. </p>
+<p>3. MEMIF_BUSY: The Fee Module is currently busy. </p>
+<p>4. MEMIF_BUSY_INTERNAL: The Fee Module is currently busy with internal  </p>
+<p>   management operations </p>
+<p> </p>
+<p><i><b>2.1.5 </b></i></p>
+<p><i><b>Job Result </b></i></p>
+<p>This indicates the result of the last job. The job result can be any one of the following </p>
+<p>states </p>
+<p>1. MEMIF_JOB_OK: The last job has finished successfully </p>
+<p>2. MEMIF_JOB_PENDING:    The last job is waiting for execution or is currently being      </p>
+<p>    executed. </p>
+<p>3. MEMIF_JOB_CANCELLED: The last job has been cancelled.   </p>
+<p>4. MEMIF_JOB_FAILED:  The last read/erase/write job failed. </p>
+<p>5. MEMIF_JOB_INCONSISTENT: The requested block is inconsistent, it may contain  </p>
+<p>    corrupted data. </p>
+<p>6. MEMIF_JOB_INVALID: The requested block has been invalidated.  The requested  </p>
+<p>    read operation cannot be performed </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>20 </p>
+<p><b>Chapter 3 </b></p>
+<p><b>Integration Guide </b></p>
+<p> </p>
+<p>This  chapter  discusses  the  AutoSAR  FEE  Driver  run-time  interfaces  that  comprise  the  API </p>
+<p>classification &amp; usage scenarios and the API specification itself in association with its data types </p>
+<p>and structure definitions. Users will have to integrate TI FEE along with the Flash F021 library. </p>
+<p>The  TI  FEE  Driver  uses  the  Flash  API  library  for  performing  program/erase  operations.  The  </p>
+<p>apprioprate  Flash  API  library  depending  on  the  type  of  Flash  technology  has  to  be  included  in </p>
+<p>the.(<b>F021 API V2.01.01 </b>or greater). Users also need to integrate the generated configuration files. </p>
+<p><b>3.1 </b></p>
+<p><b>Error Recovery Implementation  </b></p>
+<p>Projects should implement error recovery mechanism to recover from serious errors. They </p>
+<p>should call the API <b>TI_FeeErrorCode( ) </b>periodically to check if there are any severe </p>
+<p>errors(<i>Error_TwoActiveVS, Error_TwoCopyVS, Error_SetupStateMachine, Error_NoActiveVS, </i></p>
+<p><i>Error_CopyButNoActiveVS, Error_NoFreeVS, Error_EraseVS</i>). If error is any of the above type, </p>
+<p>then API TI_Fee_ErrorRecovery( ) should be called with proper parameters.  </p>
+<p>If the error is of type <i>Error_TwoActiveVS or  Error_TwoCopyVS or </i></p>
+<p><i>Error_CopyButNoActiveVS, </i>then the application has to provide info on  which of the VS needs to be </p>
+<p>corrected in u8VirtualSector. TI_Fee_u16ActCpyVS will provide info on which of the VS’s are </p>
+<p>Active/Copy. For error of type <i>Error_CopyButNoActiveVS, </i>TI_Fee_u16ActCpyVS will provide info </p>
+<p>on which VS is Copy. In this case, the second argument for the TI_Fee_ErrorRecovery should be </p>
+<p>the copy VS number. Error recovery API will mark the VS as Active. </p>
+<p>If the error is of type <i>Error_NoFreeVS, </i>then the application has to provide info on which of </p>
+<p>the VS needs to be erased in u8VirtualSector. TI_Fee_u16ActCpyVS will provide info on which VS </p>
+<p>is active. </p>
+<p>If the error is of type <i>Error_SetupStateMachine, </i>recheck configuration. Configure RWAIT, </p>
+<p>EWAIT and operating frequency correctly. </p>
+<p>If the error is of type <i>Error_EraseVS</i>, this means either erasing or a blank check of VS failed. </p>
+<p>Call error recovery function to perform erase again. Check the variables </p>
+<p>TI_Fee_GlobalVariables[u8EEPIndex].Fee_u16ActiveVirtualSector / </p>
+<p>TI_Fee_GlobalVariables[u8EEPIndex].Fee_u16CopyVirtualSector to know which of the VS’s are </p>
+<p>active/copy. Erase other sectors. </p>
+<p>Application can access the variable “TI_Fee_u16ActCpyVS” to know details about the VS’s.  </p>
+<p>Prototype for the API’s are: </p>
+<p>TI_Fee_ErrorCodeType <b>TI_FeeErrorCode</b>(uint8 u8EEPIndex); </p>
+<p>void <b>TI_Fee_ErrorRecovery</b>(TI_Fee_ErrorCodeType Error Code, uint8 u8VirtualSector); </p>
+<p>If two EEPROM’s are configured, then TI_FeeErrorCode has to be called cyclically with different </p>
+<p>index. </p>
+<p>Ex: TI_FeeErrorCode(0) and TI_FeeErrorCode(1) </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>21 </p>
+<p>If Error is of type <i>Error_TwoActiveVS </i>and <i><b>TI_Fee_u16ActCpyVS </b></i>= 0x0003, this means VS 1 and 2 </p>
+<p>are Active. </p>
+<p>If projects want to make VS 1 as Active, then  </p>
+<p>Call  TI_Fee_ErrorRecovery(<i>Error_TwoActiveVS</i>, 2); </p>
+<p>Virtual sector 2 will be marked as Ready for Erase. </p>
+<p>Virtual sector numbers start from 1. </p>
+<p><b>3.2 </b></p>
+<p><b>Single and Double bit Error Corrections  </b></p>
+<p>FEE software provides a mechanism to detect single and double bit errors.  In order to use </p>
+<p>this feature, application has to make sure that  </p>
+<p>“</p>
+<p><b>EE_EDACMODE[3:0]: Error Correction Mode” </b></p>
+<p>in “<b>EE_CTRL1” </b>should be set to a value other than  0101,  “<b>EE_ONE_EN: Error on One Fail </b></p>
+<p><b>Enable” </b>should be  enabled, “<b>EE_ZERO_EN:  Error  on Zero Fail  Enable” </b>should  be enabled, </p>
+<p>“<b>EE_EDACEN[3:0]:  Error  Detection  and  Correction  Enable” </b> should  be  set  to  a  value  other </p>
+<p>than 0101. </p>
+<p>Projects  have  to  then  call  error  hook  functions <b> TI_Fee_ErrorHookSingleBitError  (  ) </b> and </p>
+<p><b>TI_Fee_ErrorHookDoubleBitError  (  ) </b> in  ESM.  For  single  bit  error,  an  event  is  generated  on </p>
+<p>channel 35 of ESM and for double bit error on channel 36 of ESM. </p>
+<p> </p>
+<p><b>3.3 </b></p>
+<p><b>Memory Mapping </b></p>
+<p>Following macros can be used for reallocating code, constants and variables. </p>
+<p>•</p>
+<p>  FEE_START_SEC_CONST_UNSPECIFIED </p>
+<p>•</p>
+<p>  FEE_STOP_SEC_CONST_UNSPECIFIED </p>
+<p>•</p>
+<p>  FEE_START_SEC_CODE </p>
+<p>•</p>
+<p>  FEE_STOP_SEC_CODE </p>
+<p>•</p>
+<p>  FEE_START_SEC_VAR_INIT_UNSPECIFIED </p>
+<p>•</p>
+<p>  FEE_STOP_SEC_VAR_INIT_UNSPECIFIED </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>22 </p>
+<p><b>3.4 </b></p>
+<p><b>Symbolic Constants and Enumerated Data types </b></p>
+<p>This  section  summarizes  all  the  symbolic  constants  specified  as  either </p>
+<p>#define macros and/or enumerated C data types. Described alongside the </p>
+<p>macro  or  enumeration  is  the  semantics  or  interpretation  of  the  same  in </p>
+<p>terms of what value it stands for and what it means. </p>
+<p> </p>
+<p><b>Group or Enumeration Class </b></p>
+<p><b>Symbolic Constant Name </b></p>
+<p><b>Description or </b></p>
+<p><b>Evaluation </b></p>
+<p>Fee_StatusType </p>
+<p>FEE_OK </p>
+<p>Function </p>
+<p>returned </p>
+<p>no </p>
+<p>error </p>
+<p>FEE_ERROR </p>
+<p>Function </p>
+<p>returned </p>
+<p>an </p>
+<p>error </p>
+<p> </p>
+<p>VirtualSectorStatesType </p>
+<p>VsState_Invalid =1 </p>
+<p>Virtual Sector is Invalid </p>
+<p>VsState_Empty =2 </p>
+<p>Virtual Sector is Empty </p>
+<p>VsState_Copy =3 </p>
+<p>Virtual Sector is Copy </p>
+<p>VsState_Active =4 </p>
+<p>Virtual Sector is Active </p>
+<p>VsState_ReadyForErase =5 </p>
+<p>Virtual  Sector  is  Ready </p>
+<p>for Erase </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>BlockStatesType </p>
+<p>Block_StartProg=1 </p>
+<p>Write/Erase/Invalid </p>
+<p>operation  is  in  progress </p>
+<p>on this Block  </p>
+<p>Block_Valid=2 </p>
+<p>Block is Valid </p>
+<p>Block_Invalid=3 </p>
+<p>Block is Invalid </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Fee_ErrorCodeType </p>
+<p>Error_Nil=0 </p>
+<p> </p>
+<p>Error_TwoActiveVS=1 </p>
+<p> </p>
+<p>Error_TwoCopyVS=2 </p>
+<p> </p>
+<p>Error_SetupStateMachine=3 </p>
+<p> </p>
+<p>Error_CopyButNoActiveVS=4 </p>
+<p> </p>
+<p>Error_NoActiveVS=5 </p>
+<p> </p>
+<p>Error_BlockInvalid=6 </p>
+<p> </p>
+<p>Error_NullDataPtr=7 </p>
+<p> </p>
+<p>Error_NoFreeVS=8 </p>
+<p> </p>
+<p>Error_InvalidVirtualSectorPara</p>
+<p>meter=9 </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>23 </p>
+<p>Error_ExceedSectorOnBank=1</p>
+<p>0 </p>
+<p> </p>
+<p>Error_EraseVS=11 </p>
+<p> </p>
+<p>Error_BlockOffsetGtBlockSize</p>
+<p>=12 </p>
+<p> </p>
+<p>Error_LengthParam=13 </p>
+<p> </p>
+<p>Error_FeeUninit=14 </p>
+<p> </p>
+<p>Error_Suspend=15 </p>
+<p> </p>
+<p>Error_InvalidBlockIndex=16 </p>
+<p> </p>
+<p>Error_NoErase=17 </p>
+<p> </p>
+<p>Error_CurrentAddress=18 </p>
+<p> </p>
+<p>Error_Exceed_No_Of_DataSet</p>
+<p>s=19 </p>
+<p> </p>
+<p> </p>
+<p>Fee_FlashErrorCorrectionActionType </p>
+<p>Fee_None </p>
+<p>Take no action on single </p>
+<p>bit errors </p>
+<p>Fee_Fix </p>
+<p>Correct single bit errors </p>
+<p> </p>
+<p> </p>
+<p>Fee_StatusCodeType </p>
+<p>MEMIF_UNINIT </p>
+<p>FEE Module is </p>
+<p>Uninitialized </p>
+<p>MEMIF_IDLE </p>
+<p>FEE Module is Idle </p>
+<p>MEMIF_BUSY </p>
+<p>FEE Module is Busy </p>
+<p>MEMIF_BUSY_INTERNAL </p>
+<p>FEE </p>
+<p>Module </p>
+<p>is </p>
+<p>performing </p>
+<p>internal </p>
+<p>operations </p>
+<p> </p>
+<p> </p>
+<p>Fee_StatusWordType_UN </p>
+<p>Erase </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Erase operation is in </p>
+<p>progress </p>
+<p>ReadSync </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Synchronous Read </p>
+<p>operation is in progress </p>
+<p>ProgramFailed </p>
+<p>If  set to ‘1’ indicates </p>
+<p>there was an error during </p>
+<p>write operation. This is </p>
+<p>now deprecated. </p>
+<p>Read </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Read operation is in </p>
+<p>progress </p>
+<p>Writesync </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Sync Write operation is </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>24 </p>
+<p>in progress </p>
+<p>WriteAsync </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Async Write operation is </p>
+<p>in progress </p>
+<p>EraseImmediate </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Erase immediate </p>
+<p>operation is in progress </p>
+<p>InvalidateBlock </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Invalidate operation is in </p>
+<p>progress </p>
+<p>Copy </p>
+<p>If  set to ‘1’ indicates </p>
+<p>Copy operation is in </p>
+<p>progress </p>
+<p>Initialized </p>
+<p>If  set to ‘1’ indicates </p>
+<p>FEE is initialized. This is </p>
+<p>now deprecated. </p>
+<p>SingleBitError </p>
+<p>If  set to ‘1’ indicates </p>
+<p>there was a single bit </p>
+<p>error during read </p>
+<p>operation. This is now </p>
+<p>deprecated. </p>
+<p>FEE_SW_MAJOR_VERSION </p>
+<p>#define Macro which indicates the Major version of the </p>
+<p>FEE </p>
+<p>FEE_SW_MINOR_VERSION </p>
+<p>#define Macro which indicates the Minor version of the </p>
+<p>FEE </p>
+<p>FEE_SW_PATCH_VERSION </p>
+<p>#define Macro which indicate the Patch version of the FEE </p>
+<p><b>4-1.  AutoSAR FEE Driver Symbolic Constants </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>25 </p>
+<p><b>3.5 </b></p>
+<p><b>Data Structures </b></p>
+<p>This  section  summarizes  the  entire  user  visible  data  structure  elements  pertaining  to  the </p>
+<p>AutoSAR FEE Driver run-time interfaces. </p>
+<p> </p>
+<p><b>Name </b></p>
+<p> </p>
+<p>Fee_PublishedInformationType  </p>
+<p> </p>
+<p><b>Description </b></p>
+<p>Used to contain Published Information </p>
+<p><b>Fields </b></p>
+<p><b>Data </b></p>
+<p><b>type </b></p>
+<p><b>Range </b></p>
+<p><b>Description </b></p>
+<p><b>FeeBlockOverhead </b></p>
+<p>Uint8 </p>
+<p>0x18 </p>
+<p>Block OverHead in bytes </p>
+<p><b>FeeMaximumBlockingTime </b></p>
+<p>Float32 </p>
+<p>600us </p>
+<p>Maximum Blocking time in us </p>
+<p><b>FeePageOverhead </b></p>
+<p>Uint8 </p>
+<p>0x0 </p>
+<p>Page overhead in bytes </p>
+<p><b>FeeVirtualSectorOverhead </b></p>
+<p>Uint8 </p>
+<p>0x10 </p>
+<p>Virtual Sector overhead in bytes </p>
+<p><b>4-2.  AutoSAR FEE Driver Published Information Data Structure</b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Name </b></p>
+<p> </p>
+<p>Fee_GeneralConfigType </p>
+<p> </p>
+<p><b>Description </b></p>
+<p>Used to contain General configuration </p>
+<p>information </p>
+<p><b>Fields </b></p>
+<p><b>Data </b></p>
+<p><b>type </b></p>
+<p><b>Range </b></p>
+<p><b>Description </b></p>
+<p><b>FeeDevErrorDetect </b></p>
+<p>boolean </p>
+<p>STD_ON/ </p>
+<p>STD_OFF </p>
+<p>Indicates if </p>
+<p>Development Error </p>
+<p>Detection is enabled </p>
+<p><b>FeeIndex </b></p>
+<p>uint32 </p>
+<p>0 </p>
+<p>Instance ID of this </p>
+<p>module. Should </p>
+<p>always be 0 </p>
+<p><b>*FeeNvmJobEndNotification </b></p>
+<p>Fee_Call</p>
+<p>backType </p>
+<p>- </p>
+<p>Mapping to upper level </p>
+<p>job end notification </p>
+<p><b>*FeeNvmJobErrorNotification </b></p>
+<p>Fee_Call</p>
+<p>backType </p>
+<p>- </p>
+<p>Mapping to upper level </p>
+<p>job error notification </p>
+<p><b>FeePollingMode </b></p>
+<p>boolean </p>
+<p>STD_ON/ </p>
+<p>STD_OFF </p>
+<p>Indicates if polling </p>
+<p>mode is enabled </p>
+<p><b>FeeVersionInfoApi </b></p>
+<p>boolean  </p>
+<p>STD_ON/ </p>
+<p>STD_OFF </p>
+<p>Indicates if version </p>
+<p>info API is compiled. </p>
+<p><b>FeeVirtualPageSize </b></p>
+<p>uint16 </p>
+<p>0x8 </p>
+<p>Defines the virtual </p>
+<p>page size </p>
+<p><b>4-3.  AutoSAR FEE Driver General Configuration Data Structure </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>26 </p>
+<p><b>3.6 </b></p>
+<p><b>AutoSAR FEE Driver Configuration Parameters </b></p>
+<p>The AutoSAR FEE Driver needs two configuration files. These two files (Fee_Cfg.h &amp; </p>
+<p>Fee_cfg.c) define which Flash sectors to be used for EEPROM emulation, define Data </p>
+<p>Blocks, Block Size and other configuration parameters. This section describes the </p>
+<p>configuration parameters in the AutoSAR FEE Driver. </p>
+<p> </p>
+<p><i><b>3.6.1 </b></i></p>
+<p><i><b>Block Overhead </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_BLOCK_OVERHEAD  </p>
+<p><b>Description </b></p>
+<p>Indicates the number of bytes used for Block Header. </p>
+<p><b>Default Value </b></p>
+<p>0x18 </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x18 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_BLOCK_OVERHEAD 0x18</p>
+<p> </p>
+<p> </p>
+<p><i><b>3.6.2 </b></i></p>
+<p><i><b>Maximum Blocking Time </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_MAXIMUM_BLOCKING_TIME  </p>
+<p><b>Description </b></p>
+<p>Indicates the maximum allowed blocking time for any Fee call. </p>
+<p><b>Default Value </b></p>
+<p>600.00</p>
+<p> </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 600.00 µs. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_MAXIMUM_BLOCKING_TIME 600.00 </p>
+<p><i><b> </b></i></p>
+<p><i><b>3.6.3 </b></i></p>
+<p><i><b>Page Overhead </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_PAGE_OVERHEAD  </p>
+<p><b>Description </b></p>
+<p>Indicates the Page Overhead in bytes. </p>
+<p><b>Default Value </b></p>
+<p>0x0</p>
+<p> </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x0 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_PAGE_OVERHEAD 0x0 </p>
+<p><i><b>3.6.4 </b></i></p>
+<p><i><b>Sector  Overhead </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_VIRTUAL_SECTOR_OVERHEAD </p>
+<p><b>Description </b></p>
+<p>Indicates the number of bytes used for Virtual Sector </p>
+<p>Header. </p>
+<p><b>Default Value </b></p>
+<p>0x10</p>
+<p> </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x10 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_VIRTUAL_SECTOR_OVERHEAD 0x10 </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>27 </p>
+<p><i><b> </b></i></p>
+<p><i><b>3.6.5    Virtual Page Size </b></i></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_VIRTUAL_PAGE_SIZE  </p>
+<p><b>Description </b></p>
+<p>Indicates the virtual page size in bytes. </p>
+<p><b>Default Value </b></p>
+<p>0x8</p>
+<p> </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x8 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_VIRTUAL_PAGE_SIZE 0x8 </p>
+<p> </p>
+<p><i><b>3.6.6    Driver Index </b></i></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_INDEX  </p>
+<p><b>Description </b></p>
+<p>Instance ID of FEE module. Should always be 0x0 </p>
+<p><b>Default Value </b></p>
+<p>0x0</p>
+<p> </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x0 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_INDEX 0x0 </p>
+<p> </p>
+<p><i><b>3.6.7    Job Error Notification </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NVM_JOB_ERROR_NOTIFICATION  </p>
+<p><b>Description </b></p>
+<p>Call back function to notify a Job Error. This is only applicable if </p>
+<p>polling mode is OFF. </p>
+<p><b>Default Value </b></p>
+<p>NvM_JobErrorNotification </p>
+<p><b>Parameter Range </b></p>
+<p>User defined function name </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NVM_JOB_ERROR_NOTIFICATION  </p>
+<p>NvM_JobErrorNotification  </p>
+<p> </p>
+<p><i><b>3.6.8    Job End  Notification </b></i></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NVM_JOB_END_NOTIFICATION  </p>
+<p><b>Description </b></p>
+<p>Call back function to notify a Job End. This is only applicable if </p>
+<p>polling mode is OFF. </p>
+<p><b>Default Value </b></p>
+<p>NvM_JobEndNotification </p>
+<p><b>Parameter Range </b></p>
+<p>User defined function name </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>28 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NVM_JOB_END_NOTIFICATION  </p>
+<p>NvM_JobEndNotification </p>
+<p> </p>
+<p><i><b>3.6.9 </b></i></p>
+<p><i><b>FEE Operating Frequency </b></i></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_OPERATING_FREQUENCY  </p>
+<p><b>Description </b></p>
+<p>Device operating frequency in MHz. It is equivalent to the </p>
+<p>HCLK frequency in the TMS570 clock tree. </p>
+<p><b>Default Value </b></p>
+<p>160 </p>
+<p><b>Parameter Range </b></p>
+<p>Device dependent parameter. Refer to the device </p>
+<p>datasheet to know the range. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_OPERATING_FREQUENCY 160 </p>
+<p> </p>
+<p><i><b>3.6.10 </b></i></p>
+<p><i><b>Polling Mode </b></i></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_POLLING_MODE </p>
+<p><b>Description </b></p>
+<p>Indicates if polling mode is enabled/disabled. Currently, this </p>
+<p>parameter should always be STD_ON. </p>
+<p><b>Default Value </b></p>
+<p>STD_ON </p>
+<p><b>Parameter Range </b></p>
+<p>STD_ON/</p>
+<p> </p>
+<p>STD_OFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_POLLING_MODE STD_ON </p>
+<p><i><b> </b></i></p>
+<p><i><b>3.6.11 </b></i></p>
+<p><i><b>Enable Error Correction </b></i></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_FLASH_ERROR_CORRECTION_ENABLE </p>
+<p><b>Description </b></p>
+<p>Used to enable/disable Error Correction Used to enable ECC for </p>
+<p>EEPROm data. This configuration parameter is no longer used. </p>
+<p><b>Default Value </b></p>
+<p>STD_OFF </p>
+<p><b>Parameter Range </b></p>
+<p>STD_ON/</p>
+<p> </p>
+<p>STD_OFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_FLASH_ERROR_CORRECTION_ENABLE </p>
+<p>STD_OFF </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>29 </p>
+<p> </p>
+<p><i><b>3.6.12    Error Correction Handling </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_FLASH_ERROR_CORRECTION_HANDLING </p>
+<p><b>Description </b></p>
+<p>Indicates desired action to be taken on detection of bit </p>
+<p>errors. Currently only Fee_None is supported. </p>
+<p><b>Default Value </b></p>
+<p>Fee_None  </p>
+<p><b>Parameter Range </b></p>
+<p>Fee_None or Fee_Fix  </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define </p>
+<p>FEE_FLASH_ERROR_CORRECTION_HANDLING  </p>
+<p>Fee_None  </p>
+<p><i><b>3.6.13    Block Write Counter Save </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_WRITECOUNTER_SAVE </p>
+<p><b>Description </b></p>
+<p>Used to enable/disable saving of write/erase counter value </p>
+<p>in to block header. </p>
+<p><b>Default Value </b></p>
+<p>STD_OFF </p>
+<p><b>Parameter Range </b></p>
+<p>STD_ON/</p>
+<p> </p>
+<p>STD_OFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define  FEE_WRITECOUNTER_SAVE  STD_OFF  </p>
+<p><i><b>3.6.14    Enable CRC </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_ CRC_ENABLE </p>
+<p><b>Description </b></p>
+<p>Used to enable/disable 16 bit CRC. If enabled, 16 bit CRC </p>
+<p>is calculated and written into Block header.  </p>
+<p><b>Default Value </b></p>
+<p>STD_OFF </p>
+<p><b>Parameter Range </b></p>
+<p>STD_ON/</p>
+<p> </p>
+<p>STD_OFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_ CRC_ENABLE STD_OFF </p>
+<p><i><b>3.6.15    NumberOfEEPs </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NUMBER_OF_EEPS </p>
+<p><b>Description </b></p>
+<p>Used to configure number of emulations on a single bank. </p>
+<p><b>Default Value </b></p>
+<p>1 </p>
+<p><b>Parameter Range </b></p>
+<p>1-2 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NUMBER_OF_EEPS 1  </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>30 </p>
+<p><i><b>3.6.16  Number of Blocks </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NUMBER_OF_BLOCKS  </p>
+<p><b>Description </b></p>
+<p>Defines the number of Data Blocks used for EEPROM </p>
+<p>emulation. </p>
+<p><b>Default Value </b></p>
+<p>0x1 </p>
+<p><b>Parameter Range </b></p>
+<p>0x1 to 0xFFFE </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NUMBER_OF_BLOCKS 0x10  </p>
+<p><i><b>3.6.17 </b></i></p>
+<p><i><b>Number of Virtual Sectors </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NUMBER_OF_VIRTUAL_SECTORS </p>
+<p><b>Description </b></p>
+<p>Defines the number of Virtual Sectors used for FEE.. </p>
+<p><b>Default Value </b></p>
+<p>0x2 </p>
+<p><b>Parameter Range </b></p>
+<p>Min :0x2 Max : 0x4,For TMS570LS01227/TMS570LS1113. </p>
+<p>Min : 0x2 Max : 16, For TMS570LS05xx, TMS570LS07xx, </p>
+<p>TMS570LS09xx. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NUMBER_OF_VIRTUAL_SECTORS 0x2  </p>
+<p><i><b>3.6.18 </b></i></p>
+<p><i><b>Number of Virtual Sectors on EEP1 </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NUMBER_OF_VIRTUAL_SECTORS_EEP1 </p>
+<p><b>Description </b></p>
+<p>Defines the number of Virtual Sectors used for EEP1 </p>
+<p><b>Default Value </b></p>
+<p>0x2 </p>
+<p><b>Parameter Range </b></p>
+<p>0 to FEE_NUMBER_OF_VIRTUAL_SECTORS-2 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NUMBER_OF_VIRTUAL_SECTORS_EEP1 0x2  </p>
+<p><i><b>3.6.19 </b></i></p>
+<p><i><b>Number of Eight Byte Writes </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NUMBER_OF_EIGHTBYTEWRITES </p>
+<p><b>Description </b></p>
+<p>Defines the number of 8 byte writes to be performed in Main </p>
+<p>Function. </p>
+<p><b>Default Value </b></p>
+<p>0x1 </p>
+<p><b>Parameter Range </b></p>
+<p>1 to 255 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NUMBER_OF_EIGHTBYTEWRITES 0x1  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>31 </p>
+<p><i><b>3.6.20     Maximum Number of non configured blocks to copy </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_NUMBER_OF_UNCONFIGUREDBLOCKSTOCOPY </p>
+<p><b>Description </b></p>
+<p>Defines the maximum number non configured blocks to copy. </p>
+<p><b>Default Value </b></p>
+<p>0x0 </p>
+<p><b>Parameter Range </b></p>
+<p>0 to 255 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_NUMBER_OF_ </p>
+<p>UNCONFIGUREDBLOCKSTOCOPY 0x0  </p>
+<p><i><b>3.6.21     Address Range check during Read/Write </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_CHECK_BANK7_ACCESS </p>
+<p><b>Description </b></p>
+<p>Defines the maximum number non configured blocks to copy. </p>
+<p><b>Default Value </b></p>
+<p>STD_OFF </p>
+<p><b>Parameter Range </b></p>
+<p>STD_ON/STD_OFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_CHECK_BANK7_ACCESS  STD_OFF </p>
+<p><i><b>3.6.22     Number of blocks and Data Sets </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_TOTAL_BLOCKS_DATASETS </p>
+<p><b>Description </b></p>
+<p>Defines the total data sets in block configuration. </p>
+<p><b>Default Value </b></p>
+<p>1 </p>
+<p><b>Parameter Range </b></p>
+<p>1-65536 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_TOTAL_BLOCKS_DATASETS  1 </p>
+<p> </p>
+<p><i><b>3.6.23     Generate Device and Virtual Sector Structures </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC </p>
+<p><b>Description </b></p>
+<p>Used to enable/disable generation of Device and Virtual sector </p>
+<p>structures. </p>
+<p><b>Default Value </b></p>
+<p>STD_OFF </p>
+<p><b>Parameter Range </b></p>
+<p>STD_ON/STD_OFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC </p>
+<p>STD_OFF </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>32 </p>
+<p>Note: When FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC=STD_ON, </p>
+<p>device (Device_FlashDevice) and virtual sector </p>
+<p>configuration(Fee_VirtualSectorConfiguration) structures are populated during </p>
+<p>runtime. Also, these structures will be placed in RAM. Projects should take care </p>
+<p>that only FEE driver has access to these structures. When it’s STD_OFF, </p>
+<p>structures are places in flash and are const. </p>
+<p><i><b>    </b></i></p>
+<p><i><b>3.6.24     Required Virtual Sector Size </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_VIRTUALSECTOR_SIZE </p>
+<p><b>Description </b></p>
+<p>Defines the size of virtual sector. </p>
+<p><b>Default Value </b></p>
+<p>None </p>
+<p><b>Parameter Range </b></p>
+<p>4-32(see below note) </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_VIRTUALSECTOR_SIZE 4 </p>
+<p> </p>
+<p>Note: Depending on the device, parameter range can be different.  </p>
+<p>For TMS570LS12xx/11xx family devices, FEE bank is 4*16KB. Macro can take a value of </p>
+<p>16 or 32. For TMS570LS09xx, TMS570LS07xx, TMS570LS05xx family devices, FEE bank </p>
+<p>is 16*4KB. Macro can take a value of 4 or 8 or 12 or 16 or 32.  </p>
+<p>FEE_VIRTUALSECTOR_SIZE * FEE_NUMBER_OF_VIRTUAL_SECTORS should not </p>
+<p>exceed the total available FEE bank size on device. This macro is only used when </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC is STD_ON. Based on </p>
+<p>FEE_VIRTUALSECTOR_SIZE and FEE_NUMBER_OF_VIRTUAL_SECTORS, elements </p>
+<p>of the structure Fee_VirtualSectorConfiguration will be populated during runtime. </p>
+<p><i><b>3.6.25     FEE bank Physical Sector Size </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FEE_PHYSICALSECTOR_SIZE </p>
+<p><b>Description </b></p>
+<p>Defines the size of one physical sector on the device. </p>
+<p><b>Default Value </b></p>
+<p>None </p>
+<p><b>Parameter Range </b></p>
+<p>4/16(see below note) </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.h </p>
+<p><b>Sample Configuration </b></p>
+<p>#define FEE_PHYSICALSECTOR_SIZE 4 </p>
+<p> </p>
+<p>Note: This macro can only have 4/16 as value.  </p>
+<p>For TMS570LS12xx/11xx family devices, sector size is 16. For TMS570LS09xx, </p>
+<p>TMS570LS07xx, TMS570LS05xx family devices, sector size is 4. This macro is only used </p>
+<p>when FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC is STD_OFF. This </p>
+<p>parameter is used to select device specific files. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>33 </p>
+<p><i><b>3.6.26     Virtual Sector Configuration </b></i></p>
+<p> </p>
+<p><b>Array Name </b></p>
+<p>FEE_VirtualSectorConfiguration  </p>
+<p><b>Description </b></p>
+<p>Used to define a Virtual Sector </p>
+<p><b>Array Type </b></p>
+<p>Fee_VirtualSectorConfigType.  </p>
+<p>This is a structure having the following members. </p>
+<p><b>Members </b></p>
+<p>FeeVirtualSectorNumber </p>
+<p>Virtual Sector's Number. </p>
+<p>FeeFlashBank </p>
+<p>Flash Bank for EEPROM </p>
+<p>emulation, Only Bank 7 for </p>
+<p>F021 devices. </p>
+<p>FeeStartSector </p>
+<p>Starting Sector in the Bank for </p>
+<p>this Virtual Sector. </p>
+<p>FeeEndSector </p>
+<p>Ending Sector in the Bank for </p>
+<p>this Virtual Sector. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p>The configurations described below are repeated for each Virtual Sector. </p>
+<p><i><b>3.6.26.1 </b></i></p>
+<p><i><b>FeeVirtualSectorNumber  </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeVirtualSectorNumber  </p>
+<p><b>Description </b></p>
+<p>Each Virtual Sector is assigned a number starting from 0x1 </p>
+<p><b>Default Value </b></p>
+<p>0x1 </p>
+<p><b>Parameter Range </b></p>
+<p>Min : 0x1,  Max : 0x4,For </p>
+<p>TMS570LS01227/TMS570LS1113 </p>
+<p>Min : 0x1 Max : 16, For TMS570LS05xx, TMS570LS07xx, </p>
+<p>TMS570LS09xx</p>
+<p> </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.26.2 </b></i></p>
+<p><i><b>FeeFlashBank   </b></i></p>
+<p><b>Parameter Name </b></p>
+<p>FeeFlashBank </p>
+<p><b>Description </b></p>
+<p>Indicates the Flash Bank used by the Virtual Sector. All the </p>
+<p>Virtual Sectors should use the same Flash Bank.</p>
+<p> </p>
+<p>EEPROM </p>
+<p>emulation is supported only on Bank 7 for F021 devices </p>
+<p><b>Default Value </b></p>
+<p>0x7 for F021 devices </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x7 for F021 devices. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.26.3 </b></i></p>
+<p><i><b>FeeStartSector   </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeStartSector </p>
+<p><b>Description </b></p>
+<p>Indicates the Flash Sector in the Bank used by the Virtual </p>
+<p>Sector as the Start sector. </p>
+<p><b>Default Value </b></p>
+<p>0x0 </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>34 </p>
+<p><b>Parameter Range </b></p>
+<p>Device specific, can use any Sector of the selected Flash </p>
+<p>Bank. Please refer to the device datasheet “Flash Memory </p>
+<p>Map” for more details. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.26.4 </b></i></p>
+<p><i><b>FeeEndSector   </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeEndSector </p>
+<p><b>Description </b></p>
+<p>Indicates the Flash Sector in the Bank used by the Virtual Sector </p>
+<p>as the End sector. </p>
+<p><b>Default Value </b></p>
+<p>0x0 </p>
+<p><b>Parameter Range </b></p>
+<p>Device specific, can use any Flash Sector of the selected Flash </p>
+<p>Bank.  It  should  be  greater  than  the  FEE  Start  Sector.  Please </p>
+<p>refer  to  the  device  datasheet  “Flash  Memory  Map”  for  more </p>
+<p>details. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.26.5 </b></i></p>
+<p><i><b>Sample Virtual Sector Configuration </b></i></p>
+<p>The following code snippet indicates one of the possible configurations for the Virtual </p>
+<p>Sectors: </p>
+<p>/* Virtual Sector Configuration */ </p>
+<p>const TI_FeeVirtualSectorConfigType TI_FeeVirtualSectorConfiguration[] = </p>
+<p>{ </p>
+<p>    /* Virtual Sector 1 */ </p>
+<p>    { </p>
+<p>        1,     /* Virtual sector number */ </p>
+<p>        7,     /* Bank                  </p>
+<p>  */ </p>
+<p>        0,     /* Start Sector           </p>
+<p> */ </p>
+<p>        0,     /* End Sector             </p>
+<p> */ </p>
+<p>    }, </p>
+<p>    /* Virtual Sector 2 */ </p>
+<p>    { </p>
+<p>        2,     /* Virtual sector number */ </p>
+<p>        7,     /* Bank                   </p>
+<p>  */ </p>
+<p>        1,     /* Start Sector            </p>
+<p>  */ </p>
+<p>        1,     /* End Sector             </p>
+<p> */ </p>
+<p>    }, </p>
+<p>}; </p>
+<p> </p>
+<p><b>Note: All the Virtual Sectors should have the same Flash Bank. </b></p>
+<p><b>Only Bank 7 is supported for EEPROM emulation on F021 devices. </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>35 </p>
+<p><i><b>3.6.27 </b></i></p>
+<p><i><b>Block Configuration </b></i></p>
+<p> </p>
+<p><b>Array Name </b></p>
+<p>Fee_BlockConfiguration </p>
+<p><b>Description </b></p>
+<p>Used to define a Data Block </p>
+<p><b>Array Type </b></p>
+<p>Fee_BlockConfigType. </p>
+<p>This is a structure having the following members. </p>
+<p><b>Members </b></p>
+<p>FeeBlockNumber </p>
+<p>Indicates Block's </p>
+<p>Number.</p>
+<p> </p>
+<p>FeeBlockSize </p>
+<p>Defines Block's Size in </p>
+<p>bytes. </p>
+<p>FeeImmediateData </p>
+<p>Indicates if the block is </p>
+<p>used for immediate data. </p>
+<p>FeeNumberOfWriteCycles </p>
+<p>Number of write cycles </p>
+<p>required for this block . </p>
+<p>FeeDeviceIndex </p>
+<p>Indicates the device </p>
+<p>index. </p>
+<p>FeeNumberofDatasets </p>
+<p>Indicates the number of </p>
+<p>Datasets for this Block. </p>
+<p>FeeEEPNumber </p>
+<p>Indicates on which EEP, </p>
+<p>this block is configured. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p>The configurations described below are repeated for each Data Block. </p>
+<p> </p>
+<p><i><b>3.6.27.1 </b></i></p>
+<p><i><b>FeeBlockNumber   </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeBlockNumber </p>
+<p><b>Description </b></p>
+<p>Each block is assigned a unique number starting from 0x1. </p>
+<p><b>Default Value </b></p>
+<p>0x1 </p>
+<p><b>Parameter Range </b></p>
+<p>Min : 0x1,  Max : 0xFFFE </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p> </p>
+<p><i><b>3.6.27.2 </b></i></p>
+<p><i><b>FeeBlockSize    </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeBlockSize </p>
+<p><b>Description </b></p>
+<p>Indicates the size of the Block in bytes. </p>
+<p><b>Default Value </b></p>
+<p>0x08 </p>
+<p><b>Parameter Range </b></p>
+<p>0x1 to 0xFFFE </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>36 </p>
+<p><i><b>3.6.27.3 </b></i></p>
+<p><i><b>FeeImmediateData    </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeImmediateData </p>
+<p><b>Description </b></p>
+<p>Indicates if the block is used for immediate data. </p>
+<p><b>Default Value </b></p>
+<p>FALSE </p>
+<p><b>Parameter Range </b></p>
+<p>TRUE / FALSE </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.27.4 </b></i></p>
+<p><i><b>FeeNumberOfWriteCycles    </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeNumberOfWriteCycles </p>
+<p><b>Description </b></p>
+<p>Indicates the number of clock cycles required to write </p>
+<p>to a flash address location. </p>
+<p><b>Default Value </b></p>
+<p>0x1 </p>
+<p><b>Parameter Range </b></p>
+<p>Device or core/flash tech dependent parameter. </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p> </p>
+<p><i><b>3.6.27.5 </b></i></p>
+<p><i><b>FeeDeviceIndex     </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeDeviceIndex </p>
+<p><b>Description </b></p>
+<p>Indicates the device index. This will always be 0. </p>
+<p><b>Default Value </b></p>
+<p>0x0 </p>
+<p><b>Parameter Range </b></p>
+<p>Fixed to 0x0 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.27.6 </b></i></p>
+<p><i><b>FeeNumberOfDataSets      </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeNumberOfDataSets </p>
+<p><b>Description </b></p>
+<p>Indicates the number of Datasets for this particular </p>
+<p>Block . </p>
+<p><b>Default Value </b></p>
+<p>0x1 </p>
+<p><b>Parameter Range </b></p>
+<p>0x1 to 0xFF </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>37 </p>
+<p><i><b>3.6.27.7 </b></i></p>
+<p><i><b>FeeEEPNumber      </b></i></p>
+<p> </p>
+<p><b>Parameter Name </b></p>
+<p>FeeEEPNumber </p>
+<p><b>Description </b></p>
+<p>Indicates into which EEP, this block is configured. </p>
+<p><b>Default Value </b></p>
+<p>0x0 </p>
+<p><b>Parameter Range </b></p>
+<p>0x0 to 0x1 </p>
+<p><b>Target File </b></p>
+<p>Fee_cfg.c </p>
+<p><i><b>3.6.27.8 </b></i></p>
+<p><i><b>Sample Block Configuration </b></i></p>
+<p>The following code snippet indicates one of the possible configurations for the Blocks: </p>
+<p>/* Block Configuration */ </p>
+<p>const TI_FeeBlockConfigType TI_Fee_BlockConfiguration[] = </p>
+<p>{ </p>
+<p>    /* Block 1 */ </p>
+<p>    { </p>
+<p>        0x01,      </p>
+<p>  /* Block number                 </p>
+<p>*/ </p>
+<p>        0x004,      </p>
+<p>  /* Block size                    </p>
+<p>*/ </p>
+<p>        0x10,  /* Block number of write cycles */ </p>
+<p>       TRUE,      /* Block immediate data used    */ </p>
+<p> </p>
+<p>        0,           </p>
+<p>/* Device Index                  </p>
+<p>*/ </p>
+<p>        1, </p>
+<p> </p>
+<p>/* Number of DataSets    </p>
+<p>*/ </p>
+<p> </p>
+<p>        0 </p>
+<p> </p>
+<p>/* EEP Number    </p>
+<p> </p>
+<p>*/ </p>
+<p> </p>
+<p>    }, </p>
+<p>    /* Block 2 */ </p>
+<p>    { </p>
+<p>        0x02,        </p>
+<p>/* Block number                  </p>
+<p>*/ </p>
+<p>        0x008,      </p>
+<p>/* Block size                    </p>
+<p> */ </p>
+<p>        0x10,  /* Block number of write cycles */ </p>
+<p>        TRUE,      /* Block immediate data used    */ </p>
+<p>        0,           </p>
+<p>/* Device Index                  </p>
+<p>*/ </p>
+<p>        2, </p>
+<p> </p>
+<p>/* Number of DataSets    </p>
+<p>*/ </p>
+<p> </p>
+<p>        1 </p>
+<p> </p>
+<p>/* EEP Number    </p>
+<p> </p>
+<p>*/ </p>
+<p>    }, </p>
+<p>    /* Block 3 */ </p>
+<p>    { </p>
+<p>        0x03,       </p>
+<p> /* Block number                  </p>
+<p>*/ </p>
+<p>        0x0004,      </p>
+<p> /* Block size                    </p>
+<p>*/ </p>
+<p>        0x10,  /* Block number of write cycles */ </p>
+<p>       TRUE,      /* Block immediate data used    */  </p>
+<p>        0,           </p>
+<p>/* Device Index                  </p>
+<p>*/ </p>
+<p>        3, </p>
+<p> </p>
+<p>/* Number of DataSets    </p>
+<p>*/ </p>
+<p>        1 </p>
+<p> </p>
+<p>/* EEP Number    </p>
+<p> </p>
+<p>*/ </p>
+<p>    }, </p>
+<p> </p>
+<p>/* Block 4 */ </p>
+<p>    { </p>
+<p>        0x04,        </p>
+<p>/* Block number                  </p>
+<p>*/ </p>
+<p>        0x001A,     /* Block size                   </p>
+<p> </p>
+<p> */ </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>38 </p>
+<p>        0x10,  /* Block number of write cycles  */ </p>
+<p>        TRUE,      /* Block immediate data used    */ </p>
+<p>        0,           </p>
+<p>/* Device Index                  </p>
+<p>*/ </p>
+<p>        4, </p>
+<p> </p>
+<p>/* Number of DataSets    </p>
+<p>*/ </p>
+<p> </p>
+<p>        0 </p>
+<p> </p>
+<p>/* EEP Number    </p>
+<p> </p>
+<p>*/ </p>
+<p> </p>
+<p>    }, </p>
+<p>}; </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>39 </p>
+<p><b>3.7 </b></p>
+<p><b>API Classification </b></p>
+<p>This section introduces the application-programming interface for the AutoSAR FEE Driver </p>
+<p>by grouping them into logical units. This is intended for the user to get a quick understanding </p>
+<p>of </p>
+<p>the </p>
+<p>AutoSAR </p>
+<p>FEE </p>
+<p>Driver </p>
+<p>APIs. </p>
+<p>For </p>
+<p>detailed </p>
+<p>descriptions </p>
+<p>please </p>
+<p>refer </p>
+<p>to </p>
+<p>the </p>
+<p>API </p>
+<p>specification section that follows this section. </p>
+<p><i><b>3.7.1 </b></i></p>
+<p><i><b>Initialization </b></i></p>
+<p>The AutoSAR FEE Driver APIs that are intended for use in <i>initialization </i>of the FEE module </p>
+<p>are listed below.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>Fee_Init </p>
+<p>Used to initialize the FEE module </p>
+<p><b>4-4.  AutoSAR FEE Driver Initialization APIs </b></p>
+<p><b> </b></p>
+<p><i><b>3.7.2 </b></i></p>
+<p><i><b>Data Operations </b></i></p>
+<p>The AutoSAR FEE Driver APIs that are intended for performing <i>Data operations </i>on Data </p>
+<p>Blocks are listed below.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>Fee_Write </p>
+<p>Used  to  initiate  a  Write  Operation  to  a </p>
+<p>Data  Block.    Fee_MainFunction  should </p>
+<p>be  called  at  regular  intervals  to  finish </p>
+<p>the Write Operation </p>
+<p>Fee_Read </p>
+<p>Fee_MainFunction  should  be  called  at </p>
+<p>regular intervals to finish  this Operation </p>
+<p>Fee_EraseImmediateBlock </p>
+<p>Used to initiate an Erase Operation of a </p>
+<p>Data  Block.    Fee_MainFunction  should </p>
+<p>be  ca</p>
+<p>lled  at  regular  intervals  to  finish  </p>
+<p>this Operation </p>
+<p>Fee_InvalidateBlock </p>
+<p>Used to initiate an Invalidate Operation </p>
+<p>on </p>
+<p>a </p>
+<p>Data </p>
+<p>Block. </p>
+<p>Fee_MainFunction </p>
+<p>should  be  called  at  regular  intervals  to </p>
+<p>finish this Operation </p>
+<p><b>4-5.  AutoSAR FEE Driver Data Operation APIs </b></p>
+<p><i><b> </b></i></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>40 </p>
+<p><i><b>3.7.3   Information  </b></i></p>
+<p>The AutoSAR FEE Driver APIs that are intended to get information about the status of the </p>
+<p>FEE Module are listed below.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>Fee_GetVersionInfo </p>
+<p>Used to get the Driver version. </p>
+<p>Fee_GetStatus </p>
+<p>Used to get the status of the FEE module. </p>
+<p>Fee_GetJobResult </p>
+<p>Used </p>
+<p>to </p>
+<p>get </p>
+<p>the </p>
+<p>job </p>
+<p>result </p>
+<p>of </p>
+<p>a </p>
+<p>Data </p>
+<p>Operation. </p>
+<p><b>4-6.  AutoSAR FEE Driver Information APIs </b></p>
+<p><b> </b></p>
+<p><i><b>3.7.4  Internal Operations  </b></i></p>
+<p>The  AutoSAR  FEE  Driver  APIs  that  are  used  to  perform  internal  operations  of  the  FEE </p>
+<p>Module are listed below.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>Fee_MainFunction </p>
+<p>Used </p>
+<p>to </p>
+<p>complete </p>
+<p>the </p>
+<p>Data </p>
+<p>Operations </p>
+<p>initiated </p>
+<p>by </p>
+<p>any </p>
+<p>of </p>
+<p>the </p>
+<p>Data </p>
+<p>Operation </p>
+<p>functions. </p>
+<p> </p>
+<p> </p>
+<p><b>4-7.  AutoSAR FEE Driver Internal Operation APIs </b></p>
+<p><i><b>3.7.5  Cancel/ Terminate Operations  </b></i></p>
+<p>The </p>
+<p>AutoSAR </p>
+<p>FEE </p>
+<p>Driver </p>
+<p>APIs </p>
+<p>that </p>
+<p>are </p>
+<p>used </p>
+<p>to </p>
+<p>cancel/terminate </p>
+<p>an </p>
+<p>ongoing </p>
+<p>Data </p>
+<p>Operation are listed below.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>Fee_Cancel </p>
+<p>Used  to  cancel  an  ongoing  write,  erase, </p>
+<p>invalidate or read operation. </p>
+<p><b>4-8.  AutoSAR FEE Driver Terminate/Cancel Operation APIs </b></p>
+<p><i><b>3.7.6  Error Information and Recovery Operations  </b></i></p>
+<p>The TI FEE Driver APIs that are used to provide error information and recover from severe </p>
+<p>errors.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>TI_FeeErrorCode </p>
+<p>Function to know the error type. </p>
+<p>TI_Fee_ErrorRecovery </p>
+<p>Function to recover from severe errors. </p>
+<p><b>4-9.  AutoSAR FEE Driver Error Info and Recovery APIs </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>41 </p>
+<p><i><b>3.7.7 Suspend/Resume Erase Sector  </b></i></p>
+<p>The TI FEE Driver APIs that are used to suspend/Resume erasing of sector.  </p>
+<p> </p>
+<p><b>Name  </b></p>
+<p><b>Description </b></p>
+<p>TI_Fee_SuspendResumeErase </p>
+<p>Function  to  suspend/resume  erasing </p>
+<p>of sectors. </p>
+<p><b>4-10.  TI FEE Driver Suspend/Resume Erase Sector APIs </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>42 </p>
+<p><b>3.8 </b></p>
+<p><b> Integration Example </b></p>
+<p>This section depicts a flow chart for a typical FEE operation. </p>
+<p>  </p>
+<p> </p>
+<p><b>Schedule a Data Operation </b></p>
+<p><b>FEE_Write() / </b></p>
+<p><b>FEE_EraseImmediateBlock() / </b></p>
+<p><b>FEE_InvalidateBlock() / </b></p>
+<p><b>FEE_Read() </b></p>
+<p><b> </b></p>
+<p><b>Schedule Other </b></p>
+<p><b>Application Tasks </b></p>
+<p><b>Fee_GetJobResult() </b></p>
+<p> </p>
+<p><b>Fee_Main() </b></p>
+<p> </p>
+<p><b>TI_Fee_Main calls </b></p>
+<p><b>TI_FeeInternal_FeeM</b></p>
+<p><b>anager </b></p>
+<p><b>Initialization </b></p>
+<p><b>Fee_Init()</b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Fee_GetStatus() </b></p>
+<p> </p>
+<p><b>FEE is in IDLE state after </b></p>
+<p><b>successful initialization </b></p>
+<p><b>IDLE? </b></p>
+<p>Yes </p>
+<p>Call any one of the data </p>
+<p>operation functions as required. </p>
+<p>A new operation can be initiated </p>
+<p>only when the module is in “Idle” </p>
+<p>state. </p>
+<p>To be called at regular </p>
+<p>intervals to complete the Data </p>
+<p>operation. </p>
+<p>To be called only once at the </p>
+<p>beginning to initialize the FEE </p>
+<p>module.  </p>
+<p>Returns the Job result of the last </p>
+<p>operation. </p>
+<p>Called by Fee_Main() whenever in </p>
+<p>“Idle” state to handle internal </p>
+<p>ti</p>
+<p> </p>
+<p>No </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>43 </p>
+<p><b>3.9 </b></p>
+<p><b>API Specification </b></p>
+<p> </p>
+<p>This section constitutes the detailed reference for the entire API set published to users of the </p>
+<p>AutoSAR FEE Driver.  </p>
+<p>For each of the published API listed, the following attributes are specified </p>
+<p><b>•</b></p>
+<p><b> </b></p>
+<p><i><b>Prototype</b></i>: The signature of the function and or macro method in question </p>
+<p><b>•</b></p>
+<p><b> </b></p>
+<p><i><b>Description</b></i>: The functionality of the procedure or macro </p>
+<p><b>•</b></p>
+<p><b> </b></p>
+<p><i><b>Arguments</b></i>: The list of parameters supplied by the user </p>
+<p><b>•</b></p>
+<p><b> </b></p>
+<p><i><b>Return value</b></i>: The evaluated return value from the procedure invoked </p>
+<p><i><b>3.9.1 </b></i></p>
+<p><i><b>AutoSAR FEE Driver Functions </b></i></p>
+<p><i><b>3.9.1.1 </b></i></p>
+<p><i><b>Fee Initilization Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>void Fee_Init( ) </p>
+<p><b>Description </b></p>
+<p>Used to initialize the FEE module </p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p>None </p>
+<p> </p>
+<p>The function Fee_Init() shall initialize the Fee module. This function shall initialize all Flash </p>
+<p>Memory relevant registers (hardware) with parameters provided in the given configuration </p>
+<p>set.   </p>
+<p>The function Fee_Init() shall initialize all Fee module global variables and those controller </p>
+<p>registers that are needed for controlling the flash device and that do not influence or </p>
+<p>depend on other (hardware) modules.  Registers that can influence or depend on other </p>
+<p>modules shall be initialized by a common system module. </p>
+<p>This function shall set the Fee module state to MEMIF_IDLE after successfully finishing the </p>
+<p>Fee module initialization.   </p>
+<p><i><b>Note: Do not call Fee_Init API multiple times in a single power cycle. There are </b></i></p>
+<p><i><b>chances of some blocks getting lost(if there are different block configurations for </b></i></p>
+<p><i><b>different instances of Fee_Init call ), if it’s called multiple times. If project </b></i></p>
+<p><i><b>requirement  needs to call Fee_Init multiple times, make sure .data and .bss sections </b></i></p>
+<p><i><b>are cleared before calling Fee_Init. </b></i></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>44 </p>
+<p><i><b>3.9.1.2 </b></i></p>
+<p><i><b>Fee Write Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType Fee_Write( </p>
+<p> </p>
+<p>uint16 BlockNumber, </p>
+<p> </p>
+<p>uint8* DataBufferPtr </p>
+<p>) </p>
+<p><b>Description </b></p>
+<p>Used to initiate a Write Operation on a Data </p>
+<p>Block / DataSet within a Data Block </p>
+<p><b>Arguments </b></p>
+<p><b>BlockNumber </b></p>
+<p>The BlockNumber should comprise of the </p>
+<p>number of the logical block and the Dataset </p>
+<p>index within that logical block. The number of the </p>
+<p>logical block is left shifted by the maximum </p>
+<p>number of Datasets configures </p>
+<p>(NVM_DATASET_SELECTION_BITS) and then </p>
+<p>combined with the Dataset index to obtain the </p>
+<p>BlockNumber parameter. </p>
+<p><b>DataBufferPtr </b></p>
+<p>Pointer to data buffer. </p>
+<p><b>Return value </b></p>
+<p>E_OK:  The write job was accepted by the Fee </p>
+<p>module </p>
+<p>E_NOT_OK:  The write job was not accepted by </p>
+<p>the Fee module. </p>
+<p> </p>
+<p>The function Fee_Write() shall take the block start address and calculate the   </p>
+<p>corresponding memory write address.  This function shall copy the given/computed </p>
+<p>parameters to module internal variables, initiate a write job, set Fee module status to </p>
+<p>MEMIF_BUSY, set the job result to MEMIF_JOB_PENDING and return with E_OK. </p>
+<p>The Fee module shall execute the job of the function Fee_Write() asynchronously within the </p>
+<p>Fee module’s main function.  This function shall write one or more complete flash pages to </p>
+<p>the Flash device.  The job of this function shall program a Flash memory block with data </p>
+<p>provided via DataBufferPtr. </p>
+<p> </p>
+<p>This function shall check the following: </p>
+<p>1. </p>
+<p>That the write length is greater than 0. If this check fails, this function shall reject </p>
+<p>the Write job and return with E_NOT_OK. </p>
+<p>2. </p>
+<p>That the Fee module has been initialized.  If this check fails, this function shall </p>
+<p>reject the Write job and return with E_NOT_OK.   </p>
+<p>3. </p>
+<p>That the Fee module is currently not busy.  If this check fails, this function shall </p>
+<p>reject the Write job and return with E_NOT_OK. </p>
+<p>4. </p>
+<p>The given data buffer pointer for not being a null pointer.  If this check fails, this </p>
+<p>function shall reject the Write job and return with E_NOT_OK.   </p>
+<p>Projects can configure FEE_NUMBER_OF_EIGHTBYTEWRITES to suitable value. By </p>
+<p>default this is 0x1. This means 8 bytes of data are written for every main function call. If this </p>
+<p>parameter is configured to 0x2, 16 bytes of data are written. </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>45 </p>
+<p><i><b>3.9.1.3 </b></i></p>
+<p><i><b>Fee Read Function </b></i></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType Fee_Read( </p>
+<p> </p>
+<p>uint16 BlockNumber, </p>
+<p> </p>
+<p>uint16 BlockOffset, </p>
+<p> </p>
+<p>uint8* DataBufferPtr, </p>
+<p> </p>
+<p>uint16 Length </p>
+<p>) </p>
+<p><b>Description </b></p>
+<p>Used to perform a Read Operation on a Data Block / </p>
+<p>DataSet within a Data Block </p>
+<p><b>Arguments </b></p>
+<p><b>BlockNumber </b></p>
+<p> </p>
+<p>The BlockNumber should comprise of the number of </p>
+<p>the logical block and the Dataset index within that </p>
+<p>logical block. The number of the logical block is left </p>
+<p>shifted by the maximum number of Datasets </p>
+<p>configures (NVM_DATASET_SELECTION_BITS) </p>
+<p>and then combined with the Dataset index to obtain </p>
+<p>the BlockNumber parameter. </p>
+<p><b>BlockOffset </b></p>
+<p>Read address offset inside the block. </p>
+<p><b>DataBufferPtr </b></p>
+<p>Pointer to data buffer. </p>
+<p><b>Length </b></p>
+<p>Number of bytes to read. </p>
+<p><b>Return value </b></p>
+<p>E_OK:  The Read job was completed successfully.  </p>
+<p>E_NOT_OK:  The Read job was not completed </p>
+<p>successfully. </p>
+<p>The function Fee_Read() shall take the block start address and offset and calculate the </p>
+<p>corresponding memory read address.  The address offset and length parameter can </p>
+<p>take any value within the given types range.  This allows reading of an arbitrary number </p>
+<p>of bytes from an arbitrary star address inside a logical block.   </p>
+<p> </p>
+<p>The Fee module shall execute the job of the function Fee_Read() asynchronously </p>
+<p>within the Fee module’s main function.  This function shall initiate a read operation </p>
+<p>which copies a continuous Flash memory block starting from the computed start </p>
+<p>address to the size of Length to the buffer pointed to DataBufferPtr. This function shall </p>
+<p>set Fee module status to MEMIF_BUSY, set the job result to MEMIF_JOB_PENDING </p>
+<p>and return with E_OK. </p>
+<p> </p>
+<p>This function shall check the following: </p>
+<p>1. </p>
+<p>That the read length is greater than 0. If this check fails, this function shall reject </p>
+<p>the Read job and return with E_NOT_OK. </p>
+<p>2. </p>
+<p>That the Fee module has been initialized.  If this check fails, this function shall </p>
+<p>reject the Read job and return with E_NOT_OK.   </p>
+<p>3. </p>
+<p>That the Fee module is currently not busy.  If this check fails, this function shall </p>
+<p>reject the Read job and return with E_NOT_OK. </p>
+<p>4. </p>
+<p>The given data buffer pointer for not being a null pointer.  If this check fails, this </p>
+<p>function shall reject the Read job and return with E_NOT_OK.   </p>
+<p>Main function will do complete data read in single main function call. </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>46 </p>
+<p><i><b>3.9.1.4 </b></i></p>
+<p><i><b>Fee Erase Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType Fee_EraseImmediateBlock( </p>
+<p> </p>
+<p>uint16 BlockNumber </p>
+<p>) </p>
+<p><b>Description </b></p>
+<p>Used to initiate a logical Erase operation on a Data </p>
+<p>Block / DataSet within a Data Block </p>
+<p><b>Arguments </b></p>
+<p><b>BlockNumber </b></p>
+<p> </p>
+<p>The BlockNumber should comprise of the number of </p>
+<p>the logical block and the Dataset index within that </p>
+<p>logical block. The number of the logical block is left </p>
+<p>shifted by the maximum number of Datasets </p>
+<p>configures (NVM_DATASET_SELECTION_BITS) </p>
+<p>and then combined with the Dataset index to obtain </p>
+<p>the BlockNumber parameter. </p>
+<p><b>Return value </b></p>
+<p>E_OK:  The Erase job was accepted by the Fee </p>
+<p>module </p>
+<p>E_NOT_OK:  The Erase job was not accepted by </p>
+<p>the Fee module<b>. </b></p>
+<p> </p>
+<p>The  function  Fee_  EraseImmediateBlock()  shall  take  the  block  number  calculate  the </p>
+<p>corresponding memory address for that block.   </p>
+<p> </p>
+<p>The Fee module shall execute the job of the function Fee_ EraseImmediateBlock() </p>
+<p>asynchronously within the Fee module’s main function.   </p>
+<p>The function Fee_EraseImmediateBlock() ensures that the Fee module can write </p>
+<p>immediate data.  As the Fee module implementation should always be ready to write </p>
+<p>data, unless the block is marked as FeeImmediateData == FALSE, it shall return </p>
+<p>E_OK.  If the block is marked as FeeImmediateData == FALSE it will return </p>
+<p>E_NOT_OK. </p>
+<p> </p>
+<p>This function shall check the following: </p>
+<p>1. </p>
+<p>That the Fee module has been initialized.  If this check fails, this function shall </p>
+<p>reject the Erase job and return with E_NOT_OK.   </p>
+<p>2. </p>
+<p>That the Fee module is currently not busy.  If this check fails, this function shall </p>
+<p>reject the Erase job and return with E_NOT_OK. </p>
+<p>3. </p>
+<p>The given Block Number is marked for Immediate Data Write.  If this check fails, </p>
+<p>this function shall reject the Erase job and return with E_NOT_OK.   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>47 </p>
+<p><i><b>3.9.1.5 </b></i></p>
+<p><i><b>Fee Invalidate Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType Fee_InvalidateBlock( </p>
+<p> </p>
+<p>uint16 BlockNumber </p>
+<p>) </p>
+<p><b>Description </b></p>
+<p>Used to initiate a logical Invalidate operation on a </p>
+<p>Data Block / DataSet within a Data Block </p>
+<p><b>Arguments </b></p>
+<p><b>BlockNumb</b></p>
+<p><b>er </b></p>
+<p> </p>
+<p>The BlockNumber should comprise of the number of </p>
+<p>the logical block and the Dataset index within that </p>
+<p>logical block. The number of the logical block is left </p>
+<p>shifted by the maximum number of Datasets </p>
+<p>configures (NVM_DATASET_SELECTION_BITS) and </p>
+<p>then combined with the Dataset index to obtain the </p>
+<p>BlockNumber parameter. </p>
+<p><b>Return value </b></p>
+<p>E_OK:  The Invalidate job was accepted by the Fee </p>
+<p>module </p>
+<p>E_NOT_OK:  The Invalidate job was not accepted by </p>
+<p>the Fee module<b>. </b></p>
+<p> </p>
+<p>The function Fee_ InvalidateBlock() shall take the block number calculate the </p>
+<p>corresponding memory address for that block.   </p>
+<p>The Fee module shall execute the job of the function  </p>
+<p>Fee_ InvalidateBlock() asynchronously within the Fee module’s main function.  This </p>
+<p>command shall change the valid bit in the Data Block header to invalidate it. </p>
+<p> </p>
+<p>This function shall check the following: </p>
+<p>1. </p>
+<p>That the Fee module has been initialized.  If this check fails, this function shall </p>
+<p>reject the Invalidate job and return with E_NOT_OK.   </p>
+<p>2. </p>
+<p>That the Fee module is currently not busy.  If this check fails, this function shall </p>
+<p>reject the Invalidate job and return with E_NOT_OK. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>48 </p>
+<p><i><b>3.9.1.6 </b></i></p>
+<p><i><b>Fee Get Version Info Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>void Fee_GetVersionInfo( </p>
+<p> </p>
+<p>Std_VersionInfoType* VersionInfoPtr </p>
+<p>) </p>
+<p><b>Description </b></p>
+<p>Function to return the version information of the Fee </p>
+<p>module<b>. </b></p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p>None </p>
+<p> </p>
+<p> </p>
+<p>The function Fee_GetVersionInfo() shall return the version information for the Fee module.  </p>
+<p>The version information includes: </p>
+<p>-  Module Id </p>
+<p>-  Vendor Id </p>
+<p>-  Fee specific version numbers MM.mm.rr </p>
+<p>•</p>
+<p>  MM  </p>
+<p>– Major Version </p>
+<p>•</p>
+<p>  mm  </p>
+<p>– Minor Version </p>
+<p>•</p>
+<p>  rr  </p>
+<p>– Revision </p>
+<p> </p>
+<p>The function Fee_GetVersionInfo() shall be pre-compile time configurable On/Off by the </p>
+<p>configuration parameter FEE_VERSION_INFO_API. </p>
+<p><i> </i></p>
+<p><i><b>3.9.1.7 </b></i></p>
+<p><i><b>Fee Get Status Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>MemIf_StatusType Fee_GetStatus() </p>
+<p><b>Description </b></p>
+<p>Function to return the status of the Fee module<b>. </b></p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p>MEMIF_UNINIT: The Fee Module has not been </p>
+<p>initialized. </p>
+<p>MEMIF_IDLE:  The Fee Module is currently idle. </p>
+<p>MEMIF_BUSY:  The Fee Module is currently busy. </p>
+<p>MEMIF_BUSY_INTERNAL:  The Fee Module is </p>
+<p>currently busy with internal management </p>
+<p>operations </p>
+<p> </p>
+<p>The function Fee_</p>
+<p> </p>
+<p>GetStatus() shall return the status information for the Fee module.   </p>
+<p> </p>
+<p>The function Fee_</p>
+<p> </p>
+<p>GetStatus() shall be pre-compile time configurable On/Off by the </p>
+<p>configuration parameter FEE_GET_STATUS_API. </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>49 </p>
+<p><i><b>3.9.1.8 </b></i></p>
+<p><i><b>Fee Get Job Result Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>MemIf_JobResultType Fee_GetJobResult() </p>
+<p><b>Description </b></p>
+<p>Function to get the job result from the Fee module<b>. </b></p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p>MEMIF_JOB_OK: The last job has finished </p>
+<p>successfully. </p>
+<p>MEMIF_JOB_PENDING: The last job is waiting for </p>
+<p>execution or is currently being executed. </p>
+<p>MEMIF_JOB_FAILED:  The last </p>
+<p>read/erase/write/compare job failed. </p>
+<p>MEMIF_BLOCK_INCONSISTENT:  The requested </p>
+<p>block is inconsistent, it may contain corrupted data. </p>
+<p>MEMIF_JOB_CANCELLED:  The last job has been </p>
+<p>cancelled. </p>
+<p>MEMIF_BLOCK_INVALID:  The requested block has </p>
+<p>been invalidated.  The requested read operation </p>
+<p>cannot be performed. </p>
+<p> </p>
+<p>The function Fee_GetJobResult() shall return the result of the last job  synchronously.  The </p>
+<p>erase, write, read and invalidate functions shall share the same job result, therefore, only </p>
+<p>the result of the last job can be queried. </p>
+<p> </p>
+<p>The  function  Fee_GetJobResult  shall  be  pre-compile  time  configurable  On/Off  by  the </p>
+<p>configuration parameter FEE_GET_JOB_RESULT_API. </p>
+<p> </p>
+<p><i><b>3.9.1.9 </b></i></p>
+<p><i><b>Fee Main Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>void Fee_MainFunction() </p>
+<p><b>Description </b></p>
+<p>Function to handle the requested read/write/erase jobs </p>
+<p>and the internal management operations of the Fee </p>
+<p>module. </p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p> </p>
+<p>None </p>
+<p> </p>
+<p>The function Fee_MainFunction() shall asynchronously handle the requested read/write/ </p>
+<p>erase jobs respectively and the internal management operations. </p>
+<p> </p>
+<p>The function shall accept only one read, write, or erase job at a time.  When a job has been </p>
+<p>initiated, the Fee module’s environment shall call the function Fee_MainFunction() cyclically </p>
+<p>until the job is finished.  This function shall only process as much data in one call cycle as </p>
+<p>statically configured for the current job type (read, write or erase).  </p>
+<p> </p>
+<p>After a read, erase or write job has been finished; the function shall set the Fee module’s </p>
+<p>job result to MEMIF_JOB_OK if it is currently in state </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>50 </p>
+<p>MEMIF_JOB_PENDING.  Otherwise, it shall leave the result unchanged.  </p>
+<p>Furthermore, the function shall set the Fee module’s state to MEMIF_IDLE and call </p>
+<p>the job end notification function. </p>
+<p> </p>
+<p>This function shall at most issue one sector erase command (to the hardware) in </p>
+<p>each cycle. </p>
+<p> </p>
+<p><i><b>3.9.1.10 </b></i></p>
+<p><i><b>Fee Manager Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>Fee_StatusType </p>
+<p>TI_FeeInternal_FeeManager(void) </p>
+<p><b>Description </b></p>
+<p>Function to handle the internal operations of the FEE </p>
+<p>driver. </p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p> </p>
+<p>FEE_OK : Function detected No Error </p>
+<p>FEE_ERROR: Function detected an Error </p>
+<p>condition and returned. </p>
+<p> </p>
+<p>The  function  TI_FeeInternal_FeeFeeManager()  manages  the  Flash  EEPROM  Emulation </p>
+<p>and is called when no other job is pending by the Fee_MainFunction.</p>
+<p><i> </i></p>
+<p>This function handles </p>
+<p>all the background tasks to manage the FEE. </p>
+<p>   </p>
+<p> This routine is responsible to </p>
+<p>•</p>
+<p> </p>
+<p>Determine whether a Virtual Sector Copy operation is in progress. If so, it should </p>
+<p>identify all the Valid Data Blocks in the old Virtual Sector and copy them to the new </p>
+<p>Virtual Sector. </p>
+<p>•</p>
+<p> </p>
+<p> Determine if any of the Virtual Sector needs to be erased. If so, it should erase that </p>
+<p>particular Virtual Sector. </p>
+<p>•</p>
+<p> </p>
+<p> This function is only called when the Fee module is in MEMIF_IDLE state. It should </p>
+<p>set the Fee module to MEMIF_BUSY_INTERNAL state. </p>
+<p> </p>
+<p><i><b>3.9.1.11 </b></i></p>
+<p><i><b>Fee Cancel  Function </b></i></p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>void Fee_Cancel(void) </p>
+<p><b>Description </b></p>
+<p>Function to cancel/terminate an ongoing operation. </p>
+<p><b>Arguments </b></p>
+<p>None </p>
+<p><b>Return value </b></p>
+<p> </p>
+<p>None </p>
+<p> </p>
+<p>The  function  Fee_Cancel()  provides  functionality  for  cancelling/terminating  an  ongoing </p>
+<p>operation.  This  function  shall  cancel  an  ongoing  flash  read,  write  or  erase  job  and  shall </p>
+<p>reset the internal variables making the module ready to accept a new job.  This function </p>
+<p>shall operate synchronously so after returning from this function a new job can be started. </p>
+<p>  </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>51 </p>
+<p><i><b>3.9.1.12 </b></i></p>
+<p><i><b>TI_FeeErrorCode </b></i></p>
+<p> </p>
+<p>This function provides functionality to identify occurrence of an error.  </p>
+<p>It returns ‘0’ if no error has occurred else it returns an Error code. </p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>TI_FeeErrorCodeType TI_FeeErrorCode(uint8 </p>
+<p>u8EEPIndex ) </p>
+<p><b>Description </b></p>
+<p>Function to know the error type. </p>
+<p><b>Arguments </b></p>
+<p>EEP Index </p>
+<p><b>Return value </b></p>
+<p> </p>
+<p>Error code </p>
+<p> </p>
+<p><i><b> </b></i></p>
+<p><i><b>3.9.1.13 </b></i></p>
+<p><i><b>TI_Fee_ErrorRecovery </b></i></p>
+<p> </p>
+<p>This function provides functionality to recover from any severe errors.  </p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>Void TI_Fee_ErrorRecovery(TI_Fee_ErrorCodeType Error </p>
+<p>Code, uint8 u8VirtualSector) </p>
+<p><b>Description </b></p>
+<p>Function to recover from severe errors. </p>
+<p><b>Arguments </b></p>
+<p><b>Error Code </b></p>
+<p><b>Error_TwoActiveVS </b></p>
+<p><b>Error_TwoCopyVS </b></p>
+<p><b>Error_SetupStateMachine </b></p>
+<p><b>Error_NoActiveVS </b></p>
+<p><b>Error_CopyButNoActiveVS </b></p>
+<p><b>Error_NoFreeVS </b></p>
+<p><b>Virtual Sector Number </b></p>
+<p><b>Return value </b></p>
+<p><b>None </b></p>
+<p> </p>
+<p><i><b>3.9.1.14 </b></i></p>
+<p><i><b> TI_Fee_SuspendResumeErase </b></i></p>
+<p> </p>
+<p>This function provides functionality to suspend/Resume of erasing a sector. </p>
+<p> </p>
+<p><b>Prototype </b></p>
+<p>void </p>
+<p>TI_Fee_SuspendResumeErase(TI_Fee_EraseCommandType </p>
+<p>Command) </p>
+<p><b>Description </b></p>
+<p>Function to suspend/Resume erasing of sector. </p>
+<p><b>Arguments </b></p>
+<p>Suspend_Erase/Resume_Erase </p>
+<p><b>Return </b></p>
+<p><b>value </b></p>
+<p> </p>
+<p>none </p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Integration Guide </i></p>
+<p><i> </i></p>
+<p><i> </i></p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p>52 </p>
+<p><b>Note: </b>This API has to be called once after Fee_Init is executed with Suspend_Erase as </p>
+<p>function argument. It has to be called again after application has completed all the </p>
+<p>initialization sequence with Resume_Erase as function argument. </p>
+<p><b>3.10 Privilege Mode access </b></p>
+<p>FEE needs following API’s to be executed in Privilege mode: </p>
+<p>- Fee_Init </p>
+<p>- TI_FeeInternal_WriteDataF021 </p>
+<p>- TI_Fee_Read </p>
+<p><b>3.11 Deviations from Autosar3.x requirements </b></p>
+<p>-  Non Polling mode not supported. </p>
+<p>-  Immediate block writing not accepted when FEE is performing copy of blocks / erase of </p>
+<p>sectors. </p>
+<p>-  No Jobs accepted during copy of blocks /erase of sectors ongoing.(The write job which </p>
+<p>triggered the copy operation will be pending until copy of blocks is completed and then </p>
+<p>erasing of a sector is completed. If there is a powerloss during copying of blocks, then the </p>
+<p>next Fee_Init will resume COPY operation.) </p>
+<p><b>3.12 Important Notes </b></p>
+<p>- </p>
+<p>If projects are using bootloader, make sure the active bank in FMAC register is same as </p>
+<p>before the start of bootloader and after the completion of bootloader.  </p>
+<p>- </p>
+<p>Projects should not call Fee_Init mutiple times in one power cycle. If it is required to call, </p>
+<p>make sure all the global, static variable sections are cleared before calling Fee_Init. </p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

@@ -1,0 +1,2104 @@
+---
+layout: default
+title: TechnicalReference_Asr_GenTool_CsAsrInitialEcuC
+nav_order: 20
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR Initial ECUC Generator </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>Description </p>
+<p>Version 1.9 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Benjamin Gottschalk, Mario Kunz, Matthias Banholzer </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>2 / 25 </p>
+<p><b>Document Information </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Benjamin Gottschalk </p>
+<p>2009-12-10 </p>
+<p>1.0 </p>
+<p>Creation </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-06-18 </p>
+<p>1.1 </p>
+<p>Added list of supported intput </p>
+<p>and output AUTOSAR </p>
+<p>versions </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-08-10 </p>
+<p>1.2 </p>
+<p>Adapted lists of supported </p>
+<p>input and output AUTOSAR </p>
+<p>versions </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-11-09 </p>
+<p>1.3 </p>
+<p>Added constraint for </p>
+<p>overlaying pdus, which are </p>
+<p>part of a multiplexed pdu. </p>
+<p>Benjamin Gottschalk </p>
+<p>2010-11-29 </p>
+<p>1.4 </p>
+<p>Added UseCase </p>
+<p>IdentityManager.Config </p>
+<p>Mario Kunz </p>
+<p>2011-11-02 </p>
+<p>1.5 </p>
+<p>Adapted lists of supported </p>
+<p>input and output AUTOSAR </p>
+<p>versions </p>
+<p>Adapted chapter 2.4.5. </p>
+<p>Added restriction of identities. </p>
+<p>Matthias Banholzer </p>
+<p>2012-02-29 </p>
+<p>1.6 </p>
+<p>Different behavior between </p>
+<p>DaVinci Developer and </p>
+<p>MICROSAR Initial ECUC </p>
+<p>Generator in Identity Manager </p>
+<p>with buffer overlaying </p>
+<p>Matthias Banholzer </p>
+<p>2012-09-13 </p>
+<p>1.8 </p>
+<p>Added Appendix </p>
+<p>Mario Kunz </p>
+<p>2013-02-13 </p>
+<p>1.9 </p>
+<p>ESCAN00065140: [MultiEcu] </p>
+<p>Add the restriction that the </p>
+<p>master Extract shall be a </p>
+<p>superset. </p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Source </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>AUTOSAR_ECU_Configuration.pdf </p>
+<p>3.0.2 </p>
+<p>[2] </p>
+<p> </p>
+<p>Vector </p>
+<p>IdentityManager.Ecu.xsd </p>
+<p> </p>
+<p>[3] </p>
+<p> </p>
+<p>Vector </p>
+<p>IdentityManager.Config.xsd </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>3 / 25 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>4 / 25 </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Introduction................................................................................................................... 6</b></p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Usage............................................................................................................................. 7</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Arguments ......................................................................................................... 7</p>
+<p> </p>
+<p>2.2</p>
+<p> </p>
+<p>Supported output AUTOSAR-Versions ............................................................... 8</p>
+<p> </p>
+<p>2.3</p>
+<p> </p>
+<p>Supported input AUTOSAR-Versions ................................................................. 8</p>
+<p> </p>
+<p>2.4</p>
+<p> </p>
+<p>Use Cases ......................................................................................................... 9</p>
+<p> </p>
+<p>2.4.1</p>
+<p> </p>
+<p>Standard Use Case ............................................................................ 9</p>
+<p> </p>
+<p>2.4.2</p>
+<p> </p>
+<p>Specifying a project name .................................................................. 9</p>
+<p> </p>
+<p>2.4.3</p>
+<p> </p>
+<p>Specifying a special AUTOSAR output version ................................. 10</p>
+<p> </p>
+<p>2.4.4</p>
+<p> </p>
+<p>Specifying a BSWMD file ................................................................. 11</p>
+<p> </p>
+<p>2.4.5</p>
+<p> </p>
+<p>FRTP Use Case ............................................................................... 12</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Logging and error reporting ...................................................................................... 13</b></p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>IdentityManager.Ecu ................................................................................................... 14</b></p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>IdentityManager.Ecu without buffer overlaying ................................. 14</p>
+<p> </p>
+<p>4.1.2</p>
+<p> </p>
+<p>IdentityManager.Ecu with buffer overlaying ...................................... 15</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>IdentityManager.Config .............................................................................................. 17</b></p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ...................................................................................... 24</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Glossary .......................................................................................................... 24</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Abbreviations ................................................................................................... 24</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................ 25</b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>5 / 25 </p>
+<p><b>Illustrations </b></p>
+<p>Figure 1-1</p>
+<p> </p>
+<p>Workflow for generating an ECU Configuration Description ........................ 6</p>
+<p> </p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>Standard use case drag’n’drop ................................................................... 9</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>Generated Files .......................................................................................... 6</p>
+<p> </p>
+<p>Table 2-1 </p>
+<p> </p>
+<p>Command line arguments ........................................................................... 7</p>
+<p> </p>
+<p>Table 2-2 </p>
+<p> </p>
+<p>Supported output AUTOSAR-Versions ........................................................ 8</p>
+<p> </p>
+<p>Table 2-3 </p>
+<p> </p>
+<p>Supported input AUTOSAR-Versions .......................................................... 8</p>
+<p> </p>
+<p>Table 2-4 </p>
+<p> </p>
+<p>Arguments standard use case .................................................................... 9</p>
+<p> </p>
+<p>Table 2-5 </p>
+<p> </p>
+<p>Arguments specifying a project name ....................................................... 10</p>
+<p> </p>
+<p>Table 2-6 </p>
+<p> </p>
+<p>Generated files with project name ............................................................. 10</p>
+<p> </p>
+<p>Table 2-7 </p>
+<p> </p>
+<p>Arguments specifying a special AUTOSAR output version ........................ 11</p>
+<p> </p>
+<p>Table 2-8 </p>
+<p> </p>
+<p>Arguments specifying a BSWMD file......................................................... 11</p>
+<p> </p>
+<p>Table 2-9 </p>
+<p> </p>
+<p>Arguments FRTP Use Case ...................................................................... 12</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Arguments IdentityManager.Ecu without buffer overlaying ........................ 14</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Arguments IdentityManager.Ecu with buffer overlaying ............................. 15</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Arguments IdentityManager.Config ........................................................... 18</p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>6 / 25 </p>
+<p><b>1 </b></p>
+<p><b>Introduction </b></p>
+<p>The  MICROSAR  Initial  ECUC  Generator  is  the  Vector  implementation  of  the AUTOSAR </p>
+<p>ECU Configuration Generator (see [1]). The input format for the MICROSAR Initial ECUC </p>
+<p>Generator is the ECU Extract of System Configuration Description. The tool generates as </p>
+<p>output format an ECU Configuration Description.  </p>
+<p> </p>
+<p> </p>
+<p>Figure 1-1 </p>
+<p>Workflow for generating an ECU Configuration Description </p>
+<p>The output files of this tool form a Vector DataServer project, which can be used for further </p>
+<p>configuration of the BSW modules. The generated files are listed in Table 1-1  Generated </p>
+<p>Files. </p>
+<p> </p>
+<p><b>File type </b></p>
+<p><b>Naming </b></p>
+<p>AUTOSAR ECUC Parameter Definition File </p>
+<p>AUTOSAR_EcucParamDef.arxml </p>
+<p>Active ECUC File </p>
+<p>*.ecuc.arxml </p>
+<p>Initial ECUC File </p>
+<p>*.ecuc.Initial.arxml </p>
+<p>DataServer project file </p>
+<p>*.ecuc.vdsxml </p>
+<p>Table 1-1  </p>
+<p>Generated Files </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>7 / 25 </p>
+<p><b>2 </b></p>
+<p><b>Usage </b></p>
+<p>The  default  usage  help  on  the  command  line  appears by  calling  the  executable  without </p>
+<p>parameters or with parameter <b>-h</b>. The following chapter shows you a more detailed view. </p>
+<p><b>2.1 </b></p>
+<p><b>Arguments </b></p>
+<p>The arguments of the MICROSAR Initial ECUC Generator are listed below: </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>-a, --asrVersion=VERSION </p>
+<p>Makes the following parameter VERSION being interpreted as </p>
+<p>the AsrVersion, where the ECUC files should be generated in. </p>
+<p>The VERSION should be the XML namespace version of the </p>
+<p>AsrVersion and should be specified in the following manner: e.g. </p>
+<p>3.0.2. </p>
+<p>-b, --bswmd=FILE</p>
+<p> </p>
+<p>Makes the following parameter FILE being interpreted as a </p>
+<p>BSWMD file. </p>
+<p>-h, --help </p>
+<p>Display this help and exit. </p>
+<p>-l, --logFile=FILE </p>
+<p>Makes the following parameter FILE being interpreted as a log-</p>
+<p>file, this tool can write messages to. </p>
+<p>If -l is not specified, a default log file (named as the ECU Extract </p>
+<p>of System Configuration Description) will be generated in the </p>
+<p>same directory as the ECUC project. </p>
+<p>-m, --merge </p>
+<p>Performs a merge of all specified ECU Extract of System </p>
+<p>Configuration Description files to one output ECUC project. </p>
+<p>For this option, you have to specify at least two valid ECU Extract </p>
+<p>of System Configuration Description files. </p>
+<p>This parameter should be only used, when using the Identity </p>
+<p>Manager feature. Merging of ECU Extract of System </p>
+<p>Configuration Description is just supported in this context. </p>
+<p>-o, --overlayConfig=FILE </p>
+<p>Makes the following parameter FILE being interpreted as the </p>
+<p>XML configuration file for buffer overlay in Multiple ECU use </p>
+<p>case. </p>
+<p>This parameter should be only used, when using the Identity </p>
+<p>Manager feature. </p>
+<p>-p, --projectName=NAME </p>
+<p>Makes the following parameter NAME being interpreted as the </p>
+<p>project name. </p>
+<p>-r, --projectDir=DIR </p>
+<p>Makes the following parameter DIR being interpreted as the </p>
+<p>directory, where the new created project shall be saved. </p>
+<p>-s, --shortNames </p>
+<p>Limit all names to 32 characters. </p>
+<p>-v, --verbose </p>
+<p>Display additional descriptions and help. </p>
+<p>Table 2-1  </p>
+<p>Command line arguments </p>
+<p>All arguments which describe a file or a path can be specified relatively or absolutely. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>8 / 25 </p>
+<p><b>2.2 </b></p>
+<p><b>Supported output AUTOSAR-Versions </b></p>
+<p>The  MICROSAR  Initial  ECUC  Generator  is  able  to  generate  the  ECUC  files  in  different </p>
+<p>AUTOSAR versions, which are specified in the following table: </p>
+<p><b>AUTOSAR version </b></p>
+<p><b>Minimum required DataServer version </b></p>
+<p>3.0.1 </p>
+<p>0.1.0.0 </p>
+<p>3.0.2 </p>
+<p>0.1.4.2 </p>
+<p>3.0.4 </p>
+<p>0.1.23.0 </p>
+<p>3.0.6 </p>
+<p>1.0.0.8 </p>
+<p>3.1.0 </p>
+<p>0.1.10.0 </p>
+<p>3.1.2 </p>
+<p>0.1.23.0 </p>
+<p>3.1.4 </p>
+<p>1.0.0.8 </p>
+<p>3.2.1 </p>
+<p>2.0.0.0 </p>
+<p>3.2.2 </p>
+<p>2.1.0.1 </p>
+<p>Table 2-2  </p>
+<p>Supported output AUTOSAR-Versions </p>
+<p><b>2.3 </b></p>
+<p><b>Supported input AUTOSAR-Versions </b></p>
+<p>The </p>
+<p>MICROSAR </p>
+<p>Initial </p>
+<p>ECUC </p>
+<p>Generator </p>
+<p>accepts </p>
+<p>SystemExtract </p>
+<p>files </p>
+<p>in </p>
+<p>different </p>
+<p>AUTOSAR versions, which are specified in the following table: </p>
+<p><b>AUTOSAR version </b></p>
+<p><b>Minimum required DataServer version </b></p>
+<p>3.0.0 </p>
+<p>0.1.0.0 </p>
+<p>3.0.1 </p>
+<p>0.1.0.0 </p>
+<p>3.0.2 </p>
+<p>0.1.4.2 </p>
+<p>3.0.4 </p>
+<p>0.1.23.0 </p>
+<p>3.0.6 </p>
+<p>1.0.0.8 </p>
+<p>3.1.0 </p>
+<p>0.1.10.0 </p>
+<p>3.1.2 </p>
+<p>0.1.23.0 </p>
+<p>3.1.4 </p>
+<p>1.0.0.8 </p>
+<p>3.1.4.DAI.2 </p>
+<p>1.0.0.8 </p>
+<p>3.1.4.DAI.3 </p>
+<p>1.1.0.5 </p>
+<p>3.2.1 </p>
+<p>2.0.0.0 </p>
+<p>3.2.2 </p>
+<p>2.1.0.1 </p>
+<p>4.0 (only FrTpIso) </p>
+<p>1.0.0.8 </p>
+<p>4.0.0.DAI.1 </p>
+<p>0.1.15.0 </p>
+<p>Table 2-3  </p>
+<p>Supported input AUTOSAR-Versions </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>9 / 25 </p>
+<p><b>2.4 </b></p>
+<p><b>Use Cases </b></p>
+<p>This chapter describes the different use  cases, which are supported by the MICROSAR </p>
+<p>Initial ECUC Generator. </p>
+<p> </p>
+<p><b>2.4.1 </b></p>
+<p><b>Standard Use Case </b></p>
+<p>This is the default use case for generating an ECUC project based on one ECU Extract of </p>
+<p>System Configuration Description. If there are no special extensions in your project, this </p>
+<p>use case is entirely sufficient. </p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe &lt;EcuExtractOfSystemConfigurationDescription&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p>The tool creates an ECUC project based on the ECU </p>
+<p>Extract of System Configuration Description. </p>
+<p>Table 2-4  </p>
+<p>Arguments standard use case </p>
+<p>The </p>
+<p>easiest </p>
+<p>way </p>
+<p>is </p>
+<p>just </p>
+<p>to </p>
+<p><b>drag’n’drop </b></p>
+<p>the </p>
+<p>ECU </p>
+<p>Extract </p>
+<p>of </p>
+<p>System </p>
+<p>Configuration </p>
+<p>Description onto the command line tool GenTool_CsAsrInitialEcuC.exe. </p>
+<p> </p>
+<p>Figure 2-1 </p>
+<p>Standard use case drag’n’drop </p>
+<p><b>2.4.2 </b></p>
+<p><b>Specifying a project name </b></p>
+<p>This use case enables the definition of a project name. That means, all generated files get </p>
+<p>the defined project name as file name (supplemented by the extensions of the different file </p>
+<p>types, like *.ecuc.vdsxml for a Vector DataServer project file). </p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe &lt;EcuExtractOfSystemConfigurationDescription&gt;  </p>
+<p>-p &lt;project-name&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe D:\test\mySystemExtract.arxml –p </p>
+<p>TestingArgumentP</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>10 / 25 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p>The tool creates an ECUC project based on the ECU </p>
+<p>Extract of System Configuration Description. </p>
+<p>-p TestingArgumentP </p>
+<p>That is the project name; the generated ECUC project </p>
+<p>will be named to. </p>
+<p>Table 2-5  </p>
+<p>Arguments specifying a project name </p>
+<p>The generated files in this example would be: </p>
+<p><b>File </b></p>
+<p><b>Description </b></p>
+<p>D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p>The tool creates an ECUC project </p>
+<p>based on the ECU Extract of System </p>
+<p>Configuration Description. </p>
+<p>D:\test\TestingArgumentP.ecuc.arxml </p>
+<p>Active ECUC file </p>
+<p>D:\test\TestingArgumentP.ecuc.Initial.arxml </p>
+<p>Initial ECUC file </p>
+<p>D:\test\TestingArgumentP.ecuc.vdsxml </p>
+<p>Vector DataServer project file </p>
+<p>D:\test\TestingArgumentP.InitialEcuC.log.txt </p>
+<p>Log-File </p>
+<p>Table 2-6  </p>
+<p>Generated files with project name </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>If parameter <b>–p </b>is not specified, the project will be named according to the first given </p>
+<p>ECU Extract of System Configuration Description. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>2.4.3 </b></p>
+<p><b>Specifying a special AUTOSAR output version </b></p>
+<p>This use case enables the specification of the AUTOSAR version in your generated ECUC </p>
+<p>project. All available AUTOSAR output versions can be found in chapter 2.2. </p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe &lt;EcuExtractOfSystemConfigurationDescription&gt;  </p>
+<p>–a &lt;output-version&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe D:\test\mySystemExtract.arxml –a 3.1.0</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>11 / 25 </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p>The tool creates an ECUC project based on the ECU </p>
+<p>Extract of System Configuration Description. </p>
+<p>–a 3.1.0 </p>
+<p>Makes the generated ECUC project being generated </p>
+<p>in the AUTOSAR version 3.1.0. </p>
+<p>ATTENTION: The AUTOSAR version you have to </p>
+<p>specify is always equal to the XML namespace of the </p>
+<p>corresponding AUTOSAR version. These two versions </p>
+<p>are not the same for each AUTOSAR version. </p>
+<p>Table 2-7  </p>
+<p>Arguments specifying a special AUTOSAR output version </p>
+<p><b>2.4.4 </b></p>
+<p><b>Specifying a BSWMD file </b></p>
+<p>This use case is very special.  </p>
+<p>The  tool  needs  the  definitions  of  all  created  ECUC  objects,  like  module  configurations, </p>
+<p>containers,  parameters  or  references.  In  most  cases,  only  standard  AUTOSAR  module </p>
+<p>configurations  are  generated,  which  can  be  found  in  AUTOSAR_EcucParamDef.arxml. </p>
+<p>Only  for  those  generated  module  configurations,  which  are  not  part  of  this  common </p>
+<p>AUTOSAR definition file, the corresponding BSWMD files are needed. </p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe &lt;EcuExtractOfSystemConfigurationDescription&gt;  </p>
+<p>–bswmd &lt;vector bswmd-file&gt; </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe D:\test\mySystemExtract.arxml –bswmd </p>
+<p>MostIf_bswmd.arxml</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p>The tool creates an ECUC project based on the ECU </p>
+<p>Extract of System Configuration Description. </p>
+<p>–bswmd MostIf_bswmd.arxml </p>
+<p> </p>
+<p>Specifies the BSWMD file, which is needed to create </p>
+<p>special Module Configurations in the generated ECUC </p>
+<p>project, for which no AUTOSAR Module Definition </p>
+<p>exists. </p>
+<p>Table 2-8  </p>
+<p>Arguments specifying a BSWMD file </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>12 / 25 </p>
+<p><b>2.4.5 </b></p>
+<p><b>FRTP Use Case </b></p>
+<p>This  use  case  enables  the  specification  of  two  ECU  Extracts  of  System  Configuration </p>
+<p>Description  for  the  purpose  of  specifying  the  system  configuration  part  of  the  FRTP </p>
+<p>according  to  AUTOSAR  version  4.0.  The  main  ECU  Extract  of  System  Configuration </p>
+<p>Description file will contain all other contents in another AUTOSAR version (3.x.x), only the </p>
+<p>ECU  Extract  of  System  Configuration  Description  extension  file  will  contain  the  FRTP </p>
+<p>contents in AUTOSAR version 4.0. The following two ways exists to call the MICROSAR </p>
+<p>Initial ECUC Generator with the both files. </p>
+<p><b>Command line: </b></p>
+<p>1. </p>
+<p>The </p>
+<p>extension </p>
+<p>file </p>
+<p>has </p>
+<p>to </p>
+<p>be </p>
+<p>named </p>
+<p>according </p>
+<p>to </p>
+<p>the </p>
+<p>naming </p>
+<p>convention, </p>
+<p>mentioned in the example below: </p>
+<p>GenTool_CsAsrInitialEcuC.exe &lt;EcuExtractOfSystemConfigurationDescription&gt; </p>
+<p>&lt;EcuExtract of SystemConfigurationDescription – extension file&gt; </p>
+<p> </p>
+<p>2. </p>
+<p>Both files have to be enclosed within brackets, mentioned in the example below: </p>
+<p>GenTool_CsAsrInitialEcuC.exe <b>[</b>&lt;EcuExtractOfSystemConfigurationDescription&gt; </p>
+<p>&lt;EcuExtract of SystemConfigurationDescription – extension file&gt;<b>] […]</b></p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe D:\test\mySystemExtract.arxml </p>
+<p>D:\test\mySystemExtract_FrTp.arxml</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>D:\test\mySystemExtract.arxml</p>
+<p> </p>
+<p>The main system extract file. </p>
+<p>D:\test\mySystemExtract_FrTp.arxml </p>
+<p>The system extract extension file (AUTOSAR version </p>
+<p>4.0) </p>
+<p>Table 2-9  </p>
+<p>Arguments FRTP Use Case </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>13 / 25 </p>
+<p><b>3 </b></p>
+<p><b>Logging and error reporting </b></p>
+<p>If  no  log  file  has  been  specified  explicitly  (see  chapter  2.2.2),  a  default  log  file  will  be </p>
+<p>generated.  This  log  file  is  located  at  the  same  directory  as  the  ECU  Extract  of  System </p>
+<p>Configuration Description and has the following name: </p>
+<p>&lt;Name of ECU Extract of System Configuration Description&gt;.InitialEcuC.log.txt </p>
+<p>If  several  ECU  Extracts  of  System  Configuration  Description  are  specified  (in  Multiple </p>
+<p>Identity use case), the log file and project name are taken from the first one. </p>
+<p>There  are  different  levels  of  reported  information  in  the  log  file,  which  can  be  parsed </p>
+<p>automatically by searching for the error level in lower letters, surrounded by brackets. The </p>
+<p>error levels are: </p>
+<p><b>&gt; </b></p>
+<p>info </p>
+<p><b>&gt; </b></p>
+<p>warning </p>
+<p><b>&gt; </b></p>
+<p>error </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>14 / 25 </p>
+<p><b>4 </b></p>
+<p><b>IdentityManager.Ecu </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The maximum number of identities is limited to eight. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>4.1.1 </b></p>
+<p><b>IdentityManager.Ecu without buffer overlaying </b></p>
+<p>This  use  case  is  needed  for  generating  an  ECUC  project  out  of  more  than  one  ECU </p>
+<p>Extract of System Configuration Description for physical multi ECUs. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>This use case is only supported if the Identity Manager option is available.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe –m &lt;EcuExtractOfSystemConfigurationDescription 1&gt;  </p>
+<p>&lt;EcuExtract of SystemConfigurationDescription 2&gt; … </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe –m D:\test\mySystemExtract_ECU1.arxml </p>
+<p>D:\test\mySystemExtract_ECU2.arxml D:\test\mySystemExtract_ECU3.arxml </p>
+<p>D:\test\mySystemExtract_ECU4.arxml</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–m </p>
+<p> </p>
+<p>Specifies the use case IdentityManager. </p>
+<p>D:\test\mySystemExtract_ECU1.arxml  </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the first ECU. </p>
+<p>D:\test\mySystemExtract_ECU2.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the second ECU. </p>
+<p>D:\test\mySystemExtract_ECU3.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the third ECU. </p>
+<p>D:\test\mySystemExtract_ECU4.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the fourth ECU. </p>
+<p>Table 4-1  </p>
+<p>Arguments IdentityManager.Ecu without buffer overlaying </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>15 / 25 </p>
+<p><b>4.1.2 </b></p>
+<p><b>IdentityManager.Ecu with buffer overlaying </b></p>
+<p>This  use  case  is  needed  for  generating  an  ECUC  project  out  of  more  than  one  ECU </p>
+<p>Extract of System Configuration Description for physical multi ECUs. Additionally you can </p>
+<p>specify a configuration file for buffer overlaying. </p>
+<p>The XML scheme [2] for the buffer overlaying configuration file can be found in the same </p>
+<p>directory, where the main executable of this tool is placed in. </p>
+<p>The  paths  to  the  ECU  Extract  of  System  Configuration  Description  files,  which  are </p>
+<p>obligatory in the buffer overlay configuration file, may be absolutely or relatively. If they are </p>
+<p>relatively, </p>
+<p>the </p>
+<p>base </p>
+<p>directory </p>
+<p>of </p>
+<p>the </p>
+<p>relative </p>
+<p>path </p>
+<p>must </p>
+<p>be </p>
+<p>the </p>
+<p>directory, </p>
+<p>where </p>
+<p>the </p>
+<p>configuration file is placed in. </p>
+<p>If the configuration file is placed in another directory than the target-directory, where the </p>
+<p>generated files will be placed in, the configuration file will NOT be copied automatically to </p>
+<p>the target-directory. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>This use case is only supported if the Identity Manager option is available. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe –m &lt;EcuExtractOfSystemConfigurationDescription 1&gt;  </p>
+<p>&lt;EcuExtractOfSystemConfigurationDescription 2&gt; … -o </p>
+<p>myBufferOverlayConfigFile.mecu </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe –m D:\test\mySystemExtract_ECU1.arxml </p>
+<p>D:\test\mySystemExtract_ECU2.arxml D:\test\mySystemExtract_ECU3.arxml </p>
+<p>D:\test\mySystemExtract_ECU4.arxml –o myBufferOverlayConfigFile.mecu</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–m </p>
+<p> </p>
+<p>Specifies the use case IdentityManager. </p>
+<p>D:\test\mySystemExtract_ECU1.arxml  </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the first ECU. </p>
+<p>D:\test\mySystemExtract_ECU2.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the second ECU. </p>
+<p>D:\test\mySystemExtract_ECU3.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the third ECU. </p>
+<p>D:\test\mySystemExtract_ECU4.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the fourth ECU. </p>
+<p>-o myBufferOverlayConfigFile.mecu </p>
+<p>This is the configuration file for buffer overlaying. </p>
+<p>Table 4-2  </p>
+<p>Arguments IdentityManager.Ecu with buffer overlaying </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>16 / 25 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>When specifying the pdu-overlays in the buffer-overlay config-file, take care of NOT </p>
+<p>overlaying pdus, which are referred as static- or dynamic-part of a multiplexed pdu! </p>
+<p>This use-case is not allowed. Configure signal-overlays instead.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The first ECU Extract of System Configuration file is interpreted as master file. All other </p>
+<p>ECU Extract of System Configuration files are merged with the master. So the master </p>
+<p>ECU Extract of System Configuration file has to be a superset of the other files. </p>
+<p>The master ECU Extract of System Configuration file can be explicit set within the </p>
+<p>mecu-file. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>17 / 25 </p>
+<p><b>5 </b></p>
+<p><b>IdentityManager.Config </b></p>
+<p>This  use  case  is  needed  for  generating  an  ECUC  project  out  of  more  than  one  ECU </p>
+<p>Extract  of  System  Configuration  Description  for  multiple  configuration  ECUs.  The  XML </p>
+<p>scheme  [3]  for  the  IdentityManager.Config  configuration  file  can  be  found  in  the  same </p>
+<p>directory, where the main executable of this tool is placed in. </p>
+<p>The  paths  to  the  ECU  Extract  of  System  Configuration  Description  files,  which  are </p>
+<p>obligatory in the IdentityManager.Config configuration file, may be absolutely or relatively. </p>
+<p>If they are relatively, the base directory of the relative path must be the directory, where the </p>
+<p>configuration file is placed in. </p>
+<p>If the configuration file is placed in another directory than the target-directory, where the </p>
+<p>generated files will be placed in, the configuration file will NOT be copied automatically to </p>
+<p>the target-directory. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>This use case is only supported if the Identity Manager option is available. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The maximum number of identities is limited to eight. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Command line: </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe –m &lt;EcuExtractOfSystemConfigurationDescription 1&gt;  </p>
+<p>&lt;EcuExtract of SystemConfigurationDescription 2&gt; … -x </p>
+<p>myIdentityManagerConfigFile.imc </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>GenTool_CsAsrInitialEcuC.exe –m D:\test\mySystemExtract_ECU1.arxml </p>
+<p>D:\test\mySystemExtract_ECU2.arxml D:\test\mySystemExtract_ECU3.arxml </p>
+<p>D:\test\mySystemExtract_ECU4.arxml –x myIdentityManagerConfigFile.imc</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Argument </b></p>
+<p><b>Description </b></p>
+<p>–m </p>
+<p> </p>
+<p>Specifies the use case IdentityManager. </p>
+<p>D:\test\mySystemExtract_ECU1.arxml  </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the first ECU. </p>
+<p>D:\test\mySystemExtract_ECU2.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the second ECU. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>18 / 25 </p>
+<p>D:\test\mySystemExtract_ECU3.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the third ECU. </p>
+<p>D:\test\mySystemExtract_ECU4.arxml </p>
+<p>The ECU Extract of System Configuration </p>
+<p>Description for the fourth ECU. </p>
+<p>-x myIdentityManagerConfigFile.imc </p>
+<p>This is the configuration file for the </p>
+<p>IdentityManager.Config feature. </p>
+<p>Table 5-1  </p>
+<p>Arguments IdentityManager.Config </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>19 / 25 </p>
+<p><b>6 </b></p>
+<p><b>Appendix </b></p>
+<p><b>6.1 </b></p>
+<p><b>Derivation of active and initial parameters </b></p>
+<p>Some  parameters  are  derived  as  OEM  parameters.  This  parameters  or  containers  are </p>
+<p>called “initial” parameters. Other non-OEM parameters are called “active” parameters. The </p>
+<p>following table shows which parameters are derived as active parameters. Parameters not </p>
+<p>listed  here must  be  initial.  For  containers both  cases  cases  are  listed,  initial  and  active. </p>
+<p>The reason therefore is the hierarchy and the behavior in case of inheritance.  </p>
+<p><b>Definition </b></p>
+<p><b>Oem type </b></p>
+<p><b>AsrTyp </b></p>
+<p>Board </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Board/BoardGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Can </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Can/CanConfigSet </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Can/CanConfigSet/CanController </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Can/CanConfigSet/CanController/CanControllerActivation </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>Can/CanConfigSet/CanController/CanControllerSeg1 </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Can/CanConfigSet/CanController/CanControllerSeg2 </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Can/CanConfigSet/CanController/CanWakeupSourceRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>Can/CanConfigSet/CanHardwareObject </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Can/CanConfigSet/CanHardwareObject/CanControllerRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Can/CanConfigSet/CanHardwareObject/CanHandleType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Can/CanConfigSet/CanHardwareObject/CanIdType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Can/CanConfigSet/CanHardwareObject/CanObjectType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Can/CanGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Can/CanGeneral/CanWakeupSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>CanIf </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfControllerConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfControllerConfig/CanIfControllerIdRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>CanIf/CanIfControllerConfig/CanIfWakeupSupport </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanIf/CanIfDriverConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitControllerConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitControllerConfig/CanIfControllerRefConfigSet </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHrhConfig </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHrhConfig/CanIfCanControllerHrhIdRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHrhConfig/CanIfHrhIdSymRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHrhConfig/CanIfHrhType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHthConfig </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHthConfig/CanIfHthIdSymRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfInitHohConfig/CanIfHthConfig/CanIfHthType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfNumberOfCanRxPduIds </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfNumberOfCanTXPduIds </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfNumberOfDynamicCanTXPduIds </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfRxPduConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfRxPduConfig/CanIfCanRxPduHrhRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfRxPduConfig/CanIfRxUserType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfRxPduConfig/CanIfUserRxIndication </p>
+<p>ACTIVE </p>
+<p>FunctionNameParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfTxPduConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfTxPduConfig/CanIfCanTxPduHthRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfTxPduConfig/CanIfTxUserType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanIf/CanIfInitConfiguration/CanIfTxPduConfig/CanIfUserTxConfirmation </p>
+<p>ACTIVE </p>
+<p>FunctionNameParamDef </p>
+<p>CanIf/CanIfPrivateConfiguration </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanIf/CanIfPrivateConfiguration/CanIfSoftwareFilterType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanIf/CanIfPublicConfiguration </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm/CanNmGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmChannelActive </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmMessageCount </p>
+<p>DYNAMIC </p>
+<p>IntegerParamDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmPduCbvPosition </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmPduNidPosition </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmPnEnabled </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmUserDataLentgh </p>
+<p>DYNAMIC </p>
+<p>IntegerParamDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmChannelConfig/CanNmUserDataTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmPnInfo </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanNm/CanNmGlobalConfig/CanNmPnInfo/CanNmPnFilterMaskByte </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanSM </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanSM/CanStateManagerConfiguration </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>20 / 25 </p>
+<p>CanSM/CanStateManagerConfiguration/CanSMPartialNetwork </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>CanSM/CanStateManagerConfiguration/CanStateManagerNetworks </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanSM/CanStateManagerConfiguration/CanStateManagerNetworks/CanSMTransceiverId </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>CanSM/CanStateManagerConfiguration/CanStateManagerNetworks/CanStateManagerControllers </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpConfigSet </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpConfigSet/CanTpActiveRxNSduRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>CanTp/CanTpConfigSet/CanTpActiveTxNSduRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>CanTp/CanTpGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpRxNSdu/CanTpNSa </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpRxNSdu/CanTpNTa </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpRxNSdu/CanTpRxNPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpRxNSdu/CanTpTxFcNPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpTxNSdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpTxNSdu/CanTpRxFcNPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTp/CanTpTxNSdu/CanTpTxNPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTrcv </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTrcv/CanTrcvConfigSet </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTrcv/CanTrcvConfigSet/CanTrcvChannel </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTrcv/CanTrcvConfigSet/CanTrcvChannel/CanTrcvPartialNetwork/CanTrcvPnEnabled </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>CanTrcv/CanTrcvConfigSet/CanTrcvChannel/CanTrcvPartialNetwork/CanTrcvPnFrameDataMaskSpec </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>CanTrcv/CanTrcvConfigSet/CanTrcvChannel/CanTrcvWakeupSourceRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>CanTrcv/CanTrcvGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComGwMapping </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComGwMapping/ComGwDestination </p>
+<p>INITIAL </p>
+<p>ChoiseContainerDef </p>
+<p>Com/ComConfig/ComGwMapping/ComGwDestination/ComGwSignal </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComIPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComIPdu/ComIPduGroupRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu/ComTxIPduMinimumDelayTimeFactor </p>
+<p>DYNAMIC </p>
+<p>IntegerParamDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeFalse </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeFalse/ComTxMode </p>
+<p>DYNAMIC </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeTrue </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeTrue/ComTxMode/ComTxModeNumberOfRepetitions </p>
+<p>DYNAMIC </p>
+<p>IntegerParamDef </p>
+<p>Com/ComConfig/ComIPdu/ComTxIPdu/ComTxModeTrue/ComTxMode/ComTxModeRepetitionPeriodFactor </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Com/ComConfig/ComIPduGroup </p>
+<p>DYNAMIC </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComSignal </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComSignal/ComFilter </p>
+<p>DYNAMIC </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComSignal/ComSignalLength </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Com/ComConfig/ComSignal/ComSignalType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Com/ComConfig/ComSignalGroup </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComSignalGroup/ComGroupSignal </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Com/ComConfig/ComSignalGroup/ComGroupSignal/ComTransferProperty </p>
+<p>DYNAMIC </p>
+<p>EnumParamDef </p>
+<p>Com/ComGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>ComM/ComMChannel </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM/ComMChannel/ComMUserPerChannel </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>ComM/ComMConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM/ComMConfig/ComMNetworks </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM/ComMConfigSet/ComMChannel/ComMUserPerChannel/ComMUserChannel </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>ComM/ComMConfigSet/ComMPncEnabled </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>ComM/ComMGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM/ComMPnc </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM/ComMPnc/ComMPncComSignal </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>ComM/ComMUser </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmConfigSet </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmConfigSet/DcmActiveDslProtocolRowRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslBuffer/DcmDslBufferID </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslBuffer/DcmDslBufferSize </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx/DcmDslProtocolRxAddrType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx/DcmDslProtocolRxPduId </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx/DcmDslProtocolRxPduRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolTx/DcmDslProtocolTxPduRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolID </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolPreemptTimeout </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolPriority </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolRxBufferID </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolTimeLimit </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolTransType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolTxBufferID </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow/DcmTimStrP2ServerMax </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow/DcmTimStrP2ServerMin </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow/DcmTimStrP2StarServerMax </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow/DcmTimStrP2StarServerMin </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmConfigSet/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow/DcmTimStrS3Server </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmDsl </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslBuffer </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>21 / 25 </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection </p>
+<p>ACTIVE </p>
+<p>ChoiseContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx/DcmDslProtocolRxBufferIDValue </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx/DcmDslProtocolRxFirstTxPduId </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolRx/DcmDslProtocolRxProtocol </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolTx </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolTx/DcmDslProtocolTxBufferIDValue </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslConnection/DcmDslMainConnection/DcmDslProtocolTx/DcmDslProtocolTxRxPduId </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolSIDTableValue </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocol/DcmDslProtocolRow/DcmDslProtocolTimeDefault </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocolTiming </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmDsl/DcmDslProtocolTiming/DcmDslProtocolTimingRow/DcmTimeStrType </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>Dcm/DcmDsl/DcmP2ServerAdjust </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmDsl/DcmP2StarServerAdjust </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Dcm/DcmGeneral </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmPageBufferCfg </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Dcm/DcmPageBufferCfg/DcmPagedBufferEnabled </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>EcuC </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>EcuC/PduCollection </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>EcuC/PduCollection/Pdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>EcuM </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>EcuM/EcuMConfiguration </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>EcuM/EcuMConfiguration/EcuMDefaultShutdownTarget </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>EcuM/EcuMConfiguration/EcuMDefaultShutdownTarget/EcuMDefaultSleepModeRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>EcuM/EcuMConfiguration/EcuMDefaultShutdownTarget/EcuMDefaultState </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>EcuM/EcuMConfiguration/EcuMModuleConfigurationRef </p>
+<p>ACTIVE </p>
+<p>ChoisRefParamDef </p>
+<p>EcuM/EcuMConfiguration/EcuMSleepMode </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>EcuM/EcuMConfiguration/EcuMSleepMode/EcuMSleepModeName </p>
+<p>ACTIVE </p>
+<p>StringParamDef </p>
+<p>EcuM/EcuMConfiguration/EcuMSleepMode/EcuMSleepModeSuspend </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>EcuM/EcuMConfiguration/EcuMSleepMode/EcuMWakeupSourceMask </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>EcuM/EcuMConfiguration/EcuMUserConfig </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>EcuM/EcuMConfiguration/EcuMWakeupSource </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>EcuM/EcuMConfiguration/EcuMWakeupSource/EcuMComMChannelRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>EcuM/EcuMConfiguration/EcuMWakeupSource/EcuMResetReason </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>EcuM/EcuMConfiguration/EcuMWakeupSource/EcuMWakeupSourceId </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>EcuM/EcuMConfiguration/EcuMWakeupSource/EcuMWakeupSourcePolling </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>EcuM/EcuMGeneral </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>Fr </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Fr/FrGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Fr/FrMultipleConfiguration </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Fr/FrMultipleConfiguration/FrController </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Fr/FrMultipleConfiguration/FrController/FrAbsoluteTimer </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfAbsTimer </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfFrameTriggering </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfFrameTriggering/FrIfAllowDynamicLSduLength </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfFrameTriggering/FrIfPayloadPreamble </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfLPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfLPdu/FrIfVBTriggeringRef </p>
+<p>ACTIVE </p>
+<p>ReferenceParamDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfTransceiver </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfController/FrIfTransceiver/FrIfFrTrcvChannelRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>FrIf/FrIfConfig/FrIfCluster/FrIfJobList </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfFrameStructure </p>
+<p>ACTIVE </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfFrameStructure/FrIfPdusInFrame </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfPdu/FrIfPduDirection </p>
+<p>INITIAL </p>
+<p>ChoiseContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfPdu/FrIfPduDirection/FrIfRxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfConfig/FrIfPdu/FrIfPduDirection/FrIfTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrIf/FrIfGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmChannelConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmChannelConfig/FrNmChannelIdentifiers </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmChannelConfig/FrNmChannelIdentifiers/FrNmPnEnabled </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>FrNm/FrNmChannelConfig/FrNmChannelIdentifiers/FrNmRxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmChannelConfig/FrNmChannelIdentifiers/FrNmTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmChannelConfig/FrNmChannelIdentifiers/FrNmUserDataTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmChannelConfig/FrNmChannelTiming </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmGlobalConfig/FrNmGlobalConstants </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmGlobalConfig/FrNmGlobalConstants/FrNmPnInfo </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmGlobalConfig/FrNmGlobalConstants/FrNmPnInfo/FrNmPnFilterMaskByte </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmGlobalConfig/FrNmGlobalFeatures </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrNm/FrNmGlobalConfig/FrNmGlobalFeatures/FrNmDualChannelPduEnable </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>FrNm/FrNmGlobalConfig/FrNmVendorSpecific </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrSm </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrSm/FrSmCluster </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrSm/FrSmGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>22 / 25 </p>
+<p>FrTp </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel/FrTpConcurrentConnections </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel/FrTpConnection </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel/FrTpConnection/FrTpConPduRef </p>
+<p>DYNAMIC </p>
+<p>ReferenceParamDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel/FrTpConnection/FrTpRxSdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel/FrTpConnection/FrTpTxSdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpChannel/FrTpPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpConnectionControl </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpRxPduPool </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpRxPduPool/FrTpRxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpTxPduPool </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTp/FrTpMultipleConfig/FrTpTxPduPool/FrTpTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTrcv </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTrcv/FrTrcvGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTrcv/FrTrcvNode </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>FrTrcv/FrTrcvNode/FrTrcvWakeupSourceRef </p>
+<p>ACTIVE </p>
+<p>SymbolicNameReferenceDef </p>
+<p>IPduMplex </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMRxPathway </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMRxPathway/IPduMRxIndication </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMRxPathway/IPduMRxIndication/IPduMBitField </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMRxPathway/IPduMRxIndication/IPduMRxDynamicPart </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMRxPathway/IPduMRxIndication/IPduMRxDynamicPart/IPduMCopyBitField </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMRxPathway/IPduMRxIndication/IPduMRxStaticPart </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMTxPathway/IPduMTxRequest/IPduMTxDynamicPart </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMConfig/IPduMTxPathway/IPduMTxRequest/IPduMTxStaticPart </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>IPduMplex/IPduMGeneral/IPduMConfigurationTimeBase </p>
+<p>ACTIVE </p>
+<p>FloatParamDef </p>
+<p>Lin </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Lin/LinGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Lin/LinGlobalConfig/LinChannel </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfFixedFrameSdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfPduDirection </p>
+<p>INITIAL </p>
+<p>ChoiseContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfPduDirection/LinIfInternalPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfPduDirection/LinIfRxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfPduDirection/LinIfSlaveToSlavePdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfPduDirection/LinIfTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfFrame/LinIfSubstitutionFrames </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfMaster </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfScheduleTable </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfScheduleTable/LinIfRunMode </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfScheduleTable/LinIfSchedulePriority </p>
+<p>ACTIVE </p>
+<p>IntegerParamDef </p>
+<p>LinIf/LinIfGlobalConfig/LinIfChannel/LinIfSlave </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinSM </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinSM/LinSMChannel </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinSM/LinSMChannel/LinSMSchedule </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinTp </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinTp/LinTpGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinTp/LinTpGlobalConfig/LinTpRxNSdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>LinTp/LinTpGlobalConfig/LinTpTxNSdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm/NmGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm/NmGlobalConfig/NmChannelConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm/NmGlobalConfig/NmChannelConfig/NmBusType </p>
+<p>ACTIVE </p>
+<p>EnumParamDef </p>
+<p>Nm_DirOsek </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm_DirOsek/Nm_DirOsekGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm_DirOsek/Nm_DirOsekGlobalConfig/Nm_DirOsekChannelConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>Nm_DirOsek/Nm_DirOsekGlobalConfig/Nm_DirOsekChannelConfig/NmOsekUserDataTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>NmFiatB </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>NmFiatB/NmFiatBGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>NmFiatB/NmFiatBGlobalConfig/NmFiatBChannelConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>NmFiatB/NmFiatBGlobalConfig/NmFiatBChannelConfig/NmFiatBTxPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGeneral </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGeneral/PduRCanIfSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRCanTpSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRComSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRDcmSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRFrIfSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRFrTpSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRIpduMSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRLinIfSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRLinTpSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRMostIfSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRMostTpSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>23 / 25 </p>
+<p>PduR/PduRGeneral/PduRMulticastFromTpSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRMulticastToIfSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRMulticastToTpSupport </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGeneral/PduRZeroCostOperation </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGlobalConfig </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingPathGroup </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingPathGroup/PduRIsEnabledAtInit </p>
+<p>ACTIVE </p>
+<p>BooleanParamDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingTable </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingTable/PduRRoutingPath </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingTable/PduRRoutingPath/PduRDestPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingTable/PduRRoutingPath/PduRDestPdu/DestPduRef </p>
+<p>DYNAMIC </p>
+<p>ReferenceParamDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingTable/PduRRoutingPath/PduRSrcPdu </p>
+<p>INITIAL </p>
+<p>ContainerDef </p>
+<p>PduR/PduRGlobalConfig/PduRRoutingTable/PduRRoutingPath/PduRSrcPdu/SrcPduRef </p>
+<p>DYNAMIC </p>
+<p>ReferenceParamDef </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>24 / 25 </p>
+<p><b>7 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>7.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>ECU Extract of </p>
+<p>System Configuration </p>
+<p>Description </p>
+<p>The ECU Extract of System Configuration Description is a subset of the </p>
+<p>System Configuration Description. It only contains information relevant for </p>
+<p>one specific ECU. </p>
+<p> </p>
+<p> </p>
+<p><b>7.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>ECUC </p>
+<p>ECU Configuration </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR Initial ECUC Generator  </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.9 </p>
+<p>based on template version 4.5 </p>
+<p>25 / 25 </p>
+<p><b>8 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>News </p>
+<p><b>&gt; </b></p>
+<p>Products </p>
+<p><b>&gt; </b></p>
+<p>Demo software </p>
+<p><b>&gt; </b></p>
+<p>Support </p>
+<p><b>&gt; </b></p>
+<p>Training data </p>
+<p><b>&gt; </b></p>
+<p>Addresses </p>
+<p> </p>
+<p><b>www.vector.com </b></p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

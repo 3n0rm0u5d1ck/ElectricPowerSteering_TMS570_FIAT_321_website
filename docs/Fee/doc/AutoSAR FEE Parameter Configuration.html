@@ -1,0 +1,2496 @@
+---
+layout: default
+title: AutoSAR FEE Parameter Configuration
+nav_order: 1
+parent: Fee Driver
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p>            </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>AutoSAR FEE Parameter  </b></p>
+<p><b>Configuration Document </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>2 </p>
+<p> </p>
+<p><b>ABSTRACT </b></p>
+<p><b> </b></p>
+<p>AutoSAR  Flash  EEPROM  Emulation  (AutoSAR  FEE)  driver  utilizes  Code  Generation </p>
+<p>Tool to generate the configuration  parameters required for EEPROM emulation.  Code </p>
+<p>Generation Tool  is  used  to  configure  parameters  like  which  Flash  Sectors to  use, the </p>
+<p>number  of  Blocks,  Block  Size  etc.  for  EEPROM  emulation.  Code  Generation  Tool </p>
+<p>generates two files (Fee_cfg.h &amp; Fee_cfg.c) depending on the configuration. </p>
+<p> </p>
+<p>This document describes the parameters used by Code Generation Tool to generate the </p>
+<p>AutoSAR FEE Configuration parameters.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>3 </p>
+<p> </p>
+<p><b>Revision History  </b></p>
+<p><b> </b></p>
+<p><b>Version </b></p>
+<p><b>Release </b></p>
+<p><b>Date </b></p>
+<p><b>Author </b></p>
+<p><b>Comment </b></p>
+<p>1.0 </p>
+<p>09/16/2012 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Initial version </p>
+<p>1.1  </p>
+<p>10/10/2012 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Add configuration parameter </p>
+<p>FEE_NUMBER_OF_VIRTUAL_SECTORS_EEP1 </p>
+<p>1.2 </p>
+<p>11/20/2012 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Remove FeeSetModeSupported </p>
+<p>1.3 </p>
+<p>06/11/2013 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Add configuration parameter’s: </p>
+<p>FEE_NUMBER_OF_UNCONFIGUREDBLOCKSTOCOPY, </p>
+<p>FEE_NUMBER_OF_EIGHTBYTEWRITES </p>
+<p>1.4 </p>
+<p>01/06/2014 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Added configuration parameter </p>
+<p>FEE_CHECK_BANK7_ACCESS </p>
+<p>1.5 </p>
+<p>09/25/2014 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Configuration update to support TMS570LS05xx, </p>
+<p>TMS570LS07xx, TMS570LS09xx. Range updated for </p>
+<p>FEE_VirtualSectorNumber, Virtual Sectors. </p>
+<p>New configuration parameter </p>
+<p>FEE_TOTAL_BLOCKS_DATASETS added. </p>
+<p>1.6 </p>
+<p>12/31/2014 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Add new Configuration parameters. </p>
+<p>FEE_VIRTUALSECTOR_SIZE, </p>
+<p>FEE_PHYSICALSECTOR_SIZE,  </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC </p>
+<p>Note added in section 1.6 FEE Sector Configuration. </p>
+<p>1.7 </p>
+<p>01/07/2015 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Remove Device_Header.h from fee_cfg.h file. </p>
+<p>1.8 </p>
+<p>01/21/2015 </p>
+<p>Vishwanath </p>
+<p>Reddy </p>
+<p>Added comments for FEE_TOTAL_BLOCKS_DATASETS, </p>
+<p>FEE_NUMBER_OF_EEPS and  </p>
+<p>FEE_NUMBER_OF_BLOCKS </p>
+<p> </p>
+<p> </p>
+<p><b>Configuration Changes </b></p>
+<p> </p>
+<p><b>Parameter added/ Modified</b></p>
+<p> </p>
+<p><b>Change</b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>FeeCRCEnable </p>
+<p>New </p>
+<p>FeeWriteCounterSave </p>
+<p>New </p>
+<p>FeeNumberOfEEPS </p>
+<p>New </p>
+<p>FeeDevErrorDetect </p>
+<p>New </p>
+<p>FeeBlockOverhead </p>
+<p>Changed to 0x18 </p>
+<p>FeeEEPNumber(in block configuration) </p>
+<p>New </p>
+<p>FeeNumberOfVirtualSectorsEEP1 </p>
+<p>New </p>
+<p>FEE_NUMBER_OF_UNCONFIGUREDBLOCKSTOCOPY </p>
+<p>New </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>4 </p>
+<p> </p>
+<p>FEE_NUMBER_OF_EIGHTBYTEWRITES </p>
+<p>New </p>
+<p>FEE_CHECK_BANK7_ACCESS </p>
+<p>New </p>
+<p>FEE_TOTAL_BLOCKS_DATASETS </p>
+<p>New </p>
+<p>FEE_VIRTUALSECTOR_SIZE </p>
+<p>New </p>
+<p>FEE_PHYSICALSECTOR_SIZE </p>
+<p>New </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC </p>
+<p>New </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>5 </p>
+<p> </p>
+<p><b>Table of Contents  </b></p>
+<p><b> </b></p>
+<p>1</p>
+<p> </p>
+<p>Introduction .............................................................................................................. 7</p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>FEE Published information ............................................................................... 7</p>
+<p> </p>
+<p>1.1.1</p>
+<p> </p>
+<p>Block OverHead ......................................................................................... 7</p>
+<p> </p>
+<p>1.1.2</p>
+<p> </p>
+<p>Maximum Blocking Time ............................................................................ 7</p>
+<p> </p>
+<p>1.1.3</p>
+<p> </p>
+<p>Page OverHead ......................................................................................... 8</p>
+<p> </p>
+<p>1.1.4</p>
+<p> </p>
+<p>Sector OverHead ....................................................................................... 8</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>FEE General Settings ...................................................................................... 9</p>
+<p> </p>
+<p>1.2.1</p>
+<p> </p>
+<p>Virtual Page size ........................................................................................ 9</p>
+<p> </p>
+<p>1.2.2</p>
+<p> </p>
+<p>Driver Index................................................................................................ 9</p>
+<p> </p>
+<p>1.2.3</p>
+<p> </p>
+<p>Error Notification ...................................................................................... 10</p>
+<p> </p>
+<p>1.2.4</p>
+<p> </p>
+<p>End Notification ........................................................................................ 10</p>
+<p> </p>
+<p>1.2.5</p>
+<p> </p>
+<p>Frequency ................................................................................................ 11</p>
+<p> </p>
+<p>1.2.6</p>
+<p> </p>
+<p>Enable Polling mode ................................................................................ 11</p>
+<p> </p>
+<p>1.2.7</p>
+<p> </p>
+<p>Enable Error Correction ........................................................................... 12</p>
+<p> </p>
+<p>1.2.8</p>
+<p> </p>
+<p>Error Correction Handling ......................................................................... 12</p>
+<p> </p>
+<p>1.2.9</p>
+<p> </p>
+<p>Cyclic Redundancy Check ....................................................................... 13</p>
+<p> </p>
+<p>1.2.10</p>
+<p> </p>
+<p>Block Write counter save.......................................................................... 13</p>
+<p> </p>
+<p>1.2.11</p>
+<p> </p>
+<p>Number of EEPs ...................................................................................... 14</p>
+<p> </p>
+<p>1.2.12</p>
+<p> </p>
+<p>Development error Detect ........................................................................ 14</p>
+<p> </p>
+<p>1.2.13</p>
+<p> </p>
+<p>Non configured blocks to copy ................................................................. 15</p>
+<p> </p>
+<p>1.2.14</p>
+<p> </p>
+<p>Number of eight byte writes ...................................................................... 15</p>
+<p> </p>
+<p>1.2.15</p>
+<p> </p>
+<p>Check BANK7 Address Range ................................................................. 16</p>
+<p> </p>
+<p>1.2.16</p>
+<p> </p>
+<p>Total Blocks and Data Sets ...................................................................... 16</p>
+<p> </p>
+<p>1.2.17</p>
+<p> </p>
+<p>Generate Device and Virtual sector structures ......................................... 17</p>
+<p> </p>
+<p>1.2.18</p>
+<p> </p>
+<p>Required Virtual Sector Size .................................................................... 18</p>
+<p> </p>
+<p>1.2.19</p>
+<p> </p>
+<p>FEE bank Physical Sector Size ................................................................ 19</p>
+<p> </p>
+<p>1.3</p>
+<p> </p>
+<p>Number of Blocks .......................................................................................... 20</p>
+<p> </p>
+<p>1.3.1</p>
+<p> </p>
+<p>Blocks ...................................................................................................... 20</p>
+<p> </p>
+<p>1.4</p>
+<p> </p>
+<p>Number of Virtual Sectors .............................................................................. 20</p>
+<p> </p>
+<p>1.4.1</p>
+<p> </p>
+<p>Virtual Sectors .......................................................................................... 20</p>
+<p> </p>
+<p>1.4.2</p>
+<p> </p>
+<p>Virtual Sectors for EEP1........................................................................... 21</p>
+<p> </p>
+<p>1.5</p>
+<p> </p>
+<p>FEE functions ................................................................................................ 21</p>
+<p> </p>
+<p>1.5.1</p>
+<p> </p>
+<p>FEE_GetVersionInfo ................................................................................ 21</p>
+<p> </p>
+<p>1.6</p>
+<p> </p>
+<p>FEE Sector Configuration .............................................................................. 22</p>
+<p> </p>
+<p>1.6.1</p>
+<p> </p>
+<p>FEE_VirtualSectorConfiguration ............................................................... 22</p>
+<p> </p>
+<p>1.6.1.1</p>
+<p> </p>
+<p>FEE_VirtualSectorNumber ................................................................ 22</p>
+<p> </p>
+<p>1.6.1.2</p>
+<p> </p>
+<p>FEE_VirtualSectorBank .................................................................... 23</p>
+<p> </p>
+<p>1.6.1.3</p>
+<p> </p>
+<p>FEE_VirtualSectorStart ..................................................................... 23</p>
+<p> </p>
+<p>1.6.1.4</p>
+<p> </p>
+<p>FEE_VirtualSectorEnd ...................................................................... 24</p>
+<p> </p>
+<p>1.6.2</p>
+<p> </p>
+<p>Example Virtual Sector Configuration ....................................................... 25</p>
+<p> </p>
+<p>1.7</p>
+<p> </p>
+<p>FEE Block Configuration ................................................................................ 26</p>
+<p> </p>
+<p>1.7.1</p>
+<p> </p>
+<p>FEE Block Configuration .......................................................................... 26</p>
+<p> </p>
+<p>1.7.1.1</p>
+<p> </p>
+<p>FEE_BlockNumber............................................................................ 26</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>6 </p>
+<p> </p>
+<p>1.7.1.2</p>
+<p> </p>
+<p>FEE_BlockSize ................................................................................. 27</p>
+<p> </p>
+<p>1.7.1.3</p>
+<p> </p>
+<p>FEE_NumberOfWriteCycles .............................................................. 27</p>
+<p> </p>
+<p>1.7.1.4</p>
+<p> </p>
+<p>FEE_UseImmediateData .................................................................. 28</p>
+<p> </p>
+<p>1.7.1.5</p>
+<p> </p>
+<p>FEE Device Index ............................................................................. 28</p>
+<p> </p>
+<p>1.7.1.6</p>
+<p> </p>
+<p>FeeNumberOfDataSets ..................................................................... 29</p>
+<p> </p>
+<p>1.7.1.7</p>
+<p> </p>
+<p>FEE EEP Number ............................................................................. 29</p>
+<p> </p>
+<p>1.7.2</p>
+<p> </p>
+<p>Example Block Configuration ................................................................... 30</p>
+<p> </p>
+<p>1.8</p>
+<p> </p>
+<p>Header Files .................................................................................................. 31</p>
+<p> </p>
+<p>1.8.1</p>
+<p> </p>
+<p>Header Files for Fee_cfg.h ....................................................................... 31</p>
+<p> </p>
+<p>1.8.2</p>
+<p> </p>
+<p>Header Files for Fee_cfg.c ....................................................................... 31</p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>7 </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Introduction </b></p>
+<p>The  following  sections  describe  each  parameter  in  the  Fee_ParamDef.axml  file </p>
+<p>used  by  Code  Generation  Tool  and  the  corresponding  configuration  parameter </p>
+<p>generated. Code Generation Tool generates two files (Fee_Cfg.c and Fee_cfg.h) </p>
+<p>depending on the configuration values. This section describes each configuration </p>
+<p>value  in  the  above  two  files  and  their  relation  to  the  parameter  defined  in  the </p>
+<p>Fee_ParamDef.axml file. </p>
+<p><b>1.1 </b></p>
+<p><b>FEE Published information </b></p>
+<p><b>1.1.1 </b></p>
+<p><b>Block OverHead </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeBlockOverhead </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the number of bytes used for Block </p>
+<p>Header. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_BLOCK_OVERHEAD is set to the value </p>
+<p>assigned to FeeBlockOverhead. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x18 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x18. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target file </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p><b>1.1.2 </b></p>
+<p><b>Maximum Blocking Time</b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeMaximumBlockingTime </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the maximum allowed blocking time for any </p>
+<p>Fee call.  </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_MAXIMUM_BLOCKING_TIME is set to the </p>
+<p>value assigned to FeeMaximumBlockingTime. </p>
+<p>Default Value </p>
+<p>600.00 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 600 µs. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>float </p>
+<p>Target file </p>
+<p>Fee_cfg.h </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>8 </p>
+<p> </p>
+<p><b>1.1.3 </b></p>
+<p><b>Page OverHead </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeePageOverhead </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the Page Overhead in bytes. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_PAGE_OVERHEAD is set to the value </p>
+<p>assigned to FeePageOverhead. (0x0) </p>
+<p> </p>
+<p>Default Value  </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x0. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p><b>1.1.4 </b></p>
+<p><b>Sector OverHead </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeVirtualSectorOverhead </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the number of bytes used for Virtual Sector </p>
+<p>Header. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_VIRTUAL_SECTOR_OVERHEAD is set to the </p>
+<p>value assigned to FeeVirtualSectorOverhead (0x10). </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x10 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x10. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p>Target File </p>
+<p>Fee_cfg.h </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>9 </p>
+<p> </p>
+<p><b>1.2 </b></p>
+<p><b>FEE General Settings </b></p>
+<p><b>1.2.1 </b></p>
+<p><b>Virtual Page size </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeVirtualPageSize </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the virtual page size in bytes. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_VIRTUAL_PAGE_SIZE is set to the value </p>
+<p>assigned to FeeVirtualPageSize. (0x8) </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x8 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x8. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>1.2.2 </b></p>
+<p><b> Driver Index </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeIndex </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Instance ID of FEE module. Should always be 0x0. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_INDEX is set to the value assigned to </p>
+<p>FeeIndex. (0x0) </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x0. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>10 </p>
+<p> </p>
+<p><b>1.2.3 </b></p>
+<p><b>Error Notification </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNvmJobErrorNotification </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Call back function to notify a Job Error. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NVM_JOB_ERROR_NOTIFICATION is set to </p>
+<p>the defined function name. This is relevant only if </p>
+<p>Polling mode is OFF. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>NvM_JobErrorNotification </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>User defined function name. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>string  </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p><b>   </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>1.2.4 </b></p>
+<p><b>End Notification </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNvmJobEndNotification </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Call back function to notify end of a Job. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NVM_JOB_END_NOTIFICATION is set to the </p>
+<p>defined function name. This is relevant only if Polling </p>
+<p>mode is OFF. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>NvM_JobEndNotification </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>User defined function name. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>string </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>11 </p>
+<p> </p>
+<p> </p>
+<p><b>1.2.5 </b></p>
+<p><b>Frequency </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeFrequency  </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Device operating frequency in MHz. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_OPERATING_FREQUENCY is set to the value </p>
+<p>assigned to FeeFrequency.  </p>
+<p>FeeFrequency is equivalent to the HCLK frequency </p>
+<p>in the TMS570 clock tree. </p>
+<p>It is recommended to copy the value of HCLK </p>
+<p>obtained by configuring the TMS570 clock tree </p>
+<p>during MCU configuration to this parameter. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>160.0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Device dependent parameter. Refer to the device </p>
+<p>datasheet to know the range. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>float </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p> </p>
+<p> </p>
+<p><b>1.2.6 </b></p>
+<p><b>Enable Polling mode </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeePollingMode </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates if polling mode is enabled/disabled. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_POLLING_MODE is set to STD_ON if polling is </p>
+<p>enabled else it is set to STD_OFF. Currently, this </p>
+<p>parameter should be always STD_ON. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_ON </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON/STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Boolean </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>12 </p>
+<p> </p>
+<p><b> </b></p>
+<p><b>1.2.7 </b></p>
+<p><b>Enable Error Correction </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeEnableErrorCorrection </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates if error correction is enabled. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_FLASH_ERROR_CORRECTION_ENABLE </p>
+<p>Is set to STD_ON if Error Correction is enabled else </p>
+<p>it is set to STD_OFF. This parameter is not used </p>
+<p>anymore. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_OFF </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON/STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Boolean </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p><b> </b></p>
+<p><b>1.2.8 </b></p>
+<p><b>Error Correction Handling </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeFlashErrCorrHandlingType </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates desired action to be taken on detection of </p>
+<p>bit errors. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_FLASH_ERROR_CORRECTION_HANDLING </p>
+<p>is set to the value assigned to </p>
+<p>FeeFlashErrCorrHandlingType. Only Fee_None is </p>
+<p>supported. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>Fee_None </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fee_None or Fee_Fix </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>enum {Fee_none, Fee_Fix} </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>13 </p>
+<p> </p>
+<p><b>1.2.9     Cyclic Redundancy Check </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeCRCEnable </p>
+<p> </p>
+<p>Description </p>
+<p>Pre-processor switch to enable the CRC for blocks. </p>
+<p>STD_ON: CRC for blocks is enabled. </p>
+<p>STD_OFF:CRC disabled </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_FLASH_CRC_ENABLE is set to STD_ON if </p>
+<p>CRC check is enabled else it is set to STD_OFF. If </p>
+<p>enabled, 16 bit CRC of the block is generated. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_OFF  </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON / STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Boolean </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p><b>1.2.10       Block Write counter save </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeWriteCounterSave </p>
+<p> </p>
+<p>Description </p>
+<p>Pre-processor switch to enable the block write </p>
+<p>counter. STD_ON: Block Write counter is enabled. </p>
+<p>STD_OFF:Block Write counter is disabled </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_FLASH_WRITECOUNTER_SAVE is set to </p>
+<p>STD_ON  if block write counter save is enabled else </p>
+<p>it is set to STD_OFF. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_OFF  </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON / STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Boolean </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>14 </p>
+<p> </p>
+<p><b>1.2.11      Number of EEPs </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNumberOfEEPS </p>
+<p> </p>
+<p>Description </p>
+<p>Number of EEP's configured. 1 - Only one EEP </p>
+<p>configured. All Virtual Sectors can be used by this </p>
+<p>EEP. 2 - Two EEP's configured. Each EEP can use </p>
+<p>two Virtual Sectors. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NUMBER_OF_EEPS </p>
+<p>is </p>
+<p>set to 1 if all virtual </p>
+<p>sectors are used by one EEP. If virtual sectors are </p>
+<p>shared between two EEPs, it is set to 2. </p>
+<p>Default Value </p>
+<p>1  </p>
+<p>Parameter Range </p>
+<p>1/2 </p>
+<p>Parameter Type </p>
+<p>Uint8 </p>
+<p>Target File </p>
+<p>Fee_cfg.h  </p>
+<p>Note: If GUI is calculating this parameter from the configuration, this parameter </p>
+<p>may not be present in BSWMD file.</p>
+<p> </p>
+<p><b>1.2.12  Development error Detect </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeDevErrorDetect </p>
+<p> </p>
+<p>Description </p>
+<p>Pre-processor switch to enable and disable </p>
+<p>development error detection. true: Development </p>
+<p>error detection enabled. false: Development error </p>
+<p>detection disabled. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_DEV_ERROR_DETECT Is set to STD_ON if </p>
+<p>Set Mode supported is required else it is set to </p>
+<p>STD_OFF. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_OFF  </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON/STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>boolean </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>15 </p>
+<p> </p>
+<p><b> </b></p>
+<p><b>1.2.13  Non configured blocks to copy </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNumberOfUnconfiguredBlocksToCopy </p>
+<p> </p>
+<p>Description </p>
+<p>Defines the maximum number of non configured </p>
+<p>blocks to be copied during virtual sector swap. This </p>
+<p>parameter is used if project configures and writes 10 </p>
+<p>blocks at start of the project, then reduce the number </p>
+<p>of blocks to let’s say 8 blocks, but still want the other </p>
+<p>two blocks to be present in Flash. In this case, </p>
+<p>project should configure this parameter to 2. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NUMBER_OF_UNCONFIGUREDBLOCKSTO</p>
+<p>COPY is set to defined value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>0 -255 </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Uint8 </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p><b> </b></p>
+<p><b>1.2.14  Number of eight byte writes </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p>FeeNumberOfEightByteWrites </p>
+<p> </p>
+<p>Description </p>
+<p>Defines the number of 8 byte writes to be done in </p>
+<p>main function call. If configured to 2, main function </p>
+<p>writes 16 bytes per call. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NUMBER_OF_EIGHTBYTEWRITES is set to </p>
+<p>defined value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>1 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>1-255 </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Uint8 </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>16 </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p><b>1.2.15  Check BANK7 Address Range </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p>FEE_CHECK_BANK7_ACCESS </p>
+<p> </p>
+<p>Description </p>
+<p>Pre processor switch to enable EEPROM address </p>
+<p>range check during read/write. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_CHECK_BANK7_ACCESS is set to defined </p>
+<p>value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_OFF </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON/STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>boolean </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p><b>1.2.16  Total Blocks and Data Sets </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p>FEE_TOTAL_BLOCKS_DATASETS </p>
+<p>Description </p>
+<p>Macro to indicate total blocks and data sets </p>
+<p>configured. </p>
+<p>Generated configuration </p>
+<p>FEE_TOTAL_BLOCKS_DATASETS is set to defined </p>
+<p>value. </p>
+<p>Default Value </p>
+<p>1 </p>
+<p>Parameter Range </p>
+<p>1-65536 </p>
+<p>Parameter Type </p>
+<p>Uint16 </p>
+<p>Target File </p>
+<p>Fee_cfg.h  </p>
+<p><b> </b></p>
+<p>Note: This configuration should calculate total number of blocks and data sets </p>
+<p>configured in the structure Fee_BlockConfiguration. For example, if 5 blocks are </p>
+<p>configured with block 1 has 1 data set, block 2 has 4 data sets, block 3 has 2 </p>
+<p>data sets, block 4 has 5 data sets, block 5 has 3 data sets, then  </p>
+<p>FEE_TOTAL_BLOCKS_DATASETS = [(1)+(4)+(2)+(5)+(3)] = 15(sum of all data </p>
+<p>sets). </p>
+<p>If GUI is calculating this parameter from the configuration, this parameter may </p>
+<p>not be present in BSWMD file. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>17 </p>
+<p> </p>
+<p><b>1.2.17  Generate Device and Virtual sector structures</b></p>
+<p><b> </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORS</p>
+<p>TRUC </p>
+<p> </p>
+<p>Description </p>
+<p>Pre processor switch to enable/disable generation of </p>
+<p>Device and Virtual sector structures. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORS</p>
+<p>TRUC is set to defined value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_OFF </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON/STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>boolean </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p> </p>
+<p>Note: When this macro is turned ON, Fee_VirtualSectorConfiguration  and </p>
+<p>Device_FlashDevice  are generated during run time.  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>18 </p>
+<p> </p>
+<p><b>1.2.18  Required Virtual Sector Size  </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p>FEE_VIRTUALSECTOR_SIZE </p>
+<p> </p>
+<p>Description </p>
+<p>Macro to indicate the required virtual sector size in </p>
+<p>kilo bytes. This macro is only used when </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORS</p>
+<p>TRUC is STD_ON. Based on </p>
+<p>FEE_VIRTUALSECTOR_SIZE and </p>
+<p>FEE_NUMBER_OF_VIRTUAL_SECTORS, elements </p>
+<p>of the structure Fee_VirtualSectorConfiguration will </p>
+<p>be populated during runtime. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_VIRTUALSECTOR_SIZE is set to defined </p>
+<p>value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>None </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>4-32(see below note) </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p> </p>
+<p>Note: Depending on the device, parameter range can be different.  </p>
+<p>For TMS570LS12xx/11xx family devices, FEE bank is 4*16KB. Macro can take a </p>
+<p>value of 16 or 32. For TMS570LS09xx, TMS570LS07xx, TMS570LS05xx family </p>
+<p>devices, FEE bank is 16*4KB. Macro can take a value of 4 or 8 or 12 or 16 or 32.  </p>
+<p>FEE_VIRTUALSECTOR_SIZE * FEE_NUMBER_OF_VIRTUAL_SECTORS </p>
+<p>should not exceed the total available FEE bank size on device. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>19 </p>
+<p> </p>
+<p><b>1.2.19  FEE bank Physical Sector Size  </b></p>
+<p> </p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p>FEE_PHYSICALSECTOR_SIZE </p>
+<p> </p>
+<p>Description </p>
+<p>Macro to indicate the physical sector size on the </p>
+<p>device. This macro is only used when </p>
+<p>FEE_GENERATE_DEVICEANDVIRTUALSECTORS</p>
+<p>TRUC is STD_OFF. This parameter is used to select </p>
+<p>device specific files. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_PHYSICALSECTOR_SIZE is set to defined </p>
+<p>value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>None. </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>4/16 </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Uint8 </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h  </p>
+<p> </p>
+<p>Note: This macro can only have 4/16 as value.  </p>
+<p>For TMS570LS12xx/11xx family devices, sector size is 16. For TMS570LS09xx, </p>
+<p>TMS570LS07xx, TMS570LS05xx family devices, sector size is 4.</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>20 </p>
+<p> </p>
+<p><b>1.3 </b></p>
+<p><b>Number of Blocks </b></p>
+<p><b>1.3.1 </b></p>
+<p><b>Blocks </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNumberOfBlocks </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Defines the number of Data Blocks used for </p>
+<p>EEPROM emulation. This is sum of all the blocks </p>
+<p>configured on EEP1 and EEP2. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NUMBER_OF_BLOCKS is set to the defined </p>
+<p>value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x1 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>0x1  to 0xFFFE </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint16 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p>Note: If GUI is calculating this parameter from the configuration, this parameter </p>
+<p>may not be present in BSWMD file.</p>
+<p><i> </i></p>
+<p> </p>
+<p><b>1.4 </b></p>
+<p><b>Number of Virtual Sectors </b></p>
+<p><b>1.4.1 </b></p>
+<p><b>Virtual Sectors </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNumberOfVirtualSectors </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Defines the number of Virtual Sectors used for FEE.  </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NUMBER_OF_VIRTUAL_SECTORS is set to </p>
+<p>the defined value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x2 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p>Min :0x2 Max : 0x4,For </p>
+<p>TMS570LS01227/TMS570LS1113. </p>
+<p> </p>
+<p>Min : 0x2 Max : 16, For TMS570LS05xx, </p>
+<p>TMS570LS07xx, TMS570LS09xx. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint16 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>21 </p>
+<p> </p>
+<p><b>1.4.2 </b></p>
+<p><b>Virtual Sectors for EEP1 </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNumberOfVirtualSectorsEEP1 </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Defines the number of Virtual Sectors used for </p>
+<p>EEP1.  </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_NUMBER_OF_VIRTUAL_SECTORS_EEP1 is </p>
+<p>set to the defined value. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Min : 0x0 Max : </p>
+<p>(FEE_NUMBER_OF_VIRTUAL_SECTORS-0x02) </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint16 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<p><i> </i></p>
+<p><i>Note: </i>FEE_NUMBER_OF_VIRTUAL_SECTORS_EEP1 should be configured as </p>
+<p>zero if FEE_NUMBER_OF_EEPS = </p>
+<p>1. </p>
+<p> </p>
+<p><b>1.5 </b></p>
+<p><b>FEE functions </b></p>
+<p><b>1.5.1 </b></p>
+<p><b>FEE_GetVersionInfo </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeVersionInfoApi </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates if the user can use the function </p>
+<p>Fee_GetVersionInfo(). </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FEE_VERSION_INFO_API is set to STD_ON if </p>
+<p>FeeVersionInfoApi is enabled else it is set to </p>
+<p>STD_OFF. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>STD_ON </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>STD_ON / STD_OFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Boolean </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_cfg.h </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>22 </p>
+<p> </p>
+<p><b>1.6 </b></p>
+<p><b>FEE Sector Configuration </b></p>
+<p>Note: The structure definition Fee_VirtualSectorConfiguration in fee_cfg.c should </p>
+<p>be under the conditional compile check  </p>
+<p>#if (FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC == STD_OFF). </p>
+<p>Projects need not configure below parameters when above macro is turned ON. </p>
+<p><b>1.6.1 </b></p>
+<p><b>FEE_VirtualSectorConfiguration </b></p>
+<p> </p>
+<p>Array Name </p>
+<p> </p>
+<p>FEE_VirtualSectorConfiguration </p>
+<p>Description  </p>
+<p>Used to define a Virtual Sector </p>
+<p> </p>
+<p>Array Type  </p>
+<p>Fee_VirtualSectorConfigType.  </p>
+<p>This is a structure having the following members. </p>
+<p> </p>
+<p>Members </p>
+<p> </p>
+<p>FeeVirtualSectorNumber</p>
+<p> </p>
+<p> </p>
+<p>Virtual Sector's Number.</p>
+<p> </p>
+<p>FeeFlashBank</p>
+<p> </p>
+<p>EEPROM emulation is </p>
+<p>supported only on Bank 7 for </p>
+<p>F021 devices..</p>
+<p> </p>
+<p>FeeStartSector </p>
+<p> </p>
+<p>Starting Sector in the Bank for </p>
+<p>this Virtual Sector. </p>
+<p>FeeEndSector </p>
+<p> </p>
+<p>Ending Sector in the Bank for </p>
+<p>this Virtual Sector. </p>
+<p>The configurations described in the following sections are repeated for each </p>
+<p>Virtual Sector. </p>
+<p><b>1.6.1.1 </b></p>
+<p><b>FEE_VirtualSectorNumber </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeSectorNumber </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Used to assign a number to the Virtual Sector. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeVirtualSectorNumber is set to the value assigned </p>
+<p>to the symbolic name for the Virtual Sector. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>1 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Min : 0x1,  Max : 0x4,For </p>
+<p>TMS570LS01227/TMS570LS1113 </p>
+<p> </p>
+<p>Min : 0x1 Max : 16, For TMS570LS05xx, </p>
+<p>TMS570LS07xx, TMS570LS09xx </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint16 </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>23 </p>
+<p> </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c  </p>
+<p> </p>
+<p><b>1.6.1.2 </b></p>
+<p><b>FEE_VirtualSectorBank </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeSectorBank </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the Flash Bank used by the Virtual Sector. </p>
+<p>All the Virtual Sectors should use the same Flash </p>
+<p>Bank. EEPROM emulation is supported only on </p>
+<p>Bank 7 for F021 devices. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeFlashBank is set to the value assigned to </p>
+<p>FeeSectorBank.  </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x7 for F021 devices. </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x7 for F021 devices. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p>uint16 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p><b>1.6.1.3 </b></p>
+<p><b> FEE_VirtualSectorStart </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeSectorStart </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the Flash Sector in the Bank used by the </p>
+<p>Virtual Sector as the Start sector. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeStartSector is set to the value assigned to </p>
+<p>FeeSectorStart. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Device specific, can use any Sector of the selected </p>
+<p>Flash Bank. Please refer to the device datasheet </p>
+<p>“Flash Memory Map” for more details. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>24 </p>
+<p> </p>
+<p><b> </b></p>
+<p><b>1.6.1.4 </b></p>
+<p><b> FEE_VirtualSectorEnd </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeSectorEnd </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the Flash Sector in the Bank used by the </p>
+<p>Virtual Sector as the End sector. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeEndSector is set to the value assigned to </p>
+<p>FeeSectorEnd. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Device specific, can use any Flash Sector of the </p>
+<p>selected Flash Bank. It should be greater than the </p>
+<p>FEE Start Sector. Please refer to the device </p>
+<p>datasheet “Flash Memory Map” for more details. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>25 </p>
+<p> </p>
+<p><b>1.6.2 </b></p>
+<p><b>Example Virtual Sector Configuration</b></p>
+<p><b> </b></p>
+<p>#if (FEE_GENERATE_DEVICEANDVIRTUALSECTORSTRUC == STD_OFF) </p>
+<p>const Fee_VirtualSectorConfigType Fee_VirtualSectorConfiguration[] = </p>
+<p>{ </p>
+<p>    /* Virtual Sector 1 */ </p>
+<p>    { </p>
+<p>        1,     /* Virtual sector number */ </p>
+<p>        7,     /* Bank                     */ </p>
+<p>        0,     /* Start Sector          */</p>
+<p>/*(0,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>        0,     /* End Sector           */</p>
+<p>/*(3,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>    }, </p>
+<p>    /* Virtual Sector 2 */ </p>
+<p>    { </p>
+<p>        2,     /* Virtual sector number */ </p>
+<p>        7,     /* Bank                     */ </p>
+<p>        1,     /* Start Sector          */</p>
+<p>/*(4,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>        1,     /* End Sector           */</p>
+<p>/*(7,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>    }, </p>
+<p>    /* Virtual Sector 3 */   </p>
+<p>{ </p>
+<p>        3,     /* Virtual sector number */ </p>
+<p>        7,     /* Bank                     */ </p>
+<p>        2,     /* Start Sector          */</p>
+<p>/*(8,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>        2,     /* End Sector           */</p>
+<p>/*(11,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>    }, </p>
+<p>    /* Virtual Sector 4 */ </p>
+<p>    { </p>
+<p>        4,     /* Virtual sector number */ </p>
+<p>        7,     /* Bank                     */ </p>
+<p>        3,     /* Start Sector          */</p>
+<p>/*(12,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>        3,     /* End Sector           */</p>
+<p>/*(15,</p>
+<p> </p>
+<p>For TMS570LS05xx, TMS570LS07xx, TMS570LS09xx</p>
+<p>)*/</p>
+<p> </p>
+<p>    }, </p>
+<p>}; </p>
+<p>#endif</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>26 </p>
+<p> </p>
+<p><b>1.7 </b></p>
+<p><b>FEE Block Configuration </b></p>
+<p><b>1.7.1 </b></p>
+<p><b>FEE Block Configuration </b></p>
+<p> </p>
+<p>Array Name </p>
+<p> </p>
+<p>Fee_BlockConfiguration </p>
+<p>Description  </p>
+<p>Used to define a block </p>
+<p> </p>
+<p>Array Type  </p>
+<p>Fee_BlockConfigType. </p>
+<p>This is a structure with the following members. </p>
+<p> </p>
+<p>Members </p>
+<p> </p>
+<p>FeeBlockNumber</p>
+<p> </p>
+<p> </p>
+<p>Indicates Block's Number. </p>
+<p> </p>
+<p>FeeBlockSize</p>
+<p> </p>
+<p> </p>
+<p>Defines Block's Size in bytes. </p>
+<p>FeeImmediateData </p>
+<p> </p>
+<p>Indicates if the block is used </p>
+<p>for immediate data. </p>
+<p>FeeNumberOfWriteCycles </p>
+<p>Number of write cycles </p>
+<p>required for this block . </p>
+<p>FeeDeviceIndex </p>
+<p>Indicates the device index.  </p>
+<p>FeeNumberofDatasets </p>
+<p>Indicates the number of Datasets </p>
+<p>for this Block. </p>
+<p>FeeEEPNumber </p>
+<p>Indicates the number of EEP. </p>
+<p> </p>
+<p>The configurations described in the following sections are repeated for each </p>
+<p>Block. </p>
+<p><b>1.7.1.1 </b></p>
+<p><b>FEE_BlockNumber </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeBlockNumber </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Assigns a number for the Block. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeBlockNumber is set to a numeric value. It is </p>
+<p>equal to the BlockNumber. </p>
+<p> </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>1 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Min : 0x1 Max : 0xFFFE </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint16 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>27 </p>
+<p> </p>
+<p><b> </b></p>
+<p><b>1.7.1.2 </b></p>
+<p><b>FEE_BlockSize  </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeBlockSize </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the size of the Block in bytes. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeBlockSize is set to the value assigned to </p>
+<p>FeeBlockSize. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x008 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>0x1 to 0xFFFE </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint16 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>1.7.1.3 </b></p>
+<p><b>FEE_NumberOfWriteCycles </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeNumberOfWriteCycles </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the number of clock cycles required to write </p>
+<p>to a flash address location. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeNumberOfWriteCycles is set to the value </p>
+<p>assigned to FeeNumberOfWriteCycles. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x1 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Device or core/flash tech dependent parameter. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint32 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>28 </p>
+<p> </p>
+<p> </p>
+<p><b>1.7.1.4 </b></p>
+<p><b>FEE_UseImmediateData </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeImmediateData </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates if the block is used for immediate data. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeImmediateData is set to the value assigned to </p>
+<p>FeeImmediateData. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>FALSE </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>TRUE / FALSE </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>Boolean </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>1.7.1.5 </b></p>
+<p><b>FEE Device Index </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeDeviceIndex </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the device index. This will always be 0. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeDeviceIndex is set to the value 0x0. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>Fixed to 0x0. </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>29 </p>
+<p> </p>
+<p><b>1.7.1.6 </b></p>
+<p><b>FeeNumberOfDataSets </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeDataset </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Indicates the number of Datasets for this particular </p>
+<p>Block . </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeNumberOfDataSets is set to the value assigned </p>
+<p>to FeeDataset. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x01 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>0x1 to 0xFF </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>1.7.1.7 </b></p>
+<p><b>FEE EEP Number </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Parameter defined in </p>
+<p>Fee_ParamDef.axml </p>
+<p> </p>
+<p>FeeEEPNumber </p>
+<p> </p>
+<p>Description </p>
+<p> </p>
+<p>Number indicating into which EEP does the block go. </p>
+<p>0 -- Block will be configured on EEP1. 1 -- Block will </p>
+<p>be configured on EEP2. </p>
+<p> </p>
+<p>Generated configuration </p>
+<p> </p>
+<p>FeeEEPNumber is set to the value assigned. </p>
+<p> </p>
+<p>Default Value </p>
+<p> </p>
+<p>0x0 </p>
+<p> </p>
+<p>Parameter Range </p>
+<p> </p>
+<p>0x00/0x01 </p>
+<p> </p>
+<p>Parameter Type </p>
+<p> </p>
+<p>uint8 </p>
+<p> </p>
+<p>Target File </p>
+<p> </p>
+<p>Fee_Cfg.c </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>30 </p>
+<p> </p>
+<p><b>1.7.2 </b></p>
+<p><b>Example Block Configuration</b></p>
+<p><b> </b></p>
+<p> </p>
+<p>/* Block Configuration */ </p>
+<p>const Fee_BlockConfigType Fee_BlockConfiguration[] = </p>
+<p>{ </p>
+<p>    /* Block 1 */ </p>
+<p>    { </p>
+<p>        0x01,       </p>
+<p> /* Block number                  </p>
+<p>*/ </p>
+<p>        0x0010,      </p>
+<p>/* Block size                    </p>
+<p> </p>
+<p>*/ </p>
+<p>        TRUE,      </p>
+<p> /* Block immediate data used  </p>
+<p> */ </p>
+<p>        0x00000064, </p>
+<p> /* Block number of write cycles  </p>
+<p>*/ </p>
+<p>        0,            </p>
+<p> /* Device Index                   </p>
+<p>*/ </p>
+<p>        1, </p>
+<p> </p>
+<p>/* Number of DataSets </p>
+<p> </p>
+<p>*/ </p>
+<p>        0  </p>
+<p> </p>
+<p>/* EEP number </p>
+<p> </p>
+<p> </p>
+<p>*/ </p>
+<p>    }, </p>
+<p>    /* Block 2 */ </p>
+<p>    { </p>
+<p>        0x02,        </p>
+<p>/* Block number                   </p>
+<p>*/ </p>
+<p>        0x000B,      </p>
+<p>/* Block size                   </p>
+<p> </p>
+<p> */ </p>
+<p>        TRUE,       </p>
+<p>/* Block immediate data used     </p>
+<p>*/ </p>
+<p>        0x00000064,  </p>
+<p>/* Block number of write cycles  </p>
+<p>*/ </p>
+<p>        0,            </p>
+<p>/* Device Index                 </p>
+<p> </p>
+<p> */ </p>
+<p>        1, </p>
+<p> </p>
+<p>/* Number of DataSets </p>
+<p> </p>
+<p>*/ </p>
+<p>        1  </p>
+<p> </p>
+<p>/* EEP number </p>
+<p> </p>
+<p> </p>
+<p>*/ </p>
+<p>    }, </p>
+<p>    /* Block 3 */ </p>
+<p>    { </p>
+<p>        0x03,        </p>
+<p>/* Block number                   </p>
+<p>*/ </p>
+<p>        0x000B,      </p>
+<p>/* Block size                   </p>
+<p> </p>
+<p> */ </p>
+<p>        TRUE,       </p>
+<p>/* Block immediate data used     </p>
+<p>*/ </p>
+<p>        0x00000064,  </p>
+<p>/* Block number of write cycles  </p>
+<p>*/ </p>
+<p>        0,            </p>
+<p>/* Device Index                 </p>
+<p> </p>
+<p> */ </p>
+<p>        1, </p>
+<p> </p>
+<p>/* Number of DataSets </p>
+<p> </p>
+<p>*/ </p>
+<p>        1  </p>
+<p> </p>
+<p>/* EEP number </p>
+<p> </p>
+<p> </p>
+<p>*/ </p>
+<p>    }, </p>
+<p>    </p>
+<p>    /* Block 4 */ </p>
+<p>    { </p>
+<p>        0x04,        </p>
+<p>/* Block number                   </p>
+<p>*/ </p>
+<p>        0x000B,      </p>
+<p>/* Block size                   </p>
+<p> </p>
+<p> */ </p>
+<p>        TRUE,       </p>
+<p>/* Block immediate data used     </p>
+<p>*/ </p>
+<p>        0x00000064,  </p>
+<p>/* Block number of write cycles  </p>
+<p>*/ </p>
+<h1 style="page-break-before:always; "></h1>
+<p>     </p>
+<p>                                                                            AutoSAR FEE Parameter Configuration (Rev 1.8)   </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Texas Instruments Incorporated                                                      </p>
+<p>31 </p>
+<p> </p>
+<p>        0,            </p>
+<p>/* Device Index                 </p>
+<p> </p>
+<p> */ </p>
+<p>        1, </p>
+<p> </p>
+<p>/* Number of DataSets </p>
+<p> </p>
+<p>*/ </p>
+<p>        0  </p>
+<p> </p>
+<p>/* EEP number </p>
+<p> </p>
+<p> </p>
+<p>*/ </p>
+<p>    }, </p>
+<p>}; </p>
+<p><b>1.8 </b></p>
+<p><b>Header Files </b></p>
+<p> </p>
+<p>The following header files are included in the files generated by the Code </p>
+<p>Generation Tool. </p>
+<p><b>1.8.1 </b></p>
+<p><b>Header Files for Fee_cfg.h </b></p>
+<p>The following files are included in Fee_cfg.h </p>
+<p>1. </p>
+<p>MemIf_Types.h </p>
+<p><b>1.8.2 </b></p>
+<p><b>Header Files for Fee_cfg.c </b></p>
+<p>The following files are included in Fee_cfg.c </p>
+<p>1. </p>
+<p>Fee.h </p>
+<p>2. </p>
+<p>Fee_Cbk.h </p>
+<p>3.</p>
+<p> </p>
+<p>SchM_Fee.h</p>
+<p> </p>
+<p> </p>
+<p>This file should also include version check as following: </p>
+<p> </p>
+<p>#if (FEE_AR_MAJOR_VERSION != 0x03) </p>
+<p>    #error Fee_Cfg.c: FEE_AR_MAJOR_VERSION of Fee.h is incompatible. </p>
+<p>#endif /* FEE_AR_MAJOR_VERSION */ </p>
+<p>#if (FEE_AR_MINOR_VERSION != 0x00) </p>
+<p>    #error Fee_Cfg.c: FEE_AR_MINOR_VERSION of Fee.h is incompatible. </p>
+<p>#endif /* FEE_AR_MINOR_VERSION */ </p>
+<p>#if (FEE_AR_PATCH_VERSION != 0x01) </p>
+<p>    #error Fee_Cfg.c: FEE_AR_PATCH_VERSION of Fee.h is incompatible. </p>
+<p>#endif /* FEE_AR_PATCH_VERSION */ </p>
+<p>#if (FEE_SW_MAJOR_VERSION != 1) </p>
+<p>    #error Fee_Cfg.c: FEE_SW_MAJOR_VERSION of Fee.h is incompatible. </p>
+<p>#endif /* FEE_SW_MAJOR_VERSION */ </p>
+<p>#if (FEE_SW_MINOR_VERSION != 20) </p>
+<p>    #error Fee_Cfg.c: FEE_SW_MINOR_VERSION of Fee.h is incompatible. </p>
+<p>#endif /* FEE_SW_MINOR_VERSION */ </p>
+<p>#if (FEE_SW_PATCH_VERSION != 0) </p>
+<p>    #error Fee_Cfg.c: FEE_SW_PATCH_VERSION of Fee.h is incompatible. </p>
+<p>#endif /* FEE_SW_PATCH_VERSION */ </p>
+</body>
+</html>
+{% endraw %}

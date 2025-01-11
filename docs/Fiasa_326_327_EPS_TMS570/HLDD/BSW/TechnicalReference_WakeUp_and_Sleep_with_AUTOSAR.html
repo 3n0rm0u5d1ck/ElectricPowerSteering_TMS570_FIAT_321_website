@@ -1,0 +1,2527 @@
+---
+layout: default
+title: TechnicalReference_WakeUp_and_Sleep_with_AUTOSAR
+nav_order: 34
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Wake-up and Sleep with AUTOSAR  </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>Wakeup CAN, LIN, FlexRay via Communication Channel </p>
+<p>Version 1.00.05 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Mark A. Fingerle, Thomas Kuhl </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>2 / 42 </p>
+<p><b>Document Information </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Mark A. Fingerle </p>
+<p>2010-01-19 </p>
+<p>1.0 </p>
+<p>Initial version </p>
+<p>Thomas Kuhl </p>
+<p>2011-02-22 </p>
+<p>1.00.01 </p>
+<p>Change CAN wake up source </p>
+<p>validation handling refer to </p>
+<p>2.3.5 </p>
+<p>Mark A. Fingerle, Klaus Emmert </p>
+<p>2011-07-19 </p>
+<p>1.00.02 </p>
+<p>Remove Chapter “1.2.4 </p>
+<p>Wake-up by polling the wake-</p>
+<p>up source(s)” feature not </p>
+<p>supported by EcuM </p>
+<p><b>&gt; </b></p>
+<p>Synchronous and </p>
+<p>asynchronous wake-up </p>
+<p>handling added (chapter </p>
+<p>1.4.1). </p>
+<p><b>&gt; </b></p>
+<p>New screen shots for </p>
+<p>ECUM and ICU </p>
+<p>Klaus Emmert </p>
+<p>2013-01-21 </p>
+<p>1.00.03 </p>
+<p>Chapter 1.3 added  </p>
+<p>Chapter 2.3.5 example code </p>
+<p>updated </p>
+<p>Thoms Kuhl </p>
+<p>2013-05-22 </p>
+<p>1.00.04 </p>
+<p>correct typing errors inside </p>
+<p>source code samples </p>
+<p>(ESCAN00052636) </p>
+<p>Thomas Kuhl </p>
+<p>2013-08-01 </p>
+<p>1.00.05 </p>
+<p>correct typing errors </p>
+<p>(ESCAN00068119) </p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Source </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>ASR </p>
+<p>Specification of ECU State Manager </p>
+<p>1.2.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>Vector </p>
+<p>AN-ISC-2-1098_Wakeup_by_GPT_ICU </p>
+<p>1.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>Vector </p>
+<p>TechnicalReference_Asr_ComM </p>
+<p>3.7 </p>
+<p>[4] </p>
+<p> </p>
+<p>Vector </p>
+<p>TechnicalReference_Asr_Nm </p>
+<p>2.7.1 </p>
+<p>[5] </p>
+<p> </p>
+<p>NXP </p>
+<p>TJA1041 AN00094_3.pdf </p>
+<p>Rev 03 </p>
+<p>[6] </p>
+<p> </p>
+<p><b>Philips</b></p>
+<p> </p>
+<p>AN00093_2---TJA1020 LIN transceiver.pdf </p>
+<p>Rev 02 </p>
+<p>[7] </p>
+<p> </p>
+<p><b>NXP </b></p>
+<p>071130 TJA1080A.pdf </p>
+<p>Rev 02 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>3 / 42 </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Introduction................................................................................................................... 6</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>Procedure .......................................................................................................... 6</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Use Cases ......................................................................................................... 7</p>
+<p> </p>
+<p>1.2.1</p>
+<p> </p>
+<p>Bus wake-up by internal run request .................................................. 7</p>
+<p> </p>
+<p>1.2.2</p>
+<p> </p>
+<p>Wake-up by timer interrupt ................................................................. 7</p>
+<p> </p>
+<p>1.2.3</p>
+<p> </p>
+<p>Wake-up by µC I/O port...................................................................... 7</p>
+<p> </p>
+<p>1.2.4</p>
+<p> </p>
+<p>Wake-up by CAN transceiver ............................................................. 7</p>
+<p> </p>
+<p>1.2.5</p>
+<p> </p>
+<p>Wake-up by CAN controller ................................................................ 7</p>
+<p> </p>
+<p>1.2.6</p>
+<p> </p>
+<p>Wake-up by LIN transceiver ............................................................... 7</p>
+<p> </p>
+<p>1.2.7</p>
+<p> </p>
+<p>Wake-up by LIN controller: ................................................................. 7</p>
+<p> </p>
+<p>1.2.8</p>
+<p> </p>
+<p>Wake-up by FlexRay transceiver interrupt: ......................................... 7</p>
+<p> </p>
+<p>1.2.9</p>
+<p> </p>
+<p>Wake-up by FlexRay polling mode: .................................................... 8</p>
+<p> </p>
+<p>1.3</p>
+<p> </p>
+<p>Wake Up Detection at ECU Start-Up .................................................................. 8</p>
+<p> </p>
+<p>1.3.1</p>
+<p> </p>
+<p>Functional Description ........................................................................ 8</p>
+<p> </p>
+<p>1.3.2</p>
+<p> </p>
+<p>Configuration.................................................................................... 10</p>
+<p> </p>
+<p>1.4</p>
+<p> </p>
+<p>Wake-up Process ............................................................................................. 10</p>
+<p> </p>
+<p>1.4.1</p>
+<p> </p>
+<p>Synchronous and Asynchronous Wake-Up Concept ........................ 11</p>
+<p> </p>
+<p>1.4.2</p>
+<p> </p>
+<p>Configuring Synchronous and Asynchronous Wake-Up ................... 14</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Wake-up Event ............................................................................................................ 16</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>ECUM Configuration ........................................................................................ 16</p>
+<p> </p>
+<p>2.2</p>
+<p> </p>
+<p>ICU Interrupt (µC I/O port) ................................................................................ 20</p>
+<p> </p>
+<p>2.3</p>
+<p> </p>
+<p>CAN ................................................................................................................. 22</p>
+<p> </p>
+<p>2.3.1</p>
+<p> </p>
+<p>General ............................................................................................ 22</p>
+<p> </p>
+<p>2.3.2</p>
+<p> </p>
+<p>CAN Wake-up by Transceiver .......................................................... 22</p>
+<p> </p>
+<p>2.3.3</p>
+<p> </p>
+<p>CAN Wake-up by Controller ............................................................. 25</p>
+<p> </p>
+<p>2.3.4</p>
+<p> </p>
+<p>CAN Wakeup by Polling the CAN Driver .......................................... 27</p>
+<p> </p>
+<p>2.3.5</p>
+<p> </p>
+<p>CAN Wake-up Validation .................................................................. 28</p>
+<p> </p>
+<p>2.4</p>
+<p> </p>
+<p>LIN ................................................................................................................... 31</p>
+<p> </p>
+<p>2.4.1</p>
+<p> </p>
+<p>LIN Wake-up by Transceiver ............................................................ 31</p>
+<p> </p>
+<p>2.4.2</p>
+<p> </p>
+<p>LIN Wake-up by Controller ............................................................... 33</p>
+<p> </p>
+<p>2.5</p>
+<p> </p>
+<p>FlexRay ........................................................................................................... 34</p>
+<p> </p>
+<p>2.5.1</p>
+<p> </p>
+<p>FlexRay Wake-up by Transceiver Interrupt ....................................... 34</p>
+<p> </p>
+<p>2.5.2</p>
+<p> </p>
+<p>FlexRay Wake-up by Polling the Transceiver ................................... 38</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Special Use Cases ...................................................................................................... 39</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Multiple Wake-up Sources Share one µC I/O Port ........................................... 39</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>CAN Wake-up Without Validation ..................................................................... 39</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>4 / 42 </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration hints ......................................................................................................... 40</b></p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ...................................................................................... 41</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Glossary .......................................................................................................... 41</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Abbreviations ................................................................................................... 41</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................ 42</b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>5 / 42 </p>
+<p><b>Illustrations </b></p>
+<p>Figure 1-1</p>
+<p> </p>
+<p>Example ECU schematic with CAN, LÍN and FlexRay transceiver .............. 6</p>
+<p> </p>
+<p>Figure 1-2</p>
+<p> </p>
+<p>ECU sample ............................................................................................... 8</p>
+<p> </p>
+<p>Figure 1-3</p>
+<p> </p>
+<p>Enable Wakeup Source for CAN Driver .................................................... 10</p>
+<p> </p>
+<p>Figure 1-4</p>
+<p> </p>
+<p>Wakeup Source on Driver Side ................................................................. 10</p>
+<p> </p>
+<p>Figure 1-5</p>
+<p> </p>
+<p>Wake Up support settings ......................................................................... 10</p>
+<p> </p>
+<p>Figure 1-6</p>
+<p> </p>
+<p>Wakeup Source on Transceiver Side ........................................................ 10</p>
+<p> </p>
+<p>Figure 1-7</p>
+<p> </p>
+<p>Extract from the AUTSOAR document </p>
+<p><b>AUTOSAR_SWS_ECU_StateManager.pdf</b>. It shows both use cases. .... 13</p>
+<p> </p>
+<p>Figure 1-8</p>
+<p> </p>
+<p>Possible results for asynchronous wake-up concept ................................. 13</p>
+<p> </p>
+<p>Figure 1-9</p>
+<p> </p>
+<p>Configuration  using GENy. ....................................................................... 14</p>
+<p> </p>
+<p>Figure 1-10</p>
+<p> </p>
+<p>Configuration using DaVinci Developer ..................................................... 15</p>
+<p> </p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>Configuration of the wake-up source IDs .................................................. 16</p>
+<p> </p>
+<p>Figure 2-2</p>
+<p> </p>
+<p>Configuration of the ECUM Sleep mode ................................................... 17</p>
+<p> </p>
+<p>Figure 2-3</p>
+<p> </p>
+<p>Configuration of the ECUM shut down ...................................................... 18</p>
+<p> </p>
+<p>Figure 2-4</p>
+<p> </p>
+<p>Configuration of the wake-up settings of a ICU channel ............................ 21</p>
+<p> </p>
+<p>Figure 2-5</p>
+<p> </p>
+<p>General CAN configuration in GENy ......................................................... 22</p>
+<p> </p>
+<p>Figure 2-6</p>
+<p> </p>
+<p>Configuration of the CAN transceiver wake-up source .............................. 23</p>
+<p> </p>
+<p>Figure 2-7</p>
+<p> </p>
+<p>Selection of the desired interrupt service for the CAN transceiver wake-</p>
+<p>up ............................................................................................................. 23</p>
+<p> </p>
+<p>Figure 2-8</p>
+<p> </p>
+<p>Activation of the CAN wake-up reason type in the configuration tool ........ 23</p>
+<p> </p>
+<p>Figure 2-9</p>
+<p> </p>
+<p>Selection of the CAN wake-up processing type interrupt .......................... 25</p>
+<p> </p>
+<p>Figure 2-10</p>
+<p> </p>
+<p>Selection of the desired interrupt service and configuration of the CAN </p>
+<p>controller wake-up source ......................................................................... 26</p>
+<p> </p>
+<p>Figure 2-11</p>
+<p> </p>
+<p>Selection of the CAN wake-up processing type polling ............................. 27</p>
+<p> </p>
+<p>Figure 2-12</p>
+<p> </p>
+<p>Activation of the CAN wake-up validation and configuration of the </p>
+<p>validation function ..................................................................................... 28</p>
+<p> </p>
+<p>Figure 2-13</p>
+<p> </p>
+<p>Selection of the desired interrupt service for the LIN transceiver wake-up 32</p>
+<p> </p>
+<p>Figure 2-14</p>
+<p> </p>
+<p>Activation of the LIN transceiver wakeup and configuration of the wake-</p>
+<p>up source .................................................................................................. 32</p>
+<p> </p>
+<p>Figure 2-15</p>
+<p> </p>
+<p>Selection of the desired interrupt service of the LIN controller .................. 33</p>
+<p> </p>
+<p>Figure 2-16</p>
+<p> </p>
+<p>Activation of the LIN controller wake-up support and configuration wake-</p>
+<p>up source .................................................................................................. 34</p>
+<p> </p>
+<p>Figure 2-17</p>
+<p> </p>
+<p>Selection of the FlexRay wakeup processing type interrupt and </p>
+<p>configuration of the wake-up source ......................................................... 35</p>
+<p> </p>
+<p>Figure 2-18</p>
+<p> </p>
+<p>Selection of the FlexRay wake-up processing type polling and </p>
+<p>configuration of the wake-up source ......................................................... 38</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Glossary ................................................................................................... 41</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................ 41</p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>6 / 42 </p>
+<p><b>1 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the usage of MICROSAR (based on AUTOSAR 3.x) if the ECU </p>
+<p>shall wake up and start its own communication due to detected communication on the bus. </p>
+<p>Here </p>
+<p>is </p>
+<p>described </p>
+<p>how </p>
+<p>a </p>
+<p>communication </p>
+<p>channel </p>
+<p>(CAN, </p>
+<p>LIN </p>
+<p>or </p>
+<p>FlexRay) </p>
+<p>can </p>
+<p>be </p>
+<p>reactivated from sleep mode and if the system is in a power save mode, how the ECU can </p>
+<p>be reactivated via a wake-up event on a communication channel. </p>
+<p> </p>
+<p> </p>
+<p>Figure 1-1 </p>
+<p>Example ECU schematic with CAN, LÍN and FlexRay transceiver </p>
+<p><b>1.1 </b></p>
+<p><b>Procedure </b></p>
+<p><b>&gt; </b></p>
+<p>Configure the ECU wake-up sources (DaVinci Configurator Pro: ECUM) </p>
+<p><b>&gt; </b></p>
+<p>Configure the desired wake-up indication (DaVinci Configurator Pro: ICU interrupt, </p>
+<p>GENy: bus-specific interrupt, bus-specific polling mode) </p>
+<p><b>&gt; </b></p>
+<p>Implement the needed ECUM callback functions </p>
+<p><b>CAN </b></p>
+<p><b>Transceiver</b></p>
+<p><b>Power-</b></p>
+<p><b>supply</b></p>
+<p><b>µC</b></p>
+<p><b>V</b></p>
+<p><b>BAT</b></p>
+<p><b>CAN_H</b></p>
+<p><b>CAN_L</b></p>
+<p><b>WAKE</b></p>
+<p>RXD</p>
+<p>TXD</p>
+<p>INH</p>
+<p>ERRN</p>
+<p>STB + EN</p>
+<p>5V</p>
+<p>Reset</p>
+<p>V</p>
+<p>CC</p>
+<p>/</p>
+<p>V</p>
+<p>I/O</p>
+<p>Watchdog</p>
+<p>WD</p>
+<p>Wakeup </p>
+<p>by CAN</p>
+<p>Wakeup </p>
+<p>by port </p>
+<p>pin</p>
+<p><b>LIN </b></p>
+<p><b>Transceiver</b></p>
+<p><b>LIN</b></p>
+<p><b>WAKE</b></p>
+<p>RXD</p>
+<p>TXD</p>
+<p>NSLP</p>
+<p>CAN controller</p>
+<p>LIN controller</p>
+<p>Wakeup </p>
+<p>by LIN</p>
+<p></p>
+<p>1</p>
+<p><b>FlexRay </b></p>
+<p><b>Transceiver</b></p>
+<p>RXEN</p>
+<p>TXD</p>
+<p>ERR</p>
+<p>Wakeup by </p>
+<p>FlexRay</p>
+<p>FlexRay controller</p>
+<p>INH</p>
+<p>INH</p>
+<p>INH</p>
+<p><b>BP</b></p>
+<p><b>BM</b></p>
+<p><b>WAKE</b></p>
+<p>STB + EN</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>7 / 42 </p>
+<p><b>1.2 </b></p>
+<p><b>Use Cases </b></p>
+<p>For every wake-up interrupt use case the wake-up sources have to be configured. </p>
+<p><b>&gt; </b></p>
+<p>See 2.1 ECUM Configuration </p>
+<p><b>1.2.1 </b></p>
+<p><b>Bus wake-up by internal run request </b></p>
+<p><b>&gt; </b></p>
+<p>The ECU is active and the application demands full communication mode for a </p>
+<p>network. The COMM starts the communication of the network (see [3]). </p>
+<p><b>&gt; </b></p>
+<p>If the communication of a channel is started the NM also starts the communication of </p>
+<p>the other synchronized channels (see [4]). </p>
+<p><b>1.2.2 </b></p>
+<p><b>Wake-up by timer interrupt </b></p>
+<p><b>&gt; </b></p>
+<p>The GPT module triggers the wake-up interrupt and calls the function </p>
+<p>EcuM_CheckWakeup (see [2]). </p>
+<p><b>1.2.3 </b></p>
+<p><b>Wake-up by</b> <b>µC I/O port </b></p>
+<p><b>&gt; </b></p>
+<p>Any desired wake-up source may be connected to an I/O port of the ECU. The event </p>
+<p>on the I/O port is detected by the ICU which starts the EcuM_CheckWakeup (not </p>
+<p>scope of this document). </p>
+<p><b>1.2.4 </b></p>
+<p><b>Wake-up by CAN transceiver </b></p>
+<p><b>&gt; </b></p>
+<p>The used CAN controller does not support the feature &quot;wakeup by CAN message&quot;, i.e. </p>
+<p>the CAN controller cannot detect incoming CAN messages and generate a wakeup </p>
+<p>interrupt. The ECU shall wake up and start its own communication due to detected </p>
+<p>communication on the CAN bus. In this case the CAN transceiver is used as interrupt </p>
+<p>source. </p>
+<p><b>&gt; </b></p>
+<p>See 2.2 ICU Interrupt (µC I/O port); 2.3.2 CAN Wake-up </p>
+<p><b>1.2.5 </b></p>
+<p><b>Wake-up by CAN controller </b></p>
+<p><b>&gt; </b></p>
+<p>The used CAN controller supports the feature &quot;wake-up by CAN message”. </p>
+<p><b>&gt; </b></p>
+<p>See 2.3.3 CAN Wake-up </p>
+<p><b>1.2.6 </b></p>
+<p><b>Wake-up by LIN transceiver </b></p>
+<p><b>&gt; </b></p>
+<p>The used LIN controller does not support the feature &quot;wake-up by message” and the </p>
+<p>transceiver should be used as wake-up source. In this case the LIN transceiver is used </p>
+<p>as interrupt source. </p>
+<p><b>&gt; </b></p>
+<p> See 2.2 ICU Interrupt (µC I/O port), 2.4.1 LIN Wake-up </p>
+<p><b>1.2.7 </b></p>
+<p><b>Wake-up by LIN controller: </b></p>
+<p><b>&gt; </b></p>
+<p>The used LIN controller supports the feature &quot;wake-up by message”. </p>
+<p><b>&gt; </b></p>
+<p> See 2.4.2 LIN Wake-up </p>
+<p><b>1.2.8 </b></p>
+<p><b>Wake-up by FlexRay transceiver interrupt: </b></p>
+<p><b>&gt; </b></p>
+<p>The FlexRay transceiver should be used as wake-up source via interrupt. </p>
+<p><b>&gt; </b></p>
+<p> See 2.2 ICU Interrupt (µC I/O port), 2.5.1 FlexRay Wake-up by Transceiver Interrupt </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>8 / 42 </p>
+<p><b>1.2.9 </b></p>
+<p><b>Wake-up by FlexRay polling mode: </b></p>
+<p><b>&gt; </b></p>
+<p>The FlexRay transceiver should be used as wake-up source in polling mode. </p>
+<p><b>&gt; </b></p>
+<p>See 2.5.2 FlexRay Wake-up by Polling the Transceiver </p>
+<p><b>1.3 </b></p>
+<p><b>Wake Up Detection at ECU Start-Up </b></p>
+<p>The following listed conditions must be true for the ECU project: </p>
+<p><b>&gt; </b></p>
+<p>the used ECU supply voltage is switched by a CAN transceiver </p>
+<p><b>&gt; </b></p>
+<p>the ECU shall start up but the CAN wake-up event shall be validated before the ECU </p>
+<p>enters RUN state </p>
+<p>Such </p>
+<p>a </p>
+<p>scenario </p>
+<p>is </p>
+<p>not </p>
+<p>fully </p>
+<p>supported </p>
+<p>by </p>
+<p>the  AUTOSAR </p>
+<p>standard.  The </p>
+<p>functional </p>
+<p>description below is an extension for AUTOSAR. </p>
+<p> </p>
+<p>Figure 1-2 </p>
+<p>ECU sample </p>
+<p><b>1.3.1 </b></p>
+<p><b>Functional Description </b></p>
+<p>The </p>
+<p>bus </p>
+<p>wakeup </p>
+<p>detection </p>
+<p>is </p>
+<p>done </p>
+<p>inside </p>
+<p>the </p>
+<p>transceiver </p>
+<p>initialization, </p>
+<p>i.e. </p>
+<p>during </p>
+<p>EcuM_AL_DriverInitTwo</p>
+<p>.  The  transceiver  monitors  a  detected  bus  wake-up  to  the </p>
+<p>EcuM via </p>
+<p>EcuM_SetWakeupEvent(…)</p>
+<p>. </p>
+<p>An exception is partial networking as described in the following chapter.  </p>
+<p><b>1.3.1.1 </b></p>
+<p><b>Transceivers Supporting Partial Networking </b></p>
+<p>The  transceiver  driver  only  supports  1  wake-up  source  and  uses  this  source  for  the </p>
+<p>following wake-up reasons: </p>
+<p><b>&gt; </b></p>
+<p>POR – Power-On-Reset </p>
+<p><b>&gt; </b></p>
+<p>SYSERR </p>
+<p><b>&gt; </b></p>
+<p>WUP (wake-up pattern) / WUF (wake-up frame) – i.e. the wake-up event from the bus </p>
+<p><b>&gt; </b></p>
+<p>LWU (local wake-up/wakePin if supported by the hardware) </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>9 / 42 </p>
+<p>For Transceivers with partial networking the standard wake-up validation shall not be used. </p>
+<p>For that reason it is necessary to figure out the wake-up event. This can be done using the </p>
+<p>function </p>
+<p>CanIf_GetTrcvWakeupReason()</p>
+<p>: </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>Here is an example how to figure out the wake-up reason.  </p>
+<p>FUNC(void, ECUM_CODE) EcuM_AL_DriverInitTwo  (P2CONST(EcuM_ConfigType, AUTOMATIC, </p>
+<p>ECUM_APPL_CONFIG) ConfigPtr)  </p>
+<p>{ </p>
+<p>  CanIf_TrcvWakeupModeType wakeupModeType; </p>
+<p>  CanTrcv_Init() /* the Transceiver Treiber checks at initialization  </p>
+<p>                    on a corresponding wake-up event and informs the  </p>
+<p>                    ECUM via EcuM_SetWakeupEvent(&lt;WK_Source_Handle&gt;)! </p>
+<p>                    The transceiver has to be initialized with the  </p>
+<p>                    state normal!*/ </p>
+<p> </p>
+<p>  /* Can driver initialization */ </p>
+<p>  CanDrv_Init() </p>
+<p> </p>
+<p>  /* CAN interface initialization */ </p>
+<p>  CanIf_Init() </p>
+<p> </p>
+<p>  /* The source code section below has to be performed per configured     </p>
+<p>  CAN channel */ </p>
+<p>  /* The source code section below must be performed before  </p>
+<p>  CanSM_Init () is called */ </p>
+<p> </p>
+<p>  if(EcuM_GetStatusOfWakeupSource(&lt;WK_Source_Handle&gt;) ==   </p>
+<p>  ECUM_WKSTATUS_PENDING) </p>
+<p>  { </p>
+<p>    (void)CanIf_GetTrcvWakeupReason(&lt;TrcvId&gt;, &amp;wakeupModeType); </p>
+<p> </p>
+<p>    if(wakeupModeType != CANIF_TRCV_WU_BY_BUS) </p>
+<p>    { </p>
+<p>      /* wakeup not triggered because of CAN bus event e.g. reception of  </p>
+<p>         wake up pattern (refer to the specific transceiver  driver  </p>
+<p>         technical reference about the supported value range of the  </p>
+<p>         CanIf_TrcvWakeupModeType  </p>
+<p>         Dependent on which wake-up event the bus should be started, the if  </p>
+<p>         condition has to be extended. */ </p>
+<p>   </p>
+<p>      /* wake up event will be cleared to prevent invalid bus wake up */ </p>
+<p>      EcuM_ClearWakeupEvent(&lt;WK_Source_Handle&gt;); </p>
+<p>    } </p>
+<p>  } </p>
+<p>} </p>
+<p> </p>
+<p>If the wake-up reason is WUP or LWU, the bus can be woken up. Otherwise leave the </p>
+<p>bus sleeping.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>10 / 42 </p>
+<p><b>1.3.2 </b></p>
+<p><b>Configuration </b></p>
+<p><b>1.3.2.1 </b></p>
+<p><b>CAN Driver Configuration </b></p>
+<p><b>&gt; </b></p>
+<p>Enable Wakeup Support </p>
+<p> </p>
+<p>Figure 1-3 </p>
+<p>Enable Wakeup Source for CAN Driver </p>
+<p><b>&gt; </b></p>
+<p>Configure the <b>CanWakeupSourceRef </b>to the same value as you are going to set the </p>
+<p>values for the transceiver in the next chapter 1.3.2.2.  </p>
+<p> </p>
+<p>Figure 1-4 </p>
+<p>Wakeup Source on Driver Side </p>
+<p><b>1.3.2.2 </b></p>
+<p><b>Transceiver Driver Configuration  </b></p>
+<p><b>&gt; </b></p>
+<p>Set <b>Wake Up Support </b></p>
+<p> </p>
+<p>Figure 1-5 </p>
+<p>Wake Up support settings </p>
+<p><b>&gt; </b></p>
+<p>Set the <b>Wakeup Source </b>to appropriate value </p>
+<p> </p>
+<p>Figure 1-6 </p>
+<p>Wakeup Source on Transceiver Side </p>
+<p> </p>
+<p><b>1.4 </b></p>
+<p><b>Wake-up Process </b></p>
+<p>This is a short explanation how a typical wake-up sequence is executed. For a detailed </p>
+<p>description of the execution flow when a wake-up event occurs please refer to the </p>
+<p>AUTOSAR ECUM [1] specification Chapter 9. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>11 / 42 </p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p><b>Enable Trigger: </b>Wake-up Enabled (init, shutdown, bus sleep). The wake-up sources </p>
+<p>will be enabled </p>
+<p><b>&gt; </b></p>
+<p>if the according communication channel stops the communication or </p>
+<p><b>&gt; </b></p>
+<p>if the ECU enters the sleep mode. </p>
+<p><b>&gt; </b></p>
+<p><b>Trigger: </b>WakeupEvent (bus interrupt, ICU interrupt, SCHM(bus) polling) </p>
+<p><b>&gt; </b></p>
+<p>A wake-up event is detected and the ECUM is informed about the wake-up source. </p>
+<p><b>&gt; </b></p>
+<p>Alternatively the ECUM cyclically checks each wake-up source (which is configured </p>
+<p>as polling mode source) if a wake-up is pending. </p>
+<p><b>&gt; </b></p>
+<p><b>Check: </b>EcuM_CheckWakeup triggers wake-up source-specific handling </p>
+<p><b>&gt; </b></p>
+<p>The ECUM triggers the “check wake-up” function of the according &lt;bus&gt;-interface. If </p>
+<p>a wake-up is pending the ECUM is informed via the SetWakeupEvent function. </p>
+<p><b>&gt; </b></p>
+<p>In case of shared interrupts multiple wake-up sources can be passed in one call.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>ECUM starts wake-up validation timeout. </p>
+<p><b>&gt; </b></p>
+<p><b>Set: </b>EcuM_SetWakeupEvent </p>
+<p><b>&gt; </b></p>
+<p>The transceiver/controller driver of the wake-up source informs the ECUM if this </p>
+<p>wakeup source has triggered the wake-up event. </p>
+<p><b>&gt; </b></p>
+<p><b>Disable: </b>Wake-up / Set MCU </p>
+<p><b>&gt; </b></p>
+<p>After a valid wake-up the (interrupt notification of the wakeup) source becomes </p>
+<p>disabled. This might is done by the ECUM in case of an ECU wake-up or it has to be </p>
+<p>done by the wake-up source e.g. by the CanTrcv. </p>
+<p><b>&gt; </b></p>
+<p><b>Validation</b>: (CAN) </p>
+<p><b>&gt; </b></p>
+<p>The ECUM starts the bus which matches to the wake-up source </p>
+<p>(</p>
+<p>EcuM_StartWakeupSources). </p>
+<p><b>&gt; </b></p>
+<p>The ECUM starts the validation of the wake-up event (if configured) and triggers the </p>
+<p>CanIf_CheckValidation function which matches to the wake-up source.</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>If a correct message is received on the CAN bus the CanIf_CheckValidation </p>
+<p>function has to call EcuM_ValidateWakeupEvent to indicate the ECUM about a valid </p>
+<p>wake-up event. The ECUM informs the COMM via </p>
+<p>ComM_EcuM_WakeUpIndication. </p>
+<p><b>&gt; </b></p>
+<p>If the validation time expires the ECUM executes the callout </p>
+<p>EcuM_StopWakeupSource where activities are implemented to stop the bus again. </p>
+<p>The ECUM sets back the ECU into the preceding state again. </p>
+<p>, </p>
+<p><b>1.4.1 </b></p>
+<p><b>Synchronous and Asynchronous Wake-Up Concept </b></p>
+<p>These concepts are working for all bus systems and any wake-up source. For this reason </p>
+<p>it is described only once. It can be transferred to your actual use case very easily.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>12 / 42 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>For the explanation we use CAN as example. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>When a wake-up interrupt occurs, a </p>
+<p>CanIf_CheckWakeup</p>
+<p> has to be performed for figure </p>
+<p>out the reason for the wake-up interrupt. The result of this check can be  </p>
+<p>1. </p>
+<p>Wake-up reason detected, the reason is e.g. CAN message receipt.  </p>
+<p>2. </p>
+<p>No reason detected.  </p>
+<p><b>Synchronous Wake-Up Concept </b></p>
+<p>In </p>
+<p>the </p>
+<p>synchronous </p>
+<p>case, </p>
+<p>the </p>
+<p>ECUM </p>
+<p>waits </p>
+<p>actively </p>
+<p>for </p>
+<p>the </p>
+<p>response </p>
+<p>of </p>
+<p>the </p>
+<p>CanIf_CheckWakeup.  </p>
+<p>In case of a longer process to figure out the wake-up reason, this would result in delay of </p>
+<p>the system. </p>
+<p><b>Asynchronous Wake-Up Concept </b></p>
+<p>The only difference to the synchronous wake-up is the timer you start, when you check for </p>
+<p>the wake-up reason via </p>
+<p>CanIf_CheckWakeup</p>
+<p>. There could be three results (Figure 1-8): </p>
+<p>1. </p>
+<p>The successfully detected wake-up reason is returned before the timer expires </p>
+<p>2. </p>
+<p>An </p>
+<p>EcuM_EndCheckWakeup</p>
+<p> is received before the timer expires. Then the timer is </p>
+<p>stopped and work can be continued.  </p>
+<p>3. </p>
+<p>The timer expires. In this case the result is, that there is no wake-up detected and </p>
+<p>work can be continued.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>13 / 42 </p>
+<p> </p>
+<p>Figure 1-7 </p>
+<p>Extract from the AUTSOAR document <b>AUTOSAR_SWS_ECU_StateManager.pdf</b>. It shows both use cases. </p>
+<p> </p>
+<p>Figure 1-8 </p>
+<p>Possible results for asynchronous wake-up concept </p>
+<p> </p>
+<p><b> </b></p>
+<p><b>sd EcuM_CanWakeupByTransceiv erInterrupt</b></p>
+<p>«Peripheral»</p>
+<p>CAN Transceiver</p>
+<p>Hardware</p>
+<p>«Peripheral»</p>
+<p>CanController</p>
+<p>«module»</p>
+<p>CanTrcv</p>
+<p>«module»</p>
+<p>Can</p>
+<p>«module»</p>
+<p>CanIf</p>
+<p>«module»</p>
+<p>Icu</p>
+<p>«module»</p>
+<p>Mcu</p>
+<p>ECU Firmware</p>
+<p>«module»</p>
+<p>EcuM</p>
+<p>«module»</p>
+<p>Os</p>
+<p>Release Scheduler resource to allow other tasks to run.</p>
+<p>If the Scheduler will not be acquired as resource it is not assured that the program flow continues </p>
+<p>after HALT instruction because re-scheduling takes place after occurence of an ISR Cat 2.</p>
+<p><b>HALT</b></p>
+<p>Execution continues after HALT instruction.</p>
+<p>CanSM will have called CanIf_SetControllerMode and CanIf_SetTransceiverMode when going to sleep.</p>
+<p><b>GOSLEEP</b></p>
+<p><b>SLEEP</b></p>
+<p><b>WAKEUP I</b></p>
+<p><b>WAKEUP </b></p>
+<p><b>VALIDATION</b></p>
+<p><b>alt </b></p>
+<p>[synchron]</p>
+<p>[asynchron]</p>
+<p><b>opt (asynchron)</b></p>
+<p><b>alt Wait for Wakeup Indication</b></p>
+<p>[Wakeup Indication]</p>
+<p>[Job End Notification]</p>
+<p>[Timeout]</p>
+<p><b>alt JobResult</b></p>
+<p>[Wake Up]</p>
+<p>[No Wake Up]</p>
+<p>EcuM_EnableWakeupSources(EcuM_WakeupSourceType)</p>
+<p>GetResource(uint8)</p>
+<p>Mcu_SetMode(Mcu_ModeType)</p>
+<p>Wakeup</p>
+<p>interrupt()</p>
+<p>EcuM_CheckWakeup(EcuM_WakeupSourceType)</p>
+<p>activate</p>
+<p>PLL()</p>
+<p>CanIf_CheckWakeup(EcuM_WakeupSourceType,</p>
+<p>Std_ReturnType)</p>
+<p>CanTrcv_CB_WakeupByBus(uint8,</p>
+<p>Std_ReturnType)</p>
+<p>EcuM_SetWakeupEvent(EcuM_WakeupSourceType)</p>
+<p>Return from</p>
+<p>interrupt()</p>
+<p>Wakeup interrupt()</p>
+<p>EcuM_CheckWakeup(EcuM_WakeupSourceType)</p>
+<p>EcuM_StartCheckWakeup(EcuM_WakeupSourceType)</p>
+<p>start</p>
+<p>CheckWakeupTimer()</p>
+<p>CanIf_CheckWakeup(EcuM_WakeupSourceType, Std_ReturnType)</p>
+<p>CanTrcv_CB_WakeupByBus(uint8,</p>
+<p>Std_ReturnType)</p>
+<p>Mcu_SetMode()</p>
+<p>Mcu_SetMode(Mcu_ModeType)</p>
+<p>EcuM_DisableWakeupSources(EcuM_WakeupSourceType)</p>
+<p>ReleaseResource(uint8)</p>
+<p>SPI_AsyncTransmit()</p>
+<p>SPI_Job1EndNotification()</p>
+<p>EcuM_SetWakeupEvent(EcuM_WakeupSourceType)</p>
+<p>EcuM_EndCheckWakeup(EcuM_WakeupSourceType)</p>
+<p>CheckWakeupTimer expired()</p>
+<p><b> sd EcuM_CanWakeupByTransceiv erInterrupt</b></p>
+<p>«Peripheral»</p>
+<p>CAN Transceiver</p>
+<p>Hardware</p>
+<p>«Peripheral»</p>
+<p>CanController</p>
+<p>«module»</p>
+<p>CanTrcv</p>
+<p>«module»</p>
+<p>Can</p>
+<p>«module»</p>
+<p>CanIf</p>
+<p>«module»</p>
+<p>Icu</p>
+<p>«module»</p>
+<p>Mcu</p>
+<p>ECU Firmware</p>
+<p>«module»</p>
+<p>EcuM</p>
+<p>«module»</p>
+<p>Os</p>
+<p>Release Scheduler resource to allow other tasks to run.</p>
+<p>If the Scheduler will not be acquired as resource it is not assured that the program flow continues </p>
+<p>after HALT instruction because re-scheduling takes place after occurence of an ISR Cat 2.</p>
+<p><b>HALT</b></p>
+<p>Execution continues after HALT instruction.</p>
+<p>CanSM will have called CanIf_SetControllerMode and CanIf_SetTransceiverMode when going to sleep.</p>
+<p><b>GOSLEEP</b></p>
+<p><b>SLEEP</b></p>
+<p><b>WAKEUP I</b></p>
+<p><b>WAKEUP </b></p>
+<p><b>VALIDATION</b></p>
+<p><b>alt </b></p>
+<p>[synchron]</p>
+<p>[asynchron]</p>
+<p><b>opt (asynchron)</b></p>
+<p><b>alt Wait for Wakeup Indication</b></p>
+<p>[Wakeup Indication]</p>
+<p>[Job End Notification]</p>
+<p>[Timeout]</p>
+<p><b>alt JobResult</b></p>
+<p>[Wake Up]</p>
+<p>[No Wake Up]</p>
+<p>EcuM_EnableWakeupSources(EcuM_WakeupSourceType)</p>
+<p>GetResource(uint8)</p>
+<p>Mcu_SetMode(Mcu_ModeType)</p>
+<p>Wakeup</p>
+<p>interrupt()</p>
+<p>EcuM_CheckWakeup(EcuM_WakeupSourceType)</p>
+<p>activate</p>
+<p>PLL()</p>
+<p>CanIf_CheckWakeup(EcuM_WakeupSourceType,</p>
+<p>Std_ReturnType)</p>
+<p>CanTrcv_CB_WakeupByBus(uint8,</p>
+<p>Std_ReturnType)</p>
+<p>EcuM_SetWakeupEvent(EcuM_WakeupSourceType)</p>
+<p>Return from</p>
+<p>interrupt()</p>
+<p>Wakeup interrupt()</p>
+<p>EcuM_CheckWakeup(EcuM_WakeupSourceType)</p>
+<p>EcuM_StartCheckWakeup(EcuM_WakeupSourceType)</p>
+<p>start</p>
+<p>CheckWakeupTimer()</p>
+<p>CanIf_CheckWakeup(EcuM_WakeupSourceType, Std_ReturnType)</p>
+<p>CanTrcv_CB_WakeupByBus(uint8,</p>
+<p>Std_ReturnType)</p>
+<p>Mcu_SetMode()</p>
+<p>Mcu_SetMode(Mcu_ModeType)</p>
+<p>EcuM_DisableWakeupSources(EcuM_WakeupSourceType)</p>
+<p>ReleaseResource(uint8)</p>
+<p>SPI_AsyncTransmit()</p>
+<p>SPI_Job1EndNotification()</p>
+<p>EcuM_SetWakeupEvent(EcuM_WakeupSourceType)</p>
+<p>EcuM_EndCheckWakeup(EcuM_WakeupSourceType)</p>
+<p>CheckWakeupTimer expired()</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>14 / 42 </p>
+<p><b>1.4.2 </b></p>
+<p><b>Configuring Synchronous and Asynchronous Wake-Up </b></p>
+<p>To get the asynchronous wake-up handling just enter a value in the field <b>Check Wakeup </b></p>
+<p><b>timeout (in sec)</b>.  </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>It depends on your project whether you do the configuration of ECUM in GENy or in </p>
+<p>DaVinci Configurator Pro. Both ways are shown in the following screen shots.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 1-9 </p>
+<p>Configuration  using GENy.  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>15 / 42 </p>
+<p> </p>
+<p>Figure 1-10 </p>
+<p>Configuration using DaVinci Developer </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>16 / 42 </p>
+<p><b>2 </b></p>
+<p><b>Wake-up Event </b></p>
+<p><b>2.1 </b></p>
+<p><b>ECUM Configuration </b></p>
+<p>This example shows the configuration of the ECUM with the MICROSAR Configurator Pro. </p>
+<p>It is also possible to configure the ECUM with GENy. </p>
+<p> </p>
+<p>Figure 2-1 </p>
+<p>Configuration of the wake-up source IDs </p>
+<p>If the wake-up source needs to be validated enter a value greater than zero in the field </p>
+<p><b>Validation Timeout</b>. </p>
+<p>Create an identifier for each of your wake-up sources. The <b>Wake-up Source Name </b>has to </p>
+<p>be a valid C name. </p>
+<p>Select the according user handle of the COMM (<b>ComM channel handle</b>). </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>17 / 42 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The <b>Wakeup Source ID </b>has to be a multiple of two (2^n) and each ID has to be </p>
+<p>unique. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The wake-up source belongs to the network (not to the transceiver or controller). In the </p>
+<p>example shown in Figure 2-1 the <b>Wake-up Source ID 64 </b>is used for the first network </p>
+<p><b>CAN0 </b>independent if the wake-up event is triggered by the CAN transceiver or the </p>
+<p>CAN controller. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>Figure 2-2 </p>
+<p>Configuration of the ECUM Sleep mode </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>18 / 42 </p>
+<p>The ECUM performs the enabling of the wake-up source if the according channel enters </p>
+<p>the  sleep  mode.  Add  all  needed  wake-up  sources  to  the  list  of  the <b> Enabled  Wakeup </b></p>
+<p><b>Sources</b>. </p>
+<p> </p>
+<p>Figure 2-3 </p>
+<p>Configuration of the ECUM shut down </p>
+<p>This  parameter  specifies  the  sleep  mode  which  should  be  selected  when  the  default </p>
+<p>shutdown target state is <b>Sleep </b>see Figure 2-3. Select the name of the sleep mode which </p>
+<p>contains the list of your wake-up sources which has been configured in Figure 2-2. </p>
+<p>The following callouts are used to enable and to disable the wake-up sources selected by </p>
+<p>the current sleep mode and to provide a specific reaction handling when a wake-up event </p>
+<p>has occurred. </p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>EcuM_EnableWakeupSources() </p>
+<p><b>&gt; </b></p>
+<p>EcuM_DisableWakeupSources() </p>
+<p><b>&gt; </b></p>
+<p>EcuM_CheckWakeup() </p>
+<p><b>&gt; </b></p>
+<p>EcuM_StartWakeupSources() </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>19 / 42 </p>
+<p><b>&gt; </b></p>
+<p>EcuM_StopWakeupSources() </p>
+<p><b>&gt; </b></p>
+<p>EcuM_CheckValidation() </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>In AUTOSAR R 2.1 the modules are specified to call EcuM_SetWakeupEvent API for correct </p>
+<p>wake-up detection. </p>
+<p>In AUTOSAR 3.0 the modules should call EcuM_CheckWakeup. The ICU specification is </p>
+<p>inconsistent at this point. Please refer to the specific driver module documentation</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The following parts are only necessary if the wake-up source shall also be able to wake up </p>
+<p>the ECU (see “Wake-up Capability” <b>Figure 2-4</b>). </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_EnableWakeupSources(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>    /* Enable CAN transceiver wakeup */ </p>
+<p>    CanIf_SetTransceiverWakeupMode(0, CANIF_TRCV_WU_ENABLE); </p>
+<p>    /* Enable ECU wakeup which is activated in the configuration via </p>
+<p>the “Wakeup Capability”. Parameter is the &quot;ChannelName&quot; of the </p>
+<p>&quot;IcuChannel&quot;  */ </p>
+<p>    Icu_EnableWakeup(Icu_CAN0_TrcvWakeUp); </p>
+<p>    /* Reduced power operation. Only those notifications are available </p>
+<p>which are configured as wakeup capable */ </p>
+<p>    Icu_SetMode(ICU_MODE_SLEEP); </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_LIN0) != 0) </p>
+<p>  { </p>
+<p>    /* Enable ECU wakeup which is activated in the configuration via </p>
+<p>the “Wakeup Capability”. Parameter is the &quot;ChannelName&quot; of the </p>
+<p>&quot;IcuChannel&quot;  */ </p>
+<p>    Icu_EnableWakeup(Icu_LIN0_TrcvWakeUp); </p>
+<p>    /* Reduced power operation. Only those notifications are available </p>
+<p>which are configured as wakeup capable */ </p>
+<p>    Icu_SetMode(ICU_MODE_SLEEP); </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_FR) != 0) </p>
+<p>  {  </p>
+<p>    /* Enable ECU wakeup which is activated in the configuration via </p>
+<p>the “Wakeup Capability”. Parameter is the &quot;ChannelName&quot; of the </p>
+<p>&quot;IcuChannel&quot;  */ </p>
+<p>    Icu_EnableWakeup(Icu_FlexRay_WakeUp); </p>
+<p>    /* Reduced power operation. Only those notifications are available </p>
+<p>which are configured as wakeup capable */ </p>
+<p>    Icu_SetMode(ICU_MODE_SLEEP); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>If the ECU enters the sleep mode, the wake-up sources which shall be able so wake the </p>
+<p>ECU  has  to  be  enabled.  Enable  the  CAN  transceiver  wake-up  as  wake-up  source  if  it </p>
+<p>should be the wake-up source. Enable the <b>Wake-up Capability </b>of the ICU channel via the </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>20 / 42 </p>
+<p>function Icu_EnableWakeup with the ICU <b>ChannelName </b>of the <b>IcuChannel </b>as parameter </p>
+<p>(see Figure 2-4). Set the ICU in reduced power operation via Icu_SetMode. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_DisableWakeupSources(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>    /* Disable ECU wakeup which is activated in the configuration via </p>
+<p>the “Wakeup Capability”. Parameter is the &quot;ChannelName&quot; of the </p>
+<p>&quot;IcuChannel&quot;  */ </p>
+<p>    Icu_DisableWakeup(Icu_CAN0_TrcvWakeUp); </p>
+<p>    /* Normal operation, all used interrupts are enabled according to </p>
+<p>the notification requests */ </p>
+<p>    Icu_SetMode(ICU_MODE_NORMAL); </p>
+<p>    /* Disable CAN transceiver wakeup */ </p>
+<p>    CanIf_SetTransceiverWakeupMode(0, CANIF_TRCV_WU_DISABLE); </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_LIN0) != 0) </p>
+<p>  { </p>
+<p>    /* Disable ECU wakeup which is activated in the configuration via </p>
+<p>the “Wakeup Capability”. Parameter is the &quot;ChannelName&quot; of the </p>
+<p>&quot;IcuChannel&quot;  */ </p>
+<p>    Icu_DisableWakeup(Icu_LIN0_TrcvWakeUp); </p>
+<p>    /* Normal operation, all used interrupts are enabled according to </p>
+<p>the notification requests */ </p>
+<p>    Icu_SetMode(ICU_MODE_NORMAL); </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_FR) != 0) </p>
+<p>  { </p>
+<p>    /* Disable ECU wakeup which is activated in the configuration via </p>
+<p>the “Wakeup Capability”. Parameter is the &quot;ChannelName&quot; of the </p>
+<p>&quot;IcuChannel&quot;  */ </p>
+<p>    Icu_DisableWakeup(Icu_FlexRay_WakeUp); </p>
+<p>    /* Normal operation, all used interrupts are enabled according to </p>
+<p>the notification requests */ </p>
+<p>    Icu_SetMode(ICU_MODE_NORMAL); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>If the ECU wakes up the wakeup source has to be disabled. Disable the CAN transceiver </p>
+<p>wakeup  for  the  wake-up  source  if  it  is  used  as  wake-up  source.  Disable  the <b> Wakeup </b></p>
+<p><b>Capability </b></p>
+<p>of </p>
+<p>the </p>
+<p>ICU </p>
+<p>channel </p>
+<p>via </p>
+<p>the </p>
+<p>function </p>
+<p>Icu_DisableWakeup </p>
+<p>with </p>
+<p>the </p>
+<p>ICU </p>
+<p><b>ChannelName </b>of the <b>IcuChannel </b>as parameter (see Figure 2-4). Set the ICU to </p>
+<p>NORMAL</p>
+<p> </p>
+<p>operation via Icu_SetMode. </p>
+<p><b>2.2 </b></p>
+<p><b>ICU Interrupt (µC I/O port) </b></p>
+<p>The proposal described in this chapter is using an additional μC I/O port to generate the </p>
+<p>wake-up information via the ICU driver. This I/O port is connected, e.g. to a Rx port of the </p>
+<p>wake-up source. The shown example pictures may differ, dependent on the hardware or </p>
+<p>the used configuration tool. </p>
+<p>Add an IcuChannel (via <b>[Insert]</b>) for each of your wake-up sources which  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>21 / 42 </p>
+<p><b>&gt; </b></p>
+<p>are not in polling mode </p>
+<p><b>&gt; </b></p>
+<p>do not have an interrupt function of its own and  </p>
+<p><b>&gt; </b></p>
+<p>use the service of the ICU. </p>
+<p> </p>
+<p>Figure 2-4 </p>
+<p>Configuration of the wake-up settings of a ICU channel </p>
+<p><b>&gt; </b></p>
+<p>Choose the <b>Hw Channel </b>which matches to the wake-up source. </p>
+<p><b>&gt; </b></p>
+<p>If the wake-up event shall be able to wake up the ECU (and not only the </p>
+<p>communication channel) it is necessary to activate the <b>Wake-up Capability </b>for this </p>
+<p>ICU channel, otherwise the wake-up event will be ignored when the ICU is set to </p>
+<p>ICU_MODE_SLEEP mode. If the <b>Signal Notification </b>function is NOT used then also </p>
+<p>activate <b>Report Wakeup Source </b>in the tab <b>General settings </b>(that the ICU triggers </p>
+<p>EcuM_CheckWakeup(“<b>Channel Wakeup Info</b>”) if a wakeup event occurs). </p>
+<p><b>&gt; </b></p>
+<p>In the <b>Channel Wake-up Info </b>drop down list choose the identifier which matches to </p>
+<p>the <b>Wakeup Source Name </b>set in the ECUM. </p>
+<p><b>&gt; </b></p>
+<p>Create a name for the <b>Signal Notification </b>function. </p>
+<p>The user has to implement the signal notification function. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>22 / 42 </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void “Signal Notification” (void) </p>
+<p>{ </p>
+<p>  EcuM_CheckWakeup(“Wakeup Source Name”); </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>2.3 </b></p>
+<p><b>CAN </b></p>
+<p><b>2.3.1 </b></p>
+<p><b>General </b></p>
+<p> </p>
+<p>Figure 2-5 </p>
+<p>General CAN configuration in GENy </p>
+<p>Enable  the <b> Wake-up  Event  API </b> and  enter  the  name  of  the <b> Wake-up  Notification </b></p>
+<p><b>Function</b>. Here the notification EcuM_SetWakeupEvent of the ASR ECUM is used. </p>
+<p><b>2.3.2 </b></p>
+<p><b>CAN Wake-up by Transceiver </b></p>
+<p>The  wake-up  information  is  generated  via  the  ICU  driver  (see  chapter  2.2)  by  using  an </p>
+<p>additional  μC  I/O  port.  This  I/O  port  is  connected  to  the  CAN  transceiver  pin  which </p>
+<p>indicates the wake-up. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>If a TJA1041(A) CAN transceivers is used, connect the ERRN port with the µC I/O port. </p>
+<p>The RXD pin of the transceiver also indicates a wake-up and could be also used. But </p>
+<p>the advantage of the ERRN is that it distinguishes between a local wake-up (via WAKE </p>
+<p>pin) a remote wake-up (via CAN bus) (see [5]). A HIGH signal indicates a remote </p>
+<p>wake-up. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>23 / 42 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>In  dependency  of  the  provided  ICU  configuration  options  it  is  possible  to </p>
+<p>configure </p>
+<p>the </p>
+<p><b>IcuDefaultStartEdge</b>. </p>
+<p>This </p>
+<p>option </p>
+<p>should </p>
+<p>be </p>
+<p>configured </p>
+<p>to </p>
+<p>ICU_FALLING_EDGE,  because  the  wake-up  event  is  provided  by  the  Rx  pin </p>
+<p>and/or the ERRN pin via a level change from recessive to dominant. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 2-6 </p>
+<p>Configuration of the CAN transceiver wake-up source </p>
+<p>Enter the <b>Transceiver WakeUpSource </b>in the CAN interface. The value has to match to </p>
+<p>the <b> Wakeup  Source  ID </b> in  the  ECUM  (cp.  Chapter  2.1).  Enter  0  (zero)  if  the  channel </p>
+<p>should not be woken up by the transceiver. Set the wake-up source ID of the controller to </p>
+<p>zero as shown in Figure 2-10, . </p>
+<p> </p>
+<p> </p>
+<p>Figure 2-7 </p>
+<p>Selection of the desired interrupt service for the CAN transceiver wake-up </p>
+<p>Select ISR for the <b>Wake Up Support</b>. </p>
+<p> </p>
+<p>Figure 2-8 </p>
+<p>Activation of the CAN wake-up reason type in the configuration tool </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>24 / 42 </p>
+<p>Enable the feature <b>Wakeup By Bus </b>in the channel view of the CanTrcv. </p>
+<p>The  ICU  triggers  the  notification  function.  This  informs  the  ECUM  about  the  wake-up </p>
+<p>interrupt by calling EcuM_CheckWakeup with all according wake-up sources as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void Icu_TrcvWakeUpNotification_0 (void) </p>
+<p>{ </p>
+<p>  /* inform the EcuM about the wakeup event, the parameter is the </p>
+<p>configured transceiver wakeup source */ </p>
+<p>  EcuM_CheckWakeup(ECUM_WKSOURCE_CAN0); </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The  EcuM  does  not  know  if  the  function  EcuM_CheckWakeup  has  been  called  by  the </p>
+<p>wakeup  source  itself.  Therefore,  the  EcuM_CheckWakeup  has  to  ask  the  driver  of  the </p>
+<p>wakeup  source  if  it  was  responsible  for  that  wakeup.  Add  the  CanIf_CheckWakeup </p>
+<p>function of the CAN bus with the according wake-up source as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_CheckWakeup(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>    /* ask the driver of the wakeup source if it was responsible for </p>
+<p>the wakeup */ </p>
+<p>    CanIf_CheckWakeup(ECUM_WKSOURCE_CAN0); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>To  avoid  wake-up  events  while  the  communication  channel  is  in  normal  mode,  it  is </p>
+<p>necessary  to  disable  the  notification  if  the  transceiver  enters  normal  mode  and  to  re-</p>
+<p>enable </p>
+<p>the </p>
+<p>notification </p>
+<p>if </p>
+<p>the </p>
+<p>transceiver </p>
+<p>enters </p>
+<p>standby </p>
+<p>mode. </p>
+<p>Adapt </p>
+<p>the </p>
+<p>CanTrcv_&lt;TrcvName&gt;_SetOpMode function according the example. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>Std_ReturnType CanTrcv_30_&lt;TrcvName&gt;_SetOpMode(CanIf_TransceiverModeType </p>
+<p>OpMode, uint8 CanTrcvIndex) </p>
+<p>{ </p>
+<p>  switch(OpMode) </p>
+<p>    case CANTRCV_30_&lt;TrcvName&gt;_OP_MODE_NORMAL: </p>
+<p>      /* Disable wakeup interrupt on normal operation mode */ </p>
+<p>      Icu_DisableNotification(Icu_CAN0_TrcvWakeUp); </p>
+<p>    case CANTRCV_30_&lt;TrcvName&gt;_OP_MODE_STANDBY: </p>
+<p>      Icu_EnableNotification(Icu_CAN0_TrcvWakeUp); </p>
+<p>      case CANTRCV_30_&lt;TrcvName&gt;_OP_MODE_SLEEP </p>
+<p>        Icu_EnableNotification(Icu_CAN0_TrcvWakeUp); </p>
+<p>        /* example for TJA1041 </p>
+<p>Dio_WriteChannel(CanTrcv_30_xChannel[CanTrcvIndex].CanTrcvPinEN,STD_LOW); </p>
+<p>        </p>
+<p>Dio_WriteChannel(CanTrcv_30_xChannel[CanTrcvIndex].CanTrcvPinSTB,STD_LOW);      </p>
+<p>*/ </p>
+<p>}</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>25 / 42 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The ICU notification function activation, via </p>
+<p>Icu_EnableNotification(...)</p>
+<p>, has </p>
+<p>to be called before the transceiver HW is set into the standby mode (e.g. via </p>
+<p>Dio_WriteChannel(..)</p>
+<p> ). Refer to the example above. </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The function call Icu_DisableNotification does not disable the interrupts! The ICU </p>
+<p>notification functionality is one level above the interrupt handling. This is important if the </p>
+<p>RX line of the transceiver is connected to the ICU interrupt pin. With such a </p>
+<p>configuration, CAN communication would lead to a high µC load because of many </p>
+<p>interrupts on the ICU channel. </p>
+<p>A possible solution is to also disable/enable the interrupt. </p>
+<p><b> </b></p>
+<p> </p>
+<p>The CAN bus may be woken up by an EMC disturbance. In this case it is not necessary to </p>
+<p>wake up the bus or switch the ECU in RUN mode. To eliminate an unwanted wake-up the </p>
+<p>ECUM waits for a valid CAN message. The next step in the wake-up sequence is the CAN </p>
+<p>Wake-up Validation, see chapter 2.3.5, if <b>Validation Timeout </b>in the ECUM configuration in </p>
+<p>Figure 2-1 is greater than zero. </p>
+<p><b>2.3.3 </b></p>
+<p><b>CAN Wake-up by Controller </b></p>
+<p> </p>
+<p>Figure 2-9 </p>
+<p>Selection of the CAN wake-up processing type interrupt </p>
+<p>Select the Interrupt mode for the <b>Wakeup Processing</b>. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>26 / 42 </p>
+<p> </p>
+<p>Figure 2-10 </p>
+<p>Selection of the desired interrupt service and configuration of the CAN controller wake-up source </p>
+<p>Enter the <b>Wakeup Source </b>in the channel view of the CAN driver. The value has to match </p>
+<p>to the <b>Wakeup Source ID </b>in the ECUM (cp. Chapter 2.1). Enter 0 (zero) if the channel </p>
+<p>should not be woken up by the controller. Set the wake-up source ID of the transceiver to </p>
+<p>zero as shown in Figure 2-6. </p>
+<p>Choose the related interrupt service function for the CAN controller. This function has to be </p>
+<p>called by the interrupt dispatcher after identifying the interrupt source which belongs to the </p>
+<p>CAN controller. </p>
+<p>void CanIsr_0( void ) </p>
+<p>{ </p>
+<p>CanInterrupt(kCanPhysToLogChannelIndex_0); </p>
+<p>} </p>
+<p>The  CAN  Driver  will  detect  an  interrupt  in  the  CanInterrupt  function  and  triggers  the </p>
+<p>EcuM_CheckWakeup with the according wake-up source ID of the controller as parameter. </p>
+<p>The  EcuM  does  not  know  if  the  function  EcuM_CheckWakeup  has  been  called  by  the </p>
+<p>wakeup  source  itself.  Therefore,  the  EcuM_CheckWakeup  has  to  ask  the  driver  of  the </p>
+<p>wakeup  source  if  it  was  responsible  for  that  wakeup.  Add  the  CanIf_CheckWakeup </p>
+<p>function of the CAN bus with the according wake-up source as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_CheckWakeup(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p>  { </p>
+<p>    /* ask the driver of the wakeup source if it was responsible for </p>
+<p>the wakeup */ </p>
+<p>    CanIf_CheckWakeup(ECUM_WKSOURCE_CAN1); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The CAN bus may be woken up by an EMC disturbance. In this case it is not necessary to </p>
+<p>wake up the bus or switch the ECU in RUN mode. To eliminate an unwanted wake-up the </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>27 / 42 </p>
+<p>ECUM waits for a valid CAN message. The next step in the wake-up sequence is the CAN </p>
+<p>Wake-up Validation, see chapter 2.3.5, if <b>Validation Timeout </b>in the ECUM configuration in </p>
+<p>Figure 2-1 is greater than zero. </p>
+<p><b>2.3.4 </b></p>
+<p><b>CAN Wakeup by Polling the CAN Driver </b></p>
+<p> </p>
+<p>Figure 2-11 </p>
+<p>Selection of the CAN wake-up processing type polling </p>
+<p>Select </p>
+<p>the </p>
+<p>polling </p>
+<p>mode </p>
+<p>for </p>
+<p>the </p>
+<p><b>Wakeup </b></p>
+<p><b>Processing</b>. </p>
+<p>The </p>
+<p>SCHM </p>
+<p>will </p>
+<p>call </p>
+<p>the </p>
+<p>Can_MainFunction_Wakeup cyclically. In this function the CAN driver detects if a wake-up </p>
+<p>is pending at any CAN controller or CAN transceiver and trigger the EcuM_CheckWakeup </p>
+<p>with the according wake-up source ID of the controller as parameter. </p>
+<p>The  EcuM  does  not  know  if  the  function  EcuM_CheckWakeup  has  been  called  by  the </p>
+<p>wakeup  source  itself.  Therefore,  the  EcuM_CheckWakeup  has  to  ask  the  driver  of  the </p>
+<p>wakeup  source  if  it  was  responsible  for  that  wakeup.  Add  the  CanIf_CheckWakeup </p>
+<p>function of the CAN bus with the according wake-up source as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_CheckWakeup(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>    /* ask the driver of the wakeup source if it was responsible for </p>
+<p>the wakeup */ </p>
+<p>    CanIf_CheckWakeup(ECUM_WKSOURCE_CAN0); </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p>  { </p>
+<p>    /* ask the driver of the wakeup source if it was responsible for </p>
+<p>the wakeup */ </p>
+<p>    CanIf_CheckWakeup(ECUM_WKSOURCE_CAN1); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>28 / 42 </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The CAN bus may be woken up by an EMC disturbance. In this case it is not necessary to </p>
+<p>wake up the bus or switch the ECU in RUN mode. To eliminate an unwanted wake-up the </p>
+<p>ECUM waits for a valid CAN message. The next step in the wake-up sequence is the CAN </p>
+<p>Wake-up Validation, see chapter 2.3.5, if <b>Validation Timeout </b>in the ECUM configuration in </p>
+<p>Figure 2-1 is greater than zero. </p>
+<p><b>2.3.5 </b></p>
+<p><b>CAN Wake-up Validation </b></p>
+<p> </p>
+<p>Figure 2-12 </p>
+<p>Activation of the CAN wake-up validation and configuration of the validation function </p>
+<p>Enable </p>
+<p>the </p>
+<p><b>Wakeup </b></p>
+<p><b>validation </b></p>
+<p><b>notification </b></p>
+<p>and </p>
+<p>enter </p>
+<p>the </p>
+<p>name </p>
+<p>of </p>
+<p>the </p>
+<p><b>Wakeup </b></p>
+<p><b>Validation  Notification  Function</b>.  Here  the  notification  EcuM_ValidateWakeupEvent  of </p>
+<p>the ECUM is used. </p>
+<p>After  the  detection  of  the  wake-up  source  in  Ecu_CheckWakeup  the  wake-up  validation </p>
+<p>will be performed. The ECUM triggers the callback which has to start the transceiver and </p>
+<p>controller of the wake-up source. Add the according function calls in the callback function </p>
+<p>EcuM_StartWakeupSources. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_StartWakeupSources(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p> ComM_ModeType CanMode = COMM_NO_COMMUNICATION; </p>
+<p> </p>
+<p> if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p> {  </p>
+<p>/* determine in which is the current Can network state */ </p>
+<p>(void)CanSM_GetCurrentComMode(0, &amp;CanMode); </p>
+<p>if(COMM_NO_COMMUNICATION == CanMode) </p>
+<p>{ </p>
+<p>    /* set the controller and trcv mode into normal operation mode */ </p>
+<p>    CanIf_SetTransceiverMode(0 /* TrcvIdx */, CANIF_TRCV_MODE_NORMAL); </p>
+<p>    CanIf_SetControllerMode (0 /* CtrlIdx */, CANIF_CS_STOPPED); </p>
+<p>    CanIf_SetControllerMode (0 /* CtrlIdx */, CANIF_CS_STARTED); </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>29 / 42 </p>
+<p>  } </p>
+<p>  else </p>
+<p>  { </p>
+<p>    /* stack already up and running */ </p>
+<p>  } </p>
+<p> }/* IF ECUM_WKSOURCE_CAN0*/ </p>
+<p> </p>
+<p> </p>
+<p> if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p> { </p>
+<p>/* determine in which is the current Can Network state */ </p>
+<p>(void)CanSM_GetCurrentComMode(1, &amp;CanMode); </p>
+<p>if(COMM_NO_COMMUNICATION == CanMode) </p>
+<p>{ </p>
+<p>    /* set the controller and trcv mode into normal operation mode */ </p>
+<p>    CanIf_SetTransceiverMode(1 /* TrcvIdx */, CANIF_TRCV_MODE_NORMAL); </p>
+<p>    CanIf_SetControllerMode (1 /* CtrlIdx */, CANIF_CS_STOPPED); </p>
+<p>    CanIf_SetControllerMode (1 /* CtrlIdx */, CANIF_CS_STARTED); </p>
+<p>  } </p>
+<p>  else </p>
+<p>  { </p>
+<p>    /* stack already up and running */ </p>
+<p>  } </p>
+<p> }/* IF ECUM_WKSOURCE_CAN1*/ </p>
+<p>} </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Alternatively  with  the  latest  CANSM  the  code  could  look  like  shown  below.  The  CANIF </p>
+<p>calls can be replaced by </p>
+<p>CanSM_StartWakeupSources(&lt;Channel ID&gt;)</p>
+<p>. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example for latest CANSM version </b></p>
+<p>void EcuM_StartWakeupSources(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p> ComM_ModeType CanMode = COMM_NO_COMMUNICATION; </p>
+<p> </p>
+<p> if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p> {  </p>
+<p>/* determine in which is the current Can network state */ </p>
+<p>CanSM_StartWakeupSources(0); </p>
+<p> }/* IF ECUM_WKSOURCE_CAN0*/ </p>
+<p> </p>
+<p> </p>
+<p> if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p> { </p>
+<p>/* determine in which is the current Can Network state */ </p>
+<p>  CanSM_StartWakeupSources(1); </p>
+<p> }/* IF ECUM_WKSOURCE_CAN1*/ </p>
+<p>} </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>The ECUM calls cyclically the validation function which has to trigger the channel specific </p>
+<p>validation  of  the  wake-up  source.  CANIF  indicates  the  passed  validation  by  calling  the </p>
+<p>function EcuM_ValidateWakeupEvent if it recognizes the successful reception of at least </p>
+<p>one  message  and  the  ECUM  triggers  the  ComM_EcuM_WakeUpIndication  to  start  the </p>
+<p>network. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>30 / 42 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_CheckValidation(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>    /* Query the driver if the wakeup event was valid */ </p>
+<p>    CanIf_CheckValidation(ECUM_WKSOURCE_CAN0); </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p>  { </p>
+<p>    /* Query the driver if the wakeup event was valid */ </p>
+<p>    CanIf_CheckValidation(ECUM_WKSOURCE_CAN1); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The  validation  fails  if  the  CANIF  could  not  recognize  the  successful  reception  of  a </p>
+<p>message  during  the  validation  time.  Due  to  the  failed  validation  the  ECUM  initiates  the </p>
+<p>shutdown  of  the  network  and  sets  the  ECU  back  in  the  preceding  state  again.  So  the </p>
+<p>ECUM  executes the GOSLEEP  sequence (see  [1]) or  stays  in  RUN.  Add  the  according </p>
+<p>function calls in the callback function EcuM_StopWakeupSources. </p>
+<p> </p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_StopWakeupSources(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  ComM_ModeType CanMode = COMM_NO_COMMUNICATION; </p>
+<p> </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>   /* Validation was not successful*/ </p>
+<p> (void)CanSM_GetCurrentComMode(0, &amp;CanMode); </p>
+<p> if(COMM_NO_COMMUNICATION == CanMode) </p>
+<p> { </p>
+<p>   /* Can channel is not started by the ECU internally, set the CAN  </p>
+<p>      controller and Transceiver back to sleep */ </p>
+<p>     CanIf_SetControllerMode(0 /* CtrlIdx */, CANIF_CS_STOPPED); </p>
+<p>     CanIf_SetControllerMode(0 /* CtrlIdx */, CANIF_CS_SLEEP); </p>
+<p>     CanIf_SetTransceiverMode(0 /*TrcvIdx*/, CANIF_TRCV_MODE_STANDBY); </p>
+<p>   } </p>
+<p>  } </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p>  { </p>
+<p>   /* Validation was not successful*/ </p>
+<p> (void)CanSM_GetCurrentComMode(1, &amp;CanMode); </p>
+<p> if(COMM_NO_COMMUNICATION == CanMode) </p>
+<p> { </p>
+<p>   /* Can channel is not started by the ECU internally, set the CAN  </p>
+<p>      controller and Transceiver back to sleep */ </p>
+<p>     CanIf_SetControllerMode(1 /* CtrlIdx */, CANIF_CS_STOPPED); </p>
+<p>     CanIf_SetControllerMode(1 /* CtrlIdx */, CANIF_CS_SLEEP); </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>31 / 42 </p>
+<p>     CanIf_SetTransceiverMode(1 /*TrcvIdx*/, CANIF_TRCV_MODE_STANDBY); </p>
+<p>   } </p>
+<p>  } </p>
+<p>} </p>
+<p> </p>
+<p>Alternatively  with  the  latest  CANSM,  the  code  could  look  like  shown  below. The  CANIF </p>
+<p>calls can be replaced by </p>
+<p>CanSM_StopWakeupSources(&lt;Channel ID&gt;)</p>
+<p>. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example for latest CANSM version </b></p>
+<p>void EcuM_StopWakeupSources(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  ComM_ModeType CanMode = COMM_NO_COMMUNICATION; </p>
+<p> </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN0) != 0) </p>
+<p>  { </p>
+<p>   /* Validation was not successful*/ </p>
+<p> CanSM_StopWakeupSources(0); </p>
+<p>} </p>
+<p> </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_CAN1) != 0) </p>
+<p>  { </p>
+<p>   /* Validation was not successful*/ </p>
+<p>CanSM_StopWakeupSources(1); </p>
+<p>  } </p>
+<p>} </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The EcuM functions EcuM_StartWakeupSources() and EcuM_StopWakeupSources() </p>
+<p>must not be interrupted by the ComM, CanSM and CanNm main function. This can be </p>
+<p>implemented by adding additional exclusive areas inside the two EcuM functions. </p>
+<p>Additionally the EcuM_MainFunction must not interrupt the main functions of ComM, </p>
+<p>CanSM and CanNm, e.g. same task priority or same task context. </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b>2.4 </b></p>
+<p><b>LIN </b></p>
+<p><b>2.4.1 </b></p>
+<p><b>LIN Wake-up by Transceiver </b></p>
+<p>The  wake-up  information  is  generated  via  the  ICU  driver  (see  chapter  2.2)  by  using  an </p>
+<p>additional μC I/O port. This I/O port is connected to the pin of the LIN transceiver which </p>
+<p>indicates the wake-up. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>If TJA1020 transceivers is used connect the pin RXD with the µC I/O port. The RXD pin </p>
+<p>switches to low if the transceiver detects bus activity. To get a reliable negative edge it </p>
+<p>has to be ensured that the RXD pin has a high level if the transceiver is in SLEEP </p>
+<p>mode (see [6], Fig 7) e.g. the pin is connected to a pull-up reference. The wake-up </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>32 / 42 </p>
+<p>source has to be deactivated to avoid interrupts during normal communication. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The LIN transceiver TJA1020 in sleep mode triggers the inhibit pin only once in </p>
+<p>case of a valid wakeup event (see [6], Table 1). So it is not necessary to </p>
+<p>enable/disable the ICU notification function. But the voltage is also floating if the </p>
+<p>transceiver is in SLEEP mode (see [6], Fig 7). </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 2-13 </p>
+<p>Selection of the desired interrupt service for the LIN transceiver wake-up </p>
+<p>Select ISR for the <b>Wakeup Support</b>. </p>
+<p> </p>
+<p>Figure 2-14 </p>
+<p>Activation of the LIN transceiver wakeup and configuration of the wake-up source </p>
+<p>Enable the feature <b>Wakeup by Transceiver </b>in the channel view of the LINTRCV. </p>
+<p>Enter the <b>Wakeup Source By Bus </b>in the channel view of the LINTRCV. The value has to </p>
+<p>match  to  the <b> Wakeup  Source  ID </b> in  the  ECUM  (cp.  Chapter  2.1).  Enter  0  (zero)  if  the </p>
+<p>channel should not be woken up by the transceiver. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>33 / 42 </p>
+<p>The  ICU  triggers  the  notification  function.  This  informs  the  ECUM  about  the  wake-up </p>
+<p>interrupt by calling EcuM_CheckWakeup with all according wake-up sources as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void Icu_LinTrcvWakeUpNotification_0(void) </p>
+<p>{  </p>
+<p>  /* inform the EcuM about the wakeup event, the parameter is the </p>
+<p>configured transceiver wakeup source */ </p>
+<p>  EcuM_CheckWakeup(ECUM_WKSOURCE_LIN0); </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The  EcuM  does  not  know  if  the  function  EcuM_CheckWakeup  has  been  called  by  the </p>
+<p>wakeup  source  itself.  Therefore,  the  EcuM_CheckWakeup  has  to  ask  the  driver  of  the </p>
+<p>wakeup  source  if  it  was  responsible  for  that  wakeup. Add  the  LinIf_Cbk_CheckWakeup </p>
+<p>callback function of the LIN bus with the according wake-up source as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_CheckWakeup(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_LIN0) != 0) </p>
+<p>  { </p>
+<p>    /* ask the driver of the wakeup source if it was responsible for </p>
+<p>the wakeup */ </p>
+<p>    LinIf_Cbk_CheckWakeup(ECUM_WKSOURCE_LIN0); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The bus will be woken up by a special signal pattern so it is improbable that the bus has </p>
+<p>been  woken  up  by  an  EMC disturbance.  From there  no  wakeup validation  is necessary </p>
+<p>and the <b>Validation Timeout </b>in the ECUM configuration in Figure 2-1 has to be zero. </p>
+<p><b>2.4.2 </b></p>
+<p><b>LIN Wake-up by Controller </b></p>
+<p> </p>
+<p>Figure 2-15 </p>
+<p>Selection of the desired interrupt service of the LIN controller </p>
+<p><b>&gt; </b></p>
+<p>Choose the needed <b>Type of Interrupt Function</b>.  </p>
+<p><b>&gt; </b></p>
+<p>Category 1: Interrupt function has to be added to the interrupt vector table. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>34 / 42 </p>
+<p><b>&gt; </b></p>
+<p>Category 2: Interrupt function is defined with ISR() define. </p>
+<p><b>&gt; </b></p>
+<p>void Func(void): Interrupt function is defined as void Func(void) function. </p>
+<p>Choose the related interrupt service function for the LIN controller. This function has to be </p>
+<p>called by the interrupt dispatcher after identifying the interrupt source which belongs to the </p>
+<p>LIN controller. </p>
+<p>ISR( LinIsr_0 ){  </p>
+<p>Lin_Interrupt(0);  </p>
+<p>} </p>
+<p>The  LIN  driver  will  detect  an  interrupt  in  the  Lin_Interrupt  function  and  triggers  the </p>
+<p>EcuM_CheckWakeup with the according wake-up source ID of the controller as parameter. </p>
+<p> </p>
+<p>Figure 2-16 </p>
+<p>Activation of the LIN controller wake-up support and configuration wake-up source </p>
+<p>Enable the feature <b>Wakeup support </b>in the channel view of the LIN driver. </p>
+<p>Enter the <b>Wakeup Source </b>in the channel view of the LIN driver. The value has to match to </p>
+<p>the <b> Wakeup  Source  ID </b> in  the  ECUM  (cp.  Chapter  2.1).  Enter  0  (zero)  if  the  channel </p>
+<p>should not be woken up by the transceiver. </p>
+<p>The bus will be woken up by a special signal pattern so it is improbable that the bus has </p>
+<p>been woken up by an EMC disturbance. From there no wake-up validation is necessary </p>
+<p>and the <b>Validation Timeout </b>in the ECUM configuration in Figure 2-1 has to be zero. </p>
+<p><b>2.5 </b></p>
+<p><b>FlexRay </b></p>
+<p><b>2.5.1 </b></p>
+<p><b>FlexRay Wake-up by Transceiver Interrupt </b></p>
+<p>For  FlexRay  a  wake-up  is  only  possible  via  the  FlexRay  transceivers.  There  are  two </p>
+<p>transceivers  for  the  two  different  channels  in  a  FlexRay  cluster.  They  are  treated  as </p>
+<p>belonging  to  one  network  and  thus,  there  should  be  only  one  wake-up  source  identifier </p>
+<p>configured  for  both  channels.  The  wake-up  information  is  generated  via  the  ICU  driver </p>
+<p>(see chapter 2.2) by using an additional μC I/O port which is connected to the pin of the </p>
+<p>transceiver which indicates the wake-up. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>35 / 42 </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>If  TJA1080A </p>
+<p>FlexRay </p>
+<p>transceiver </p>
+<p>is </p>
+<p>used </p>
+<p>connect </p>
+<p>the </p>
+<p>RXEN </p>
+<p>port  of </p>
+<p>the </p>
+<p>transceiver with the µC I/O port. If the bus is idle the pin RXEN is switched to </p>
+<p>HIGH and if activity is detected on the bus lines the pin RXEN is switched to </p>
+<p>LOW (see [7], Table 9). </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>In  dependency  of  the  provided  ICU  configuration  options  it  is  possible  to </p>
+<p>configure </p>
+<p>the </p>
+<p><b>IcuDefaultStartEdge</b>. </p>
+<p>This </p>
+<p>option </p>
+<p>should </p>
+<p>be </p>
+<p>configured </p>
+<p>to </p>
+<p>ICU_FALLING_EDGE, because the wake-up event is provided by the RXEN pin </p>
+<p>via a level change from recessive to dominant. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 2-17 </p>
+<p>Selection of the FlexRay wakeup processing type interrupt and configuration of the wake-up source </p>
+<p>Select FRTRCV_WAKEUP_INTERRUPT for the <b>Transceiver Wakeup Detection</b>. </p>
+<p>Enter the according wake-up source ID of the ECUM in <b>Transceiver WakeupSourceRef </b></p>
+<p>(cp. Chapter 2.1). </p>
+<p>The  ICU  triggers  the  notification  function.  This  informs  the  ECUM  about  the  wake-up </p>
+<p>interrupt by calling EcuM_CheckWakeup with all according wake-up sources as parameter. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void Icu_FrTrcvWakeUpNotification_0(void) </p>
+<p>{ </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>36 / 42 </p>
+<p>  /* inform the EcuM about the wakeup event, the parameter is the </p>
+<p>configured transceiver wakeup source */ </p>
+<p>  EcuM_CheckWakeup(ECUM_WKSOURCE_FR); </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The  EcuM  does  not  know  if  the  function  EcuM_CheckWakeup  has  been  called  by  the </p>
+<p>wakeup  source  itself.  Therefore,  the  EcuM_CheckWakeup  has  to  ask  the  driver  of  the </p>
+<p>wakeup </p>
+<p>source </p>
+<p>if </p>
+<p>it </p>
+<p>was </p>
+<p>responsible </p>
+<p>for </p>
+<p>that </p>
+<p>wakeup. </p>
+<p>Add </p>
+<p>the </p>
+<p>FrIf_Cbk_WakeupByTransceiver callback function of the FlexRay bus with the according </p>
+<p>controller index. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void EcuM_CheckWakeup(EcuM_WakeupSourceType wakeupSource) </p>
+<p>{ </p>
+<p>  if ((wakeupSource &amp; ECUM_WKSOURCE_FR) != 0) </p>
+<p>  {  </p>
+<p>    /* ask the driver of the wakeup source if it was responsible for </p>
+<p>the wakeup */ </p>
+<p>    FrIf_Cbk_WakeupByTransceiver(0 /* FrCtrlIdx */, FR_CHANNEL_A ); </p>
+<p>    FrIf_Cbk_WakeupByTransceiver(0 /* FrCtrlIdx */, FR_CHANNEL_B ); </p>
+<p>  } </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Note that in EcuM_CheckWakeup need to be two separate calls to </p>
+<p>FrIf_Cbk_WakeupByTransceiver, one for each FlexRay channel</p>
+<p>. </p>
+<p><b> </b></p>
+<p> </p>
+<p>To  avoid  the  setting  of  wake-up  events  during  the  communication  channel  is  in  normal </p>
+<p>mode, it is necessary to disable the notification if the transceiver enters NORMAL mode </p>
+<p>and to re-enable the notification if the transceiver enters STANDBY mode. The FRTRCV </p>
+<p>enable and disables the ICU notification function already. Check if code fit to your needs. </p>
+<p>It is possible to enable/disable the transceiver interrupt depending which state has been </p>
+<p>entered. This functionality can be enabled by defining the following parameter: </p>
+<p>#define FRTRCV_WUPINT_CBK STD_ON </p>
+<p>This  switch  can  be  defined  in  a  user  config  file.  When  this  feature </p>
+<p>is  enabled  the </p>
+<p>Icu_DisableNotification and Icu_EnableNotification will be called. Whether the transceiver </p>
+<p>interrupt  will  be  enabled  or  disabled  can  be  configured  via  the  trcvIcuFctPtr  option  in </p>
+<p>FrTrcvPhy.c. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>/* Modes are { Unknown, Normal, Standby, Sleep, Receiveonly } */  </p>
+<p>STATIC CONST(trcvIcuFctPtrType, FRTRCV_CONST) trcvIcuFctPtr[] = </p>
+<p>{ Icu_DisableNotification,  </p>
+<p>  Icu_DisableNotification,  </p>
+<p>  Icu_EnableNotification,  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>37 / 42 </p>
+<p>  Icu_EnableNotification,  </p>
+<p>  Icu_DisableNotification };</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>Enter </p>
+<p>the </p>
+<p>ICU </p>
+<p>channel </p>
+<p>name </p>
+<p>(Icu_FlexRay_WakeUp) </p>
+<p>in </p>
+<p>the </p>
+<p>array </p>
+<p>FrTrcvChannel </p>
+<p>FrTrcvPhy.c(line 78) or use the default name of the FrTrcv FRTRCV_CHANNEL_INT_0 as </p>
+<p>name for the ICU channel (cp. <b>Figure 2-4</b>). </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>STATIC CONST( FrTrcvChannelType, FRTRCV_CONST ) FrTrcvChannel[] = </p>
+<p>{ </p>
+<p>  { /* I/O used for Transceiver 1 */ </p>
+<p>    (Dio_ChannelType)FRTRCV_CHANNEL_EN_0, </p>
+<p>    (Dio_ChannelType)FRTRCV_CHANNEL_STBN_0, </p>
+<p>    (Dio_ChannelType)FRTRCV_CHANNEL_ERRN_0, </p>
+<p>#if ( FRTRCV_WUPINT_CBK == STD_ON ) </p>
+<p>    (Icu_ChannelType) <b>Icu_FlexRay_WakeUp </b></p>
+<p>#endif </p>
+<p>  }, </p>
+<p> </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The (de)activation of the transceiver wake-up is done by the FlexRay state </p>
+<p>manager via FrIf_DisableTransceiverWakeup and </p>
+<p>FrIf_EnableTransceiverWakeup. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>The bus will be wakened by a special signal pattern so it’s improbable that the bus has </p>
+<p>been woken up by an EMC disturbance. From there no wake-up validation is necessary </p>
+<p>and the <b>Validation Timeout </b>in the ECUM configuration in Figure 2-1 has to be zero. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>38 / 42 </p>
+<p><b>2.5.2 </b></p>
+<p><b>FlexRay Wake-up by Polling the Transceiver </b></p>
+<p> </p>
+<p>Figure 2-18 </p>
+<p>Selection of the FlexRay wake-up processing type polling and configuration of the wake-up source </p>
+<p>Select FRTRCV_WAKEUP_POLLING for the <b>Transceiver Wakeup Detection</b>. </p>
+<p>Enter the according wakeup source ID of the ECUM in <b> Transceiver WakeupSourceRef </b></p>
+<p>(cp. Chapter 2.1). </p>
+<p>Main  function  of  the  transceiver  driver  polls  the  respective  transceiver  for  any  wake-up </p>
+<p>events. In case a wake-up is detected and notifications are allowed the ECUM is notified </p>
+<p>via EcuM_SetWakeupEvent. </p>
+<p>The bus will be woken up by a special signal pattern so it is improbable that the bus has </p>
+<p>been woken up by an EMC disturbance. From there no wake-up validation is necessary </p>
+<p>and the <b>Validation Timeout </b>in the ECUM configuration in Figure 2-1 has to be zero. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>39 / 42 </p>
+<p><b>3 </b></p>
+<p><b>Special Use Cases </b></p>
+<p><b>3.1 </b></p>
+<p><b>Multiple Wake-up Sources Share one µC I/O Port </b></p>
+<p>For  shared  interrupts  the  ECU  firmware  may  have  to  check  multiple  wake-up  sources </p>
+<p>within  EcuM_CheckWakeup. The  ICU  has  to  pass  the  identifiers of  all  wake-up  sources </p>
+<p>that may have caused this interrupt to EcuM_CheckWakeup. </p>
+<p>Configure </p>
+<p>the  ICU  as  described  in </p>
+<p>chapter </p>
+<p>2.2.  As </p>
+<p><b>Signal </b></p>
+<p><b>Notification </b></p>
+<p>function  is </p>
+<p>Icu_Notification_0 used. </p>
+<p>The  ICU  triggers  the  notification  function  if  any  of  the  wake-up  sources  causes  an </p>
+<p>interrupt.  Call  the  EcuM_CheckWakeup  once  with  all  the  wake-up  sources  which  are </p>
+<p>connected  to  the  I/O  port  as  parameter.  EcuM_WakeupSourceType  contains  one  bit  for </p>
+<p>each wake-up source, so that multiple wake-up sources can be passed in one call. The </p>
+<p>EcuM </p>
+<p>will </p>
+<p>check </p>
+<p>each </p>
+<p>network </p>
+<p>which </p>
+<p>corresponds </p>
+<p>to </p>
+<p>a </p>
+<p>wake-up </p>
+<p>source </p>
+<p>if </p>
+<p>it </p>
+<p>was </p>
+<p>responsible </p>
+<p>for </p>
+<p>that </p>
+<p>wake-up. </p>
+<p>If </p>
+<p>the </p>
+<p>channel </p>
+<p>reports </p>
+<p>a </p>
+<p>positiv </p>
+<p>answer </p>
+<p>via </p>
+<p>EcuM_SetWakeupEvent the ECUM trigger the COMM to start the network. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void Icu_Notification_0 (void) </p>
+<p>{ </p>
+<p>  /* inform the EcuM about the wake up event, the parameter are the </p>
+<p>configured wake up source<b>s </b>*/ </p>
+<p>  EcuM_CheckWakeup(ECUM_WKSOURCE_CAN0 || ECUM_WKSOURCE_CAN1 || </p>
+<p>ECUM_WKSOURCE_FR); </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>3.2 </b></p>
+<p><b>CAN Wake-up Without Validation </b></p>
+<p>Set the <b>Validation Timeout </b>to zero in the ECUM configuration (see Figure 2-1). </p>
+<p>Disable the validation in the CANIF configuration (see Figure 2-12). </p>
+<p>Skip  the  call  EcuM_CheckWakeup  and  call  EcuM_SetWakeupEvent  direct  and  so  the </p>
+<p>ECUM doesn’t start the validation process. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p>void Icu_TrcvWakeUpNotification_0(void) </p>
+<p>{ </p>
+<p>  /* inform the EcuM about the wakeup event, the parameter is the </p>
+<p>configured transceiver wakeup source */ </p>
+<p>  EcuM_SetWakeupEvent(ECUM_WKSOURCE_CAN0); </p>
+<p>}</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>40 / 42 </p>
+<p><b>4 </b></p>
+<p><b>Integration hints </b></p>
+<p><b>&gt; </b></p>
+<p>The normal bus communication, started with COMM mode request at system </p>
+<p>initialization should work before you try to start the communication via wake-up. </p>
+<p><b>&gt; </b></p>
+<p>Check if the system reacts on an incoming (wake-up) signal and the configured </p>
+<p>interrupt function is called. </p>
+<p><b>&gt; </b></p>
+<p>Check if the interrupts are enabled (e.g. enable at start-up and skip disabling). There </p>
+<p>are several ways how the communication is disabled. All possible ways has to be </p>
+<p>considered E.g.  </p>
+<p><b>&gt; </b></p>
+<p>transceiver is set to </p>
+<p>OP_MODE_STANDBY</p>
+<p>, </p>
+<p><b>&gt; </b></p>
+<p>transceiver is set to </p>
+<p>OP_MODE_ SLEEP</p>
+<p> or </p>
+<p><b>&gt; </b></p>
+<p>ECUM switches to state SLEEP. </p>
+<p><b>&gt; </b></p>
+<p>Check if the wake-up source is the correct one. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>41 / 42 </p>
+<p><b>5 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>5.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>MICROSAR </p>
+<p>Configurator Pro </p>
+<p>Generation tool for MICROSAR components </p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>TJA1041 </p>
+<p>A CAN transceiver </p>
+<p>TJA1080A </p>
+<p>A FlexRay transceiver </p>
+<p>TJA1020 </p>
+<p>A LIN transceiver </p>
+<p>Table 5-1  </p>
+<p>Glossary </p>
+<p><b>5.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>µC </p>
+<p>micro-controller </p>
+<p>ASR </p>
+<p>AUTOSAR</p>
+<p> </p>
+<p>AUTOSAR</p>
+<p> </p>
+<p>Automotive Open System Architecture </p>
+<p>CAN </p>
+<p>Controller Area Network </p>
+<p>ComM </p>
+<p>Communication Manager </p>
+<p>Ctrl </p>
+<p>Controller </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>EcuM </p>
+<p>ECU State Manager </p>
+<p>ERRN </p>
+<p>Error </p>
+<p>FR </p>
+<p>FlexRay </p>
+<p>GPT </p>
+<p>General Purpose Timer </p>
+<p>ICU </p>
+<p>Input Capture Unit </p>
+<p>I/O </p>
+<p>input / output </p>
+<p>ISR </p>
+<p>Interrupt Service Routine </p>
+<p>LIN </p>
+<p>Local Interconnect Network </p>
+<p>Nm </p>
+<p>MICROSAR Network Management Interface </p>
+<p>Rx </p>
+<p>Receive </p>
+<p>SchM </p>
+<p>BSW Scheduler Module </p>
+<p>Trcv </p>
+<p>Transceiver </p>
+<p>Tx </p>
+<p>Transmission </p>
+<p>Table 5-2  </p>
+<p>Abbreviations </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference Wake-up and Sleep with AUTOSAR   </p>
+<p> </p>
+<p></p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.00.05 </p>
+<p>based on template version 4.2 </p>
+<p>42 / 42 </p>
+<p><b>6 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+</body>
+</html>
+{% endraw %}

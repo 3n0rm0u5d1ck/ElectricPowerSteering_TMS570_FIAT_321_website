@@ -1,0 +1,3047 @@
+---
+layout: default
+title: TechnicalReference_Asr_IoHwAb
+nav_order: 21
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR IOHWAB </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p> </p>
+<p>Version 2.02.02 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Christoph Ederer </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Christian Marchl </p>
+<p>2007-02-09 </p>
+<p>1.00.00 </p>
+<p>Initial version </p>
+<p>Christian Marchl </p>
+<p>2007-08-09 </p>
+<p>1.01.00 </p>
+<p>Typos corrected; Added </p>
+<p>description for component </p>
+<p>name field </p>
+<p>Christian Marchl </p>
+<p>2007-12-13 </p>
+<p>1.01.01 </p>
+<p>Version adapted according to </p>
+<p>new version scheme </p>
+<p>Christoph Ederer </p>
+<p>2008-05-21 </p>
+<p>2.00.00 </p>
+<p>Transfer of the document to </p>
+<p>new Technical Reference </p>
+<p>template; Adapted </p>
+<p>descriptions and screenshots </p>
+<p>to new software version </p>
+<p>Christoph Ederer </p>
+<p>2008-07-11 </p>
+<p>2.00.01 </p>
+<p>Update of document due to </p>
+<p>changes in DCM interface </p>
+<p>and RTE usage </p>
+<p>Christoph Ederer </p>
+<p>2009-01-14 </p>
+<p>2.01.00 </p>
+<p>Update of the naming of </p>
+<p>graphical elements in the </p>
+<p>configuration, Screenshots </p>
+<p>reworked, DCM subfunctions </p>
+<p>reworked, Added description </p>
+<p>of default value in </p>
+<p>configuration </p>
+<p>Christoph Ederer </p>
+<p>2009-03-23 </p>
+<p>2.01.01 </p>
+<p>Updated development error </p>
+<p>detection in GUI description, </p>
+<p>toolchain naming updated,  </p>
+<p>hints added to chapter 4.1.2 </p>
+<p>Christoph Ederer </p>
+<p>2009-07-21 </p>
+<p>2.02.00 </p>
+<p>Updated description of the </p>
+<p>generation process (user </p>
+<p>blocks, autom. SWC </p>
+<p>generation), updated </p>
+<p>AUTOSAR figure, added </p>
+<p>information on user defined </p>
+<p>signals </p>
+<p>Christoph Ederer </p>
+<p>2009-09-25 </p>
+<p>2.02.01 </p>
+<p>Reworked description of DCM</p>
+<p>interface </p>
+<p>Christoph Ederer </p>
+<p>2010-11-26 </p>
+<p>2.02.02 </p>
+<p>- Added chapter 4.4 Critical </p>
+<p>Sections </p>
+<p>- GUI description updated </p>
+<p>- Added information about </p>
+<p>necessary make process </p>
+<p>modifications to 4.1.2 </p>
+<p>(ESCAN00047210) </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>2 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>Table 1-1   History of the document </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_SWS_IO_HWAbstraction.pdf </p>
+<p>V2.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_SWS_DET.pdf </p>
+<p>V2.2.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.2.0 </p>
+<p>Table 1-2   Reference documents </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector´s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>3 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information.................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 3</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction ..................................................................................................................... 8</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Architecture Overview....................................................................................... 9</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description ................................................................................................. 11</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Features...........................................................................................................11</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Initialization ......................................................................................................11</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>States .............................................................................................................. 12</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Main Functions ............................................................................................... 12</p>
+<p> </p>
+<p>3.5</p>
+<p> </p>
+<p>Error Handling................................................................................................. 12</p>
+<p> </p>
+<p>3.5.1</p>
+<p> </p>
+<p>Development Error Reporting ......................................................................... 12</p>
+<p> </p>
+<p>3.5.1.1</p>
+<p> </p>
+<p>Parameter Checking ....................................................................................... 13</p>
+<p> </p>
+<p>3.5.2</p>
+<p> </p>
+<p>Production Code Error Reporting ................................................................... 13</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration ..................................................................................................................... 14</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Scope of Delivery............................................................................................ 14</p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>Static Files ...................................................................................................... 14</p>
+<p> </p>
+<p>4.1.2</p>
+<p> </p>
+<p>Dynamic Files ................................................................................................. 14</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Include Structure............................................................................................. 16</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 16</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>Critical Sections .............................................................................................. 17</p>
+<p> </p>
+<p>4.5</p>
+<p> </p>
+<p>Generated Template Files............................................................................... 17</p>
+<p> </p>
+<p>4.5.1</p>
+<p> </p>
+<p>Generated services in template files............................................................... 18</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>API Description ............................................................................................................. 20</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Interfaces Overview ........................................................................................ 20</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Type Definitions .............................................................................................. 21</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Services provided by IOHWAB ....................................................................... 22</p>
+<p> </p>
+<p>5.3.1</p>
+<p> </p>
+<p>IoHwAb_Init .................................................................................................... 22</p>
+<p> </p>
+<p>5.3.2</p>
+<p> </p>
+<p>IoHwAb_GetVersionInfo ................................................................................. 22</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Generated API functions................................................................................. 23</p>
+<p> </p>
+<p>5.4.1</p>
+<p> </p>
+<p>IoHwAb_Set&lt;CalSignalName&gt;....................................................................... 23</p>
+<p> </p>
+<p>5.4.2</p>
+<p> </p>
+<p>IoHwAb_Get&lt;CalSignalName&gt; ...................................................................... 24</p>
+<p> </p>
+<p>5.4.3</p>
+<p> </p>
+<p>IoHwAb_DCM_&lt;CalSignalName&gt; .................................................................. 25</p>
+<p> </p>
+<p>5.4.4</p>
+<p> </p>
+<p>IoHwAb_DCM_Read&lt;CalSignalName&gt; ......................................................... 26</p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>4 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>5.4.5</p>
+<p> </p>
+<p>IoHwAb_Diag&lt;CalSignalName&gt;..................................................................... 27</p>
+<p> </p>
+<p>5.4.6</p>
+<p> </p>
+<p>IoHwAb_Input&lt;UserDefSignalName&gt; ............................................................ 28</p>
+<p> </p>
+<p>5.4.7</p>
+<p> </p>
+<p>IoHwAb_DCM_Input&lt;UserDefSignalName&gt; .................................................. 29</p>
+<p> </p>
+<p>5.4.8</p>
+<p> </p>
+<p>IoHwAb_DCM_Read&lt;UserDefSignalName&gt; ................................................. 30</p>
+<p> </p>
+<p>5.4.9</p>
+<p> </p>
+<p>IoHwAb_Output&lt;UserDefSignalName&gt; ......................................................... 31</p>
+<p> </p>
+<p>5.4.10</p>
+<p> </p>
+<p>IoHwAb_DCM_Output&lt;UserDefSignalName&gt; ............................................... 32</p>
+<p> </p>
+<p>5.4.11</p>
+<p> </p>
+<p>IoHwAb_&lt;SignalHandlerName&gt; ..................................................................... 33</p>
+<p> </p>
+<p>5.5</p>
+<p> </p>
+<p>Services used by IOHWAB............................................................................. 33</p>
+<p> </p>
+<p>5.6</p>
+<p> </p>
+<p>Callback Functions ......................................................................................... 34</p>
+<p> </p>
+<p>5.7</p>
+<p> </p>
+<p>Configurable Interfaces................................................................................... 34</p>
+<p> </p>
+<p>5.7.1</p>
+<p> </p>
+<p>Notifications .................................................................................................... 34</p>
+<p> </p>
+<p>5.8</p>
+<p> </p>
+<p>Service Ports .................................................................................................. 34</p>
+<p> </p>
+<p>5.8.1</p>
+<p> </p>
+<p>Client Server Interface .................................................................................... 34</p>
+<p> </p>
+<p>5.8.1.1</p>
+<p> </p>
+<p>Provide Ports .................................................................................................. 34</p>
+<p> </p>
+<p>5.8.1.2</p>
+<p> </p>
+<p>Require Ports.................................................................................................. 35</p>
+<p> </p>
+<p>5.9</p>
+<p> </p>
+<p>Software Component Template....................................................................... 35</p>
+<p> </p>
+<p>5.9.1</p>
+<p> </p>
+<p>Generation ...................................................................................................... 35</p>
+<p> </p>
+<p>5.9.2</p>
+<p> </p>
+<p>Import to the DaVinci modeling tool................................................................ 35</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Configuration ................................................................................................................ 37</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Configuration of IOHWAB with DaVinci Configurator...................................... 37</p>
+<p> </p>
+<p>6.1.1</p>
+<p> </p>
+<p>Start configuration of the IOHWAB ................................................................. 37</p>
+<p> </p>
+<p>6.1.2</p>
+<p> </p>
+<p>Tab ‘IoHwAb Configuration’ ............................................................................ 37</p>
+<p> </p>
+<p>6.1.2.1</p>
+<p> </p>
+<p>Node ‘IoHwAbCalSignals’............................................................................... 37</p>
+<p> </p>
+<p>6.1.2.1.1</p>
+<p> </p>
+<p>Node ‘IoHwAbDiscrete’................................................................................... 38</p>
+<p> </p>
+<p>6.1.2.2</p>
+<p> </p>
+<p>Node ‘IoHwAbUserDefSignals’ ....................................................................... 39</p>
+<p> </p>
+<p>6.1.2.2.1</p>
+<p> </p>
+<p>Node ‘IoHwAbUserDefPort’ ............................................................................ 39</p>
+<p> </p>
+<p>6.1.2.3</p>
+<p> </p>
+<p>Node ‘IoHwAbHandlers’.................................................................................. 41</p>
+<p> </p>
+<p>6.1.2.3.1</p>
+<p> </p>
+<p>Node ‘IoHwAbHandler’ ................................................................................... 42</p>
+<p> </p>
+<p>6.1.2.4</p>
+<p> </p>
+<p>Node IoHwAbDataTypeSizes.......................................................................... 42</p>
+<p> </p>
+<p>6.1.3</p>
+<p> </p>
+<p>Tab ‘General Settings’..................................................................................... 42</p>
+<p> </p>
+<p>6.1.3.1</p>
+<p> </p>
+<p>Area ‘Error Detection – Development Mode’ .................................................. 42</p>
+<p> </p>
+<p>6.1.3.2</p>
+<p> </p>
+<p>Area ‘Interrupt Services’ ................................................................................. 43</p>
+<p> </p>
+<p>6.1.3.3</p>
+<p> </p>
+<p>Area ‘Common Settings’ ................................................................................. 44</p>
+<p> </p>
+<p>6.1.3.4</p>
+<p> </p>
+<p>Area ‘Include List’ ........................................................................................... 45</p>
+<p> </p>
+<p>6.1.4</p>
+<p> </p>
+<p>Tab ‘Module API’ ............................................................................................. 45</p>
+<p> </p>
+<p>6.1.4.1</p>
+<p> </p>
+<p>Area ‘API Optimization’................................................................................... 45</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance................................................................................. 46</b></p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ........................................................................................ 47</b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>5 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Glossary.......................................................................................................... 47</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 47</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Contact ........................................................................................................................... 48</b></p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>6 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>AUTOSAR architecture..................................................................................... 9</p>
+<p> </p>
+<p>Figure 2-2</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the IOHWAB ............................................. 10</p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>Include structure ............................................................................................. 16</p>
+<p> </p>
+<p>Figure 5-1</p>
+<p> </p>
+<p>IOHWAB interactions with other BSW ............................................................ 20</p>
+<p> </p>
+<p>Figure 5-2</p>
+<p> </p>
+<p>Import a new software component into DaVinci.............................................. 35</p>
+<p> </p>
+<p>Figure 5-3</p>
+<p> </p>
+<p>The imported software component ................................................................. 36</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>Adding a MCAL signal .................................................................................... 38</p>
+<p> </p>
+<p>Figure 6-2</p>
+<p> </p>
+<p>Adding a user-defined port ............................................................................. 39</p>
+<p> </p>
+<p>Figure 6-3</p>
+<p> </p>
+<p>Adding a user-defined operation..................................................................... 39</p>
+<p> </p>
+<p>Figure 6-4</p>
+<p> </p>
+<p>Adding a handler function ............................................................................... 41</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the document.................................................................................... 3</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference documents....................................................................................... 3</p>
+<p> </p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>Supported SWS features .................................................................................11</p>
+<p> </p>
+<p>Table 3-2 </p>
+<p> </p>
+<p>Not supported SWS features ...........................................................................11</p>
+<p> </p>
+<p>Table 3-3 </p>
+<p> </p>
+<p>Mapping of service IDs to services ................................................................. 12</p>
+<p> </p>
+<p>Table 3-4 </p>
+<p> </p>
+<p>Errors reported to DET ................................................................................... 12</p>
+<p> </p>
+<p>Table 3-5 </p>
+<p> </p>
+<p>Development Error Reporting: Assignment of checks to services .................. 13</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Static files........................................................................................................ 14</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Generated files ............................................................................................... 14</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>DaVinci generated files................................................................................... 15</p>
+<p> </p>
+<p>Table 4-4 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping ................................................... 17</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Type definitions............................................................................................... 21</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>IoHwAb_Init .................................................................................................... 22</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>IoHwAb_GetVersionInfo ................................................................................. 23</p>
+<p> </p>
+<p>Table 5-4 </p>
+<p> </p>
+<p>IoHwAb_Set&lt;CalSignalName&gt;....................................................................... 23</p>
+<p> </p>
+<p>Table 5-5 </p>
+<p> </p>
+<p>IoHwAb_Get&lt;CalSignalName&gt; ...................................................................... 24</p>
+<p> </p>
+<p>Table 5-6 </p>
+<p> </p>
+<p>IoHwAb_DCM_&lt;CalSignalName&gt; .................................................................. 25</p>
+<p> </p>
+<p>Table 5-7 </p>
+<p> </p>
+<p>IoHwAb_DCM_Read&lt;CalSignalName&gt; ......................................................... 26</p>
+<p> </p>
+<p>Table 5-8 </p>
+<p> </p>
+<p>IoHwAb_Diag&lt;CalSignalName&gt;..................................................................... 27</p>
+<p> </p>
+<p>Table 5-9 </p>
+<p> </p>
+<p>IoHwAb_Input&lt;UserDefSignalName&gt; ............................................................ 28</p>
+<p> </p>
+<p>Table 5-10 </p>
+<p> </p>
+<p>IoHwAb_DCM_Input&lt;UserDefSignalName&gt; .................................................. 29</p>
+<p> </p>
+<p>Table 5-11 </p>
+<p> </p>
+<p>IoHwAb_DCM_Read&lt;UserDefSignalName&gt; ................................................. 30</p>
+<p> </p>
+<p>Table 5-12 </p>
+<p> </p>
+<p>IoHwAb_Output&lt;UserDefSignalName&gt; ......................................................... 31</p>
+<p> </p>
+<p>Table 5-13 </p>
+<p> </p>
+<p>IoHwAb_DCM_Output&lt;UserDefSignalName&gt; ............................................... 32</p>
+<p> </p>
+<p>Table 5-14 </p>
+<p> </p>
+<p>IoHwAb_&lt;SignalHandlerName&gt; ..................................................................... 33</p>
+<p> </p>
+<p>Table 5-15 </p>
+<p> </p>
+<p>Services used by the IOHWAB....................................................................... 33</p>
+<p> </p>
+<p>Table 5-16 </p>
+<p> </p>
+<p>Provide Ports on BSW module side................................................................ 34</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Node ‘IoHwAbDiscrete’................................................................................... 38</p>
+<p> </p>
+<p>Table 8-1 </p>
+<p> </p>
+<p>Glossary.......................................................................................................... 47</p>
+<p> </p>
+<p>Table 8-2 </p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 47</p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>7 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module IOHWAB as specified in [1].  </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release*: </b></p>
+<p>3 </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p>IOHWAB_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>IOHWAB_MODULE_ID   </p>
+<p>254 decimal </p>
+<p>(according to ref. [3]) </p>
+<p>* For the precise AUTOSAR Release 3.x please see the release specific documentation.  </p>
+<p> </p>
+<p>The  aim  of  the  IOHWAB  is  to  provide  ECU  hardware-independent  data  transition  from </p>
+<p>driver modules up to the Software Components. To fulfill this task the IOHWAB generates </p>
+<p>a Software Component description from the user configuration. This Software Component </p>
+<p>description can be imported by DaVinci Developer. </p>
+<p>Within  the  DaVinci  modeling  tool  the  IOHWAB  is  displayed  like  a  normal  Software </p>
+<p>Component  (SW-C)  with  a  set  of  server  ports  and  runnables.  Other  SW-Cs  can  access </p>
+<p>driver data values through these ports. </p>
+<p>This release of the IOHWAB currently supports a complete abstraction of the DIO driver, </p>
+<p>which means access functions will be generated automatically (except the direction switch </p>
+<p>feature of the Port driver). </p>
+<p>For  all  other  drivers  the  access  function  has  to  be  coded  separately  by  the  user.  The </p>
+<p>IOHWAB supports the user at this task by providing generated functions stubs, which can </p>
+<p>be filled with code. </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>8 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>2.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the IOHWAB is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 2-1 AUTOSAR architecture </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>9 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p> </p>
+<p>The </p>
+<p>next </p>
+<p>figure </p>
+<p>shows </p>
+<p>the </p>
+<p>interfaces </p>
+<p>to </p>
+<p>adjacent </p>
+<p>modules </p>
+<p>of </p>
+<p>the </p>
+<p>IOHWAB.  These </p>
+<p>interfaces are described in chapter 5.  </p>
+<p> </p>
+<p>Figure 2-2 Interfaces to adjacent modules of the IOHWAB </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The current version of the IOHWAB only supports a complete abstraction of the DIO </p>
+<p>driver. The other MCAL drivers can be integrated manually via user-defined signals. </p>
+<p>See 6.1.2.2 ff. for further information about how to create a user-defined signal. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>10 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The  &quot;supported&quot;  and  &quot;not  supported&quot;  features  are  presented  in  the  following  two  tables. </p>
+<p>For further information of not supported features, also see chapter 7. </p>
+<p> </p>
+<p>The following features described in [1] are supported: </p>
+<p><b>Feature </b></p>
+<p>Abstraction of MCAL signals (the IOHWAB generates source code for accessing DIO channels </p>
+<p>for a specific signal, i.e. OP_GET, OP_SET and OP_DIAG) </p>
+<p>Abstraction of user-defined signals (the IOHWAB generates source code templates that can be </p>
+<p>used for accessing any lower level software) </p>
+<p>Provision of an interface to DCM, that allows to freeze or adjust measurement values for </p>
+<p>diagnostic purposes </p>
+<p>Creation of a Software Component Description file that can be imported by DaVinci Developer </p>
+<p>Table 3-1   Supported SWS features </p>
+<p>The following features described in [1] are not supported: </p>
+<p><b>Feature </b></p>
+<p>Automatic abstraction of other MCAL drivers than DIO (calls to further drivers have to be </p>
+<p>implemented by the user) </p>
+<p>Table 3-2   Not supported SWS features </p>
+<p><b>3.2 </b></p>
+<p><b>Initialization </b></p>
+<p>Initialization is not necessarily needed for the IOHWAB. Therefore, the provided service for </p>
+<p>initialization can be removed by a pre-compile option during the configuration phase. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>It is not intended to initialize drivers in the IOHWAB initialization function. Driver </p>
+<p>initialization has to be done by the ECUM. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>11 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>3.3 </b></p>
+<p><b>States </b></p>
+<p>The IOHWAB itself neither has certain module states nor does any handling of states of </p>
+<p>lower-level drivers. Caring about time flows and states is the user’s responsibility. </p>
+<p><b>3.4 </b></p>
+<p><b>Main Functions </b></p>
+<p>The IOHWAB does not provide a main function. </p>
+<p><b>3.5 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>3.5.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Detected  development  errors  are  by  default  reported  to  the  DET  using  the  service </p>
+<p>Det_ReportError()</p>
+<p>,  (specified  in  [2]),  if  ‘Development  Mode’  and  ‘Development  Error </p>
+<p>Reporting’ are enabled in the configuration tool. </p>
+<p>The reported IOHWAB ID is 254. </p>
+<p>The reported service IDs identify the services, which are described in 5.3. The following </p>
+<p>table presents the service IDs and the related services: </p>
+<p><b>Service ID </b></p>
+<p><b>Service </b></p>
+<p>0x01 </p>
+<p>IoHwAb_Init() </p>
+<p>0x10 </p>
+<p>IoHwAb_GetVersionInfo() </p>
+<p>0x20 </p>
+<p>MCAL signal OP_GET </p>
+<p>0x21 </p>
+<p>MCAL signal OP_SET </p>
+<p>0x2A </p>
+<p>MCAL DCM bypass read function </p>
+<p>0x30 </p>
+<p>User-defined input operation (corresponds to OP_GET) </p>
+<p>0x31 </p>
+<p>User-defined output operation (corresponds to OP_SET) </p>
+<p>0x3A </p>
+<p>User-defined DCM bypass read function </p>
+<p>Table 3-3   Mapping of service IDs to services </p>
+<p>The errors reported to DET are described in the following table: </p>
+<p><b>Error Code </b></p>
+<p><b>Description </b></p>
+<p>0x10 </p>
+<p>IOHWAB_E_NULL_POINTER </p>
+<p>API service called with “NULL pointer”  parameter </p>
+<p>Table 3-4   Errors reported to DET </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>12 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>3.5.1.1 </b></p>
+<p><b>Parameter Checking </b></p>
+<p>The following table shows which parameter checks are performed on which services: </p>
+<p><b>Check </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Service </b></p>
+<p>Null pointer check </p>
+<p>MCAL signal OP_GET </p>
+<p> </p>
+<p> </p>
+<p>MCAL DCM bypass read function </p>
+<p> </p>
+<p> </p>
+<p>User define input operations </p>
+<p> </p>
+<p> </p>
+<p>IoHwAb_GetVersionInfo() </p>
+<p> </p>
+<p> </p>
+<p>User-defined DCM bypass read </p>
+<p>function </p>
+<p> </p>
+<p> </p>
+<p>Table 3-5   Development Error Reporting: Assignment of checks to services </p>
+<p><b>3.5.2 </b></p>
+<p><b>Production Code Error Reporting </b></p>
+<p>As  production  error  reporting  is  typically  done  on  driver  level,  the  IOHWAB  does  not </p>
+<p>provide any reporting mechanism. Nonetheless, production error reporting can be added </p>
+<p>manually to ‘IoHwAb.c’, if necessary. </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>13 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Integration </b></p>
+<p>This chapter gives necessary information for the integration of the MICROSAR IOHWAB </p>
+<p>into an application environment of an ECU. </p>
+<p><b>4.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the IOHWAB contains the files, which are described in the chapters 4.1.1 </p>
+<p>and 4.1.2: </p>
+<p><b>4.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>IoHwAb.h </p>
+<p>Declares the interface of the MICROSAR component IOHWAB</p>
+<p> </p>
+<p>Table 4-1   Static files </p>
+<p> </p>
+<p><b>4.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>IoHwAb.c </p>
+<p>Code template that contains the interfaces of the IOHWAB as well as the </p>
+<p>function bodies of the services for the user-defined operations and the </p>
+<p>corresponding DCM access functions </p>
+<p>IoHwAb_Dio.c </p>
+<p>Contains the implementation of the services for accessing MCAL signals as </p>
+<p>well as the corresponding DCM functions </p>
+<p>IoHwAb_Dcm.h </p>
+<p>Contains the prototypes of the DCM access functions </p>
+<p>IoHwAb_Cfg.h </p>
+<p>Contains the static configuration of the IOHWAB </p>
+<p>IoHwAb_Cbk.h </p>
+<p>Code template for prototypes of callback functions </p>
+<p>IoHwAb_Types.h </p>
+<p>Contains all the data types that are used in the IOHWAB (File is only used, if </p>
+<p>RTE usage is deactivated) </p>
+<p>Table 4-2   Generated files </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The files ‘IoHwAb.c’ and ‘IoHwAb_Cbk.h’ are code templates, i.e. after generation they </p>
+<p>are not complete and require user modifications. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>14 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The file ‘IoHwAb.c’ is a generated code template. This file is not part of the AUTOSAR </p>
+<p>make files provided by the module, because the file may be copied to different </p>
+<p>locations in an integration package (e.g. a common folder for all editable code </p>
+<p>templates). </p>
+<p>If you use ‘User Defined Operations’, please add the file ‘IoHwAb.c’ to your make </p>
+<p>process, manually. If the Vector make environment is used, add the file to the variable </p>
+<p>‘</p>
+<p>APP_SOURCE_LST</p>
+<p>’ in the file ‘Makefile.project.part.defines’. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>For  successfully  using  the  IOHWAB  there  are  further  files  needed.  These  Files  can  be </p>
+<p>generated by DaVinci Developer/RTE Generator. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>Rte_&lt;IoHwAbServ</p>
+<p>iceComponentNam</p>
+<p>e&gt;.h </p>
+<p>Contains the prototypes of all the IOHWAB operation services </p>
+<p>Rte_Type.h </p>
+<p>Contains all the data types that are used in the IOHWAB </p>
+<p>Table 4-3   DaVinci generated files </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>15 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>4.2 </b></p>
+<p><b>Include Structure </b></p>
+<p> </p>
+<p>Figure 4-1 Include structure </p>
+<p><b>4.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>defines for the IOHWAB and illustrates their assignment among each other. </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>16 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>Compiler Abstraction</b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>IOHWAB_CODE </p>
+<p>IOHWAB_VAR </p>
+<p>IOHWAB_APPL_DATA </p>
+<p>IOHWAB_APPL_CODE </p>
+<p>IOHWAB_CONST </p>
+<p>IOHWAB_START_SEC_CODE </p>
+<p>IOHWAB_STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IOHWAB_START_SEC_CONST_32BIT </p>
+<p>IOHWAB_STOP_SEC_CONST_32BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IOHWAB_START_SEC_VAR_ZERO_INIT_UNSPECIFIED </p>
+<p>IOHWAB_STOP_SEC_VAR_ZERO_INIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-4   Compiler abstraction and memory mapping </p>
+<p><b>4.4 </b></p>
+<p><b>Critical Sections </b></p>
+<p>The IOHWAB implements the following critical section: </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_EXCLUSIVE_AREA_0: This critical section is used to protect code passages </p>
+<p>that contain coherent operations. The critical section shall prevent task switches. </p>
+<p><b>4.5 </b></p>
+<p><b>Generated Template Files </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>This chapter is only applicable if DaVinci Configurator is used for I/O Hardware </p>
+<p>Abstraction generation. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p>A generated template file in this document is a file which: </p>
+<p></p>
+<p> </p>
+<p>is generated by the generation tool at every generation process  </p>
+<p></p>
+<p> </p>
+<p>the user can modify this template for his needs  </p>
+<p></p>
+<p> </p>
+<p>the changes made by the user will not be overwritten at the next generation process </p>
+<p> </p>
+<p>In order not to overwrite the changes made by the user, the template file contains special </p>
+<p>comments,  where  the  user  can  insert  his  code  in  between.  The  comments  have  the </p>
+<p>following format: </p>
+<p>/********************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT! &lt;USERBLOCK $Variable</p>
+<p>_Name&gt; DO NOT CHANGE THIS COMMENT                </p>
+<p>***********************************************************************************/ </p>
+<p> </p>
+<p>/********************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT! &lt;/USERBLOCK&gt; DO NOT CHANGE THIS COMMENT     </p>
+<p>***********************************************************************************/ </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>17 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Do not modify or delete the comments. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example: </b></p>
+<p>The following example explains where code can be implemented: </p>
+<p>FUNC(void, IOHWAB_CODE) IoHwAb_Init(void) </p>
+<p>{ </p>
+<p>  /* A */ </p>
+<p>/*************************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT!  &lt;USERBLOCK … &gt;             DO NOT CHANGE THIS COMMENT! </p>
+<p> **************************************************************************************/ </p>
+<p>  /* B */ </p>
+<p>  return; </p>
+<p>/*************************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT!  &lt;/USERBLOCK&gt;               DO NOT CHANGE THIS COMMENT! </p>
+<p> ***************************************************************************************/ </p>
+<p> </p>
+<p>  /* C */ </p>
+<p>} /* IoHwAb_Init() */ </p>
+<p> </p>
+<p>A and C: all modifications before and after will be deleted at the next generation process </p>
+<p>B: all modifications will not be deleted </p>
+<p> </p>
+<p> </p>
+<p>The I/O Hardware Abstraction provides the following generated template files: </p>
+<p></p>
+<p> </p>
+<p>IoHwAb.c </p>
+<p></p>
+<p> </p>
+<p>IoHwAb_Cbk.h </p>
+<p> </p>
+<p><b>4.5.1 </b></p>
+<p><b>Generated services in template files </b></p>
+<p> </p>
+<p>The I/O Hardware Abstraction has no fixed API, there are fix services (</p>
+<p>IoHwAb_Init()</p>
+<p>, </p>
+<p>IoHwAb_GetVersionInfo()</p>
+<p>) as well as services that are generated depending on how </p>
+<p>much  and  which  kind  of  signals  are  configured. The  latter  contain  parts  that  will  not  be </p>
+<p>overwritten  during  the  generation  process.  They  have  no  fixed  name,  but  an  UUID  as </p>
+<p>Identifier: </p>
+<p>/********************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT! &lt;USERBLOCK 81fe3f4b-eabd-4f43-8d9a-a0c182f0cc71&gt; DO NOT </p>
+<p>CHANGE THIS COMMENT                                </p>
+<p>***********************************************************************************/ </p>
+<p> </p>
+<p>/********************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT! &lt;/USERBLOCK&gt; DO NOT CHANGE THIS COMMENT     </p>
+<p>***********************************************************************************/ </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>18 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>If a signal is deleted in the configuration, possibly already implemented code would be lost, </p>
+<p>because  the  generated  service  is  also  deleted  from  the  generated  file.  In  this  case,  the </p>
+<p>‘IoHwAb.c’  template  file  contains  a  section  at  the  end,  which  receives  the  code  from  all </p>
+<p>services whose associated signals have been deleted: </p>
+<p>/********************************************************************************** </p>
+<p>* DO NOT CHANGE THIS COMMENT! &lt;&lt;USERBLOCK Start of removed code area&gt;&gt; DO NOT CHANGE THIS </p>
+<p>COMMENT! </p>
+<p>***********************************************************************************/ </p>
+<p> </p>
+<p>/********************************************************************************** </p>
+<p> * DO NOT CHANGE THIS COMMENT!       &lt;&lt;/USERBLOCK&gt;&gt;     DO NOT CHANGE THIS COMMENT! </p>
+<p> **********************************************************************************/ </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>This section only contains code from signals that have been deleted during the last </p>
+<p>generation process. During the next generation, the section will be cleared. </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>19 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>API Description </b></p>
+<p><b>5.1 </b></p>
+<p><b>Interfaces Overview </b></p>
+<p> </p>
+<p>Figure 5-1 IOHWAB interactions with other BSW </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>20 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p> </p>
+<p><b>5.2 </b></p>
+<p><b>Type Definitions </b></p>
+<p><b>Type Name </b></p>
+<p><b>C-Type </b></p>
+<p><b>Description </b></p>
+<p><b>Value Range </b></p>
+<p>STD_LOW</p>
+<p> </p>
+<p>IoHwAb_BoolType </p>
+<p>uint8 </p>
+<p>Value type for a MCAL </p>
+<p>signal that uses a DIO </p>
+<p>channel </p>
+<p>STD_HIGH </p>
+<p>IoHwAb_DiscreteGroupSize </p>
+<p>uint8/ </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for a MCAL </p>
+<p>signal that uses either a </p>
+<p>DIO port or a DIO </p>
+<p>channel group </p>
+<p>Depends on the configured </p>
+<p>data type </p>
+<p>IoHwAb_CurrentType </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for ECU </p>
+<p>Signals of the Analogue </p>
+<p>Class that depict current </p>
+<p>information </p>
+<p>Depends on the configured </p>
+<p>data type</p>
+<p> </p>
+<p>IoHwAb_VoltageType </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for ECU </p>
+<p>Signals of the Analogue </p>
+<p>Class that depict voltage </p>
+<p>information </p>
+<p>Depends on the configured </p>
+<p>data type</p>
+<p> </p>
+<p>IoHwAb_ResistanceType </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for ECU </p>
+<p>Signals of the Analogue </p>
+<p>Class that depict </p>
+<p>resistance information </p>
+<p>Depends on the configured </p>
+<p>data type</p>
+<p> </p>
+<p>IoHwAb_SignalDiagnosisType </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for ECU </p>
+<p>Signals of the Diagnosis </p>
+<p>Class that depict the </p>
+<p>electrical failure state of </p>
+<p>an Output Signal </p>
+<p>Depends on the configured </p>
+<p>data type</p>
+<p> </p>
+<p>IoHwAb_PwxPeriodType </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for ECU </p>
+<p>Signals of the “Pulse </p>
+<p>Width Modulation” Class </p>
+<p>That means this type is </p>
+<p>used either for modulation </p>
+<p>output or for </p>
+<p>demodulation input. </p>
+<p>Depends on the configured </p>
+<p>data type</p>
+<p> </p>
+<p>IoHwAb_PwxDutyCycleType </p>
+<p>uint16/ </p>
+<p>uint32 </p>
+<p>Value type for ECU </p>
+<p>Signals of the “Pulse </p>
+<p>Width Modulation” Class </p>
+<p>That means this type is </p>
+<p>used either for modulation </p>
+<p>output or for </p>
+<p>demodulation input. </p>
+<p>Depends on the configured </p>
+<p>data type</p>
+<p> </p>
+<p>Table 5-1   Type definitions </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>21 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.3 </b></p>
+<p><b>Services provided by IOHWAB </b></p>
+<p>The IOHWAB API consists of services, which are realized by function calls. </p>
+<p><b>5.3.1 </b></p>
+<p><b>IoHwAb_Init </b></p>
+<p><b>Prototype </b></p>
+<p>void  <b>IoHwAb_Init </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>-- </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This function stub can be used to implement any initialization activities and shall be called by the ECUM. It </p>
+<p>is not intended to initialize drivers in the IOHWAB initialization function. Driver initialization has to be done </p>
+<p>by the ECUM. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service can be disabled using the preprocessor switch </p>
+<p>IOHWAB_USE_INIT_FUNCTION</p>
+<p>. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by an application </p>
+<p>Table 5-2   IoHwAb_Init </p>
+<p><b>5.3.2 </b></p>
+<p><b>IoHwAb_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void  <b>IoHwAb_GetVersionInfo </b>( Std_VersionInfoType *versioninfo ) </p>
+<p><b>Parameter </b></p>
+<p>versioninfo </p>
+<p>Pointer to where the version information shall be stored </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This service returns the version information of this module. The provided information is: </p>
+<p></p>
+<p> </p>
+<p>Module ID </p>
+<p></p>
+<p> </p>
+<p>Vendor ID </p>
+<p></p>
+<p> </p>
+<p>Instance ID </p>
+<p>Version Information </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service is available, dependently on </p>
+<p>IOHWAB_VERSION_INFO_API</p>
+<p>. </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>22 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by an application. </p>
+<p>Table 5-3   IoHwAb_GetVersionInfo </p>
+<p><b>5.4 </b></p>
+<p><b>Generated API functions </b></p>
+<p>The IOHWAB does not have a fixed API like other BSW modules; rather the API will be </p>
+<p>generated according to the used configuration. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The following functions can be invoked concurrently by the RTE. As software on the </p>
+<p>lower layer may not support concurrency, the application should avoid parallel calls of </p>
+<p>signal services. </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b>5.4.1 </b></p>
+<p><b>IoHwAb_Set&lt;CalSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_Set&lt;CalSignalName&gt; </b>( &lt;ConfiguredType&gt; signal ) </p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Signal value to be written to the DIO driver </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This service writes a given value to an existing DIO entity, i.e. it calls the DIO API (Dio_WriteChannel(), </p>
+<p>Dio_WriteChannelGroup(), Dio_WritePort()) and passes the parameter value through to the DIO driver. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbCreateOpSet’ is enabled for a MCAL signal </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the RTE </p>
+<p>Table 5-4   IoHwAb_Set&lt;CalSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>23 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.2 </b></p>
+<p><b>IoHwAb_Get&lt;CalSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_Get&lt;CalSignalName&gt; </b>( &lt;ConfiguredType&gt; *signal ) </p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Pointer to the variable, where the read value shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This service reads a value from an existing DIO entity, i.e. it calls the DIO API (Dio_ReadChannel(), </p>
+<p>Dio_ReadChannelGroup(), Dio_ReadPort()) and stores the read value into the given address. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbCreateOpGet’ is enabled for a MCAL signal </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the RTE </p>
+<p>Table 5-5   IoHwAb_Get&lt;CalSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>24 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.3 </b></p>
+<p><b>IoHwAb_DCM_&lt;CalSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_DCM_&lt;CalSignalName&gt; </b>( uint8 action,  &lt;ConfiguredType&gt; </p>
+<p>signal ) </p>
+<p><b>Parameter </b></p>
+<p>action </p>
+<p>Action to be executed </p>
+<p>signal </p>
+<p>Signal value to be written to the buffer </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This is the DCM access function for an MCAL signal. The state of the signal functions (OP_GET, OP_SET, </p>
+<p>OP_DIAG) can be changed by this service. The following states are available: </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_CONTROLTOECU</p>
+<p> – </p>
+<p>The current value will be unlocked. The following read and write operations </p>
+<p>(by the SW-C) will work normally. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored.</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_RESETTODEFAULT</p>
+<p> – The signal will be locked and reset to the configured default value (for </p>
+<p>further information, see 6.1.2.1.1), i.e. the configured default value will be written to the hardware. The </p>
+<p>following read and write operations (by the SW-C) will have no effect of the hardware.  </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_FREEZE</p>
+<p> – </p>
+<p>The signal will be locked, i.e. the signal is read/written and locked. Further reads </p>
+<p>(by  the  SW-C)  will  return  the  locked  value.  Further  writes  (by  the  SW-C)  will  have  no  effect  on  the </p>
+<p>hardware. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored.</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_ADJUSTMENT</p>
+<p> – </p>
+<p>The signal will be locked, i.e. the parameter </p>
+<p>signal</p>
+<p> will be written into the </p>
+<p>buffer (input)/to the hardware (output). Further reads (by the SW-C) will always return this value. Further </p>
+<p>writes (by the SW-C) will have no effect on the hardware.</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbCreateOpGet’, ‘IoHwAbCreateOpSet’ and </p>
+<p>‘IoHwAbDcmAccess’ are enabled for a MCAL signal </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the DCM </p>
+<p>Table 5-6   IoHwAb_DCM_&lt;CalSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>25 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.4 </b></p>
+<p><b>IoHwAb_DCM_Read&lt;CalSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_DCM_Read&lt;CalSignalName&gt; </b>( &lt;ConfiguredType&gt; *signal ) </p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Pointer to the variable, where the read value shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This method is a bypass read function that executes a normal OP_GET, reading the value from the </p>
+<p>hardware, <b>even if the signal is locked. </b></p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbCreateOpGet’, ‘IoHwAbCreateOpSet’ and </p>
+<p>‘IoHwAbDcmAccess’ are enabled for a MCAL signal </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the DCM </p>
+<p>Table 5-7   IoHwAb_DCM_Read&lt;CalSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>26 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.5 </b></p>
+<p><b>IoHwAb_Diag&lt;CalSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_Diag&lt;CalSignalName&gt; </b>( &lt;ConfiguredType&gt; *signal ) </p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Pointer to the variable, where the read value shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This service reads a value from an existing DIO entity for diagnostic purposes, i.e. it calls the DIO API </p>
+<p>(Dio_ReadChannel(), Dio_ReadChannelGroup(), Dio_ReadPort()) and stores the read value into the given </p>
+<p>address. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbCreateOpDiag’ is enabled for a MCAL signal </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the RTE </p>
+<p>Table 5-8   IoHwAb_Diag&lt;CalSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>27 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.6 </b></p>
+<p><b>IoHwAb_Input&lt;UserDefSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_Input&lt;UserDefSignalName&gt; </b>( &lt;ConfiguredType&gt; *signal ) </p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Pointer to the variable, where the read value shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This service is for user-defined input operations in general. Any lower level software can be accessed for </p>
+<p>reading values of the configured data type. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbAccess’ is set to ‘Input’ for a user-defined signal. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the RTE </p>
+<p>Table 5-9   IoHwAb_Input&lt;UserDefSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>stub that will be generated by the IOHWAB. The service name, as well as the </p>
+<p>parameter format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>28 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.7 </b></p>
+<p><b>IoHwAb_DCM_Input&lt;UserDefSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_DCM_Input&lt;UserDefSignalName&gt; </b>( uint8 action,  </p>
+<p>&lt;ConfiguredType&gt; signal ) </p>
+<p><b>Parameter </b></p>
+<p>action </p>
+<p>Action to be executed </p>
+<p>signal </p>
+<p>Signal value to be stored to the buffer </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This is the DCM access function for a user-defined input function. The state of an input function can be </p>
+<p>changed by this service. The following states are available: </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_CONTROLTOECU</p>
+<p> – </p>
+<p>The current value will be unlocked. The following read operations (by the </p>
+<p>SW-C) will work normally. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored.</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_RESETTODEFAULT</p>
+<p> – The signal will be locked and reset to the configured default value (for </p>
+<p>further information, see 6.1.2.2.1.1), i.e. the configured default value will be written to an internal buffer. </p>
+<p>Further reads (by the SW-C) will return the locked value. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored. </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_FREEZE</p>
+<p> – </p>
+<p>The signal will be locked, i.e. the signal is read and locked. Further reads (by the </p>
+<p>SW-C) will return the locked value. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored.</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_ADJUSTMENT</p>
+<p> – </p>
+<p>The signal will be locked, i.e. the parameter </p>
+<p>signal</p>
+<p> will be written into the </p>
+<p>internal buffer. Further reads (by the SW-C) will return the locked value.</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbAccess’ of a user-defined signal is set to ‘Input’ and </p>
+<p>‘IoHwAbDcmAccess’ is enabled. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the DCM </p>
+<p>Table 5-10 IoHwAb_DCM_Input&lt;UserDefSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>29 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.8 </b></p>
+<p><b>IoHwAb_DCM_Read&lt;UserDefSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_DCM_Read&lt;UserDefSignalName&gt; </b>( &lt;ConfiguredType&gt; *signal )</p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Pointer to the variable, where the read value shall be stored </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This method is a bypass read function that executes a normal input operation, reading the value from the </p>
+<p>hardware, <b>even if the signal is locked. </b></p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbAccess’ of a user-defined signal is set to ‘Input’ and </p>
+<p>‘IoHwAbDcmAccess’ is enabled. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the DCM </p>
+<p>Table 5-11  IoHwAb_DCM_Read&lt;UserDefSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>This service will be generated for both, input and output signals. For input signals it </p>
+<p>works similar to the CalSignals-implementation. For output signals, a read functionality </p>
+<p>has to be implemented manually. </p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>30 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.9 </b></p>
+<p><b>IoHwAb_Output&lt;UserDefSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_Output&lt;UserDefSignalName&gt; </b>( &lt;ConfiguredType&gt; signal ) </p>
+<p><b>Parameter </b></p>
+<p>signal </p>
+<p>Signal value to be written </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This service is for user-defined output operations in general. Any lower level software can be accessed for </p>
+<p>writing values of the configured data type. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbAccess’ is set to ‘Output’ for a user-defined signal. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the RTE. </p>
+<p>Table 5-12 IoHwAb_Output&lt;UserDefSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>31 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.10 </b></p>
+<p><b>IoHwAb_DCM_Output&lt;UserDefSignalName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType  <b>IoHwAb_DCM_Output&lt;UserDefSignalName&gt; </b>( uint8 action,  </p>
+<p>&lt;ConfiguredType&gt; signal ) </p>
+<p><b>Parameter </b></p>
+<p>action </p>
+<p>Action to be executed </p>
+<p>signal </p>
+<p>Signal value to be stored to the buffer </p>
+<p><b>Return code </b></p>
+<p>E_OK </p>
+<p>Successfully executed </p>
+<p>E_NOT_OK </p>
+<p>An error occurred </p>
+<p><b>Functional Description </b></p>
+<p>This is the DCM access function for a user defined output function. The state of an output function can be </p>
+<p>changed by this service. The following states are available: </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_CONTROLTOECU</p>
+<p> – </p>
+<p>The current value will be unlocked. The following write operations (by the </p>
+<p>SW-C) will work normally. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored.</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_RESETTODEFAULT</p>
+<p> – The signal will be locked and reset to the configured default value (for </p>
+<p>further  information,  see  6.1.2.2.1.1),  i.e.  the  configured  default  value  will  be  written  to  the  hardware. </p>
+<p>Further  writes  (by  the  SW-C)  will  have  no  effect  on  the  hardware.  Here,  the  parameter </p>
+<p>signal</p>
+<p>  is </p>
+<p>ignored. </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_FREEZE</p>
+<p> – </p>
+<p>The signal will be locked, i.e. the signal is written and locked. Further writes (by the </p>
+<p>SW-C) will have no effect on the hardware. Here, the parameter </p>
+<p>signal</p>
+<p> is ignored.</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>IOHWAB_ADJUSTMENT</p>
+<p> – </p>
+<p>The  signal  will  be  locked,  i.e.  the  parameter </p>
+<p>signal</p>
+<p>  will  be  written  to  the </p>
+<p>hardware. Further writes (by the SW-C) will have no effect on the hardware.</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p></p>
+<p> </p>
+<p>This service will be generated, if ‘IoHwAbAccess’ of a user-defined signal is set to ‘Output’ and </p>
+<p>‘IoHwAbDcmAccess’ is enabled. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the DCM </p>
+<p>Table 5-13 IoHwAb_DCM_Output&lt;UserDefSignalName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name, as well as the parameter </p>
+<p>format is influenced by the configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>32 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.4.11 </b></p>
+<p><b>IoHwAb_&lt;SignalHandlerName&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>IoHwAb_&lt;SignalHandlerName&gt; </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>-- </p>
+<p>-- </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>-- </p>
+<p><b>Functional Description </b></p>
+<p>This function stub can be used to implement a special signal processing, e.g. debouncing. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This service is synchronous. </p>
+<p></p>
+<p> </p>
+<p>This service is non re-entrant. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>Expected to be called by the RTE. </p>
+<p>Table 5-14 IoHwAb_&lt;SignalHandlerName&gt; </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The upper service description does not refer to a certain API function, but to a function </p>
+<p>that will be generated by the IOHWAB. The service name is influenced by the </p>
+<p>configuration settings. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>5.5 </b></p>
+<p><b>Services used by IOHWAB </b></p>
+<p>In  the  following  table  services  provided  by  other  components,  which  are  used  by  the </p>
+<p>IOHWAB </p>
+<p>are </p>
+<p>listed. </p>
+<p>For </p>
+<p>details </p>
+<p>about </p>
+<p>prototype </p>
+<p>and </p>
+<p>functionality, </p>
+<p>refer </p>
+<p>to </p>
+<p>the </p>
+<p>documentation of the providing component. </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET </p>
+<p>Det_ReportError (optional) </p>
+<p>DIO </p>
+<p>Dio_WriteChannel (optional) </p>
+<p>DIO </p>
+<p>Dio_WriteChannelGroup (optional) </p>
+<p>DIO </p>
+<p>Dio_WritePort (optional) </p>
+<p>DIO </p>
+<p>Dio_ReadChannel (optional) </p>
+<p>DIO </p>
+<p>Dio_ReadChannelGroup (optional) </p>
+<p>DIO </p>
+<p>Dio_ReadPort (optional) </p>
+<p>Table 5-15 Services used by the IOHWAB </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>33 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.6 </b></p>
+<p><b>Callback Functions </b></p>
+<p>This release of the IOHWAB does not implement any callback functions. If necessary, the </p>
+<p>user may implement prototypes of callback functions in the file IoHwAb_Cbk.h. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>It is not possible to pass an approaching callback function through the RTE to the </p>
+<p>software component. Actions for handling callbacks have to be implemented inside the </p>
+<p>IOHWAB. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>5.7 </b></p>
+<p><b>Configurable Interfaces </b></p>
+<p><b>5.7.1 </b></p>
+<p><b>Notifications </b></p>
+<p>The IOHWAB does not provide notifications. </p>
+<p><b>5.8 </b></p>
+<p><b>Service Ports </b></p>
+<p><b>5.8.1 </b></p>
+<p><b>Client Server Interface </b></p>
+<p>A client server interface is related to a Provide Port at the server side and a Require Port </p>
+<p>at client side.  </p>
+<p><b>5.8.1.1 </b></p>
+<p><b>Provide Ports </b></p>
+<p>At the Provide Ports of the IOHWAB the API functions described in 5.3 are available as </p>
+<p>Runnable Entities. The Runnable Entities are invoked via Operations. The mapping from a </p>
+<p>SWC client call to an Operation is performed by the RTE. In this mapping, the RTE adds </p>
+<p>Port Defined Argument Values to the client call of the SWC, if configured. </p>
+<p>The following table presents the Provide Ports defined for the IOHWAB and the Operations </p>
+<p>defined  for  the  Provide  Ports,  the API  functions  related  to  the  Operations  and  the  Port </p>
+<p>Defined Argument Values to be added by the RTE: </p>
+<p> </p>
+<p><b>Provide Port </b></p>
+<p><b>Operation </b></p>
+<p><b>API Function </b></p>
+<p><b>Port Defined Argument Values </b></p>
+<p>OP_GET </p>
+<p>IoHwAb_Get&lt;CalSign</p>
+<p>alName&gt; </p>
+<p>*IoHwAb_BoolType/ </p>
+<p>*IoHwAb_DiscreteGoupType </p>
+<p>OP_SET </p>
+<p>IoHwAb_Set&lt;CalSign</p>
+<p>alName&gt; </p>
+<p>IoHwAb_BoolType/ </p>
+<p>IoHwAb_DiscreteGoupType </p>
+<p>&lt;CalSignalName&gt; </p>
+<p>OP_DIAG </p>
+<p>IoHwAb_Diag&lt;CalSig</p>
+<p>nalName&gt; </p>
+<p>IoHwAb_BoolType/ </p>
+<p>IoHwAb_DiscreteGoupType </p>
+<p>&lt;UserDefPortName&gt; </p>
+<p>&lt;UserDefSignalNa</p>
+<p>me&gt; </p>
+<p>IoHwAb_Input&lt;UserD</p>
+<p>efSignalName&gt; </p>
+<p>*&lt;Configured data type&gt; </p>
+<p>&lt;UserDefPortName&gt; </p>
+<p>&lt;UserDefSignalNa</p>
+<p>me&gt; </p>
+<p>IoHwAb_Output&lt;User</p>
+<p>DefSignalName&gt; </p>
+<p>&lt;Configured data type&gt; </p>
+<p>Table 5-16 Provide Ports on BSW module side </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>34 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>5.8.1.2 </b></p>
+<p><b>Require Ports </b></p>
+<p>The current version of the IOHWAB does not use any Require Ports. </p>
+<p><b>5.9 </b></p>
+<p><b>Software Component Template </b></p>
+<p><b>5.9.1 </b></p>
+<p><b>Generation </b></p>
+<p>The  definition  of  the  Provide  Ports  is  described  in  an  XML  file.  This  file  describes  the </p>
+<p>IOHWAB as a software component with ports to which other applications can connect. This </p>
+<p>XML file is created, when the module is generated in DaVinci Configurator. </p>
+<p><b>5.9.2 </b></p>
+<p><b>Import to the DaVinci modeling tool </b></p>
+<p>For  further  processing,  the  generated  software  component  template  has  to  be  imported </p>
+<p>into  DaVinci  Developer.  In  an  existing  DaVinci  Developer  project  use  ‘File-&gt;Import  XML </p>
+<p>File…’ and choose the correct file. </p>
+<p> </p>
+<p>Figure 5-2 Import a new software component into DaVinci </p>
+<p>After importing the IOHWAB as a software component, there is a new component type with </p>
+<p>all the configured ports available in the library view. You can open the software component </p>
+<p>by a double click. </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>35 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p> </p>
+<p>Figure 5-3 The imported software component </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The ports in the DaVinci modeling tool contain the operations configured in the DaVinci </p>
+<p>Configurator. It may be irritating, that e.g. an output operation of a user-defined signal </p>
+<p>looks as follows: </p>
+<p>UserOperation_1(In IoHwAbSignalDiagnosisType signal) [E_NOT_OK] </p>
+<p>In this case, ‘In’ means that the operation’s parameter is an input parameter. To avoid </p>
+<p>confusion, mind the following: </p>
+<p>1. </p>
+<p>Input operations (OP_GET, OP_DIAG, Input) always have output parameters (‘by </p>
+<p>reference’). </p>
+<p>Output operations (OP_SET, Output) always have input parameters (‘by value’). </p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>36 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>6 </b></p>
+<p><b>Configuration </b></p>
+<p>In the IOHWAB, the attributes can be configured with the following methods: </p>
+<p></p>
+<p> </p>
+<p>Configuration in DaVinci Configurator for a detailed description see 6.1  </p>
+<p></p>
+<p> </p>
+<p>Configuration  with  a  standard  AUTOSAR  GCE  –  this  option  will  not  be  described </p>
+<p>explicitly </p>
+<p><b>6.1 </b></p>
+<p><b>Configuration of IOHWAB with DaVinci Configurator </b></p>
+<p>The IOHWAB is configured with the help of the configuration tool DaVinci Configurator. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>In case of object delivery modifications are without effect, if a parameter is specified as </p>
+<p>a pre-compile value. Different object code is needed for different settings. Other object </p>
+<p>files can be obtained at Vector Informatik. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>6.1.1 </b></p>
+<p><b>Start configuration of the IOHWAB </b></p>
+<p>The  component  name  of  the  IOHWAB  in  DaVinci  Configurator  is  “IoHwAb”.  In  the </p>
+<p>“Architecture view” (initial page) of the DaVinci Configurator, the IOHWAB can be opened </p>
+<p>by its context menu to start its configuration. Optionally, the IOHWAB can be opened for </p>
+<p>configuration with the component list under the “System” tab located at the left side of the </p>
+<p>DaVinci Configurator. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>Please save your project right after creation to ensure data consistency. </p>
+<p>The configuration tool needs data from the saved file to calculate further configuration </p>
+<p>options as well as values of GUI elements. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>6.1.2 </b></p>
+<p><b>Tab ‘IoHwAb Configuration’ </b></p>
+<p><b>6.1.2.1 </b></p>
+<p><b>Node ‘IoHwAbCalSignals’ </b></p>
+<p>This  node  contains  the  configuration  of  MCAL  signals.  This  version  of  the  IOHWAB </p>
+<p>abstracts the complete functionality of the DIO driver, i.e. Channels, Channel Groups and </p>
+<p>Ports can be read and written. </p>
+<p>To add a MCAL signal, right-click on this node and choose ‘Append IoHwAbDiscrete’ in the </p>
+<p>context menu. </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>37 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p> </p>
+<p>Figure 6-1 Adding a MCAL signal </p>
+<p><b>6.1.2.1.1 </b></p>
+<p><b>Node ‘IoHwAbDiscrete’ </b></p>
+<p>This node contains the configuration of a single MCAL signal. </p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold</p>
+<p><b>Description </b></p>
+<p>Create OP_SET for </p>
+<p>Signal </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the generation of an OP_SET </p>
+<p>function for the current signal.</p>
+<p>Create OP_GET for </p>
+<p>Signal </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>This switch enables/disables </p>
+<p>the generation of an OP_GET </p>
+<p>function for the current signal.</p>
+<p>Create OP_DIAG for </p>
+<p>Signal </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>This switch enables/disables </p>
+<p>the generation of an </p>
+<p>OP_DIAG function for the </p>
+<p>current signal. </p>
+<p>Used DIO Entity </p>
+<p>pre-compile </p>
+<p>Reference to a </p>
+<p>DIO entity </p>
+<p><b>-- </b></p>
+<p>This dropdown field </p>
+<p>configured the reference to </p>
+<p>the DIO entity that is used by </p>
+<p>this signal. </p>
+<p>Enable DCM Access </p>
+<p>functionality </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the generation of DCM </p>
+<p>access functions for the </p>
+<p>OP_SET and OP_GET </p>
+<p>function of the current signal. </p>
+<p>Default Value </p>
+<p>pre-compile </p>
+<p>IoHwAb_BoolType</p>
+<p>/IoHwAb_Discrete</p>
+<p>GroupType </p>
+<p><b>0 </b></p>
+<p>This field configures the </p>
+<p>default value that will be </p>
+<p>assigned to the signal if the </p>
+<p>associated DCM service is </p>
+<p>called with the attribute </p>
+<p>IOHWAB_RESETTODEFAULT.</p>
+<p>Table 6-1   Node ‘IoHwAbDiscrete’ </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>38 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>6.1.2.2 </b></p>
+<p><b>Node ‘IoHwAbUserDefSignals’ </b></p>
+<p>This node contains user-defined ports. These ports are similar to the MCAL signals, but do </p>
+<p>not contain the abstraction of a certain driver. Unlike the MCAL signals user-defined ports </p>
+<p>are  not  limited  to  predefined  operations  (OP_SET,  OP_GET,  OP_DIAG),  but  they  can </p>
+<p>contain a various number of customizable operations. </p>
+<p>To </p>
+<p>add </p>
+<p>a </p>
+<p>user-defined </p>
+<p>port </p>
+<p>right-click </p>
+<p>on </p>
+<p>this </p>
+<p>node </p>
+<p>and </p>
+<p>choose </p>
+<p>‘Append </p>
+<p>IoHwAbUserDefPort’ in the context menu. </p>
+<p> </p>
+<p>Figure 6-2 Adding a user-defined port </p>
+<p><b>6.1.2.2.1 </b></p>
+<p><b>Node ‘IoHwAbUserDefPort’ </b></p>
+<p>This node contains user-defined signals. </p>
+<p>To </p>
+<p>add </p>
+<p>a </p>
+<p>user-defined </p>
+<p>signal </p>
+<p>right-click </p>
+<p>on </p>
+<p>this </p>
+<p>node </p>
+<p>and </p>
+<p>choose </p>
+<p>‘Append </p>
+<p>IoHwAbUserDefOp’ in the context menu. </p>
+<p> </p>
+<p>Figure 6-3 Adding a user-defined operation </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>39 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>6.1.2.2.1.1 </b></p>
+<p><b>Node ‘IoHwAbUserDefOp’ </b></p>
+<p><b>Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value Type Values </b></p>
+<p>The default value is written in bold </p>
+<p><b>Description </b></p>
+<p>Access </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>Output </b></p>
+<p>Input </p>
+<p>This switch configures </p>
+<p>the direction of the </p>
+<p>operation: input </p>
+<p>operations read from </p>
+<p>the driver layer, output </p>
+<p>operations write to the </p>
+<p>driver layer. </p>
+<p>Data Type </p>
+<p>pre-compile </p>
+<p>String </p>
+<p>parameter </p>
+<p>IoHwAb_BoolType </p>
+<p>IoHwAb_CurrentType </p>
+<p>IoHwAb_VoltageType </p>
+<p>IoHwAb_ResistanceType </p>
+<p>IoHwAb_SignalDiagnosisType</p>
+<p>IoHwAb_PwxPeriodType </p>
+<p>IoHwAb_PwxDutyCycleType </p>
+<p>sint8 </p>
+<p><b>uint8 </b></p>
+<p>sint16 </p>
+<p>uint16 </p>
+<p>sint32 </p>
+<p>uint32 </p>
+<p>float32 </p>
+<p>float64 </p>
+<p>This field configures </p>
+<p>the data type of the </p>
+<p>operation’s parameter. </p>
+<p>Unit </p>
+<p>-- </p>
+<p>String </p>
+<p>parameter </p>
+<p>mV </p>
+<p>V </p>
+<p>Ohm </p>
+<p>kOhm </p>
+<p>A </p>
+<p>mA </p>
+<p>µA </p>
+<p>°C </p>
+<p>Percent </p>
+<p><b>n/a </b></p>
+<p>This field configures </p>
+<p>the unit of the </p>
+<p>operation. No output </p>
+<p>will be generated from </p>
+<p>this configuration </p>
+<p>element. </p>
+<p>Range Min </p>
+<p>-- </p>
+<p>Numeric </p>
+<p>value </p>
+<p><b>0 </b></p>
+<p>This field contains the </p>
+<p>minimum value of the </p>
+<p>operation’s unit.  </p>
+<p>No output will be </p>
+<p>generated from this </p>
+<p>configuration element. </p>
+<p>Range Max </p>
+<p>-- </p>
+<p>Numeric </p>
+<p>value </p>
+<p><b>-- </b></p>
+<p>This field contains the </p>
+<p>maximum value of the </p>
+<p>operation’s unit.  </p>
+<p>No output will be </p>
+<p>generated from this </p>
+<p>configuration element. </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>40 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>41 / 48</p>
+<p><b>Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value Type Values </b></p>
+<p>The default value is written in bold </p>
+<p><b>Description </b></p>
+<p>Resolution </p>
+<p>-- </p>
+<p>Numeric </p>
+<p>value </p>
+<p><b>-- </b></p>
+<p>This field contains the </p>
+<p>hardware resolution of </p>
+<p>the signal.  </p>
+<p>No output will be </p>
+<p>generated from this </p>
+<p>configuration element. </p>
+<p>Enable DCM </p>
+<p>Access </p>
+<p>Functionality </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>This switch </p>
+<p>enables/disables  the </p>
+<p>generation of DCM </p>
+<p>access functions for the </p>
+<p>current operation. </p>
+<p>Default Value </p>
+<p>pre-compile </p>
+<p>Depends on </p>
+<p>the data </p>
+<p>type of the </p>
+<p>signal </p>
+<p><b>-- </b></p>
+<p>This field contains the </p>
+<p>default value, that will </p>
+<p>be assigned to the </p>
+<p>signal if the associated </p>
+<p>DCM function is called </p>
+<p>with the parameter </p>
+<p>IOHWAB_RESETTODEF</p>
+<p>AULT.</p>
+<p> </p>
+<p> </p>
+<p><b>6.1.2.3 </b></p>
+<p><b>Node ‘IoHwAbHandlers’ </b></p>
+<p>This  node  contains  all  the  signal  handler  functions.  Signal  handlers  are  called  cyclically </p>
+<p>and can be used for special signal processing. </p>
+<p>To add a handler function right-click on this node and choose ‘Append IoHwAbHandler’ in </p>
+<p>the context menu. </p>
+<p> </p>
+<p>Figure 6-4 Adding a handler function </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>6.1.2.3.1 </b></p>
+<p><b>Node ‘IoHwAbHandler’ </b></p>
+<p>This node contains the configuration of a signal handler function. </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Trigger Period </p>
+<p>pre-compile </p>
+<p>Numeric </p>
+<p>Value </p>
+<p><b>10 </b></p>
+<p>This field contains the trigger </p>
+<p>period for the signal handler </p>
+<p>function. </p>
+<p>Timebase </p>
+<p>pre-compile </p>
+<p>String </p>
+<p>parameter</p>
+<p>sec </p>
+<p><b>msec </b></p>
+<p>This switch configures the time </p>
+<p>base of the handler’s trigger </p>
+<p>period. </p>
+<p> </p>
+<p><b>6.1.2.4 </b></p>
+<p><b>Node IoHwAbDataTypeSizes </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Configu</b></p>
+<p><b>ration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default </p>
+<p>value is </p>
+<p>written in bold</p>
+<p><b>Description </b></p>
+<p>Size of </p>
+<p>IoHwAb_DiscreteGroupSize </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint8 </b></p>
+<p>uint16 </p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_DiscreteGroupType</p>
+<p>. </p>
+<p>Size of IoHwAb_CurrentType </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint16 </b></p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_CurrentType</p>
+<p>. </p>
+<p>Size of IoHwAb_VoltageType </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint16 </b></p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_VoltageType</p>
+<p>. </p>
+<p>Size of </p>
+<p>IoHwAb_ResistanceType </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint16 </b></p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_ResistanceType</p>
+<p>. </p>
+<p>Size of </p>
+<p>IoHwAb_SignalDiagnosisType </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint16 </b></p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_SignalDiagnosisType</p>
+<p>. </p>
+<p>Size of </p>
+<p>IoHwAb_PwxPeriodType </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint16 </b></p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_PwxPeriodType</p>
+<p>. </p>
+<p>Size of </p>
+<p>IoHwAb_PwxDutyCycleType </p>
+<p>pre-</p>
+<p>compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>uint16 </b></p>
+<p>uint32 </p>
+<p>This field determines the size of the </p>
+<p>data type </p>
+<p>IoHwAb_PwxDutyCycleType</p>
+<p>. </p>
+<p> </p>
+<p><b>6.1.3 </b></p>
+<p><b>Tab ‘General Settings’ </b></p>
+<p>This tab contains the general configuration of the IOHWAB. </p>
+<p><b>6.1.3.1 </b></p>
+<p><b>Area ‘Error Detection – Development Mode’ </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Development Mode </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the development error </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>42 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>43 / 48</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>detection of the IOHWAB. </p>
+<p>Check Parameter </p>
+<p>Pointer </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the pointer parameter check of </p>
+<p>the generated API functions. </p>
+<p>The parameter will be checked </p>
+<p>for not being a NULL_PTR. </p>
+<p>Development Error </p>
+<p>Reporting </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the reporting of detected </p>
+<p>development errors to the error </p>
+<p>tracer module (by default: </p>
+<p>DET). </p>
+<p>Errorhook Function </p>
+<p>pre-compile </p>
+<p>C-function </p>
+<p>identifier </p>
+<p><b>Det_ReportError</b></p>
+<p>This field contains the function </p>
+<p>name of the development error </p>
+<p>reporting function. </p>
+<p>Include File </p>
+<p>pre-compile </p>
+<p>Header </p>
+<p>file </p>
+<p><b>Det.h </b></p>
+<p>This FileEdit is for inclusion of </p>
+<p>the header file that contains the </p>
+<p>development error reporting </p>
+<p>function. </p>
+<p> </p>
+<p><b>6.1.3.2 </b></p>
+<p><b>Area ‘Interrupt Services’ </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value is written in </p>
+<p>bold </p>
+<p><b>Description </b></p>
+<p>Critical Section </p>
+<p>Handling </p>
+<p>pre-compile </p>
+<p>-- </p>
+<p><b>UseSuspendFunctions </b></p>
+<p>UseOSFunctions </p>
+<p>UseEnableFunctions </p>
+<p>This field configures the </p>
+<p>critical section handling of </p>
+<p>the IOHWAB. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The values in this list can be configured in the platform specific configuration: </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>6.1.3.3 </b></p>
+<p><b>Area ‘Common Settings’ </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Use RTE </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>RTE usage. If RTE usage is on, </p>
+<p>IoHwAb types and function </p>
+<p>prototypes are generated by </p>
+<p>the RTE generator. Otherwise </p>
+<p>IoHwAb types will be generated </p>
+<p>into IoHwAb_types.h and </p>
+<p>function prototypes will be </p>
+<p>added to IoHwAb_Cfg.h </p>
+<p>Export As Service </p>
+<p>Component </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p>ON </p>
+<p><b>OFF </b></p>
+<p>This parameter </p>
+<p>enables/disables the </p>
+<p>generation of the I/O Hardware </p>
+<p>Abstraction as a Service </p>
+<p>Component. </p>
+<p>By Default, the I/O Hardware </p>
+<p>Abstraction is an Application </p>
+<p>Component. By enabling this </p>
+<p>option, the module can be </p>
+<p>declared as a Service </p>
+<p>Component. </p>
+<p>Component Name </p>
+<p>pre-compile </p>
+<p>String </p>
+<p>parameter </p>
+<p><b>IoHwAbstraction </b></p>
+<p>This field contains the </p>
+<p>component name of the </p>
+<p>IOHWAB. After importing the </p>
+<p>IOHWAB to a DaVinci </p>
+<p>Developer project, the service </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>44 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>45 / 48</p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>component will have this name.</p>
+<p> </p>
+<p><b>6.1.3.4 </b></p>
+<p><b>Area ‘Include List’ </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuratio</b></p>
+<p><b>n Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>IoHwAbCfgIncludeList </p>
+<p>pre-compile </p>
+<p>String </p>
+<p>parameter</p>
+<p><b>Dio.h </b></p>
+<p>This field contains all necessary </p>
+<p>includes of lower level drivers. </p>
+<p> </p>
+<p><b>6.1.4 </b></p>
+<p><b>Tab ‘Module API’ </b></p>
+<p><b>6.1.4.1 </b></p>
+<p><b>Area ‘API Optimization’ </b></p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p>The default value </p>
+<p>is written in bold </p>
+<p><b>Description </b></p>
+<p>Use IoHwAb_Init </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the service </p>
+<p>IoHwAb_Init()</p>
+<p>. </p>
+<p>Use </p>
+<p>IoHwAb_GetVersionInfo </p>
+<p>pre-compile </p>
+<p>Boolean </p>
+<p><b>ON </b></p>
+<p>OFF </p>
+<p>This switch enables/disables </p>
+<p>the service </p>
+<p>IoHwAb_GetVersionInfo()</p>
+<p>.</p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p> </p>
+<p>The current version of the IOHWAB has only full support of the DIO driver implemented, </p>
+<p>i.e.  the  access  to  the  DIO  driver’s  API  is  generated  completely  and  needs  no  further </p>
+<p>modification. Abstraction of further AUTOSAR drivers as well as custom drivers has to be </p>
+<p>done manually by using the generated function stubs. </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>46 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>8.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>DaVinci Configurator </p>
+<p>Configuration and generation tool for MICROSAR BSW components </p>
+<p>Table 8-1   Glossary </p>
+<p> </p>
+<p> </p>
+<p><b>8.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>DCM </p>
+<p>Diagnostic Communication Manager </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>GCE </p>
+<p>Generic Configuration Editor </p>
+<p>HIS </p>
+<p>Hersteller Initiative Software </p>
+<p>IOHWAB </p>
+<p>Input/Output Hardware Abstraction </p>
+<p>ISR </p>
+<p>Interrupt Service Routine </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>PPort </p>
+<p>Provide Port </p>
+<p>RPort </p>
+<p>Require Port </p>
+<p>RTE </p>
+<p>Runtime Environment </p>
+<p>SRS </p>
+<p>Software Requirement Specification </p>
+<p>SW-C </p>
+<p>Software Component </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>Table 8-2   Abbreviations </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>47 / 48</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR IOHWAB  </p>
+<p> </p>
+<p>©</p>
+<p>2010, Vector Informatik GmbH </p>
+<p>Version: 2.02.02 </p>
+<p>based on template version 3.1 </p>
+<p>48 / 48</p>
+<p><b>9 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

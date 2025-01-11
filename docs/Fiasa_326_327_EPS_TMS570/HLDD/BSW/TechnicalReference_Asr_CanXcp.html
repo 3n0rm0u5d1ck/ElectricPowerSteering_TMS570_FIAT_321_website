@@ -1,0 +1,1568 @@
+---
+layout: default
+title: TechnicalReference_Asr_CanXcp
+nav_order: 9
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>XCP on CAN </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>Version 1.06.00 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Authors: </b></p>
+<p>Frank Triem, Sven Hesselmann, Andreas </p>
+<p>Herkommer </p>
+<p><b>Version: </b></p>
+<p>1.06.00 </p>
+<p><b>Status: </b></p>
+<p>released </p>
+<p>(in preparation/completed/inspected/released)</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version</b></p>
+<p><b>Remarks </b></p>
+<p>Frank Triem </p>
+<p>2007-01-26 </p>
+<p>1.00.00 </p>
+<p>ESCAN00017890: Creation of Cp_XcpOnCanAsr </p>
+<p>based on Cp_XcpOnCan </p>
+<p>Sven </p>
+<p>Hesselmann </p>
+<p>2008-08-05 </p>
+<p>1.01.00 </p>
+<p>Adaptations to AUTOSAR R3 </p>
+<p>Mario Kunz </p>
+<p>2009-12-17 </p>
+<p>1.02.00 </p>
+<p>Support of a2l export. </p>
+<p>Andreas </p>
+<p>Herkommer </p>
+<p>2010-01-14 </p>
+<p>1.03.00 </p>
+<p>ESCAN00040120: Support MultiChannel </p>
+<p>Removed Section 3.3 </p>
+<p>Andreas </p>
+<p>Herkommer </p>
+<p>2010-03-30 </p>
+<p>1.04.00 </p>
+<p>ESCAN00041935: Add feature to disable </p>
+<p>XcpOnCanAsr in serial production ECUs </p>
+<p>ESCAN00043225: Missing limitation for Multiple </p>
+<p>Identity with several CAN channels </p>
+<p>Andreas </p>
+<p>Herkommer </p>
+<p>2011-01-04 </p>
+<p>1.05.00 </p>
+<p>ESCAN00046305: AR3-297 AR3-894: Support </p>
+<p>PduInfoType instead of the DataPtr </p>
+<p>Andreas </p>
+<p>Herkommer </p>
+<p>2011-03-22 </p>
+<p>1.06.00 </p>
+<p>ESCAN00049434: Support Monitoring Hooks for </p>
+<p>AUTOSAR 4 </p>
+<p> </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>Index </b></p>
+<p><b>Document </b></p>
+<p>[1] </p>
+<p>XCP -Part 1 – Overview, Version 1.0 of 2003-04-08 </p>
+<p>[2] </p>
+<p>XCP -Part 2- Protocol Layer Specification, Version 1.0 of 2003-04-08 </p>
+<p>[3] </p>
+<p>XCP -Part 5- Example Communication Sequences, Version 1.0 of 2003-04-08 </p>
+<p>[4] </p>
+<p>Technical Reference XCP Protocol Layer, Version 1.0 of 2005-01-17 </p>
+<p>[5] </p>
+<p>AN-AND-1-108 Glossary of CAN Protocol Terminology </p>
+<p>http://www.vector-informatik.de </p>
+<p>[6] </p>
+<p>AUTOSAR_SWS_DevelopmentErrorTracer.pdf V3.0.0</p>
+<p> </p>
+<p> </p>
+<p><b>1.3 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Complete expression </b></p>
+<p><b>A2L </b></p>
+<p>File Extension for an <b>A</b>SAM <b>2</b>MC <b>L</b>anguage File </p>
+<p><b>AML </b></p>
+<p><b>A</b>SAM 2 <b>M</b>eta <b>L</b>anguage </p>
+<p><b>API </b></p>
+<p><b>A</b>pplication <b>P</b>rogramming <b>I</b>nterface </p>
+<p><b>ASAM </b></p>
+<p><b>A</b>ssociation for <b>S</b>tandardization of <b>A</b>utomation and <b>M</b>easuring Systems </p>
+<p><b>CAN </b></p>
+<p><b>C</b>ontroller <b>A</b>rea <b>N</b>etwork </p>
+<p><b>CANape </b></p>
+<p>Calibration and Measurement Data Acquisition for Electronic Control Systems</p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>2 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>CMD </b></p>
+<p><b>C</b>o<b>m</b>man<b>d </b></p>
+<p><b>CTO </b></p>
+<p><b>C</b>ommand <b>T</b>ransfer <b>O</b>bject </p>
+<p><b>DAQ </b></p>
+<p>Synchronous <b>D</b>ata <b>A</b>c<b>q</b>uistion </p>
+<p><b>DLC </b></p>
+<p><b>D</b>ata <b>L</b>ength <b>C</b>ode ( Number of data bytes of a CAN message ) </p>
+<p><b>DLL </b></p>
+<p><b>D</b>ata <b>l</b>ink <b>l</b>ayer </p>
+<p><b>DTO </b></p>
+<p><b>D</b>ata <b>T</b>ransfer <b>O</b>bject </p>
+<p><b>ECU </b></p>
+<p><b>E</b>lectronic <b>C</b>ontrol <b>U</b>nit </p>
+<p><b>ID </b></p>
+<p><b>Id</b>entifier (of a CAN message) </p>
+<p><b>Identifier </b></p>
+<p>Identifies a CAN message </p>
+<p><b>ISR </b></p>
+<p><b>I</b>nterrupt <b>S</b>ervice <b>R</b>outine </p>
+<p><b>MCS </b></p>
+<p><b>M</b>aster <b>C</b>alibration <b>S</b>ystem </p>
+<p><b>Message </b></p>
+<p>One or more signals are assigned to each message. </p>
+<p><b>MRB </b></p>
+<p><b>M</b>ulti <b>r</b>eceive <b>b</b>uffer </p>
+<p><b>MRC </b></p>
+<p><b>M</b>ulti <b>r</b>eceive <b>c</b>hannel </p>
+<p><b>OEM </b></p>
+<p><b>O</b>riginal <b>e</b>quipment <b>m</b>anufacturer (vehicle manufacturer) </p>
+<p><b>RES </b></p>
+<p>Command <b>Res</b>ponse Packet </p>
+<p><b>SRB </b></p>
+<p><b>S</b>ingle <b>r</b>eceive <b>b</b>uffer </p>
+<p><b>SERV </b></p>
+<p><b>Ser</b>vice Request Packet </p>
+<p><b>STIM </b></p>
+<p><b>Stim</b>ulation </p>
+<p><b>XCP </b></p>
+<p>Universal Measurement and <b>C</b>alibration <b>P</b>rotocol </p>
+<p><b>VI </b></p>
+<p><b>V</b>ector <b>I</b>nformatik GmbH </p>
+<p> </p>
+<p>Also refer to [5] for a list of common abbreviations and terms. </p>
+<p><b>1.4 </b></p>
+<p><b>Naming Conventions </b></p>
+<p>The  names  of  the  access  functions  provided  by  the  XCP  on  CAN  Transport  Layer  for </p>
+<p>MICROSAR  CanIf  always  start  with  a  prefix  that  includes  the  characters  ‘CanXcp’.  The </p>
+<p>characters ‘CanXcp’ are surrounded by an abbreviation which refers to the service or to </p>
+<p>the  layer  which  requests  a  XCP  service.  The  designation  of  the  main  services  is  listed </p>
+<p>below: </p>
+<p><b>Naming conventions </b></p>
+<p>CanXcp… </p>
+<p>It is mandatory to use all functions beginning with </p>
+<p>Xcp…</p>
+<p> </p>
+<p>These services are called by either the data link layer, XCP Protocol Layer or </p>
+<p>the application. </p>
+<p>They are e.g. used for the transmission of messages. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector’s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>3 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>questionnaire. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>4 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>Contents </b></p>
+<p> </p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information ............................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History .......................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ................................................................................. 2</p>
+<p> </p>
+<p>1.3</p>
+<p> </p>
+<p>Abbreviations ............................................................................................... 2</p>
+<p> </p>
+<p>1.4</p>
+<p> </p>
+<p>Naming Conventions.................................................................................... 3</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Overview ..................................................................................................................... 7</b></p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description .............................................................................................. 8</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Overview of the Functional Scope ............................................................... 8</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Reception and Transmission of XCP Packets ............................................. 8</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>Activation and Deactivation.......................................................................... 9</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Hook Functions (AUTOSAR 4 only)............................................................. 9</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration into the Application .............................................................................. 10</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Files............................................................................................................ 10</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Version Changes........................................................................................ 10</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Integration of XCP on CAN into the Application......................................... 11</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>Description of the API.............................................................................................. 13</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Version of the Source Code ....................................................................... 13</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>XCP on CAN Transport Layer services called by the Protocol Layer ........ 14</p>
+<p> </p>
+<p>5.2.1</p>
+<p> </p>
+<p>CanXcp_Transmit: Transmission of XCP Packets..................................... 14</p>
+<p> </p>
+<p>5.2.2</p>
+<p> </p>
+<p>CanXcp_MainFunction: Main Function of XCP on CAN Transport Layer.. 14</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>XCP Transport Layer for CAN services called by the CAN Interface......... 15</p>
+<p> </p>
+<p>5.3.1</p>
+<p> </p>
+<p>CanXcp_RxIndication: XCP Message Indication Function (“Use Pdu </p>
+<p>Info Type” disabled) ................................................................................... 15</p>
+<p> </p>
+<p>5.3.2</p>
+<p> </p>
+<p>CanXcp_RxIndication: XCP Message Indication Function (“Use Pdu </p>
+<p>Info Type” enabled).................................................................................... 15</p>
+<p> </p>
+<p>5.3.3</p>
+<p> </p>
+<p>CanXcp_TxConfirmation: XCP Message Confirmation.............................. 16</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>XCP Protocol Layer services called by the XCP on CAN Transport </p>
+<p>Layer .......................................................................................................... 16</p>
+<p> </p>
+<p>5.5</p>
+<p> </p>
+<p>XCP on CAN Transport Layer services called by other layers................... 16</p>
+<p> </p>
+<p>5.5.1</p>
+<p> </p>
+<p>CanXcp_Init: Initialization of XCP on CAN Transport Layer ...................... 16</p>
+<p> </p>
+<p>5.5.2</p>
+<p> </p>
+<p>CanXcp_GetVersionInfo: Request version information of XCP on CAN </p>
+<p>Transport Layer.......................................................................................... 17</p>
+<p> </p>
+<p>5.5.3</p>
+<p> </p>
+<p>CanXcp_Control: Functionality lock ........................................................... 17</p>
+<p> </p>
+<p>5.5.4</p>
+<p> </p>
+<p>CanXcp_SetPduMode: set Transmission mode ........................................ 18</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>5 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>5.6</p>
+<p> </p>
+<p>Macros ....................................................................................................... 18</p>
+<p> </p>
+<p>5.6.1</p>
+<p> </p>
+<p>XCP_ACTIVATE: Enable the Protocol and Transport Layer ..................... 18</p>
+<p> </p>
+<p>5.6.2</p>
+<p> </p>
+<p>XCP_DEACTIVATE: Disable the Protocol and Transport Layer................ 19</p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Configuration of XCP on CAN................................................................................. 20</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Configuration of XCP on CAN and CanIf with GENy ................................. 20</p>
+<p> </p>
+<p>6.1.1</p>
+<p> </p>
+<p>Main Configuration Page............................................................................ 21</p>
+<p> </p>
+<p>6.1.2</p>
+<p> </p>
+<p>Channel Configuration Page ...................................................................... 22</p>
+<p> </p>
+<p>6.1.3</p>
+<p> </p>
+<p>A2L File...................................................................................................... 23</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>Limitations ................................................................................................................ 24</b></p>
+<p> </p>
+<p>7.1.1</p>
+<p> </p>
+<p>Variable Length of XCP Packets is not supported ..................................... 24</p>
+<p> </p>
+<p>7.1.2</p>
+<p> </p>
+<p>Assignment of CAN identifiers to DAQ Lists is not supported.................... 24</p>
+<p> </p>
+<p>7.1.3</p>
+<p> </p>
+<p>Detection of all XCP Slaves within a Network............................................ 24</p>
+<p> </p>
+<p>7.1.4</p>
+<p> </p>
+<p>Multiple Identity only supported for single channel configuration............... 24</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>FAQ ............................................................................................................................ 25</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Transmit Queue of CAN Interface is Disabled ........................................... 25</p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Contact ...................................................................................................................... 26</b></p>
+<p> </p>
+<p><i> </i></p>
+<p><b>Illustrations </b></p>
+<p> </p>
+<p>Figure 4-1</p>
+<p> </p>
+<p>Integration of XCP on CAN into the application.............................................. 11</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>Component selection ...................................................................................... 20</p>
+<p> </p>
+<p>Figure 6-2</p>
+<p> </p>
+<p>Main configuration page of XCP on CAN Transport Layer ............................. 21</p>
+<p> </p>
+<p>Figure 6-3</p>
+<p> </p>
+<p>Channel configuration page of XCP on CAN Transport Layer........................ 22</p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>6 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Overview </b></p>
+<p>This document describes the features, API, configuration  and  integration of the XCP on </p>
+<p>CAN  Transport  Layer  for  MICROSAR  CanIf.  The  XCP  Protocol  Layer,  which  is  already </p>
+<p>described within a separate document [4], is not covered by this document. </p>
+<p>Please </p>
+<p>also </p>
+<p>refer </p>
+<p>to </p>
+<p>“The </p>
+<p>Universal </p>
+<p>Measurement </p>
+<p>and </p>
+<p>Calibration </p>
+<p>Protocol </p>
+<p>Family” </p>
+<p>specification by ASAM e.V. </p>
+<p>XCP on CAN is a hardware independent protocol that can be ported to almost any CAN </p>
+<p>controller.  Due  to  there  are  numerous  combinations  of  micro  controllers,  compilers  and </p>
+<p>memory  models  it  cannot  be  guaranteed  that  it  will  run  properly  on  any  of  the  above </p>
+<p>mentioned combinations. </p>
+<p>Please  note  that  in  this  document  the  term  Application  is  not  used  strictly  for  the  user </p>
+<p>software but also for any higher software layer. Therefore, Application refers to any of the </p>
+<p>software components using XCP on CAN. </p>
+<p>The API of the functions is described in a separate chapter at the end of this document. </p>
+<p>Referred functions are always shown in the single channel mode. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>7 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Overview of the Functional Scope </b></p>
+<p>The transmission and reception of XCP Packets is managed by the XCP Transport Layers. </p>
+<p>The XCP on CAN Transport Layer for MICROSAR CanIf uses the AUTOSAR CanIf for the </p>
+<p>transmission and reception of XCP Packets.  </p>
+<p>Variable message length is not supported and therefore the XCP Transport Layer ensures </p>
+<p>that all transmitted XCP messages have the same DLC of 8 Bytes. </p>
+<p><b>3.2 </b></p>
+<p><b>Reception and Transmission of XCP Packets </b></p>
+<p>Upon reception of any XCP message the function </p>
+<p>void <b>CanXcp_RxIndication </b>( PduIdType CanCanXcpRxPduId,  </p>
+<p>const uint8 * CanSduPtr ) </p>
+<p>(5.3.1) </p>
+<p>is called by the CAN Interface and the XCP Packet is passed to the XCP Protocol Layer. </p>
+<p>After the command has been processed by the Protocol Layer the XCP Response Packet </p>
+<p>is passed to the Transport Layer by the service </p>
+<p>void <b>CanXcp_Transmit </b>(vuint8 len, MEMORY_ROM BYTEPTR msg ) </p>
+<p>(5.2.1) </p>
+<p>The XCP message is transmitted via the CAN Interface’s service </p>
+<p>vuint8 <b>CanIf_Transmit </b>( PduIdType CanTxPduId,  </p>
+<p>const PduInfoType *PduInfoPtr ) </p>
+<p>The successful transmission is confirmed by the CAN Interface by a call of </p>
+<p>void <b>CanXcp_TxConfirmation </b>( PduIdType CanTxPduId ) </p>
+<p>(5.3.3)</p>
+<p> </p>
+<p>The confirmation is passed from the XCP on Can Transport Layer to the Protocol Layer by </p>
+<p>the XcpSendCallback. </p>
+<p> </p>
+<p>Asynchronous XCP Packet transmission like e.g. SERV, EV and DAQ are also transmitted </p>
+<p>and confirmed by the above described sequence. </p>
+<p>Please </p>
+<p>note </p>
+<p>that </p>
+<p>after </p>
+<p>Initialization </p>
+<p>the </p>
+<p>XCP </p>
+<p>is </p>
+<p>in </p>
+<p>PDU </p>
+<p>Mode </p>
+<p>CANXCP_SET_OFFLINE. </p>
+<p>Normally it is enabled by the CAN State Manager. If the State Manager is not present or a </p>
+<p>State Manager from another vendor is used this has to be enabled manually by using the </p>
+<p>API: </p>
+<p>void <b>CanXcp_SetPduMode </b>( NetworkHandleType XcpNwH, CanXcp_PduSetModeType </p>
+<p>PduMode ) </p>
+<p>(5.5.4) </p>
+<p>If this is not done, the XCP will not send anything!</p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>8 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>3.3 </b></p>
+<p><b>Activation and Deactivation </b></p>
+<p>The XCP provides functionality to disable the component during runtime. This is useful if </p>
+<p>the component shall remain in series production ECUs where XCP is disabled by default </p>
+<p>and can be enabled by, e.g. a Diagnosis service. </p>
+<p>By  default  XCP  is  enabled.  The  functionality  of  CanXcp  can  be  disabled  by  calling  the </p>
+<p>Macro: </p>
+<p><b>XCP_DEACTIVATE() </b></p>
+<p>(5.6.2)</p>
+<p> </p>
+<p>It can be enabled again by calling the respective Macro: </p>
+<p>  </p>
+<p><b>XCP_ACTIVATE()                                                                   </b></p>
+<p>(5.6.1)</p>
+<p> </p>
+<p>Please Note that the XCP will continue where it was stopped, so a running measurement </p>
+<p>will also continue without the Master knowing about it. Therefore it is safer to call XcpInit() </p>
+<p>and CanXcp_Init() in order to re-initialize the XCP to reactivate it. </p>
+<p><b>3.4 </b></p>
+<p><b>Hook Functions (AUTOSAR 4 only) </b></p>
+<p>With the AUTOSAR 4 edition it is now possible to make use of Hook functions that are </p>
+<p>called  at  the  beginning  and  end  of  each  function.  These  hook  functions  are  realized  as </p>
+<p>empty defines in the file CanXcp_Hooks.h and therefore do not use any resources. </p>
+<p>They  can  be  customized  to  user  defined  functions  which  must  be  added  to  this  file </p>
+<p>manually. </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Example </b></p>
+<p><b> </b></p>
+<p>#define CanXcpHook_OnBegin_InitMemory MyHookFunction_Begin(); </p>
+<p>#define CanXcpHook_OnEnd_InitMemory   MyHookFunction_End();</p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Note </b></p>
+<p>The Hook functions are called after the DET. This means that if you get a DET error the </p>
+<p>function might be exited and no Hook function is called. </p>
+<p>Also the Hook functions are Pre-Compile time configurable. That means that they can </p>
+<p>not be modified for Library deliveries. </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>9 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Integration into the Application </b></p>
+<p>This chapter describes the steps for the integration of the XCP on CAN Transport Layer </p>
+<p>into an application environment of an ECU. </p>
+<p><b>4.1 </b></p>
+<p><b>Files </b></p>
+<p>The XCP on CAN Transport Layer consists of the following files: </p>
+<p><b>Files of the XCP on CAN Transport Layer </b></p>
+<p>CanXcp.c </p>
+<p>XCP on CAN Transport Layer. </p>
+<p>This file <b>must not </b>be changed by the user! </p>
+<p>CanXcp.h </p>
+<p>API of the XCP on CAN Transport Layer. </p>
+<p>This file <b>must not </b>be changed by the application! </p>
+<p>This file has to be included prior to </p>
+<p>XcpProf.h</p>
+<p>. </p>
+<p>CanXcp_Types.h </p>
+<p>Type definitions of the XCP on CAN Transport Layer. </p>
+<p>This file <b>must not </b>be changed by the application! </p>
+<p>This file is handled internally and must not be included </p>
+<p>separately. </p>
+<p>CanXcp_Hooks.h </p>
+<p>This file is only available in the AUTOSAR 4.0 version only and </p>
+<p>can be edited manually to make use of the Hook functions. </p>
+<p> </p>
+<p> </p>
+<p>Additionally the following files are generated by the generation tool GENy. </p>
+<p><b>Files generated by GENy </b></p>
+<p>CanXcp_Cfg.h </p>
+<p>Configuration file for XCP on CAN. </p>
+<p>External declarations for the parameters. </p>
+<p>CanXcp_Lcfg.c </p>
+<p>Link time parameter definition for the XCP on CAN. </p>
+<p>CanXcp_PBcfg.c </p>
+<p>Post build parameter definition for the XCP on CAN. </p>
+<p> </p>
+<p>Note that all files of XCP on CAN must not be changed manually except if not GENy is </p>
+<p>used for he configuration of the AUTOSAR CAN Interface. In this case only the generated </p>
+<p>files </p>
+<p>CanXcp_Cfg.h</p>
+<p>, </p>
+<p>CanXcp_Lcfg.c</p>
+<p> and </p>
+<p>CanXcp_PBcfg.c</p>
+<p> are relevant. </p>
+<p> </p>
+<p><b>4.2 </b></p>
+<p><b>Version Changes </b></p>
+<p>Changes and the release versions of the XCP on CAN Transport Layer are listed at the </p>
+<p>beginning of the header and source code. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>10 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>4.3 </b></p>
+<p><b>Integration of XCP on CAN into the Application </b></p>
+<p>XCP  on  CAN  comprises  the  XCP  Protocol  Layer  in  conjunction  with  the  XCP  on  CAN </p>
+<p>Transport Layer for MICROSAR CanIf.  </p>
+<p>Note that the CAN Interface, which is distributed as a separate product, is only partly part </p>
+<p>of XCP on CAN. </p>
+<p>The following figure shows the interface between XCP on CAN and the application: </p>
+<p><b>XCP on CAN</b></p>
+<p><b>XCP</b></p>
+<p><b>Protocol Layer</b></p>
+<p><b>( XcpProf.c )</b></p>
+<p><b>XCP on CAN</b></p>
+<p><b>Transport Layer</b></p>
+<p><b>(CanXcp.c)</b></p>
+<p>XcpCommand</p>
+<p><b>Application</b></p>
+<p>CanXcp_Transmit</p>
+<p>XcpSendCallback</p>
+<p>XcpEvent</p>
+<p>XcpInit</p>
+<p>XcpBackground</p>
+<p>CanXcp..</p>
+<p><b>AUTOSAR CAN</b></p>
+<p><b>Interface</b></p>
+<p><b>(CanIf.c)</b></p>
+<p> </p>
+<p>Figure 4-1 </p>
+<p>Integration of XCP on CAN into the application </p>
+<p> </p>
+<p><b>Practical Procedure </b></p>
+<p>The integration of XCP on CAN is done by following these steps: </p>
+<p>1. </p>
+<p>Configure XCP on CAN in the generation tool GENy and generate. </p>
+<p>2. </p>
+<p>Include the include header file </p>
+<p>XcpProf.h</p>
+<p>into all modules that access </p>
+<p>the XCP on CAN services or provide services that XCP on CAN uses. </p>
+<p>3. </p>
+<p>Add all source files and generated source files in the make file and link it </p>
+<p>together with the data link layer and the application. </p>
+<p>4. </p>
+<p>Initialize </p>
+<p>the </p>
+<p>data </p>
+<p>link </p>
+<p>layer </p>
+<p>after </p>
+<p>each </p>
+<p>reset </p>
+<p>during </p>
+<p>start-up </p>
+<p>before </p>
+<p>initializing XCP on CAN (interrupts have to be disabled until the complete </p>
+<p>initialization procedure is done) by calling </p>
+<p>XcpInit</p>
+<p>. </p>
+<p>5. </p>
+<p>If required call the background function </p>
+<p>XcpBackground </p>
+<p>cyclically. </p>
+<p>6. </p>
+<p>Integrate  the  desired  XCP  on  CAN  services  into  your  application.  Call </p>
+<p>especially  the  function </p>
+<p>XcpEvent(channel) </p>
+<p>cyclic  with  the  appropriate </p>
+<p>cycle time and channel number. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>11 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>The  XCP  on  CAN  sources  must  not  be  changed  for  the  integration  into  the </p>
+<p>application. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>12 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>Description of the API </b></p>
+<p>The API of XCP on CAN consists of services, which are realized by function calls. These </p>
+<p>services are called wherever they are required. They transfer information to- or take over </p>
+<p>information  from  XCP  on  CAN.  This  information  is  stored  in  XCP  on  CAN  until  it  is  not </p>
+<p>required anymore, respectively until it is changed by other operations. </p>
+<p>Examples for calling the services of XCP on CAN can be found in the description of the </p>
+<p>services. </p>
+<p><b>5.1 </b></p>
+<p><b>Version of the Source Code </b></p>
+<p>The source code version of the XCP on CAN Transportation Layer is provided by three </p>
+<p>BCD coded constants: </p>
+<p> </p>
+<p>CONST(uint8, CANXCP_CONST) kXcpOnCanAsrMainVersion    = </p>
+<p>(uint8)(CP_XCPONCANASR_VERSION &gt;&gt; 8); </p>
+<p>CONST(uint8, CANXCP_CONST) kXcpOnCanSubAsrVersion     = </p>
+<p>(uint8)(CP_XCPONCANASR_VERSION &amp; 0x00ff); </p>
+<p>CONST(uint8, CANXCP_CONST) kXcpOnCanAsrReleaseVersion = </p>
+<p>(uint8)(CP_XCPONCANASR_RELEASE_VERSION);  </p>
+<p> </p>
+<p> </p>
+<p><b>Example</b> </p>
+<p>Version 1.00.00 is registered as: </p>
+<p>kXcpOnCanAsrMainVersion    = 0x01; </p>
+<p>kXcpOnCanAsrSubVersion     = 0x00; </p>
+<p>kXcpOnCanAsrReleaseVersion = 0x00;</p>
+<p> </p>
+<p> </p>
+<p>These constants are declared as external and can be read by the application at any time. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>13 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>5.2 </b></p>
+<p><b>XCP on CAN Transport Layer services called by the Protocol Layer </b></p>
+<p>The following XCP on CAN Transport Layer functions are called by the Protocol Layer.   </p>
+<p>The API of theses functions can be found in the header of the XCP on CAN component. </p>
+<p> </p>
+<p><b>5.2.1 </b></p>
+<p><b>CanXcp_Transmit: Transmission of XCP Packets </b></p>
+<p><b>CanXcp_Transmit</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_Transmit </b>( uint8 len, const uint8* msg ) </p>
+<p><b>Parameter </b></p>
+<p>len </p>
+<p>Length of the XCP Packet that has to be transmitted. </p>
+<p>(with len = 1 ... 8)</p>
+<p> </p>
+<p>msg </p>
+<p>Pointer to the XCP Packet data. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Request for the transmission of a DTO or CTO message. </p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Not reentrant </p>
+<p></p>
+<p> </p>
+<p>Call context of: XcpEvent, XcpBackground and context of CAN Interface </p>
+<p> </p>
+<p><b>5.2.2 </b></p>
+<p><b>CanXcp_MainFunction: Main Function of XCP on CAN Transport Layer </b></p>
+<p><b>CanXcp_MainFunction</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_MainFunction </b>( void ) </p>
+<p><b>Parameter </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Main function of XCP on CAN Transport Layer. </p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Not reentrant </p>
+<p></p>
+<p> </p>
+<p>Call context of XcpBackground </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>14 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>5.3 </b></p>
+<p><b>XCP Transport Layer for CAN services called by the CAN Interface </b></p>
+<p>The following XCP on CAN Transport Layer functions are called by the AUTOSAR CAN </p>
+<p>Interface. The API of theses functions can be found in the header of the CAN Interface’s </p>
+<p>parameter file. </p>
+<p> </p>
+<p><b>5.3.1 </b></p>
+<p><b>CanXcp_RxIndication:  XCP  Message  Indication  Function  (“Use  Pdu  Info </b></p>
+<p><b>Type” disabled) </b></p>
+<p><b>CanXcp_RxIndication</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_RxIndication </b>( PduIdType CanCanXcpRxPduId, const uint8 * CanSduPtr) </p>
+<p><b>Parameter </b></p>
+<p>CanCanXcpRxPduId</p>
+<p> </p>
+<p>Target PDU ID of CAN L-PDU that has been received </p>
+<p>CanSduPtr</p>
+<p> </p>
+<p>Pointer to received L-SDU (payload) </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-</p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Rx Indication for reception of CTO and DTO Packets. </p>
+<p>This function is configured in the generation tool.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Not reentrant </p>
+<p></p>
+<p> </p>
+<p>Call context of CAN Interface </p>
+<p> </p>
+<p><b>5.3.2 </b></p>
+<p><b>CanXcp_RxIndication:  XCP  Message  Indication  Function  (“Use  Pdu  Info </b></p>
+<p><b>Type” enabled) </b></p>
+<p><b>CanXcp_RxIndication</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_RxIndication </b>( PduIdType CanCanXcpRxPduId, const PduInfoType * </p>
+<p>PduInfoPtr) </p>
+<p><b>Parameter </b></p>
+<p>CanCanXcpRxPduId</p>
+<p> </p>
+<p>Target PDU ID of CAN L-PDU that has been received </p>
+<p>PduInfoPtr</p>
+<p> </p>
+<p>Contains pointer and length to received XCP L-SDU </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-</p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Rx Indication for reception of CTO and DTO Packets. </p>
+<p>This function is configured in the generation tool.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Not reentrant </p>
+<p></p>
+<p> </p>
+<p>Call context of CAN Interface </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>15 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>16 / 26</p>
+<p> </p>
+<p><b>5.3.3 </b></p>
+<p><b>CanXcp_TxConfirmation: XCP Message Confirmation </b></p>
+<p> </p>
+<p><b>CanXcp_TxConfirmation</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_TxConfirmation </b>( PduIdType CanTxPduId ) </p>
+<p><b>Parameter </b></p>
+<p>CanTxPduId</p>
+<p> </p>
+<p>PDU ID of CAN L-PDU transmitted successfully </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Tx Confirmation for successful transmission of CTO and DTO Packets. </p>
+<p>This function is configured in the generation tool. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Not reentrant </p>
+<p></p>
+<p> </p>
+<p>Call context of CAN Interface </p>
+<p> </p>
+<p><b>5.4 </b></p>
+<p><b>XCP Protocol Layer services called by the XCP on CAN Transport Layer </b></p>
+<p>The  following  XCP  Protocol  Layer  services  are  called  by  the  XCP  on  CAN  Transport </p>
+<p>Layer: </p>
+<p>-</p>
+<p> </p>
+<p>VStdSuspendAllInterrupts / VStdResumeAllInterrupts</p>
+<p>1</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p>SchM_Enter_CanXcp() / SchM_Exit_CanXcp() </p>
+<p>2</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p>void XcpCommand( MEMORY_ROM vuint32* pCommand ) </p>
+<p>-</p>
+<p> </p>
+<p>void XcpSendCallBack( void ) </p>
+<p>-</p>
+<p> </p>
+<p>vuint8 XcpGetState( void ) </p>
+<p>For  a  description  of  the  API  and  the  functionality  of  these  functions  please  refer  to  the </p>
+<p>Technical Reference XCP Protocol Layer [4]. </p>
+<p> </p>
+<p><b>5.5 </b></p>
+<p><b>XCP on CAN Transport Layer services called by other layers </b></p>
+<p>The following XCP on CAN Transport Layer functions have to be called from other layers. </p>
+<p><b>5.5.1 </b></p>
+<p><b>CanXcp_Init: Initialization of XCP on CAN Transport Layer </b></p>
+<p><b>CanXcp_Init</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_Init </b>(const CanXcp_ConfigType * ConfigPtr ) </p>
+<p><b>Parameter </b></p>
+<p>                                            </p>
+<p>1</p>
+<p> Interrupt handling done by VStdLib </p>
+<p>2</p>
+<p> Interrupt handling done by SchM </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>ConfigPtr</p>
+<p> </p>
+<p>Pointer to the post build configuration </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Initialization of the XCP on Transport Layer.  </p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Must be called during system initialization </p>
+<p></p>
+<p> </p>
+<p>Not reentrant </p>
+<p></p>
+<p> </p>
+<p>Parameter ‘</p>
+<p>ConfigPtr</p>
+<p>’ is only evaluated for post build configurations. </p>
+<p> </p>
+<p><b>5.5.2 </b></p>
+<p><b>CanXcp_GetVersionInfo: </b></p>
+<p><b>Request </b></p>
+<p><b>version </b></p>
+<p><b>information </b></p>
+<p><b>of </b></p>
+<p><b>XCP </b></p>
+<p><b>on </b></p>
+<p><b>CAN </b></p>
+<p><b>Transport Layer </b></p>
+<p><b>CanXcp_Init</b></p>
+<p><b>Prototype </b></p>
+<p>void <b>CanXcp_GetVersionInfo </b>(Std_VersionInfoType * Versioninfo ) </p>
+<p><b>Parameter </b></p>
+<p>Versioninfo</p>
+<p> </p>
+<p>Pointer to store the version information </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>The function writes the version information and vendor, module and instance id to the given pointer. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>none </p>
+<p> </p>
+<p><b>5.5.3 </b></p>
+<p><b>CanXcp_Control: Functionality lock </b></p>
+<p><b>CanXcp_Control</b></p>
+<p><b>Prototype </b></p>
+<p>void CanXcp_Control( uint8 command ); </p>
+<p><b>Parameters [in/out/both] </b></p>
+<p>Command [in] </p>
+<p>This is the new state. It can either be </p>
+<p></p>
+<p> </p>
+<p>kXcponCan_Control_Disable </p>
+<p></p>
+<p> </p>
+<p>kXcponCan_Control_Enable </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p><b>Service ID </b></p>
+<p>Service ID </p>
+<p>6 </p>
+<p><b>Functional Description </b></p>
+<p>With this service it is possible to lock all functionality of the CanXCP during runtime to prevent erroneous </p>
+<p>execution. </p>
+<p><b>Preconditions </b></p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>17 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>- </p>
+<p><b>Postconditions </b></p>
+<p>- </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Call context: task level </p>
+<p></p>
+<p> </p>
+<p>Not re-entrant </p>
+<p></p>
+<p> </p>
+<p>Synchronous </p>
+<p> </p>
+<p><b>5.5.4 </b></p>
+<p><b>CanXcp_SetPduMode: set Transmission mode </b></p>
+<p><b>CanXcp_SetPduMode</b></p>
+<p><b>Prototype </b></p>
+<p>void CanXcp_SetPduMode( NetworkHandleType XcpNwH, CanXcp_PduSetModeType PduMode </p>
+<p>); </p>
+<p><b>Parameters [in/out/both] </b></p>
+<p>XcpNwH [in] </p>
+<p>The Network Handle which is usually 0 </p>
+<p>PduMode </p>
+<p>This is the new state. It can either be </p>
+<p></p>
+<p> </p>
+<p>CANXCP_SET_ONLINE</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>CANXCP_SET_OFFLINE </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p><b>Service ID </b></p>
+<p>Service ID </p>
+<p>7 </p>
+<p><b>Functional Description </b></p>
+<p>With this service it is possible to prevent transmission of XCP frames, e.g. when the bus is offline. The </p>
+<p>frames are not lost but stored in the Send Queue until overrun occurs or transmission is enabled again. </p>
+<p><b>Preconditions </b></p>
+<p>- </p>
+<p><b>Postconditions </b></p>
+<p>- </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Call context: task level </p>
+<p></p>
+<p> </p>
+<p>Not re-entrant </p>
+<p></p>
+<p> </p>
+<p>Synchronous </p>
+<p> </p>
+<p><b>5.6 </b></p>
+<p><b>Macros </b></p>
+<p><b>5.6.1 </b></p>
+<p><b>XCP_ACTIVATE: Enable the Protocol and Transport Layer </b></p>
+<p><b>XCP_ACTIVATE</b></p>
+<p><b>Prototype </b></p>
+<p>XCP_ACTIVATE(); </p>
+<p><b>Parameters [in/out/both] </b></p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>18 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>Command [in] </p>
+<p>-</p>
+<p> </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p><b>Service ID </b></p>
+<p>Service ID </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>With this service it is possible to enable all functionality of the XCP Protocol and Transport Layer during </p>
+<p>runtime to prevent erroneous execution. The Macros can be used instead of calling the service described in </p>
+<p>5.5.3 Functionality lock. </p>
+<p><b>Preconditions </b></p>
+<p>- </p>
+<p><b>Postconditions </b></p>
+<p>- </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Call context: task level </p>
+<p></p>
+<p> </p>
+<p>Not re-entrant </p>
+<p></p>
+<p> </p>
+<p>Synchronous </p>
+<p> </p>
+<p><b>5.6.2 </b></p>
+<p><b>XCP_DEACTIVATE: Disable the Protocol and Transport Layer </b></p>
+<p><b>XCP_DEACTIVATE</b></p>
+<p><b>Prototype </b></p>
+<p>XCP_DEACTIVATE(); </p>
+<p><b>Parameters [in/out/both] </b></p>
+<p>Command [in] </p>
+<p>-</p>
+<p> </p>
+<p><b>Return code </b></p>
+<p>-</p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p><b>Service ID </b></p>
+<p>Service ID </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>With this service it is possible to lock all functionality of the XCP Protocol and Transport Layer during runtime </p>
+<p>to prevent erroneous execution. The Macros can be used instead of calling the service described in 5.5.3 </p>
+<p>Functionality lock </p>
+<p><b>Preconditions </b></p>
+<p>- </p>
+<p><b>Postconditions </b></p>
+<p>- </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>Call context: task level </p>
+<p></p>
+<p> </p>
+<p>Not re-entrant </p>
+<p></p>
+<p> </p>
+<p>Synchronous </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>19 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>6 </b></p>
+<p><b>Configuration of XCP on CAN </b></p>
+<p>The configuration of XCP on CAN (XCP Protocol Layer and XCP on CAN Transport Layer) </p>
+<p>is supported by the generation tool GENy. </p>
+<p><b>6.1 </b></p>
+<p><b>Configuration of XCP on CAN and CanIf with GENy </b></p>
+<p>If  GENy  is  used  for  the  configuration  of  both  XCP  on  CAN  and  the  AUTOSAR  CAN </p>
+<p>Interface the whole configuration can conveniently be carried out with GENy. </p>
+<p> </p>
+<p>No database attributes are required for the configuration of XCP on CAN. </p>
+<p> </p>
+<p>Figure 6-1 </p>
+<p>Component selection </p>
+<p>In order to configure the XCP on CAN Transport Layer for MICROSAR CanIf (CanXcp) it </p>
+<p>has to be activated on the designated channels. The activation of the XCP Transport Layer </p>
+<p>for CAN requires the activation of the XCP Protocol Layer (Cp_Xcp). </p>
+<p>The  configuration  of  each  component  is  done  on  separate  dialogs.  The  XCP  on  CAN </p>
+<p>Transport  Layer  has  component  specific  and  channel  specific  settings  that  may  be </p>
+<p>customized separately. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>20 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>6.1.1 </b></p>
+<p><b>Main Configuration Page </b></p>
+<p> </p>
+<p>Figure 6-2 </p>
+<p>Main configuration page of XCP on CAN Transport Layer </p>
+<p><b>Configuration options </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>XCP on CAN Transport Layer options </p>
+<p>Variable DLC </p>
+<p></p>
+<p> </p>
+<p>Enable </p>
+<p></p>
+<p> </p>
+<p>Disable </p>
+<p>Activate/Deactivate the transmission of messages </p>
+<p>with variable DLC. </p>
+<p>This option is not available yet! </p>
+<p>Multi connection protection </p>
+<p></p>
+<p> </p>
+<p>Enable </p>
+<p></p>
+<p> </p>
+<p>Disable </p>
+<p>Activate/Deactivate the protection against multiple </p>
+<p>connections. </p>
+<p>Only available if XCP on CAN is used on multiple </p>
+<p>CAN channels. </p>
+<p>Configuration Variant </p>
+<p></p>
+<p> </p>
+<p>Variant 1 </p>
+<p></p>
+<p> </p>
+<p>Variant 2 </p>
+<p></p>
+<p> </p>
+<p>Variant 3 </p>
+<p>Select which configuration variant shall be applied to </p>
+<p>the CAN driver module. </p>
+<p>- Pre-compile Configuration: All settings can be </p>
+<p>changed and the driver has to be compiled </p>
+<p>- Link-time Configuration: All settings except </p>
+<p>precompiled ones can be changed and driver object </p>
+<p>code has to be linked </p>
+<p>- Post-build Configuration: Only post build settings </p>
+<p>can be changed and the generated data has to be </p>
+<p>flashed to the Target </p>
+<p>Please Note: If you use Multiple Identities you have </p>
+<p>to select Configuration Variant 3: Post-build! </p>
+<p>Development Error Detection </p>
+<p></p>
+<p> </p>
+<p>Enable </p>
+<p></p>
+<p> </p>
+<p>Disable </p>
+<p>Detection of Development Errors like: </p>
+<p>- service call initialization </p>
+<p>- invalid channel handle </p>
+<p>- rejection of service calls </p>
+<p>All errors are reported to the Development Error </p>
+<p>Tracer (if available) </p>
+<p>Production Error Detection </p>
+<p></p>
+<p> </p>
+<p>Enable </p>
+<p></p>
+<p> </p>
+<p>Disable </p>
+<p>If 'Production Error Detection' is enabled, production </p>
+<p>relevant errors are reported to the Diagnostics Event </p>
+<p>Manager (DEM). Disable this option, if no DEM is </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>21 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>present in your system. </p>
+<p>Get Version Info </p>
+<p></p>
+<p> </p>
+<p>Enable </p>
+<p></p>
+<p> </p>
+<p>Disable </p>
+<p>Check this box to enable function </p>
+<p>CanXcp_GetVersionInfo() to get major, minor and </p>
+<p>patch version information. </p>
+<p>Module Start Address </p>
+<p></p>
+<p> </p>
+<p>Address </p>
+<p>This Value specifies the Start Address of the </p>
+<p>CanXcp Configuration. The Start Address is needed </p>
+<p>in the post-build configuration process to locate and </p>
+<p>replace the previous configuration correctly. </p>
+<p>Use PduInfoType </p>
+<p></p>
+<p> </p>
+<p>Enable </p>
+<p></p>
+<p> </p>
+<p>Disable </p>
+<p>If this option is enabled the </p>
+<p>CanXcp_RxIndication</p>
+<p> </p>
+<p>function is according to AUTOSAR 3.1.5. </p>
+<p>Table 6-1 </p>
+<p>Main configuration page of XCP on CAN Transport Layer </p>
+<p><b>6.1.2 </b></p>
+<p><b>Channel Configuration Page </b></p>
+<p> </p>
+<p>Figure 6-3 </p>
+<p>Channel configuration page of XCP on CAN Transport Layer </p>
+<p> </p>
+<p><b>Configuration options </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>Type of bus system </p>
+<p>Ready Only </p>
+<p>Bus system type for the specific channel. </p>
+<p>Manufacturer </p>
+<p>Ready Only </p>
+<p>Value of the database attribute ‘manufacturer’. </p>
+<p>XCP on CAN Transport Layer </p>
+<p>Slave Id </p>
+<p>Tx-ID </p>
+<p>XCP Slave Identifier </p>
+<p>This is the ID for Response Packets and DAQ packets. </p>
+<p>Only IDs that are no IL, TP or Diag messages and that </p>
+<p>have a DLC of 8 can be selected. </p>
+<p>The configuration within the CanIf is automatically done </p>
+<p>by selecting the message. </p>
+<p>Master Id </p>
+<p>RX-ID </p>
+<p>XCP Master Identifier </p>
+<p>This is the ID for Command Packets and STIM Packets. </p>
+<p>Only IDs that are no IL, TP or Diag messages and that </p>
+<p>have a DLC of 8 can be selected. </p>
+<p>The configuration within the CanIf is automatically done </p>
+<p>by selecting the message. </p>
+<p>Table 6-2 </p>
+<p>Channel configuration page of XCP on CAN Transport Layer </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>22 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>6.1.3 </b></p>
+<p><b>A2L File </b></p>
+<p>GENy exports an a2l file for easier configuration of the XCP Master (e.g. CANape). This </p>
+<p>file is called CanXCPAsr.a2l and contains the XCP_ON_CAN IF_DATA section which can </p>
+<p>be included by a master template a2l file. </p>
+<p> </p>
+<p><b>Hint! </b></p>
+<p><b>The following abstract can be used to include the generated a2l: </b></p>
+<p><b>  /begin IF_DATA XCP </b></p>
+<p><b>    …….. </b></p>
+<p><b>    /include &quot;CanXCPAsr.a2l&quot; </b></p>
+<p><b>  /end IF_DATA </b></p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>23 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>Limitations </b></p>
+<p><b>7.1.1 </b></p>
+<p><b>Variable Length of XCP Packets is not supported </b></p>
+<p>The XCP Protocol allows a variable length of XCP Packets. However many OEMs require </p>
+<p>that all CAN messages sent within their automotive networks have to have a static DLC. </p>
+<p>Therefore  the  DLC  of  XCP  on  CAN  messages  is  always  8  and  the  Control  Field  of  the </p>
+<p>XCP Tails consists of fill bytes. </p>
+<p><b>7.1.2 </b></p>
+<p><b>Assignment of CAN identifiers to DAQ Lists is not supported </b></p>
+<p>The assignment of CAN identifiers to DAQ lists is not supported. </p>
+<p><b>7.1.3 </b></p>
+<p><b>Detection of all XCP Slaves within a Network </b></p>
+<p>The detection of all XCP slaves within a network with the command GET_SLAVE_ID is not </p>
+<p>supported. </p>
+<p><b>7.1.4 </b></p>
+<p><b>Multiple Identity only supported for single channel configuration  </b></p>
+<p>Multiple Identities for AUTOSAR XCP on CAN is only available for a single CAN channel </p>
+<p>configuration. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>24 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>FAQ </b></p>
+<p><b>8.1 </b></p>
+<p><b>Transmit Queue of CAN Interface is Disabled </b></p>
+<p> </p>
+<p> </p>
+<p><b>FAQ</b> </p>
+<p>How to operate XCP on CAN if the transmit queue of CanIf is disabled. </p>
+<p> </p>
+<p>If the transmit queue of CanIf is disabled, at any time it might not be possible to transmit </p>
+<p>the </p>
+<p>XCP </p>
+<p>Slave </p>
+<p>message </p>
+<p>due </p>
+<p>to </p>
+<p>an </p>
+<p>ongoing </p>
+<p>message </p>
+<p>transmission. </p>
+<p>Therefore </p>
+<p>the </p>
+<p>message transmission might have to be requested several times.  </p>
+<p>This </p>
+<p>is </p>
+<p>done </p>
+<p>with </p>
+<p>the </p>
+<p>service </p>
+<p>CanXcp_MainFunction()</p>
+<p> </p>
+<p>that </p>
+<p>gets </p>
+<p>called </p>
+<p>by </p>
+<p>XcpBackground()</p>
+<p>. This service has to be called cyclic with a recommended call cycle of </p>
+<p>1ms.  The  faster  it  gets  called  the  faster  the  XCP  Slave  message  will  participate  in  the </p>
+<p>arbitration on the bus. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>25 / 26</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference XCP on CAN Transport Layer for MICROSAR CanIf </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.06.00 </p>
+<p>based on template version 1.3 </p>
+<p>26 / 26</p>
+<p><b>9 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p><b> </b></p>
+</body>
+</html>
+{% endraw %}

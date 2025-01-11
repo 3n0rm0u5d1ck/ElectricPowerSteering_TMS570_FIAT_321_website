@@ -1,0 +1,2901 @@
+---
+layout: default
+title: TechnicalReference_ASR_IpduM
+nav_order: 22
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR I-PDU Multiplexer </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p> </p>
+<p>Version 1.2.0 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Safiulla Shakir </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>1 </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Safiulla Shakir </p>
+<p>26.03.2009 </p>
+<p>1.0 </p>
+<p>Initial version </p>
+<p>Safiulla Shakir </p>
+<p>28.06.2010 </p>
+<p>1.1.0 </p>
+<p>Updated to support IPDUM </p>
+<p>system description 3.1.4 </p>
+<p>format  </p>
+<p>Safiulla Shakir </p>
+<p>02.02.2011 </p>
+<p>1.2.0 </p>
+<p>ESCAN00046128 </p>
+<p>Table 1-1  </p>
+<p>History of the document </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p>AUTOSAR_SWS_IPDUM.pdf </p>
+<p>1.2.1 </p>
+<p>[2] </p>
+<p>AUTOSAR_SWS_IPDUM.doc </p>
+<p>1.3.0 </p>
+<p>[3] </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>1.0.0 </p>
+<p>[4] </p>
+<p>AUTOSAR_SWS_IPDUM ASR3.2.pdf </p>
+<p>1.3.0 </p>
+<p>Table 1-2  </p>
+<p>Reference documents </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector’s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>[2] is a draft version of AUTOSAR release 4.0. </p>
+<p><b> </b></p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>2 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>Contents </b></p>
+<p><b>1</b></p>
+<p> </p>
+<p><b>Document Information..................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History............................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents ...................................................................................... 2</p>
+<p> </p>
+<p><b>2</b></p>
+<p> </p>
+<p><b>Introduction ...................................................................................................................... 7</b></p>
+<p> </p>
+<p>2.1</p>
+<p> </p>
+<p>Architecture Overview....................................................................................... 8</p>
+<p> </p>
+<p><b>3</b></p>
+<p> </p>
+<p><b>Functional Description .................................................................................................. 10</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Features.......................................................................................................... 10</p>
+<p> </p>
+<p>3.2</p>
+<p> </p>
+<p>Initialization ..................................................................................................... 10</p>
+<p> </p>
+<p>3.3</p>
+<p> </p>
+<p>States ...............................................................................................................11</p>
+<p> </p>
+<p>3.4</p>
+<p> </p>
+<p>Main Functions ................................................................................................11</p>
+<p> </p>
+<p>3.5</p>
+<p> </p>
+<p>Error Handling..................................................................................................11</p>
+<p> </p>
+<p>3.5.1</p>
+<p> </p>
+<p>Development Error Reporting ..........................................................................11</p>
+<p> </p>
+<p>3.5.2</p>
+<p> </p>
+<p>Production Error Reporting ............................................................................. 12</p>
+<p> </p>
+<p><b>4</b></p>
+<p> </p>
+<p><b>Integration....................................................................................................................... 13</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Scope of Delivery............................................................................................ 13</p>
+<p> </p>
+<p>4.1.1</p>
+<p> </p>
+<p>Static Files ...................................................................................................... 13</p>
+<p> </p>
+<p>4.1.2</p>
+<p> </p>
+<p>Dynamic Files ................................................................................................. 13</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Include Structure............................................................................................. 13</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping................................................... 13</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>Critical Sections .............................................................................................. 14</p>
+<p> </p>
+<p>4.4.1</p>
+<p> </p>
+<p>BSW Scheduler .............................................................................................. 14</p>
+<p> </p>
+<p>4.4.2</p>
+<p> </p>
+<p>Vector Standard Library .................................................................................. 15</p>
+<p> </p>
+<p><b>5</b></p>
+<p> </p>
+<p><b>API Description .............................................................................................................. 16</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Services provided by IPDUM.......................................................................... 16</p>
+<p> </p>
+<p>5.1.1</p>
+<p> </p>
+<p>IpduM_InitMemory .......................................................................................... 16</p>
+<p> </p>
+<p>5.1.2</p>
+<p> </p>
+<p>IpduM_Init ....................................................................................................... 16</p>
+<p> </p>
+<p>5.1.3</p>
+<p> </p>
+<p>IpduM_RxIndication ........................................................................................ 17</p>
+<p> </p>
+<p>5.1.4</p>
+<p> </p>
+<p>IpduM_Transmit .............................................................................................. 17</p>
+<p> </p>
+<p>5.1.5</p>
+<p> </p>
+<p>IpduM_TxConfirmation ................................................................................... 18</p>
+<p> </p>
+<p>5.1.6</p>
+<p> </p>
+<p>IpduM_TriggerTransmit ................................................................................... 19</p>
+<p> </p>
+<p>5.1.7</p>
+<p> </p>
+<p>IpduM_MainFunction ...................................................................................... 20</p>
+<p> </p>
+<p>5.1.8</p>
+<p> </p>
+<p>IpduM_GetVersionInfo .................................................................................... 20</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Services used by IPDUM................................................................................ 20</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>3 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>6</b></p>
+<p> </p>
+<p><b>Configuration.................................................................................................................. 22</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>EcuC configuration with GENy ....................................................................... 22</p>
+<p> </p>
+<p>6.1.1</p>
+<p> </p>
+<p>General parameters........................................................................................ 23</p>
+<p> </p>
+<p>6.1.2</p>
+<p> </p>
+<p>Link time and Post build configuration ............................................................ 24</p>
+<p> </p>
+<p>6.1.3</p>
+<p> </p>
+<p>Multiplexing and De-multiplexing .................................................................... 25</p>
+<p> </p>
+<p>6.1.4</p>
+<p> </p>
+<p>Tx Pathway ..................................................................................................... 27</p>
+<p> </p>
+<p>6.1.5</p>
+<p> </p>
+<p>Transmission Confirmations ........................................................................... 28</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>ECU Configuration parameters:...................................................................... 30</p>
+<p> </p>
+<p>6.2.1.1</p>
+<p> </p>
+<p>IPduMConfig ................................................................................................... 30</p>
+<p> </p>
+<p>6.2.1.2</p>
+<p> </p>
+<p>IPduMRxPathway ........................................................................................... 30</p>
+<p> </p>
+<p>6.2.1.3</p>
+<p> </p>
+<p>IPduMRxIndication.......................................................................................... 30</p>
+<p> </p>
+<p>6.2.1.4</p>
+<p> </p>
+<p>IPduMBitField ................................................................................................. 31</p>
+<p> </p>
+<p>6.2.1.5</p>
+<p> </p>
+<p>IPduMRxDynamicPart .................................................................................... 31</p>
+<p> </p>
+<p>6.2.1.6</p>
+<p> </p>
+<p>IPduMCopyBitField ......................................................................................... 32</p>
+<p> </p>
+<p>6.2.1.7</p>
+<p> </p>
+<p>IPduMBitField ................................................................................................. 32</p>
+<p> </p>
+<p>6.2.1.8</p>
+<p> </p>
+<p>IPduMRxStaticPart.......................................................................................... 33</p>
+<p> </p>
+<p>6.2.1.9</p>
+<p> </p>
+<p>IPduMCopyBitField ......................................................................................... 33</p>
+<p> </p>
+<p>6.2.1.10</p>
+<p> </p>
+<p>IPduMBitField ................................................................................................. 34</p>
+<p> </p>
+<p>6.2.1.11</p>
+<p> </p>
+<p>IPduMTxPathway............................................................................................ 34</p>
+<p> </p>
+<p>6.2.1.12</p>
+<p> </p>
+<p>IPduMTxConfirmation ..................................................................................... 34</p>
+<p> </p>
+<p>6.2.1.13</p>
+<p> </p>
+<p>IPduMDynamicTxConfirmation ....................................................................... 35</p>
+<p> </p>
+<p>6.2.1.14</p>
+<p> </p>
+<p>IPduMTxRequest ............................................................................................ 35</p>
+<p> </p>
+<p>6.2.1.15</p>
+<p> </p>
+<p>IPduMBitField ................................................................................................. 36</p>
+<p> </p>
+<p>6.2.1.16</p>
+<p> </p>
+<p>IPduMTxDynamicPart ..................................................................................... 37</p>
+<p> </p>
+<p>6.2.1.17</p>
+<p> </p>
+<p>IPduMCopyBitField ......................................................................................... 37</p>
+<p> </p>
+<p>6.2.1.18</p>
+<p> </p>
+<p>IPduMBitField ................................................................................................. 38</p>
+<p> </p>
+<p>6.2.1.19</p>
+<p> </p>
+<p>IPduMTxStaticPart .......................................................................................... 38</p>
+<p> </p>
+<p>6.2.1.20</p>
+<p> </p>
+<p>IPduMCopyBitField ......................................................................................... 39</p>
+<p> </p>
+<p>6.2.1.21</p>
+<p> </p>
+<p>IPduMBitField ................................................................................................. 39</p>
+<p> </p>
+<p>6.2.1.22</p>
+<p> </p>
+<p>IPduMGeneral................................................................................................. 39</p>
+<p> </p>
+<p>6.2.1.23</p>
+<p> </p>
+<p>IPduMplexCh .................................................................................................. 41</p>
+<p> </p>
+<p><b>7</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance.................................................................................. 42</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Deviations ....................................................................................................... 42</p>
+<p> </p>
+<p>7.2</p>
+<p> </p>
+<p>Additions/ Extensions ..................................................................................... 42</p>
+<p> </p>
+<p>7.3</p>
+<p> </p>
+<p>Limitations....................................................................................................... 42</p>
+<p> </p>
+<p><b>8</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations.......................................................................................... 43</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Glossary.......................................................................................................... 43</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Abbreviations .................................................................................................. 43</p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>4 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>9</b></p>
+<p> </p>
+<p><b>Contact ............................................................................................................................ 44</b></p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>5 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure 2-1</p>
+<p> </p>
+<p>AUTOSAR architecture ................................................................................ 8</p>
+<p> </p>
+<p>Figure 2-2</p>
+<p> </p>
+<p>IPDUM Interfaces to adjacent modules........................................................ 9</p>
+<p> </p>
+<p>Figure 3-1</p>
+<p> </p>
+<p>DET Activation.............................................................................................11</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>GENy component selection........................................................................ 23</p>
+<p> </p>
+<p>Figure 6-2</p>
+<p> </p>
+<p>Static part activation ................................................................................... 24</p>
+<p> </p>
+<p>Figure 6-3</p>
+<p> </p>
+<p>Link time and post build parameters .......................................................... 24</p>
+<p> </p>
+<p>Figure 6-4</p>
+<p> </p>
+<p>Copy bit field configuration of a dynamic part ............................................ 25</p>
+<p> </p>
+<p>Figure 6-5</p>
+<p> </p>
+<p>Copy bit field configuration of a static part ................................................. 26</p>
+<p> </p>
+<p>Figure 6-6</p>
+<p> </p>
+<p>Dynamic part layout selection .................................................................... 26</p>
+<p> </p>
+<p>Figure 6-7</p>
+<p> </p>
+<p>Tx Pathway configuration parameters........................................................ 27</p>
+<p> </p>
+<p>Figure 6-8</p>
+<p> </p>
+<p>Dynamic part confirmation configuration.................................................... 29</p>
+<p> </p>
+<p>Figure 6-9</p>
+<p> </p>
+<p>Static part confirmation configuration ......................................................... 29</p>
+<p> </p>
+<p><b> </b></p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the document ............................................................................... 2</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference documents .................................................................................. 2</p>
+<p> </p>
+<p>Table 3-1 </p>
+<p> </p>
+<p>Supported SWS features ........................................................................... 10</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Static files................................................................................................... 13</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Generated files........................................................................................... 13</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping .............................................. 14</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>IpduM_InitMemory ..................................................................................... 16</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>IpduM_Init .................................................................................................. 17</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>IpduM_RxIndication ................................................................................... 17</p>
+<p> </p>
+<p>Table 5-4 </p>
+<p> </p>
+<p>IpduM_Transmit ......................................................................................... 18</p>
+<p> </p>
+<p>Table 5-5 </p>
+<p> </p>
+<p>IpduM_TxConfirmation ............................................................................... 18</p>
+<p> </p>
+<p>Table 5-6 </p>
+<p> </p>
+<p>IpduM_TriggerTransmit .............................................................................. 19</p>
+<p> </p>
+<p>Table 5-7 </p>
+<p> </p>
+<p>IpduM_MainFunction.................................................................................. 20</p>
+<p> </p>
+<p>Table 5-8 </p>
+<p> </p>
+<p>IpduM_GetVersionInfo ............................................................................... 20</p>
+<p> </p>
+<p>Table 5-9 </p>
+<p> </p>
+<p>Services used by the IPDUM ..................................................................... 21</p>
+<p> </p>
+<p>Table 8-1 </p>
+<p> </p>
+<p>Glossary ..................................................................................................... 43</p>
+<p> </p>
+<p>Table 8-2 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................. 43</p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>6 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>2 </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module IPDUM as specified in [1].  </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release*: </b></p>
+<p><b>3.x </b></p>
+<p><b>Supported Configuration Variants: </b></p>
+<p><b>pre-compile, link-time, post-build </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p><b>IPDUM_VENDOR_ID </b></p>
+<p><b>30 decimal </b></p>
+<p><b>(= </b></p>
+<p><b>Vector-Informatik </b></p>
+<p><b>GmbH, </b></p>
+<p><b>according </b></p>
+<p><b>to </b></p>
+<p><b>HIS) </b></p>
+<p><b>Module ID: </b></p>
+<p><b>IPDUM_MODULE_ID   </b></p>
+<p><b>52 decimal </b></p>
+<p><b>(according to ref. [3]) </b></p>
+<p>* For the precise AUTOSAR Release 3.x please see the release specific documentation.  </p>
+<p> </p>
+<p>Multiplexing is a concept generally used to save CAN identifiers where an I-PDU with a </p>
+<p>CAN ID is used to carry different I-PDUs there by saving the CAN IDs for the I-PDUs it </p>
+<p>carries. </p>
+<p> </p>
+<p>The implementation is based on the AUTOSAR IPDUM specifications [1] and [2]. It is </p>
+<p>assumed that the reader is familiar with this document and other relevant AUTOSAR </p>
+<p>related specifications. </p>
+<p> </p>
+<p>I-PDU multiplexing means using the same PCI (Protocol Control Information) of a PDU </p>
+<p>(Protocol Data Unit) with more than one unique layouts of its SDU (Service Data Unit). </p>
+<p>The SDU in a multiplexed I-PDU contains a selector field which is used to determine the </p>
+<p>layout of the SDU being multiplexed or de-multiplexed. </p>
+<p>The AUTOSAR I-PDU multiplexer multiplexes a dynamic part along with or without a static </p>
+<p>part depending on whether a static part is configured to the multiplex I-PDU or not. </p>
+<p>Each dynamic or static part is an independent signal-I-PDU in Com. </p>
+<p> </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>Dynamic part or static part is the IPDUM vocabulary for an upper layer I-PDU which is </p>
+<p>to be multiplexed or de-multiplexed. </p>
+<p><b> </b></p>
+<p>A given multiplex I-PDU can have 1 or no static part configured to it and it can multiplex 1 </p>
+<p>to 255 dynamic parts (layouts) depending on the selector field value along with the static </p>
+<p>part if configured. </p>
+<p>A dynamic or static part may be further divided into sub parts. Each sub part is a bit field </p>
+<p>with the start and end bit positions. The dynamic part contains the selector field. </p>
+<p>The selector field can be thought of as a signal in every dynamic part in Com whose value </p>
+<p>is set at configuration time and is never changed at runtime. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>7 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p> </p>
+<p><b>2.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the IPDUM is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 2-1 </p>
+<p>AUTOSAR architecture </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>8 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>The  next  figure  shows  the  interfaces  of  the  IPDUM  to  its  adjacent  module(s).  These </p>
+<p>interfaces are described in chapter 5.  </p>
+<p> </p>
+<p>Figure 2-2 </p>
+<p>IPDUM Interfaces to adjacent modules </p>
+<p>Normally  the  I-PDU  multiplexer  only  interacts  with  the  PduR.  If  required  the  I-PDU </p>
+<p>multiplexer can interface Com directly bypassing the PduR while indicating receptions and </p>
+<p>confirming transmissions to Com as demanded in [1]. </p>
+<p>The IPDUM also uses the interfaces to the BSW Scheduler and Det. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>9 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>3 </b></p>
+<p><b>Functional Description </b></p>
+<p><b>3.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The  &quot;supported&quot;  and  &quot;not  supported&quot;  features  are  presented  in  the  following  two  tables. </p>
+<p>For further information on features not supported see chapter 7. </p>
+<p>The main purpose of the AUTOSAR BSW module IPDUM is to multiplex and de-multiplex </p>
+<p>IPDUs between upper (AUTOSAR Com) and the interface layers (CanIf, LinIf, FrIf). </p>
+<p> </p>
+<p>The following features described in [1] are supported: </p>
+<p><b>Supported Feature </b></p>
+<p><b>Configuration </b></p>
+<p><b>&gt; </b> Multiplexing of the static and dynamic parts and their transmission. </p>
+<p><b>&gt; </b> Event base transmission triggering of the multiplex I-PDU(s). </p>
+<p><b>&gt; </b> Confirming transmissions of the multiplexed I-PDUs to the BSW module AUTOSAR </p>
+<p>Com. </p>
+<p><b>&gt; </b> Timeout handling while confirming transmissions. </p>
+<p><b>&gt; </b> De-multiplexing and indicating receptions of the de-multiplexed dynamic parts and </p>
+<p>static part to the BSW module AUTOSAR Com. </p>
+<p><b>&gt; </b> Static part configuration support in multiplex I-PDU(s). </p>
+<p><b>&gt; </b> AUTOSAR EcuC format </p>
+<p><b>&gt; </b> Initialization of buffers of the multiplex I-PDUs in case their transmission is triggered </p>
+<p>by interface layer BSW modules (relevant for FrIf, LinIf only) </p>
+<p>Table 3-1  </p>
+<p>Supported SWS features </p>
+<p><b>3.2 </b></p>
+<p><b>Initialization </b></p>
+<p>The  IPDUM  is  normally  initialized  by  calling  the API </p>
+<p>IpduM_Init</p>
+<p>.  This  is  done  by  the </p>
+<p>EcuM. If this is not the case, an adequate and suitable solution has to be provided. During </p>
+<p>initialization the IPDUM initializes all the transmission multiplex I-PDU(s) buffer(s) and all </p>
+<p>runtime module relevant variables. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>If the BSW module Det is not used and the IPDUM is not initialized before its </p>
+<p>functionalities are used, the IPDUM’s behavior is undefined. The IPDUM should be </p>
+<p>initialized before using its functionalities. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>10 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>3.3 </b></p>
+<p><b>States </b></p>
+<p>The IPDUM has the states: uninitialized and initialized. </p>
+<p><b>3.4 </b></p>
+<p><b>Main Functions </b></p>
+<p>IPDUM  provides  all  functions  described  in  [1].  The  function </p>
+<p>IpduM_MainFunction</p>
+<p> </p>
+<p>should be called cyclically by the Basic Software Scheduler or a similar component. The </p>
+<p>IpduM_MainFunction </p>
+<p>primarily  takes  care  of  the  timeout  handling  of  the  multiplex  I-</p>
+<p>PDU(s) transmission confirmations. </p>
+<p><b>3.5 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>3.5.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>By </p>
+<p>default, </p>
+<p>development </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>the </p>
+<p>DET </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Det_ReportError()as </p>
+<p>specified  in  [2]  if  development  error  reporting  is  enabled  (i.e. </p>
+<p>pre-compile  parameter </p>
+<p>IPDUM_DEV_ERROR_DETECT == STD_ON)</p>
+<p>.  The  DET  reporting </p>
+<p>can be enabled during pre-compile time using the tool GENy. </p>
+<p>To do this set the check box against the parameter Development Error Detection as shown </p>
+<p>in Figure 3-1: </p>
+<p> </p>
+<p>Figure 3-1 </p>
+<p>DET Activation </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>11 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>If  another  module  is  used  for  error  reporting  instead  of  DET,  the  function  prototype  for </p>
+<p>reporting the error can be configured by the integrator, but must have the same signature </p>
+<p>as the service </p>
+<p>Det_ReportError()</p>
+<p>. </p>
+<p>The reported IPDUM module ID is 52. </p>
+<p>The reported services IDs identify the IPDUM services as specified by [1]. For the service </p>
+<p>IDs and their related service names see section 8.3 of [1].  </p>
+<p>The errors reported to DET are described in section 7.6 of [1]: </p>
+<p><b>3.5.2 </b></p>
+<p><b>Production Error Reporting </b></p>
+<p>No  production  error  codes  are  currently  defined  for  I-PDU  multiplexer.  For  whatever </p>
+<p>reasons [1] demands the detection of production code errors should not be switched off. </p>
+<p>Hence as shown in the Figure 3-1 Dem is always on and cannot be de-activated. </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>12 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>4 </b></p>
+<p><b>Integration </b></p>
+<p>This  chapter  gives  information  required  for  the  integration  of  the  IPDUM  into  an  ECU </p>
+<p>application environment. </p>
+<p><b>4.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the IPDUM contains the files which are described in the chapters 4.1.1 and </p>
+<p>4.1.2: </p>
+<p><b>4.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>IpduM.c </p>
+<p>Source file if ordered as source code. </p>
+<p>IpduM.h </p>
+<p>Header file if ordered as source code </p>
+<p>IpduM.lib </p>
+<p>Library file. The extension of the library may change depending on the used </p>
+<p>compiler</p>
+<p> </p>
+<p>Table 4-1  </p>
+<p>Static files </p>
+<p> </p>
+<p><b>4.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool [GENy]. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>IpduM_Cfg.h </p>
+<p>Contains pre-compile switches and symbolic defines. </p>
+<p>IpduM_Lcfg.c </p>
+<p>Contains link time parameters. </p>
+<p>IpduM_PBcfg.c </p>
+<p>Contains post build parameters. </p>
+<p>Table 4-2  </p>
+<p>Generated files </p>
+<p><b>4.2 </b></p>
+<p><b>Include Structure </b></p>
+<p>The  I-PDU  multiplexer’s  include  structure  is  as  illustrated  in  5.4.2  in  [1]. Apart  from that  </p>
+<p>IpduM.c  also  includes  Com_Cbk.h  due  to  the  demanded  optimization  of  interacting  with </p>
+<p>BSW module Com directly bypassing the PDU-Router. </p>
+<p> </p>
+<p><b>4.3 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The </p>
+<p>objects </p>
+<p>(e.g. </p>
+<p>variables, </p>
+<p>functions, </p>
+<p>constants) </p>
+<p>have </p>
+<p>declared </p>
+<p>using </p>
+<p>the </p>
+<p>compiler </p>
+<p>independent </p>
+<p>compiler </p>
+<p>abstraction </p>
+<p>definitions. </p>
+<p>Each </p>
+<p>compiler </p>
+<p>abstraction </p>
+<p>definition </p>
+<p>is </p>
+<p>assigned to a memory section. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>13 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>The </p>
+<p>following </p>
+<p>table </p>
+<p>contains </p>
+<p>the </p>
+<p>IPDUM </p>
+<p>memory </p>
+<p>sections, </p>
+<p>its </p>
+<p>compiler </p>
+<p>abstraction </p>
+<p>definitions and their relationship among each other. </p>
+<p><b>Compiler Abstraction</b></p>
+<p><b>Definitions</b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>IPDUM_CODE </p>
+<p>IPDUM_PBCFG </p>
+<p>IPDUM_VAR_INIT </p>
+<p>IPDUM_VAR_NOINIT </p>
+<p>IPDUM_ PBCFG _ROOT </p>
+<p>IPDUM_ APPL_DATA </p>
+<p>IPDUM_START_SEC_CODE </p>
+<p>IPDUM_STOP_SEC_CODE </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IPDUM_START_SEC_PBCFG </p>
+<p>IPDUM_STOP_SEC_PBCFG </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IPDUM_START_SEC_PBCFG_ROOT </p>
+<p>IPDUM_STOP_SEC_PBCFG_ROOT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IPDUM_START_SEC_VAR_INIT_UNSPECIFIED </p>
+<p>IPDUM_STOP_SEC_VAR_INIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IPDUM_START_SEC_VAR_NOINIT_8BIT </p>
+<p>IPDUM_STOP_SEC_VAR_NOINIT_8BIT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>IPDUM_START_SEC_VAR_NOINIT_UNSPECIFIED</p>
+<p>IPDUM_STOP_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-3  </p>
+<p>Compiler abstraction and memory mapping </p>
+<p><b>4.4 </b></p>
+<p><b>Critical Sections </b></p>
+<p>The IPDUM can use the BSW Scheduler to handle its critical sections. It can also use the </p>
+<p>Vector solution VStdLib to handle its critical sections. </p>
+<p>The  critical  sections  are  entered  in  the  context  of  de-multiplexing,  multiplexing  and  the </p>
+<p>IpduM_MainFunction().  </p>
+<p><b>4.4.1 </b></p>
+<p><b>BSW Scheduler  </b></p>
+<p>If  the  BSW  Scheduler  is  used  to  handle  critical  sections,  the  IPDUM  uses  the  following </p>
+<p>APIs for optimized runtime. </p>
+<p>SchM_Enter_IpduM (IPDUM_EXCLUSIVE_AREA_0) </p>
+<p>SchM_Exit_IpduM (IPDUM_EXCLUSIVE_AREA_0) </p>
+<p>These </p>
+<p>are </p>
+<p>configured </p>
+<p>in </p>
+<p>the </p>
+<p>template </p>
+<p>_SchM_IpduMS.h</p>
+<p> </p>
+<p>of </p>
+<p>the </p>
+<p>BSW </p>
+<p>Scheduler. </p>
+<p>IPDUM_EXCLUSIVE_AREA_0 </p>
+<p>should </p>
+<p>be </p>
+<p>defined </p>
+<p>to </p>
+<p>SCHM_EA_SUSPENDALLINTERRUPTS.  </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>14 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>4.4.2 </b></p>
+<p><b>Vector Standard Library </b></p>
+<p>If the Vector Standard Library (VStdLib) is used to handle the critical section, the IPDUM </p>
+<p>uses the following API: </p>
+<p>VStdSuspendAllInterrupts() </p>
+<p>which suspends the interrupts </p>
+<p>globally and </p>
+<p>VStdResumeAllInterrupts() </p>
+<p>which resumes the interrupts globally. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>15 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>5 </b></p>
+<p><b>API Description </b></p>
+<p>For an interfaces overview please see Figure 2-2. </p>
+<p><b>5.1 </b></p>
+<p><b>Services provided by IPDUM </b></p>
+<p>The IPDUM API consists of services, which are realized by function calls. </p>
+<p><b>5.1.1 </b></p>
+<p><b>IpduM_InitMemory </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>IpduM_InitMemory </b>(void)  </p>
+<p><b>Parameter </b></p>
+<p>void </p>
+<p>none </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>none </p>
+<p><b>Functional Description </b></p>
+<p>The function initializes variables, which cannot be initialized with the startup code. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is used by the application. </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function must be called on task level. </p>
+<p>Table 5-1  </p>
+<p>IpduM_InitMemory </p>
+<p><b>5.1.2 </b></p>
+<p><b>IpduM_Init </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>IpduM_Init </b>(const IpduM_ConfigType* ConfigPtr)  </p>
+<p><b>Parameter </b></p>
+<p>ConfigPtr</p>
+<p> </p>
+<p>Pointer to the IpduM configuration data, if IPDUM_CONFIG_VARIANT 3 is </p>
+<p>configured. </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>none </p>
+<p><b>Functional Description </b></p>
+<p>This service initializes all internal and module related variables of the IPDU Multiplexer.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is used by the ECU Manager </p>
+<p>Expected Caller Context </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>16 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>The function must be called during the initialization phase of the stack or before the intended use of </p>
+<p>any of the IPDU Multiplexer’s services. </p>
+<p>Table 5-2  </p>
+<p>IpduM_Init </p>
+<p><b>5.1.3 </b></p>
+<p><b>IpduM_RxIndication </b></p>
+<p><b>Prototype </b></p>
+<p># if(IPDUM_USE_PDUINFOTYPE == STD_ON) </p>
+<p>#  define IPDUM_RXIND_PARA            PduInfoPtr </p>
+<p>#  define IPDUM_RXIND_TYPE            P2CONST(PduInfoType, AUTOMATIC, </p>
+<p>IPDUM_APPL_DATA) </p>
+<p># else </p>
+<p>#  define IPDUM_RXIND_PARA            SduPtr </p>
+<p>#  define IPDUM_RXIND_TYPE            P2CONST(uint8, AUTOMATIC, </p>
+<p>IPDUM_APPL_DATA) </p>
+<p># endif </p>
+<p>void <b>IpduM_RxIndication </b>(PduIdType PdumRxPduId, IPDUM_RXIND_TYPE  </p>
+<p>IPDUM_RXIND_PARA)  </p>
+<p><b>Parameter </b></p>
+<p>SduPtr </p>
+<p> </p>
+<p> </p>
+<p>PduInfoPtr </p>
+<p> </p>
+<p>Contains the length (SduLength) for the received I-PDU and a pointer to a </p>
+<p>buffer (SduDataPtr) containing the I-PDU. </p>
+<p> </p>
+<p>Payload information of the received I-PDU (pointer to data and data length).      </p>
+<p>This Parameter is used, if IPDUM_USE_PDUINFOTYPE is defined to </p>
+<p>STD_ON. </p>
+<p>PdumRxPduId </p>
+<p>ID of received multiplexed I-PDU. Identifies the payload. Range: 0 to count of </p>
+<p>multiplex I-PDU IDs received –1  </p>
+<p><b>Return code </b></p>
+<p>void </p>
+<p>none </p>
+<p><b>Functional Description </b></p>
+<p>This service de-multiplexes the received multiplexed IPDU.  </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is called by the PDU-Router </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function is called in an interrupt context or at the task level </p>
+<p>Table 5-3  </p>
+<p>IpduM_RxIndication </p>
+<p><b>5.1.4 </b></p>
+<p><b>IpduM_Transmit </b></p>
+<p><b>Prototype </b></p>
+<p>StdReturnType <b>IpduM_Transmit </b>(PduIdType PdumTxPduId, const PduInfoType* </p>
+<p>PduInfoPtr)  </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>17 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>PduInfoPtr</p>
+<p> </p>
+<p>Pointer to the payload of the transmit request. </p>
+<p>PdumTxPduId </p>
+<p>ID of transmit request (static or dynamic part). Identifies the payload. Range: 0 </p>
+<p>to count of dynamic/static I-PDU ID/parts multiplexed by IPDU Multiplexer –1  </p>
+<p><b>Return code </b></p>
+<p>StdReturnType</p>
+<p> </p>
+<p>E_OK: request accepted, E_NOT_OK: request rejected </p>
+<p><b>Functional Description </b></p>
+<p>This service multiplexes the received dynamic/static part </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is called by the PDU-Router </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function is called at the task level </p>
+<p>Table 5-4  </p>
+<p>IpduM_Transmit </p>
+<p><b>5.1.5 </b></p>
+<p><b>IpduM_TxConfirmation  </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>IpduM_TxConfirmation </b>(PduIdType PdumTxPduId)  </p>
+<p><b>Parameter </b></p>
+<p>PdumTxPduId </p>
+<p>ID of transmitted multiplexed IPDU. Range: 0 to count of multiplex I-PDU IDs </p>
+<p>transmitted –1   </p>
+<p><b>Return code </b></p>
+<p>void</p>
+<p> </p>
+<p>none </p>
+<p><b>Functional Description </b></p>
+<p>This service confirms the transmissions of the dynamic and static parts contained in the multiplex IPDU </p>
+<p>whose transmission is confirmed. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is called by the PDU-Router </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function is called in an interrupt context or at the task level </p>
+<p>Table 5-5  </p>
+<p>IpduM_TxConfirmation </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>18 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>5.1.6 </b></p>
+<p><b>IpduM_TriggerTransmit </b></p>
+<p><b>Prototype </b></p>
+<p># if(IPDUM_USE_PDUINFOTYPE == STD_ON) </p>
+<p>#  define IPDUM_TT_PARA         PduInfoPtr </p>
+<p>#  define IPDUM_TT_TYPE         CONSTP2VAR(PduInfoType, AUTOMATIC, </p>
+<p>IPDUM_APPL_DATA) </p>
+<p>#  define IPDUM_TT_RETURN       Std_ReturnType </p>
+<p># else </p>
+<p>#  define IPDUM_TT_PARA         SduPtr </p>
+<p>#  define IPDUM_TT_TYPE         P2VAR(uint8, AUTOMATIC, </p>
+<p>IPDUM_APPL_DATA) </p>
+<p>#  define IPDUM_TT_RETURN       void </p>
+<p># endif </p>
+<p> </p>
+<p>Std_ReturnType <b>IpduM_TriggerTransmit </b>(PduIdType PdumTxPduId, </p>
+<p>IPDUM_TT_TYPE IPDUM_TT_PARA)  </p>
+<p><b>Parameter </b></p>
+<p>PdumTxPduId </p>
+<p>ID of transmission multiplexed IPDU. Range: 0 to count of multiplex I-PDU IDs </p>
+<p>transmitted –1   </p>
+<p>SduPtr </p>
+<p> </p>
+<p>PduInfoPtr </p>
+<p>Pointer to the received I-PDU data. This Parameter is used, if </p>
+<p>IPDUM_USE_PDUINFOTYPE is defined to STD_OFF. </p>
+<p>Contains a pointer to a buffer (SduDataPtr) to where the SDU shall be copied </p>
+<p>to. On return, the service will indicate the length of the copied SDU data in </p>
+<p>SduLength. </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType </p>
+<p>E_OK: SDU has been copied and SduLength indicates the number of copied </p>
+<p>bytes.  </p>
+<p>E_NOT_OK: No SDU has been copied. SduLength has not been set. </p>
+<p><b>Functional Description </b></p>
+<p>This service copies the transmission multiplexed IPDU to the provided buffer. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is called by the interface layers (LIN/FR) </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function is called in an interrupt context or at the task level </p>
+<p>Table 5-6  </p>
+<p>IpduM_TriggerTransmit </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>19 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>5.1.7 </b></p>
+<p><b>IpduM_MainFunction </b></p>
+<p><b> </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>IpduM_MainFunction </b>(void)  </p>
+<p><b>Parameter </b></p>
+<p>void</p>
+<p> </p>
+<p>none </p>
+<p><b>Return code </b></p>
+<p>void</p>
+<p> </p>
+<p>none </p>
+<p><b>Functional Description </b></p>
+<p>This service takes care of the timeout handling of the transmission confirmations. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>The function is called cyclically by the BSW scheduler </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function is called at the task level </p>
+<p>Table 5-7  </p>
+<p>IpduM_MainFunction </p>
+<p><b>5.1.8 </b></p>
+<p><b>IpduM_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p>void <b>IpduM_GetVersionInfo </b>(Std_VersionInfoType* versioninfo)  </p>
+<p><b>Parameter </b></p>
+<p>Std_VersionInfoType</p>
+<p> </p>
+<p>Pointer to the structure to write the versioninfo </p>
+<p><b>Return code </b></p>
+<p>void</p>
+<p> </p>
+<p>none </p>
+<p><b>Functional Description </b></p>
+<p>Provides the version information of the IPDU Multiplexer. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>none </p>
+<p>Expected Caller Context </p>
+<p></p>
+<p> </p>
+<p>The function can be called at any time at the application’ discretion, interrupt or task level </p>
+<p>Table 5-8  </p>
+<p>IpduM_GetVersionInfo </p>
+<p> </p>
+<p><b>5.2 </b></p>
+<p><b>Services used by IPDUM </b></p>
+<p>In  the  following  table  services  provided  by  other  components,  which  are  used  by  the </p>
+<p>IPDUM are listed. For details about prototype and functionality refer to the documentation </p>
+<p>of the providing component. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>20 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>Det </p>
+<p>Det_ReportError </p>
+<p>PduR </p>
+<p>PduR_IpduMTransmit </p>
+<p>PduR </p>
+<p>PduR_IpduMTxConfirmation </p>
+<p>PduR </p>
+<p>PduR_IpduMRxIndication </p>
+<p>Com </p>
+<p>Com_RxIndication </p>
+<p>Com </p>
+<p>Com_TxConfirmation </p>
+<p>BSW Scheduler </p>
+<p>SchM_Enter_IpduM </p>
+<p>BSW Scheduler </p>
+<p>SchM_Exit_IpduM </p>
+<p>Table 5-9  </p>
+<p>Services used by the IPDUM </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>21 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>6 </b></p>
+<p><b>Configuration </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>Currently the IPDUM implementation supports only an AUTOSAR EcuC. </p>
+<p><b> </b></p>
+<p>The  IPDUM  can  be  configured  using  an  EcuC  file  through  the  Vector  configuration  and </p>
+<p>generation  tool  GENy.  A  few  of  the  parameters  and  their  configurations  have  been </p>
+<p>described  in  the  section  3.5.1  (see  above).  The  following  chapter  provides  a  detailed </p>
+<p>description of the IPDUM EcuC parameters. </p>
+<p> </p>
+<p><b>6.1 </b></p>
+<p><b>EcuC configuration with GENy </b></p>
+<p> </p>
+<p>A detail description of all the IPDUM parameters is given in the following sections. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>Should the GENy support for IPDUM configuration be intended? Please ensure the </p>
+<p>basic software module definition file (IpduM_bswmd.xml) and the Il_AsrIpduM.dll are </p>
+<p>available in the GENy components folder </p>
+<p><b> </b></p>
+<p>All of the IPDUM configuration parameters are imported from the EcuC into GENy. </p>
+<p>However some non AUTOSAR parameters (e.g IPduMUserConfigFile, IpduMVStdLibUsed</p>
+<p>, </p>
+<p>IPduMPBStartAddress, IPduMBufferSize, IPduMMaxRxBufferSize, </p>
+<p>IPduMMaxNumberOfTxRequests see section 6.2.1.22) may not be available by default in </p>
+<p>the EcuC. Such parameters will be exported to the EcuC file through GENy. </p>
+<p> </p>
+<p>Only a few IPDUM parameters imported from the EcuC file may have to be configured in </p>
+<p>GENy such parameters are editable. </p>
+<p> </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>The IPDUM EcuC parameters which are not editable in GENy are directly derived from </p>
+<p>the systems description and should not be manually edited / configured by the user.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>22 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p> </p>
+<p>The IPDUM can be enabled in the component selection section of the GENy GUI as </p>
+<p>shown in the Figure 6-1. </p>
+<p> </p>
+<p> </p>
+<p>Figure 6-1 </p>
+<p>GENy component selection </p>
+<p> </p>
+<p><b>6.1.1 </b></p>
+<p><b>General parameters </b></p>
+<p>Figure 6-2 shows the activation of static parts support in the IPDUM. If the IPDUM EcuC </p>
+<p>multiplex I-PDUs are configured with static parts or static part support in expected in a post </p>
+<p>build configuration, the parameter IpduMStaticPartExists should be enabled in GENy at </p>
+<p>pre-compile time. </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>If this parameter is not enabled the IPDUM will not support static parts.  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p>Likewise </p>
+<p>if </p>
+<p>the </p>
+<p>IPDUM </p>
+<p>version </p>
+<p>info </p>
+<p>is </p>
+<p>required </p>
+<p>at </p>
+<p>runtime, </p>
+<p>the </p>
+<p>parameter </p>
+<p>IPduMVersionInfoApi should be activated at pre-compile time. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>23 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Figure 6-2 </p>
+<p>Static part activation </p>
+<p> </p>
+<p><b>6.1.2 </b></p>
+<p><b>Link time and Post build configuration </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 6-3 </p>
+<p>Link time and post build parameters </p>
+<p>Figure 6-3 shows the link time and post build parameters. The desired configuration can </p>
+<p>be chosen using the configuration variant drop down menu.  </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>24 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>¾</p>
+<p> </p>
+<p>PB Start Address is the start address of the post build configuration structure </p>
+<p>of the I-PDU multiplexer module in the ROM. This address is required by the </p>
+<p>IPDUM post build configuration. </p>
+<p>¾</p>
+<p> </p>
+<p>The buffer size required by the transmitted multiplex I-PDU(s) (Tx Pathways) </p>
+<p>in the IPDUM configuration can be computed by clicking the button against </p>
+<p>the field “Compute Max Tx Buffer Size”. If more Tx Pathways are anticipated </p>
+<p>in a post build configuration the size can be manually edited </p>
+<p>¾</p>
+<p> </p>
+<p>The count of the transmitted multiplex I-PDU(s) (Tx Pathways) in the IPDUM </p>
+<p>configuration can be computed by clicking the button against the field “Max </p>
+<p>Number of Tx Requests”. If more Tx Pathways are anticipated in a post build </p>
+<p>configuration the count can be manually edited </p>
+<p>¾</p>
+<p> </p>
+<p>The buffer size required by the received multiplex I-PDU(s) (Rx Pathways) in </p>
+<p>the IPDUM configuration can be computed by clicking the button against the </p>
+<p>field “Compute Max Rx Buffer Size”. If an increment in length of the largest </p>
+<p>received multiplex is anticipated in a post build configuration the size can be </p>
+<p>manually edited </p>
+<p> </p>
+<p><b>6.1.3 </b></p>
+<p><b>Multiplexing and De-multiplexing  </b></p>
+<p>The IPDUM multiplexes or de-multiplexes different dynamic parts associated to a multiplex </p>
+<p>I-PDU along with the configured static part if any. The multiplexing and de-multiplexing is </p>
+<p>executed  based  on  the  configuration  derived  from  the  system  description  and  therefore </p>
+<p>should not be edited. </p>
+<p>Figure 6-4 shows the configuration of a dynamic part to be multiplexed. The start bit and </p>
+<p>end  bit  give  the  the  bit  field  positions  in  the  dynamic  part. The  destination  bit  is  the  bit </p>
+<p>position  in  the  multiplex  I-PDU  to  which  the  bit  field  has  to  be  copied.  The  IPDUM </p>
+<p>multiplexes </p>
+<p>accordingly </p>
+<p>and </p>
+<p>triggers </p>
+<p>the </p>
+<p>transmission </p>
+<p>of </p>
+<p>the </p>
+<p>multiplex </p>
+<p>I-PDU(s) </p>
+<p>(Tx </p>
+<p>Pathway(s)). </p>
+<p> </p>
+<p>Figure 6-4 </p>
+<p>Copy bit field configuration of a dynamic part </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>25 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>Figure 6-5 shows the configuration of a static part to be de-multiplexed. The start bit and </p>
+<p>end bit give the bit field positions in the multiplexed I-PDU. The destination bit is the bit </p>
+<p>position in the static part to which the bit field has to be copied. The IPDUM de-multiplexes </p>
+<p>accordingly and indicates the reception of the static part to Com. </p>
+<p> </p>
+<p>Figure 6-5 </p>
+<p>Copy bit field configuration of a static part </p>
+<p>While de-multiplexing a dynamic part contained in a received multiplex I-PDU. The IPDUM </p>
+<p>chooses the associated dynamic part layout based on the parameter “Rx Selector Value” </p>
+<p>which is derived from the system description and should not be edited. </p>
+<p> </p>
+<p>Figure 6-6 </p>
+<p>Dynamic part layout selection </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>26 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b>Caution </b></p>
+<p>It should be noted here that: </p>
+<p>¾</p>
+<p> </p>
+<p>The parameters Start Bit, End bit and Destination Bit are derived </p>
+<p>from the system description. </p>
+<p>¾</p>
+<p> </p>
+<p>The  AUTOSAR  system  template  versions  prior  to  3.1.4  do  not </p>
+<p>support the configuration of more than 1 sub parts (IPduMBitField) </p>
+<p>per static or dynamic part(s).  </p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p><b>6.1.4 </b></p>
+<p><b>Tx Pathway  </b></p>
+<p>All parameters for a multiplex I-PDU (TxPathway/TxRequest) configuration are shown in </p>
+<p>the Figure 6-7. </p>
+<p> </p>
+<p>Figure 6-7 </p>
+<p>Tx Pathway configuration parameters </p>
+<p>¾</p>
+<p> </p>
+<p>All  the  parameters  except  “Tx  Confirmation  Timeout”  are  derived  from  the </p>
+<p>system  description  and  hence  should  not  be  edited.  While  configuring  the </p>
+<p>value  for  this  parameter  the  user  has  to  consider  the  “Tx  Mode”  of  the </p>
+<p>associated  dynamic  and  /  or  static  parts  in  Com.  If  configured  the  IPDUM </p>
+<p>performs  a  time  out  handling  for  every  multiplex  I-PDU  (Tx  Pathway)  it </p>
+<p>transmits. No transmission requests of the associated static or dynamic parts </p>
+<p>are accepted for a transmitted multiplex I-PDU as long as the transmission </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>27 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>confirmation is received or the configured transmission confirmation timeout </p>
+<p>hasn’t elapsed. </p>
+<p>¾</p>
+<p> </p>
+<p>In  the  system  description  with  format  3.0.1  along  with  above  parameter, </p>
+<p>another parameter “Tx Trigger Mode” also seen in the figure above can be </p>
+<p>configured  using  the  drop  down.  The  parameter  “Tx  Trigger  Mode”  is  the </p>
+<p>event which triggers the transmission of a multiplex I-PDU by IPDUM. The </p>
+<p>transmission  of  a  multiplex  IPDU  can  be  configured  following  the  below </p>
+<p>events: </p>
+<p>♦</p>
+<p> </p>
+<p>DYNAMIC_PART_TRIGGER: </p>
+<p>Transmission </p>
+<p>of </p>
+<p>the </p>
+<p>multiplex </p>
+<p>I-PDU </p>
+<p>is </p>
+<p>triggered  by  the  IPDUM  when  Com  requests  the  transmission  of  a </p>
+<p>multiplexed dynamic part. </p>
+<p>♦</p>
+<p> </p>
+<p>STATIC_OR_DYNAMIC_PART_TRIGGER: Transmission of the multiplex </p>
+<p>I-PDU is triggered by the IPDUM when Com requests the transmission of </p>
+<p>a multiplexed dynamic part or the configured static part. </p>
+<p>♦</p>
+<p> </p>
+<p>STATIC_ </p>
+<p>PART_TRIGGER: </p>
+<p>Transmission </p>
+<p>of </p>
+<p>the </p>
+<p>multiplex </p>
+<p>I-PDU </p>
+<p>is </p>
+<p>triggered  by  the  IPDUM  when  Com  requests  the  transmission  of  the </p>
+<p>configured static part. </p>
+<p>♦</p>
+<p> </p>
+<p>NONE:  Transmission  of  the  multiplex  I-PDU  is  never  triggered  by  the </p>
+<p>IPDUM. </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>In case of the last event the static or dynamic part is copied to its associated buffer but </p>
+<p>no transmission is triggered. </p>
+<p><b> </b></p>
+<p>The trigger event NONE is useful in case the transmission of a multiplex I-PDU is triggered </p>
+<p>by  a  lower  interface  layer  (FrIf,  LinIf)  layer.  The  IPDU  Multiplexer  provides  the  API </p>
+<p>IpduM_TriggerTransmit</p>
+<p> for such a scenario. </p>
+<p><b>6.1.5 </b></p>
+<p><b>Transmission Confirmations </b></p>
+<p>The  IPDUM  confirms  the  transmission  of  every  dynamic  part  it  multiplexes  through  a </p>
+<p>multiplex I-PDU and a static part if configured to the multiplex I-PDU to Com. </p>
+<p>Figure 6-8 shows the transmission confirmation configurations of different dynamic parts </p>
+<p>multiplexed by a multiplex I-PDU (Tx Pathway). </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Info</b> </p>
+<p>The IPDUM confirms the transmission of all the dynamic parts multiplexed by a </p>
+<p>multiplex I-PDU and also confirms the transmission of the static part if configured to the </p>
+<p>multiplex I-PDU. </p>
+<p><b> </b></p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>28 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p> </p>
+<p>Figure 6-8 </p>
+<p>Dynamic part confirmation configuration </p>
+<p>Figure 6-9 shows the transmission confirmation configuration of the static part configured </p>
+<p>to a multiplex I-PDU (Tx Pathway). </p>
+<p> </p>
+<p>Figure 6-9 </p>
+<p>Static part confirmation configuration </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>29 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>6.2 </b></p>
+<p><b>ECU Configuration parameters: </b></p>
+<p> </p>
+<p><b>Container Name </b></p>
+<p>IPduMplex </p>
+<p><b>Multiplicity </b></p>
+<p>0...1 </p>
+<p><b>Description </b></p>
+<p>Configuration of the IPduMplex (IPdu Multiplexer) module. </p>
+<p> </p>
+<p><b>6.2.1.1 </b></p>
+<p><b>IPduMConfig </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMConfig </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This container contains the sub containers of the </p>
+<p>IPduMplex module. The IPduMTxPathway </p>
+<p>subcontainer includes information about sent I-</p>
+<p>PDUs. The IPduMRxPathway includes information </p>
+<p>about received I-PDUs. </p>
+<p>This container is a MultipleConfigurationContainer, </p>
+<p>i.e. this container and its sub-containers exist once </p>
+<p>per configuration set. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMRxPathway </p>
+<p>0...* </p>
+<p>IPduMTxPathway </p>
+<p>0...* </p>
+<p> </p>
+<p><b>6.2.1.2 </b></p>
+<p><b>IPduMRxPathway </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMRxPathway </p>
+<p>0...* </p>
+<p> </p>
+<p> </p>
+<p>Contains the configuration parameters of the I-</p>
+<p>PDUs received by the IPduM module. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMRxIndication </p>
+<p>1...1 </p>
+<p> </p>
+<p><b>6.2.1.3 </b></p>
+<p><b>IPduMRxIndication </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMRxIndication </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>Contains the configuration for incoming </p>
+<p>RxIndication calls. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>30 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>31 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMRxHandleId </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>This is the I-PDU ID of the incoming I-PDU. If an </p>
+<p>incoming RxIndication's I-PDU ID matches this </p>
+<p>value then it is unpacked according to the </p>
+<p>specification in this container. </p>
+<p>IPduMRxIndicationP</p>
+<p>duRef </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>Reference to the received Pdu representation in </p>
+<p>the ECU Configuration Description exchange file. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p>IPduMRxDynamicPart </p>
+<p>1...* </p>
+<p>IPduMRxStaticPart </p>
+<p>0...1 </p>
+<p> </p>
+<p><b>6.2.1.4 </b></p>
+<p><b>IPduMBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify a contiguous range of bits </p>
+<p>within an I-PDU. The range is inclusive. </p>
+<p>IPduMEndBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the end of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or higher than Ipdum_StartBit. </p>
+<p>IPduMStartBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or lower than Ipdum_EndBit. </p>
+<p> </p>
+<p><b>6.2.1.5 </b></p>
+<p><b>IPduMRxDynamicPart </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMRxDynamicP</p>
+<p>art </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>This container contains the configuration for the </p>
+<p>dynamic part of incoming RxIndication calls. </p>
+<p>When an received I-PDU's selector field matches </p>
+<p>the IPduM_Selector_Value the I-PDU is unpacked </p>
+<p>according to the values in the IPduMCopyBitfield </p>
+<p>and then the new I-PDU constructed and sent out </p>
+<p>with the I-PDU ID referenced by </p>
+<p>IPduMOutgoingDyamicPduRef. </p>
+<p>IPduMRxSelectorVal</p>
+<p>ue </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>This is the selector value in the received IPDU </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>32 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMOutgoingDyn</p>
+<p>amicPduRef </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>When the new I-PDU is sent out it is sent with this </p>
+<p>I-PDU ID. Reference to the sent PDU </p>
+<p>representation in the ECU Configuration </p>
+<p>Description exchange file. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p><b>6.2.1.6 </b></p>
+<p><b>IPduMCopyBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>Specifies the source bit fields and the destination </p>
+<p>bit position, so that the bits in the source can be </p>
+<p>copied to the bits in the destination. </p>
+<p>Within one I-PDU multiple instances of this </p>
+<p>container are used to specify the bit fields in that I-</p>
+<p>PDU. </p>
+<p>Adjacent bit fields could be merged in order to </p>
+<p>reduce the number of instances of this container. </p>
+<p>IPduMDestinationBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the </p>
+<p>destination bit field for the copy.  </p>
+<p>The resulting destination field must fit inside the I-</p>
+<p>PDU. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p><b>6.2.1.7 </b></p>
+<p><b>IPduMBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify a contiguous range of bits </p>
+<p>within an I-PDU. The range is inclusive. </p>
+<p>IPduMEndBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the end of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or higher than Ipdum_StartBit. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>33 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMStartBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or lower than Ipdum_EndBit. </p>
+<p> </p>
+<p><b>6.2.1.8 </b></p>
+<p><b>IPduMRxStaticPart </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMRxStaticPart </p>
+<p>0...1 </p>
+<p> </p>
+<p> </p>
+<p>This container contains the information on how to </p>
+<p>unpack the static part of an incoming I-PDU. </p>
+<p>IPduMOutgoingStati</p>
+<p>cPduRef </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>When the new I-PDU is sent out it is sent with this </p>
+<p>I-PDU ID. Reference to the sent Pdu </p>
+<p>representation in the ECU Configuration </p>
+<p>Description exchange file. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p><b>6.2.1.9 </b></p>
+<p><b>IPduMCopyBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>Specifies the source bit fields and the destination </p>
+<p>bit position, so that the bits in the source can be </p>
+<p>copied to the bits in the destination. </p>
+<p>Within one I-PDU multiple instances of this </p>
+<p>container are used to specify the bit fields in that I-</p>
+<p>PDU. </p>
+<p>Adjacent bit fields could be merged in order to </p>
+<p>reduce the number of instances of this container. </p>
+<p>IPduMDestinationBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the </p>
+<p>destination bit field for the copy.  </p>
+<p>The resulting destination field must fit inside the I-</p>
+<p>PDU. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>6.2.1.10 </b></p>
+<p><b>IPduMBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify a contiguous range of bits </p>
+<p>within an I-PDU. The range is inclusive. </p>
+<p>IPduMEndBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the end of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or higher than Ipdum_StartBit. </p>
+<p>IPduMStartBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or lower than Ipdum_EndBit. </p>
+<p> </p>
+<p><b>6.2.1.11 </b></p>
+<p><b>IPduMTxPathway </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMTxPathway </p>
+<p>0...* </p>
+<p> </p>
+<p> </p>
+<p>Contains the configuration parameters transmitted </p>
+<p>I-PDUs by the IPduM module. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMTxConfirmation </p>
+<p>0...1 </p>
+<p>IPduMTxRequest </p>
+<p>1...1 </p>
+<p> </p>
+<p><b>6.2.1.12 </b></p>
+<p><b>IPduMTxConfirmation </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMTxConfirmatio</p>
+<p>n </p>
+<p>0...1 </p>
+<p> </p>
+<p> </p>
+<p>A transmit request can be confirmed by the lower </p>
+<p>layer. This container is used to generate the </p>
+<p>associated confirmations for the static and dynamic </p>
+<p>parts of a multiplexed I-PDU.  </p>
+<p>When an I-PDU is transmitted by the IPduM, the </p>
+<p>selector field value in that PDU needs to be stored </p>
+<p>in the IPduM so that the confirmation for the </p>
+<p>correct dynamic part can be generated. This is </p>
+<p>state internal to the IPduM at run-time. For the </p>
+<p>purposes of this container and </p>
+<p>IPduMDynamicTxConfirmation this stored state is </p>
+<p>called Stored_Selector. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>34 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>35 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMStaticTxConfir</p>
+<p>mationIPduRef </p>
+<p>0...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>This references the I-PDU to use in the </p>
+<p>TxConfirmation for the static part. </p>
+<p>This entity does not appear if there is no static part.</p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMDynamicTxConfirmation </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p><b>6.2.1.13 </b></p>
+<p><b>IPduMDynamicTxConfirmation </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMDynamicTxCo</p>
+<p>nfirmation </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>The dynamic part of an I-PDU can have more than </p>
+<p>one I-PDU IDs for confirmations. The correct I-</p>
+<p>PDU ID for the confirmation is found from the </p>
+<p>selector field value of a previously transmitted I-</p>
+<p>PDU. It is assumed that this selector field is stored </p>
+<p>in some internal value called Stored_Selector. </p>
+<p>When a transmit confirmation is received the </p>
+<p>Stored_Selector is used to select an instance of </p>
+<p>IPduMDynamicTxConfirmation by matching the </p>
+<p>Stored_Selector with the IPduMSelectorValue. </p>
+<p>IPduMSelectorValue </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>When the selector field of the confirmed I-PDU </p>
+<p>matches the value in here then generate a </p>
+<p>TxConfirmation for the I-PDU referenced by </p>
+<p>IPduMDynamicTxConfirmIPduRef. </p>
+<p>IPduMDynamicTxCo</p>
+<p>nfirmIPduRef </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>This is the I-PDU ID to use in the outgoing </p>
+<p>confirmation (confirmation for the COM I-PDU) </p>
+<p>when an incoming confirmation (for an IPduM I-</p>
+<p>PDU) is received and matches the stored </p>
+<p>Stored_Selector. </p>
+<p> </p>
+<p><b>6.2.1.14 </b></p>
+<p><b>IPduMTxRequest </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMTxRequest </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify the configuration for </p>
+<p>Transmit requests. </p>
+<p>There will one instance of this container for each I-</p>
+<p>PDU that can be requested for transmission (the </p>
+<p>outgoing I-PDUs) by the IPduM. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>36 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMIPduUnusedA</p>
+<p>reasDefault </p>
+<p>0...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>IPduM module fills not used areas of an I-PDU with </p>
+<p>this bit-pattern  </p>
+<p>If this attribute is omitted the IPduM module does </p>
+<p>not fill the I-PDU. </p>
+<p>IPduMInitialSelector</p>
+<p>Value </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>This value is used by the initialization function to </p>
+<p>set the initial value of the selector field. </p>
+<p>IPduMSize </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>The size of the I-PDU in bytes. The maximum size </p>
+<p>is limited by the underlying communication </p>
+<p>interface. 0-8 for CAN and LIN 0-254 for FlexRay </p>
+<p>IPduMTxConfirmatio</p>
+<p>nTimeout </p>
+<p>0...1 </p>
+<p>FLOAT </p>
+<p> </p>
+<p>This timeout (in seconds) defines the timeout </p>
+<p>period for monitoring the reception of the </p>
+<p>TxConfirmation. </p>
+<p>It is not used when an I-PDU is requested using </p>
+<p>the trigger transmit API. </p>
+<p>IPduMTxTriggerMod</p>
+<p>e </p>
+<p>1...1 </p>
+<p>ENUM</p>
+<p>ERATI</p>
+<p>ON </p>
+<p> </p>
+<p>Sets the transmission trigger event of the </p>
+<p>multiplexed I-PDU, send immediately or at a later </p>
+<p>point in time. </p>
+<p>IPduMOutgoingPdu</p>
+<p>Ref </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>Reference to the PDU defining the outgoing I-PDU.</p>
+<p>When the outgoing I-PDU is sent this is the I-PDU </p>
+<p>ID to give it. It is the IPduM I-PDU ID of the </p>
+<p>assembled I-PDU. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p>IPduMTxDynamicPart </p>
+<p>1...* </p>
+<p>IPduMTxStaticPart </p>
+<p>0...1 </p>
+<p> </p>
+<p><b>6.2.1.15 </b></p>
+<p><b>IPduMBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify a contiguous range of bits </p>
+<p>within an I-PDU. The range is inclusive. </p>
+<p>IPduMEndBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the end of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or higher than Ipdum_StartBit. </p>
+<p>IPduMStartBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or lower than Ipdum_EndBit. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>6.2.1.16 </b></p>
+<p><b>IPduMTxDynamicPart </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMTxDynamicPa</p>
+<p>rt </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>Configuration parameters for an instance of a </p>
+<p>TxRequest call into the IPduM. </p>
+<p>When a Tx Request with the </p>
+<p>IPduMTxDynamicHandleId is received by the </p>
+<p>IPduM, the bit fields in the incoming I-PDU are </p>
+<p>packed into the outgoing I-PDU buffer and then the </p>
+<p>send mode is honored. </p>
+<p>This container is used by the dynamic part of a </p>
+<p>TxRequest configuration. </p>
+<p>Therefore, for each outgoing I-PDU there will be </p>
+<p>one instance of this container for the dynamic part. </p>
+<p>IPduMTxDynamicHa</p>
+<p>ndleId </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>This is an incoming handle id. When the handle of </p>
+<p>an incoming Tx Request matches this, the bits </p>
+<p>fields (see Ipdum_CopyBitField) are copied and </p>
+<p>the IpduMTxTriggerMode is honored. </p>
+<p>IPduMTxDynamicPd</p>
+<p>uRef </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>Reference to the Pdu representation in the ECU </p>
+<p>Configuration Description exchange file to be </p>
+<p>transmitted. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p><b>6.2.1.17 </b></p>
+<p><b>IPduMCopyBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>Specifies the source bit fields and the destination </p>
+<p>bit position, so that the bits in the source can be </p>
+<p>copied to the bits in the destination. </p>
+<p>Within one I-PDU multiple instances of this </p>
+<p>container are used to specify the bit fields in that I-</p>
+<p>PDU. </p>
+<p>Adjacent bit fields could be merged in order to </p>
+<p>reduce the number of instances of this container. </p>
+<p>IPduMDestinationBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the </p>
+<p>destination bit field for the copy.  </p>
+<p>The resulting destination field must fit inside the I-</p>
+<p>PDU. </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>37 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p><b>6.2.1.18 </b></p>
+<p><b>IPduMBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify a contiguous range of bits </p>
+<p>within an I-PDU. The range is inclusive. </p>
+<p>IPduMEndBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the end of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or higher than Ipdum_StartBit. </p>
+<p>IPduMStartBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or lower than Ipdum_EndBit. </p>
+<p> </p>
+<p><b>6.2.1.19 </b></p>
+<p><b>IPduMTxStaticPart </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMTxStaticPart </p>
+<p>0...1 </p>
+<p> </p>
+<p> </p>
+<p>Configuration parameters for an instance of a </p>
+<p>Tx_Request call into the IPduM. </p>
+<p>When a Tx Request with the </p>
+<p>IPduMTxStaticHandleId is received by the IPduM, </p>
+<p>the bit fields in the incoming I-PDU are packed into </p>
+<p>the outgoing I-PDU buffer and then the send mode </p>
+<p>is honored. </p>
+<p>This container is used for the static part of a </p>
+<p>TxRequest configuration. </p>
+<p>Therefore, for each outgoing I-PDU there will be </p>
+<p>one instance of this container for the static part if it </p>
+<p>exists. </p>
+<p>IPduMTxStaticHandl</p>
+<p>eId </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>This is an incoming handle id. When the handle of </p>
+<p>an incoming Tx Request matches this, the bits </p>
+<p>fields (see IPduMCopyBitField) are copied and the </p>
+<p>IPduMTxTriggerMode is honored. </p>
+<p>IPduMTxStaticPduR</p>
+<p>ef </p>
+<p>1...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>Reference to the Pdu representation in the ECU </p>
+<p>Configuration Description exchange file to be </p>
+<p>transmitted. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>38 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>6.2.1.20 </b></p>
+<p><b>IPduMCopyBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMCopyBitField </p>
+<p>1...* </p>
+<p> </p>
+<p> </p>
+<p>Specifies the source bit fields and the destination </p>
+<p>bit position, so that the bits in the source can be </p>
+<p>copied to the bits in the destination. </p>
+<p>Within one I-PDU multiple instances of this </p>
+<p>container are used to specify the bit fields in that I-</p>
+<p>PDU. </p>
+<p>Adjacent bit fields could be merged in order to </p>
+<p>reduce the number of instances of this container. </p>
+<p>IPduMDestinationBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the </p>
+<p>destination bit field for the copy.  </p>
+<p>The resulting destination field must fit inside the I-</p>
+<p>PDU. </p>
+<p> </p>
+<p><b>Sub Container </b></p>
+<p><b>Multiplicity </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p><b>6.2.1.21 </b></p>
+<p><b>IPduMBitField </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMBitField </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>This is used to specify a contiguous range of bits </p>
+<p>within an I-PDU. The range is inclusive. </p>
+<p>IPduMEndBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the end of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or higher than Ipdum_StartBit. </p>
+<p>IPduMStartBit </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p> </p>
+<p>Bit position in an I-PDU of the start of the bit field. </p>
+<p>Value must fit inside the I-PDU. Value must be the </p>
+<p>same as or lower than Ipdum_EndBit. </p>
+<p> </p>
+<p><b>6.2.1.22 </b></p>
+<p><b>IPduMGeneral </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMGeneral </p>
+<p>1...1 </p>
+<p> </p>
+<p> </p>
+<p>Contains the general configuration parameters of </p>
+<p>IPduMplex. </p>
+<p>IPduMConfiguration</p>
+<p>TimeBase </p>
+<p>1...1 </p>
+<p>FLOAT </p>
+<p> </p>
+<p>The period between successive ticks of AUTOSAR </p>
+<p>COM in seconds. </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>39 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>40 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMDevErrorDete</p>
+<p>ct </p>
+<p>1...1 </p>
+<p>BOOLE</p>
+<p>AN </p>
+<p> </p>
+<p>Active/Deactivate the detection of development </p>
+<p>errors, for production code this parameter has to </p>
+<p>be False. </p>
+<p>True: error detection activated </p>
+<p>False: error detection deactivated </p>
+<p>IPduMStaticPartExis</p>
+<p>ts </p>
+<p>1...1 </p>
+<p>BOOLE</p>
+<p>AN </p>
+<p> </p>
+<p>This is to allow optimizations in the case the IPduM </p>
+<p>will never be used with a static part. </p>
+<p>Note that this is a pre-compile option. If this is set </p>
+<p>to False then it will not be possible to add static </p>
+<p>parts after compilation. </p>
+<p>True: A static part may exist. </p>
+<p>False: A static part will never exist. </p>
+<p>IPduMVersionInfoAp</p>
+<p>i </p>
+<p>1...1 </p>
+<p>BOOLE</p>
+<p>AN </p>
+<p> </p>
+<p>Active/Deactivate the version information API. </p>
+<p>true: version information activated </p>
+<p>false: version information deactivated </p>
+<p>IPduMUserConfigFil</p>
+<p>e </p>
+<p>0...1 </p>
+<p>STRIN</p>
+<p>G </p>
+<p> </p>
+<p>Configure a file reference to a user defined </p>
+<p>configuration file. The user defined configuration </p>
+<p>file is included at the end of the generated file </p>
+<p>IpduM_Cfg.h and can be used to extend or </p>
+<p>overwrite definitions. </p>
+<p>IPduMPBStartAddre</p>
+<p>ss </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p>0 </p>
+<p>This is the start address of the memory block in </p>
+<p>ROM where the post build configuration data is </p>
+<p>located. </p>
+<p>IPduMBufferSize </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p>0 </p>
+<p>As multiplexed Pdus can be added at post-build </p>
+<p>time, the buffer size (RAM) must be configured at </p>
+<p>link-time. The size of the buffer depends on the </p>
+<p>current IPduM configuration and on the scalability </p>
+<p>that should be available at post-build time. </p>
+<p>IPduMMaxRxBuffer</p>
+<p>Size </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p>0 </p>
+<p>As multiplexed Pdus can be added at post-build </p>
+<p>time, the buffer size (RAM) must be configured at </p>
+<p>link-time. The size of the reception buffer depends </p>
+<p>on the current largest multiplex IPDU received by </p>
+<p>the IPduM and on the scalability that should be </p>
+<p>available at post-build time. (i.e if the size of the </p>
+<p>largest reception multiplex IPdu may change in </p>
+<p>future the buffer can be reserved in accordance to </p>
+<p>the expected size) </p>
+<p>IPduMMaxNumberO</p>
+<p>fTxRequests </p>
+<p>1...1 </p>
+<p>INTEG</p>
+<p>ER </p>
+<p>0 </p>
+<p>As multiplexed Pdus can be added at post-build </p>
+<p>time, the buffer size (RAM) must be configured at </p>
+<p>link-time. The size of the buffer depends on the </p>
+<p>number of multiplex IPdus transmitted in the </p>
+<p>current IPduM configuration and on the scalability </p>
+<p>that should be available at post-build time </p>
+<p>IPduMUsePduInfoTy</p>
+<p>pe </p>
+<p>0…1 </p>
+<p>BOOLE</p>
+<p>AN </p>
+<p>false </p>
+<p>If this feature is active, PduInfoPtr instead of </p>
+<p>SduPtr is used for the APIs IpduM_RxIndication </p>
+<p>and IpduM_TriggerTransmit. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>41 / 44</p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMDynamicDlcS</p>
+<p>upport </p>
+<p>0…1 </p>
+<p>BOOLE</p>
+<p>AN </p>
+<p>false </p>
+<p>If this feature is activ, the received data length </p>
+<p>(PduInfoPtr-&gt;SduLength) is checked by the </p>
+<p>function IpduM_RxIndication and set by function </p>
+<p>IpduM_TriggerTransmit only completely received </p>
+<p>static or dynamic parts are processed. </p>
+<p> </p>
+<p> </p>
+<p><b>6.2.1.23 </b></p>
+<p><b>IPduMplexCh </b></p>
+<p> </p>
+<p><b>Attribute Name </b></p>
+<p><b>Multiplicity </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Default </b></p>
+<p><b>Value </b></p>
+<p><b>Description </b></p>
+<p>IPduMplexCh </p>
+<p>0...1 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>ComMChannelRef </p>
+<p>0...1 </p>
+<p>REFER</p>
+<p>ENCE </p>
+<p> </p>
+<p>This is needed for GENy module activation </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>7 </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>7.1 </b></p>
+<p><b>Deviations </b></p>
+<p>There </p>
+<p>are </p>
+<p>no </p>
+<p>deviations </p>
+<p>from </p>
+<p>the </p>
+<p>standard  AUTOSAR </p>
+<p>requirements </p>
+<p>in </p>
+<p>the </p>
+<p>current </p>
+<p>implementation. </p>
+<p><b>7.2 </b></p>
+<p><b>Additions/ Extensions </b></p>
+<p>The </p>
+<p>current </p>
+<p>implementation </p>
+<p>incorporates </p>
+<p>2 </p>
+<p>requirements </p>
+<p>(IPDUM155, </p>
+<p>IPDUM156) </p>
+<p>of </p>
+<p>AUTOSAR R4.0. </p>
+<p><b>7.3 </b></p>
+<p><b>Limitations </b></p>
+<p>N.A </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>42 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p><b>8 </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>8.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>GENy </p>
+<p>Vector Configuration and Generation tool </p>
+<p>Table 8-1  </p>
+<p>Glossary </p>
+<p> </p>
+<p> </p>
+<p><b>8.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>DEM </p>
+<p>AUTOSAR BSW module Diagnostic Event Manager </p>
+<p>DET </p>
+<p>AUTOSAR BSW module Development Error Tracer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>HIS </p>
+<p>Hersteller Initiative Software </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>Com </p>
+<p>AUTOSAR BSW module Com </p>
+<p>PduR </p>
+<p>AUTOSAR BSW module Pdu-Router </p>
+<p>IPDUM / IpduM </p>
+<p>AUTOSAR BSW module I-PDU Multiplexer </p>
+<p>EcuM </p>
+<p>AUTOSAR BSW module ECU Manager </p>
+<p>Table 8-2  </p>
+<p>Abbreviations </p>
+<p> </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>43 / 44</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR I-PDU Multiplexer  </p>
+<p> </p>
+<p>©</p>
+<p>2011, Vector Informatik GmbH </p>
+<p>Version: 1.2.0 </p>
+<p>based on template version 3.6 </p>
+<p>44 / 44</p>
+<p><b>9 </b></p>
+<p><b>Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector-informatik.com </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

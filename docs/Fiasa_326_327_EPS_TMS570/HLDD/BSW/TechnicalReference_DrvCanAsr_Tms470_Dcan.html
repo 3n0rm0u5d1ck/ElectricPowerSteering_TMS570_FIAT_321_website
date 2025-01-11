@@ -1,0 +1,4253 @@
+---
+layout: default
+title: TechnicalReference_DrvCanAsr_Tms470_Dcan
+nav_order: 29
+parent: Fiasa_326_327_EPS_TMS570
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>MICROSAR CAN Driver </b></p>
+<p>Technical Reference </p>
+<p> </p>
+<p>Texas Instruments </p>
+<p>Tms470 / Tms570 </p>
+<p>Dcan </p>
+<p> </p>
+<p>Version 1.10.00 </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Authors </p>
+<p>Georg Pflügel, Sebastian Gärtner, </p>
+<p>Mihai Olariu, Robert Schelkle </p>
+<p>Status </p>
+<p>Released </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 2 </p>
+<p><b>1. </b></p>
+<p><b>Document Information </b></p>
+<p><b>1.1 </b></p>
+<p><b>History </b></p>
+<p><b>Platforms </b></p>
+<p><b>Author </b></p>
+<p><b>Date </b></p>
+<p><b>Version </b></p>
+<p><b>Remarks </b></p>
+<p>Georg Pflügel </p>
+<p>2007-01-12 </p>
+<p>1.00 </p>
+<p>Initial version. </p>
+<p>Georg Pflügel </p>
+<p>2007-11-15 </p>
+<p>1.01 </p>
+<p>CAN-Driver Update to ASR2.1. </p>
+<p>Georg Pflügel </p>
+<p>2008-08-05 </p>
+<p>1.02 </p>
+<p>CAN-Driver Update to ASR3 </p>
+<p>Sebastian </p>
+<p>Gärtner </p>
+<p>2009-09-11 </p>
+<p>1.03 </p>
+<p>CAN-Driver Update to R7. </p>
+<p>Sebastian </p>
+<p>Gärtner </p>
+<p>2009-12-14 </p>
+<p>1.04 </p>
+<p>Local power-down mode added. </p>
+<p>Mihai Olariu </p>
+<p>2010-07-28 </p>
+<p>1.05 </p>
+<p>CAN-Driver Update to R9. </p>
+<p>Description for DCAN Issue#22. </p>
+<p>Georg Pflügel </p>
+<p>2011-03-08 </p>
+<p>1.06 </p>
+<p>Description of mailbox objects updated </p>
+<p>Georg Pflügel </p>
+<p>2011-07-06 </p>
+<p>1.07 </p>
+<p>Description for the TMS570LS30316U added </p>
+<p>Georg Pflügel </p>
+<p>2011-08-24 </p>
+<p>1.08 </p>
+<p>Description for GeneratorGeny added </p>
+<p>Georg Pflügel </p>
+<p>2012-07-19 </p>
+<p>1.09 </p>
+<p>Update to R14 </p>
+<p>Robert Schelkle </p>
+<p>2013-01-16 </p>
+<p>1.10 </p>
+<p>Update to template 2.05.01 </p>
+<p>Adapt Overrun/Overwrite description </p>
+<p>Table 1-1  </p>
+<p>History of the Document </p>
+<p> </p>
+<p><b>1.2 </b></p>
+<p><b>Reference Documents </b></p>
+<p><b>No. </b></p>
+<p><b>Title </b></p>
+<p><b>Version </b></p>
+<p>[1] </p>
+<p> </p>
+<p>AUTOSAR_SWS_CAN_DRIVER.pdf </p>
+<p>2.4.6 +  </p>
+<p>3.0.0 + </p>
+<p>4.0.0 </p>
+<p>[2] </p>
+<p> </p>
+<p>AUTOSAR_BasicSoftwareModules.pdf </p>
+<p>V1.0.0 </p>
+<p>[3] </p>
+<p> </p>
+<p>AUTOSAR_SWS BSW Scheduler </p>
+<p>V1.1.0 </p>
+<p>[4] </p>
+<p> </p>
+<p>AUTOSAR_SWS_CAN_Interface.pdf </p>
+<p>3.2.7 +  </p>
+<p>4.0.0 + </p>
+<p>5.0.0 </p>
+<p>[5] </p>
+<p> </p>
+<p>AN-ISC-8-1118 MICROSAR BSW Compatibility Check </p>
+<p>V1.0.0 </p>
+<p>Table 1-2  </p>
+<p>Reference Documents </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 3 </p>
+<p> </p>
+<p><b>1.3 </b></p>
+<p><b>Scope of the Document </b></p>
+<p>This document describes the functionality, API and configuration of the MICROSAR CAN </p>
+<p>driver </p>
+<p>as </p>
+<p>specified </p>
+<p>in </p>
+<p>[1].  The </p>
+<p>CAN </p>
+<p>driver </p>
+<p>is </p>
+<p>a </p>
+<p>hardware </p>
+<p>abstraction </p>
+<p>layer </p>
+<p>with </p>
+<p>a </p>
+<p>standardized interface to the CAN Interface layer. </p>
+<p> </p>
+<p> </p>
+<p><b>Please note </b></p>
+<p>We have configured the programs in accordance with your specifications in the </p>
+<p>questionnaire. Whereas the programs do support other configurations than the one </p>
+<p>specified in your questionnaire, Vector’s release of the programs delivered to your </p>
+<p>company is expressly restricted to the configuration you have specified in the </p>
+<p>questionnaire. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 4 </p>
+<p>Contents </p>
+<p><b>1.</b></p>
+<p> </p>
+<p><b>Document Information ................................................................................................... 2</b></p>
+<p> </p>
+<p>1.1</p>
+<p> </p>
+<p>History ...................................................................................................................... 2</p>
+<p> </p>
+<p>1.2</p>
+<p> </p>
+<p>Reference Documents .............................................................................................. 2</p>
+<p> </p>
+<p>1.3</p>
+<p> </p>
+<p>Scope of the Document ............................................................................................ 3</p>
+<p> </p>
+<p><b>2.</b></p>
+<p> </p>
+<p><b>Hardware Overview ........................................................................................................ 6</b></p>
+<p> </p>
+<p><b>3.</b></p>
+<p> </p>
+<p><b>Introduction .................................................................................................................... 7</b></p>
+<p> </p>
+<p>3.1</p>
+<p> </p>
+<p>Architecture Overview .............................................................................................. 7</p>
+<p> </p>
+<p><b>4.</b></p>
+<p> </p>
+<p><b>Functional Description .................................................................................................. 9</b></p>
+<p> </p>
+<p>4.1</p>
+<p> </p>
+<p>Features ................................................................................................................... 9</p>
+<p> </p>
+<p>4.2</p>
+<p> </p>
+<p>Initialization ............................................................................................................ 13</p>
+<p> </p>
+<p>4.3</p>
+<p> </p>
+<p>Communication ...................................................................................................... 13</p>
+<p> </p>
+<p>4.4</p>
+<p> </p>
+<p>States / Modes ....................................................................................................... 15</p>
+<p> </p>
+<p>4.5</p>
+<p> </p>
+<p>Re-Initialization ....................................................................................................... 15</p>
+<p> </p>
+<p>4.6</p>
+<p> </p>
+<p>CAN Interrupt Locking ............................................................................................ 16</p>
+<p> </p>
+<p>4.7</p>
+<p> </p>
+<p>Main Functions ....................................................................................................... 16</p>
+<p> </p>
+<p>4.8</p>
+<p> </p>
+<p>Error Handling ........................................................................................................ 16</p>
+<p> </p>
+<p><b>5.</b></p>
+<p> </p>
+<p><b>Integration .................................................................................................................... 21</b></p>
+<p> </p>
+<p>5.1</p>
+<p> </p>
+<p>Scope of Delivery ................................................................................................... 21</p>
+<p> </p>
+<p>5.2</p>
+<p> </p>
+<p>Include Structure .................................................................................................... 22</p>
+<p> </p>
+<p>5.3</p>
+<p> </p>
+<p>Critical Sections ..................................................................................................... 22</p>
+<p> </p>
+<p>5.4</p>
+<p> </p>
+<p>Compiler Abstraction and Memory Mapping ........................................................... 24</p>
+<p> </p>
+<p>5.5</p>
+<p> </p>
+<p>Hardware Specific Hints ......................................................................................... 25</p>
+<p> </p>
+<p><b>6.</b></p>
+<p> </p>
+<p><b>API Description ............................................................................................................ 26</b></p>
+<p> </p>
+<p>6.1</p>
+<p> </p>
+<p>Interrupt Service Routines provided by CAN .......................................................... 26</p>
+<p> </p>
+<p>6.2</p>
+<p> </p>
+<p>Services provided by CAN ...................................................................................... 28</p>
+<p> </p>
+<p>6.3</p>
+<p> </p>
+<p>Services used by CAN ........................................................................................... 40</p>
+<p> </p>
+<p><b>7.</b></p>
+<p> </p>
+<p><b>Configuration................................................................................................................ 42</b></p>
+<p> </p>
+<p>7.1</p>
+<p> </p>
+<p>Pre-Compile Parameters ........................................................................................ 42</p>
+<p> </p>
+<p>7.2</p>
+<p> </p>
+<p>Link-Time Parameters ............................................................................................ 43</p>
+<p> </p>
+<p>7.3</p>
+<p> </p>
+<p>Post-Build Parameters ........................................................................................... 43</p>
+<p> </p>
+<p>7.4</p>
+<p> </p>
+<p>Configuration with GENy ........................................................................................ 44</p>
+<p> </p>
+<p>7.5</p>
+<p> </p>
+<p>Configuration with da DaVinci Configurator ............................................................ 54</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 5 </p>
+<p><b>8.</b></p>
+<p> </p>
+<p><b>AUTOSAR Standard Compliance ................................................................................ 55</b></p>
+<p> </p>
+<p>8.1</p>
+<p> </p>
+<p>Limitations / Restrictions ......................................................................................... 55</p>
+<p> </p>
+<p>8.2</p>
+<p> </p>
+<p>Vector Extensions .................................................................................................. 55</p>
+<p> </p>
+<p><b>9.</b></p>
+<p> </p>
+<p><b>Glossary and Abbreviations ........................................................................................ 56</b></p>
+<p> </p>
+<p>9.1</p>
+<p> </p>
+<p>Glossary ................................................................................................................. 56</p>
+<p> </p>
+<p>9.2</p>
+<p> </p>
+<p>Abbreviations ......................................................................................................... 56</p>
+<p> </p>
+<p><b>10.</b></p>
+<p> </p>
+<p><b>Contact .......................................................................................................................... 57</b></p>
+<p> </p>
+<p> </p>
+<p><b>Illustrations </b></p>
+<p>Figure 3-1</p>
+<p> </p>
+<p>AUTOSAR architecture ............................................................................... 7</p>
+<p> </p>
+<p>Figure 3-2</p>
+<p> </p>
+<p>Interfaces to adjacent modules of the CAN ................................................. 8</p>
+<p> </p>
+<p>Figure 5-1</p>
+<p> </p>
+<p>Include Structure (AUTOSAR) .................................................................. 22</p>
+<p> </p>
+<p>Figure 6-1</p>
+<p> </p>
+<p>Select OS Type ......................................................................................... 26</p>
+<p> </p>
+<p>Figure 7-1</p>
+<p> </p>
+<p>Platform settings ....................................................................................... 44</p>
+<p> </p>
+<p>Figure 7-2</p>
+<p> </p>
+<p>Init Structure Dialog .................................................................................. 52</p>
+<p> </p>
+<p>Figure 7-3</p>
+<p> </p>
+<p>Setup Filter Dialog .................................................................................... 53</p>
+<p> </p>
+<p>Figure 7-4</p>
+<p> </p>
+<p>Baud Rate Dialog ..................................................................................... 54</p>
+<p> </p>
+<p> </p>
+<p><b>Tables </b></p>
+<p>Table 1-1 </p>
+<p> </p>
+<p>History of the Document ............................................................................. 2</p>
+<p> </p>
+<p>Table 1-2 </p>
+<p> </p>
+<p>Reference Documents ................................................................................ 2</p>
+<p> </p>
+<p>Table 2-1 </p>
+<p> </p>
+<p>Supported Hardware Overview ................................................................... 6</p>
+<p> </p>
+<p>Table 4-1 </p>
+<p> </p>
+<p>Supported features ................................................................................... 12</p>
+<p> </p>
+<p>Table 4-2 </p>
+<p> </p>
+<p>Hardware mailbox layout .......................................................................... 14</p>
+<p> </p>
+<p>Table 4-3 </p>
+<p> </p>
+<p>Errors reported to DET ............................................................................. 17</p>
+<p> </p>
+<p>Table 4-4</p>
+<p> </p>
+<p>API from which the Errors are reported ..................................................... 17</p>
+<p> </p>
+<p>Table 4-5 </p>
+<p> </p>
+<p>Errors reported to DEM ............................................................................. 18</p>
+<p> </p>
+<p>Table 4-6 </p>
+<p> </p>
+<p>Hardware Loop Check .............................................................................. 19</p>
+<p> </p>
+<p>Table 5-1 </p>
+<p> </p>
+<p>Static files ................................................................................................. 21</p>
+<p> </p>
+<p>Table 5-2 </p>
+<p> </p>
+<p>Generated files ......................................................................................... 21</p>
+<p> </p>
+<p>Table 5-3 </p>
+<p> </p>
+<p>Critical Section Codes .............................................................................. 24</p>
+<p> </p>
+<p>Table 5-4 </p>
+<p> </p>
+<p>Compiler abstraction and memory mapping .............................................. 25</p>
+<p> </p>
+<p>Table 6-1 </p>
+<p> </p>
+<p>Services used by the CAN ........................................................................ 41</p>
+<p> </p>
+<p>Table 7-1 </p>
+<p> </p>
+<p>Platform Parameter description................................................................. 44</p>
+<p> </p>
+<p>Table 7-2 </p>
+<p> </p>
+<p>Controller Parameter description .............................................................. 51</p>
+<p> </p>
+<p>Table 7-3 </p>
+<p> </p>
+<p>Filter Parameter description ...................................................................... 53</p>
+<p> </p>
+<p>Table 7-4 </p>
+<p> </p>
+<p>Baud rate Parameter description .............................................................. 54</p>
+<p> </p>
+<p>Table 9-1 </p>
+<p> </p>
+<p>Glossary ................................................................................................... 56</p>
+<p> </p>
+<p>Table 9-2 </p>
+<p> </p>
+<p>Abbreviations ............................................................................................ 56</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 6 </p>
+<p><b>2. </b></p>
+<p><b>Hardware Overview </b></p>
+<p>The  following  table  summarizes  information  about  the  CAN  Driver.  It  gives  you  detailed </p>
+<p>information </p>
+<p>about </p>
+<p>the </p>
+<p>derivatives </p>
+<p>and </p>
+<p>compilers.  As </p>
+<p>very </p>
+<p>important </p>
+<p>information </p>
+<p>the </p>
+<p>documentations of the hardware manufacturers are listed. The CAN Driver is based upon </p>
+<p>these documents in the given version.  </p>
+<p> </p>
+<p><b>Derivative </b></p>
+<p><b>Compiler </b></p>
+<p><b>Hardware Manufacturer  Document </b></p>
+<p><b>Version </b></p>
+<p>TMS470PSF761 </p>
+<p>TI </p>
+<p>TMS470PSF761 DesignSpec.pdf </p>
+<p>Revision 0.8 </p>
+<p>TMS570PSFC61 </p>
+<p>TI </p>
+<p>TMS570PSFC61_Specification_044.pdf </p>
+<p>Revision 0.44 </p>
+<p>TMS570PSFC66 </p>
+<p>TI </p>
+<p>TMS570PSFC66_design_specification_22.pdf </p>
+<p>Revision 2.2 </p>
+<p>TMS570LS30316U </p>
+<p>TI </p>
+<p>Gladiator_design_specification_GM_Auto.pdf </p>
+<p>Version 2.5.1 </p>
+<p>Table 2-1  </p>
+<p>Supported Hardware Overview </p>
+<p><b>Derivative: </b>This can be a single information or a list of derivatives, the CAN Driver can be used on. </p>
+<p><b>Compiler: </b>List of Compilers the CAN Driver is working with </p>
+<p><b>Hardware Manufacturer Document Name: </b>List of hardware documentation the CAN Driver is based on.  </p>
+<p><b>Version: </b>To be able to reference to this hardware documentation its version is very important. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 7 </p>
+<p><b>3. </b></p>
+<p><b>Introduction </b></p>
+<p>This document describes the functionality, API and configuration of the AUTOSAR BSW </p>
+<p>module CAN as specified in [1].  </p>
+<p>Since each hardware platform has its own behavior based on the CAN specifications, the </p>
+<p>main goal of the CAN driver is to give a standardized interface to support communication </p>
+<p>over the CAN bus for each platform in the same way. The CAN driver works closely </p>
+<p>together with the higher layer CAN interface. </p>
+<p> </p>
+<p><b>Supported AUTOSAR Release*: </b></p>
+<p>3 and 4 </p>
+<p><b>Supported Configuration Variants: </b></p>
+<p>pre-compile, link-time, post-build </p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Vendor ID: </b></p>
+<p>CAN_VENDOR_ID </p>
+<p>30 decimal </p>
+<p>(= Vector-Informatik, </p>
+<p>according to HIS) </p>
+<p><b>Module ID: </b></p>
+<p>CAN_MODULE_ID   </p>
+<p>80 decimal </p>
+<p>(according to ref. [2]) </p>
+<p>* For the precise AUTOSAR Release 3.x and 4.x please see the release specific documentation.  </p>
+<p> </p>
+<p><b>3.1 </b></p>
+<p><b>Architecture Overview </b></p>
+<p>The following figure shows where the CAN is located in the AUTOSAR architecture. </p>
+<p> </p>
+<p>Figure 3-1 </p>
+<p>AUTOSAR architecture </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 8 </p>
+<p> </p>
+<p>The next figure shows the interfaces to adjacent modules of the CAN. These interfaces are </p>
+<p>described in chapter 6.  </p>
+<p>CAN Driver</p>
+<p>CAN Interface</p>
+<p>... CAN X</p>
+<p>EcuM</p>
+<p>DET</p>
+<p>DEM</p>
+<p> </p>
+<p>Figure 3-2 </p>
+<p>Interfaces to adjacent modules of the CAN </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 9 </p>
+<p><b>4. </b></p>
+<p><b>Functional Description </b></p>
+<p><b>4.1 </b></p>
+<p><b>Features </b></p>
+<p>The features listed in this chapter cover the complete functionality specified in [1]. </p>
+<p>The  &quot;supported&quot;  and  &quot;not  supported&quot;  features  are  presented  in  the  following  table.  For </p>
+<p>further information of not supported features also see chapter 8. </p>
+<p> </p>
+<p><b>Feature Naming </b></p>
+<p><b>Short Description </b></p>
+<p><b>GENy </b></p>
+<p><b>Generator </b></p>
+<p><b>GENy </b></p>
+<p><b>(extern </b></p>
+<p><b>Gen) </b></p>
+<p><b>CFG5 </b></p>
+<p><b>Initialization </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   Driver </p>
+<p>General driver initialization function </p>
+<p>Can_Init() </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Controller </p>
+<p>Controller specific initialization function </p>
+<p>Can_InitController(). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p><b>Communication </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   Transmission </p>
+<p>Transmitting CAN frames. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Transmit confirmation </p>
+<p>Callback for successful Transmission. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Reception </p>
+<p>Receiving CAN frames. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Receive indication </p>
+<p>Callback for receiving Frame. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p><b>Controller Modes </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   Sleep mode </p>
+<p>Controller support sleep mode (power </p>
+<p>saving). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Wakeup over CAN </p>
+<p>Controller support wakeup over CAN. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Stop mode </p>
+<p>Controller support stop mode (passive to </p>
+<p>CAN bus). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Bus Off detection </p>
+<p>Callback for Bus Off event. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p><b>Polling Modes </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   Tx confirmation </p>
+<p>Support polling mode for Transmit </p>
+<p>confirmation. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Reception </p>
+<p>Support polling mode for Reception. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Wakeup </p>
+<p>Support polling mode for Wakeup event. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Bus Off </p>
+<p>Support polling mode for Bus Off event. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Mode </p>
+<p>MICROSAR4x only: Support polling </p>
+<p>mode for mode transition. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Mailbox objects </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   Tx BasicCAN </p>
+<p>Standard mailbox to send CAN frames </p>
+<p>(Used by CAN Interface data queue). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Multiplexed Tx </p>
+<p>Using 3 mailboxes for Tx BasicCAN </p>
+<p>mailbox (external priority inversion </p>
+<p>avoided). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Tx FullCAN </p>
+<p>Separate mailbox for special Tx </p>
+<p>message used. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 10 </p>
+<p>      Maximum amount </p>
+<p>Available amount of mailboxes ( in case </p>
+<p>of no Rx FullCAN objects is used ) </p>
+<p>This amount depends on the maximal </p>
+<p>number of mailbox objects of the </p>
+<p>hardware channel </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>32: </p>
+<p> </p>
+<p>Std ID: 29 </p>
+<p>Ext ID: 29 </p>
+<p>Mix ID: 27 </p>
+<p> </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>64: </p>
+<p> </p>
+<p>Std ID: 61 </p>
+<p>Ext ID: 61 </p>
+<p>Mix ID: 59 </p>
+<p> </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>32: </p>
+<p> </p>
+<p>Std ID: 31 </p>
+<p>Ext ID: 31 </p>
+<p>Mix ID: 29 </p>
+<p> </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>64: </p>
+<p> </p>
+<p>Std ID: 63 </p>
+<p>Ext ID: 63 </p>
+<p>Mix ID: 61 </p>
+<p> </p>
+<p>- </p>
+<p>   Rx FullCAN </p>
+<p>Separate mailbox for special Rx </p>
+<p>message used. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>      Maximum amount </p>
+<p>Available amount of mailboxes ( in case </p>
+<p>of no Rx FullCAN objects is used ) </p>
+<p>This amount depends on the maximal </p>
+<p>number of mailbox objects of the </p>
+<p>hardware channel </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>32: </p>
+<p> </p>
+<p>Std ID: 29 </p>
+<p>Ext ID: 29 </p>
+<p>Mix ID: 27 </p>
+<p> </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>64: </p>
+<p> </p>
+<p>Std ID: 61 </p>
+<p>Ext ID: 61 </p>
+<p>Mix ID: 59 </p>
+<p> </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>32: </p>
+<p> </p>
+<p>Std ID: 31 </p>
+<p>Ext ID: 31 </p>
+<p>Mix ID: 29 </p>
+<p> </p>
+<p>Mailbox- </p>
+<p>object per </p>
+<p>channel: </p>
+<p>64: </p>
+<p> </p>
+<p>Std ID: 63 </p>
+<p>Ext ID: 63 </p>
+<p>Mix ID: 61 </p>
+<p> </p>
+<p>- </p>
+<p>   Rx BasicCAN </p>
+<p>Standard mailbox to receive CAN </p>
+<p>frames (depending on hardware, FIFO </p>
+<p>or shadow buffer supported). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>      Maximum amount </p>
+<p>Available amount of BasicCAN objects. </p>
+<p>1/2 </p>
+<p>1/2 </p>
+<p>- </p>
+<p><b>Others </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   DEM </p>
+<p>Support Diagnostic Event Manager </p>
+<p>(error notification). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   DET </p>
+<p>Support Development Error Detection </p>
+<p>(error notification). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Version API </p>
+<p>API to read out component version. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Maximum supported </p>
+<p>Controllers </p>
+<p>Maximum amount of supported </p>
+<p>Controllers (hardware channels). </p>
+<p>3 </p>
+<p>3 </p>
+<p>- </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 11 </p>
+<p>   Cancellation of Tx objects </p>
+<p>Support of Tx Cancellation (out of </p>
+<p>hardware). Avoid internal priority </p>
+<p>inversion. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Identical ID cancellation </p>
+<p>Tx Cancellation also for identical IDs.  </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Standard ID types </p>
+<p>Standard Identifier supported (Tx and </p>
+<p>Rx). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Extended ID types </p>
+<p>Extended Identifier supported (Tx and </p>
+<p>Rx). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Mixed ID types </p>
+<p>Standard and Extended Identifier </p>
+<p>supported (Tx and Rx). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Hardware Loop Check </p>
+<p>(Timeout monitoring) </p>
+<p>To avoid possible endless loops (occur </p>
+<p>by hardware issue). </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>AutoSar extensions </b></p>
+<p><b> </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>   Individual Polling </p>
+<p>Support individual polling mode </p>
+<p>(selectable for each mailbox separate). </p>
+<p></p>
+<p>* </p>
+<p></p>
+<p>* </p>
+<p>- </p>
+<p>   Multiple Basic CAN </p>
+<p>Support Multiple BasicCAN objects. This </p>
+<p>gives the possibility to use multiple </p>
+<p>Filters and optimize acceptance Filtering </p>
+<p>as well as avoid overrun. </p>
+<p></p>
+<p>* </p>
+<p></p>
+<p>* </p>
+<p>- </p>
+<p>   Rx Queue </p>
+<p>Support Rx Queue. This give the </p>
+<p>possibility to buffer received data in </p>
+<p>interrupt context but handle it </p>
+<p>asynchronous in polling task. </p>
+<p></p>
+<p>* </p>
+<p></p>
+<p>* </p>
+<p>- </p>
+<p>   Secure Rx Buffer used </p>
+<p>Special hardware buffer used to </p>
+<p>temporary save received data. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Hardware Loop Check by </p>
+<p>Application </p>
+<p>“Hardware Loop Check” can be defined </p>
+<p>to be done by application (special API </p>
+<p>available) </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Configurable “Nested CAN </p>
+<p>Interrupts” </p>
+<p>Nested CAN interrupts allowed, and can </p>
+<p>be also switched to none-nested. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Report CAN_E_TIMEOUT </p>
+<p>DEM   as DET </p>
+<p>Report CAN_E_TIMEOUT (Hardware </p>
+<p>Loop Check / Timeout Monitoring) to </p>
+<p>DET instead of DEM. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Support Mixed ID </p>
+<p>Force CAN driver to handle Mixed ID </p>
+<p>(standard and extended ID) at pre-</p>
+<p>compile-time to expand the ID type later </p>
+<p>on. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Optimize for one controller </p>
+<p>Activate this for 1 controller systems </p>
+<p>when you never will expand to multi-</p>
+<p>controller. So that the CAN driver works </p>
+<p>more efficient  </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Dynamic FullCAN Tx ID </p>
+<p>(</p>
+<p>***)</p>
+<p> </p>
+<p>Always write FullCAN Tx ID within </p>
+<p>CanWrite() API function. Deactivate this </p>
+<p>to optimize code when you do not use </p>
+<p>FullCAN Tx objects dynamically. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 12 </p>
+<p>   Size of Hw HandleType </p>
+<p>Support 8bit or 16bit Hardware Handles </p>
+<p>depend on hardware usage. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Generic PreCopy </p>
+<p>Support a callback function for receiving </p>
+<p>any CAN message (following callbacks </p>
+<p>could be suppressed) </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Generic Confirmation </p>
+<p>Support a callback function for </p>
+<p>successful transmission of any CAN </p>
+<p>message (following callbacks could be </p>
+<p>suppressed) </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Get Hardware Status </p>
+<p>Support a API to get hardware status </p>
+<p>Information (see Can_GetStatus()) </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Interrupt Category </p>
+<p>selection </p>
+<p>Support Category 1 or Category 2 </p>
+<p>Interrupt Service Routines for OS  </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Common CAN </p>
+<p>Support merge of 2 controllers in </p>
+<p>hardware to get more Rx FullCAN </p>
+<p>objects </p>
+<p></p>
+<p>** </p>
+<p></p>
+<p>** </p>
+<p>- </p>
+<p>   Overrun Notification </p>
+<p>Support DET or Application notification </p>
+<p>cause by overrun (overwrite) of an Rx </p>
+<p>message (BasicCAN and FullCAN)  </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   RAM check </p>
+<p>Support CAN mailbox RAM check </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Multiple ECU </p>
+<p>configurations (</p>
+<p>***)</p>
+<p> </p>
+<p>The feature Multiple ECU is usually </p>
+<p>used for nodes that exist more than </p>
+<p>once in a car. At power up the </p>
+<p>application decides which node should </p>
+<p>be realized. </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>   Generic PreTransmit </p>
+<p>Support a callback function with pointer </p>
+<p>to Data, right before this data will be </p>
+<p>written in Hardware mailbox buffer to </p>
+<p>send. (Use this to change data or cancel </p>
+<p>transmission) </p>
+<p></p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>- </p>
+<p>Table 4-1  </p>
+<p>Supported features </p>
+<p></p>
+<p> </p>
+<p>Feature is supported</p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>Feature is not supported </p>
+<p>*     </p>
+<p>HighEnd Licence only </p>
+<p>**</p>
+<p>   Project specific (may not be available) </p>
+<p>***</p>
+<p>  Not supported for AutoSar version 4.0.3 </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 13 </p>
+<p><b>4.2 </b></p>
+<p><b>Initialization </b></p>
+<p>Can_Init()</p>
+<p> has to be called to initialize the CAN driver at power on and sets controller </p>
+<p>independent init values. This function has to be called before </p>
+<p>Can_InitController()</p>
+<p>. </p>
+<p>MicroSar3 only: Use </p>
+<p>Can_InitStruct()</p>
+<p> to change the used baud rate and filter settings </p>
+<p>like </p>
+<p>given </p>
+<p>in </p>
+<p>the </p>
+<p>Initialization </p>
+<p>structure </p>
+<p>from </p>
+<p>the </p>
+<p>Tool. </p>
+<p>The </p>
+<p>used </p>
+<p>default </p>
+<p>set </p>
+<p>by </p>
+<p>Can_InitMemory()</p>
+<p> </p>
+<p>is </p>
+<p>the </p>
+<p>first </p>
+<p>structure. </p>
+<p>This </p>
+<p>API </p>
+<p>has </p>
+<p>to </p>
+<p>be </p>
+<p>called </p>
+<p>before </p>
+<p>Can_InitController()</p>
+<p> but after </p>
+<p>Can_InitMemory()</p>
+<p>. </p>
+<p>MICROSAR401 only: baud rate settings given by Can_InitController parameter. </p>
+<p>Can_InitController()</p>
+<p> initializes the controller, given as parameter, and can also be </p>
+<p>used to reinitialize. After this call the controller stays in stop-mode until the CAN Interface </p>
+<p>changes to start-mode. </p>
+<p>Can_InitMemory()</p>
+<p> is an additional service function to reinitialize the memory to bring </p>
+<p>the  driver  back  to  a  pre-power-on  state  (not  initialized).  Afterwards </p>
+<p>Can_Init()</p>
+<p>  and </p>
+<p>Can_InitController()</p>
+<p> have to be called again. It is recommended to use this function </p>
+<p>before calling </p>
+<p>Can_Init()</p>
+<p> to secure that no startup-code specific pre-initialized variables </p>
+<p>affect the driver startup behavior. </p>
+<p><b>4.3 </b></p>
+<p><b>Communication </b></p>
+<p>Can_Write()</p>
+<p>  is  used  to  send  a  message  over the  mailbox  object  given  as  &quot;Hth&quot;. The </p>
+<p>data, DLC and ID is copied into the hardware mailbox object and a send request is set. </p>
+<p>After  sending  the  message  the  CAN  Interface </p>
+<p>CanIf_TxConfirmation()</p>
+<p>  function  is </p>
+<p>called.  Right  before  the  data  is  copied  in  mailbox  buffer  the  ID,  DLC  and  data  may  be </p>
+<p>changed by </p>
+<p>Appl_GenericPreTransmit()</p>
+<p> callback. </p>
+<p>When  “Generic  Confirmation“ is activated  the  callback </p>
+<p>Appl_GenericConfirmation</p>
+<p>()  </p>
+<p>will be called before </p>
+<p>CanIf_TxConfirmation()</p>
+<p> and the call to this can be suppressed </p>
+<p>by </p>
+<p>Appl_GenericConfirmation</p>
+<p>()  return value. </p>
+<p>For Tx messages  the ID  will  be  copied.  (exception: feature  “Dynamic FullCAN Tx  ID” is </p>
+<p>deactivated, then the FullCAN Tx messages will be only set while initialization) </p>
+<p>If the mailbox is currently sending the status busy will be returned. Then the message may </p>
+<p>be queued in the CAN interface (if feature is active). </p>
+<p>If  cancellation  in  hardware  is  supported  the  lowest  priority  ID  inside  currently  sending </p>
+<p>object is canceled, and therefore re-queued in the CAN Interface. </p>
+<p>Appl_GenericPreCopy</p>
+<p>() </p>
+<p>(if </p>
+<p>activated) </p>
+<p>is </p>
+<p>called </p>
+<p>and </p>
+<p>depend </p>
+<p>on </p>
+<p>return </p>
+<p>value </p>
+<p>also </p>
+<p>CanIf_RxIndication()</p>
+<p>  as  a  CAN  Interface  callback,  is  called  when  a  message  is </p>
+<p>received. The receive information like ID, DLC and data are given as parameter. </p>
+<p>When Rx Queue is activated the received messages (polling or interrupt context) will be </p>
+<p>queued </p>
+<p>(same </p>
+<p>queue </p>
+<p>over </p>
+<p>all </p>
+<p>channels). </p>
+<p>The </p>
+<p>Rx </p>
+<p>Queue </p>
+<p>will </p>
+<p>be </p>
+<p>read </p>
+<p>by </p>
+<p>calling </p>
+<p>Can_Mainfunction_Read</p>
+<p>  ()  and the  Rx  Indication  (like </p>
+<p>CanIf_RxIndication</p>
+<p>())  will </p>
+<p>be  called  out  of  this  context.  Rx  Queue  is  used  for  Interrupt  systems  to  keep  Interrupt </p>
+<p>latency time short. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 14 </p>
+<p><b>4.3.1 </b></p>
+<p><b>Mailbox Layout </b></p>
+<p>The  generation  tool  supports  a  flexible  allocation  of  message  buffers.  In  the  following </p>
+<p>tables the possible mailbox layout is shown (the range for each mailbox types depend on </p>
+<p>the used mailboxes). </p>
+<p><b>Object </b></p>
+<p><b>number </b></p>
+<p><b>Object type </b></p>
+<p><b>No. of </b></p>
+<p><b>Objects </b></p>
+<p><b>Comment </b></p>
+<p>1 – n </p>
+<p>Tx Full CAN </p>
+<p>0 - (MaxObj-3) </p>
+<p>These objects are used to send a certain message. The </p>
+<p>user must define statically (Generation Tool) which CAN </p>
+<p>messages are located in such Tx FullCAN objects. The </p>
+<p>Generation Tool distributes the messages to the FullCAN </p>
+<p>objects. </p>
+<p>n+1 </p>
+<p>Tx Basic CAN </p>
+<p>1 </p>
+<p>These objects are used to send several messages.</p>
+<p> </p>
+<p>If the </p>
+<p>transmit message object is busy, the transmit request is </p>
+<p>stored in a CAN Interface queue (if activated) </p>
+<p>n+2 - m </p>
+<p>Unused </p>
+<p>0 - (MaxObj-3) </p>
+<p>These objects are not used. It depends on the </p>
+<p>configuration of receive and transmit objects if unused </p>
+<p>objects are available. </p>
+<p>m+1 – o </p>
+<p>Rx Full CAN </p>
+<p>0 - (MaxObj-3) </p>
+<p>These objects are used to receive specific CAN </p>
+<p>messages. The user defines statically (Generation Tool) </p>
+<p>that a CAN message should be received in a FullCAN </p>
+<p>message object. The Generation Tool distributes the </p>
+<p>message to the FullCAN objects. </p>
+<p>o+1 – o+2 </p>
+<p>Rx Basic CAN </p>
+<p>(0*)/2/4  </p>
+<p>All other CAN messages are received via the Basic CAN. </p>
+<p>For configurations with Standard Id or Extended Id the </p>
+<p>Basic CAN use 2 Message Objects, configurations with </p>
+<p>Mixed Id used 4 Message Objects. </p>
+<p>Table 4-2  </p>
+<p>Hardware mailbox layout </p>
+<p>The  “CanObjectId”  numbering  is  done  in  following  order:  FullCANTx,  BasicTx,  Unused, </p>
+<p>FullCANRx, BasicRx (like shown above). “CanObjectId’s” for next controller begin at end </p>
+<p>of  last  controller.  Gaps  in  “CanObjectId”  for  unused  mailboxes  may  occur.  This  objects </p>
+<p>must located at the position pictured in the table above. </p>
+<p>It’s  important  to  know  that  a  configuration  allways  has  to  contain one  BasicTx  CAN  per </p>
+<p>controller. </p>
+<p><b>4.3.2 </b></p>
+<p><b>Acceptance Filter for BasicCAN </b></p>
+<p>The Basic CAN consists for standard and extended Id of 2 message objects and 1 filter </p>
+<p>and for mixed Id of 4 message objects and 2 filters. </p>
+<p>If  no  message  should  be  received,  select  the  “Multiple  Basic  CAN”  feature  and  set  the </p>
+<p>amount  to  0.  Otherwise  the  filter  should  be  set  to  “close”.  Use  feature  “Rx  BasicCAN </p>
+<p>Support” to deactivate unused code (for optimization). </p>
+<p> </p>
+<p><b>4.3.3 </b></p>
+<p><b>Remote Frames </b></p>
+<p><b>Remote Frames rejected in Hardware </b></p>
+<p><b>Remote Frames rejected in Software </b></p>
+<p><b>x </b></p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 15 </p>
+<p><b>4.4 </b></p>
+<p><b>States / Modes </b></p>
+<p>You  can  change  the  CAN  cell  mode  via  Can_SetControllerMode().  The  last  requested </p>
+<p>transition will be executed. The Upper layer has to take care about valid transitions. </p>
+<p>Following modes changes are supported: </p>
+<p>CAN_T_START </p>
+<p>CAN_T_STOP </p>
+<p>CAN_T_SLEEP </p>
+<p>CAN_T_WAKEUP </p>
+<p><b>4.4.1 </b></p>
+<p><b>Start Mode (Normal Running Mode) </b></p>
+<p>This  is  the  mode  where  communication  is  possible.  This  mode  has  to  be  set  after </p>
+<p>Initialization because Controller is first in stop-mode. </p>
+<p><b>4.4.2 </b></p>
+<p><b>Stop Mode </b></p>
+<p>To enter stop mode the driver sets the init flag in the CAN control register to one. After this </p>
+<p>there is no CAN communication possible until stop mode is left. </p>
+<p> </p>
+<p><b>4.4.3 </b></p>
+<p><b>Sleep Mode </b></p>
+<p>There are two power-down modes available, the global power-down mode and the local </p>
+<p>power-down mode. The first is supported by all TMS570 DCAN derivates, the second only </p>
+<p>if it is documented in the datasheet. This is because the CAN controller has not initially </p>
+<p>supported the local power-down mode. It was added to the DCAN cell since documented </p>
+<p>in the reference guide revision 0.30. More information about the selection of the different </p>
+<p>power down modes can found in table 7.1 “Power Down Mode Select”. </p>
+<p>To enter sleep mode the driver set the CAN control into power down mode. After this </p>
+<p>EcuM_CheckWakeup()</p>
+<p> </p>
+<p>is called in case a wakeup over CAN event occured. </p>
+<p>Can_Cbk_CheckWakeup()</p>
+<p> </p>
+<p>can be called to check wakeup state. </p>
+<p>CAN_T_WAKEUP</p>
+<p> </p>
+<p>has to be set with </p>
+<p>Can_SetControllerMode()</p>
+<p>to leave sleep mode. </p>
+<p> </p>
+<p><b>4.4.4 </b></p>
+<p><b>Bus Off </b></p>
+<p>CanIf_ControllerBusOff()</p>
+<p> is called when the controller detects a Bus Off event. The </p>
+<p>mode  is  automatically  changed  to  stop  mode.  The  upper  layers  have  to  care  about </p>
+<p>returning to normal running mode by calling start mode. </p>
+<p><b>4.5 </b></p>
+<p><b>Re-Initialization </b></p>
+<p>A call to </p>
+<p>Can_InitController()</p>
+<p> cause a re-initialization of a dedicated CAN controller. </p>
+<p>Pending </p>
+<p>messages </p>
+<p>may </p>
+<p>be </p>
+<p>processed </p>
+<p>before </p>
+<p>the </p>
+<p>transition </p>
+<p>will </p>
+<p>be </p>
+<p>finished.  A </p>
+<p>re-</p>
+<p>initialization is only possible out of Stop Mode and does not change to another Mode. </p>
+<p>After re-initialization all CAN communication relevant registers are set to initial conditions. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 16 </p>
+<p><b>4.6 </b></p>
+<p><b>CAN Interrupt Locking </b></p>
+<p>Can_DisableControllerInterrupts()</p>
+<p> and </p>
+<p>Can_EnableControllerInterrupts()</p>
+<p> are used to disable and enable the controller </p>
+<p>specific Interrupt, Rx, Tx, Wakeup and Bus Off (/ Status) together. These functions can be </p>
+<p>called nested. </p>
+<p>Be  aware  that  this  functions  change  the  content  of  the  CAN  Interrupt  inside  the  VIM </p>
+<p>(vector interrupt manager). </p>
+<p><b>4.7 </b></p>
+<p><b>Main Functions </b></p>
+<p>Can_MainFunction_Write()</p>
+<p>, </p>
+<p>Can_MainFunction_Read()</p>
+<p>, </p>
+<p>Can_MainFunction_BusOff()</p>
+<p> and </p>
+<p>Can_MainFunction_Wakeup()</p>
+<p> called by upper </p>
+<p>layer to poll the events if the specific polling mode is activated. Otherwise these functions </p>
+<p>return without action and the events will be handled in interrupt context. </p>
+<p>When individual polling is activated only mailboxes that are configured as to be polled will </p>
+<p>be polled in the main functions “</p>
+<p>Can_MainFunction_Write()</p>
+<p>” and </p>
+<p>“</p>
+<p>Can_MainFunction_Read()</p>
+<p>” all others handled in interrupt context. </p>
+<p>When Rx Queue is activated the queue is filled in interrupt or polling context like </p>
+<p>configured. But The processing (indications) will be done in </p>
+<p>“</p>
+<p>Can_MainFunction_Read()</p>
+<p>” context. </p>
+<p><b>4.8 </b></p>
+<p><b>Error Handling </b></p>
+<p><b>4.8.1 </b></p>
+<p><b>Development Error Reporting </b></p>
+<p>Development errors are reported to DET using the service </p>
+<p>Det_ReportError()</p>
+<p>, if the </p>
+<p>pre-compile parameter CAN_DEV_ERROR_DETECT == STD_ON. </p>
+<p>The tables below, shows the API ID and Error ID given as parameter for calling the DET. </p>
+<p>Instance ID is always 0 because no multiple Instances are supported. </p>
+<p> </p>
+<p><b>Errors reported to DET: </b></p>
+<p><b>Error ID </b></p>
+<p><b>Short Description </b></p>
+<p>CAN_E_PARAM_POINTER </p>
+<p>API gets an illegal pointer as parameter. </p>
+<p>CAN_E_PARAM_HANDLE </p>
+<p>API get an illegal handle as parameter </p>
+<p>CAN_E_PARAM_DLC </p>
+<p>API get an illegal DLC as parameter </p>
+<p>CAN_E_PARAM_CONTROLLER </p>
+<p>API get an illegal controller as parameter </p>
+<p>CAN_E_UNINIT </p>
+<p>Driver API is used but not initialized </p>
+<p>CAN_E_TRANSITION </p>
+<p>Transition for mode change is illegal </p>
+<p>CAN_E_DATALOST </p>
+<p>(value: 0x07, AutoSar extension) </p>
+<p>Rx overrun (overwrite) detected </p>
+<p>CAN_E_PARAM_BAUDRATE </p>
+<p>(value: 0x08, AutoSar extension) </p>
+<p>Selected Baudrate is not valid </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 17 </p>
+<p>CAN_E_RXQUEUE </p>
+<p>(value: 0x10, AutoSar extension) </p>
+<p>Rx Queue overrun (last received message is lost, and will not be </p>
+<p>received </p>
+<p></p>
+<p> increase queue size) </p>
+<p>CAN_E_TIMEOUT_DET </p>
+<p>(value: 0x11, AutoSar extension) </p>
+<p>Same as CAN_E_TIMEOUT for DEM but this is notified to DET due to </p>
+<p>switch “CAN_DEV_TIMEOUT_DETECT” is set to STD_ON (see </p>
+<p>configuration options) </p>
+<p>Table 4-3  </p>
+<p>Errors reported to DET </p>
+<p> </p>
+<p><b>API from which the errors reported to DET: </b></p>
+<p><b>API ID </b></p>
+<p><b>Functions using that ID </b></p>
+<p>CAN_VERSION_ID </p>
+<p>Can_GetVersionInfo() </p>
+<p>CAN_INIT_ID </p>
+<p>Can_Init() </p>
+<p>CAN_INITCTR_ID </p>
+<p>Can_InitController() </p>
+<p>CAN_SETCTR_ID </p>
+<p>Can_SetControllerMode() </p>
+<p>CAN_DIINT_ID </p>
+<p>Can_DisableControllerInterrupts() </p>
+<p>CAN_ENINT_ID </p>
+<p>Can_EnableControllerInterrupts() </p>
+<p>CAN_WRITE_ID </p>
+<p>Can_Write(), Can_CancelTx() </p>
+<p>CAN_TXCNF_ID </p>
+<p>CanHL_TxConfirmation() </p>
+<p>CAN_RXINDI_ID </p>
+<p>CanBasicCanMsgReceived(), CanFullCanMsgReceived() </p>
+<p>CAN_CTRBUSOFF_ID </p>
+<p>CanHL_ErrorHandling() </p>
+<p>CAN_CKWAKEUP_ID </p>
+<p>CanHL_WakeUpHandling(), Can_Cbk_CheckWakeup() </p>
+<p>CAN_MAINFCT_WRITE_ID </p>
+<p>Can_MainFunction_Write() </p>
+<p>CAN_MAINFCT_READ_ID </p>
+<p>Can_MainFunction_Read() </p>
+<p>CAN_MAINFCT_BO_ID </p>
+<p>Can_MainFunction_BusOff() </p>
+<p>CAN_MAINFCT_WU_ID </p>
+<p>Can_MainFunction_Wakeup() </p>
+<p>CAN_MAINFCT_MODE_ID </p>
+<p>Can_MainFunction_Mode() </p>
+<p>CAN_CHANGE_BR_ID </p>
+<p>Can_ChangeBaudrate() </p>
+<p>CAN_CHECK_BR_ID </p>
+<p>Can_CheckBaudrate() </p>
+<p> </p>
+<p> </p>
+<p>CAN_HW_ACCESS_ID </p>
+<p>(value: 0x20, AUTOSAR extension) </p>
+<p>Used when hardware is accessed (call context is unknown) </p>
+<p>Table 4-4 </p>
+<p>API from which the Errors are reported </p>
+<p><b>4.8.1.1 </b></p>
+<p><b>Parameter Checking </b></p>
+<p>AUTOSAR requires that API functions check the validity of their parameters (Refer to [1]). </p>
+<p>These  checks  are  for  development  error  reporting  and  can  be  enabled  and  disabled </p>
+<p>separately. Refer to the configuration chapter where the enabling/disabling of the checks is </p>
+<p>described.  Enabling/disabling  of  single  checks  is  an  addition  to  the AUTOSAR  standard </p>
+<p>which </p>
+<p>requires </p>
+<p>enable/disable </p>
+<p>the </p>
+<p>complete </p>
+<p>parameter </p>
+<p>checking </p>
+<p>via </p>
+<p>the </p>
+<p>parameter </p>
+<p>CAN_DEV_ERROR_DETECT</p>
+<p>. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 18 </p>
+<p><b>4.8.1.2 </b></p>
+<p><b>Overrun/Overwrite Notification </b></p>
+<p>As AUTOSAR extension the overrun detection may be activated by configuration tool. The </p>
+<p>notification </p>
+<p>can </p>
+<p>be </p>
+<p>configured </p>
+<p>to </p>
+<p>call </p>
+<p>an </p>
+<p>DET </p>
+<p>(MICROSAR4x) </p>
+<p>or </p>
+<p>Application </p>
+<p>call </p>
+<p><i>ApplCanOverrun</i>() or <i>ApplCanFullCanOverrun</i>(). </p>
+<p> </p>
+<p><b>Info </b></p>
+<p>The overrun/overwrite behavior of FullCAN and BasicCAN mailboxes differs from </p>
+<p>each other. </p>
+<p> </p>
+<p>For FullCAN mailboxes: the old message is overwritten by a new incoming one. </p>
+<p>The old message gets lost. </p>
+<p> </p>
+<p>For BasicCAN mailboxes: the old message is not overwritten by a new incoming </p>
+<p>one. The new message gets lost. </p>
+<p><b>4.8.2 </b></p>
+<p><b>Production Code Error Reporting </b></p>
+<p>Production </p>
+<p>code </p>
+<p>related </p>
+<p>errors </p>
+<p>are </p>
+<p>reported </p>
+<p>to </p>
+<p>DEM </p>
+<p>using </p>
+<p>the </p>
+<p>service </p>
+<p>Dem_ReportErrorStatus()</p>
+<p>, if the pre-compile parameter </p>
+<p>CAN_PROD_ERROR_DETECT </p>
+<p>== STD_ON</p>
+<p>. </p>
+<p>The table below shows the API ID and Error ID given as parameter for calling the DEM. </p>
+<p>This means that the Error Ids listed below could occur in most of the API Ids. </p>
+<p><b>Event ID </b></p>
+<p><b>Event Status </b></p>
+<p><b>Short Description </b></p>
+<p>CAN_E_TIMEOUT </p>
+<p> </p>
+<p>DEM_EVENT_STATUS_FAILED </p>
+<p>Timeout  in  “Hardware  Loop  Check”  occurred, </p>
+<p>hardware has to be checked or timeout is too </p>
+<p>short. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 4-5  </p>
+<p>Errors reported to DEM </p>
+<p><b>4.8.2.1 </b></p>
+<p><b>Hardware Loop Check / Timeout Monitoring </b></p>
+<p>The feature “Hardware Loop Check” is used to break endless loops caused by hardware </p>
+<p>issue. This feature is configurable see Chapter 7 and also Timeout Duration description. </p>
+<p>The  Hardware  Loop  Check  will  be  handled  by  CAN  driver  internal  except  when  setting </p>
+<p>“</p>
+<p>Hardware Loop Check by Application</p>
+<p>” is activated. </p>
+<p> </p>
+<p><b>Loop Name / </b></p>
+<p><b>source </b></p>
+<p><b>Short Description </b></p>
+<p>kCanLoopIrqReq </p>
+<p>Loop  over  all  pending  interrupts  (Rx,  Tx,  BusOff).  This  loop  is  used  to  stay  in </p>
+<p>interrupt context until all interrupt events are executed. This saves time because </p>
+<p>no reentering of ISR is needed to execute more than one event. </p>
+<p>kCanLoopBusyReq </p>
+<p>Loop used to indicate can cell busy state. Maximum duration of the loop should be </p>
+<p>at most 3-6 CAN CLK periods. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 19 </p>
+<p>kCanLoopSleep </p>
+<p>MICROSAR3: </p>
+<p>- </p>
+<p>Used while transition in mode ‘SLEEP’. </p>
+<p>- </p>
+<p>Call context: Can_SetControllerMode() </p>
+<p>- </p>
+<p>Expected duration: after the request to enter sleep mode is set, the CAN </p>
+<p>cell finishes all transmission and reception processes. After this it waits </p>
+<p>until a bus idle state is recognized. Then the Init-bit will be set to 1 to </p>
+<p>indicate that the sleep mode has been entered.  </p>
+<p>The expected duration lasts one CAN frame including interframe space. </p>
+<p>MICROSAR4: </p>
+<p>Used for short time mode transition blocking (short synchronous timeout). Same </p>
+<p>value for kCanLoopSleep and kCanLoopWakeup. No Issue when timeout occur. </p>
+<p>kCanLoopWakeup </p>
+<p>MICROSAR3: </p>
+<p>- </p>
+<p>Used while transition in mode ‘WAKEUP’. </p>
+<p>- </p>
+<p>Call context: Can_SetControllerMode() </p>
+<p>- </p>
+<p>Expected duration: If the CAN cell leaves sleep mode, the Init-Bit will be </p>
+<p>cleared. After this the DCAN module waits until it detects 11 consecutive </p>
+<p>recessive bits on the CAN_RX pin and then goes Bus-Active again. </p>
+<p>MICROSAR4: </p>
+<p>Used for short time mode transition blocking (short synchronous timeout). Same </p>
+<p>value for kCanLoopSleep and kCanLoopWakeup. No Issue when timeout occur. </p>
+<p>Table 4-6  </p>
+<p>Hardware Loop Check </p>
+<p>In the generation tool the user has to set a value for the number of loops until that the </p>
+<p>time-out duration occurs. This must be the value of the most often covered hardware loop. </p>
+<p>It is the “loop over all pending interrupts” (loop name kCanLoopIrqReq) and has the size of </p>
+<p>the maximum number of message objects. For the TMS570 it is 64 and with a security </p>
+<p>buffer a good value to use will be 100. </p>
+<p> </p>
+<p><b>4.8.3 </b></p>
+<p><b>CAN RAM Check </b></p>
+<p>The CAN driver supports a check of the CAN controller’s mailboxes. The CAN controller </p>
+<p>RAM </p>
+<p>check </p>
+<p>is </p>
+<p>called </p>
+<p>internally </p>
+<p>every </p>
+<p>time </p>
+<p>a  power </p>
+<p>on </p>
+<p>is </p>
+<p>executed </p>
+<p>within </p>
+<p>function </p>
+<p>Can_InitController(), or a Bus-Wakeup event happen. The CAN driver verifies that no used </p>
+<p>mailboxes are corrupt. A mailbox is considered corrupt if a predefined pattern is written to </p>
+<p>the  appropriate  mailbox  registers  and  the  read  operation  does  not  return  the  expected </p>
+<p>pattern. If a corrupt mailbox is found the function Appl_CanCorruptMailbox() is called. This </p>
+<p>function tells the application which mailbox is corrupt.  </p>
+<p>After </p>
+<p>the </p>
+<p>check </p>
+<p>of </p>
+<p>all </p>
+<p>mailboxes </p>
+<p>the </p>
+<p>CAN </p>
+<p>driver </p>
+<p>calls </p>
+<p>the </p>
+<p>call </p>
+<p>back </p>
+<p>function </p>
+<p>Appl_CanRamCheckFailed()  if  at  least  one  corrupt  mailbox  was  found.  The  application </p>
+<p>must decide if the CAN driver disables communication or not by means of the  call back </p>
+<p>function’s return value. If the application has decided to disable the communication there is </p>
+<p>no possibility to enable the communication again until the next call to Can_Init(). </p>
+<p>The CAN RAM check functionality itself can be activated via Generation Tool. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 20 </p>
+<p><b>4.8.4 </b></p>
+<p><b>Hardware Specific </b></p>
+<p>There are some restrictions in the hardware as not all the CAN driver features are </p>
+<p>supported. The not supported features are: </p>
+<p> </p>
+<p>1. </p>
+<p>Cancel in Hardware: </p>
+<p>The hardware does not provide support to request a cancelation for an already </p>
+<p>requested (pending) transition. Consequently it is not possible to support cancel in </p>
+<p>hardware. </p>
+<p> </p>
+<p>2. </p>
+<p>Multiplexed Transmitting: </p>
+<p>The mailboxes are prioritized by hardware index and not by CAN ID. Consequently it is </p>
+<p>not possible to support multiplexed transmission. </p>
+<p> </p>
+<p>3. </p>
+<p>Supported Controllermode: </p>
+<p>The CAN driver was designed to run in privileged mode only. There is no support for </p>
+<p>user mode. </p>
+<p> </p>
+<p>4. </p>
+<p>Errata DCAN#22: </p>
+<p>There could happen that an incorrect payload (data bytes) is stored in mailbox under </p>
+<p>certain conditions. This is a HW issue present in several revisions (A and earlier). For </p>
+<p>details please refer to silicon errata. The CAN driver implements the first workaround </p>
+<p>proposal no.1 as it can be applied also to the families without local power down-mode </p>
+<p>and it does not disturb the other peripherals. </p>
+<p> </p>
+<p>For that purpose the user has to calibrate a “6 NOPs” dummy loop, i.e. the software </p>
+<p>has to wait for at least 6 CAN clocks cycles (corresponding to the CAN clock input and </p>
+<p>not CAN bus). The 6 NOPs are not optimized and the group cannot take less than 6 </p>
+<p>CPU cycles even if the core has a pipeline. </p>
+<p> </p>
+<p> </p>
+<p>The number of iterations through the “6 NOPs” has the following formula: </p>
+<p>ErrataDcan22Iterations = CPU_CLOCK/CAN_CLOCK </p>
+<p>Afterwards the calculated value corresponding to ErrataDcan22Iterations has to be </p>
+<p>entered in the configuration (see 7.4.2). </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p><b>Info </b></p>
+<p>If the used version of the silicon is not affected by this issue, the workaround can </p>
+<p>be disabled as followings:  </p>
+<p> </p>
+<p>1) A user config file has to be created; this will be installed in the CAN driver </p>
+<p>component of the configuration (see 7.4.2). </p>
+<p> </p>
+<p>2) This used config file will contain the following line:  </p>
+<p>#define C_DISABLE_DCAN_ISSUE22_WORKAROUND. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 21 </p>
+<p><b>5. </b></p>
+<p><b>Integration </b></p>
+<p>This chapter gives necessary information for the integration of the MICROSAR  CAN into </p>
+<p>an application environment of an ECU. </p>
+<p><b>5.1 </b></p>
+<p><b>Scope of Delivery </b></p>
+<p>The delivery of the CAN contains the files, which are described in the chapter’s 5.1.1 and </p>
+<p>5.1.2: </p>
+<p>Dependent on library or source code delivery the marked (+) files may not be delivered. </p>
+<p><b>5.1.1 </b></p>
+<p><b>Static Files </b></p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>(+) canproto.h </p>
+<p>This is an internal header file which should not be included outside this </p>
+<p>module </p>
+<p>(+) Can.c </p>
+<p>This is the source file of the CAN. It contains the implementation of CAN </p>
+<p>module functionality. </p>
+<p>(+) Can.lib </p>
+<p>This is the library build out of Can.c, Can.h and CanProto.h </p>
+<p>Can.h </p>
+<p>This is the header file of the CAN module (include API declaration) </p>
+<p>Can_Hooks.h </p>
+<p>This is the header file to define the Hook-functions or macros. </p>
+<p>Can_Irq.c </p>
+<p>This is the interrupt declaration and callout file (supports interrupt </p>
+<p>configuration as link time settings) </p>
+<p>Table 5-1  </p>
+<p>Static files </p>
+<p> </p>
+<p><b>5.1.2 </b></p>
+<p><b>Dynamic Files </b></p>
+<p>The dynamic files are generated by the configuration tool [GENy]. </p>
+<p><b>File Name </b></p>
+<p><b>Description </b></p>
+<p>Can_Cfg.h </p>
+<p>Generated header file, contains some type, prototype and pre-compile </p>
+<p>settings </p>
+<p>Can_Lcfg.c </p>
+<p>Generated file contains link time settings. </p>
+<p>Can_PBcfg.c </p>
+<p>Generated file contains post build settings. </p>
+<p>Can_DrvGeneral</p>
+<p>Types.h </p>
+<p>Generated file contains CAN driver part of Can_GeneralTypes.h (supported </p>
+<p>by Integrator) </p>
+<p>Table 5-2  </p>
+<p>Generated files </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 22 </p>
+<p><b>5.2 </b></p>
+<p><b>Include Structure </b></p>
+<p> </p>
+<p>Figure 5-1 </p>
+<p>Include Structure (AUTOSAR) </p>
+<p>Deviation from AUTOSAR specification: </p>
+<p><b>&gt; </b></p>
+<p>Additionally the EcuM_Cbk.h is included by Can_Cfg.h (needed for wakeup notification </p>
+<p>API). </p>
+<p><b>&gt; </b></p>
+<p>ComStack_Types.h included by Can_Cfg.h, because the specified types have to be </p>
+<p>known in generated data as well. </p>
+<p><b>&gt; </b></p>
+<p>MICROSAR4x only: Os.h will be included by Can_Cfg.h because of used data-types </p>
+<p><b>&gt; </b></p>
+<p>Spi.h is not yet used. </p>
+<p><b>&gt; </b></p>
+<p>Additionally the file Can_Hooks.h will be included by Can.h. </p>
+<p><b>&gt; </b></p>
+<p>MICROSAR403 only: Can_GeneralTypes.h will be included by Can_Cfg.h not by </p>
+<p>Can.h direct. </p>
+<p> </p>
+<p><b>5.3 </b></p>
+<p><b>Critical Sections </b></p>
+<p>The AUTOSAR standard provides with the BSW Scheduler a BSW module, which handles </p>
+<p>entering and leaving critical sections.  </p>
+<p>For  more  information  about  the  BSW  Scheduler  please  refer  to  [3].  When  the  BSW </p>
+<p>Scheduler is used the CAN Driver provides critical section codes that have to be mapped </p>
+<p>by the BSW Scheduler to following mechanism: </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 23 </p>
+<p><b>Critical Section Define </b></p>
+<p><b>Description </b></p>
+<p>CAN_EXCLUSIVE_AREA_0 </p>
+<p>CanSingleGlobalInterruptDisable/Restore(): </p>
+<p>Using inside Can_MainFunction_Write() to secure a consistent polling of </p>
+<p>a transmit object. </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>Duration is short (&lt; 10 instructions). </p>
+<p></p>
+<p> </p>
+<p>No API call of other BSW inside. </p>
+<p>CanNestedGlobalInterruptDisable/Restore(): </p>
+<p>Using inside CanHL_TxConfirmation to secure a consistent release of a </p>
+<p>transmit object after successful transmission. </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p>Duration is short (&lt; 10 instructions) </p>
+<p></p>
+<p> </p>
+<p>No API call of other BSW inside. </p>
+<p>CAN_EXCLUSIVE_AREA_1 </p>
+<p>Using inside Can_DisableControllerInterrupts() and </p>
+<p>Can_EnableControllerInterrupts() to secure Interrupt counters for nested </p>
+<p>calls. </p>
+<p></p>
+<p> </p>
+<p>Duration is short (&lt; 10 instructions) </p>
+<p></p>
+<p> </p>
+<p>No API call of other BSW inside. </p>
+<p></p>
+<p> </p>
+<p>Disable global interrupts – or – Empty in case </p>
+<p>Can_Disable/EnableControllerInterrupts() are called within context </p>
+<p>with lower or equal priority than CAN interrupt. </p>
+<p>CAN_EXCLUSIVE_AREA_2 </p>
+<p>Using inside Can_Write() to secure software states of transmit objects. </p>
+<p></p>
+<p> </p>
+<p>Only when no Vector CAN Interface is used. </p>
+<p></p>
+<p> </p>
+<p>Duration is medium (&lt; 60 instructions) </p>
+<p></p>
+<p> </p>
+<p>No API call of other BSW inside. </p>
+<p></p>
+<p> </p>
+<p>Disable global interrupts - or - Disable CAN interrupts and does not </p>
+<p>call function reentrant. </p>
+<p>CAN_EXCLUSIVE_AREA_3 </p>
+<p>Using inside Tx confirmation to secure state of transmit object in case of </p>
+<p>cancellation. (Only used when Vector Interface Version smaller 4.10 </p>
+<p>used) </p>
+<p></p>
+<p> </p>
+<p>Duration is short (&lt; 20 instructions) </p>
+<p></p>
+<p> </p>
+<p>Call to CanIf_CancelTxConfirmation() inside (no more calls in CanIf). </p>
+<p></p>
+<p> </p>
+<p>Disable global interrupts - or - Disable CAN interrupts and do not call </p>
+<p>function Can_Write() within. </p>
+<p>CAN_EXCLUSIVE_AREA_4 </p>
+<p>Using inside received data handling (Rx Queue treatment) to secure Rx </p>
+<p>Queue counter and data. </p>
+<p></p>
+<p> </p>
+<p>Duration is short (&lt; 20 instructions) </p>
+<p></p>
+<p> </p>
+<p>No API call of other BSW inside. </p>
+<p></p>
+<p> </p>
+<p>Disable Global Interrupts - or - Disable all CAN interrupts. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 24 </p>
+<p>CAN_EXCLUSIVE_AREA_5 </p>
+<p>Using inside wakeup handling to secure state transition. (Only in wakeup </p>
+<p>polling mode) </p>
+<p></p>
+<p> </p>
+<p>Duration is short Duration is short (&lt; 10 instructions). </p>
+<p></p>
+<p> </p>
+<p>Call to DET inside. </p>
+<p></p>
+<p> </p>
+<p>Disable global interrupts   (do no use here CAN interrupt locks) </p>
+<p>CAN_EXCLUSIVE_AREA_6 </p>
+<p>Using inside Can_SetControllerMode() and BusOff to secure state </p>
+<p>transition. </p>
+<p></p>
+<p> </p>
+<p>Duration is medium (&lt; 100 instructions) </p>
+<p></p>
+<p> </p>
+<p>No API call of other BSW inside. </p>
+<p></p>
+<p> </p>
+<p>Use CAN interrupt locks here, when the API for one controller is not </p>
+<p>called in a context higher than the CAN interrupt </p>
+<p>or </p>
+<p>Disable global interrupts </p>
+<p>Table 5-3  </p>
+<p>Critical Section Codes </p>
+<p><b>5.4 </b></p>
+<p><b>Compiler Abstraction and Memory Mapping  </b></p>
+<p>The  objects  (e.g.  variables,  functions,  constants)  are  declared  by  compiler  independent </p>
+<p>definitions  –  the  compiler  abstraction  definitions.  Each  compiler  abstraction  definition  is </p>
+<p>assigned to a memory section. </p>
+<p>The  following  table  contains  the  memory  section  names  and  the  compiler  abstraction </p>
+<p>definitions  defined  for  the  CAN  Interface  and  illustrates  their  assignment  among  each </p>
+<p>other. </p>
+<p><b>Compiler Abstraction </b></p>
+<p><b>Definitions </b></p>
+<p><b> </b></p>
+<p> </p>
+<p><b>Memory Mapping </b></p>
+<p><b>Sections </b></p>
+<p>CAN_ CODE </p>
+<p>CAN_STATIC_ CODE </p>
+<p>CAN_ CONST  </p>
+<p>CAN_ CONST_PBCFG </p>
+<p>CAN_VAR_NOINIT </p>
+<p>CAN_ VAR_INIT </p>
+<p>CAN_ INT_CTRL </p>
+<p>CAN_ REG_CANCELL </p>
+<p>CAN_ RX_TX_DATA </p>
+<p>CAN_ APPL_CODE </p>
+<p>CAN_ APPL_CONST </p>
+<p>CAN_ APPL_VAR </p>
+<p>CAN_START_SEC_CODE </p>
+<p>CAN_STOP_SEC_CODE </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_STATIC_CODE </p>
+<p>CAN_STOP_SEC_STATIC_CODE </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_CONST_8BIT </p>
+<p>CAN_STOP_SEC_CONST_8BIT </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_CONST_16BIT </p>
+<p>CAN_STOP_SEC_CONST_16BIT </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_CONST_32BIT </p>
+<p>CAN_STOP_SEC_CONST_32BIT </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 25 </p>
+<p>CAN_START_SEC_CONST_UNSPECIFIED </p>
+<p>CAN_STOP_SEC_CONST_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_PBCFG </p>
+<p>CAN_STOP_SEC_PBCFG </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_PBCFG_ROOT </p>
+<p>CAN_STOP_SEC_PBCFG_ROOT </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p>CAN_STOP_SEC_VAR_NOINIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_VAR_INIT_UNSPECIFIED </p>
+<p>CAN_STOP_SEC_VAR_INIT_UNSPECIFIED </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>CAN_START_SEC_CODE_APPL </p>
+<p>CAN_STOP_SEC_CODE_APPL </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Table 5-4  </p>
+<p>Compiler abstraction and memory mapping </p>
+<p> </p>
+<p>The  Compiler Abstraction  Definitions  CAN_ APPL_CODE,  CAN_ APPL_VAR  and  CAN_ </p>
+<p>APPL_CONST are used to address code, variables and constants which are declared by </p>
+<p>other modules and used by the CAN driver. </p>
+<p>These definitions are not mapped by the CAN driver but by the memory mapping realized </p>
+<p>in the CAN Interface or direct by application. </p>
+<p>CAN_ CODE: used for CAN module code. </p>
+<p>CAN_ STATIC_CODE: used for CAN module local code. </p>
+<p>CAN_ CONST: used for CAN module constants. </p>
+<p>CAN_ CONST_PBCFG: used for CAN module constants in Post-Build section. </p>
+<p>CAN_ VAR_*: used for CAN module variables. </p>
+<p>CAN_ INT_CTRL: is used to access the CAN interrupt controls. </p>
+<p>CAN_ REG_CANCELL: is used to access the CAN cell itself. </p>
+<p>CAN_ RX_TX_DATA: access to CAN Data buffers located in RAM. </p>
+<p>CAN_ APPL_*: access to higher layers. </p>
+<p><b>5.5 </b></p>
+<p><b>Hardware Specific Hints </b></p>
+<p><b>1.1.1 </b></p>
+<p><b>Initialisation of the VIM-register </b></p>
+<p>The register of the Vectored Interrupt Manager (VIM) will be modified by the CAN-driver to </p>
+<p>enable or disable the CAN-Interrupts. The initial value of the register has to be set by the </p>
+<p>application. If the application does not enable the CAN-Interrupts at startup, the interrupts </p>
+<p>stays disabled the whole time. </p>
+<p> </p>
+<p><b>1.1.2 </b></p>
+<p><b>Hardware specific topics </b></p>
+<p>For details regarding the hardware specific topics please check the appropriate hardware </p>
+<p>manual of concrete derivative. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 26 </p>
+<p><b>6. </b></p>
+<p><b>API Description </b></p>
+<p><b>6.1 </b></p>
+<p><b>Interrupt Service Routines provided by CAN </b></p>
+<p>Depend on the settings in Tools component Hw_Tms470Cpu, the interrupt routine is given </p>
+<p>by the driver or by Operating System (selection see below). </p>
+<p> </p>
+<p>Figure 6-1 </p>
+<p>Select OS Type </p>
+<p>There  is  the  possibility  to  choose  OS  Type.  Please  select  “None”  for  using  no  OS, </p>
+<p>“Autosar” for AUTOSAR OS or “OSEK” for OSEK OS systems. </p>
+<p><b>6.1.1 </b></p>
+<p><b>OSEK (OS) </b></p>
+<p>This means to include osek.h.  </p>
+<p>Switch: V_OSTYPE_OSEK </p>
+<p><b>6.1.2 </b></p>
+<p><b>AutoSar (OS) </b></p>
+<p>Os.h header file is used. </p>
+<p>Switch: V_OSTYPE_AUTOSAR </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 27 </p>
+<p><b>6.1.3 </b></p>
+<p><b>None (OS) </b></p>
+<p>Choose “None” for OS Type, to include no Os header files and have no category 2 </p>
+<p>interrupt. </p>
+<p>Switch: V_OSTYPE_NONE </p>
+<p> </p>
+<p><b>6.1.4 </b></p>
+<p><b>Type of Interrupt Function </b></p>
+<p>See Chapter “Component Settings” for configuration aspects. </p>
+<p>-</p>
+<p> </p>
+<p>Category 2 (only for OSEK OS or AUTOSAR OS):  </p>
+<p>A macro “ISR(‘CanIsr_x)” will be used to declare ISR function call. The name given </p>
+<p>as parameter for interrupt naming (x = Physical CAN Channel number). For macro </p>
+<p>definition see OS specification. The OS has full control of the ISR. </p>
+<p>switch: C_ENABLE_OSEK_OS_INTCAT2 </p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p>Category 1:Using OS with category 1 interrupts need an Interface layer handling </p>
+<p>these interrupts in task context like defined in BSW00326 </p>
+<p>(AUTOSAR_SRS_General). </p>
+<p>The ISR is declared as void ISR(void) and has to be called by interrupt controller in </p>
+<p>case of an CAN interrupt. </p>
+<p>switch: C_DISABLE_OSEK_OS_INTCAT2 </p>
+<p> </p>
+<p>-</p>
+<p> </p>
+<p>Void-Void Interrupt Function: </p>
+<p>Like in Category 1 the Interrupt is not handled by OS. With this CAN-driver there is </p>
+<p>no difference to Category 1: the ISR is declared as void ISR(void) and has to be </p>
+<p>called by interrupt controller in case of an CAN interrupt. </p>
+<p> </p>
+<p> </p>
+<p><b>6.1.5 </b></p>
+<p><b>CanIsr_&lt;CH&gt; </b></p>
+<p><b>Prototype </b></p>
+<p>void </p>
+<p>CanIsr_&lt;CH&gt;</p>
+<p>( void ) </p>
+<p><b>Parameter </b></p>
+<p>--- </p>
+<p>--- </p>
+<p><b>Return code </b></p>
+<p>--- </p>
+<p>--- </p>
+<p><b>Functional Description </b></p>
+<p>This function has to be called in scope of interrupt processing. It handles the Tx, Rx and BusOff interrupts </p>
+<p>and clears the pending flags of the CAN cell and pending bits of the interrupt controller. </p>
+<p><b>Particularities and Limitations </b></p>
+<p></p>
+<p> </p>
+<p>This function can be used directly as interrupt routine in an interrupt vector table for category </p>
+<p>1 interrupts. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 28 </p>
+<p><b>6.2 </b></p>
+<p><b>Services provided by CAN </b></p>
+<p>The CAN API consists of services, which are realized by function calls. </p>
+<p><b>6.2.1 </b></p>
+<p><b>Can_GetVersionInfo </b></p>
+<p><b>Prototype </b></p>
+<p><b>void</b> <b>Can_GetVersionInfo</b>( Std_VersionInfoType <b>*</b>versioninfo );</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>versioninfo </p>
+<p> </p>
+<p>pointer to the structure including the version information </p>
+<p><b>typedef</b> <b>struct</b> </p>
+<p>{ </p>
+<p>   uint16 vendorID; </p>
+<p>   uint16 moduleID; </p>
+<p><b>MicroSar3 only: </b>uint8  instanceID; </p>
+<p>   uint8  sw_major_version; /*BCD code*/ </p>
+<p>   uint8  sw_minor_version; /*BCD code*/ </p>
+<p>   uint8  sw_patch_version; /*BCD code*/ </p>
+<p>} Std_VersionInfoType;</p>
+<p> </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>Function to get version information </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>- The function is only available if enabled at build time (CAN_VERSION_INFO_API = ON) </p>
+<p> </p>
+<p><b>6.2.2 </b></p>
+<p><b>Can_Init </b></p>
+<p><b>Prototype </b></p>
+<p><b>void</b> <b>Can_Init</b>( <b>const</b> Can_ConfigType <b>*</b>Config )</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>Config</p>
+<p> </p>
+<p>Pointer to the structure including configuration data. </p>
+<p>In case of Multiple ECU configuration feature is used, for each </p>
+<p>Identity one “Config” structure exists and has to be chosen here </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function initializes global CAN driver variables during ECU start-up. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 29 </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Has to be called during start-up before CAN communication. </p>
+<p><b>&gt; </b></p>
+<p>Must be called before calling Can_InitController( ) </p>
+<p><b>&gt; </b></p>
+<p>Mulitple ECU configuration pointer for “Config” does only work with none Post-Build variants </p>
+<p><b>&gt; </b></p>
+<p>Can_InitMemory() has to be called before. </p>
+<p> </p>
+<p> </p>
+<p><b>6.2.3 </b></p>
+<p><b>Can_InitController </b></p>
+<p><b>Prototype </b></p>
+<p>MICROSAR3: </p>
+<p>void Can_InitController( uint8 Controller, const Can_ControllerConfigType* </p>
+<p>Config ) </p>
+<p>MICROSAR401: </p>
+<p>void Can_InitController( uint8 Controller, const </p>
+<p>Can_ControllerBaudrateConfigPtrType Config ) </p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Config</p>
+<p> </p>
+<p>The controller to be initialized </p>
+<p>MICROSAR3: Pointer to the structure including configuration data. </p>
+<p>MICROSAR401: Pointer to baudrate structure. </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>- </p>
+<p><b>Functional Description </b></p>
+<p>This function initializes controller specific CAN driver registers and variables and leave in the stop mode </p>
+<p>with a fully initialized CAN controller ready to change in running mode. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Has to be called during start-up before CAN communication, but after Can_Init().</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>Must not be called within sleep mode</p>
+<p> </p>
+<p> </p>
+<p><b>6.2.4 </b></p>
+<p><b>Can_SetControllerMode </b></p>
+<p><b>Prototype </b></p>
+<p>Can_ReturnType <b>Can_SetControllerMode</b>( uint8 Controller, Can_StateTransitionType </p>
+<p>Transition )</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Transition</p>
+<p> </p>
+<p>The controller to change mode </p>
+<p>Mode transition request </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 30 </p>
+<p><b>Return code </b></p>
+<p>state </p>
+<p>Result of changing mode can be: </p>
+<p>CAN_OK, CAN_NOT_OK</p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This function switch to one of the following modes: Sleep, Stop, Running. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Called by higher layer CAN interface</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>Must not be called within CAN driver context like Rx, Tx or Bus Off callouts.</p>
+<p> </p>
+<p> </p>
+<p><b>6.2.5 </b></p>
+<p><b>Can_Write </b></p>
+<p><b>Prototype </b></p>
+<p>Can_ReturnType <b>Can_Write</b>( uint8 Hth, <b>const</b> Can_PduType <b>*</b>PduInfo );</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>Hth </p>
+<p>PduInfo</p>
+<p> </p>
+<p>Handle of the mailbox to send message </p>
+<p>Information about outgoing message (ID, DLC, data) </p>
+<p><b>Return code </b></p>
+<p>-state </p>
+<p>- Result of transmission request can be: CAN_OK, CAN_NOT_OK, </p>
+<p>CAN_BUSY </p>
+<p><b>Functional Description </b></p>
+<p>Called by the interface layer to send a message over CAN. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested </p>
+<p><b>&gt; </b></p>
+<p>Called with disabled interrupts (for data security CAN Interface have to do this and therefore </p>
+<p>not needed in driver twice) </p>
+<p> </p>
+<p><b>6.2.6 </b></p>
+<p><b>Can_DisableControllerInterrupts </b></p>
+<p><b>Prototype </b></p>
+<p><b>void</b> <b>Can_DisableControllerInterrupts</b>( uint8 Controller );</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>Controller</p>
+<p> </p>
+<p>The controller to disable interrupts for </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to disable interrupts (e.g. to secure data) </p>
+<p><b>Particularities and Limitations </b></p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 31 </p>
+<p><b>6.2.7 </b></p>
+<p><b>Can_EnableControllerInterrupts </b></p>
+<p><b>Prototype </b></p>
+<p><b>void</b> <b>Can_EnableControllerInterrupts</b>( uint8 Controller );</p>
+<p> </p>
+<p><b>Parameter </b></p>
+<p>Controller</p>
+<p> </p>
+<p>The controller to re enable interrupts for </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to re enable interrupts (e.g. to secure data) </p>
+<p><b>Particularities and Limitations </b></p>
+<p> </p>
+<p> </p>
+<p><b>6.2.8 </b></p>
+<p><b>Can_MainFunction_Write </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_MainFunction_Write( void );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to poll Tx confirmation (for all controller and Tx mailboxes). </p>
+<p>Has to be called by Higher Layer. </p>
+<p>Notify CAN Interface about Tx confirmations. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested and only out of lower or equal task level as Can_Write(). </p>
+<p> </p>
+<p><b>6.2.9 </b></p>
+<p><b>Can_MainFunction_Read </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_MainFunction_Read( void );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 32 </p>
+<p><b>Functional Description </b></p>
+<p>Service function to poll reception (for all controller and Rx mailboxes). Also use to read out Rx Queue </p>
+<p>messages queued within interrupt context. </p>
+<p>Has to be called by Higher Layer. </p>
+<p>Notify CAN Interface about Rx indications. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested. </p>
+<p> </p>
+<p><b>6.2.10 </b></p>
+<p><b>Can_MainFunction_BusOff </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_MainFunction_BusOff( void );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to poll Bus Off event (over all controller). </p>
+<p>Has to be called by Higher Layer. </p>
+<p>Calls “CanIf_ControllerBusOff” in case of Bus Off occurred. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested. </p>
+<p> </p>
+<p><b>6.2.11 </b></p>
+<p><b>Can_MainFunction_Wakeup </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_MainFunction_Wakeup( void );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to poll Wakeup event (over all controller). </p>
+<p>Has to be called by Higher Layer. </p>
+<p>Calls “CanIf_SetWakeupEvent“ in case of wakeup event occur. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested. </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 33 </p>
+<p><b>6.2.12 </b></p>
+<p><b>Can_MainFunction_Mode (MICROSAR4x only) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_MainFunction_Mode( void );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to poll Mode changes (over all controller – asynchronous when not done in </p>
+<p>Can_SetControllerMode()). </p>
+<p>Polling of Mode change events notified to upper layer. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested. </p>
+<p> </p>
+<p><b>6.2.13 </b></p>
+<p><b>Can_ChangeBaudrate (MICROSAR403 only) </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>Can_ChangeBaudrate( </b>uint8 Controller, const uint16 Baudrate <b>);</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Baudrate</p>
+<p> </p>
+<p>The controller to change Baudrate </p>
+<p>Baudrate to be set </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType</p>
+<p> </p>
+<p>E_NOT_OK: Baudrate is not set. </p>
+<p>E_OK: Baudrate is set. </p>
+<p><b>Functional Description </b></p>
+<p>This service shall change the baudrate of the CAN controller. And reinitialize the CAN controller. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested. </p>
+<p> </p>
+<p><b>6.2.14 </b></p>
+<p><b>Can_CheckBaudrate (MICROSAR403 only) </b></p>
+<p><b>Prototype </b></p>
+<p>Std_ReturnType <b>Can_CheckBaudrate( </b>uint8 Controller, const uint16 Baudrate <b>);</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Baudrate</p>
+<p> </p>
+<p>The controller to check Baudrate </p>
+<p>Baudrate to be checked </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType</p>
+<p> </p>
+<p>E_NOT_OK: Baudrate is not available. </p>
+<p>E_OK: Baudrate is available. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 34 </p>
+<p><b>Functional Description </b></p>
+<p>This service shall check if a certain baudrate of the CAN controller is supported. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Must not be called nested. </p>
+<p><b>&gt; </b></p>
+<p>Only available when “CanChangeBaudrateApi“ is activated. </p>
+<p> </p>
+<p><b>6.2.15 </b></p>
+<p><b>Can_InitMemory (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_InitMemory( void );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>-</p>
+<p> </p>
+<p>- </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to initialize module global variables for power up situation. Call this functionality to simulate </p>
+<p>a power up behavior. (Afterwards call normal initialization functions) </p>
+<p><b>Particularities and Limitations </b></p>
+<p> </p>
+<p> </p>
+<p><b>6.2.16 </b></p>
+<p><b>Can_InitStruct (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Can_InitStruct( uint8 Controller, uint8 Index );</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Index </p>
+<p>Controller to change Initialization structure </p>
+<p>Index of the Initialization structure to be used </p>
+<p><b>Return code </b></p>
+<p>- </p>
+<p>-  </p>
+<p><b>Functional Description </b></p>
+<p>Service function to change the Initialization structure setup by Tool. It contains information about the baud </p>
+<p>rate and filter settings. It is necessary to call Can_InitController afterwards to activate these settings. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>Call this function in between Can_Init () and Can_InitController(). </p>
+<p><b>&gt; </b></p>
+<p>MicroSar3 only </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 35 </p>
+<p><b>6.2.17 </b></p>
+<p><b>Can_Cbk_CheckWakeup, Can_CheckWakeup </b></p>
+<p><b>Prototype </b></p>
+<p><b>MICROSAR3: </b></p>
+<p><b>Std_ReturnType Can_Cbk_CheckWakeup( uint8 Controller ); </b></p>
+<p><b>MICROSAR4x: </b></p>
+<p><b>Std_ReturnType Can_CheckWakeup( uint8 Controller ); </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Controller to check for wakeup </p>
+<p><b>Return code </b></p>
+<p>Std_ReturnType </p>
+<p>E_OK when wakeup is cause by Controller or E_NOT_OK </p>
+<p><b>Functional Description </b></p>
+<p>Service function to check occurrence of wakeup event on this controller. </p>
+<p><b>Particularities and Limitations </b></p>
+<p> </p>
+<p> </p>
+<p><b>6.2.18 </b></p>
+<p><b>ApplCanTimerStart (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void ApplCanTimerStart ( CanChannelHandle controller, uint8 source ); </b></p>
+<p><b>void ApplCanTimerStart ( uint8 source );   </b></p>
+<p>when using “Optimize for one controller”</p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>controller </p>
+<p>source </p>
+<p>controller on which the hardware observation occur </p>
+<p>source for the hardware observation (see Hardware Loop Check / Timeout </p>
+<p>Monitoring) </p>
+<p><b>Return code </b></p>
+<p><b>void</b></p>
+<p> </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Service function to start an observation timer (see Chapter Hardware Loop Check). </p>
+<p><b>Particularities and Limitations </b></p>
+<p>Only available when “Hardware Loop Check by Application“ is activated. </p>
+<p> </p>
+<p><b>6.2.19 </b></p>
+<p><b>ApplCanTimerLoop (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>Can_ReturnType ApplCanTimerLoop (CanChannelHandle controller, uint8 source ); </b></p>
+<p><b>Can_ReturnType ApplCanTimerLoop ( uint8 source );   </b></p>
+<p>when using “Optimize for one </p>
+<p>controller”</p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 36 </p>
+<p><b>Parameter </b></p>
+<p>controller </p>
+<p>source </p>
+<p>controller on which the hardware observation occur </p>
+<p>source for the hardware observation (see Hardware Loop Check / Timeout </p>
+<p>Monitoring) </p>
+<p><b>Return code </b></p>
+<p>Can_ReturnType (uint8) </p>
+<p>E_OK when loop shall be continue E_NOT_OK when loop shall break to </p>
+<p>continue (E_NOT_OK should only be used when timeout occur due to </p>
+<p>hardware issue. Afterwards special action is needed see Chapter Hardware </p>
+<p>Loop Check) </p>
+<p><b>Functional Description </b></p>
+<p>Service function to check timeout for the hardware observation (see Chapter Hardware Loop Check). </p>
+<p><b>Particularities and Limitations </b></p>
+<p>Only available when “Hardware Loop Check by Application“ is activated. </p>
+<p> </p>
+<p><b>6.2.20 </b></p>
+<p><b>ApplCanTimerEnd (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void ApplCanTimerEnd (CanChannelHandle controller, uint8 source ); </b></p>
+<p><b>void ApplCanTimerEnd ( uint8 source );   </b></p>
+<p>when using “Optimize for one controller”</p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>controller </p>
+<p>source </p>
+<p>controller on which the hardware observation occur </p>
+<p>source for the hardware observation (see Hardware Loop Check / Timeout </p>
+<p>Monitoring) </p>
+<p><b>Return code </b></p>
+<p><b>void</b></p>
+<p> </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Service function to end an observation timer (see Chapter Hardware Loop Check). </p>
+<p><b>Particularities and Limitations </b></p>
+<p>Only available when “Hardware Loop Check by Application“ is activated. </p>
+<p> </p>
+<p><b>6.2.21 </b></p>
+<p><b>Appl_GenericPrecopy (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>Can_ReturnType Appl_GenericPrecopy (uint8 controller, Can_IdType ID, uint8 DLC, </b></p>
+<p><b>const uint8 *pData ); </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>ID </p>
+<p>DLC </p>
+<p>pData </p>
+<p>Controller receive the data </p>
+<p>ID of the received message. In case of extended ID and mixed ID systems the </p>
+<p>highest bit (bit 32) is used to mark an extended ID (bit 32 is set). </p>
+<p>DLC of the received message </p>
+<p>pData pointer to the data of the received message </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 37 </p>
+<p><b>Return code </b></p>
+<p>Can_ReturnType </p>
+<p>CAN_OK when indication of the message should be called afterwards </p>
+<p>(notification to higher layer), or CAN_NOT_OK to break the Rx path. </p>
+<p><b>Functional Description </b></p>
+<p>Application function inform about incoming Rx messages with complete data set </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only usable when switch “#define CAN_GENERIC_PRECOPY  STD_ON” is set by </p>
+<p>Generation tool. </p>
+<p><b>&gt; </b></p>
+<p>pData is read only and must not be accessed with write operations. </p>
+<p> </p>
+<p><b>6.2.22 </b></p>
+<p><b>Appl_GenericConfirmation (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>Can_ReturnType Appl_Generic</b></p>
+<p><b>Confirmation( </b></p>
+<p><b>PduIdType PduId </b></p>
+<p><b>);</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>PduId </p>
+<p>PduId :  Handle of the PDU (specify the message). </p>
+<p>Return code </p>
+<p>Can_ReturnType </p>
+<p>CAN_NOT_OK: No further CanInterface Confirmation will be called. </p>
+<p>CAN_OK: CanInterface Confirmation will be called. </p>
+<p><b>Functional Description </b></p>
+<p>Application function inform about Tx messages is send out. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only usable when switch “#define CAN_GENERIC_CONFIRMATION  STD_ON” is </p>
+<p>set by Generation tool. </p>
+<p><b>&gt; </b></p>
+<p>If GenericConfirmation and TransmitBuffer (set in CanIf) is used the switch </p>
+<p>CAN_CANEL_SUPPORT_API is also needed (set in CanIf) otherwise a compiler error occur. </p>
+<p><b>&gt; </b></p>
+<p>PduId is read only and must not be accessed with write operations. </p>
+<p> </p>
+<p><b>6.2.23 </b></p>
+<p><b>Appl_GenericPreTransmit (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Appl_GenericPreTransmit(uint8 Controller, Can_PduInfoPtrType_var DataPtr </b></p>
+<p><b>); </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>DataPtr </p>
+<p>controller on which the hardware observation occur </p>
+<p>pointer to a Can_PduType structure include ID, DLC, Pdu, data-pointer </p>
+<p>Return code </p>
+<p>void </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 38 </p>
+<p><b>Functional Description </b></p>
+<p>Application function to change send data (e.g. add CRC to data) </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only usable when switch “#define CAN_GENERIC_PRETRANSMIT  STD_ON” is </p>
+<p>set by Generation tool. </p>
+<p> </p>
+<p><b>6.2.24 </b></p>
+<p><b>Can_GetStatus (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>Uint8 Can_GetStatus</b></p>
+<p><b>( </b></p>
+<p><b>uint8 controller </b></p>
+<p><b>);</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Controller for status information </p>
+<p>Return code </p>
+<p>uint8 status </p>
+<p>CAN_STATUS_SLEEP  </p>
+<p>CAN_STATUS_STOP </p>
+<p>CAN_STATUS_INIT </p>
+<p>CAN_STATUS_INCONSISTENT </p>
+<p>CAN_STATUS_WARNING </p>
+<p>(need </p>
+<p>C_ENABLE_EXTENDED_STATUS)</p>
+<p> CAN_STATUS_PASSIVE </p>
+<p>CAN_STATUS_BUSOFF </p>
+<p><b>Functional Description </b></p>
+<p>return the status of the hardware. </p>
+<p>Only one of the status-bits Sleep, Stop, Bus Off, Passive, Warning is set. Init bit is always set if controller is </p>
+<p>initialized. </p>
+<p>Sleep has the highest priority, error warning the lowest. </p>
+<p>CAN_STATUS_INCONSISTENT will be set if one Common CAN channel is not stop or sleep. </p>
+<p>“status” can be analyzed by us of macro API: </p>
+<p>CanHwIsOk(status): return “true” in case no warning, passive or bus off occurred. </p>
+<p>CanHwIsWarning(status): return “true” in case of waning status. </p>
+<p>CanHwIsPassive(status): return “true” in case of passive status. </p>
+<p>CanHwIsBusOff(status): return “true” in case of bus off status (may be already false in Notification). </p>
+<p>CanHwIsWakeup(status): return “true” in case of not in sleep mode. </p>
+<p>CanHwIsSleep(status): return “true” in case of sleep mode. </p>
+<p>CanHwIsStop(status): return “true” in case of stop mode. </p>
+<p>CanHwIsStart(status): return “true” in case of not in stop mode. </p>
+<p>CanHwIsInconsistent(status): return “true” in case of inconsistence mode between two common CAN </p>
+<p>channels.</p>
+<p> </p>
+<p><b>Particularities and Limitations </b></p>
+<p>This API is only usable when switch “#define </p>
+<p>CAN_GET_STATUS  STD_ON</p>
+<p>” is set by Generation tool. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 39 </p>
+<p><b>6.2.25 </b></p>
+<p><b>ApplCanInterruptDisable/Restore (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void ApplCanInterruptDisable</b></p>
+<p><b>( </b></p>
+<p><b>uint8 controller </b></p>
+<p><b>); </b></p>
+<p><b>void ApplCanInterruptRestore</b></p>
+<p><b>( </b></p>
+<p><b>uint8 controller </b></p>
+<p><b>); </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Controller for Interrupt lock </p>
+<p>Return code </p>
+<p> - </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Disable and Restore Can Interrupt by Application. Reason my be, that the CAN driver should not access the </p>
+<p>Interrupt controller for CAN interrupts or there are other restrictions (special security level) </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only usable when switch “#define CAN_INTLOCK” is set to “CAN_APPL” or </p>
+<p>“CAN_BOTH”  by Generation tool. </p>
+<p> </p>
+<p><b>6.2.26 </b></p>
+<p><b>Appl_CanOverrun / ApplCanFullCanOverrun (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Appl_CanOverrun</b></p>
+<p><b>( </b></p>
+<p><b>uint8 controller </b></p>
+<p><b>); </b></p>
+<p><b>void Appl_CanFullCanOverrun</b></p>
+<p><b>( </b></p>
+<p><b>uint8 controller </b></p>
+<p><b>);</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller</p>
+<p> </p>
+<p>Controller on which the overrun is detected </p>
+<p>Return code </p>
+<p> - </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>This functions will be called if an overrun is detected. </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only usable when switch “#define CAN_OVERRUN_NOTIFICATION  CAN_APPL” </p>
+<p>is set by Generation tool. </p>
+<p><b>&gt; </b></p>
+<p>(There is also the possibility to deactivate this feature or call a DET instead) </p>
+<p> </p>
+<p><b>6.2.27 </b></p>
+<p><b>Appl_CanCorruptMailbox (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>void Appl_CanCorruptMailbox(uint8 Controller, Can_HwHandleType hwObjHandle)</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>hwObjHandle </p>
+<p>Controller on which the check failed </p>
+<p>Hardware handle of defect mailbox </p>
+<p>Return code </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 40 </p>
+<p> - </p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Notify Application about a defect mailbox in CAN cell (while call of Can_InitController). </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only used when feature is activated in Generation tool. (switch CAN_RAM_CHECK) </p>
+<p> </p>
+<p><b>6.2.28 </b></p>
+<p><b>Appl_CanRamCheckFailed (None AUTOSAR API) </b></p>
+<p><b>Prototype </b></p>
+<p><b>uint8 Appl_CanRamCheckFailed(uint8 Controller)</b></p>
+<p><b> </b></p>
+<p><b>Parameter </b></p>
+<p>Controller </p>
+<p>Controller on which the check failed </p>
+<p>Return code </p>
+<p>uint8 action </p>
+<p>Application decide by return value to activate or deactivate controller. </p>
+<p>CAN_DEACTIVATE_CONTROLLER </p>
+<p>CAN_ACTIVATE_CONTROLLER</p>
+<p> </p>
+<p><b>Functional Description </b></p>
+<p>Notify Application about a defect CAN controller because of mailbox check before failed (while call of </p>
+<p>Can_InitController). </p>
+<p><b>Particularities and Limitations </b></p>
+<p><b>&gt; </b></p>
+<p>This API is only used when feature is activated in Generation tool. (“CanRamCheck“ -&gt; switch </p>
+<p>CAN_RAM_CHECK) </p>
+<p> </p>
+<p> </p>
+<p><b>6.3 </b></p>
+<p><b>Services used by CAN </b></p>
+<p>In the following table services provided by other components, which are used by the CAN </p>
+<p>are listed. For details about prototype and functionality refer to the documentation of the </p>
+<p>providing component. </p>
+<p><b>Component </b></p>
+<p><b>API </b></p>
+<p>DET </p>
+<p><b>Det_ReportError </b></p>
+<p>(see “Development Error Reporting”) </p>
+<p>DEM </p>
+<p><b>Dem_ReportErrorStatus </b></p>
+<p>(see “Production Code Error Reporting”) </p>
+<p>EcuM </p>
+<p><b>EcuM_CheckWakeup </b></p>
+<p>This function is called when Wakeup over CAN bus occur. </p>
+<p><b>EcuM_GeneratorCompatibilityError </b></p>
+<p>This function is called during the initialization, of the CAN Driver if </p>
+<p>the Generator Version Check or the CRC Check fails. (see [5]) </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 41 </p>
+<p>Application (optional non AUTOSAR) </p>
+<p><b>Appl_GenericPrecopy </b></p>
+<p><b>Appl_GenericConfirmation </b></p>
+<p><b>Appl_GenericPreTransmit </b></p>
+<p><b>ApplCanTimerStart/Loop/End </b></p>
+<p><b>Appl_CanRamCheckFailed, Appl_CanCorruptMailbox </b></p>
+<p><b>ApplCanInterruptDisable/Restore </b></p>
+<p><b>Appl_CanOverrun, Appl_CanFullCanOverrun </b></p>
+<p>For detailed description see Chapter 6.2 </p>
+<p>CANIF </p>
+<p><b>CanIf_CancelTxNotification </b>(non AUTOSAR) </p>
+<p>A special Software cancellation callback only used within Vector </p>
+<p>CAN driver CAN Interface bundle. </p>
+<p><b>CanIf_TxConfirmation </b></p>
+<p>Notification for a successful transmission. (see [4]) </p>
+<p><b>CanIf_CancelTxConfirmation </b></p>
+<p>Notification for a successful Tx cancellation. (see [4]) </p>
+<p><b>CanIf_RxIndication </b></p>
+<p>Notification for a message reception. (see [4]) </p>
+<p><b>CanIf_ControllerBusOff </b></p>
+<p>Bus Off notification function. (see [4]) </p>
+<p><b>CanIf_ControllerModeIndication </b></p>
+<p>MICROSAR4x only: Notification for mode sucessfully changed. </p>
+<p>Os (MICROSAR4x) </p>
+<p><b>OS_TICKS2MS_&lt;counterShortName&gt;()</b></p>
+<p> </p>
+<p>Os macro to get timebased ticks from counter. </p>
+<p><b>GetElapsedValue </b></p>
+<p>Get elapsed tick count. </p>
+<p><b>GetCounterValue </b></p>
+<p>Get tick count start. </p>
+<p>Table 6-1  </p>
+<p>Services used by the CAN </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 42 </p>
+<p><b>7. </b></p>
+<p><b>Configuration </b></p>
+<p>For CAN driver the attributes can be configured with configuration Tool “GENy” </p>
+<p>The CAN driver supports pre-compile, link-time and post-build configuration. </p>
+<p>For post-build systems, re-flashing the generated data can change some configuration </p>
+<p>settings. </p>
+<p>For post-build and link-time configurations pre-compile settings are configured at compile </p>
+<p>time and therefore unchangeable at link or post-build time. </p>
+<p>The following parameters are set by GENy configuration (see Chapter “Configuration with </p>
+<p>GENy”). </p>
+<p> </p>
+<p><b>7.1 </b></p>
+<p><b>Pre-Compile Parameters </b></p>
+<p>Some settings have to be available before compilation: </p>
+<p><b>&gt; </b></p>
+<p>Version API (Can_GetVersionInfo() activation) </p>
+<p>#define CAN_VERSION_INFO_API   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>DET (development error detection) </p>
+<p>#define CAN_DEV_ERROR_DETECT   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Hardware Loop Check (timeout monitoring) </p>
+<p>#define CAN_HARDWARE_CANCELLATION   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Polling modes: Tx confirmation, Reception, Wakeup, BusOff </p>
+<p>#define CAN_TX_PROCESSING       CAN_INTERRUPT/ CAN_POLLING </p>
+<p>#define CAN_RX_PROCESSING       CAN_INTERRUPT/ CAN_POLLING </p>
+<p>#define CAN_BUSOFF_PROCESSING   CAN_INTERRUPT/ CAN_POLLING </p>
+<p>#define CAN_WAKEUP_PROCESSING   CAN_INTERRUPT/ CAN_POLLING </p>
+<p>#define CAN_INDIVIDUAL_PROCESSING   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Multiplexed Tx (external PIA – by use multiple Tx mailboxes) </p>
+<p>#define CAN_MULTIPLEXED_TRANSMISSION   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Configuration Variant (define the configuration type when using post build variant) </p>
+<p>#define CAN_ENABLE_SELECTABLE_PB </p>
+<p><b>&gt; </b></p>
+<p>Use Generic Precopy Function (None AUTOSAR feature) </p>
+<p>#define CAN_GENERIC_PRECOPY   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Use Generic Confirmation Function (None AUTOSAR feature) </p>
+<p>#define CAN_GENERIC_CONFIRMATION   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Use Rx Queue Function (None AUTOSAR feature) </p>
+<p>#define CAN_RX_QUEUE   STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Used ID type (standard/extended or mixed ID format) </p>
+<p>#define CAN_EXTENDED_ID   STD_ON/STD_OFF </p>
+<p>#define CAN_MIXED_ID      STD_ON/STD_OFF</p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 43 </p>
+<p><b>&gt; </b></p>
+<p>Usage of Rx and Tx Full and BasicCAN objects (deactivate only when not using and </p>
+<p>to save ROM and runtime consumption) </p>
+<p>#define CAN_RX_FULLCAN_OBJECTS    STD_ON/STD_OFF </p>
+<p>#define CAN_TX_FULLCAN_OBJECTS     STD_ON/STD_OFF </p>
+<p>#define CAN_RX_BASICCAN_OBJECTS   STD_ON/STD_OFF</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>Use Multiple BasicCAN objects </p>
+<p>#define CAN_MULTIPLE_BASICCAN    STD_ON/STD_OFF</p>
+<p> </p>
+<p><b>&gt; </b></p>
+<p>Optimizations </p>
+<p>#define CAN_ONE_CONTROLLER_OPTIMIZATION    STD_ON/STD_OFF </p>
+<p>#define CAN_DYNAMIC_FULLCAN_ID     STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Usage of nested CAN interrupts </p>
+<p>#define CAN_NESTED_INTERRUPTS     STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Use Multiple ECU configurations </p>
+<p>#define CAN_MULTI_ECU_CONFIG     STD_ON/STD_OFF </p>
+<p><b>&gt; </b></p>
+<p>Use RAM Check (verify mailbox buffers) </p>
+<p>#define CAN_RAM_CHECK     x </p>
+<p><b>&gt; </b></p>
+<p>Use Overrun detection </p>
+<p>#define CAN_OVERRUN_NOTIFICATION      x </p>
+<p><b>&gt; </b></p>
+<p>Select MicroSar version </p>
+<p>#define CAN_MICROSAR_VERSION          CAN_MSR40/CAN_MSR30 </p>
+<p><b>&gt; </b></p>
+<p>Tx Cancellation of Identical IDs </p>
+<p>#define CAN_IDENTICAL_ID_CANCELLATION     STD_ON/STD_OFF </p>
+<p><b>7.2 </b></p>
+<p><b>Link-Time Parameters </b></p>
+<p>The library version of the CAN driver use following generated settings: </p>
+<p><b>&gt; </b></p>
+<p>Maximum amount of used controllers and Tx mailboxes (has to be set for post-build </p>
+<p>variants at linktime) </p>
+<p><b>7.3 </b></p>
+<p><b>Post-Build Parameters </b></p>
+<p>Following settings are post-build data that can be changed for re-flashing: </p>
+<p><b>&gt; </b></p>
+<p>Amount and usage of FullCAN Rx and Tx mailboxes </p>
+<p><b>&gt; </b></p>
+<p>Used database (message information like ID, DLC) </p>
+<p><b>&gt; </b></p>
+<p>Filters for BasicCAN Rx mailbox </p>
+<p><b>&gt; </b></p>
+<p>Baud-rate settings </p>
+<p><b>&gt; </b></p>
+<p>Module Start Address (only for post-build systems: The memory location for re-</p>
+<p>flashed data has to be defined) </p>
+<p><b>&gt; </b></p>
+<p>Configuration ID (only for post-build systems: This number is used to identify the </p>
+<p>post-build data </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 44 </p>
+<p><b>7.4 </b></p>
+<p><b>Configuration with GENy </b></p>
+<p>The CAN driver is configured with the help of the configuration tool GENy. </p>
+<p>To generate communication specific settings, like used message objects e.g. FullCAN Rx </p>
+<p>mailboxes, baud rate settings and hardware specific settings for CAN communication, the </p>
+<p>GENy tool is used. This chapter explains the usage of this tool. </p>
+<p>Please refer to the online help of the tool for detailed information about the general usage. </p>
+<p>And see below for special settings of the hardware specifics. </p>
+<p> </p>
+<p><b>7.4.1 </b></p>
+<p><b>Platform Settings </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 7-1 </p>
+<p>Platform settings </p>
+<p> </p>
+<p><b>Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Attribute is of </b></p>
+<p><b>type </b></p>
+<p><b>(Configuration </b></p>
+<p><b>Variant) </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Micro </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Hw_Tms470/570Cpu(Dcan)</p>
+<p> </p>
+<p>Select </p>
+<p>the </p>
+<p>hardware </p>
+<p>platform to use </p>
+<p>Derivative </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>TMS470PSF761 </p>
+<p>TMS570PSF762 </p>
+<p>TMS570PSFC66 </p>
+<p>TMS570LS30316U </p>
+<p>The </p>
+<p>specific </p>
+<p>derivative, </p>
+<p>based on the platform </p>
+<p>Compiler </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Texas Instruments</p>
+<p> </p>
+<p>Compiler selection  </p>
+<p>Table 7-1  </p>
+<p>Platform Parameter description </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 45 </p>
+<p><b>7.4.2 </b></p>
+<p><b>Component Settings </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Figure 7-2 </p>
+<p>Component Settings </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 46 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Miscellaneous </p>
+<p>Hardware Loop Check </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Timeout monitoring to check for </p>
+<p>hardware problems inside a loop </p>
+<p>(possible endless loops because of </p>
+<p>hardware issues will be notified </p>
+<p>over DEM) </p>
+<p>Timeout Duration Factor </p>
+<p>pre-compile </p>
+<p>Integer </p>
+<p>Loop count </p>
+<p>Maximum loop count for “Hardware </p>
+<p>Loop Check”. Refer to loop </p>
+<p>descriptions set this value for your </p>
+<p>needs. </p>
+<p>Timeout Counter ID </p>
+<p>(MICROSAR401 only) </p>
+<p>pre-compile </p>
+<p>Float </p>
+<p>Time </p>
+<p>Specifies  the  counter  ID  used  in </p>
+<p>OS for 'Timeout Duration'</p>
+<p> </p>
+<p>Multiplexed Transmission </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate to get multiplexed transmit </p>
+<p>objects for Tx BasicCAN object (3 </p>
+<p>send objects instead of 1) avoids </p>
+<p>external Id priority inversion </p>
+<p>Wakeup Support </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate to Wake up over CAN bus </p>
+<p>by CAN driver </p>
+<p>    Polling </p>
+<p>Tx Processing </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Interrupt </p>
+<p>/ </p>
+<p>Polling </p>
+<p>Activate to handle transmit </p>
+<p>messages over polling </p>
+<p>Rx Processing </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Interrupt </p>
+<p>/ </p>
+<p>Polling </p>
+<p>Activate to handle receive </p>
+<p>messages over polling </p>
+<p>Busoff Processing </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Interrupt </p>
+<p>/ </p>
+<p>Polling </p>
+<p>Activate to handle Bus Off event </p>
+<p>over polling </p>
+<p>Wakeup Processing </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Interrupt </p>
+<p>/ </p>
+<p>Polling </p>
+<p>Activate to handle Wakeup event </p>
+<p>over polling </p>
+<p>Mainfunction bus off period </p>
+<p>pre-compile </p>
+<p>Float </p>
+<p>Time </p>
+<p>Period to call </p>
+<p>Can_MainFunction_BusOff() in </p>
+<p>seconds </p>
+<p>Mainfunction wakeup </p>
+<p>period </p>
+<p>pre-compile </p>
+<p>Float </p>
+<p>Time </p>
+<p>Period to call </p>
+<p>Can_MainFunction_Wakeup() in </p>
+<p>seconds </p>
+<p>Mainfunction read period </p>
+<p>pre-compile </p>
+<p>Float </p>
+<p>Time </p>
+<p>Period to call </p>
+<p>Can_MainFunction_Read() in </p>
+<p>seconds </p>
+<p>Mainfunction write period </p>
+<p>pre-compile </p>
+<p>Float </p>
+<p>Time </p>
+<p>Period to call </p>
+<p>Can_MainFunction_Write() in </p>
+<p>seconds </p>
+<p>    AUTOSAR extension </p>
+<p>Generic PreCopy </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Generic Rx notification for all </p>
+<p>messages </p>
+<p>Generic Confirmation </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Generic Tx confirmation for all </p>
+<p>messages </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 47 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Generic PreTransmit </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>A generic PreTransmit, common </p>
+<p>for all Tx messages will be called </p>
+<p>when this checkbox is enabled. </p>
+<p>Use this to change data or abort </p>
+<p>transmission right before the </p>
+<p>message will be send. </p>
+<p>Rx FullCAN Support </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Use Rx FullCAN message objects </p>
+<p>(deactivate to reduce ROM and </p>
+<p>runtime consumption) </p>
+<p>Tx FullCAN Support </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Use Tx FullCAN message objects </p>
+<p>(deactivate to reduce ROM and </p>
+<p>runtime consumption) </p>
+<p>Rx BasicCAN Support </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Use Rx BasicCAN message </p>
+<p>objects (deactivate to reduce ROM </p>
+<p>and runtime consumption) </p>
+<p>Use Nested CAN Interrupts </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>CAN ISRs from different controllers </p>
+<p>can interrupt each other (only with </p>
+<p>higher priority). deactivate to </p>
+<p>reduce runtime consumption. </p>
+<p>Secure Rx Buffer used </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Temporary buffer for received data </p>
+<p>will be located in a unused mailbox </p>
+<p>object. This is to secure receive </p>
+<p>data by not locate it to common </p>
+<p>RAM. </p>
+<p>Hardware Loop Check by </p>
+<p>Application </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Enable this when you like to handle </p>
+<p>“Hardware </p>
+<p>Loop </p>
+<p>Check” </p>
+<p>by </p>
+<p>your </p>
+<p>own. </p>
+<p>Using </p>
+<p>API </p>
+<p>functions </p>
+<p>“ApplCanTimerStart()“, </p>
+<p>„ApplCanTimerEnd()“ </p>
+<p>and </p>
+<p>„ApplCanTimerLoop()“ </p>
+<p>Report CAN_E_TIMEOUT </p>
+<p>DEM as DET 0x07 </p>
+<p>notification </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Enable this when you like to report </p>
+<p>CAN_E_TIMEOUT </p>
+<p>(“Hardware </p>
+<p>Loop  Check”)  to  DET  instead  of </p>
+<p>DEM (does only work when DET is </p>
+<p>activated) </p>
+<p>Individual Processing </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Enable </p>
+<p>this </p>
+<p>when </p>
+<p>you </p>
+<p>like </p>
+<p>to </p>
+<p>configure </p>
+<p>mailbox </p>
+<p>specific </p>
+<p>polling/interrupt </p>
+<p>processing. </p>
+<p>This </p>
+<p>feature is only available with “High </p>
+<p>End” license. </p>
+<p>Support Mixed ID </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Force CAN driver to handle Mixed </p>
+<p>ID (standard and extended ID) at </p>
+<p>pre-compile-time to expand the ID </p>
+<p>type later on. </p>
+<p>Multiple BasicCAN Objects </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Support Multiple BasicCAN </p>
+<p>objects. This gives the possibility to </p>
+<p>use multiple Filters and optimize </p>
+<p>acceptance Filtering as well as </p>
+<p>avoid overrun. This feature is only </p>
+<p>available with “High End” license. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 48 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Optimize for one controller </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate this for 1 controller </p>
+<p>systems when you never will </p>
+<p>expand to multi-controller. So that </p>
+<p>the CAN driver works more </p>
+<p>efficient </p>
+<p>Dynamic FullCAN Tx ID </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Always write FullCAN Tx ID within </p>
+<p>Can_Write() API function. </p>
+<p>Deactivate this to optimize code </p>
+<p>when you do not use FullCAN Tx </p>
+<p>objects dynamically. </p>
+<p>Size of Hw HandleType </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>8bit </p>
+<p>16bit </p>
+<p>Support 8bit Hardware Handles as </p>
+<p>define in AutoSar 3.01 specified. </p>
+<p>Or change to 16bit like specified in </p>
+<p>AutoSar 4.0. </p>
+<p>Partial Networking</p>
+<p><b> </b></p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate this when you like to </p>
+<p>support a partial network that will </p>
+<p>be woken up by special NM </p>
+<p>message. This feature have to be </p>
+<p>enabled if one of the controllers will </p>
+<p>wake up by partial network </p>
+<p>transceiver. </p>
+<p><b> </b></p>
+<p>Get Status API </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Support Can_GetStatus() API that </p>
+<p>return the hardware states: </p>
+<p>CAN_STATUS_STOP, CAN_STATUS_INIT, </p>
+<p>CAN_STATUS_INCONSISTENT, </p>
+<p>CAN_STATUS_WARNING, </p>
+<p>CAN_STATUS_PASSIVE, </p>
+<p>CAN_STATUS_BUSOFF, </p>
+<p>CAN_STATUS_SLEEP </p>
+<p>Type of Interrupt Function </p>
+<p>Link-time </p>
+<p>Enum </p>
+<p>Category 1 </p>
+<p>Category 2 </p>
+<p>VoidFuncVoid </p>
+<p>Category 1: Interrupt Function has   </p>
+<p>to be added to the interrupt vector </p>
+<p>table unless this is not already </p>
+<p>done automatically by a compiler </p>
+<p>pragma. </p>
+<p>Category 2: Interrupt Function is </p>
+<p>defined with ISR() define. </p>
+<p>VoidFuncVoid: Interrupt Function is </p>
+<p>declared as void ISR(void) and has </p>
+<p>to be called in case of a CAN </p>
+<p>Interrupt. </p>
+<p>CAN Interrupt lock </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>CANDriver </p>
+<p>Application </p>
+<p>Both </p>
+<p>Disable and Restore Can Interrupt </p>
+<p>by CAN Driver or Application or </p>
+<p>CAN Driver and Application. </p>
+<p>Reason maybe, that the CAN </p>
+<p>driver should not access the </p>
+<p>Interrupt controller for CAN </p>
+<p>interrupts or there are other </p>
+<p>restrictions (special security level) </p>
+<p>or Application has to care about </p>
+<p>additional Interrupts like Wakeup.</p>
+<p><b> </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 49 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Overrun Notification </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>None </p>
+<p>DET </p>
+<p>Application </p>
+<p>Overrun detection activation and </p>
+<p>selection of the Notification </p>
+<p>function. </p>
+<p>None: No Overrun detection. </p>
+<p>DET: will be called for Overrun. </p>
+<p>Application: will be called.</p>
+<p><b> </b></p>
+<p>RAM check </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>None </p>
+<p>Active </p>
+<p>Mailbox </p>
+<p>Notification </p>
+<p>RAM check of mailbox buffers </p>
+<p>None: No RAM check </p>
+<p>Active: Active RAM check (global </p>
+<p>notification) </p>
+<p>Mailbox Notification: Active RAM </p>
+<p>check (global + mailbox </p>
+<p>notification) </p>
+<p>Hardware (Transmit) </p>
+<p>Cancellation </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Enable/disable the usage of </p>
+<p>‘transmit cancellation’ out of </p>
+<p>hardware mailboxes, so that the </p>
+<p>canceled message won’t be send. </p>
+<p>(avoid internal priority inversion) </p>
+<p>Identical ID cancellation </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>'Hardware Transmit Cancellation&quot; </p>
+<p>also cancel messages with same </p>
+<p>identifier (newer data will be send) </p>
+<p>out of hardware mailboxes. </p>
+<p>otherwise </p>
+<p>only lower prior identifiers will be </p>
+<p>cancelled. (older data will be send) </p>
+<p>    Rx Queue </p>
+<p>Rx Queue </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Enable this when you like to handle </p>
+<p>Rx messages in polling context. </p>
+<p>(Shorten interrupt latency time). </p>
+<p>This feature is only available with </p>
+<p>“High End” license. </p>
+<p>Size </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Size of FIFO in which the Message </p>
+<p>information is buffered. </p>
+<p>Common </p>
+<p>Configuration Variant </p>
+<p>pre-compile </p>
+<p>Enum </p>
+<p>Pre-Compile, </p>
+<p>Link-Time, </p>
+<p>Post build </p>
+<p>Select your project type </p>
+<p>Version Info API </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate function to get version </p>
+<p>information </p>
+<p>Dev Error Detection </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate to get information about </p>
+<p>possible conflicts (refer to DET </p>
+<p>module description) </p>
+<p>Prod Error Detection </p>
+<p>pre-compile </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate to get information about </p>
+<p>possible conflicts in a running </p>
+<p>system (refer to DEM module </p>
+<p>description) </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 50 </p>
+<p><b>Attribute Name </b></p>
+<p><b>Configuration </b></p>
+<p><b>Variant </b></p>
+<p><b>Value </b></p>
+<p><b>Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>User Config File </p>
+<p>pre-compile </p>
+<p>String </p>
+<p>File name and </p>
+<p>path </p>
+<p>This file will be included in the </p>
+<p>Can_cfg.h for special settings </p>
+<p>Post build configuration </p>
+<p>Module Start Address  </p>
+<p>(Post-build only) </p>
+<p>post-build </p>
+<p>Integer </p>
+<p>Address </p>
+<p>Address to Flash the data </p>
+<p>Max Nr. Of Tx Objects  </p>
+<p>(Post-build only) </p>
+<p>Link-time </p>
+<p>Integer </p>
+<p>Amount </p>
+<p>Amount of maximum used transmit </p>
+<p>objects over all controllers (used </p>
+<p>for RAM variables). One object for </p>
+<p>BasicCAN Tx and one for each </p>
+<p>FullCAN Tx. Add all objects over all </p>
+<p>used Channels for this value. </p>
+<p>Max CAN Controller  </p>
+<p>(Post-build only) </p>
+<p>Link-time </p>
+<p>Integer </p>
+<p>Amount </p>
+<p>Amount of maximum used </p>
+<p>controllers (used for RAM </p>
+<p>variables) </p>
+<p>Configuration ID  </p>
+<p>(Post-build only) </p>
+<p>post-build </p>
+<p>Integer </p>
+<p>Identity </p>
+<p>A special value to identify this </p>
+<p>configuration in the Flash. </p>
+<p>Table 7-2  </p>
+<p>Component Parameter description </p>
+<p> </p>
+<p><b>7.4.3 </b></p>
+<p><b>Controller (Channel) Settings </b></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 51 </p>
+<p><b>Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Attribute is of </b></p>
+<p><b>type </b></p>
+<p><b>(Configuration </b></p>
+<p><b>Variant) </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Miscellaneous </p>
+<p>Wakeup </p>
+<p>Source </p>
+<p>ID /  </p>
+<p>Wakeup </p>
+<p>Source </p>
+<p>Ref </p>
+<p>(Reference </p>
+<p>is </p>
+<p>only </p>
+<p>available  if  EcuM  is </p>
+<p>available in GENy)</p>
+<p> </p>
+<p>Link-time </p>
+<p>Integer </p>
+<p>Source </p>
+<p>Insert </p>
+<p>the </p>
+<p>Wakeup </p>
+<p>Source </p>
+<p>value </p>
+<p>compatible </p>
+<p>to </p>
+<p>ECU </p>
+<p>State Manager. </p>
+<p>Enable </p>
+<p>Wakeup </p>
+<p>Support </p>
+<p>Link-time </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>MICROSAR4x </p>
+<p>only: </p>
+<p>Activation </p>
+<p>of </p>
+<p>Wakeup </p>
+<p>over </p>
+<p>CAN bus. </p>
+<p>    AUTOSAR extension </p>
+<p>Partial </p>
+<p>Networking </p>
+<p>Post-build </p>
+<p>Bool </p>
+<p>On / Off </p>
+<p>Activate  this  when  you  there </p>
+<p>is </p>
+<p>a </p>
+<p>partial </p>
+<p>network </p>
+<p>transceiver  on  this  controller </p>
+<p>active and used. </p>
+<p>Table 7-2  </p>
+<p>Controller Parameter description </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 52 </p>
+<p><b>7.4.4 </b></p>
+<p><b>Init Structure Settings </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 7-2 </p>
+<p>Init Structure Dialog </p>
+<p> </p>
+<p>Add Init Structures to setup multiple baud rate and filter settings that can be selected at </p>
+<p>Initialization phase of the ECU. </p>
+<p>MicroSar3  only:  This  structure  can  be  selected  with </p>
+<p>Can_InitStruct()</p>
+<p>  before  call </p>
+<p>Can_InitController(). </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 53 </p>
+<p><b>7.4.4.1 </b></p>
+<p><b>Setup the Filter by pressing the “Acceptance Filter Configuration” Button. </b></p>
+<p> </p>
+<p> </p>
+<p>Figure 7-3 </p>
+<p>Setup Filter Dialog </p>
+<p><b>Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Attribute is of </b></p>
+<p><b>type </b></p>
+<p><b>(Configuration </b></p>
+<p><b>Variant) </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p>The default value is </p>
+<p>written in bold </p>
+<p><b>Description </b></p>
+<p>Setup </p>
+<p>Acceptance </p>
+<p>Filter </p>
+<p>Post-build </p>
+<p>Integer </p>
+<p>Mask, code </p>
+<p>Each  ID  –bit  is  represented </p>
+<p>by </p>
+<p>a </p>
+<p>“0/1/X”, </p>
+<p>means </p>
+<p>must </p>
+<p>match a “0” or “1” or must not </p>
+<p>match “X” </p>
+<p>Open filters </p>
+<p> </p>
+<p>Action </p>
+<p>- </p>
+<p>Open the filter complete to </p>
+<p>receive all IDs </p>
+<p>Optimize </p>
+<p> </p>
+<p>Action </p>
+<p>- </p>
+<p>Open  the  filter  automatic  to </p>
+<p>just </p>
+<p>receive </p>
+<p>the </p>
+<p>IDs </p>
+<p>in </p>
+<p>database.  “Use  FullCAN”  try </p>
+<p>to put as much messages in </p>
+<p>FullCAN </p>
+<p>objects </p>
+<p>to </p>
+<p>better </p>
+<p>optimize filters </p>
+<p>Messages-</p>
+<p>Window </p>
+<p> </p>
+<p> </p>
+<p>Messages that will be </p>
+<p>received via ranges </p>
+<p>(like NM messages) will </p>
+<p>have always a grey flag </p>
+<p>in view. </p>
+<p>They will be included in </p>
+<p>“Irrelevant passing </p>
+<p>messages” amount. </p>
+<p>Open  the  filter  automatic  to </p>
+<p>just </p>
+<p>receive </p>
+<p>the </p>
+<p>IDs </p>
+<p>in </p>
+<p>database.  “Use  FullCAN”  try </p>
+<p>to put as much messages in </p>
+<p>FullCAN </p>
+<p>objects </p>
+<p>to </p>
+<p>better </p>
+<p>optimize filters </p>
+<p>Table 7-3  </p>
+<p>Filter Parameter description </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 54 </p>
+<p><b>7.4.4.2 </b></p>
+<p><b>Setup the Baud rate by pressing the “Bus timing Configuration” Button </b></p>
+<p> </p>
+<p>Figure 7-4 </p>
+<p>Baud Rate Dialog </p>
+<p><b>Attribute </b></p>
+<p><b>Name </b></p>
+<p><b>Attribute is of </b></p>
+<p><b>type </b></p>
+<p><b>(Configuration </b></p>
+<p><b>Variant) </b></p>
+<p><b>Value Type </b></p>
+<p><b>Values </b></p>
+<p><b>Description </b></p>
+<p>Clock </p>
+<p>Post-build </p>
+<p>Integer </p>
+<p>CAN clock </p>
+<p>Set the frequent of the CAN cell clock. </p>
+<p>Baudrate </p>
+<p>Post-build </p>
+<p>Integer </p>
+<p>Baud rate </p>
+<p>Set baud rate to be used for this </p>
+<p>channel </p>
+<p>Calculate </p>
+<p> </p>
+<p>Action </p>
+<p>- </p>
+<p>It is possible to calculate possible </p>
+<p>hardware register settings out of baud </p>
+<p>rate or vice versa. </p>
+<p>Sample, BTL </p>
+<p>cycles, SJW </p>
+<p>Post-build </p>
+<p>Select </p>
+<p>Sample Point </p>
+<p>Select the sample point and sync </p>
+<p>phase related to your bus physics </p>
+<p>Table 7-4  </p>
+<p>Baud rate Parameter description </p>
+<p><b>7.5 </b></p>
+<p><b>Configuration with da DaVinci Configurator </b></p>
+<p>See Online help within DaVinci Configurator and BSWMD file for parameter settings. </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 55 </p>
+<p><b>8. </b></p>
+<p><b>AUTOSAR Standard Compliance </b></p>
+<p><b>8.1 </b></p>
+<p><b>Limitations / Restrictions </b></p>
+<p><b>&gt; </b></p>
+<p>No multiple AUTOSAR CAN driver allowed in the system. </p>
+<p><b>&gt; </b></p>
+<p>No support for L-PDU callout (AUTOSAR 3.2.1), but support ‘Generic Precopy’ instead </p>
+<p><b>&gt; </b></p>
+<p>No support for multiple read and write period configuration (AUTOSAR 3.2.1) </p>
+<p><b>&gt; </b></p>
+<p>Configurations with no Tx Basic CAN are not supported </p>
+<p> </p>
+<p><b>8.2 </b></p>
+<p><b>Vector Extensions </b></p>
+<p>Refer to Chapter “Features” listed under “</p>
+<p><b>AUTOSAR extensions” </b></p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 56 </p>
+<p><b>9. </b></p>
+<p><b>Glossary and Abbreviations </b></p>
+<p><b>9.1 </b></p>
+<p><b>Glossary </b></p>
+<p><b>Term </b></p>
+<p><b>Description </b></p>
+<p>GENy </p>
+<p>Generation tool for CANbedded and MICROSAR components </p>
+<p>High End (</p>
+<p>license)</p>
+<p> </p>
+<p>Product </p>
+<p>license</p>
+<p> to support an extended feature set (see Feature table) </p>
+<p>Table 9-1  </p>
+<p>Glossary </p>
+<p> </p>
+<p><b>9.2 </b></p>
+<p><b>Abbreviations </b></p>
+<p><b>Abbreviation </b></p>
+<p><b>Description </b></p>
+<p>API </p>
+<p>Application Programming Interface </p>
+<p> </p>
+<p>AUTOSAR </p>
+<p>Automotive Open System Architecture </p>
+<p>BSW </p>
+<p>Basis Software </p>
+<p>DEM </p>
+<p>Diagnostic Event Manager </p>
+<p>DET </p>
+<p>Development Error Tracer </p>
+<p>ECU </p>
+<p>Electronic Control Unit </p>
+<p>HIS </p>
+<p>Hersteller Initiative Software </p>
+<p>ISR </p>
+<p>Interrupt Service Routine </p>
+<p>MICROSAR </p>
+<p>Microcontroller Open System Architecture (the Vector AUTOSAR </p>
+<p>solution) </p>
+<p>3,3x = AUTOSAR version 3 </p>
+<p>401 = AUTOSAR version 4.0.1 </p>
+<p>403 = AUTOSAR version 4.0.3 </p>
+<p>4x = AUTOSAR version 4.x.x </p>
+<p>SWS </p>
+<p>Software Specification </p>
+<p>Common CAN </p>
+<p>Connect two physical peripheral channels to one CAN bus (to increase </p>
+<p>the amount of FullCAN) </p>
+<p>Hardware Loop </p>
+<p>Check </p>
+<p>Timeout monitoring for possible endless loops. </p>
+<p>Table 9-2  </p>
+<p>Abbreviations </p>
+<p> </p>
+<h1 style="page-break-before:always; "></h1>
+<p>Technical Reference MICROSAR CAN Driver </p>
+<p>2013, Vector Informatik GmbH </p>
+<p>Version: 1.10.00 </p>
+<p> </p>
+<p>Page 57 </p>
+<p><b>10. Contact </b></p>
+<p>Visit our website for more information on </p>
+<p> </p>
+<p>&gt;   News </p>
+<p>&gt;   Products </p>
+<p>&gt;   Demo software </p>
+<p>&gt;   Support </p>
+<p>&gt;   Training data </p>
+<p>&gt;   Addresses </p>
+<p> </p>
+<p><b>www.vector.com </b></p>
+<p> </p>
+</body>
+</html>
+{% endraw %}

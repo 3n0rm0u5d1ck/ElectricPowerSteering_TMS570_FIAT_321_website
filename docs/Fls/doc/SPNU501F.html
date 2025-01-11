@@ -1,0 +1,2924 @@
+---
+layout: default
+title: SPNU501F
+nav_order: 4
+parent: Flash Driver
+---
+{% raw %}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+     "http://www.w3.org/TR/html4/transitional.dtd">
+<html>
+<head>
+
+  <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+  <title></title>
+  <meta name="generator" content="LibreOffice 24.2.7.2 (Linux)"/>
+  <meta name="created" content="00:00:00"/>
+  <meta name="changed" content="00:00:00"/>
+</head>
+<body>
+<h1></h1>
+<p><b>F021 Flash API</b></p>
+<p><b>Version 2.01.00</b></p>
+<p><b>Reference Guide</b></p>
+<p>Literature Number: SPNU501F</p>
+<p>December 2012– Revised May 2014</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i><b>Contents</b></i></p>
+<p><b>1</b></p>
+<p><b>Introduction</b></p>
+<p>.........................................................................................................................</p>
+<p><b>4</b></p>
+<p>1.1</p>
+<p>Reference Material</p>
+<p>.......................................................................................................</p>
+<p>4</p>
+<p>1.2</p>
+<p>Function Listing Format</p>
+<p>.................................................................................................</p>
+<p>4</p>
+<p><b>2</b></p>
+<p><b>F021 Flash API Overview</b></p>
+<p>......................................................................................................</p>
+<p><b>6</b></p>
+<p>2.1</p>
+<p>Introduction</p>
+<p>................................................................................................................</p>
+<p>6</p>
+<p>2.2</p>
+<p>API Overview</p>
+<p>.............................................................................................................</p>
+<p>6</p>
+<p>2.3</p>
+<p>Using API</p>
+<p>..................................................................................................................</p>
+<p>7</p>
+<p><b>3</b></p>
+<p><b>API Functions</b></p>
+<p>....................................................................................................................</p>
+<p><b>10</b></p>
+<p>3.1</p>
+<p>Flash State Machine Functions</p>
+<p>.......................................................................................</p>
+<p>10</p>
+<p>3.2</p>
+<p>Asynchronous Functions</p>
+<p>..............................................................................................</p>
+<p>16</p>
+<p>3.3</p>
+<p>Program Functions</p>
+<p>.....................................................................................................</p>
+<p>18</p>
+<p>3.4</p>
+<p>Read Functions</p>
+<p>.........................................................................................................</p>
+<p>20</p>
+<p>3.5</p>
+<p>Informational</p>
+<p>Functions</p>
+<p>................................................................................................</p>
+<p>29</p>
+<p>3.6</p>
+<p>Utility Functions</p>
+<p>.........................................................................................................</p>
+<p>32</p>
+<p>3.7</p>
+<p>User Definable Functions</p>
+<p>..............................................................................................</p>
+<p>33</p>
+<p><b>4</b></p>
+<p><b>API Macros</b></p>
+<p>........................................................................................................................</p>
+<p><b>34</b></p>
+<p>4.1</p>
+<p>FAPI_CHECK_FSM_READY_BUSY</p>
+<p>................................................................................</p>
+<p>34</p>
+<p>4.2</p>
+<p>FAPI_CLEAR_FSM_DONE_EVENT</p>
+<p>.................................................................................</p>
+<p>34</p>
+<p>4.3</p>
+<p>FAPI_GET_FSM_STATUS</p>
+<p>............................................................................................</p>
+<p>35</p>
+<p>4.4</p>
+<p>FAPI_SUSPEND_FSM</p>
+<p>................................................................................................</p>
+<p>36</p>
+<p>4.5</p>
+<p>FAPI_WRITE_EWAIT</p>
+<p>..................................................................................................</p>
+<p>37</p>
+<p>4.6</p>
+<p>FAPI_WRITE_LOCKED_FSM_REGISTER</p>
+<p>.........................................................................</p>
+<p>37</p>
+<p><b>5</b></p>
+<p><b>Recommended FSM Flows</b></p>
+<p>..................................................................................................</p>
+<p><b>37</b></p>
+<p>5.1</p>
+<p>New Devices From Factory</p>
+<p>...........................................................................................</p>
+<p>37</p>
+<p>5.2</p>
+<p>Recommended Erase Flows</p>
+<p>..........................................................................................</p>
+<p>38</p>
+<p>5.3</p>
+<p>Recommended Program Flow</p>
+<p>........................................................................................</p>
+<p>40</p>
+<p><b>Appendix A Flash State Machine Commands</b></p>
+<p>.................................................................................</p>
+<p><b>41</b></p>
+<p>A.1</p>
+<p>Flash State Machine Commands</p>
+<p>....................................................................................</p>
+<p>41</p>
+<p><b>Appendix B Typedefs and Enumerations</b></p>
+<p>.......................................................................................</p>
+<p><b>42</b></p>
+<p>B.1</p>
+<p>Type Definitions</p>
+<p>.......................................................................................................</p>
+<p>42</p>
+<p>B.2</p>
+<p>Enumerations</p>
+<p>..........................................................................................................</p>
+<p>42</p>
+<p><b>Appendix C Flash Validation Procedure</b></p>
+<p>........................................................................................</p>
+<p><b>47</b></p>
+<p><b>Appendix D Parallel Signature Analysis (PSA) algorithm</b></p>
+<p>.................................................................</p>
+<p><b>48</b></p>
+<p><b>Appendix E Revision History</b></p>
+<p>.......................................................................................................</p>
+<p><b>49</b></p>
+<p>2</p>
+<p><i>Table of Contents</i></p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><b>List of Figures</b></p>
+<p>1</p>
+<p>FMSTAT Register</p>
+<p>..........................................................................................................</p>
+<p>35</p>
+<p>2</p>
+<p>Recommended Sector Erase Flow</p>
+<p>.......................................................................................</p>
+<p>38</p>
+<p>3</p>
+<p>Recommended Bank Erase Flow</p>
+<p>........................................................................................</p>
+<p>39</p>
+<p>4</p>
+<p>Recommended Program Flow</p>
+<p>............................................................................................</p>
+<p>40</p>
+<p><b>List of Tables</b></p>
+<p>1</p>
+<p>Summary of Flash State Machine Functions</p>
+<p>.............................................................................</p>
+<p>6</p>
+<p>2</p>
+<p>Summary of Asynchronous Command Functions</p>
+<p>.......................................................................</p>
+<p>6</p>
+<p>3</p>
+<p>Summary of Program Functions</p>
+<p>...........................................................................................</p>
+<p>6</p>
+<p>4</p>
+<p>Summary of Read Functions</p>
+<p>...............................................................................................</p>
+<p>7</p>
+<p>5</p>
+<p>Summary of Information Functions</p>
+<p>........................................................................................</p>
+<p>7</p>
+<p>6</p>
+<p>Summary of User Defined Functions</p>
+<p>......................................................................................</p>
+<p>7</p>
+<p>7</p>
+<p>Summary of Utility Functions</p>
+<p>...............................................................................................</p>
+<p>7</p>
+<p>8</p>
+<p>FMSTAT Register Field Descriptions</p>
+<p>....................................................................................</p>
+<p>35</p>
+<p>9</p>
+<p>Flash State Machine Commands</p>
+<p>........................................................................................</p>
+<p>41</p>
+<p>10</p>
+<p>API Version History</p>
+<p>........................................................................................................</p>
+<p>49</p>
+<p>11</p>
+<p>Document Revision History</p>
+<p>...............................................................................................</p>
+<p>50</p>
+<p>3</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>List of Figures</i></p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Reference Guide</i></p>
+<p><i>SPNU501F–December 2012–Revised May 2014</i></p>
+<p><b>1</b></p>
+<p><b>Introduction</b></p>
+<p><b>Background</b></p>
+<p>This reference guide provides a detailed description of Texas Instruments'</p>
+<p>F021 Flash API functions that</p>
+<p>can be used to erase, program and verify F021 Flash on TI devices.</p>
+<p><i><b>1.1</b></i></p>
+<p><i><b>Reference Material</b></i></p>
+<p>Use this guide in conjunction with the<i> F021 Flash Module</i> chapter in the device-specific technical</p>
+<p>reference manual</p>
+<p>and data sheet that is being used. For additional</p>
+<p>options for programming and erasing</p>
+<p>the Flash, see the<i> Advanced F021 Flash API Erase/Program Usage</i> (SPNA148).</p>
+<p><i><b>1.2</b></i></p>
+<p><i><b>Function Listing Format</b></i></p>
+<p>This is the general</p>
+<p>format of an entry for a function, compiler intrinsic, or macro.</p>
+<p>A short description of what function<b> function_name()</b> does.</p>
+<p><b>Synopsis</b></p>
+<p>Provides a prototype for function<b> function_name()</b>.</p>
+<p>&lt;return_type&gt; function_name(</p>
+<p>&lt;type_1&gt; parameter_1,</p>
+<p>&lt;type_2&gt; parameter_2,</p>
+<p>&lt;type_n&gt; parameter_n</p>
+<p>)</p>
+<p><b>Parameters</b></p>
+<p><i>parameter_1 [in]</i></p>
+<p>Pointer to x</p>
+<p><i>parameter_2 [out]</i></p>
+<p>Handle for y</p>
+<p><i>parameter_n [in/out]</i></p>
+<p>Pointer to z</p>
+<p>Parameter passing is categorized as follows:</p>
+<p>•</p>
+<p><i>In</i> — Means the function uses one or more values in the parameter that you give it without storing any</p>
+<p>changes.</p>
+<p>•</p>
+<p><i>Out</i> — Means the function saves one or more of the values in the parameter that you give it. You can</p>
+<p>examine the saved values to find out useful</p>
+<p>information about your application.</p>
+<p>•</p>
+<p><i>In/out</i> — Means the function changes one or more of the values in the parameter that you give it and</p>
+<p>saves the result. You can examine the saved values to find out useful</p>
+<p>information about your</p>
+<p>application.</p>
+<p><b>Description</b></p>
+<p>Describes the function<i> function_name()</i>. This section also describes any special</p>
+<p>characteristics or</p>
+<p>restrictions that might apply:</p>
+<p>•</p>
+<p>Function blocks or might block under certain conditions</p>
+<p>•</p>
+<p>Function has pre-conditions that might not be obvious</p>
+<p>•</p>
+<p>Function has restrictions or special</p>
+<p>behavior</p>
+<p>All</p>
+<p>trademarks are the property of their respective owners.</p>
+<p>4</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>Introduction</i></p>
+<p><b>Return Value</b></p>
+<p>Specifies any value or values returned by function<i> function_name()</i>.</p>
+<p><b>See Also</b></p>
+<p>Lists other functions or data types related to function<i> function_name()</i>.</p>
+<p><b>Example</b></p>
+<p>Provides an example (or a reference to an example) that illustrates the use of function<i> function_name()</i>.</p>
+<p>5</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>F021 Flash API Overview</i></p>
+<p>www.ti.com</p>
+<p><b>2</b></p>
+<p><b>F021 Flash API Overview</b></p>
+<p><i><b>2.1</b></i></p>
+<p><i><b>Introduction</b></i></p>
+<p>The F021 Flash API is a library of routines that when called with the proper parameters in the proper</p>
+<p>sequence, erases, programs, or verifies Flash memory on Texas Instruments microcontrollers using the</p>
+<p>F021 (65nm) process. On ARM Cortex devices, these routines must be run in a<i> privileged mode</i> (a mode</p>
+<p>other than user) to allow access to the Flash memory controller registers. The API verifies for the selected</p>
+<p>bank, that the appropriate RWAIT or EWAIT value is set for the specified system frequency.</p>
+<p><i><b>2.2</b></i></p>
+<p><i><b>API Overview</b></i></p>
+<p><b>Table 1. Summary of Flash State Machine Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Fapi_disableAutoEccCalculation()</p>
+<p>(1)</p>
+<p>Disables auto generation of ECC when data is written into an FWPWRITEx</p>
+<p>register.</p>
+<p>Fapi_disableBanksForOtpWrite()</p>
+<p>Disables all</p>
+<p>banks from programming customer OTP</p>
+<p>Fapi_disableFsmDoneEvent()</p>
+<p>Disables the generation of an FSM_Done event at the end of a program or erase</p>
+<p>operation.</p>
+<p>Fapi_enableAutoEccCalculation()</p>
+<p>(1)</p>
+<p>Enables auto generation of ECC when data is written into an FWPWRITEx register.</p>
+<p>Fapi_enableBanksForOtpWrite()</p>
+<p>Enables banks to allow programming of customer OTP</p>
+<p>Fapi_enableEepromBankSectors()</p>
+<p>Enables the sectors in EEPROM bank for program and erase operations</p>
+<p>Fapi_enableFsmDoneEvent()</p>
+<p>Enables the generation of an FSM_Done event at the end of a program or erase</p>
+<p>operation.</p>
+<p>Fapi_enableMainBankSectors()</p>
+<p>Enables the sectors in Main banks for program and erase operations</p>
+<p>Fapi_initializeFlashBanks()</p>
+<p>Required Bank initialization before any erase, program, or verify API function.</p>
+<p>Fapi_isAddressEcc()</p>
+<p>Determines if address falls in Flash memory controller ECC ranges</p>
+<p>Fapi_remapEccAddress()</p>
+<p>Remaps an ECC address to corresponding main address</p>
+<p>Fapi_remapMainAddress()</p>
+<p>Remaps an Main address to corresponding ECC address</p>
+<p>Fapi_setActiveFlashBank()</p>
+<p>Sets the active bank for a erase or program command</p>
+<p>(1)</p>
+<p>This function is only available on devices with the L2FMC Flash Controller.</p>
+<p><b>Table 2. Summary of Asynchronous Command Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Fapi_issueAsyncCommand()</p>
+<p>Issues a command to FSM for operations that do not require an address</p>
+<p>Fapi_issueAsyncCommandWithAddress()</p>
+<p>Issues a command to FSM for operations that require an address</p>
+<p><b>Table 3. Summary of Program Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Sets up the required registers for programming and issues the command to the</p>
+<p>Fapi_issueProgrammingCommand()</p>
+<p>FSM</p>
+<p>Fapi_issueProgrammingCommandForEccAdd</p>
+<p>Remaps an ECC address to the main data space and then call</p>
+<p>ress()</p>
+<p>Fapi_issueProgrammingCommand()</p>
+<p>6</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>F021 Flash API Overview</i></p>
+<p><b>Table 4. Summary of Read Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Fapi_doVerify()</p>
+<p>Verifies specified Flash memory range against supplied values</p>
+<p>Fapi_doVerifyByByte()</p>
+<p>Verifies specified Flash memory range against supplied values by byte</p>
+<p>Fapi_doBlankCheck()</p>
+<p>(1)</p>
+<p>Verifies specified Flash memory range against erased state</p>
+<p>Fapi_doBlankCheckByByte()</p>
+<p>(1)</p>
+<p>Verifies specified Flash memory range against erased state by byte</p>
+<p>Fapi_doMarginRead()</p>
+<p>Reads a specified Flash memory range using the specified read-margin mode</p>
+<p>Fapi_doMarginReadByByte()</p>
+<p>Reads a specified Flash memory range using the specified read-margin mode by</p>
+<p>byte</p>
+<p>Fapi_doPsaVerify()</p>
+<p>Verifies a specified Flash memory range against the supplied PSA value</p>
+<p>Fapi_calculatePsa()</p>
+<p>Calculates a PSA value for the specified Flash memory range</p>
+<p>Fapi_flushPipeline()</p>
+<p>Flushes the pipeline buffers in the Flash memory controller</p>
+<p>(1)</p>
+<p>On devices using L2FMC memory controller, ECC may not be disabled for Banks 0 - 6 and therefore performing a blank check</p>
+<p>with the Flash API functions are not supported.</p>
+<p><b>Table 5. Summary of Information Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Fapi_getLibraryInfo()</p>
+<p>Returns the information specific to the compiled version of the API library</p>
+<p>Fapi_getDeviceInfo()</p>
+<p>Returns the information specific to the device the API library is being executed on</p>
+<p>Fapi_getBankSectors()</p>
+<p>Returns the sector information for a bank</p>
+<p><b>Table 6. Summary of User Defined Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Fapi_serviceWatchdogTimer()</p>
+<p>User modifiable function to service watchdog timer</p>
+<p><b>Table 7. Summary of Utility Functions</b></p>
+<p><b>API Function</b></p>
+<p><b>Description</b></p>
+<p>Fapi_calculateFletcherChecksum()</p>
+<p>Function calculates a Fletcher checksum for the memory range specified</p>
+<p>Fapi_calculateEcc()</p>
+<p>Calculates the ECC for the supplied address and 64-bit word</p>
+<p>Fapi_waitDelay()</p>
+<p>(1)</p>
+<p>Creates a delay</p>
+<p>(1)</p>
+<p>This function is deprecated and should not be used in new projects</p>
+<p><i><b>2.3</b></i></p>
+<p><i><b>Using API</b></i></p>
+<p>This section describes how to use the various API functions and any relevant flows.</p>
+<p><b>2.3.1</b></p>
+<p><b>Initialization Flow</b></p>
+<p>For proper initialization of the device prior to any Flash operations, see the device-specific initialization</p>
+<p>document. Additionally,<i> all</i></p>
+<p><i>API functions require execution in privilege mode</i>.</p>
+<p><i><b>2.3.1.1</b></i></p>
+<p><i><b>Before Using Any Erase, Program or Read Flash API Function</b></i></p>
+<p>Before using any<i> asynchronous command Table 2</i> ,<i> program Table 3</i> or<i> read Table 4</i> functions, the</p>
+<p>function<i> Fapi_initializeFlashBanks()</i> must be called to correctly initialize the Flash Memory controller.</p>
+<p>7</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>F021 Flash API Overview</i></p>
+<p>www.ti.com</p>
+<p><i><b>2.3.1.2</b></i></p>
+<p><i><b>Bank Setup</b></i></p>
+<p>Before performing a Flash erase or program operation for the first time or on a different Bank than is the</p>
+<p>current active Bank, the function<i> Fapi_setActiveFlashBank()</i> must be called. Additionally,</p>
+<p><i>Fapi_enableMainBankSectors()</i> (for banks 0-6) or<i> Fapi_enableEepromBankSectors()</i> (for bank 7) must be</p>
+<p>called before the first sector erase or program operation and always before a bank erase operation.</p>
+<p><i><b>2.3.1.3</b></i></p>
+<p><i><b>On System Frequency Change</b></i></p>
+<p>If the System operating frequency (HCLK) is changed after the initial</p>
+<p>call</p>
+<p>to<i> Fapi_initializeFlashBanks()</i>,</p>
+<p>this function along with<i> Fapi_setActiveFlashBank()</i> must be called again before any<i> asynchronous</i></p>
+<p><i>command Table 2</i> ,<i> program Table 3</i> or<i> read Table 4</i> function. This will</p>
+<p>update the Flash Memory</p>
+<p>controller to the new system frequency.</p>
+<p><b>2.3.2</b></p>
+<p><b>Flash Addressing</b></p>
+<p>For program and erase operations on Bank 0 to Bank 6, the API and the FMC requires the standard Flash</p>
+<p>memory map where Bank 0, Sector 0 begins at address 0. For the read functions on the Flash memory in</p>
+<p>Bank 0 to Bank 6, they need either current address mapping (Flash addresses starting at either 0 {Power</p>
+<p>On State} or 0x0800_0000 {RAM-Flash swap) or mirrored addresses starting at 0x2000_0000.</p>
+<p><b>2.3.3</b></p>
+<p><b>Building With the API</b></p>
+<p>The macro<i> _L2FMC</i> must be defined before the inclusion of the header file F021.h on devices with the</p>
+<p>L2FMC Flash controller.</p>
+<p>#define _L2FMC</p>
+<p><i><b>2.3.3.1</b></i></p>
+<p><i><b>Object Library Files</b></i></p>
+<p>All</p>
+<p>ARM Cortex Flash API object files are distributed in the ARM standard EABI ELF object format. For the</p>
+<p>CortexR4/R5 cores, the library files are built using Thumb2 mode.</p>
+<p><i><b>2.3.3.2</b></i></p>
+<p><i><b>Distribution Files</b></i></p>
+<p>The following API files are distributed with the installer:</p>
+<p>•</p>
+<p>Library Files -<i> (All</i></p>
+<p><i>library files were built using TI's code generation tools for ARM v5.1.3 with the</i></p>
+<p><i>following compile options: -mv7R4 --abi=eabi</i></p>
+<p><i>--strict_ansi</i></p>
+<p><i>-g -O3 --symdebug:dwarf_version=3 --</i></p>
+<p><i>diag_warning=225 --gen_func_subsections=on --enum_type=packed --code_state=16 )</i></p>
+<p>–</p>
+<p>F021_API_CortexR4_BE.lib – This is the Flash API object file for Cortex R4 Big Endian devices.</p>
+<p>–</p>
+<p>F021_API_CortexR4_BE_v3D16.lib – This is the Flash API object file for Cortex R4 Big Endian</p>
+<p>devices that are using floating point unit.<i> (In addition to the general</i></p>
+<p><i>build options, this library was</i></p>
+<p><i>built using : --float_support=VFPv3D16)</i></p>
+<p>–</p>
+<p>F021_API_CortexR4_BE_L2FMC.lib – This is the Flash API object file for Cortex R4 Big Endian</p>
+<p>devices using the L2FMC memory controller.</p>
+<p>–</p>
+<p>F021_API_CortexR4_LE.lib – This is the Flash API object file for Cortex R4 Little Endian devices.</p>
+<p><i>(In addition to the general</i></p>
+<p><i>build options, this library was built using : -me)</i></p>
+<p>–</p>
+<p>F021_API_CortexR4_LE_v3D16.lib – This is the Flash API object file for Cortex R4 Little Endian</p>
+<p>devices that are using floating point unit.<i> (In addition to the general</i></p>
+<p><i>build options, this library was</i></p>
+<p><i>built using : -me --float_support=VFPv3D16)</i></p>
+<p>–</p>
+<p>F021_API_CortexR4_LE_L2FMC.lib – This is the Flash API object file for Cortex R4 Little Endian</p>
+<p>devices using the L2FMC memory controller.</p>
+<p>–</p>
+<p>F021_API_CortexR4_BE_L2FMC_v3D16.lib – This is the Flash API object file for Cortex R4/R5 Big</p>
+<p>Endian devices using the L2FMC memory controller and float point unit.<i> (In addition to the general</i></p>
+<p><i>build options, this library was built using : --float_support=VFPv3D16)</i></p>
+<p>–</p>
+<p>F021_API_CortexR4_LE_L2FMCv3D16.lib – This is the Flash API object file for Cortex R4/R5 Little</p>
+<p>Endian devices using the L2FMC memory controller and float point unit.<i> (In addition to the general</i></p>
+<p><i>build options, this library was built using : -me --float_support=VFPv3D16)</i></p>
+<p>8</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>F021 Flash API Overview</i></p>
+<p>•</p>
+<p>Source Files</p>
+<p>–</p>
+<p>Fapi_UserDefinedFunctions.c – This is file that contains the user definable functions.</p>
+<p>•</p>
+<p>Include Files</p>
+<p>–</p>
+<p>F021.h – This is the master include file and includes all</p>
+<p>other include files. This should be the only</p>
+<p>include file added to the users's code.</p>
+<p>•</p>
+<p>The following include files should not be included directly by the user’s code, but are listed here for</p>
+<p>user reference:</p>
+<p>–</p>
+<p>Compatibility.h - A set of macros to be used for backwards compatibility for 1.x.x versions of the</p>
+<p>API.</p>
+<p>–</p>
+<p>Constants.h – Constant definitions used by the API.</p>
+<p>–</p>
+<p>FapiFunctions.h - Contains all</p>
+<p>the Fapi</p>
+<p>function prototypes.</p>
+<p>–</p>
+<p>Helpers.h – Set of helper defines</p>
+<p>–</p>
+<p>Registers.h – Definitions common to all</p>
+<p>register implementations and includes the appropriate</p>
+<p>register include file for the selected device type.</p>
+<p>–</p>
+<p>Registers_FMC_BE.h – Big Endian Flash memory controller registers structure for TMS570/RM4</p>
+<p>devices.</p>
+<p>–</p>
+<p>Registers_FMC_LE.h – Little Endian Flash memory controller registers structure for TMS570/RM4</p>
+<p>devices.</p>
+<p>–</p>
+<p>Types.h – Contains all</p>
+<p>the enumerations and structures used by the API</p>
+<p>–</p>
+<p>Below are a set of compiler specific support header files:</p>
+<p>•</p>
+<p>CGT.ARM.h - Contains a set of definitions used by the ARM compiler</p>
+<p>•</p>
+<p>CGT.CCS.h - Contains a set of definitions used by the TI CCS compiler</p>
+<p>•</p>
+<p>CGT.gcc.h - Contains a set of definitions used by the gcc compiler</p>
+<p>•</p>
+<p>CGT.GHS.h - Contains a set of definitions used by the GreenHills compiler</p>
+<p>•</p>
+<p>CGT.IAR.h - Contains a set of definitions used by the IAR EWARM compiler</p>
+<p>•</p>
+<p>Library information files</p>
+<p>–</p>
+<p>build_information.txt - This file contains function callgraphs, worst case stack usage for each</p>
+<p>function, function size in bytes and MD5 and SHA1 checksums for all</p>
+<p>files delivered in the installer</p>
+<p>package.</p>
+<p>–</p>
+<p>License_Agreement.pdf - This file contains the libraries license agreement.</p>
+<p>–</p>
+<p>readme.txt - This file contains build specific information.</p>
+<p>–</p>
+<p>Release_Notes.pdf - This file contains release specific information.</p>
+<p>–</p>
+<p>spna148.pdf - This is the application note, Advanced F021 Flash API Erase/Program Usage.</p>
+<p>–</p>
+<p>spnu501e.pdf - This file.</p>
+<p>–</p>
+<p>spnz210.pdf - This is the library errata document.</p>
+<p><b>2.3.4</b></p>
+<p><b>Executing API From Flash</b></p>
+<p><b>NOTE:</b></p>
+<p>The F021 Flash API library cannot be executed from the same bank as the active bank</p>
+<p>selected for the API commands to operate on. On single bank devices, the F021 Flash API</p>
+<p>must be executed from RAM.</p>
+<p><b>2.3.5</b></p>
+<p><b>Memory Regions Required to be Readable</b></p>
+<p><b>NOTE:</b></p>
+<p>The F021 Flash API library must be able to read from addresses 0x000, 0x100, 0x200,</p>
+<p>0x300, and the TI OTP region, 0xF008_0000 - 0xF00B_0000, for the API to operate</p>
+<p>correctly.</p>
+<p>9</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3</b></p>
+<p><b>API Functions</b></p>
+<p><i><b>3.1</b></i></p>
+<p><i><b>Flash State Machine Functions</b></i></p>
+<p><b>3.1.1</b></p>
+<p><b>Fapi_disableAutoEccCalculation()</b></p>
+<p>Disables auto generation of ECC on L2FMC devices</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_disableAutoEccCalculation(void)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p><b>NOTE:</b></p>
+<p>This function is only available on devices using the L2FMC Flash Memory Controller.</p>
+<p>This function disables the auto generation of ECC when data is written to the FWPWRITEx registers on</p>
+<p>L2FMC devices. The use of this function is primarily intended for those users writing their own</p>
+<p>programming functions based on the application note,<i> Advanced F021 Flash API Erase/Program Usage</i></p>
+<p>(SPNA148). The function<i> Fapi_issueProgrammingCommand()</i> Section 3.2.2 will</p>
+<p>automatically set this bit</p>
+<p>depending on the programming mode used (enabled for Fapi_AutoEccGeneration, disabled for all</p>
+<p>other</p>
+<p>modes) and will</p>
+<p>stay that way when this function returns.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><i>Fapi_Status_Success</i> (success)</p>
+<p><b>3.1.2</b></p>
+<p><b>Fapi_disableBanksForOtpWrite()</b></p>
+<p>Disables ability to program the Customer OTP on all</p>
+<p>Flash Banks.</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_disableBanksForOtpWrite(void)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This function sets<i> OTPPRODIS</i> field in the<i> FBAC</i> register to disable the ability to program the Customer</p>
+<p>OTP for all</p>
+<p>banks.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>10</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.1.3</b></p>
+<p><b>Fapi_disableFsmDoneEvent()</b></p>
+<p>Disables generation of the FSM_DONE event.</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_disableFsmDoneEvent(void)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This function disables the generation of the FSM_DONE event. For more information on the FSM_DONE</p>
+<p>event, see the device-specific technical</p>
+<p>reference manual.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p><b>3.1.4</b></p>
+<p><b>Fapi_enableAutoEccCalculation()</b></p>
+<p>Enables auto generation of ECC on L2FMC devices</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_enableAutoEccCalculation(void)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p><b>NOTE:</b></p>
+<p>This function is only available on devices using the L2FMC Flash Memory Controller.</p>
+<p>This function enables the auto generation of ECC when data is written to the FWPWRITEx registers on</p>
+<p>L2FMC devices. The use of this function is primarily intended for those users writing their own</p>
+<p>programming functions based on<i> Advanced F021 Flash API Erase/Program Usage</i> (SPNA148). The</p>
+<p>function<i> Fapi_issueProgrammingCommand()</i> Section 3.2.2 will</p>
+<p>automatically set this bit depending on the</p>
+<p>programming mode used (enabled for Fapi_AutoEccGeneration, disabled for all</p>
+<p>other modes) and will</p>
+<p>stay</p>
+<p>that way when this function returns.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>11</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.1.5</b></p>
+<p><b>Fapi_enableBanksForOtpWrite()</b></p>
+<p>Enables ability to program the Customer OTP region for the specified banks</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_enableBanksForOtpWrite(</p>
+<p>uint8_t<i><b> u8Banks</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u8Banks [in]</i></p>
+<p>Bit mask indicating each bank to be enabled for OTP programming</p>
+<p><b>Description</b></p>
+<p>This function sets up the<i> OTPPRODIS</i> field in the<i> FBAC</i> register to enable the ability to program Customer</p>
+<p>OTP for the banks specified in the bitfield mask u8Banks. The bitfield mask has Bank 0 as bit 1 up to</p>
+<p>Bank 7 as bit 7.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p><b>3.1.6</b></p>
+<p><b>Fapi_enableEepromBankSectors()</b></p>
+<p>Sets up the sectors available on EEPROM banks for erase and programming</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_enableEepromBankSectors(</p>
+<p>uint32_t<i><b> u32SectorsEnables_31_0</b></i>,</p>
+<p>uint32_t<i><b> u32SectorsEnables_63_32</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32SectorsEnables_31_0 [in]</i></p>
+<p>Bit mask indicating which of sectors 0-31 are enabled for erase and</p>
+<p>programming.</p>
+<p><i>u32SectorsEnables_63_32 [in]</i></p>
+<p>Bit mask indicating which of sectors 32-63 are enabled for erase and</p>
+<p>programming.</p>
+<p><b>Description</b></p>
+<p>This function sets up the sectors in the EEPROM banks that are available for erase and programming</p>
+<p>operations. This function must be called with the EEPROM bank (Flash Bank 7) as the active bank.</p>
+<p>Additionally, the function must be called once before performing program and sector erase operations and</p>
+<p>always before a bank erase operation. Each bit refers to a single sector with Sector 0 is bit 0 in</p>
+<p>u32SectorEnables_31_0 to Sector 31 is bit 31 in u32SectorEnables_31_0 and Sector 32 is bit 0 in</p>
+<p>u32SectorEnables_63_32 to Sector 63 is bit 31 in u32SectorEnables_63_32.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>12</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.1.7</b></p>
+<p><b>Fapi_enableFsmDoneEvent()</b></p>
+<p>Enables the generation of the FSM_DONE event</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_enableBanksForOtpWrite(void)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This function enables the generation of the FSM_DONE event. This event is generated when the FSM</p>
+<p>finishes a program or erase operation. The FSM_DONE event flag resides in the FEDACSTATUS register</p>
+<p>at bit 24. For a complete description of the FEDACSTATUS register and FSM_DONE event, see the<i> F021</i></p>
+<p><i>Flash Module</i> chapter in the device-specific technical</p>
+<p>reference manual. This FSM_DONE flag must be</p>
+<p>cleared by writing a one to this bit in order for the event signal</p>
+<p>to stop. There is a helper macro</p>
+<p>CLEAR_FSM_DONE_EVENT defined to accomplish this.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p><b>3.1.8</b></p>
+<p><b>Fapi_enableMainBankSectors()</b></p>
+<p>Sets up the sectors available on non-EEPROM banks for erase and programming</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_enableMainBankSectors(</p>
+<p>uint16_t<i><b> u16SectorsEnables</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u16SectorsEnables [in]</i></p>
+<p>Bit mask indicating which of sectors 0-15 are enabled for erase and</p>
+<p>programming.</p>
+<p><b>Description</b></p>
+<p>This function sets up the sectors in the non-EEPROM banks that are available for erase and programming</p>
+<p>operations. This function must be called with the bank intended for the erase or program operation as the</p>
+<p>active bank. Additionally, the function must be called once before performing program and sector erase</p>
+<p>operations and always before a bank erase operation. Each bit refers to a single sector where Sector 0 is</p>
+<p>bit 0 to Sector 15 is bit 15 in u16SectorEnables.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>13</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.1.9</b></p>
+<p><b>Fapi_isAddressEcc()</b></p>
+<p>Indicates if an address is in the Flash Memory Controller ECC space</p>
+<p><b>Synopsis</b></p>
+<p>boolean_t Fapi_isAddressEcc(</p>
+<p>uint32_t<i><b> u32Address</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32Address [in]</i></p>
+<p>Address to determine if it lies in ECC address space</p>
+<p><b>Description</b></p>
+<p>This function returns True if the address in u32Address is in ECC address space or False if it is not.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>false</b> (Address is not in ECC address space)</p>
+<p>•</p>
+<p><b>true</b> (Address is in ECC address space)</p>
+<p><b>3.1.10</b></p>
+<p><b>Fapi_initializeFlashBanks()</b></p>
+<p>Initializes the Flash Banks for API operations</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_initializeFlashBanks(</p>
+<p>uint32_t<i><b> u32HclkFrequency</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32HclkFrequency [in]</i></p>
+<p>System clock frequency in MHz. The value should be rounded up to</p>
+<p>the next integer. For example, if the system clock frequency is</p>
+<p>133.3MHz, then the u32HclkFrequency value should be 134.</p>
+<p><b>Description</b></p>
+<p>This function is required to initialize the Flash Banks before using any<i> asynchronous command Table 2</i> ,</p>
+<p><i>program Table 3</i> or<i> read Table 4</i> functions. This function must also be called if the system frequency is</p>
+<p>changed and/or RWAIT/EWAIT values are changed.</p>
+<p><b>NOTE:</b></p>
+<p>This function requires that Bank 7 be enabled and powered. Once this function has</p>
+<p>completed, Bank 7 may be disabled and powered off.</p>
+<p>RWAIT and EWAIT register values must be set before calling this function. There is a helper</p>
+<p>macro FAPI_WRITE_EWAIT(_mEwait) is provided to make writing the EWAIT value easier</p>
+<p>due to the need for the EEPROM_CONFIG register to be unlocked before you can write the</p>
+<p>EWAIT value.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidHclkValue</b> (failure: System clock does not match specified wait value)</p>
+<p>•</p>
+<p><b>Fapi_Error_OtpChecksumMismatch</b> (failure: Calculated TI OTP checksum does not match value in</p>
+<p>TI OTP)</p>
+<p>14</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.1.11</b></p>
+<p><b>Fapi_remapEccAddress()</b></p>
+<p>Takes ECC address and remaps it to main address space</p>
+<p><b>Synopsis</b></p>
+<p>uint32_t Fapi_remapEccAddress(</p>
+<p>uint32_t<i><b> u32EccAddress</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32EccAddress [in]</i></p>
+<p>ECC address to remap</p>
+<p><b>Description</b></p>
+<p>This function returns the main Flash address for the given ECC Flash address passed in u32EccAddress.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>32-bit Main Flash Address</b></p>
+<p><b>3.1.12</b></p>
+<p><b>Fapi_remapMainAddress()</b></p>
+<p>Takes Flash Main address and remaps it to its corresponding ECC address</p>
+<p><b>Synopsis</b></p>
+<p>uint32_t Fapi_remapMainAddress(</p>
+<p>uint32_t<i><b> u32MainAddress</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32MainAddress [in]</i></p>
+<p>Main address to remap</p>
+<p><b>Description</b></p>
+<p>This function returns the ECC Flash address for the given Main Flash address passed in</p>
+<p>u32MainAddress.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>32-bit ECC Flash Address</b></p>
+<p>15</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.1.13</b></p>
+<p><b>Fapi_setActiveFlashBank()</b></p>
+<p>Sets the active Flash Bank</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_setActiveFlashBank(</p>
+<p>Fapi_FlashBankType<i><b> oNewFlashBank</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>oNewFlashBank [in]</i></p>
+<p>Bank number to set as active</p>
+<p><b>Description</b></p>
+<p>This function sets the active bank (passed in oNewFlashBank) for any Flash operation issued after calling</p>
+<p>this function.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidBank</b> (failure: Bank specified does not exist on device)</p>
+<p><i><b>3.2</b></i></p>
+<p><i><b>Asynchronous Functions</b></i></p>
+<p><b>3.2.1</b></p>
+<p><b>Fapi_issueAsyncCommand()</b></p>
+<p>Issues a command to the Flash State Machine that only requires a command</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_issueAsyncCommand(</p>
+<p>Fapi_FlashStateCommandsType<i><b> oCommand</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>oCommand [in]</i></p>
+<p>Command to issue to the FSM</p>
+<p><b>Description</b></p>
+<p>This function issues a command to the Flash State Machine for commands not requiring any additional</p>
+<p>information. Typical</p>
+<p>commands are Clear Status, Program Resume, Erase Resume and Clear_More.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidCommand</b> (failure: Command specified requires an address to be specified)</p>
+<p>16</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.2.2</b></p>
+<p><b>Fapi_issueAsyncCommandWithAddress()</b></p>
+<p>Issues a command to the Flash State Machine with an address</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_issueAsyncCommandWithAddress(</p>
+<p>Fapi_FlashStateCommandsType<i><b> oCommand</b></i>,</p>
+<p>uint32_t *<i><b>pu32StartAddress</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>oCommand [in]</i></p>
+<p>Command to issue to the FSM</p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>Address for needed for Flash State Machine operation</p>
+<p><b>Description</b></p>
+<p>This function issues a command to the Flash State Machine for commands requiring an address to</p>
+<p>function correctly. Primary commands used with function are Erase Sector and Erase Bank.</p>
+<p><b>NOTE:</b></p>
+<p>Reading a Flash memory location from the bank that an erase command (sector or bank) is</p>
+<p>currently being performed will</p>
+<p>stall</p>
+<p>the CPU until</p>
+<p>the erase command finishes and the</p>
+<p>FMSTAT register indicates the FSM is not busy.</p>
+<p>The Bank Erase command is not a suspendable operation.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidCommand</b> (failure: Command specified does not require an address to be</p>
+<p>specified or is a program command)</p>
+<p>17</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><i><b>3.3</b></i></p>
+<p><i><b>Program Functions</b></i></p>
+<p><b>3.3.1</b></p>
+<p><b>Fapi_issueProgrammingCommand()</b></p>
+<p>Sets up data and issues program command to valid Flash memory addresses</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_issueProgrammingCommand(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint8_t</p>
+<p><i><b>*pu8DataBuffer</b></i>,</p>
+<p>uint8_t</p>
+<p><i><b>u8DataBufferSizeInBytes</b></i>,</p>
+<p>uint8_t</p>
+<p><i><b>*pu8EccBuffer</b></i>,</p>
+<p>uint8_t</p>
+<p><i><b>u8EccBufferSizeInBytes</b></i>,</p>
+<p>Fapi_FlashProgrammingCommandType<i><b> oMode</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>start address in Flash for the data and ECC to be programmed</p>
+<p><i>pu8DataBuffer [in]</i></p>
+<p>pointer to the Data buffer address</p>
+<p><i>u8DataBufferSizeInBytes [in]</i></p>
+<p>number of bytes in the Data buffer</p>
+<p><i>pu8EccBuffer [in]</i></p>
+<p>pointer to the ECC buffer address</p>
+<p><i>u8EccBufferSizeInBytes [in]</i></p>
+<p>number of bytes in the ECC buffer</p>
+<p><i>oMode [in]</i></p>
+<p>Indicates the programming mode to use:</p>
+<p>Fapi_DataOnly</p>
+<p>Programs only the data buffer</p>
+<p>Fapi_AutoEccGeneration</p>
+<p>Programs the data buffer and</p>
+<p>auto generates and programs the</p>
+<p>ECC.</p>
+<p>Fapi_DataAndEcc</p>
+<p>Programs both the data and ECC</p>
+<p>buffers</p>
+<p>Fapi_EccOnly</p>
+<p>Programs only the ECC buffer</p>
+<p><b>Description</b></p>
+<p>This function sets up the programming registers of the Flash State Machine based on the supplied</p>
+<p>parameters. It offers four different programming modes to the user and handles multiple bank widths</p>
+<p>automatically.</p>
+<p><b>Programming modes:</b></p>
+<p><i>Fapi_DataOnly</i> – This mode will</p>
+<p>only program the data portion in Flash at the address specified. It can</p>
+<p>program from 1 byte up to the bank width (8,16,32) bytes based on the bank architecture. The supplied</p>
+<p>starting address to program at plus the data buffer length cannot exceed the bank data width. (Ex.</p>
+<p>Programming 14 bytes on a 16 byte wide bank starting at address 0x4 is not allowed.)</p>
+<p><i>Fapi_AutoGeneration</i> – This will</p>
+<p>program the supplied data portion in Flash along with automatically</p>
+<p>generated ECC. ECC is calculated on 64-bit aligned addresses up to the data width of the bank. Data not</p>
+<p>supplied is treated as 0xFF. For example, on a device with a 144-bit wide bank width, if data is written</p>
+<p>only to bytes 0x0-0x7 (or 0x8-0xF), then the ECC will</p>
+<p>only be calculated for those 64 bits. If the data</p>
+<p>supplied crosses a 64-bit boundary, ECC will</p>
+<p>be calculated for both 64-bit words. For example, on a</p>
+<p>device with a 144-bit wide bank width, data is written to bytes 0x4 - 0xB, the 2 bytes of ECC data will</p>
+<p>be</p>
+<p>calculated. The data restrictions for Fapi_DataOnly also exist for this option.</p>
+<p><i>Fapi_DataAndEcc</i> – This will</p>
+<p>program both the supplied data and ECC in Flash at the address specified.</p>
+<p>The data supplied must be aligned on a 64-bit word and the length of data must correlate to the supplied</p>
+<p>ECC. (For example, data buffer length is 8 bytes, the ECC buffer must be 1 byte).</p>
+<p><i>Fapi_EccOnly</i> – This mode will</p>
+<p>only program the ECC portion in Flash at the address specified. It can</p>
+<p>program from 1 byte up to the bank ECC width (1, 2, 4) bytes based on the bank architecture. The</p>
+<p>supplied starting address to program at plus the ECC buffer length cannot exceed the bank ECC width</p>
+<p>(programming 3 bytes on a 2 byte ECC wide bank starting at address 0x0 is not allowed).</p>
+<p>18</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>NOTE:</b></p>
+<p>Reading a Flash memory location from the bank that an program command is currently</p>
+<p>being performed will</p>
+<p>stall</p>
+<p>the CPU until</p>
+<p>the program command finishes and the FMSTAT</p>
+<p>register indicates the FSM is not busy.</p>
+<p>The length of pu8DataBuffer and pu8EccBuffer cannot exceed the bank width of the current</p>
+<p>active bank. For bank width information, see the<i> F021 Flash Module</i> chapter in the device-</p>
+<p>specific technical</p>
+<p>reference manual.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_AsyncIncorrectDataBufferLength</b> (failure: Data buffer size specified exceeds Data bank</p>
+<p>width)</p>
+<p>•</p>
+<p><b>Fapi_Error_AsyncIncorrectEccBufferLength</b> (failure: ECC buffer size specified exceeds ECC bank</p>
+<p>width)</p>
+<p>•</p>
+<p><b>Fapi_Error_AsyncDataEccBufferLengthMismatch</b> (failure: Data buffer size either is not 64-bit</p>
+<p>aligned or Data length exceeds amount ECC supplied)</p>
+<p><b>3.3.2</b></p>
+<p><b>Fapi_issueProgrammingCommandForEccAddress()</b></p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_issueProgrammingCommandForEccAddress(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint8_t</p>
+<p><i><b>*pu8EccBuffer</b></i>,</p>
+<p>uint8_t</p>
+<p><i><b>u8EccBufferSizeInBytes</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>ECC start address in Flash for the ECC to be programmed</p>
+<p><i>pu8EccBuffer [in]</i></p>
+<p>pointer to the ECC buffer address</p>
+<p><i>u8EccBufferSizeInBytes [in]</i></p>
+<p>number of bytes in the ECC buffer</p>
+<p><b>Description</b></p>
+<p>This function will</p>
+<p>remap an address in the ECC memory space to the corresponding data address space</p>
+<p>and then call</p>
+<p>Fapi_issueProgrammingCommand() to program the supplied ECC data. The same</p>
+<p>limitations for Fapi_issueProgrammingCommand() using Fapi_EccOnly mode applies to this function.</p>
+<p><b>NOTE:</b></p>
+<p>Reading a Flash memory location from the bank that a program command is currently being</p>
+<p>performed will</p>
+<p>stall</p>
+<p>the CPU until</p>
+<p>the program command finishes and the FMSTAT register</p>
+<p>indicates the FSM is not busy.</p>
+<p>The length of pu8EccBuffer cannot exceed the bank width of the current active bank. For</p>
+<p>bank width information, see the<i> F021 Flash Module</i> chapter in the device-specific technical</p>
+<p>reference manual.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_AsyncIncorrectEccBufferLength</b> (failure: Data buffer size specified exceeds ECC bank</p>
+<p>width)</p>
+<p>19</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><i><b>3.4</b></i></p>
+<p><i><b>Read Functions</b></i></p>
+<p>The read functions do not combine main and ECC ranges. Because this, if you need a read operation</p>
+<p>performed on the data and corresponding ECC, you must call</p>
+<p>the function for both. For example, if you</p>
+<p>have erased Bank 0, Sector 0, you would need to perform a blank check on Sector 0 main address range</p>
+<p>and ECC address range.</p>
+<p><b>3.4.1</b></p>
+<p><b>Fapi_doBlankCheck()</b></p>
+<p>Verifies region specified is erased value</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doBlankCheck(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>Fapi_FlashStatusWordType<i><b> *poFlashStatusWord</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>start address for region to blank check</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 32-bit words to blank check</p>
+<p><i>poFlashStatusWord [out]</i></p>
+<p>returns the status of the operation if result is not</p>
+<p>Fapi_Status_Success</p>
+<p>-&gt;au32StatusWord[0]</p>
+<p>address of first non-blank location</p>
+<p>-&gt;au32StatusWord[1]</p>
+<p>data read at first non-blank location</p>
+<p>-&gt;au32StatusWord[2]</p>
+<p>value of compare data (always 0xFFFFFFFF)</p>
+<p>-&gt;au32StatusWord[3]</p>
+<p>indicates read mode that failed blank check</p>
+<p><b>Description</b></p>
+<p>This function checks the device for blank (erase state) starting at the specified address for the length of</p>
+<p>32-bit words specified. If a non-blank location is found, these results will</p>
+<p>be returned in the</p>
+<p>poFlashStatusWord parameter. This will</p>
+<p>use read margin 1 mode for this check. As the erase state of the</p>
+<p>Flash is not a valid ECC condition, on Banks 0 - 6 ECC correction at a minimum must be disabled. On</p>
+<p>Bank 7, ECC can either be temporarily disabled by writing 0101 to the EE_EDACEN bits or setting the</p>
+<p>EE_ALL1_OK bit EE_CTRL1 register.</p>
+<p>This function assumes the value passed in<i> pu32StartAddress</i> is a 32bit aligned address.</p>
+<p><b>NOTE:</b></p>
+<p>On devices using L2FMC memory controller, ECC may not be disabled for Banks 0 - 6 and</p>
+<p>therefore performing a blank check with the Flash API functions are not supported.</p>
+<p><b>Restrictions</b></p>
+<p>The region being blank checked cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_Fail</b> (failure: region specified is not blank)</p>
+<p>20</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.4.2</b></p>
+<p><b>Fapi_doBlankCheckByByte()</b></p>
+<p>Verifies region specified is erased value by byte</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doBlankCheckByByte(</p>
+<p>uint8_t<i><b> *pu8StartAddress</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>Fapi_FlashStatusWordType<i><b> *poFlashStatusWord</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu8StartAddress [in]</i></p>
+<p>start address for region to blank check</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 32-bit words to blank check</p>
+<p><i>poFlashStatusWord [out]</i></p>
+<p>returns the status of the operation if result is not</p>
+<p>Fapi_Status_Success</p>
+<p>-&gt;au32StatusWord[0]</p>
+<p>address of first non-blank location</p>
+<p>-&gt;au32StatusWord[1]</p>
+<p>data read at first non-blank location</p>
+<p>-&gt;au32StatusWord[2]</p>
+<p>value of compare data (always 0xFF)</p>
+<p>-&gt;au32StatusWord[3]</p>
+<p>indicates read mode that failed blank check</p>
+<p><b>Description</b></p>
+<p>This function checks the device for blank (erase state) starting at the specified address for the length of 8-</p>
+<p>bit words specified. If a non-blank location is found, these results will</p>
+<p>be returned in the</p>
+<p>poFlashStatusWord parameter. This will</p>
+<p>use read margin 1 mode for this check. As the erase state of the</p>
+<p>Flash is not a valid ECC condition, on Banks 0 - 6 ECC correction at a minimum must be disabled. On</p>
+<p>Bank 7, ECC can either be temporarily disabled by writing 0101 to the EE_EDACEN bits or setting the</p>
+<p>EE_ALL1_OK bit EE_CTRL1 register.</p>
+<p><b>NOTE:</b></p>
+<p>On devices using L2FMC memory controller, ECC may not be disabled for Banks 0 - 6 and</p>
+<p>therefore performing a blank check with the Flash API functions are not supported.</p>
+<p><b>Restrictions</b></p>
+<p>The region being blank checked cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_Fail</b> (failure: region specified is not blank)</p>
+<p>21</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.4.3</b></p>
+<p><b>Fapi_doVerify()</b></p>
+<p>Verifies region specified against supplied data</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doVerify(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>uint32_t<i><b> *pu32CheckValueBuffer</b></i>,</p>
+<p>Fapi_FlashStatusWordType<i><b> *poFlashStatusWord</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>start address for region to verify</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 32-bit words to verify</p>
+<p><i>pu32CheckValueBuffer</i></p>
+<p>address of buffer to verify region against</p>
+<p><i>[in]</i></p>
+<p><i>poFlashStatusWord [out]</i></p>
+<p>returns the status of the operation if result is not</p>
+<p>Fapi_Status_Success</p>
+<p>-&gt;au32StatusWord[0]</p>
+<p>address of first verify failure location</p>
+<p>-&gt;au32StatusWord[1]</p>
+<p>data read at first verify failure location</p>
+<p>-&gt;au32StatusWord[2]</p>
+<p>value of compare data</p>
+<p>-&gt;au32StatusWord[3]</p>
+<p>indicates read mode that failed verify</p>
+<p><b>Description</b></p>
+<p>This function verifies the device against the supplied data starting at the specified address for the length of</p>
+<p>32-bit words specified. If a location fails to compare, these results will</p>
+<p>be returned in the</p>
+<p>poFlashStatusWord parameter. This will</p>
+<p>use normal</p>
+<p>read, read margin 0 and read margin 1 modes for</p>
+<p>verifying the data.</p>
+<p>This function assumes the value passed in<i> pu32StartAddress</i> is a 32bit aligned address.</p>
+<p><b>Restrictions</b></p>
+<p>The region being verified cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_Fail</b> (failure: region specified does not match supplied data)</p>
+<p>22</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.4.4</b></p>
+<p><b>Fapi_doVerifyByByte()</b></p>
+<p>Verifies region specified against supplied data by byte</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doVerifyByByte(</p>
+<p>uint8_t<i><b> *pu8StartAddress</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>uint8_t<i><b> *pu8CheckValueBuffer</b></i>,</p>
+<p>Fapi_FlashStatusWordType<i><b> *poFlashStatusWord</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu8StartAddress [in]</i></p>
+<p>start address for region to verify by byte</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 8-bit words to verify</p>
+<p><i>pu8CheckValueBuffer</i></p>
+<p>address of buffer to verify region against by byte</p>
+<p><i>[in]</i></p>
+<p><i>poFlashStatusWord [out]</i></p>
+<p>returns the status of the operation if result is not</p>
+<p>Fapi_Status_Success</p>
+<p>-&gt;au32StatusWord[0]</p>
+<p>address of first verify failure location</p>
+<p>-&gt;au32StatusWord[1]</p>
+<p>data read at first verify failure location</p>
+<p>-&gt;au32StatusWord[2]</p>
+<p>value of compare data</p>
+<p>-&gt;au32StatusWord[3]</p>
+<p>indicates read mode that failed verify</p>
+<p><b>Description</b></p>
+<p>This function verifies the device against the supplied data by the byte starting at the specified address for</p>
+<p>the length of 8-bit words specified. If a location fails to compare, these results will</p>
+<p>be returned in the</p>
+<p>poFlashStatusWord parameter. This will</p>
+<p>use normal</p>
+<p>read, read margin 0 and read margin 1 modes</p>
+<p>checking for verifying the data.</p>
+<p><b>Restrictions</b></p>
+<p>The region being verified cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_Fail</b> (failure: region specified does not match supplied data)</p>
+<p>23</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.4.5</b></p>
+<p><b>Fapi_doPsaVerify()</b></p>
+<p>Verifies region specified against specified PSA value</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doPsaVerify(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32PsaValue</b></i>,</p>
+<p>Fapi_FlashStatusWordType<i><b> *poFlashStatusWord</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>start address for region to verify PSA value</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 32-bit words to verify PSA value</p>
+<p><i>u32PsaValue [in]</i></p>
+<p>PSA value to compare region against</p>
+<p><i>poFlashStatusWord [out]</i></p>
+<p>returns the status of the operation if result is not</p>
+<p>Fapi_Status_Success</p>
+<p>-&gt;au32StatusWord[0]</p>
+<p>Actual</p>
+<p>PSA for read-margin 0</p>
+<p>-&gt;au32StatusWord[1]</p>
+<p>Actual</p>
+<p>PSA for read-margin 1</p>
+<p>-&gt;au32StatusWord[2]</p>
+<p>Actual</p>
+<p>PSA for normal</p>
+<p>read</p>
+<p><b>Description</b></p>
+<p>This function verifies the device against the supplied PSA value starting at the specified address for the</p>
+<p>length of 32-bit words specified. The calculated PSA values for all</p>
+<p>3 margin modes are returned in the</p>
+<p>poFlashStatusWord parameter.</p>
+<p>This function assumes the value passed in<i> pu32StartAddress</i> is a 32bit aligned address.</p>
+<p><b>Restrictions</b></p>
+<p>The region being verified checked cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_Fail</b> (failure: region specified does not match supplied data)</p>
+<p>24</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.4.6</b></p>
+<p><b>Fapi_calculatePsa()</b></p>
+<p>Calculates the PSA for a specified region</p>
+<p><b>Synopsis</b></p>
+<p>uint32_t Fapi_calculatePsa(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32PsaSeed</b></i>,</p>
+<p>Fapi_FlashReadMarginModeType<i><b> oReadMode</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>start address for region to calculate PSA value</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 32-bit words to calculate PSA value</p>
+<p><i>u32PsaSeed [in]</i></p>
+<p>seed value for PSA calculation</p>
+<p><i>oReadMode [in]</i></p>
+<p>indicates which margin mode (normal, RM0, RM1) to use</p>
+<p><b>Description</b></p>
+<p>This function calculates the PSA value for the region specified starting at pu32StartAddress for u32Length</p>
+<p>32-bit words using u32PsaSeed value in the margin mode specified.</p>
+<p>This function assumes the value passed in<i> pu32StartAddress</i> is a 32bit aligned address.</p>
+<p><b>Restrictions</b></p>
+<p>The region that the PSA is being calculated must be 32-bit aligned.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidReadMode</b> (failure: read mode specified is not valid)</p>
+<p>25</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.4.7</b></p>
+<p><b>Fapi_doMarginRead()</b></p>
+<p>Reads a region of Flash Memory using specified margin mode</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doMarginRead(</p>
+<p>uint32_t<i><b> *pu32StartAddress</b></i>,</p>
+<p>uint32_t<i><b> *pu32ReadBuffer</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>Fapi_FlashReadMarginModeType<i><b> oReadMode</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu32StartAddress [in]</i></p>
+<p>start address for region to read</p>
+<p><i>pu32ReadBuffer [out]</i></p>
+<p>address of buffer to return read data</p>
+<p><i>u32Length [in]</i></p>
+<p>length of region in 32-bit words to read</p>
+<p><i>oReadMode [in]</i></p>
+<p>indicates which margin mode (normal, RM0, RM1) to use</p>
+<p><b>Description</b></p>
+<p>This function reads the region specified starting at pu32StartAddress for u32Length 32-bit words using</p>
+<p>pu32ReadBuffer to store the read values.</p>
+<p>This function assumes the value passed in<i> pu32StartAddress</i> is a 32bit aligned address.</p>
+<p><b>NOTE:</b></p>
+<p>The region that is being read cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidReadMode</b> (failure: read mode specified is not valid)</p>
+<p>•</p>
+<p><b>Fapi_Error_NullPointer</b> (failure: pu32ReadBuffer is a NULL pointer)</p>
+<p>26</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.4.8</b></p>
+<p><b>Fapi_doMarginReadByByte()</b></p>
+<p>Reads a region of Flash Memory using specified margin mode by byte</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_doMarginReadByByte(</p>
+<p>uint8_t<i><b> *pu8StartAddress</b></i>,</p>
+<p>uint8_t<i><b> *pu8ReadBuffer</b></i>,</p>
+<p>uint32_t</p>
+<p><i><b>u32Length</b></i>,</p>
+<p>Fapi_FlashReadMarginModeType<i><b> oReadMode</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu8StartAddress [in]</i></p>
+<p>start address for region to read by byte</p>
+<p><i>pu8ReadBuffer [out]</i></p>
+<p>address of buffer to return read data by byte u32</p>
+<p><i>Length [in]</i></p>
+<p>length of region in 32-bit words to read</p>
+<p><i>oReadMode [in]</i></p>
+<p>indicates which margin mode (normal, RM0, RM1) to use</p>
+<p><b>Description</b></p>
+<p>This function reads the region specified starting at pu8StartAddress for u32Length 8-bit words using</p>
+<p>pu8ReadBuffer to store the read values.</p>
+<p><b>Restrictions</b></p>
+<p>The region that is being read cannot cross bank address boundary.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidReadMode</b> (failure: read mode specified is not valid)</p>
+<p>•</p>
+<p><b>Fapi_Error_NullPointer</b> (failure: pu8ReadBuffer is a NULL pointer)</p>
+<p>27</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.4.9</b></p>
+<p><b>Fapi_flushPipeline()</b></p>
+<p>Flushes the FMC pipeline buffers</p>
+<p><b>Synopsis</b></p>
+<p>void Fapi_flushPipeline(void)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This function flushes the FMC pipeline buffers.</p>
+<p><b>NOTE:</b></p>
+<p>The pipeline must be flushed before the first non-API Flash read after an operation that</p>
+<p>modifies the Flash contents (Erasing and Programming).</p>
+<p>This function makes the assumption that is can read from Flash Addresses 0, 0x100, 0x200,</p>
+<p>0x300.</p>
+<p>If the Flash and RAM memory regions are swapped, you will</p>
+<p>need to do 2 dummy reads 128</p>
+<p>bytes apart from the remapped Flash memory addresses after an operation that modifies the</p>
+<p>Flash contents (Erasing and Programming) before performing any API read functions.</p>
+<p><b>Return Value</b></p>
+<p>None</p>
+<p>28</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><i><b>3.5</b></i></p>
+<p><i><b>Informational Functions</b></i></p>
+<p><b>3.5.1</b></p>
+<p><b>Fapi_getLibraryInfo()</b></p>
+<p>Returns information about this compile of the Flash API</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_LibraryInfoType Fapi_getLibraryInfo(void)</p>
+<p><b>Parameters</b></p>
+<p><i>None</i></p>
+<p><b>Description</b></p>
+<p>This function returns information specific to the compile of the Flash API library. The information is</p>
+<p>returned in a struct Fapi_LibraryInfoType. The members are as follows:</p>
+<p>•</p>
+<p>u8ApiMajorVersion – Major version number of this compile of the API</p>
+<p>•</p>
+<p>u8ApiMinorVersion – Minor version number of this compile of the API</p>
+<p>•</p>
+<p>u8ApiRevision – Revision version number of this compile of the API</p>
+<p>•</p>
+<p>oApiProductionStatus – Production status of this compile<i> (Alpha_Internal, Alpha, Beta_Internal, Beta,</i></p>
+<p><i>Production)</i></p>
+<p>•</p>
+<p>u32ApiBuildNumber – Build number of this compile. Used to differentiate between different alpha and</p>
+<p>beta builds</p>
+<p>•</p>
+<p>u8ApiTechnologyType – Indicates the Flash technology supported by the API. F021 is tech type of</p>
+<p>0x04</p>
+<p>•</p>
+<p>u8ApiTechnologyRevision – Indicates the revision of the Technology supported by the API</p>
+<p>•</p>
+<p>u8ApiEndianness – Indicates if this compile of the API is for Big Endian or Little Endian memory</p>
+<p>•</p>
+<p>u32ApiCompilerVersion – Version number of the Code Composer Studio code generation tools used to</p>
+<p>compile the API</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_LibraryInfoType</b> (gives the information retrieved about this compile of the API)</p>
+<p>29</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><b>3.5.2</b></p>
+<p><b>Fapi_getDeviceInfo()</b></p>
+<p>Returns information about specific to device code is being executed on</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_DeviceInfoType Fapi_getDeviceInfo(void)</p>
+<p><b>Parameters</b></p>
+<p><i>None</i></p>
+<p><b>Description</b></p>
+<p>This function returns information about the specific device the Flash API library is being executed on. The</p>
+<p>information is returned in a struct Fapi_DeviceInfoType. The members are as follows:</p>
+<p>•</p>
+<p>u16NumberOfBanks – Number of banks on the device</p>
+<p>•</p>
+<p>u16DevicePackage – Device package pin count</p>
+<p>•</p>
+<p>u16DeviceMemorySize – Device memory size</p>
+<p>•</p>
+<p>u32AsicId – Device ASIC id</p>
+<p>•</p>
+<p>u32LotNumber – Device lot number</p>
+<p>•</p>
+<p>u16FlowCheck – Device Flow check</p>
+<p>•</p>
+<p>u16WaferNumber – Device wafer number</p>
+<p>•</p>
+<p>u16WaferXCoordinate – Device wafer X coordinate</p>
+<p>•</p>
+<p>u16WaferYCoordinate – Device wafer Y coordinate</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_DeviceInfoType</b> (gives the information retrieved about this compile of the API)</p>
+<p>30</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.5.3</b></p>
+<p><b>Fapi_getBankSectors()</b></p>
+<p>Returns the sector information for the requested bank</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_getBankSectors(</p>
+<p>Fapi_FlashBankType<i><b> oBank</b></i>,</p>
+<p>Fapi_FlashBankSectorsType<i><b> *poFlashBankSectors</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>oBank [in]</i></p>
+<p>Bank to get information on</p>
+<p><i>poFlashBankSectors [out]</i></p>
+<p>Returned structure with the bank information</p>
+<p><b>Description</b></p>
+<p>This function returns information about the bank starting address, number of sectors, sector sizes in</p>
+<p>kilobytes, and bank technology type. The information is returned in a struct Fapi_FlashBankSectorsType.</p>
+<p>The members are as follows:</p>
+<p>•</p>
+<p>oFlashBankTech – Indicates if bank is an FLEP, FLEE or FLES bank type</p>
+<p>•</p>
+<p>u32NumberOfSectors – Indicates the number of sectors in the bank</p>
+<p>•</p>
+<p>u32BankStartAddress – Starting address of the bank</p>
+<p>•</p>
+<p>au16SectorSizes[] – An array of sectors sizes for each sector in the bank (<i>As all</i></p>
+<p><i>sectors on FLEE</i></p>
+<p><i>banks are the same size, only au16SectorSizes[0] is returned with a sector size</i>)</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p>•</p>
+<p><b>Fapi_Error_FeatureNotAvailable</b> (failure: Not all</p>
+<p>devices have this support in the Flash Memory</p>
+<p>Controller)</p>
+<p>•</p>
+<p><b>Fapi_Error_InvalidBank</b> (failure: Bank does not exist on this device)</p>
+<p>•</p>
+<p><b>Fapi_Error_NullPointer</b> (failure: poFlashBankSectors is a NULL pointer)</p>
+<p>31</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Functions</i></p>
+<p>www.ti.com</p>
+<p><i><b>3.6</b></i></p>
+<p><i><b>Utility Functions</b></i></p>
+<p><b>3.6.1</b></p>
+<p><b>Fapi_calculateFletcherChecksum()</b></p>
+<p>Calculates the Fletcher checksum from the given address and length</p>
+<p><b>Synopsis</b></p>
+<p>uint32_t Fapi_calculateFletcherChecksum(</p>
+<p>uint16_t<i><b> *pu16Data</b></i>,</p>
+<p>uint16_t<i><b> u16Length</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>pu16Data [in]</i></p>
+<p>Address to start calculating the checksum from</p>
+<p><i>u16Length [in]</i></p>
+<p>Number of 16-bit words to use in calculation</p>
+<p><b>Description</b></p>
+<p>This function generates a 32-bit Fletcher checksum starting at the supplied address for the number of 16-</p>
+<p>bit words specified.</p>
+<p>This function assumes the value passed in<i> pu16Data</i> is a 16bit aligned address.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p>• 32-bit Fletcher Checksum value</p>
+<p><b>3.6.2</b></p>
+<p><b>Fapi_calculateEcc()</b></p>
+<p>Calculates the ECC for a 64-bit value</p>
+<p><b>Synopsis</b></p>
+<p>uint8_t Fapi_calculateEcc(</p>
+<p>uint32_t<i><b> u32Address</b></i>,</p>
+<p>uint64<i><b> u64Data</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32Address [in]</i></p>
+<p>Address of the 64-bit value to calculate the ECC</p>
+<p><i>u64Data [in]</i></p>
+<p>64-bit value to calculate ECC on</p>
+<p><b>Description</b></p>
+<p>This function will</p>
+<p>calculate the ECC for a 64-bit aligned word including address if device supports address</p>
+<p>in ECC calculation.</p>
+<p>This function assumes the value passed in<i> u32Address</i> is a 64bit aligned address.</p>
+<p><b>NOTE:</b></p>
+<p>As of version 1.51.0 of the API, this function expects the value in u64Data to be in the</p>
+<p>natural</p>
+<p>Endianness of the system the function is being called on.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p>8-bit calculated ECC</p>
+<p>32</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Functions</i></p>
+<p><b>3.6.3</b></p>
+<p><b>Fapi_waitDelay() -- Deprecated</b></p>
+<p>Generates a delay roughly proportional</p>
+<p>to the value passed. The delay is created with a simple software</p>
+<p>loop. The time is not adjusted to account for operating frequency, CPU type or memory access time. This</p>
+<p>function will</p>
+<p>not be supported in future versions of this API.</p>
+<p><b>Synopsis</b></p>
+<p>uint8_t Fapi_waitDelay(</p>
+<p>uint32_t<i><b> u32WaitDelay</b></i>)</p>
+<p><b>Parameters</b></p>
+<p><i>u32WaitDelay [in]</i></p>
+<p>Number of arbitrary units to delay</p>
+<p><b>Description</b></p>
+<p>This function will</p>
+<p>generate a wait for a time rougnly proportional</p>
+<p>to the value of u32WaitDelay.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p><i><b>3.7</b></i></p>
+<p><i><b>User Definable Functions</b></i></p>
+<p>These callback functions are distributed in the file Fapi_UserDefinedFunctions.c and used by the<i> read</i></p>
+<p><i>Table 4</i> functions. These are the base functions called by the API and can be modified to meet the user’s</p>
+<p>need for these operations. This file must be compiled with the user’s code.</p>
+<p><b>3.7.1</b></p>
+<p><b>Fapi_serviceWatchdogTimer()</b></p>
+<p>Services the watchdog timer</p>
+<p><b>Synopsis</b></p>
+<p>Fapi_StatusType Fapi_serviceWatchdogTimer(void)</p>
+<p><b>Parameters</b></p>
+<p><i>None</i></p>
+<p><b>Description</b></p>
+<p>This function allows the user to service their watchdog timer in the<i> read Table 4</i> functions. It is called</p>
+<p>when the address being read crosses the 256 byte aligned address boundaries.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_Success</b> (success)</p>
+<p><b>Sample Implementation</b></p>
+<p>#include “F021.h”</p>
+<p>Fapi_StatusType Fapi_serviceWatchdogTimer(void)</p>
+<p>{</p>
+<p>/* User to add their own watchdog servicing code here */</p>
+<p>return(Fapi_Status_Success);</p>
+<p>}</p>
+<p>33</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Macros</i></p>
+<p>www.ti.com</p>
+<p><b>4</b></p>
+<p><b>API Macros</b></p>
+<p>The API includes a set of helper macros that may be used by the developer.</p>
+<p><i><b>4.1</b></i></p>
+<p><i><b>FAPI_CHECK_FSM_READY_BUSY</b></i></p>
+<p>Returns state of FSM.</p>
+<p><b>Synopsis</b></p>
+<p>#define FAPI_CHECK_FSM_READY_BUSY (FLASH_CONTROL_REGISTER-</p>
+<p>&gt;FmStat.FMSTAT_BITS.BUSY ? Fapi_Status_FsmBusy : Fapi_Status_FsmReady)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This macro returns the state of the FSM.</p>
+<p><b>Return Value</b></p>
+<p>•</p>
+<p><b>Fapi_Status_FsmReady</b> (FSM is ready to accept a new command)</p>
+<p>•</p>
+<p><b>Fapi_Status_FsmBusy</b> (FSM is busy and may only accept a suspend command if operation is</p>
+<p>program or erase sector)</p>
+<p><i><b>4.2</b></i></p>
+<p><i><b>FAPI_CLEAR_FSM_DONE_EVENT</b></i></p>
+<p>Helper macro to clear FSM_DONE event</p>
+<p><b>Synopsis</b></p>
+<p>#define FAPI_CLEAR_FSM_DONE_EVENT (FLASH_CONTROL_REGISTER-</p>
+<p>&gt;FedAcStatus.FEDACSTATUS_BITS.FSM_DONE = 1U)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This macro writes a 1 to the FSM_DONE bit in the FEDACSTATUS register to clear the FSM_DONE</p>
+<p>event.</p>
+<p><b>Return Value</b></p>
+<p>None</p>
+<p>34</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Macros</i></p>
+<p><i><b>4.3</b></i></p>
+<p><i><b>FAPI_GET_FSM_STATUS</b></i></p>
+<p>Returns the value of the FMSTAT register</p>
+<p><b>Synopsis</b></p>
+<p>#define GET_FSM_STATUS (FLASH_CONTROL_REGISTER-&gt;FmStat.u32Register)</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This macro is used to get the value of the FMSTAT register.</p>
+<p><b>FMSTAT Register Value</b></p>
+<p><b>Figure 1. FMSTAT Register</b></p>
+<p>31</p>
+<p>24</p>
+<p>Reserved</p>
+<p>23</p>
+<p>16</p>
+<p>Reserved</p>
+<p>15</p>
+<p>14</p>
+<p>13</p>
+<p>12</p>
+<p>11</p>
+<p>10</p>
+<p>9</p>
+<p>8</p>
+<p>Reserved</p>
+<p>ILA</p>
+<p>Reserved</p>
+<p>PGV</p>
+<p>Reserved</p>
+<p>EV</p>
+<p>Reserved</p>
+<p>BUSY</p>
+<p>7</p>
+<p>6</p>
+<p>5</p>
+<p>4</p>
+<p>3</p>
+<p>2</p>
+<p>1</p>
+<p>0</p>
+<p>ERS</p>
+<p>PGM</p>
+<p>INV-DAT</p>
+<p>CSTAT</p>
+<p>VOLTSTAT</p>
+<p>ESUSP</p>
+<p>PSUSP</p>
+<p>SLOCK</p>
+<p><b>Table 8. FMSTAT Register Field Descriptions</b></p>
+<p><b>Bit</b></p>
+<p><b>Field</b></p>
+<p><b>Description</b></p>
+<p>15</p>
+<p>Reserved</p>
+<p>Read returns 0. Writes have no effect.</p>
+<p>Illegal</p>
+<p>Address</p>
+<p>14</p>
+<p>ILA</p>
+<p>When set, indicates that an illegal</p>
+<p>address is detected. Three conditions can set illegal</p>
+<p>address</p>
+<p>ﬂags.</p>
+<p>•</p>
+<p>Writing to a hole (un-implemented logical</p>
+<p>address space) within a Flash bank.</p>
+<p>•</p>
+<p>Writing to an address location to an un-implemented Flash space.</p>
+<p>•</p>
+<p>Input address for write is decoded to select a different bank from the bank ID register.</p>
+<p>•</p>
+<p>The address range does not match the type of FSM command. For example, the erase_sector</p>
+<p>and erase_OTP commands must match the address regions.</p>
+<p>•</p>
+<p>TI-OTP address selected but CMD_EN in FSM_ST_MACHINE is not set.</p>
+<p>13</p>
+<p>Reserved</p>
+<p>Read returns 0. Writes have no effect.</p>
+<p>Program verify When set, indicates that a word is not successfully programmed after the maximum</p>
+<p>12</p>
+<p>PGV</p>
+<p>allowed number of program pulses are given for program operation.</p>
+<p>11</p>
+<p>Reserved</p>
+<p>Read returns 0. Writes have no effect.</p>
+<p>Erase verify When set, indicates that a sector is not successfully erased after the maximum</p>
+<p>10</p>
+<p>EV</p>
+<p>allowed number of erase pulses are given for erase operation. During Erase verify command, this</p>
+<p>ﬂag is set immediately if a bit is found to be 0.</p>
+<p>9</p>
+<p>Reserved</p>
+<p>Read returns 0. Writes have no effect.</p>
+<p>8</p>
+<p>BUSY</p>
+<p>When set, this bit indicates that a program, erase, or suspend operation is being processed.</p>
+<p>Erase Active. When set, this bit indicates that the Flash module is actively performing an erase</p>
+<p>7</p>
+<p>ERS</p>
+<p>operation. This bit is set when erasing starts and is cleared when erasing is complete. It is also</p>
+<p>cleared when the erase is suspended and set when the erase resumes.</p>
+<p>Program Active. When set, this bit indicates that the Flash module is currently performing a</p>
+<p>program operation. This bit is set when programming starts and is cleared when programming is</p>
+<p>6</p>
+<p>PGM</p>
+<p>complete. It is also cleared when programming is suspended and set when programming is</p>
+<p>resumes.</p>
+<p>35</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>API Macros</i></p>
+<p>www.ti.com</p>
+<p><b>Table 8. FMSTAT Register Field Descriptions (continued)</b></p>
+<p><b>Bit</b></p>
+<p><b>Field</b></p>
+<p><b>Description</b></p>
+<p>Invalid Data. When set, this bit indicates that the user attempted to program a “1” where a “0” was</p>
+<p>5</p>
+<p>INVDAT</p>
+<p>already present. This bit is cleared by the Clear Status command.</p>
+<p>Command Status. Once the FSM starts any failure will</p>
+<p>set this bit. When set, this bit informs the</p>
+<p>host that the program, erase, or validate sector command failed and the command was stopped.</p>
+<p>4</p>
+<p>CSTAT</p>
+<p>This bit is cleared by the Clear Status command. For some errors, this will</p>
+<p>be the only indication of</p>
+<p>an FSM error because the cause does not fall</p>
+<p>within the other error bit types.</p>
+<p>Core Voltage Status. When set, this bit indicates that the core voltage generator of the pump power</p>
+<p>3</p>
+<p>VOLTSTAT</p>
+<p>supply dipped below the lower limit allowable during a program or erase operation. This bit is</p>
+<p>cleared by the Clear Status command. Version 3.0.9, 3.1.0 Preliminary Flash Registers</p>
+<p>Erase Suspend. When set, this bit indicates that the Flash module has received and processed an</p>
+<p>2</p>
+<p>ESUSP</p>
+<p>erase suspend operation. This bit remains set until</p>
+<p>the erase resume command has been issued or</p>
+<p>until</p>
+<p>the Clear_More command is run.</p>
+<p>Program Suspend. When set, this bit indicates that the Flash module has received and processed</p>
+<p>1</p>
+<p>PSUSP</p>
+<p>a program suspend operation. This bit remains set until</p>
+<p>the program resume command has been</p>
+<p>issued or until</p>
+<p>the Clear_More command is run.</p>
+<p>Sector Lock Status. When set, this bit indicates that the operation was halted because the target</p>
+<p>0</p>
+<p>SLOCK</p>
+<p>sector was locked for erasing and the programming either by the sector protect bit or by OTP write</p>
+<p>protection disable bits. This bit is cleared by the Clear Status command.</p>
+<p>No SLOCK FSM error will</p>
+<p>occur if all</p>
+<p>sectors in a bank erase operation are set to 1. All</p>
+<p>the sectors</p>
+<p>will</p>
+<p>be checked but no LOCK will</p>
+<p>be set if no operation occurs due to the SECT_ERASED bits</p>
+<p>being set to all</p>
+<p>ones. A SLOCK error will</p>
+<p>occur if attempting to do a sector erase with either BSE is</p>
+<p>cleared or SECT_ERASED is set. For FLEE Flash banks over 16 sectors, the BSE register must</p>
+<p>be set to all</p>
+<p>ones for a bank or sector erase.</p>
+<p><i><b>4.4</b></i></p>
+<p><i><b>FAPI_SUSPEND_FSM</b></i></p>
+<p>Issues FSM suspend command</p>
+<p><b>Synopsis</b></p>
+<p>#define FAPI_SUSPEND_FSM</p>
+<p>(FAPI_WRITE_LOCKED_FSM_REGISTER(FLASH_CONTROL_REGISTER-</p>
+<p>&gt;FsmExecute.FSM_EXECUTE_BITS.SUSPEND_NOW, 0x5U))</p>
+<p><b>Parameters</b></p>
+<p>None</p>
+<p><b>Description</b></p>
+<p>This macro will</p>
+<p>issue a FSM suspend command. Only program and erase sector operations are valid</p>
+<p>suspendable operations.</p>
+<p><b>Return Value</b></p>
+<p>None</p>
+<p>36</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>API Macros</i></p>
+<p><i><b>4.5</b></i></p>
+<p><i><b>FAPI_WRITE_EWAIT</b></i></p>
+<p>Helper macro to write EWAIT value</p>
+<p><b>Synopsis</b></p>
+<p>#define FAPI_WRITE_EWAIT(_mEwait) (FAPI_WRITE_LOCKED_FSM_REGISTER(FLASH_CONTROL_REGISTER-</p>
+<p>&gt;EepromConfig.EEPROM_CONFIG_BITS.EWAIT,_mEwait))</p>
+<p><b>Parameters</b></p>
+<p><i>_mEwait [in]</i></p>
+<p>EWAIT value to be written</p>
+<p><b>Description</b></p>
+<p>This macro writes _mEwait to the EWAIT bits in the EEPROM_CONFIG register.</p>
+<p><b>Return Value</b></p>
+<p>None</p>
+<p><i><b>4.6</b></i></p>
+<p><i><b>FAPI_WRITE_LOCKED_FSM_REGISTER</b></i></p>
+<p>Allow easy writing to Flash Memory Controller registers that need to be unlocked first.</p>
+<p><b>Synopsis</b></p>
+<p>#define FAPI_WRITE_LOCKED_FSM_REGISTER(mRegister,mValue)</p>
+<p>\</p>
+<p>do {</p>
+<p>\</p>
+<p>Fapi_GlobalInit.m_poFlashControlRegisters-&gt;FsmWrEna.FSM_WR_ENA_BITS.WR_ENA</p>
+<p>= 0x5U; \</p>
+<p>mRegister = mValue;</p>
+<p>\</p>
+<p>Fapi_GlobalInit.m_poFlashControlRegisters-&gt;FsmWrEna.FSM_WR_ENA_BITS.WR_ENA</p>
+<p>= 0x2U; \</p>
+<p>}while(0)</p>
+<p><b>Parameters</b></p>
+<p><i>mRegister [in]</i></p>
+<p>Address or bitfield of the locked register to be written to</p>
+<p><i>mValue [in]</i></p>
+<p>Value to be written to the locked register</p>
+<p><b>Description</b></p>
+<p>This function sets up the sectors in the non EEPROM banks that are available for erase and programming</p>
+<p>operations.</p>
+<p><b>Return Value</b></p>
+<p><i>None</i></p>
+<p><b>5</b></p>
+<p><b>Recommended FSM Flows</b></p>
+<p><i><b>5.1</b></i></p>
+<p><i><b>New Devices From Factory</b></i></p>
+<p>Devices are shipped erased from the Factory. It is recommended, but not required to do a blank check on</p>
+<p>devices received to verify that they are erased.</p>
+<p>37</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Start</p>
+<p>Done</p>
+<p>Yes</p>
+<p>Yes</p>
+<p>DUT fails Program</p>
+<p>No</p>
+<p>Call </p>
+<p><i><b>Fapi_issueAsyncCommandWithAddress()</b></i> </p>
+<p>Using <i>Fapi_EraseSector </i>command</p>
+<p><b>CHECK_FSM_READY_BUSY </b></p>
+<p>!= <i>Fapi_Status_FsmBusy</i></p>
+<p><b>GET_FSM_STATUS</b> </p>
+<p>== 0</p>
+<p>No</p>
+<p>Call </p>
+<p><i><b>Fapi_initializeFlashBanks()</b></i></p>
+<p>Another Sector to Erase?</p>
+<p>Yes</p>
+<p>No</p>
+<p><i>Execute other </i></p>
+<p><i>code as </i></p>
+<p><i>needed</i></p>
+<p>Properly Initialized Device</p>
+<p>Call </p>
+<p><i><b>Fapi_setActiveFlashBank()</b></i> </p>
+<p>for current bank</p>
+<p>Call either </p>
+<p><i><b>Fapi_enableMainBankSectors()</b></i> or </p>
+<p><i><b>Fapi_enableEepromBankSectors() </b></i></p>
+<p>appropriate for current bank</p>
+<p><b>CHECK_FSM_READY_BUSY </b></p>
+<p><i><b>=</b></i>= <i>Fapi_Status_FsmReady</i></p>
+<p>Yes</p>
+<p>No</p>
+<p>Is Sector in a different </p>
+<p>bank?</p>
+<p>Yes</p>
+<p>No</p>
+<p><i>Recommended FSM Flows</i></p>
+<p>www.ti.com</p>
+<p><i><b>5.2</b></i></p>
+<p><i><b>Recommended Erase Flows</b></i></p>
+<p>Figure 2 and Figure 3 describe the flow for erasing a sector(s) or bank(s) on a device. For further</p>
+<p>information, see Section 3.2.2.</p>
+<p><b>Figure 2. Recommended Sector Erase Flow</b></p>
+<p>38</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Start</p>
+<p>Done</p>
+<p>Yes</p>
+<p>Yes</p>
+<p>DUT fails Program</p>
+<p>No</p>
+<p>Call </p>
+<p><i><b>Fapi_issueAsyncCommandWithAddress()</b></i> </p>
+<p>Using <i>Fapi_EraseBank </i>command</p>
+<p><b>CHECK_FSM_READY_BUSY </b></p>
+<p>!= <i>Fapi_Status_FsmBusy</i></p>
+<p><b>GET_FSM_STATUS</b> </p>
+<p>== 0</p>
+<p>No</p>
+<p>Call </p>
+<p><i><b>Fapi_initializeFlashBanks()</b></i></p>
+<p>Another Bank to Erase?</p>
+<p>Yes</p>
+<p>No</p>
+<p><i>Execute other </i></p>
+<p><i>code as </i></p>
+<p><i>needed</i></p>
+<p>Properly Initialized Device</p>
+<p>Call </p>
+<p><i><b>Fapi_setActiveFlashBank()</b></i> </p>
+<p>for current bank</p>
+<p>Call either </p>
+<p><i><b>Fapi_enableMainBankSectors()</b></i> or </p>
+<p><i><b>Fapi_enableEepromBankSectors() </b></i></p>
+<p>appropriate for current bank</p>
+<p><b>CHECK_FSM_READY_BUSY </b></p>
+<p><i><b>=</b></i>= <i>Fapi_Status_FsmReady</i></p>
+<p>Yes</p>
+<p>No</p>
+<p>www.ti.com</p>
+<p><i>Recommended FSM Flows</i></p>
+<p><b>Figure 3. Recommended Bank Erase Flow</b></p>
+<p>39</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>Start</p>
+<p>Done</p>
+<p>Yes</p>
+<p>Yes</p>
+<p>DUT fails Program</p>
+<p>No</p>
+<p>Call <i><b>Fapi_issueProgrammingCommand()</b></i> </p>
+<p>Supplying address, data and mode </p>
+<p><b>CHECK_FSM_READY_BUSY </b></p>
+<p>!= <i>Fapi_Status_FsmBusy</i></p>
+<p><b>GET_FSM_STATUS</b> </p>
+<p>== 0</p>
+<p>No</p>
+<p>Call </p>
+<p><i><b>Fapi_initializeFlashBanks()</b></i></p>
+<p>More data to program?</p>
+<p>Yes</p>
+<p>No</p>
+<p><i>Execute other </i></p>
+<p><i>code as </i></p>
+<p><i>needed</i></p>
+<p>Properly Initialized Device</p>
+<p>Call </p>
+<p><i><b>Fapi_setActiveFlashBank()</b></i> </p>
+<p>for current bank</p>
+<p>Call either </p>
+<p><i><b>Fapi_enableMainBankSectors()</b></i> or </p>
+<p><i><b>Fapi_enableEepromBankSectors() </b></i></p>
+<p>appropriate for current bank</p>
+<p><b>CHECK_FSM_READY_BUSY </b></p>
+<p><i><b>=</b></i>= <i>Fapi_Status_FsmReady</i></p>
+<p>Yes</p>
+<p>No</p>
+<p>Is data in same bank?</p>
+<p>No</p>
+<p><i>Recommended FSM Flows</i></p>
+<p>www.ti.com</p>
+<p><i><b>5.3</b></i></p>
+<p><i><b>Recommended Program Flow</b></i></p>
+<p>Figure 4 describes the flow for programming a device. This flow assumes the user has already erased all</p>
+<p>affected sectors or banks following the Recommended Erase Flow (see Section 5.2). For further</p>
+<p>information, see Section 3.3.1.</p>
+<p><b>Figure 4. Recommended Program Flow</b></p>
+<p>40</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><b>Appendix A Flash State Machine Commands</b></p>
+<p><i><b>A.1</b></i></p>
+<p><i><b>Flash State Machine Commands</b></i></p>
+<p><b>Table 9. Flash State Machine Commands</b></p>
+<p><b>Command</b></p>
+<p><b>Description</b></p>
+<p><b>Enumeration Type</b></p>
+<p><b>API Call(s)</b></p>
+<p>Program</p>
+<p>Used to program data to</p>
+<p>Fapi_ProgramData</p>
+<p>Fapi_issueProgrammingCommandForEccAddress()</p>
+<p>Data</p>
+<p>any valid Flash address</p>
+<p>Used to erase a Flash</p>
+<p>Erase Sector</p>
+<p>sector located by the</p>
+<p>Fapi_EraseSector</p>
+<p>specified address</p>
+<p>Fapi_issueAsyncCommandWithAddress()</p>
+<p>Used to erase a Flash bank</p>
+<p>Erase Bank</p>
+<p>located by the specified</p>
+<p>Fapi_EraseBank</p>
+<p>address</p>
+<p>Clear Status</p>
+<p>Clears the status register</p>
+<p>Fapi_ClearStatus</p>
+<p>Fapi_issueAsyncCommand()</p>
+<p>Program</p>
+<p>Resumes a suspended</p>
+<p>Fapi_ProgramResume</p>
+<p>Fapi_issueAsyncCommand()</p>
+<p>Resume</p>
+<p>programming operation</p>
+<p>Erase</p>
+<p>Resumes a suspended</p>
+<p>Fapi_EraseResume</p>
+<p>Fapi_issueAsyncCommand()</p>
+<p>Resume</p>
+<p>erase operation</p>
+<p>Clear More</p>
+<p>Clears the status register</p>
+<p>Fapi_ClearMore</p>
+<p>Fapi_issueAsyncCommand()</p>
+<p>41</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Flash State Machine Commands</i></p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><b>Appendix B Typedefs and Enumerations</b></p>
+<p><i><b>B.1</b></i></p>
+<p><i><b>Type Definitions</b></i></p>
+<p>typedef unsigned char boolean_t;</p>
+<p><i><b>B.2</b></i></p>
+<p><i><b>Enumerations</b></i></p>
+<p><b>B.2.1</b></p>
+<p><b>Fapi_CpuSelectorType</b></p>
+<p>This is used to indicate which CPU is being used.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_MasterCpu,</p>
+<p>Fapi_SlaveCpu0</p>
+<p>} ATTRIBUTE_PACKED Fapi_CpuSelectorType;</p>
+<p><b>B.2.2</b></p>
+<p><b>Fapi_CpuType</b></p>
+<p>This is used to indicate what type of Cpu is being used.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>ARM7 = 0U,</p>
+<p>/* ARM7 core, Legacy placeholder */</p>
+<p>M3</p>
+<p>= 1U,</p>
+<p>/* ARM Cortex M3 core */</p>
+<p>R4</p>
+<p>= 2U,</p>
+<p>/* ARM Cortex R4 core without ECC logic */</p>
+<p>R4F</p>
+<p>= 3U,</p>
+<p>/* ARM Cortex R4, R4F, and R5 cores with ECC logic*/</p>
+<p>C28</p>
+<p>= 4U,</p>
+<p>/* TI C28x core */</p>
+<p>Undefined1 = 5U,</p>
+<p>/* To Be Determined.</p>
+<p>Future core placeholder */</p>
+<p>Undefined2 = 6U,</p>
+<p>/* To Be Determined.</p>
+<p>Future core placeholder */</p>
+<p>Undefined3 = 7U</p>
+<p>/* To Be Determined.</p>
+<p>Future core placeholder */</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_CpuType;</p>
+<p><b>B.2.3</b></p>
+<p><b>Fapi_FamilyType</b></p>
+<p>This is used to indicate what type of Family is being used.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Family_FMC</p>
+<p>= 0x00,</p>
+<p>Family_L2FMC</p>
+<p>= 0x10,</p>
+<p>Family_Sonata</p>
+<p>= 0x20,</p>
+<p>Family_Stellaris = 0x30,</p>
+<p>Family_Future</p>
+<p>= 0x40</p>
+<p>} ATTRIBUTE_PACKED Fapi_FamilyType;</p>
+<p>42</p>
+<p><i>Typedefs and Enumerations</i></p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>Enumerations</i></p>
+<p><b>B.2.4</b></p>
+<p><b>Fapi_AddressMemoryType</b></p>
+<p>This is used to indicate what type of Address is being used.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_Flash,</p>
+<p>Fapi_FlashEcc,</p>
+<p>Fapi_Otp,</p>
+<p>Fapi_OtpEcc,</p>
+<p>Fapi_Undefined</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_AddressMemoryType;</p>
+<p><b>B.2.5</b></p>
+<p><b>Fapi_FlashProgrammingCommandsType</b></p>
+<p>This contains all</p>
+<p>the possible modes used in the Fapi_IssueAsyncProgrammingCommand().</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_AutoEccGeneration, /* This is the default mode for the command and will auto generate</p>
+<p>the ecc for the provided data buffer */</p>
+<p>Fapi_DataOnly,</p>
+<p>/* Command will only process the data buffer */</p>
+<p>Fapi_EccOnly,</p>
+<p>/* Command will only process the ecc buffer */</p>
+<p>Fapi_DataAndEcc</p>
+<p>/* Command will process data and ecc buffers */</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_FlashProgrammingCommandsType;</p>
+<p><b>B.2.6</b></p>
+<p><b>Fapi_FlashBankType</b></p>
+<p>This is used to indicate which Flash bank is being used.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_FlashBank0=0,</p>
+<p>Fapi_FlashBank1=1,</p>
+<p>Fapi_FlashBank2=2,</p>
+<p>Fapi_FlashBank3=3,</p>
+<p>Fapi_FlashBank4=4,</p>
+<p>Fapi_FlashBank5=5,</p>
+<p>Fapi_FlashBank6=6,</p>
+<p>Fapi_FlashBank7=7</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_FlashBankType;</p>
+<p>43</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Typedefs and Enumerations</i></p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Enumerations</i></p>
+<p>www.ti.com</p>
+<p><b>B.2.7</b></p>
+<p><b>Fapi_FlashBankTechType</b></p>
+<p>This is used to indicate what F021 Bank Technology the bank is.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_FLEP=0,</p>
+<p>Fapi_FLEE=1,</p>
+<p>Fapi_FLES=2,</p>
+<p>Fapi_FLHV=3</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_FlashBankTechType;</p>
+<p><b>B.2.8</b></p>
+<p><b>Fapi_FlashSectorType</b></p>
+<p>This is used to indicate which Flash sector is being used.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_FlashSector0,</p>
+<p>Fapi_FlashSector1,</p>
+<p>Fapi_FlashSector2,</p>
+<p>Fapi_FlashSector3,</p>
+<p>Fapi_FlashSector4,</p>
+<p>Fapi_FlashSector5,</p>
+<p>Fapi_FlashSector6,</p>
+<p>Fapi_FlashSector7,</p>
+<p>Fapi_FlashSector8,</p>
+<p>Fapi_FlashSector9,</p>
+<p>Fapi_FlashSector10,</p>
+<p>Fapi_FlashSector11,</p>
+<p>Fapi_FlashSector12,</p>
+<p>Fapi_FlashSector13,</p>
+<p>Fapi_FlashSector14,</p>
+<p>Fapi_FlashSector15,</p>
+<p>Fapi_FlashSector16,</p>
+<p>Fapi_FlashSector17,</p>
+<p>Fapi_FlashSector18,</p>
+<p>Fapi_FlashSector19,</p>
+<p>Fapi_FlashSector20,</p>
+<p>Fapi_FlashSector21,</p>
+<p>Fapi_FlashSector22,</p>
+<p>Fapi_FlashSector23,</p>
+<p>Fapi_FlashSector24,</p>
+<p>Fapi_FlashSector25,</p>
+<p>Fapi_FlashSector26,</p>
+<p>Fapi_FlashSector27,</p>
+<p>Fapi_FlashSector28,</p>
+<p>Fapi_FlashSector29,</p>
+<p>Fapi_FlashSector30,</p>
+<p>Fapi_FlashSector31,</p>
+<p>Fapi_FlashSector32,</p>
+<p>Fapi_FlashSector33,</p>
+<p>Fapi_FlashSector34,</p>
+<p>Fapi_FlashSector35,</p>
+<p>Fapi_FlashSector36,</p>
+<p>Fapi_FlashSector37,</p>
+<p>Fapi_FlashSector38,</p>
+<p>Fapi_FlashSector39,</p>
+<p>Fapi_FlashSector40,</p>
+<p>Fapi_FlashSector41,</p>
+<p>Fapi_FlashSector42,</p>
+<p>44</p>
+<p><i>Typedefs and Enumerations</i></p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><i>Enumerations</i></p>
+<p>Fapi_FlashSector43,</p>
+<p>Fapi_FlashSector44,</p>
+<p>Fapi_FlashSector45,</p>
+<p>Fapi_FlashSector46,</p>
+<p>Fapi_FlashSector47,</p>
+<p>Fapi_FlashSector48,</p>
+<p>Fapi_FlashSector49,</p>
+<p>Fapi_FlashSector50,</p>
+<p>Fapi_FlashSector51,</p>
+<p>Fapi_FlashSector52,</p>
+<p>Fapi_FlashSector53,</p>
+<p>Fapi_FlashSector54,</p>
+<p>Fapi_FlashSector55,</p>
+<p>Fapi_FlashSector56,</p>
+<p>Fapi_FlashSector57,</p>
+<p>Fapi_FlashSector58,</p>
+<p>Fapi_FlashSector59,</p>
+<p>Fapi_FlashSector60,</p>
+<p>Fapi_FlashSector61,</p>
+<p>Fapi_FlashSector62,</p>
+<p>Fapi_FlashSector63</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_FlashSectorType;</p>
+<p><b>B.2.9</b></p>
+<p><b>Fapi_FlashStateCommandsType</b></p>
+<p>This contains all</p>
+<p>the possible Flash State Machine commands.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_ProgramData</p>
+<p>= 0x0002,</p>
+<p>Fapi_EraseSector</p>
+<p>= 0x0006,</p>
+<p>Fapi_EraseBank</p>
+<p>= 0x0008,</p>
+<p>Fapi_ValidateSector = 0x000E,</p>
+<p>Fapi_ClearStatus</p>
+<p>= 0x0010,</p>
+<p>Fapi_ProgramResume</p>
+<p>= 0x0014,</p>
+<p>Fapi_EraseResume</p>
+<p>= 0x0016,</p>
+<p>Fapi_ClearMore</p>
+<p>= 0x0018</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_FlashStateCommandsType;</p>
+<p><b>B.2.10</b></p>
+<p><b>Fapi_FlashReadMarginModeType</b></p>
+<p>This contains all</p>
+<p>the possible Flash State Machine commands.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_NormalRead = 0x0,</p>
+<p>Fapi_RM0</p>
+<p>= 0x1,</p>
+<p>Fapi_RM1</p>
+<p>= 0x2</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_FlashReadMarginModeType;</p>
+<p>45</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Typedefs and Enumerations</i></p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Enumerations</i></p>
+<p>www.ti.com</p>
+<p><b>B.2.11</b></p>
+<p><b>Fapi_StatusType</b></p>
+<p>This is the master type containing all</p>
+<p>possible returned status codes.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Fapi_Status_Success=0,</p>
+<p>/* Function completed successfully */</p>
+<p>Fapi_Status_FsmBusy,</p>
+<p>/* FSM is Busy */</p>
+<p>Fapi_Status_FsmReady,</p>
+<p>/* FSM is Ready */</p>
+<p>Fapi_Error_Fail,</p>
+<p>/* Generic Function Fail code */</p>
+<p>Fapi_Error_NullPointer,</p>
+<p>/* One of the pointer parameters is a null pointer */</p>
+<p>Fapi_Error_InvalidCommand,</p>
+<p>/* Command used is invalid for the function called */</p>
+<p>Fapi_Error_InvalidEccAddress,</p>
+<p>/* Returned if the ECC Address given to a function is</p>
+<p>invalid for that function */</p>
+<p>Fapi_Error_OtpChecksumMismatch,</p>
+<p>/* Returned if OTP checksum does not match expected value */</p>
+<p>Fapi_Error_InvalidHclkValue,</p>
+<p>/* Returned if FClk is above max FClk value -</p>
+<p>FClk is a calculated from HClk and</p>
+<p>RWAIT/EWAIT */</p>
+<p>Fapi_Error_InvalidBank,</p>
+<p>/* Returned if the specified bank does not exist */</p>
+<p>Fapi_Error_InvalidAddress,</p>
+<p>/* Returned if the specified Address does not exist in</p>
+<p>Flash or OTP */</p>
+<p>Fapi_Error_InvalidReadMode,</p>
+<p>/* Returned if the specified read mode does not exist */</p>
+<p>Fapi_Error_AsyncIncorrectDataBufferLength,</p>
+<p>/* Returned if Data buffer size specified</p>
+<p>exceeds Data bank width */</p>
+<p>Fapi_Error_AsyncIncorrectEccBufferLength,</p>
+<p>/* Returned if ECC buffer size specified</p>
+<p>exceeds ECC bank width */</p>
+<p>Fapi_Error_AsyncDataEccBufferLengthMismatch, /* Returned if Data buffer size either is not</p>
+<p>64bit aligned or Data</p>
+<p>length exceeds amount ECC supplied */</p>
+<p>Fapi_Error_FeatureNotAvailable</p>
+<p>/* FMC feature is not available on this device */</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_StatusType;</p>
+<p><b>B.2.12</b></p>
+<p><b>Fapi_ApiProductionStatusType</b></p>
+<p>This lists the different production status values possible for the API.</p>
+<p>typedef enum</p>
+<p>{</p>
+<p>Alpha_Internal,</p>
+<p>/* For internal TI use only.</p>
+<p>Not intended to be used by customers</p>
+<p>*/</p>
+<p>Alpha,</p>
+<p>/* Early Engineering release.</p>
+<p>May not be functionally complete */</p>
+<p>Beta_Internal,</p>
+<p>/* For internal TI use only.</p>
+<p>Not intended to be used by customers</p>
+<p>*/</p>
+<p>Beta,</p>
+<p>/* Functionally complete, to be used for testing and validation */</p>
+<p>Production</p>
+<p>/* Fully validated, functionally complete, ready for production use</p>
+<p>*/</p>
+<p>}</p>
+<p>ATTRIBUTE_PACKED Fapi_ApiProductionStatusType;</p>
+<p>46</p>
+<p><i>Typedefs and Enumerations</i></p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><b>Appendix C Flash Validation Procedure</b></p>
+<p>TI distributes the F021 Flash API as pre-compiled object libraries which has been fully qualified for use on</p>
+<p>Hercules devices. This ensures that the object code for programming will</p>
+<p>be the same as was qualified by</p>
+<p>TI. However it might be still</p>
+<p>possible that the application program does not use the API functions correctly</p>
+<p>by either passing incorrect values or using the API functions in a manner not in accordance with the API</p>
+<p>documentation. In order to ensure proper usage of the Flash API, the in application and 3rd programming</p>
+<p>tools must be validated.</p>
+<p>1.</p>
+<p>Erase and program at</p>
+<p>least</p>
+<p>4 devices with customer's object</p>
+<p>code using the method selected by the</p>
+<p>customer for programming.</p>
+<p>2.</p>
+<p>Using the TI</p>
+<p>profiling tool</p>
+<p>(contact</p>
+<p>local</p>
+<p>TI</p>
+<p>representative to obtain),</p>
+<p>generate profiles for each device</p>
+<p>programmed in 1.</p>
+<p>3.</p>
+<p>Erase and program these devices again using the same data pattern used in step 1 with the TI</p>
+<p>tool,</p>
+<p>UniFlash.</p>
+<p>4.</p>
+<p>Repeat step 2 on the devices programmed with UniFlash.</p>
+<p>The profiles generated in steps 2 and 4 should correlate within 100mV or 18 indices on the 0's Vt and be</p>
+<p>within 3 indices on the 1's BCC.</p>
+<p><b>NOTE:</b></p>
+<p>It is also highly recommended that the F021 Flash API usage be thouroughly reviewed by</p>
+<p>someone who was not involved with writing the code for Flash usage.</p>
+<p>47</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Flash Validation Procedure</i></p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><b>Appendix D Parallel Signature Analysis (PSA) algorithm</b></p>
+<p>The functions Section 3.4.6 and Section 3.4.5 make use of the Parallel</p>
+<p>Signature Analysis (PSA) algoritm.</p>
+<p>Those functions are typically used to verify a particular</p>
+<p>pattern is programmed in the Flash Memory</p>
+<p>without</p>
+<p>transferring the complete data pattern.</p>
+<p>The PSA signature is based on this primative polynomial:</p>
+<p>f(X) = 1 + X + X</p>
+<p>2</p>
+<p>+ X</p>
+<p>22</p>
+<p>+ X</p>
+<p>31</p>
+<p>uint32_t calculatePSA (uint32_t* pu32StartAddress,</p>
+<p>uint32_t</p>
+<p>u32Length,</p>
+<p>/* Number of 32bit words */</p>
+<p>uint32_t</p>
+<p>u32InitialSeed)</p>
+<p>{</p>
+<p>uint32_t u32Seed, u32SeedTemp;</p>
+<p>u32Seed = u32InitialSeed;</p>
+<p>while(u32Length--)</p>
+<p>{</p>
+<p>u32SeedTemp = (u32Seed &lt;&lt; 1)^*(pu32StartAddress++);</p>
+<p>if(u32Seed &amp; 0x80000000)</p>
+<p>{</p>
+<p>u32SeedTemp ^= 0x00400007;</p>
+<p>/* XOR the seed value with mask */</p>
+<p>}</p>
+<p>u32Seed = u32SeedTemp;</p>
+<p>}</p>
+<p>return u32Seed;</p>
+<p>}</p>
+<p>48</p>
+<p><i>Parallel</i></p>
+<p><i>Signature Analysis (PSA) algorithm</i></p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p>www.ti.com</p>
+<p><b>Appendix E Revision History</b></p>
+<p>Table 10 lists the API versions.</p>
+<p><b>Table 10. API Version History</b></p>
+<p><b>Version</b></p>
+<p><b>Additions/Modifications/Deletions</b></p>
+<p>1.00.0</p>
+<p>Initial</p>
+<p>Revision</p>
+<p>1.00.1</p>
+<p>Added missing extern reference for Fapi_getBankSectors()</p>
+<p>•</p>
+<p>Added support for Concerto devices.</p>
+<p>•</p>
+<p>Corrected issue with with Fapi_doBlankCheck() and Fapi_doVerify that could cause an illegal</p>
+<p>address</p>
+<p>1.50.0</p>
+<p>abort.</p>
+<p>•</p>
+<p>Added ECC read support for 72-bit wide FLEE banks</p>
+<p>•</p>
+<p>SDOCM00086276 - Changed the u64Data parameter passed to Fapi_calculateEcc() to be consistent</p>
+<p>behavior on Big and Little Endian Systems.</p>
+<p>•</p>
+<p>SDOCM00087304 - Updated Fapi_doBlankCheck to use Read Margin mode 0 only.</p>
+<p>•</p>
+<p>SDOCM00086404 - Added macro FAPI_WRITE_LOCKED_FSM_REGISTER() to allow easier writes to</p>
+<p>locked register in the Flash Memory Controller.</p>
+<p>•</p>
+<p>SDOCM00086405 - Changed the functions Fapi_setupEepromSectorEnable() and</p>
+<p>Fapi_setupBankSectorEnable() in Fapi_UserDefinedFunctions.c to use the macro</p>
+<p>1.51.0</p>
+<p>FAPI_WRITE_LOCKED_FSM_REGISTER() as the register that were being written to are locked</p>
+<p>register in the Flash Memory Controller.</p>
+<p>•</p>
+<p>SDOCM00086402 - Corrected the issue in Fapi_doMarginRead() that did not return all</p>
+<p>the requested</p>
+<p>data in the ECC memory regions.</p>
+<p>•</p>
+<p>SDOCM00088256 - Changed the check that insures max FCLK value for the device is not exceeded</p>
+<p>from a defined constant in the API to a check from the device OTP value.</p>
+<p>•</p>
+<p>SDOCM00087302 - Updated the structures in Types.h to support linking in gcc toolchain.</p>
+<p>•</p>
+<p>Replaced the user defined callback functions Fapi_setupEepromSectorEnable() and</p>
+<p>Fapi_setupBankSectorEnable() with the functions Fapi_enableEepromBankSectors() and</p>
+<p>Fapi_enableMainBankSectors.</p>
+<p>•</p>
+<p>Deprecated the function Fapi_waitDelay().</p>
+<p>•</p>
+<p>Removed the header files F021_FMC_BE.h and F021_FMC_LE.h as F021.h has been updated to</p>
+<p>automatically determine compile endianness.</p>
+<p>•</p>
+<p>Replaced the Fapi_initializeAPI() function with Fapi_initializeFlashBanks(). With this change, all</p>
+<p>global</p>
+<p>variables have been removed from the API.</p>
+<p>•</p>
+<p>Added the Compatibility.h header file. This file contains some backwards compatibility macros to work</p>
+<p>with projects that were previously built with v1.51 of the API. The list of functions and global</p>
+<p>variables</p>
+<p>with compatibility defines are:</p>
+<p>2.00.00</p>
+<p>–</p>
+<p>Fapi_initializeAPI()</p>
+<p>–</p>
+<p>Fapi_getFsmStatus()</p>
+<p>–</p>
+<p>Fapi_issueFsmSuspendCommand()</p>
+<p>–</p>
+<p>Fapi_writeEwaitValue(mEwait)</p>
+<p>–</p>
+<p>Fapi_checkFsmForReady()</p>
+<p>–</p>
+<p>Fapi_GlobalInit.m_poFlashControlRegisters</p>
+<p>•</p>
+<p>Fapi_getBankSectors() was updated to return sector sizes in kilobytes and to support 256kB sectors,</p>
+<p>au8SectorSizes which was an array uint8_t was changed to an array of uint16_t and renamed</p>
+<p>au16SectorSizes.</p>
+<p>49</p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Revision History</i></p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><i>Appendix E</i></p>
+<p>www.ti.com</p>
+<p><b>Table 10. API Version History (continued)</b></p>
+<p><b>Version</b></p>
+<p><b>Additions/Modifications/Deletions</b></p>
+<p>•</p>
+<p>Added Fapi_remapMainAddress() to give an easy method to determine ECC address for a main flash</p>
+<p>address</p>
+<p>•</p>
+<p>Removed unused status'</p>
+<p>from Fapi_StatusType</p>
+<p>–</p>
+<p>Fapi_Status_AsyncBusy</p>
+<p>–</p>
+<p>Fapi_Status_AsyncComplete</p>
+<p>–</p>
+<p>Fapi_Error_StateMachineTimeout</p>
+<p>–</p>
+<p>Fapi_Error_InvalidDelayValue</p>
+<p>2.00.00</p>
+<p>–</p>
+<p>Fapi_Error_InvalidCpu</p>
+<p>•</p>
+<p>Removed the listing of structures. Please refer to the installed F021 Flash API headers files for these.</p>
+<p>•</p>
+<p>Changed from the use of defined typedefs uint64, uint32, uint16, and uint8 to the standard definitions in</p>
+<p>stdint.h, uint64_t, uint32_t, uint16_t, and uint8_t. Also changed boolean to boolean_t</p>
+<p>•</p>
+<p>Added #if defined guardbanding around the defines in Types.h that can conflict with Autosar</p>
+<p>Platform_Types.h defines.</p>
+<p>•</p>
+<p>Added appendix describing the PSA calculation</p>
+<p>•</p>
+<p>Corrected the function description for Fapi_enableMainBanks().</p>
+<p>2.00.01</p>
+<p>•</p>
+<p>Added additional</p>
+<p>files that are distributed with the library.</p>
+<p>•</p>
+<p>Added additional</p>
+<p>library files for L2FMC with floating point support.</p>
+<p>•</p>
+<p>SDOCM00102756 - Remove FLOCK register from register include file.</p>
+<p>2.01.00</p>
+<p>•</p>
+<p>SDOCM00103134 - Sector size returned for FLEE banks by Fapi_getBankSectors() is double the</p>
+<p>actual</p>
+<p>size.</p>
+<p>Table 11 lists the API changes made since the previous revision of this document.</p>
+<p><b>Table 11. Document Revision History</b></p>
+<p><b>Reference</b></p>
+<p><b>Additions/Modifications/Deletions</b></p>
+<p>-</p>
+<p>Initial</p>
+<p>revision</p>
+<p>A</p>
+<p>Updated for v1.50.0</p>
+<p>B</p>
+<p>Updated the example code for Fapi_issueProgrammingCommand()</p>
+<p>C</p>
+<p>Updated for v1.51.0</p>
+<p>D</p>
+<p>Updated for v2.00.00</p>
+<p>E</p>
+<p>Updated for v2.00.01</p>
+<p>•</p>
+<p>Added the Validation procedure</p>
+<p>F</p>
+<p>•</p>
+<p>Corrected the register field name to disable ECC on bank 7 before calling a Blank Check function.</p>
+<p>G</p>
+<p>Updated for v2.01.00</p>
+<p>50</p>
+<p><i>Revision History</i></p>
+<p>SPNU501F– December 2012– Revised May 2014</p>
+<p><i>Submit Documentation Feedback</i></p>
+<p>Copyright © 2012–2014, Texas Instruments Incorporated</p>
+<h1 style="page-break-before:always; "></h1>
+<p><b>IMPORTANT NOTICE</b></p>
+<p>Texas Instruments Incorporated and its subsidiaries (TI) reserve the right to make corrections, enhancements, improvements and other</p>
+<p>changes to its semiconductor products and services per JESD46, latest issue, and to discontinue any product or service per JESD48, latest</p>
+<p>issue. Buyers should obtain the latest relevant information before placing orders and should verify that such information is current and</p>
+<p>complete. All</p>
+<p>semiconductor products (also referred to herein as “components”) are sold subject to TI’s terms and conditions of sale</p>
+<p>supplied at the time of order acknowledgment.</p>
+<p>TI warrants performance of its components to the specifications applicable at the time of sale, in accordance with the warranty in TI’s terms</p>
+<p>and conditions of sale of semiconductor products. Testing and other quality control</p>
+<p>techniques are used to the extent TI deems necessary</p>
+<p>to support this warranty. Except where mandated by applicable law, testing of all</p>
+<p>parameters of each component is not necessarily</p>
+<p>performed.</p>
+<p>TI assumes no liability for applications assistance or the design of Buyers’</p>
+<p>products. Buyers are responsible for their products and</p>
+<p>applications using TI components. To minimize the risks associated with Buyers’</p>
+<p>products and applications, Buyers should provide</p>
+<p>adequate design and operating safeguards.</p>
+<p>TI does not warrant or represent that any license, either express or implied, is granted under any patent right, copyright, mask work right, or</p>
+<p>other intellectual</p>
+<p>property right relating to any combination, machine, or process in which TI components or services are used. Information</p>
+<p>published by TI regarding third-party products or services does not constitute a license to use such products or services or a warranty or</p>
+<p>endorsement thereof. Use of such information may require a license from a third party under the patents or other intellectual</p>
+<p>property of the</p>
+<p>third party, or a license from TI under the patents or other intellectual</p>
+<p>property of TI.</p>
+<p>Reproduction of significant portions of TI information in TI data books or data sheets is permissible only if reproduction is without alteration</p>
+<p>and is accompanied by all</p>
+<p>associated warranties, conditions, limitations, and notices. TI is not responsible or liable for such altered</p>
+<p>documentation. Information of third parties may be subject to additional</p>
+<p>restrictions.</p>
+<p>Resale of TI components or services with statements different from or beyond the parameters stated by TI for that component or service</p>
+<p>voids all</p>
+<p>express and any implied warranties for the associated TI component or service and is an unfair and deceptive business practice.</p>
+<p>TI is not responsible or liable for any such statements.</p>
+<p>Buyer acknowledges and agrees that it is solely responsible for compliance with all</p>
+<p>legal, regulatory and safety-related requirements</p>
+<p>concerning its products, and any use of TI components in its applications, notwithstanding any applications-related information or support</p>
+<p>that may be provided by TI. Buyer represents and agrees that it has all</p>
+<p>the necessary expertise to create and implement safeguards which</p>
+<p>anticipate dangerous consequences of failures, monitor failures and their consequences, lessen the likelihood of failures that might cause</p>
+<p>harm and take appropriate remedial</p>
+<p>actions. Buyer will</p>
+<p>fully indemnify TI and its representatives against any damages arising out of the use</p>
+<p>of any TI components in safety-critical</p>
+<p>applications.</p>
+<p>In some cases, TI components may be promoted specifically to facilitate safety-related applications. With such components, TI’s goal</p>
+<p>is to</p>
+<p>help enable customers to design and create their own end-product solutions that meet applicable functional</p>
+<p>safety standards and</p>
+<p>requirements. Nonetheless, such components are subject to these terms.</p>
+<p>No TI components are authorized for use in FDA Class III (or similar life-critical</p>
+<p>medical</p>
+<p>equipment) unless authorized officers of the parties</p>
+<p>have executed a special</p>
+<p>agreement specifically governing such use.</p>
+<p>Only those TI components which TI has specifically designated as military grade or “enhanced plastic” are designed and intended for use in</p>
+<p>military/aerospace applications or environments. Buyer acknowledges and agrees that any military or aerospace use of TI components</p>
+<p>which have<i><b> not</b></i> been so designated is solely at the Buyer's risk, and that Buyer is solely responsible for compliance with all</p>
+<p>legal</p>
+<p>and</p>
+<p>regulatory requirements in connection with such use.</p>
+<p>TI has specifically designated certain components as meeting ISO/TS16949 requirements, mainly for automotive use. In any case of use of</p>
+<p>non-designated products, TI will</p>
+<p>not be responsible for any failure to meet ISO/TS16949.</p>
+<p><b>Products</b></p>
+<p><b>Applications</b></p>
+<p>Audio</p>
+<p>www.ti.com/audio</p>
+<p>Automotive and Transportation</p>
+<p>www.ti.com/automotive</p>
+<p>Amplifiers</p>
+<p>amplifier.ti.com</p>
+<p>Communications and Telecom</p>
+<p>www.ti.com/communications</p>
+<p>Data Converters</p>
+<p>dataconverter.ti.com</p>
+<p>Computers and Peripherals</p>
+<p>www.ti.com/computers</p>
+<p>DLP® Products</p>
+<p>www.dlp.com</p>
+<p>Consumer Electronics</p>
+<p>www.ti.com/consumer-apps</p>
+<p>DSP</p>
+<p>dsp.ti.com</p>
+<p>Energy and Lighting</p>
+<p>www.ti.com/energy</p>
+<p>Clocks and Timers</p>
+<p>www.ti.com/clocks</p>
+<p>Industrial</p>
+<p>www.ti.com/industrial</p>
+<p>Interface</p>
+<p>interface.ti.com</p>
+<p>Medical</p>
+<p>www.ti.com/medical</p>
+<p>Logic</p>
+<p>logic.ti.com</p>
+<p>Security</p>
+<p>www.ti.com/security</p>
+<p>Power Mgmt</p>
+<p>power.ti.com</p>
+<p>Space, Avionics and Defense</p>
+<p>www.ti.com/space-avionics-defense</p>
+<p>Microcontrollers</p>
+<p>microcontroller.ti.com</p>
+<p>Video and Imaging</p>
+<p>www.ti.com/video</p>
+<p>RFID</p>
+<p>www.ti-rfid.com</p>
+<p>OMAP Applications Processors</p>
+<p>www.ti.com/omap</p>
+<p><b>TI E2E Community</b></p>
+<p>e2e.ti.com</p>
+<p>Wireless Connectivity</p>
+<p>www.ti.com/wirelessconnectivity</p>
+<p>Mailing Address: Texas Instruments, Post Office Box 655303, Dallas, Texas 75265</p>
+<p>Copyright © 2014, Texas Instruments Incorporated</p>
+</body>
+</html>
+{% endraw %}
